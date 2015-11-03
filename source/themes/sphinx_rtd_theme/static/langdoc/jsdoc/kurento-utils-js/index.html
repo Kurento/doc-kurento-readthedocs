@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3>kurento-utils 6.1.1-dev</h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><p><a href="http://kurento.org"><img src="https://secure.gravatar.com/avatar/21a2a12c56b2a91c8918d5779f1778bf?s=120" alt=""></a></p>
+<p>Copyright © 2013-2016 <a href="http://kurento.org">Kurento</a>. Licensed under <a href="http://www.gnu.org/licenses/lgpl-2.1.html">LGPL v2.1 License</a>.</p>
+<h1>Kurento Utils for Node.js and Browsers</h1><p>The Kurento Utils project contains a set of reusable components that have been
+found useful during the development of the WebRTC applications with Kurento.</p>
+<p>The source code of this project can be cloned from the <a href="https://github.com/kurento/kurento-utils-js">GitHub repository</a>.</p>
+<h2>Installation instructions</h2><p>Be sure to have installed <a href="http://nodejs.org/">Node.js</a> and [Bower] in your system:</p>
+<pre class="prettyprint source lang-bash"><code>curl -sL https://deb.nodesource.com/setup | sudo bash -
+sudo apt-get install -y nodejs
+sudo npm install -g bower</code></pre><p>To install the library, it's recommended to do that from the <a href="https://www.npmjs.org/package/kurento-utils">NPM repository</a> :</p>
+<pre class="prettyprint source lang-bash"><code>npm install kurento-utils</code></pre><p>Alternatively, you can download the code using git and install manually its
+dependencies:</p>
+<pre class="prettyprint source lang-bash"><code>git clone https://github.com/Kurento/kurento-utils
+cd kurento-utils
+npm install</code></pre><p>Screen and window sharing depends on the privative module
+<code>kurento-browser-extensions</code>. To enable its support, you'll need to install
+the package dependency manually or use a <code>getScreenConstraints</code> function
+yourself on runtime. If it's not available, when trying to share the screen or
+a window content it will throw an exception.</p>
+<h3>Browser</h3><p>To build the browser version of the library you'll only need to exec the <a href="http://gruntjs.com/">grunt</a>
+task runner and they will be generated on the <code>dist</code> folder. Alternatively,
+if you don't have it globally installed, you can run a local copy by executing</p>
+<pre class="prettyprint source lang-bash"><code>node_modules/.bin/grunt</code></pre><h2>Acknowledges</h2><ul>
+<li><a href="https://github.com/krampstudio">Bertrand CHEVRIER</a> for
+<a href="https://github.com/krampstudio/grunt-jsdoc">grunt-jsdoc</a></li>
+</ul>
+<h1>Kurento</h1><h2>What is Kurento</h2><p>Kurento is an open source software project providing a platform suitable 
+for creating modular applications with advanced real-time communication
+capabilities. For knowing more about Kurento, please visit the Kurento
+project website: http://www.kurento.org.</p>
+<p>Kurento is part of <a href="http://www.fiware.org">FIWARE</a>. For further information on the relationship of 
+FIWARE and Kurento check the <a href="http://catalogue.fiware.org/enablers/stream-oriented-kurento">Kurento FIWARE Catalog Entry</a></p>
+<p>Kurento is part of the <a href="http://www.nubomedia.eu">NUBOMEDIA</a> research initiative.</p>
+<h2>Documentation</h2><p>The Kurento project provides detailed <a href="http://www.kurento.org/documentation">documentation</a> including tutorials,
+installation and development guides. A simplified version of the documentation
+can be found on <a href="http://kurento.readthedocs.org/">readthedocs.org</a>. The <a href="http://kurento.github.io/doc-kurento/">Open API specification</a> a.k.a. Kurento
+Protocol is also available on <a href="http://docs.streamoriented.apiary.io/">apiary.io</a>.</p>
+<h2>Source</h2><p>Code for other Kurento projects can be found in the <a href="https://github.com/kurento">GitHub Kurento Group</a>.</p>
+<h2>News and Website</h2><p>Check the <a href="http://www.kurento.org/blog">Kurento blog</a>
+Follow us on Twitter @<a href="http://twitter.com/kurentoms">kurentoms</a>.</p>
+<h2>Issue tracker</h2><p>Issues and bug reports should be posted to the <a href="https://github.com/Kurento/bugtracker/issues">GitHub Kurento bugtracker</a></p>
+<h2>Licensing and distribution</h2><p>Software associated to Kurento is provided as open source under GNU Library or
+&quot;Lesser&quot; General Public License, version 2.1 (LGPL-2.1). Please check the
+specific terms and conditions linked to this open source license at
+http://opensource.org/licenses/LGPL-2.1. Please note that software derived as a
+result of modifying the source code of Kurento software in order to fix a bug
+or incorporate enhancements is considered a derivative work of the product.
+Software that merely uses or aggregates (i.e. links to) an otherwise unmodified
+version of existing software is not considered a derivative work.</p>
+<h2>Contribution policy</h2><p>You can contribute to the Kurento community through bug-reports, bug-fixes, new
+code or new documentation. For contributing to the Kurento community, drop a
+post to the <a href="https://groups.google.com/forum/#!forum/kurento">Kurento Public Mailing List</a> providing full information about your
+contribution and its value. In your contributions, you must comply with the
+following guidelines</p>
+<ul>
+<li>You must specify the specific contents of your contribution either through a
+detailed bug description, through a pull-request or through a patch.</li>
+<li>You must specify the licensing restrictions of the code you contribute.</li>
+<li>For newly created code to be incorporated in the Kurento code-base, you must
+accept Kurento to own the code copyright, so that its open source nature is
+guaranteed.</li>
+<li>You must justify appropriately the need and value of your contribution. The
+Kurento project has no obligations in relation to accepting contributions
+from third parties.</li>
+<li>The Kurento project leaders have the right of asking for further
+explanations, tests or validations of any code contributed to the community
+before it being incorporated into the Kurento code-base. You must be ready to
+addressing all these kind of concerns before having your code approved.</li>
+</ul>
+<h2>Support</h2><p>The Kurento project provides community support through the  <a href="https://groups.google.com/forum/#!forum/kurento">Kurento Public
+Mailing List</a> and through <a href="http://stackoverflow.com/search?q=kurento">StackOverflow</a> using the tags <em>kurento</em> and
+<em>fiware-kurento</em>.</p>
+<p>Before asking for support, please read first the <a href="http://www.kurento.org/blog/kurento-netiquette-guidelines">Kurento Netiquette Guidelines</a></p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kurentoUtils.html">kurentoUtils</a></li></ul><h3>Classes</h3><ul><li><a href="module-kurentoUtils.WebRtcPeer.html">WebRtcPeer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#currentFrame">currentFrame</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.3</a> on Tue Nov 03 2015 15:59:27 GMT+0000 (UTC)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
