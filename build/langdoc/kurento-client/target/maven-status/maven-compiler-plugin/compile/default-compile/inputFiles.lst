@@ -54,6 +54,7 @@
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/ErrorEvent.java
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/MediaEvent.java
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/EventListener.java
+/var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/SDES.java
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCInboundRTPStreamStats.java
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/ListenerSubscription.java
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/EndpointStats.java
@@ -102,6 +103,7 @@
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/UriEndpoint.java
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/ZBarFilter.java
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/HttpPostEndpoint.java
+/var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/CryptoSuite.java
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/ParamAnnotationUtils.java
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/ElementDisconnectedEvent.java
 /var/lib/jenkins/workspace/Development/kurento_doc_readthedocs_merged/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/client/RomClient.java

@@ -24,6 +24,17 @@ public interface SdpEndpoint extends SessionEndpoint {
      void setMaxVideoRecvBandwidth(@org.kurento.client.internal.server.Param("maxVideoRecvBandwidth") int maxVideoRecvBandwidth, Continuation<Void> cont);
 
      void setMaxVideoRecvBandwidth(@org.kurento.client.internal.server.Param("maxVideoRecvBandwidth") int maxVideoRecvBandwidth, Transaction tx);
+     int getMaxAudioRecvBandwidth();
+
+     void getMaxAudioRecvBandwidth(Continuation<Integer> cont);
+
+     TFuture<Integer> getMaxAudioRecvBandwidth(Transaction tx);
+
+     void setMaxAudioRecvBandwidth(@org.kurento.client.internal.server.Param("maxAudioRecvBandwidth") int maxAudioRecvBandwidth);
+
+     void setMaxAudioRecvBandwidth(@org.kurento.client.internal.server.Param("maxAudioRecvBandwidth") int maxAudioRecvBandwidth, Continuation<Void> cont);
+
+     void setMaxAudioRecvBandwidth(@org.kurento.client.internal.server.Param("maxAudioRecvBandwidth") int maxAudioRecvBandwidth, Transaction tx);
 
 
 /**

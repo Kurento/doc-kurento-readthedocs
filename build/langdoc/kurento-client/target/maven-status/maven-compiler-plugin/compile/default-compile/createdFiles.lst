@@ -53,6 +53,7 @@ org/kurento/client/MediaState.class
 org/kurento/client/internal/client/RomEventHandler.class
 org/kurento/client/OnDataChannelClosedEvent.class
 org/kurento/client/RTCMediaStreamStats.class
+org/kurento/client/SDES.class
 org/kurento/client/ModuleInfo.class
 org/kurento/client/internal/TFutureImpl.class
 org/kurento/client/Transaction.class
@@ -148,6 +149,7 @@ org/kurento/client/KurentoObject.class
 org/kurento/client/PassThrough.class
 org/kurento/client/ElementDisconnectedEvent.class
 org/kurento/client/internal/client/RemoteObject$5.class
+org/kurento/client/CryptoSuite.class
 org/kurento/client/Mixer.class
 org/kurento/client/internal/client/RemoteObject$2.class
 org/kurento/client/RtpEndpoint.class

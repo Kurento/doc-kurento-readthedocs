@@ -11,7 +11,7 @@ package org.kurento.client;
  *
  **/
 @org.kurento.client.internal.RemoteClass
-public interface RtpEndpoint extends SdpEndpoint {
+public interface RtpEndpoint extends BaseRtpEndpoint {
 
 
     
@@ -32,6 +32,18 @@ public interface RtpEndpoint extends SdpEndpoint {
       props.add("mediaPipeline",mediaPipeline);
     }
 
+/**
+ *
+ * Sets a value for crypto in Builder for RtpEndpoint.
+ *
+ * @param crypto
+ *       Crypto parameters
+ *
+ **/
+    public Builder withCrypto(org.kurento.client.SDES crypto){
+      props.add("crypto",crypto);
+      return this;
+    }
     }
 
 

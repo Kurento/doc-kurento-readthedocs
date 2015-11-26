@@ -28,7 +28,7 @@ is hosted and then install and run it, as follows:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-magic-mirror
-    git checkout 6.1.1-dev
+    git checkout 6.2.0
     npm install
     npm start
 
@@ -512,7 +512,7 @@ file for managing this dependency is:
 
    "dependencies": {
       [...]
-      "kurento-client" : "6.1.1-dev"
+      "kurento-client" : "6.2.0"
    }
 
 At the client side, dependencies are managed using :term:`Bower`. Take a look to
@@ -524,7 +524,7 @@ file and pay attention to the following section:
 
    "dependencies": {
       [...]
-      "kurento-utils" : "6.1.1-dev"
+      "kurento-utils" : "6.2.0"
    }
 
 .. note::
