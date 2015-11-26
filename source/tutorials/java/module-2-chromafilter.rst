@@ -25,7 +25,7 @@ is hosted and then run the main class, as follows:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-chroma
-    git checkout 6.2.0
+    git checkout 6.2.1-SNAPSHOT
     mvn compile exec:java
 
 The web application starts on port 8080 in the localhost by default. Therefore,
@@ -172,17 +172,17 @@ and the chroma module (*chroma*):
       <dependency>
          <groupId>org.kurento</groupId>
          <artifactId>kurento-client</artifactId>
-         <version>6.2.0</version>
+         <version>6.2.1-SNAPSHOT</version>
       </dependency> 
       <dependency> 
          <groupId>org.kurento</groupId>
          <artifactId>kurento-utils-js</artifactId>
-         <version>6.2.0</version>
+         <version>6.2.1-SNAPSHOT</version>
       </dependency>
       <dependency>
          <groupId>org.kurento.module</groupId>
          <artifactId>chroma</artifactId>
-         <version>6.2.0</version>
+         <version>6.2.1-SNAPSHOT</version>
       </dependency>
    </dependencies>
 

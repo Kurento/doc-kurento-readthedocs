@@ -40,7 +40,7 @@ start the HTTP server:
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-hello-world
-    git checkout 6.2.0
+    git checkout 6.2.1-dev
     bower install
     http-server
 
@@ -262,8 +262,8 @@ file, as follows:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.2.0",
-      "kurento-utils": "6.2.0"
+      "kurento-client": "6.2.1-dev",
+      "kurento-utils": "6.2.1-dev"
    }
 
 To get these dependencies, just run the following shell command:

@@ -29,7 +29,7 @@ is hosted and then install and run it, as follows:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-one2many-call
-    git checkout 6.2.0
+    git checkout 6.2.1-dev
     npm install
     npm start
 
@@ -633,7 +633,7 @@ file for managing this dependency is:
 
    "dependencies": {
       [...]
-      "kurento-client" : "6.2.0"
+      "kurento-client" : "6.2.1-dev"
    }
 
 At the client side, dependencies are managed using :term:`Bower`. Take a look to
@@ -645,7 +645,7 @@ file and pay attention to the following section:
 
    "dependencies": {
       [...]
-      "kurento-utils" : "6.2.0"
+      "kurento-utils" : "6.2.1-dev"
    }
 
 .. note::
