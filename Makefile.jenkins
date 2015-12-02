@@ -109,7 +109,7 @@ langdoc:
 	  rm -rf $(BUILDDIR)/langdoc/kurento-client
 	  cd  $(BUILDDIR)/langdoc && git clone https://github.com/Kurento/kurento-java.git && cd kurento-java && git checkout kurento-java-$(CLIENT_JAVA_VERSION) || git checkout $(CLIENT_JAVA_VERSION) || echo "Using master branch"
 	  mv $(BUILDDIR)/langdoc/kurento-java/kurento-client $(BUILDDIR)/langdoc
-	  cd $(BUILDDIR)/langdoc/kurento-client && mvn --settings /tmp/config4045730469233457571tmp clean package -DskipTests
+	  cd $(BUILDDIR)/langdoc/kurento-client && mvn --settings /tmp/config5415600363252104682tmp clean package -DskipTests
 	  rsync -av $(BUILDDIR)/langdoc/kurento-client/target/generated-sources/kmd/* $(BUILDDIR)/langdoc/kurento-client/src/main/java/
 	  javadoc -d $(BUILDDIR)/html/langdoc/javadoc -sourcepath $(BUILDDIR)/langdoc/*/src/main/java/ org.kurento.client
 
