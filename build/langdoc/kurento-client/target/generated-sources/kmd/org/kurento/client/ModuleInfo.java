@@ -27,6 +27,12 @@ public class ModuleInfo  {
     private String name;
 /**
  *
+ * Time that this module was generated
+ *
+ **/
+    private String generationTime;
+/**
+ *
  * Module available factories
  *
  **/
@@ -37,12 +43,13 @@ public class ModuleInfo  {
  * Create a ModuleInfo
  *
  **/
-    public ModuleInfo(@org.kurento.client.internal.server.Param("version") String version, @org.kurento.client.internal.server.Param("name") String name, @org.kurento.client.internal.server.Param("factories") java.util.List<String> factories) {
+    public ModuleInfo(@org.kurento.client.internal.server.Param("version") String version, @org.kurento.client.internal.server.Param("name") String name, @org.kurento.client.internal.server.Param("generationTime") String generationTime, @org.kurento.client.internal.server.Param("factories") java.util.List<String> factories) {
 
 	super();
 
         this.version = version;
         this.name = name;
+        this.generationTime = generationTime;
         this.factories = factories;
     }
 
@@ -80,6 +87,24 @@ public class ModuleInfo  {
  **/
     public void setName(String name){
     	this.name = name;
+    }
+
+/**
+ *
+ * get Time that this module was generated
+ *
+ **/
+    public String getGenerationTime(){
+    	return generationTime;
+    }
+
+/**
+ *
+ * set Time that this module was generated
+ *
+ **/
+    public void setGenerationTime(String generationTime){
+    	this.generationTime = generationTime;
     }
 
 /**

@@ -89,3 +89,81 @@ communication, and also integration with an augmented reality filter.
    :maxdepth: 1
 
    Java </tutorials/java/tutorial-5-one2one-adv>
+   
+Tutorial 6 - WebRTC many to many video call (Group call)
+========================================================
+
+This tutorial allows connect several participants in the same session and see each of them.
+
+.. toctree::
+   :maxdepth: 1
+
+   Java </tutorials/java/tutorial-6-groupcall>
+
+Tutorial 7 - WebRTC in loopback with two filters which using metadata
+=====================================================================
+
+This tutorial detects and draws faces into the webcam video. The tutorial connects two filters, 
+the KmsDetectFaces and the KmsShowFaces.
+
+.. toctree::
+   :maxdepth: 1
+
+   Java </tutorials/java/tutorial-7-metadata>
+
+Tutorial 8 - Play of a video through WebRTC
+===========================================
+
+This tutorial plays of a video through WebRTC.
+
+.. toctree::
+   :maxdepth: 1
+
+   Java </tutorials/java/tutorial-8-player>
+
+Tutorial 9 - WebRTC to send data about qr codes through data channel
+====================================================================
+
+Player connected to a filter and a WebRTC to send data about qr codes through data channel.
+
+.. toctree::
+   :maxdepth: 1
+
+   Java </tutorials/java/tutorial-9-send-datachannel>
+
+Tutorial 10 - WebRTC in loopback with filter to show data received through data channel
+=======================================================================================
+
+This demo allows sending text from browser to the media server through data channels. 
+That text will be shown in the loopback video.
+
+.. toctree::
+   :maxdepth: 1
+
+   Java </tutorials/java/tutorial-10-show-datachannel>
+   Browser JavaScript </tutorials/js/tutorial-10-helloworld-datachannels>
+   
+Tutorial 11 - WebRTC in loopback with recorder
+==============================================
+
+This demo has two parts, in the first part implements a `WebRTC`:term: *loopback* and 
+records the media in the Kurento Media Server. And in the second part plays the media was recorded 
+in the Kurento Media Server.
+
+.. toctree::
+   :maxdepth: 1
+
+   Browser JavaScript </tutorials/js/tutorial-11-recorder>
+
+   
+Tutorial 12 - WebRTC in loopback with WebRTC statistics
+=======================================================
+
+This demo implements a `WebRTC`:term: *loopback* and shows in the browser several statistics about WebRTC.
+
+.. toctree::
+   :maxdepth: 1
+
+   Browser JavaScript </tutorials/js/tutorial-12-loopback-stats>
+   
+

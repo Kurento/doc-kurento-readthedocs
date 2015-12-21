@@ -16,6 +16,23 @@ package org.kurento.client;
 @org.kurento.client.internal.RemoteClass
 public interface PlayerEndpoint extends UriEndpoint {
 
+     org.kurento.client.VideoInfo getVideoInfo();
+
+     void getVideoInfo(Continuation<org.kurento.client.VideoInfo> cont);
+
+     TFuture<org.kurento.client.VideoInfo> getVideoInfo(Transaction tx);
+
+     long getPosition();
+
+     void getPosition(Continuation<Long> cont);
+
+     TFuture<Long> getPosition(Transaction tx);
+
+     void setPosition(@org.kurento.client.internal.server.Param("position") long position);
+
+     void setPosition(@org.kurento.client.internal.server.Param("position") long position, Continuation<Void> cont);
+
+     void setPosition(@org.kurento.client.internal.server.Param("position") long position, Transaction tx);
 
 
 /**
