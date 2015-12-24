@@ -14,6 +14,7 @@ org/kurento/client/ListenerSubscription.class
 org/kurento/client/AudioCodec.class
 org/kurento/client/internal/transport/jsonrpc/RomClientJsonRpcClient$1.class
 org/kurento/client/KurentoClient.class
+org/kurento/client/VideoInfo.class
 org/kurento/client/CodeFoundEvent.class
 org/kurento/client/ServerInfo.class
 org/kurento/client/RTCCertificateStats.class
@@ -30,6 +31,7 @@ org/kurento/client/MediaStateChangedEvent.class
 org/kurento/client/internal/server/Param.class
 org/kurento/client/internal/transport/jsonrpc/RomServerJsonRpcHandler.class
 org/kurento/client/internal/client/RomManager.class
+org/kurento/client/OnKeySoftLimitEvent.class
 org/kurento/client/OpenCVFilter.class
 org/kurento/client/WebRtcEndpoint.class
 org/kurento/client/AbstractBuilder$1.class

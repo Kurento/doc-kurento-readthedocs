@@ -25,7 +25,7 @@ is hosted and then run the main class, as follows:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-pointerdetector
-    git checkout 6.2.1
+    git checkout 6.2.2-SNAPSHOT
     mvn compile exec:java
 
 The web application starts on port 8443 in the localhost by default. Therefore,
@@ -231,17 +231,17 @@ and the pointer detector module (*pointerdetector*):
       <dependency>
          <groupId>org.kurento</groupId>
          <artifactId>kurento-client</artifactId>
-         <version>6.2.1</version>
+         <version>6.2.2-SNAPSHOT</version>
       </dependency> 
       <dependency> 
          <groupId>org.kurento</groupId>
          <artifactId>kurento-utils-js</artifactId>
-         <version>6.2.1</version>
+         <version>6.2.2-SNAPSHOT</version>
       </dependency>
       <dependency>
          <groupId>org.kurento.module</groupId>
          <artifactId>pointerdetector</artifactId>
-         <version>6.2.1</version>
+         <version>6.2.2-SNAPSHOT</version>
       </dependency>
    </dependencies>
 

@@ -11,4 +11,4 @@ package org.kurento.client;
  * Currently WEBM and MP4 are supported.
  *
  **/
-public enum MediaProfileSpecType {WEBM, MP4, WEBM_VIDEO_ONLY, WEBM_AUDIO_ONLY, MP4_VIDEO_ONLY, MP4_AUDIO_ONLY}
+public enum MediaProfileSpecType {WEBM, MP4, WEBM_VIDEO_ONLY, WEBM_AUDIO_ONLY, MP4_VIDEO_ONLY, MP4_AUDIO_ONLY, KURENTO_SPLIT_RECORDER}
