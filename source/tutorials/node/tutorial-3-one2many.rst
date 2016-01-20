@@ -2,7 +2,7 @@
 Tutorial 3 - One to many video call
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-This web application consists on an one to one video call using `WebRTC`:term:
+This web application consists of a one to many video call using `WebRTC`:term:
 technology. In other words, it is an implementation of a video broadcasting web
 application.
 
