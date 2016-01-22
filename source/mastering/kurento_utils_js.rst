@@ -17,7 +17,7 @@ How to use it
 =============
 
 * **Minified file** - Download the file from
-  `here <http://builds.kurento.org/release/6.2.1-dev/js/kurento-utils.min.js>`__.
+  `here <http://builds.kurento.org/release/6.2.0/js/kurento-utils.min.js>`__.
 
 * **NPM** - Install and use library in your NodeJS files.
 
@@ -189,8 +189,10 @@ The constructor for WebRtcPeer is WebRtcPeer(**mode, options, callback**) where:
 
    * *localVideo*: Video tag in the application  for the local stream. 
    * *remoteVideo*: Video tag in the application for the remote stream. 
-   * *videoStream*: 
-   * *audioStreams*:
+   * *videoStream*:  Provides an already available video stream that will
+     be used instead of using the media stream from the local webcam.
+   * *audioStreams*:  Provides an already available audio stream that will
+     be used instead of using the media stream from the local microphone.
    * *mediaConstraints*: Defined the quality for the video and audio 
    * *connectionConstraints*: Defined the connection constraint according
      with browser like googIPv6, DtlsSrtpKeyAgreement, ...

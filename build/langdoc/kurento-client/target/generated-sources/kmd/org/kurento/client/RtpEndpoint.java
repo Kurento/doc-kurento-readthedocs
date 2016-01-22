@@ -82,6 +82,15 @@ public interface RtpEndpoint extends BaseRtpEndpoint {
       props.add("crypto",crypto);
       return this;
     }
+/**
+ *
+ * Use IPv6 instead of IPv4
+ *
+ **/
+    public Builder useIpv6(){
+      props.add("useIpv6",Boolean.TRUE);
+      return this;
+    }
     }
 
 

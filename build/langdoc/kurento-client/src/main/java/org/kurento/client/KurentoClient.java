@@ -58,6 +58,8 @@ public class KurentoClient {
 
   private ServerManager serverManager;
 
+  private JsonRpcClient client;
+
   private static KmsUrlLoader kmsUrlLoader;
 
   public static synchronized String getKmsUrl(String id, Properties properties) {
@@ -104,9 +106,14 @@ public class KurentoClient {
   public static KurentoClient create(String websocketUrl, Properties properties) {
     log.info("Connecting to kms in {}", websocketUrl);
     JsonRpcClientWebSocket client = new JsonRpcClientWebSocket(websocketUrl);
+    configureJsonRpcClient(client);
+    return new KurentoClient(client);
+  }
+
+  private static void configureJsonRpcClient(JsonRpcClientWebSocket client) {
     client.enableHeartbeat(KEEPALIVE_TIME);
     client.setLabel("KurentoClient");
-    return new KurentoClient(client);
+    client.setSendCloseMessage(true);
   }
 
   public static KurentoClient create(String websocketUrl, KurentoConnectionListener listener) {
@@ -118,13 +125,13 @@ public class KurentoClient {
     log.info("Connecting to KMS in {}", websocketUrl);
     JsonRpcClientWebSocket client = new JsonRpcClientWebSocket(websocketUrl,
         JsonRpcConnectionListenerKurento.create(listener));
-    client.enableHeartbeat(KEEPALIVE_TIME);
-    client.setLabel("KurentoClient");
+    configureJsonRpcClient(client);
     return new KurentoClient(client);
 
   }
 
   KurentoClient(JsonRpcClient client) {
+    this.client = client;
     this.manager = new RomManager(new RomClientJsonRpcClient(client));
     client.setRequestTimeout(requesTimeout);
     if (client instanceof JsonRpcClientWebSocket) {
@@ -186,7 +193,7 @@ public class KurentoClient {
   }
 
   public ServerManager getServerManager() {
-    if(serverManager == null){ 
+    if (serverManager == null) {
       serverManager = getById("manager_ServerManager", ServerManager.class);
     }
     return serverManager;
@@ -194,5 +201,9 @@ public class KurentoClient {
 
   public <T extends KurentoObject> T getById(String id, Class<T> clazz) {
     return manager.getById(id, clazz);
+  }
+
+  public String getSessionId() {
+    return client.getSession().getSessionId();
   }
 }

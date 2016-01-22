@@ -24,7 +24,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-group-call
-    git checkout 6.2.2-SNAPSHOT
+    git checkout 6.2.1
     mvn compile exec:java
 
 Access the application connecting to the URL https://localhost:8443/ in a
@@ -471,12 +471,12 @@ client-side:
       <dependency>
          <groupId>org.kurento</groupId>
          <artifactId>kurento-client</artifactId>
-         <version>6.2.2-SNAPSHOT</version>
+         <version>6.3.0</version>
       </dependency> 
       <dependency> 
          <groupId>org.kurento</groupId>
          <artifactId>kurento-utils-js</artifactId>
-         <version>6.2.2-SNAPSHOT</version>
+         <version>6.3.0</version>
       </dependency> 
    </dependencies>
 
@@ -515,5 +515,5 @@ follows:
    .. sourcecode:: js
 
       "dependencies": {
-         "kurento-utils": "6.2.1-dev"
+         "kurento-utils": "6.2.0"
       }
