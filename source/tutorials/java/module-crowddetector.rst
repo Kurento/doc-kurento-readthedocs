@@ -302,17 +302,17 @@ and the crowd detector module (*crowddetector*):
       <dependency>
          <groupId>org.kurento</groupId>
          <artifactId>kurento-client</artifactId>
-         <version>6.2.2-SNAPSHOT</version>
+         <version>6.3.1-SNAPSHOT</version>
       </dependency> 
       <dependency> 
          <groupId>org.kurento</groupId>
          <artifactId>kurento-utils-js</artifactId>
-         <version>6.2.2-SNAPSHOT</version>
+         <version>6.3.1-SNAPSHOT</version>
       </dependency>
       <dependency>
          <groupId>org.kurento.module</groupId>
          <artifactId>crowddetector</artifactId>
-         <version>6.2.2-SNAPSHOT</version>
+         <version>6.3.1-SNAPSHOT</version>
       </dependency>
    </dependencies>
 

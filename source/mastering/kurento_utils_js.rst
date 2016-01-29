@@ -189,8 +189,10 @@ The constructor for WebRtcPeer is WebRtcPeer(**mode, options, callback**) where:
 
    * *localVideo*: Video tag in the application  for the local stream. 
    * *remoteVideo*: Video tag in the application for the remote stream. 
-   * *videoStream*: 
-   * *audioStreams*:
+   * *videoStream*:  Provides an already available video stream that will
+     be used instead of using the media stream from the local webcam.
+   * *audioStreams*:  Provides an already available audio stream that will
+     be used instead of using the media stream from the local microphone.
    * *mediaConstraints*: Defined the quality for the video and audio 
    * *connectionConstraints*: Defined the connection constraint according
      with browser like googIPv6, DtlsSrtpKeyAgreement, ...
@@ -358,8 +360,7 @@ Souce code
 
 The code is at `github <https://github.com/kurento/kurento-utils-js>`_. 
 
-Be sure to have `Node.js <http://nodejs.org/>`_ and [Bower] installed in your
-system:
+Be sure to have `Node.js`:term: and `Bower`:term: installed in your system:
 
 .. sourcecode:: bash
 
@@ -373,7 +374,7 @@ To install the library, it is recommended to do that from the
 .. sourcecode:: bash
 
    npm install kurento-utils
-   
+
 Alternatively, you can download the code using Git and install manually its
 dependencies:
 
