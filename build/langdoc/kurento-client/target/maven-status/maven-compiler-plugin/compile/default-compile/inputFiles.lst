@@ -45,6 +45,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/CodeFoundEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/ParamAnnotationUtils.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/TransactionNotExecutedException.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/MediaFlowOutStateChangeEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/server/Param.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/TransactionImpl.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/PassThrough.java
@@ -85,6 +86,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/TransactionException.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/VideoCodec.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/MediaSessionStartedEvent.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/MediaFlowInStateChangeEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCCertificateStats.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCCodec.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/ObjectCreatedEvent.java
@@ -112,6 +114,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/Composite.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCMediaStreamStats.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/CodecConfiguration.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/MediaLatencyStat.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/Continuation.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/Stats.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/server/KurentoServerException.java
@@ -119,6 +122,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/ModuleName.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/transport/serialization/ModuleClassesManager.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/OnIceComponentStateChangedEvent.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/MediaFlowState.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/module/KurentoModuleInfo.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/client/ErrorLogContinuation.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/ElementDisconnectedEvent.java

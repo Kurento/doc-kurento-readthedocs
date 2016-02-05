@@ -15,23 +15,31 @@ public class ElementStats extends Stats {
 
 /**
  *
+ * @deprecated
  * Audio average measured on the sink pad in nano seconds
  *
  **/
     private double inputAudioLatency;
 /**
  *
+ * @deprecated
  * Video average measured on the sink pad in nano seconds
  *
  **/
     private double inputVideoLatency;
+/**
+ *
+ * The average time that buffers take to get on the input pads of this element in nano seconds
+ *
+ **/
+    private java.util.List<org.kurento.client.MediaLatencyStat> inputLatency;
 
 /**
  *
  * Create a ElementStats
  *
  **/
-    public ElementStats(@org.kurento.client.internal.server.Param("id") String id, @org.kurento.client.internal.server.Param("type") org.kurento.client.StatsType type, @org.kurento.client.internal.server.Param("timestamp") double timestamp, @org.kurento.client.internal.server.Param("inputAudioLatency") double inputAudioLatency, @org.kurento.client.internal.server.Param("inputVideoLatency") double inputVideoLatency) {
+    public ElementStats(@org.kurento.client.internal.server.Param("id") String id, @org.kurento.client.internal.server.Param("type") org.kurento.client.StatsType type, @org.kurento.client.internal.server.Param("timestamp") double timestamp, @org.kurento.client.internal.server.Param("inputAudioLatency") double inputAudioLatency, @org.kurento.client.internal.server.Param("inputVideoLatency") double inputVideoLatency, @org.kurento.client.internal.server.Param("inputLatency") java.util.List<org.kurento.client.MediaLatencyStat> inputLatency) {
 
 	super(
 id, 
@@ -40,11 +48,13 @@ timestamp);
 
         this.inputAudioLatency = inputAudioLatency;
         this.inputVideoLatency = inputVideoLatency;
+        this.inputLatency = inputLatency;
     }
 
 /**
  *
- * get Audio average measured on the sink pad in nano seconds
+ * get @deprecated
+ * Audio average measured on the sink pad in nano seconds
  *
  **/
     public double getInputAudioLatency(){
@@ -53,7 +63,8 @@ timestamp);
 
 /**
  *
- * set Audio average measured on the sink pad in nano seconds
+ * set @deprecated
+ * Audio average measured on the sink pad in nano seconds
  *
  **/
     public void setInputAudioLatency(double inputAudioLatency){
@@ -62,7 +73,8 @@ timestamp);
 
 /**
  *
- * get Video average measured on the sink pad in nano seconds
+ * get @deprecated
+ * Video average measured on the sink pad in nano seconds
  *
  **/
     public double getInputVideoLatency(){
@@ -71,11 +83,30 @@ timestamp);
 
 /**
  *
- * set Video average measured on the sink pad in nano seconds
+ * set @deprecated
+ * Video average measured on the sink pad in nano seconds
  *
  **/
     public void setInputVideoLatency(double inputVideoLatency){
     	this.inputVideoLatency = inputVideoLatency;
+    }
+
+/**
+ *
+ * get The average time that buffers take to get on the input pads of this element in nano seconds
+ *
+ **/
+    public java.util.List<org.kurento.client.MediaLatencyStat> getInputLatency(){
+    	return inputLatency;
+    }
+
+/**
+ *
+ * set The average time that buffers take to get on the input pads of this element in nano seconds
+ *
+ **/
+    public void setInputLatency(java.util.List<org.kurento.client.MediaLatencyStat> inputLatency){
+    	this.inputLatency = inputLatency;
     }
 
 }

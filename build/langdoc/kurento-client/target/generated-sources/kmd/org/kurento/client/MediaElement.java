@@ -877,6 +877,82 @@ public interface MediaElement extends MediaObject {
      **/
     @org.kurento.client.internal.server.EventSubscription(ElementDisconnectedEvent.class)
     void removeElementDisconnectedListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
+    /**
+     * Add a {@link EventListener} for event {@link MediaFlowOutStateChangeEvent}. Synchronous call.
+     *
+     * @param  listener Listener to be called on MediaFlowOutStateChangeEvent
+     * @return ListenerSubscription for the given Listener
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(MediaFlowOutStateChangeEvent.class)
+    ListenerSubscription addMediaFlowOutStateChangeListener(EventListener<MediaFlowOutStateChangeEvent> listener);
+    /**
+     * Add a {@link EventListener} for event {@link MediaFlowOutStateChangeEvent}. Asynchronous call.
+     * Calls Continuation&lt;ListenerSubscription&gt; when it has been added.
+     *
+     * @param listener Listener to be called on MediaFlowOutStateChangeEvent
+     * @param cont     Continuation to be called when the listener is registered
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(MediaFlowOutStateChangeEvent.class)
+    void addMediaFlowOutStateChangeListener(EventListener<MediaFlowOutStateChangeEvent> listener, Continuation<ListenerSubscription> cont);
+    
+	/**
+     * Remove a {@link ListenerSubscription} for event {@link MediaFlowOutStateChangeEvent}. Synchronous call.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(MediaFlowOutStateChangeEvent.class)
+    void removeMediaFlowOutStateChangeListener(ListenerSubscription listenerSubscription);
+    /**
+     * Remove a {@link ListenerSubscription} for event {@link MediaFlowOutStateChangeEvent}. Asynchronous call.
+     * Calls Continuation&lt;Void&gt; when it has been removed.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     * @param cont                 Continuation to be called when the listener is removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(MediaFlowOutStateChangeEvent.class)
+    void removeMediaFlowOutStateChangeListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
+    /**
+     * Add a {@link EventListener} for event {@link MediaFlowInStateChangeEvent}. Synchronous call.
+     *
+     * @param  listener Listener to be called on MediaFlowInStateChangeEvent
+     * @return ListenerSubscription for the given Listener
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(MediaFlowInStateChangeEvent.class)
+    ListenerSubscription addMediaFlowInStateChangeListener(EventListener<MediaFlowInStateChangeEvent> listener);
+    /**
+     * Add a {@link EventListener} for event {@link MediaFlowInStateChangeEvent}. Asynchronous call.
+     * Calls Continuation&lt;ListenerSubscription&gt; when it has been added.
+     *
+     * @param listener Listener to be called on MediaFlowInStateChangeEvent
+     * @param cont     Continuation to be called when the listener is registered
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(MediaFlowInStateChangeEvent.class)
+    void addMediaFlowInStateChangeListener(EventListener<MediaFlowInStateChangeEvent> listener, Continuation<ListenerSubscription> cont);
+    
+	/**
+     * Remove a {@link ListenerSubscription} for event {@link MediaFlowInStateChangeEvent}. Synchronous call.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(MediaFlowInStateChangeEvent.class)
+    void removeMediaFlowInStateChangeListener(ListenerSubscription listenerSubscription);
+    /**
+     * Remove a {@link ListenerSubscription} for event {@link MediaFlowInStateChangeEvent}. Asynchronous call.
+     * Calls Continuation&lt;Void&gt; when it has been removed.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     * @param cont                 Continuation to be called when the listener is removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(MediaFlowInStateChangeEvent.class)
+    void removeMediaFlowInStateChangeListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
     
 
 
