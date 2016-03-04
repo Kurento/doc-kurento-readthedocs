@@ -32,6 +32,14 @@ public interface HubPort extends MediaElement {
       props.add("hub",hub);
     }
 
+	public Builder withProperties(Properties properties) {
+    	return (Builder)super.withProperties(properties);
+  	}
+
+	public Builder with(String name, Object value) {
+		return (Builder)super.with(name, value);
+	}
+	
     }
 
 

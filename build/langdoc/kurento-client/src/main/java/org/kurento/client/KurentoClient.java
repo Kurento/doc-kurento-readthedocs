@@ -22,6 +22,7 @@ import java.util.UUID;
 
 import javax.annotation.PreDestroy;
 
+import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.kurento.client.internal.KmsUrlLoader;
 import org.kurento.client.internal.TransactionImpl;
 import org.kurento.client.internal.client.RomManager;
@@ -107,7 +108,8 @@ public class KurentoClient {
 
   public static KurentoClient create(String websocketUrl, Properties properties) {
     log.info("Connecting to kms in {}", websocketUrl);
-    JsonRpcClientWebSocket client = new JsonRpcClientWebSocket(websocketUrl);
+    JsonRpcClientWebSocket client = new JsonRpcClientWebSocket(websocketUrl, null,
+        new SslContextFactory());
     configureJsonRpcClient(client);
     return new KurentoClient(client);
   }
@@ -122,11 +124,18 @@ public class KurentoClient {
     return create(websocketUrl, listener, new Properties());
   }
 
+  public static KurentoClient create(Properties properties, KurentoConnectionListener listener) {
+    String id = UUID.randomUUID().toString();
+    KurentoClient client = create(getKmsUrl(id, properties), listener, properties);
+    client.setId(id);
+    return client;
+  }
+
   public static KurentoClient create(String websocketUrl, KurentoConnectionListener listener,
       Properties properties) {
     log.info("Connecting to KMS in {}", websocketUrl);
     JsonRpcClientWebSocket client = new JsonRpcClientWebSocket(websocketUrl,
-        JsonRpcConnectionListenerKurento.create(listener));
+        JsonRpcConnectionListenerKurento.create(listener), new SslContextFactory());
     configureJsonRpcClient(client);
     return new KurentoClient(client);
 
@@ -171,6 +180,37 @@ public class KurentoClient {
 
   public MediaPipeline createMediaPipeline(Transaction tx) {
     return new AbstractBuilder<MediaPipeline>(MediaPipeline.class, manager).build(tx);
+  }
+
+  /**
+   * Creates a new {@link MediaPipeline} in the media server.
+   *
+   * @return The media pipeline
+   */
+  public MediaPipeline createMediaPipeline(Properties properties) {
+    return new AbstractBuilder<MediaPipeline>(MediaPipeline.class, manager)
+        .withProperties(properties).build();
+  }
+
+  /**
+   * Creates a new {@link MediaPipeline} in the media server.
+   *
+   * @param cont
+   *          An asynchronous callback handler. If the element was successfully created, the
+   *          {@code onSuccess} method from the handler will receive a {@link MediaPipeline} stub
+   *          from the media server.
+   * @throws KurentoException
+   *
+   */
+  public void createMediaPipeline(Properties properties, final Continuation<MediaPipeline> cont)
+      throws KurentoException {
+    new AbstractBuilder<MediaPipeline>(MediaPipeline.class, manager).withProperties(properties)
+        .buildAsync(cont);
+  }
+
+  public MediaPipeline createMediaPipeline(Transaction tx, Properties properties) {
+    return new AbstractBuilder<MediaPipeline>(MediaPipeline.class, manager)
+        .withProperties(properties).build(tx);
   }
 
   @PreDestroy

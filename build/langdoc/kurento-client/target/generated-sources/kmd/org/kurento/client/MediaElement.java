@@ -396,6 +396,86 @@ public interface MediaElement extends MediaObject {
 
 /**
  *
+ * Returns if there is media flowing from the pipeline to the MediaElement through a pad
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ * @param sinkMediaDescription
+ *       Description of the sink
+ * @return TRUE if there is media, FALSE in other case *
+ **/
+  boolean isMediaFlowingIn(@org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType, @org.kurento.client.internal.server.Param("sinkMediaDescription") String sinkMediaDescription);
+
+/**
+ *
+ * Asynchronous version of isMediaFlowingIn:
+ * {@link Continuation#onSuccess} is called when the action is
+ * done. If an error occurs, {@link Continuation#onError} is called.
+ * @see MediaElement#isMediaFlowingIn
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ * @param sinkMediaDescription
+ *       Description of the sink
+ *
+ **/
+    void isMediaFlowingIn(@org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType, @org.kurento.client.internal.server.Param("sinkMediaDescription") String sinkMediaDescription, Continuation<Boolean> cont);
+
+/**
+ *
+ * Returns if there is media flowing from the pipeline to the MediaElement through a pad
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ * @param sinkMediaDescription
+ *       Description of the sink
+ * @return TRUE if there is media, FALSE in other case *
+ **/
+    TFuture<Boolean> isMediaFlowingIn(Transaction tx, @org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType, @org.kurento.client.internal.server.Param("sinkMediaDescription") String sinkMediaDescription);
+
+
+/**
+ *
+ * Returns if there is media flowing from the MediaElement to the pipeline through a pad
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ * @param sourceMediaDescription
+ *       Description of the source
+ * @return TRUE if there is media, FALSE in other case *
+ **/
+  boolean isMediaFlowingOut(@org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType, @org.kurento.client.internal.server.Param("sourceMediaDescription") String sourceMediaDescription);
+
+/**
+ *
+ * Asynchronous version of isMediaFlowingOut:
+ * {@link Continuation#onSuccess} is called when the action is
+ * done. If an error occurs, {@link Continuation#onError} is called.
+ * @see MediaElement#isMediaFlowingOut
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ * @param sourceMediaDescription
+ *       Description of the source
+ *
+ **/
+    void isMediaFlowingOut(@org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType, @org.kurento.client.internal.server.Param("sourceMediaDescription") String sourceMediaDescription, Continuation<Boolean> cont);
+
+/**
+ *
+ * Returns if there is media flowing from the MediaElement to the pipeline through a pad
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ * @param sourceMediaDescription
+ *       Description of the source
+ * @return TRUE if there is media, FALSE in other case *
+ **/
+    TFuture<Boolean> isMediaFlowingOut(Transaction tx, @org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType, @org.kurento.client.internal.server.Param("sourceMediaDescription") String sourceMediaDescription);
+
+
+/**
+ *
  * Get the connections information of the elements that are sending media to this element {@link module:core/abstracts.MediaElement MediaElement}
  * @return A list of the connections information that are sending media to this element. The list will be empty if no sources are found. *
  **/
@@ -800,6 +880,74 @@ public interface MediaElement extends MediaObject {
  * @return Delivers a successful result in the form of a RTC stats report. A RTC stats report represents a map between strings, identifying the inspected objects (RTCStats.id), and their corresponding RTCStats objects. *
  **/
     TFuture<java.util.Map<String,org.kurento.client.Stats>> getStats(Transaction tx);
+
+
+/**
+ *
+ * Returns if there is media flowing from the pipeline to the MediaElement through a pad
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ * @return TRUE if there is media, FALSE in other case *
+ **/
+  boolean isMediaFlowingIn(@org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType);
+
+/**
+ *
+ * Asynchronous version of isMediaFlowingIn:
+ * {@link Continuation#onSuccess} is called when the action is
+ * done. If an error occurs, {@link Continuation#onError} is called.
+ * @see MediaElement#isMediaFlowingIn
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ *
+ **/
+    void isMediaFlowingIn(@org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType, Continuation<Boolean> cont);
+
+/**
+ *
+ * Returns if there is media flowing from the pipeline to the MediaElement through a pad
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ * @return TRUE if there is media, FALSE in other case *
+ **/
+    TFuture<Boolean> isMediaFlowingIn(Transaction tx, @org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType);
+
+
+/**
+ *
+ * Returns if there is media flowing from the MediaElement to the pipeline through a pad
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ * @return TRUE if there is media, FALSE in other case *
+ **/
+  boolean isMediaFlowingOut(@org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType);
+
+/**
+ *
+ * Asynchronous version of isMediaFlowingOut:
+ * {@link Continuation#onSuccess} is called when the action is
+ * done. If an error occurs, {@link Continuation#onError} is called.
+ * @see MediaElement#isMediaFlowingOut
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ *
+ **/
+    void isMediaFlowingOut(@org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType, Continuation<Boolean> cont);
+
+/**
+ *
+ * Returns if there is media flowing from the MediaElement to the pipeline through a pad
+ *
+ * @param mediaType
+ *       One of {@link #MediaType.AUDIO} or {@link #MediaType.VIDEO}
+ * @return TRUE if there is media, FALSE in other case *
+ **/
+    TFuture<Boolean> isMediaFlowingOut(Transaction tx, @org.kurento.client.internal.server.Param("mediaType") org.kurento.client.MediaType mediaType);
 
     /**
      * Add a {@link EventListener} for event {@link ElementConnectedEvent}. Synchronous call.

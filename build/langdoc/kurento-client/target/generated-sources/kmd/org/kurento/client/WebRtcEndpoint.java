@@ -46,6 +46,12 @@ public interface WebRtcEndpoint extends BaseRtpEndpoint {
      void setTurnUrl(@org.kurento.client.internal.server.Param("turnUrl") String turnUrl, Continuation<Void> cont);
 
      void setTurnUrl(@org.kurento.client.internal.server.Param("turnUrl") String turnUrl, Transaction tx);
+     java.util.List<org.kurento.client.IceCandidatePair> getICECandidatePairs();
+
+     void getICECandidatePairs(Continuation<java.util.List<org.kurento.client.IceCandidatePair>> cont);
+
+     TFuture<java.util.List<org.kurento.client.IceCandidatePair>> getICECandidatePairs(Transaction tx);
+
 
 
 /**
@@ -587,6 +593,44 @@ public interface WebRtcEndpoint extends BaseRtpEndpoint {
      **/
     @org.kurento.client.internal.server.EventSubscription(OnDataChannelClosedEvent.class)
     void removeOnDataChannelClosedListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
+    /**
+     * Add a {@link EventListener} for event {@link NewCandidatePairSelectedEvent}. Synchronous call.
+     *
+     * @param  listener Listener to be called on NewCandidatePairSelectedEvent
+     * @return ListenerSubscription for the given Listener
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(NewCandidatePairSelectedEvent.class)
+    ListenerSubscription addNewCandidatePairSelectedListener(EventListener<NewCandidatePairSelectedEvent> listener);
+    /**
+     * Add a {@link EventListener} for event {@link NewCandidatePairSelectedEvent}. Asynchronous call.
+     * Calls Continuation&lt;ListenerSubscription&gt; when it has been added.
+     *
+     * @param listener Listener to be called on NewCandidatePairSelectedEvent
+     * @param cont     Continuation to be called when the listener is registered
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(NewCandidatePairSelectedEvent.class)
+    void addNewCandidatePairSelectedListener(EventListener<NewCandidatePairSelectedEvent> listener, Continuation<ListenerSubscription> cont);
+    
+	/**
+     * Remove a {@link ListenerSubscription} for event {@link NewCandidatePairSelectedEvent}. Synchronous call.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(NewCandidatePairSelectedEvent.class)
+    void removeNewCandidatePairSelectedListener(ListenerSubscription listenerSubscription);
+    /**
+     * Remove a {@link ListenerSubscription} for event {@link NewCandidatePairSelectedEvent}. Asynchronous call.
+     * Calls Continuation&lt;Void&gt; when it has been removed.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     * @param cont                 Continuation to be called when the listener is removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(NewCandidatePairSelectedEvent.class)
+    void removeNewCandidatePairSelectedListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
     
 
 
@@ -605,6 +649,14 @@ public interface WebRtcEndpoint extends BaseRtpEndpoint {
       props.add("mediaPipeline",mediaPipeline);
     }
 
+	public Builder withProperties(Properties properties) {
+    	return (Builder)super.withProperties(properties);
+  	}
+
+	public Builder with(String name, Object value) {
+		return (Builder)super.with(name, value);
+	}
+	
 /**
  *
  * Activate data channels support
