@@ -185,7 +185,7 @@ public interface RecorderEndpoint extends UriEndpoint {
  * Sets a value for mediaProfile in Builder for RecorderEndpoint.
  *
  * @param mediaProfile
- *       Choose either a {@link #MediaProfileSpecType.WEBM} or a {@link #MediaProfileSpecType.MP4} profile for recording
+ *       Choose either one of the values defined in {@link #MediaProfileSpecType} as profile for recording
  *
  **/
     public Builder withMediaProfile(org.kurento.client.MediaProfileSpecType mediaProfile){

@@ -238,8 +238,8 @@ They are managed using `Bower`:term:.
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.2.1-dev",
-      "kurento-utils": "6.2.1-dev"
+      "kurento-client": "6.4.1-dev",
+      "kurento-utils": "6.4.1-dev"
    }
 
 .. note::

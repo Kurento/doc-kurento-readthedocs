@@ -245,7 +245,7 @@ file for managing this dependency is:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client" : "6.2.1-dev"
+      "kurento-client" : "6.4.1-dev"
    }
 
 At the client side, dependencies are managed using Bower. Take a look to the
@@ -255,8 +255,8 @@ file and pay attention to the following section:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "6.2.1-dev",
-      "kurento-module-pointerdetector": "6.2.1-dev"
+      "kurento-utils" : "6.4.1-dev",
+      "kurento-module-pointerdetector": "6.4.1-dev"
    }
 
 .. note::

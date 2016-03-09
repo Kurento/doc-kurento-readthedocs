@@ -22,7 +22,6 @@ import java.util.UUID;
 
 import javax.annotation.PreDestroy;
 
-import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.kurento.client.internal.KmsUrlLoader;
 import org.kurento.client.internal.TransactionImpl;
 import org.kurento.client.internal.client.RomManager;
@@ -108,14 +107,14 @@ public class KurentoClient {
 
   public static KurentoClient create(String websocketUrl, Properties properties) {
     log.info("Connecting to kms in {}", websocketUrl);
-    JsonRpcClientWebSocket client = new JsonRpcClientWebSocket(websocketUrl, null,
-        new SslContextFactory());
+    JsonRpcClientWebSocket client = new JsonRpcClientWebSocket(websocketUrl);
     configureJsonRpcClient(client);
     return new KurentoClient(client);
   }
 
   protected static void configureJsonRpcClient(JsonRpcClientWebSocket client) {
     client.enableHeartbeat(KEEPALIVE_TIME);
+    client.setTryReconnectingForever(true);
     updateLabel(client, null);
     client.setSendCloseMessage(true);
   }
@@ -135,7 +134,7 @@ public class KurentoClient {
       Properties properties) {
     log.info("Connecting to KMS in {}", websocketUrl);
     JsonRpcClientWebSocket client = new JsonRpcClientWebSocket(websocketUrl,
-        JsonRpcConnectionListenerKurento.create(listener), new SslContextFactory());
+        JsonRpcConnectionListenerKurento.create(listener));
     configureJsonRpcClient(client);
     return new KurentoClient(client);
 
