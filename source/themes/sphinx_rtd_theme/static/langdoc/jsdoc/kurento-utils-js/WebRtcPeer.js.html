@@ -48,6 +48,7 @@ var hark = require('hark')
 
 var EventEmitter = require('events').EventEmitter
 var recursive = require('merge').recursive.bind(undefined, true)
+var sdpTranslator = require('sdp-translator')
 
 try {
   require('kurento-browser-extensions')
@@ -73,6 +74,13 @@ var MEDIA_CONSTRAINTS = {
 // We need to pass the user agent string in order to get information
 var ua = (window &amp;&amp; window.navigator) ? window.navigator.userAgent : ''
 var parser = new UAParser(ua)
+var browser = parser.getBrowser()
+
+var usePlanB = false
+if (browser.name === 'Chrome' || browser.name === 'Chromium') {
+  console.log(browser.name + ": using SDP PlanB")
+  usePlanB = true
+}
 
 function noop(error) {
   if (error) console.error(error)
@@ -84,6 +92,17 @@ function trackStop(track) {
 
 function streamStop(stream) {
   stream.getTracks().forEach(trackStop)
+}
+
+/**
+ * Returns a string representation of a SessionDescription object.
+ */
+var dumpSDP = function (description) {
+  if (typeof description === 'undefined' || description === null) {
+    return ''
+  }
+
+  return 'type: ' + description.type + '\r\n' + description.sdp
 }
 
 function bufferizeCandidates(pc, onerror) {
@@ -219,8 +238,9 @@ function WebRtcPeer(mode, options, callback) {
     this.on('candidategatheringdone', oncandidategatheringdone)
   }
 
-  var browser = parser.getBrowser()
   var simulcast = options.simulcast
+  var multistream = options.multistream
+  var interop = new sdpTranslator.Interop()
 
   // Init PeerConnection
 
@@ -285,7 +305,15 @@ function WebRtcPeer(mode, options, callback) {
       EventEmitter.listenerCount(
         self, 'candidategatheringdone')) {
       if (candidate) {
-        self.emit('icecandidate', candidate)
+        var cand
+
+        if (multistream &amp;&amp; usePlanB) {
+          cand = interop.candidateToUnifiedPlan(candidate)
+        } else {
+          cand = candidate
+        }
+
+        self.emit('icecandidate', cand)
         candidategatheringdone = false
       } else if (!candidategatheringdone) {
         self.emit('candidategatheringdone')
@@ -326,12 +354,16 @@ function WebRtcPeer(mode, options, callback) {
    * @param callback - Called when the ICE candidate has been added.
    */
   this.addIceCandidate = function (iceCandidate, callback) {
-    var candidate = new RTCIceCandidate(iceCandidate)
+    var candidate
+
+    if (multistream &amp;&amp; usePlanB) {
+      candidate = interop.candidateToPlanB(iceCandidate)
+    } else {
+      candidate = new RTCIceCandidate(iceCandidate)
+    }
 
     console.log('ICE candidate received')
-
     callback = (callback || noop).bind(this)
-
     addIceCandidate(candidate, callback)
   }
 
@@ -373,6 +405,13 @@ function WebRtcPeer(mode, options, callback) {
 
         pc.setLocalDescription(offer, function () {
             console.log('Local description set', offer.sdp)
+
+            if (multistream &amp;&amp; usePlanB) {
+              var unifiedPlanOffer = interop.toUnifiedPlan(offer)
+              console.log('offer::origPlanB->UnifiedPlan', dumpSDP(
+                unifiedPlanOffer))
+              offer = unifiedPlanOffer
+            }
 
             callback(null, offer.sdp, self.processAnswer.bind(self))
           },
@@ -425,6 +464,12 @@ function WebRtcPeer(mode, options, callback) {
       sdp: sdpAnswer
     })
 
+    if (multistream &amp;&amp; usePlanB) {
+      var planBAnswer = interop.toPlanB(answer)
+      console.log('asnwer::planB', dumpSDP(planBAnswer))
+      answer = planBAnswer
+    }
+
     console.log('SDP answer received, setting remote description')
 
     if (pc.signalingState === 'closed') {
@@ -457,6 +502,12 @@ function WebRtcPeer(mode, options, callback) {
       sdp: sdpOffer
     })
 
+    if (multistream &amp;&amp; usePlanB) {
+      var planBOffer = interop.toPlanB(offer)
+      console.log('offer::planB', dumpSDP(planBOffer))
+      offer = planBOffer
+    }
+
     console.log('SDP offer received, setting remote description')
 
     if (pc.signalingState === 'closed') {
@@ -474,6 +525,13 @@ function WebRtcPeer(mode, options, callback) {
 
             pc.setLocalDescription(answer, function () {
                 console.log('Local description set', answer.sdp)
+
+                if (multistream &amp;&amp; usePlanB) {
+                  var unifiedPlanAnswer = interop.toUnifiedPlan(answer)
+                  console.log('answer::origPlanB->UnifiedPlan', dumpSDP(
+                    unifiedPlanAnswer))
+                  answer = unifiedPlanAnswer
+                }
 
                 callback(null, answer.sdp)
               },
@@ -728,13 +786,13 @@ exports.hark = harkUtils
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kurentoUtils.html">kurentoUtils</a></li></ul><h3>Classes</h3><ul><li><a href="module-kurentoUtils.WebRtcPeer.html">WebRtcPeer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#currentFrame">currentFrame</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-kurentoUtils.html">kurentoUtils</a></li></ul><h3>Classes</h3><ul><li><a href="module-kurentoUtils.WebRtcPeer.html">WebRtcPeer</a></li></ul><h3>Global</h3><ul><li><a href="global.html#currentFrame">currentFrame</a></li><li><a href="global.html#dumpSDP">dumpSDP</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Mar 09 2016 09:28:19 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Mar 15 2016 16:03:55 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

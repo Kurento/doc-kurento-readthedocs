@@ -39,6 +39,31 @@ public interface RecorderEndpoint extends UriEndpoint {
  **/
     void record(Transaction tx);
 
+
+/**
+ *
+ * Stops recording and do not returns until all the content has bee written to the selected uri. This can cause timeouts on some clients if there is too much content to write and/or the transport is slow
+ *
+ **/
+  void stopAndWait();
+
+/**
+ *
+ * Asynchronous version of stopAndWait:
+ * {@link Continuation#onSuccess} is called when the action is
+ * done. If an error occurs, {@link Continuation#onError} is called.
+ * @see RecorderEndpoint#stopAndWait
+ *
+ **/
+    void stopAndWait(Continuation<Void> cont);
+
+/**
+ *
+ * Stops recording and do not returns until all the content has bee written to the selected uri. This can cause timeouts on some clients if there is too much content to write and/or the transport is slow
+ *
+ **/
+    void stopAndWait(Transaction tx);
+
     /**
      * Add a {@link EventListener} for event {@link RecordingEvent}. Synchronous call.
      *
