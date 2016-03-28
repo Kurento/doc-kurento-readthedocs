@@ -91,14 +91,6 @@ public interface DispatcherOneToMany extends Hub {
       props.add("mediaPipeline",mediaPipeline);
     }
 
-	public Builder withProperties(Properties properties) {
-    	return (Builder)super.withProperties(properties);
-  	}
-
-	public Builder with(String name, Object value) {
-		return (Builder)super.with(name, value);
-	}
-	
     }
 
 

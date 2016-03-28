@@ -11,21 +11,18 @@ public class MediaObjectCreationOperation extends Operation {
 
   public String className;
   public Props constructorParams;
-  private Props genericProps;
   private RemoteObject remoteObject;
 
-  public MediaObjectCreationOperation(String className, Props constructorParams, Props genericProps,
+  public MediaObjectCreationOperation(String className, Props constructorParams,
       RemoteObject remoteObject) {
     this.className = className;
     this.constructorParams = constructorParams;
-    this.genericProps = genericProps;
     this.remoteObject = remoteObject;
   }
 
   @Override
   public RequestAndResponseType createRequest(RomClientJsonRpcClient romClientJsonRpcClient) {
-    return romClientJsonRpcClient.createCreateRequest(className, constructorParams, genericProps,
-        true);
+    return romClientJsonRpcClient.createCreateRequest(className, constructorParams, true);
   }
 
   @Override

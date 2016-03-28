@@ -38,7 +38,6 @@ org/kurento/client/RecorderEndpoint$Builder.class
 org/kurento/client/GStreamerFilter$Builder.class
 org/kurento/client/WebRtcEndpoint$Builder.class
 org/kurento/client/Fraction.class
-org/kurento/client/StoppedEvent.class
 org/kurento/client/internal/client/operation/SubscriptionOperation.class
 org/kurento/client/PlayerEndpoint$Builder.class
 org/kurento/client/RTCDataChannelStats.class
@@ -54,7 +53,6 @@ org/kurento/client/MediaFlowOutStateChangeEvent.class
 org/kurento/client/internal/transport/jsonrpc/RomClientJsonRpcClient$3.class
 org/kurento/client/internal/client/RemoteObject$4.class
 org/kurento/client/internal/KmsProvider.class
-org/kurento/client/NewCandidatePairSelectedEvent.class
 org/kurento/client/ZBarFilter$Builder.class
 org/kurento/client/ObjectCreatedEvent.class
 org/kurento/client/HubPort.class
@@ -79,14 +77,12 @@ org/kurento/client/HubPort$Builder.class
 org/kurento/client/Continuation.class
 org/kurento/client/PlayerEndpoint.class
 org/kurento/client/internal/transport/serialization/ParamsFlattener$RomType.class
-org/kurento/client/PausedEvent.class
 org/kurento/client/internal/KmsUrlLoader.class
 org/kurento/client/ElementDisconnectedEvent.class
 org/kurento/client/CryptoSuite.class
 org/kurento/client/internal/client/RemoteObject$5.class
 org/kurento/client/Mixer.class
 org/kurento/client/internal/client/RemoteObject$2.class
-org/kurento/client/IceCandidatePair.class
 org/kurento/client/VideoCaps.class
 org/kurento/client/internal/transport/jsonrpc/RomJsonRpcConstants.class
 org/kurento/client/internal/client/RemoteObjectInvocationHandler.class
@@ -108,7 +104,6 @@ org/kurento/client/EndOfStreamEvent.class
 org/kurento/client/IceComponentState.class
 org/kurento/client/RTCRTPStreamStats.class
 org/kurento/client/RTCStats.class
-org/kurento/client/RecordingEvent.class
 org/kurento/client/RTCIceCandidatePairStats.class
 org/kurento/client/ErrorEvent.class
 org/kurento/client/internal/client/RomManager$1.class
@@ -136,8 +131,8 @@ org/kurento/client/OnDataChannelClosedEvent.class
 org/kurento/client/ModuleInfo.class
 org/kurento/client/HttpPostEndpoint.class
 org/kurento/client/internal/client/RemoteObjectInvocationHandler$1.class
-org/kurento/client/DispatcherOneToMany.class
 org/kurento/client/FaceOverlayFilter.class
+org/kurento/client/DispatcherOneToMany.class
 org/kurento/client/MediaElement.class
 org/kurento/client/ElementConnectedEvent.class
 org/kurento/client/internal/transport/jsonrpc/RomClientJsonRpcClient$4.class
