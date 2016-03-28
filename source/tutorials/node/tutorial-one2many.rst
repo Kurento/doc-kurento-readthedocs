@@ -34,7 +34,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-one2many-call
-    git checkout 6.2.2
+    git checkout 6.2.1
     npm install
     npm start
 

@@ -35,7 +35,7 @@ Clone source code from GitHub and then start the HTTP server:
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-loopback-stats
-    git checkout 6.2.2
+    git checkout 6.2.1
     bower install
     http-server -p 8443 -S -C keys/server.crt -K keys/server.key
 
