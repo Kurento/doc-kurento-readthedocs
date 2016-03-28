@@ -39,6 +39,14 @@ public interface GStreamerFilter extends Filter {
       props.add("command",command);
     }
 
+	public Builder withProperties(Properties properties) {
+    	return (Builder)super.withProperties(properties);
+  	}
+
+	public Builder with(String name, Object value) {
+		return (Builder)super.with(name, value);
+	}
+	
 /**
  *
  * Sets a value for filterType in Builder for GStreamerFilter.

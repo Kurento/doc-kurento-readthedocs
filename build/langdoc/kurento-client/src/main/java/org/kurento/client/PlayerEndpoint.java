@@ -116,6 +116,14 @@ public interface PlayerEndpoint extends UriEndpoint {
       props.add("uri",uri);
     }
 
+	public Builder withProperties(Properties properties) {
+    	return (Builder)super.withProperties(properties);
+  	}
+
+	public Builder with(String name, Object value) {
+		return (Builder)super.with(name, value);
+	}
+	
 /**
  *
  * use encoded instead of raw media. If the parameter is false then the

@@ -71,6 +71,14 @@ public interface HttpPostEndpoint extends HttpEndpoint {
       props.add("mediaPipeline",mediaPipeline);
     }
 
+	public Builder withProperties(Properties properties) {
+    	return (Builder)super.withProperties(properties);
+  	}
+
+	public Builder with(String name, Object value) {
+		return (Builder)super.with(name, value);
+	}
+	
 /**
  *
  * Sets a value for disconnectionTimeout in Builder for HttpPostEndpoint.
