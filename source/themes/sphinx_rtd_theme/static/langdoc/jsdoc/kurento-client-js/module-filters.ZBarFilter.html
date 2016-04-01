@@ -676,12 +676,6 @@ object
 
 
 
-<div class="description">
-    Maximum video bandwidth for transcoding.
-  Unit: bps(bits per second).
-  Default value: MAXINT
-</div>
-
 
 
 
@@ -777,6 +771,11 @@ object
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use maxOutputBitrate instead of this function. 
+Maximum video bandwidth for transcoding. 0 = unlimited.
+  Unit: bps(bits per second).
+  Default value: MAXINT</li></ul></dd>
+    
 
     
 
@@ -789,7 +788,175 @@ object
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line84">line 84</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line86">line 86</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getMaxOutputBitrate"><span class="type-signature"></span>getMaxOutputBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Maximum video bandwidth for transcoding. 0 = unlimited.
+  Unit: bps(bits per second).
+  Default value: MAXINT
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~getMaxOutputBitrateCallback">module:core/abstracts.MediaElement~getMaxOutputBitrateCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaElement.html#getMaxOutputBitrate">module:core/abstracts.MediaElement#getMaxOutputBitrate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line148">line 148</a>
     </li></ul></dd>
     
 
@@ -1011,12 +1178,6 @@ belong, or the pipeline itself if invoked over a <a href="module-core.MediaPipel
 
 
 
-<div class="description">
-    Minimum video bandwidth for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0
-</div>
-
 
 
 
@@ -1112,6 +1273,11 @@ belong, or the pipeline itself if invoked over a <a href="module-core.MediaPipel
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use minOutputBitrate instead of this function. 
+Minimum video bandwidth for transcoding.
+  Unit: bps(bits per second).
+  Default value: 0</li></ul></dd>
+    
 
     
 
@@ -1124,7 +1290,175 @@ belong, or the pipeline itself if invoked over a <a href="module-core.MediaPipel
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line144">line 144</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line210">line 210</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getMinOutputBitrate"><span class="type-signature"></span>getMinOutputBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Minimum video bandwidth for transcoding.
+  Unit: bps(bits per second).
+  Default value: 0
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~getMinOutputBitrateCallback">module:core/abstracts.MediaElement~getMinOutputBitrateCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaElement.html#getMinOutputBitrate">module:core/abstracts.MediaElement#getMinOutputBitrate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line272">line 272</a>
     </li></ul></dd>
     
 
@@ -1669,12 +2003,6 @@ events.
 
 
 
-<div class="description">
-    Maximum video bandwidth for transcoding.
-  Unit: bps(bits per second).
-  Default value: MAXINT
-</div>
-
 
 
 
@@ -1801,6 +2129,11 @@ events.
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use maxOutputBitrate instead of this function. 
+Maximum video bandwidth for transcoding. 0 = unlimited.
+  Unit: bps(bits per second).
+  Default value: MAXINT</li></ul></dd>
+    
 
     
 
@@ -1813,7 +2146,206 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line113">line 113</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line117">line 117</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setMaxOutputBitrate"><span class="type-signature"></span>setMaxOutputBitrate<span class="signature">(maxOutputBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Maximum video bandwidth for transcoding. 0 = unlimited.
+  Unit: bps(bits per second).
+  Default value: MAXINT
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>maxOutputBitrate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~setMaxOutputBitrateCallback">module:core/abstracts.MediaElement~setMaxOutputBitrateCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaElement.html#setMaxOutputBitrate">module:core/abstracts.MediaElement#setMaxOutputBitrate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line177">line 177</a>
     </li></ul></dd>
     
 
@@ -1867,12 +2399,6 @@ events.
     
 
 
-
-<div class="description">
-    Minimum video bandwidth for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0
-</div>
 
 
 
@@ -2000,6 +2526,11 @@ events.
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use minOutputBitrate instead of this function. 
+Minimum video bandwidth for transcoding.
+  Unit: bps(bits per second).
+  Default value: 0</li></ul></dd>
+    
 
     
 
@@ -2012,7 +2543,206 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line173">line 173</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line241">line 241</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="setMinOutputBitrate"><span class="type-signature"></span>setMinOutputBitrate<span class="signature">(minOutputBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Minimum video bandwidth for transcoding.
+  Unit: bps(bits per second).
+  Default value: 0
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>minOutputBitrate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~setMinOutputBitrateCallback">module:core/abstracts.MediaElement~setMinOutputBitrateCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaElement.html#setMinOutputBitrate">module:core/abstracts.MediaElement#setMinOutputBitrate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line301">line 301</a>
     </li></ul></dd>
     
 
@@ -2474,7 +3204,7 @@ events.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Mar 29 2016 10:41:33 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Apr 01 2016 13:41:00 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

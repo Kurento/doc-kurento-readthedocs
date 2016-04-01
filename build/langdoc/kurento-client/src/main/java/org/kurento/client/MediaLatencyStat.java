@@ -15,7 +15,7 @@ public class MediaLatencyStat  {
 
 /**
  *
- * The pad name
+ * The identifier of the media stream
  *
  **/
     private String name;
@@ -48,7 +48,7 @@ public class MediaLatencyStat  {
 
 /**
  *
- * get The pad name
+ * get The identifier of the media stream
  *
  **/
     public String getName(){
@@ -57,7 +57,7 @@ public class MediaLatencyStat  {
 
 /**
  *
- * set The pad name
+ * set The identifier of the media stream
  *
  **/
     public void setName(String name){

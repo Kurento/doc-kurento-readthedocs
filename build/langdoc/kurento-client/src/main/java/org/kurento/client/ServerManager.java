@@ -13,28 +13,88 @@ package org.kurento.client;
 @org.kurento.client.internal.RemoteClass
 public interface ServerManager extends MediaObject {
 
+/**
+ *
+ * Get Server information, version, modules, factories, etc
+ *
+ **/
      org.kurento.client.ServerInfo getInfo();
 
+/**
+ *
+ * Get Server information, version, modules, factories, etc
+ *
+ **/
      void getInfo(Continuation<org.kurento.client.ServerInfo> cont);
 
+/**
+ *
+ * Get Server information, version, modules, factories, etc
+ *
+ **/
      TFuture<org.kurento.client.ServerInfo> getInfo(Transaction tx);
 
+/**
+ *
+ * Get All the pipelines available in the server
+ *
+ **/
      java.util.List<org.kurento.client.MediaPipeline> getPipelines();
 
+/**
+ *
+ * Get All the pipelines available in the server
+ *
+ **/
      void getPipelines(Continuation<java.util.List<org.kurento.client.MediaPipeline>> cont);
 
+/**
+ *
+ * Get All the pipelines available in the server
+ *
+ **/
      TFuture<java.util.List<org.kurento.client.MediaPipeline>> getPipelines(Transaction tx);
 
+/**
+ *
+ * Get All active sessions in the server
+ *
+ **/
      java.util.List<String> getSessions();
 
+/**
+ *
+ * Get All active sessions in the server
+ *
+ **/
      void getSessions(Continuation<java.util.List<String>> cont);
 
+/**
+ *
+ * Get All active sessions in the server
+ *
+ **/
      TFuture<java.util.List<String>> getSessions(Transaction tx);
 
+/**
+ *
+ * Get Metadata stored in the server
+ *
+ **/
      String getMetadata();
 
+/**
+ *
+ * Get Metadata stored in the server
+ *
+ **/
      void getMetadata(Continuation<String> cont);
 
+/**
+ *
+ * Get Metadata stored in the server
+ *
+ **/
      TFuture<String> getMetadata(Transaction tx);
 
 

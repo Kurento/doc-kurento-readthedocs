@@ -14,28 +14,230 @@ package org.kurento.client;
 @org.kurento.client.internal.RemoteClass
 public interface MediaElement extends MediaObject {
 
+/**
+ *
+ * @deprecated
+ * Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
      int getMinOuputBitrate();
 
+/**
+ *
+ * @deprecated
+ * Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
      void getMinOuputBitrate(Continuation<Integer> cont);
 
+/**
+ *
+ * @deprecated
+ * Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
      TFuture<Integer> getMinOuputBitrate(Transaction tx);
 
+/**
+ *
+ * @deprecated
+ * Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
      void setMinOuputBitrate(@org.kurento.client.internal.server.Param("minOuputBitrate") int minOuputBitrate);
 
+/**
+ *
+ * @deprecated
+ * Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
      void setMinOuputBitrate(@org.kurento.client.internal.server.Param("minOuputBitrate") int minOuputBitrate, Continuation<Void> cont);
 
+/**
+ *
+ * @deprecated
+ * Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
      void setMinOuputBitrate(@org.kurento.client.internal.server.Param("minOuputBitrate") int minOuputBitrate, Transaction tx);
+/**
+ *
+ * Get Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
+     int getMinOutputBitrate();
+
+/**
+ *
+ * Get Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
+     void getMinOutputBitrate(Continuation<Integer> cont);
+
+/**
+ *
+ * Get Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
+     TFuture<Integer> getMinOutputBitrate(Transaction tx);
+
+/**
+ *
+ * Set Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
+     void setMinOutputBitrate(@org.kurento.client.internal.server.Param("minOutputBitrate") int minOutputBitrate);
+
+/**
+ *
+ * Set Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
+     void setMinOutputBitrate(@org.kurento.client.internal.server.Param("minOutputBitrate") int minOutputBitrate, Continuation<Void> cont);
+
+/**
+ *
+ * Set Minimum video bandwidth for transcoding.
+ *   Unit: bps(bits per second).
+ *   Default value: 0
+ *
+ **/
+     void setMinOutputBitrate(@org.kurento.client.internal.server.Param("minOutputBitrate") int minOutputBitrate, Transaction tx);
+/**
+ *
+ * @deprecated
+ * Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
      int getMaxOuputBitrate();
 
+/**
+ *
+ * @deprecated
+ * Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
      void getMaxOuputBitrate(Continuation<Integer> cont);
 
+/**
+ *
+ * @deprecated
+ * Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
      TFuture<Integer> getMaxOuputBitrate(Transaction tx);
 
+/**
+ *
+ * @deprecated
+ * Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
      void setMaxOuputBitrate(@org.kurento.client.internal.server.Param("maxOuputBitrate") int maxOuputBitrate);
 
+/**
+ *
+ * @deprecated
+ * Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
      void setMaxOuputBitrate(@org.kurento.client.internal.server.Param("maxOuputBitrate") int maxOuputBitrate, Continuation<Void> cont);
 
+/**
+ *
+ * @deprecated
+ * Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
      void setMaxOuputBitrate(@org.kurento.client.internal.server.Param("maxOuputBitrate") int maxOuputBitrate, Transaction tx);
+/**
+ *
+ * Get Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
+     int getMaxOutputBitrate();
+
+/**
+ *
+ * Get Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
+     void getMaxOutputBitrate(Continuation<Integer> cont);
+
+/**
+ *
+ * Get Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
+     TFuture<Integer> getMaxOutputBitrate(Transaction tx);
+
+/**
+ *
+ * Set Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
+     void setMaxOutputBitrate(@org.kurento.client.internal.server.Param("maxOutputBitrate") int maxOutputBitrate);
+
+/**
+ *
+ * Set Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
+     void setMaxOutputBitrate(@org.kurento.client.internal.server.Param("maxOutputBitrate") int maxOutputBitrate, Continuation<Void> cont);
+
+/**
+ *
+ * Set Maximum video bandwidth for transcoding. 0 = unlimited.
+ *   Unit: bps(bits per second).
+ *   Default value: MAXINT
+ *
+ **/
+     void setMaxOutputBitrate(@org.kurento.client.internal.server.Param("maxOutputBitrate") int maxOutputBitrate, Transaction tx);
 
 
 /**

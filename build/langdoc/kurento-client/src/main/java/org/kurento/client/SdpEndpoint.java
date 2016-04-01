@@ -13,27 +13,123 @@ package org.kurento.client;
 @org.kurento.client.internal.RemoteClass
 public interface SdpEndpoint extends SessionEndpoint {
 
+/**
+ *
+ * Get Maximum video bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 500
+ *
+ **/
      int getMaxVideoRecvBandwidth();
 
+/**
+ *
+ * Get Maximum video bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 500
+ *
+ **/
      void getMaxVideoRecvBandwidth(Continuation<Integer> cont);
 
+/**
+ *
+ * Get Maximum video bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 500
+ *
+ **/
      TFuture<Integer> getMaxVideoRecvBandwidth(Transaction tx);
 
+/**
+ *
+ * Set Maximum video bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 500
+ *
+ **/
      void setMaxVideoRecvBandwidth(@org.kurento.client.internal.server.Param("maxVideoRecvBandwidth") int maxVideoRecvBandwidth);
 
+/**
+ *
+ * Set Maximum video bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 500
+ *
+ **/
      void setMaxVideoRecvBandwidth(@org.kurento.client.internal.server.Param("maxVideoRecvBandwidth") int maxVideoRecvBandwidth, Continuation<Void> cont);
 
+/**
+ *
+ * Set Maximum video bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 500
+ *
+ **/
      void setMaxVideoRecvBandwidth(@org.kurento.client.internal.server.Param("maxVideoRecvBandwidth") int maxVideoRecvBandwidth, Transaction tx);
+/**
+ *
+ * Get Maximum audio bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 0
+ *
+ **/
      int getMaxAudioRecvBandwidth();
 
+/**
+ *
+ * Get Maximum audio bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 0
+ *
+ **/
      void getMaxAudioRecvBandwidth(Continuation<Integer> cont);
 
+/**
+ *
+ * Get Maximum audio bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 0
+ *
+ **/
      TFuture<Integer> getMaxAudioRecvBandwidth(Transaction tx);
 
+/**
+ *
+ * Set Maximum audio bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 0
+ *
+ **/
      void setMaxAudioRecvBandwidth(@org.kurento.client.internal.server.Param("maxAudioRecvBandwidth") int maxAudioRecvBandwidth);
 
+/**
+ *
+ * Set Maximum audio bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 0
+ *
+ **/
      void setMaxAudioRecvBandwidth(@org.kurento.client.internal.server.Param("maxAudioRecvBandwidth") int maxAudioRecvBandwidth, Continuation<Void> cont);
 
+/**
+ *
+ * Set Maximum audio bandwidth for receiving.
+ *   Unit: kbps(kilobits per second).
+ *    0: unlimited.
+ *   Default value: 0
+ *
+ **/
      void setMaxAudioRecvBandwidth(@org.kurento.client.internal.server.Param("maxAudioRecvBandwidth") int maxAudioRecvBandwidth, Transaction tx);
 
 

@@ -13,43 +13,160 @@ package org.kurento.client;
 @org.kurento.client.internal.RemoteClass
 public interface WebRtcEndpoint extends BaseRtpEndpoint {
 
+/**
+ *
+ * Get Address of the STUN server (Only IP address are supported)
+ *
+ **/
      String getStunServerAddress();
 
+/**
+ *
+ * Get Address of the STUN server (Only IP address are supported)
+ *
+ **/
      void getStunServerAddress(Continuation<String> cont);
 
+/**
+ *
+ * Get Address of the STUN server (Only IP address are supported)
+ *
+ **/
      TFuture<String> getStunServerAddress(Transaction tx);
 
+/**
+ *
+ * Set Address of the STUN server (Only IP address are supported)
+ *
+ **/
      void setStunServerAddress(@org.kurento.client.internal.server.Param("stunServerAddress") String stunServerAddress);
 
+/**
+ *
+ * Set Address of the STUN server (Only IP address are supported)
+ *
+ **/
      void setStunServerAddress(@org.kurento.client.internal.server.Param("stunServerAddress") String stunServerAddress, Continuation<Void> cont);
 
+/**
+ *
+ * Set Address of the STUN server (Only IP address are supported)
+ *
+ **/
      void setStunServerAddress(@org.kurento.client.internal.server.Param("stunServerAddress") String stunServerAddress, Transaction tx);
+/**
+ *
+ * Get Port of the STUN server
+ *
+ **/
      int getStunServerPort();
 
+/**
+ *
+ * Get Port of the STUN server
+ *
+ **/
      void getStunServerPort(Continuation<Integer> cont);
 
+/**
+ *
+ * Get Port of the STUN server
+ *
+ **/
      TFuture<Integer> getStunServerPort(Transaction tx);
 
+/**
+ *
+ * Set Port of the STUN server
+ *
+ **/
      void setStunServerPort(@org.kurento.client.internal.server.Param("stunServerPort") int stunServerPort);
 
+/**
+ *
+ * Set Port of the STUN server
+ *
+ **/
      void setStunServerPort(@org.kurento.client.internal.server.Param("stunServerPort") int stunServerPort, Continuation<Void> cont);
 
+/**
+ *
+ * Set Port of the STUN server
+ *
+ **/
      void setStunServerPort(@org.kurento.client.internal.server.Param("stunServerPort") int stunServerPort, Transaction tx);
+/**
+ *
+ * Get TURN server URL with this format: 'user:password@address:port(?transport=[udp|tcp|tls])'.
+ * 'address' must be an IP (not a domain).
+ * 'transport' is optional (UDP by default).
+ *
+ **/
      String getTurnUrl();
 
+/**
+ *
+ * Get TURN server URL with this format: 'user:password@address:port(?transport=[udp|tcp|tls])'.
+ * 'address' must be an IP (not a domain).
+ * 'transport' is optional (UDP by default).
+ *
+ **/
      void getTurnUrl(Continuation<String> cont);
 
+/**
+ *
+ * Get TURN server URL with this format: 'user:password@address:port(?transport=[udp|tcp|tls])'.
+ * 'address' must be an IP (not a domain).
+ * 'transport' is optional (UDP by default).
+ *
+ **/
      TFuture<String> getTurnUrl(Transaction tx);
 
+/**
+ *
+ * Set TURN server URL with this format: 'user:password@address:port(?transport=[udp|tcp|tls])'.
+ * 'address' must be an IP (not a domain).
+ * 'transport' is optional (UDP by default).
+ *
+ **/
      void setTurnUrl(@org.kurento.client.internal.server.Param("turnUrl") String turnUrl);
 
+/**
+ *
+ * Set TURN server URL with this format: 'user:password@address:port(?transport=[udp|tcp|tls])'.
+ * 'address' must be an IP (not a domain).
+ * 'transport' is optional (UDP by default).
+ *
+ **/
      void setTurnUrl(@org.kurento.client.internal.server.Param("turnUrl") String turnUrl, Continuation<Void> cont);
 
+/**
+ *
+ * Set TURN server URL with this format: 'user:password@address:port(?transport=[udp|tcp|tls])'.
+ * 'address' must be an IP (not a domain).
+ * 'transport' is optional (UDP by default).
+ *
+ **/
      void setTurnUrl(@org.kurento.client.internal.server.Param("turnUrl") String turnUrl, Transaction tx);
+/**
+ *
+ * Get The ICE candidate pair used by the ice library for each stream.
+ *
+ **/
      java.util.List<org.kurento.client.IceCandidatePair> getICECandidatePairs();
 
+/**
+ *
+ * Get The ICE candidate pair used by the ice library for each stream.
+ *
+ **/
      void getICECandidatePairs(Continuation<java.util.List<org.kurento.client.IceCandidatePair>> cont);
 
+/**
+ *
+ * Get The ICE candidate pair used by the ice library for each stream.
+ *
+ **/
      TFuture<java.util.List<org.kurento.client.IceCandidatePair>> getICECandidatePairs(Transaction tx);
 
 

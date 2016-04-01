@@ -13,16 +13,46 @@ package org.kurento.client;
 @org.kurento.client.internal.RemoteClass
 public interface MediaPipeline extends MediaObject {
 
+/**
+ *
+ * Get If statistics about pipeline latency are enabled for all mediaElements
+ *
+ **/
      boolean getLatencyStats();
 
+/**
+ *
+ * Get If statistics about pipeline latency are enabled for all mediaElements
+ *
+ **/
      void getLatencyStats(Continuation<Boolean> cont);
 
+/**
+ *
+ * Get If statistics about pipeline latency are enabled for all mediaElements
+ *
+ **/
      TFuture<Boolean> getLatencyStats(Transaction tx);
 
+/**
+ *
+ * Set If statistics about pipeline latency are enabled for all mediaElements
+ *
+ **/
      void setLatencyStats(@org.kurento.client.internal.server.Param("latencyStats") boolean latencyStats);
 
+/**
+ *
+ * Set If statistics about pipeline latency are enabled for all mediaElements
+ *
+ **/
      void setLatencyStats(@org.kurento.client.internal.server.Param("latencyStats") boolean latencyStats, Continuation<Void> cont);
 
+/**
+ *
+ * Set If statistics about pipeline latency are enabled for all mediaElements
+ *
+ **/
      void setLatencyStats(@org.kurento.client.internal.server.Param("latencyStats") boolean latencyStats, Transaction tx);
 
 

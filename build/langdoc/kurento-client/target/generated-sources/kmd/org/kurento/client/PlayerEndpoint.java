@@ -16,22 +16,67 @@ package org.kurento.client;
 @org.kurento.client.internal.RemoteClass
 public interface PlayerEndpoint extends UriEndpoint {
 
+/**
+ *
+ * Get Returns info about the playing file
+ *
+ **/
      org.kurento.client.VideoInfo getVideoInfo();
 
+/**
+ *
+ * Get Returns info about the playing file
+ *
+ **/
      void getVideoInfo(Continuation<org.kurento.client.VideoInfo> cont);
 
+/**
+ *
+ * Get Returns info about the playing file
+ *
+ **/
      TFuture<org.kurento.client.VideoInfo> getVideoInfo(Transaction tx);
 
+/**
+ *
+ * Get Get or set the actual position of the video in ms. Only for seekable videos
+ *
+ **/
      long getPosition();
 
+/**
+ *
+ * Get Get or set the actual position of the video in ms. Only for seekable videos
+ *
+ **/
      void getPosition(Continuation<Long> cont);
 
+/**
+ *
+ * Get Get or set the actual position of the video in ms. Only for seekable videos
+ *
+ **/
      TFuture<Long> getPosition(Transaction tx);
 
+/**
+ *
+ * Set Get or set the actual position of the video in ms. Only for seekable videos
+ *
+ **/
      void setPosition(@org.kurento.client.internal.server.Param("position") long position);
 
+/**
+ *
+ * Set Get or set the actual position of the video in ms. Only for seekable videos
+ *
+ **/
      void setPosition(@org.kurento.client.internal.server.Param("position") long position, Continuation<Void> cont);
 
+/**
+ *
+ * Set Get or set the actual position of the video in ms. Only for seekable videos
+ *
+ **/
      void setPosition(@org.kurento.client.internal.server.Param("position") long position, Transaction tx);
 
 

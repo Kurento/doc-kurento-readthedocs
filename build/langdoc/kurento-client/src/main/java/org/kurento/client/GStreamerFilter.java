@@ -13,10 +13,25 @@ package org.kurento.client;
 @org.kurento.client.internal.RemoteClass
 public interface GStreamerFilter extends Filter {
 
+/**
+ *
+ * Get GStreamer command.
+ *
+ **/
      String getCommand();
 
+/**
+ *
+ * Get GStreamer command.
+ *
+ **/
      void getCommand(Continuation<String> cont);
 
+/**
+ *
+ * Get GStreamer command.
+ *
+ **/
      TFuture<String> getCommand(Transaction tx);
 
 

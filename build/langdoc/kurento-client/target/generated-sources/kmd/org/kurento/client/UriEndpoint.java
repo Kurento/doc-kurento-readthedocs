@@ -13,10 +13,25 @@ package org.kurento.client;
 @org.kurento.client.internal.RemoteClass
 public interface UriEndpoint extends Endpoint {
 
+/**
+ *
+ * Get The uri for this endpoint.
+ *
+ **/
      String getUri();
 
+/**
+ *
+ * Get The uri for this endpoint.
+ *
+ **/
      void getUri(Continuation<String> cont);
 
+/**
+ *
+ * Get The uri for this endpoint.
+ *
+ **/
      TFuture<String> getUri(Transaction tx);
 
 
