@@ -23,6 +23,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/StatsType.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/MediaStateChangedEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/ServerManager.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/IceConnection.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/TransactionExecutionException.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/HubPort.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCStatsIceCandidatePairState.java

@@ -169,6 +169,27 @@ public interface WebRtcEndpoint extends BaseRtpEndpoint {
  **/
      TFuture<java.util.List<org.kurento.client.IceCandidatePair>> getICECandidatePairs(Transaction tx);
 
+/**
+ *
+ * Get The ICE connection state for all the connections.
+ *
+ **/
+     java.util.List<org.kurento.client.IceConnection> getIceConnectionState();
+
+/**
+ *
+ * Get The ICE connection state for all the connections.
+ *
+ **/
+     void getIceConnectionState(Continuation<java.util.List<org.kurento.client.IceConnection>> cont);
+
+/**
+ *
+ * Get The ICE connection state for all the connections.
+ *
+ **/
+     TFuture<java.util.List<org.kurento.client.IceConnection>> getIceConnectionState(Transaction tx);
+
 
 
 /**

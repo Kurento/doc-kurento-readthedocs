@@ -78,6 +78,7 @@ org/kurento/client/Properties.class
 org/kurento/client/HubPort$Builder.class
 org/kurento/client/Continuation.class
 org/kurento/client/PlayerEndpoint.class
+org/kurento/client/IceConnection.class
 org/kurento/client/internal/transport/serialization/ParamsFlattener$RomType.class
 org/kurento/client/PausedEvent.class
 org/kurento/client/internal/KmsUrlLoader.class
