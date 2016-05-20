@@ -8,7 +8,7 @@ package org.kurento.client;
 
 /**
  *
- * Raised when the recorder goes to pause state
+ * Fired when the recorder goes to pause state
  *
  **/
 public class PausedEvent extends MediaEvent {
@@ -16,7 +16,7 @@ public class PausedEvent extends MediaEvent {
 
 /**
  *
- * Raised when the recorder goes to pause state
+ * Fired when the recorder goes to pause state
  *
  * @param source
  *       Object that raised the event

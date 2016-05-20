@@ -8,7 +8,7 @@ package org.kurento.client;
 
 /**
  *
- * Notify that all candidates have been gathered.
+ * Event fired when al ICE candidates have been gathered.
  *
  **/
 public class OnIceGatheringDoneEvent extends MediaEvent {
@@ -16,7 +16,7 @@ public class OnIceGatheringDoneEvent extends MediaEvent {
 
 /**
  *
- * Notify that all candidates have been gathered.
+ * Event fired when al ICE candidates have been gathered.
  *
  * @param source
  *       Object that raised the event

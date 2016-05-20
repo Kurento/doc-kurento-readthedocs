@@ -31,7 +31,99 @@
         <h2>
             <span class="ancestors"><a href="module-elements.html">elements</a>.</span>RecorderEndpoint</h2>
         
-            <div class="class-description">Provides function to store contents in reliable mode (doesn't discard data).</div>
+            <div class="class-description"><p>
+       Provides the functionality to store contents. The recorder can store 
+       in local files or in a network resource. It receives a media stream 
+       from another MediaElement (i.e. the source), and stores it in the 
+       designated location.
+       </p>
+       <p>
+       The following information has to be provided In order to create a 
+       RecorderEndpoint, and can’t be changed afterwards:
+       <ul>
+         <li>
+           URI of the resource where media will be stored. Following schemas 
+           are supported:
+           <ul>
+             <li>
+               Files: mounted in the local file system.
+               <ul>
+                 <li>file://<path-to-file></li>
+               </ul>
+             <li>
+               HTTP: Requires the server to support method PUT
+               <ul>
+                 <li>
+                   http(s)://<server-ip>/path/to/file
+                 </li>
+                 <li>
+                   http(s)://username:password@<server-ip>/path/to/file
+                 </li>
+               </ul>
+             </li>
+           </ul>
+         </li>
+         <li>
+           Relative URIs (with no schema) are supported. They are completed 
+           prepending a default URI defined by property defaultPath. This 
+           property allows using relative paths instead of absolute paths. If
+         </li>
+         <li>
+           The media profile used to store the file. This will determine the 
+           encoding. See below for more details about media profile
+         </li>
+         <li>
+           Optionally, the user can select if the endpoint will stop 
+           processing once the EndOfStream event is detected.
+         </li>
+       </ul>
+       <p>
+       </p>
+       RecorderEndpoint requires access to the resource where stream is going
+       <p>
+       </p>
+       The media profile is quite an important parameter, as it will 
+       determine whether there is a transcodification or not. If the input 
+       stream codec if not compatible with the selected media profile, the 
+       media will be transcoded into a suitable format, before arriving at 
+       the RecorderEndpoint's sink pad. This will result in a higher CPU load
+       <ul>
+         <li>WEBM: No transcodification will take place.</li>
+         <li>MP4: The media server will have to transcode the media received 
+         from VP8 to H264. This will raise the CPU load in the system.</li>
+       </ul>
+       <p>
+       </p>
+       Recording will start as soon as the user invokes the record method. 
+       The recorder will then store, in the location indicated, the media 
+       that the source is sending to the endpoint’s sink. If no media is 
+       being received, or no endpoint has been connected, then the 
+       destination will be empty. The recorder starts storing information 
+       into the file as soon as it gets it.
+       <p>
+       </p>
+       When another endpoint is connected to the recorder, by default both 
+       AUDIO and VIDEO media types are expected, unless specified otherwise 
+       when invoking the connect method. Failing to provide both types, will 
+       result in teh recording buffering the received media: it won’t be 
+       written to the file until the recording is stopped. This is due to the
+       <p>
+       </p>
+       The source endpoint can be hot-swapped, while the recording is taking 
+       place. The recorded file will then contain different feeds. When 
+       switching video sources, if the new video has different size, the 
+       recorder will retain the size of the previous source. If the source is
+       <p>
+       </p>
+       It is recommended to start recording only after media arrives, either 
+       to the endpoint that is the source of the media connected to the 
+       recorder, to the recorder itself, or both. Users may use the 
+       MediaFlowIn and MediaFlowOut events, and synchronise the recording 
+       with the moment media comes in. In any case, nothing will be stored in
+       <p>
+       </p>
+       Stopping the recording process is done through the stopAndWait method,
+       </p></div>
         
     
 </header>
@@ -249,8 +341,10 @@
 
             
 
-            <td class="description last">Choose either one of the values defined in module:elements.RecorderEndpoint#MediaProfileSpecType as profile for 
- recording</td>
+            <td class="description last">Sets the media profile used for recording. If the profile is different than 
+ the one being recieved at the sink pad, media will be trnascoded, resulting 
+ in a higher CPU load. For instance, when recording a VP8 encoded video from 
+ a WebRTC endpoint in MP4, the load is higher that when recording in WEBM.</td>
         </tr>
 
     
@@ -311,7 +405,14 @@
 
             
 
-            <td class="description last">URI where the recording will be stored</td>
+            <td class="description last">URI where the recording will be stored. It has to be accessible to the KMS 
+ process.
+               <ul>
+                 <li>Local server resources: The user running the Kurento 
+                 Media Server must have write permission over the file.</li>
+                 <li>Network resources: Must be accessible from the server 
+                 where the media server is running.</li>
+               </ul></td>
         </tr>
 
     
@@ -350,7 +451,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line134">line 134</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line232">line 232</a>
     </li></ul></dd>
     
 
@@ -408,7 +509,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line154">line 154</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line252">line 252</a>
     </li></ul></dd>
     
 
@@ -442,7 +543,7 @@
 
 
 <div class="description">
-    Starts storing media received through the :rom:cls:`MediaSink` pad
+    Starts storing media received through the sink pad.
 </div>
 
 
@@ -547,7 +648,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line71">line 71</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line163">line 163</a>
     </li></ul></dd>
     
 
@@ -603,9 +704,7 @@
 
 
 <div class="description">
-    Stops recording and do not returns until all the content has bee written to 
-the selected uri. This can cause timeouts on some clients if there is too 
-much content to write and/or the transport is slow
+    Stops recording and does not return until all the content has been written to
 </div>
 
 
@@ -710,7 +809,174 @@ much content to write and/or the transport is slow
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line98">line 98</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line188">line 188</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getChildren"><span class="type-signature"></span>getChildren<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Children of current object. All returned objects have parent set to current 
+object
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaObject.html#~getChildrenCallback">module:core/abstracts.MediaObject~getChildrenCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaObject.html#getChildren">module:core/abstracts.MediaObject#getChildren</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line184">line 184</a>
     </li></ul></dd>
     
 
@@ -764,11 +1030,6 @@ much content to write and/or the transport is slow
     
 
 
-
-<div class="description">
-    Childs of current object, all returned objects have parent set to current 
-object
-</div>
 
 
 
@@ -865,6 +1126,9 @@ object
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use children instead. Children of current object, all returned objects have 
+parent set to current object</li></ul></dd>
+    
 
     
 
@@ -877,7 +1141,7 @@ object
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line170">line 170</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line217">line 217</a>
     </li></ul></dd>
     
 
@@ -1043,7 +1307,7 @@ object
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line201">line 201</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line248">line 248</a>
     </li></ul></dd>
     
 
@@ -1210,7 +1474,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line86">line 86</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line105">line 105</a>
     </li></ul></dd>
     
 
@@ -1266,7 +1530,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bandwidth for transcoding. 0 = unlimited.
+    Maximum video bitrate for transcoding. 0 = unlimited.
   Unit: bps(bits per second).
   Default value: MAXINT
 </div>
@@ -1378,7 +1642,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line148">line 148</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line167">line 167</a>
     </li></ul></dd>
     
 
@@ -1435,7 +1699,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 <div class="description">
     <a href="module-core.MediaPipeline.html">MediaPipeline</a> to which this MediaObject 
-belong, or the pipeline itself if invoked over a <a href="module-core.MediaPipeline.html">MediaPipeline</a>
+belongs, or the pipeline itself if invoked on a <a href="module-core.MediaPipeline.html">MediaPipeline</a>
 </div>
 
 
@@ -1545,7 +1809,7 @@ belong, or the pipeline itself if invoked over a <a href="module-core.MediaPipel
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line229">line 229</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line276">line 276</a>
     </li></ul></dd>
     
 
@@ -1712,7 +1976,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line210">line 210</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line229">line 229</a>
     </li></ul></dd>
     
 
@@ -1768,7 +2032,7 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Minimum video bandwidth for transcoding.
+    Minimum video bitrate for transcoding.
   Unit: bps(bits per second).
   Default value: 0
 </div>
@@ -1880,7 +2144,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line272">line 272</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line291">line 291</a>
     </li></ul></dd>
     
 
@@ -1936,8 +2200,9 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Object name. This is just a comodity to simplify developers life debugging, 
-it is not used internally for indexing nor idenfiying the objects. By default
+    Object name. This is just a comodity to simplify developers' life debugging, 
+it is not used internally for indexing nor idenfiying the objects. By 
+default, it's the object's id.
 </div>
 
 
@@ -2047,7 +2312,7 @@ it is not used internally for indexing nor idenfiying the objects. By default
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line261">line 261</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line309">line 309</a>
     </li></ul></dd>
     
 
@@ -2203,7 +2468,7 @@ the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abs
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line321">line 321</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line370">line 370</a>
     </li></ul></dd>
     
 
@@ -2259,8 +2524,8 @@ the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abs
 
 
 <div class="description">
-    This property allows activate/deactivate sending the element tags in all its 
-events.
+    This property activates or deactivates sending the element's tags in all 
+events fired.
 </div>
 
 
@@ -2370,7 +2635,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line353">line 353</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line402">line 402</a>
     </li></ul></dd>
     
 
@@ -2734,7 +2999,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line117">line 117</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line136">line 136</a>
     </li></ul></dd>
     
 
@@ -2790,7 +3055,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bandwidth for transcoding. 0 = unlimited.
+    Maximum video bitrate for transcoding. 0 = unlimited.
   Unit: bps(bits per second).
   Default value: MAXINT
 </div>
@@ -2933,7 +3198,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line177">line 177</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line196">line 196</a>
     </li></ul></dd>
     
 
@@ -3131,7 +3396,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line241">line 241</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line260">line 260</a>
     </li></ul></dd>
     
 
@@ -3187,7 +3452,7 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Minimum video bandwidth for transcoding.
+    Minimum video bitrate for transcoding.
   Unit: bps(bits per second).
   Default value: 0
 </div>
@@ -3330,7 +3595,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line301">line 301</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line320">line 320</a>
     </li></ul></dd>
     
 
@@ -3386,8 +3651,9 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Object name. This is just a comodity to simplify developers life debugging, 
-it is not used internally for indexing nor idenfiying the objects. By default
+    Object name. This is just a comodity to simplify developers' life debugging, 
+it is not used internally for indexing nor idenfiying the objects. By 
+default, it's the object's id.
 </div>
 
 
@@ -3528,7 +3794,7 @@ it is not used internally for indexing nor idenfiying the objects. By default
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line289">line 289</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -3584,8 +3850,8 @@ it is not used internally for indexing nor idenfiying the objects. By default
 
 
 <div class="description">
-    This property allows activate/deactivate sending the element tags in all its 
-events.
+    This property activates or deactivates sending the element's tags in all 
+events fired.
 </div>
 
 
@@ -3726,7 +3992,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line381">line 381</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line430">line 430</a>
     </li></ul></dd>
     
 
@@ -3877,7 +4143,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line82">line 82</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line174">line 174</a>
     </li></ul></dd>
     
 
@@ -4004,7 +4270,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line109">line 109</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line199">line 199</a>
     </li></ul></dd>
     
 
@@ -4050,7 +4316,7 @@ events.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Apr 26 2016 11:05:02 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri May 20 2016 13:26:15 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

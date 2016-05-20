@@ -7,7 +7,7 @@ package org.kurento.client;
 
 /**
  *
- * The ICE candidate pair used by the ice library.
+ * The ICE candidate pair used by the ice library, for a certain stream.
  *
  **/
 @org.kurento.client.internal.ModuleName ("kurento")

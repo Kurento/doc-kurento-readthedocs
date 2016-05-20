@@ -8,7 +8,7 @@ package org.kurento.client;
 
 /**
  *
- * Notify of the new pair of ICE candidates used by the ice library.
+ * Event fired when a new pair of ICE candidates is used by the ICE library. This could also happen in the middle of a session, though not likely.
  *
  **/
 public class NewCandidatePairSelectedEvent extends MediaEvent {
@@ -22,7 +22,7 @@ public class NewCandidatePairSelectedEvent extends MediaEvent {
 
 /**
  *
- * Notify of the new pair of ICE candidates used by the ice library.
+ * Event fired when a new pair of ICE candidates is used by the ICE library. This could also happen in the middle of a session, though not likely.
  *
  * @param source
  *       Object that raised the event

@@ -7,7 +7,17 @@ package org.kurento.client;
 
 /**
  *
- * Base for all objects that can be created in the media server.
+ * <p>This is the base interface for all elements. It is used to manage properties common to all Kurento objects:
+ *       <ul>
+ *         <li>ID: every object has a unique identifier based on a GUID and the suffix `_kurento.elemenType`. In the case of pipelines, this ID would be GUID_kurento.MediaPipeline. For the rest of media elements, it is prefixed with the MediaPipeline's ID where the endpoint was created. For instance, a WebRtcEndpoint would be GUID_kureto.MediaPipeline/GUID_kureto.WebRtcEndpoint. Needless to say, both GUIDs are different in each case.</li>
+ *         <li>name: This is a free text that can be used to provide a firendly name for the endpoint. By default, it's the same as the ID</li>
+ *         <li>tags: This is metadata that can be attached to the media element. </li>
+ *       </ul>
+ *       </p>
+ *       <p>
+ *       <h2>Events fired:</h2>
+ *       <ul><li>ErrorEvent: In case something goes wrong. Since most errors are asynchronous, it is recommended to suscribe to this event.</li></ul>
+ *       </p>
  *
  **/
 @org.kurento.client.internal.RemoteClass
@@ -15,167 +25,191 @@ public interface MediaObject extends KurentoObject {
 
 /**
  *
- * Get {@link module:core.MediaPipeline MediaPipeline} to which this MediaObject belong, or the pipeline itself if invoked over a {@link module:core.MediaPipeline MediaPipeline}
+ * Get {@link module:core.MediaPipeline MediaPipeline} to which this MediaObject belongs, or the pipeline itself if invoked on a {@link module:core.MediaPipeline MediaPipeline}
  *
  **/
      org.kurento.client.MediaPipeline getMediaPipeline();
 
 /**
  *
- * Get {@link module:core.MediaPipeline MediaPipeline} to which this MediaObject belong, or the pipeline itself if invoked over a {@link module:core.MediaPipeline MediaPipeline}
+ * Get {@link module:core.MediaPipeline MediaPipeline} to which this MediaObject belongs, or the pipeline itself if invoked on a {@link module:core.MediaPipeline MediaPipeline}
  *
  **/
      void getMediaPipeline(Continuation<org.kurento.client.MediaPipeline> cont);
 
 /**
  *
- * Get {@link module:core.MediaPipeline MediaPipeline} to which this MediaObject belong, or the pipeline itself if invoked over a {@link module:core.MediaPipeline MediaPipeline}
+ * Get {@link module:core.MediaPipeline MediaPipeline} to which this MediaObject belongs, or the pipeline itself if invoked on a {@link module:core.MediaPipeline MediaPipeline}
  *
  **/
      TFuture<org.kurento.client.MediaPipeline> getMediaPipeline(Transaction tx);
 
 /**
  *
- * Get parent of this media object. The type of the parent depends on the type of the element. The parent of a :rom:cls:`MediaPad` is its {@link module:core/abstracts.MediaElement MediaElement}; the parent of a {@link module:core/abstracts.Hub Hub} or a {@link module:core/abstracts.MediaElement MediaElement} is its {@link module:core.MediaPipeline MediaPipeline}. A {@link module:core.MediaPipeline MediaPipeline} has no parent, i.e. the property is null
+ * Get parent of this media object. The type of the parent depends on the type of the element. The parent of a :rom:cls:`MediaPad` is its {@link module:core/abstracts.MediaElement MediaElement}; the parent of a {@link module:core/abstracts.Hub Hub} or a {@link module:core/abstracts.MediaElement MediaElement} is its {@link module:core.MediaPipeline MediaPipeline}. A {@link module:core.MediaPipeline MediaPipeline} has no parent, so this property will be null
  *
  **/
      org.kurento.client.MediaObject getParent();
 
 /**
  *
- * Get parent of this media object. The type of the parent depends on the type of the element. The parent of a :rom:cls:`MediaPad` is its {@link module:core/abstracts.MediaElement MediaElement}; the parent of a {@link module:core/abstracts.Hub Hub} or a {@link module:core/abstracts.MediaElement MediaElement} is its {@link module:core.MediaPipeline MediaPipeline}. A {@link module:core.MediaPipeline MediaPipeline} has no parent, i.e. the property is null
+ * Get parent of this media object. The type of the parent depends on the type of the element. The parent of a :rom:cls:`MediaPad` is its {@link module:core/abstracts.MediaElement MediaElement}; the parent of a {@link module:core/abstracts.Hub Hub} or a {@link module:core/abstracts.MediaElement MediaElement} is its {@link module:core.MediaPipeline MediaPipeline}. A {@link module:core.MediaPipeline MediaPipeline} has no parent, so this property will be null
  *
  **/
      void getParent(Continuation<org.kurento.client.MediaObject> cont);
 
 /**
  *
- * Get parent of this media object. The type of the parent depends on the type of the element. The parent of a :rom:cls:`MediaPad` is its {@link module:core/abstracts.MediaElement MediaElement}; the parent of a {@link module:core/abstracts.Hub Hub} or a {@link module:core/abstracts.MediaElement MediaElement} is its {@link module:core.MediaPipeline MediaPipeline}. A {@link module:core.MediaPipeline MediaPipeline} has no parent, i.e. the property is null
+ * Get parent of this media object. The type of the parent depends on the type of the element. The parent of a :rom:cls:`MediaPad` is its {@link module:core/abstracts.MediaElement MediaElement}; the parent of a {@link module:core/abstracts.Hub Hub} or a {@link module:core/abstracts.MediaElement MediaElement} is its {@link module:core.MediaPipeline MediaPipeline}. A {@link module:core.MediaPipeline MediaPipeline} has no parent, so this property will be null
  *
  **/
      TFuture<org.kurento.client.MediaObject> getParent(Transaction tx);
 
 /**
  *
- * Get unique identifier of the mediaobject.
+ * Get unique identifier of the mediaobject. It's a synthetic identifier composed by a GUID and the name of the type of the object. In case of media objects that have a parent, the ID of the parent is added to the generated ID, separated by `/`: ID_parent/ID_media-object
  *
  **/
      String getId();
 
 /**
  *
- * Get unique identifier of the mediaobject.
+ * Get unique identifier of the mediaobject. It's a synthetic identifier composed by a GUID and the name of the type of the object. In case of media objects that have a parent, the ID of the parent is added to the generated ID, separated by `/`: ID_parent/ID_media-object
  *
  **/
      void getId(Continuation<String> cont);
 
 /**
  *
- * Get unique identifier of the mediaobject.
+ * Get unique identifier of the mediaobject. It's a synthetic identifier composed by a GUID and the name of the type of the object. In case of media objects that have a parent, the ID of the parent is added to the generated ID, separated by `/`: ID_parent/ID_media-object
  *
  **/
      TFuture<String> getId(Transaction tx);
 
 /**
  *
- * Get Childs of current object, all returned objects have parent set to current object
+ * @deprecated
+ * Get Use children instead. Children of current object, all returned objects have parent set to current object
  *
  **/
      java.util.List<org.kurento.client.MediaObject> getChilds();
 
 /**
  *
- * Get Childs of current object, all returned objects have parent set to current object
+ * @deprecated
+ * Get Use children instead. Children of current object, all returned objects have parent set to current object
  *
  **/
      void getChilds(Continuation<java.util.List<org.kurento.client.MediaObject>> cont);
 
 /**
  *
- * Get Childs of current object, all returned objects have parent set to current object
+ * @deprecated
+ * Get Use children instead. Children of current object, all returned objects have parent set to current object
  *
  **/
      TFuture<java.util.List<org.kurento.client.MediaObject>> getChilds(Transaction tx);
 
 /**
  *
- * Get Object name. This is just a comodity to simplify developers life debugging, it is not used internally for indexing nor idenfiying the objects. By default is the object type followed by the object id.
+ * Get Children of current object. All returned objects have parent set to current object
+ *
+ **/
+     java.util.List<org.kurento.client.MediaObject> getChildren();
+
+/**
+ *
+ * Get Children of current object. All returned objects have parent set to current object
+ *
+ **/
+     void getChildren(Continuation<java.util.List<org.kurento.client.MediaObject>> cont);
+
+/**
+ *
+ * Get Children of current object. All returned objects have parent set to current object
+ *
+ **/
+     TFuture<java.util.List<org.kurento.client.MediaObject>> getChildren(Transaction tx);
+
+/**
+ *
+ * Get Object name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's id.
  *
  **/
      String getName();
 
 /**
  *
- * Get Object name. This is just a comodity to simplify developers life debugging, it is not used internally for indexing nor idenfiying the objects. By default is the object type followed by the object id.
+ * Get Object name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's id.
  *
  **/
      void getName(Continuation<String> cont);
 
 /**
  *
- * Get Object name. This is just a comodity to simplify developers life debugging, it is not used internally for indexing nor idenfiying the objects. By default is the object type followed by the object id.
+ * Get Object name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's id.
  *
  **/
      TFuture<String> getName(Transaction tx);
 
 /**
  *
- * Set Object name. This is just a comodity to simplify developers life debugging, it is not used internally for indexing nor idenfiying the objects. By default is the object type followed by the object id.
+ * Set Object name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's id.
  *
  **/
      void setName(@org.kurento.client.internal.server.Param("name") String name);
 
 /**
  *
- * Set Object name. This is just a comodity to simplify developers life debugging, it is not used internally for indexing nor idenfiying the objects. By default is the object type followed by the object id.
+ * Set Object name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's id.
  *
  **/
      void setName(@org.kurento.client.internal.server.Param("name") String name, Continuation<Void> cont);
 
 /**
  *
- * Set Object name. This is just a comodity to simplify developers life debugging, it is not used internally for indexing nor idenfiying the objects. By default is the object type followed by the object id.
+ * Set Object name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's id.
  *
  **/
      void setName(@org.kurento.client.internal.server.Param("name") String name, Transaction tx);
 /**
  *
- * Get This property allows activate/deactivate sending the element tags in all its events.
+ * Get This property activates or deactivates sending the element's tags in all events fired.
  *
  **/
      boolean getSendTagsInEvents();
 
 /**
  *
- * Get This property allows activate/deactivate sending the element tags in all its events.
+ * Get This property activates or deactivates sending the element's tags in all events fired.
  *
  **/
      void getSendTagsInEvents(Continuation<Boolean> cont);
 
 /**
  *
- * Get This property allows activate/deactivate sending the element tags in all its events.
+ * Get This property activates or deactivates sending the element's tags in all events fired.
  *
  **/
      TFuture<Boolean> getSendTagsInEvents(Transaction tx);
 
 /**
  *
- * Set This property allows activate/deactivate sending the element tags in all its events.
+ * Set This property activates or deactivates sending the element's tags in all events fired.
  *
  **/
      void setSendTagsInEvents(@org.kurento.client.internal.server.Param("sendTagsInEvents") boolean sendTagsInEvents);
 
 /**
  *
- * Set This property allows activate/deactivate sending the element tags in all its events.
+ * Set This property activates or deactivates sending the element's tags in all events fired.
  *
  **/
      void setSendTagsInEvents(@org.kurento.client.internal.server.Param("sendTagsInEvents") boolean sendTagsInEvents, Continuation<Void> cont);
 
 /**
  *
- * Set This property allows activate/deactivate sending the element tags in all its events.
+ * Set This property activates or deactivates sending the element's tags in all events fired.
  *
  **/
      void setSendTagsInEvents(@org.kurento.client.internal.server.Param("sendTagsInEvents") boolean sendTagsInEvents, Transaction tx);
@@ -204,13 +238,12 @@ public interface MediaObject extends KurentoObject {
 
 /**
  *
- * Request a SessionSpec offer.
- *    This can be used to initiate a connection.
+ * Adds a new tag to the media object. If the tag is already present, it changes the value.
  *
  * @param key
- *       Key of the tag
+ *       Key of the tag.
  * @param value
- *       Value of the tag
+ *       Value assoicated to the key.
  *
  **/
   void addTag(@org.kurento.client.internal.server.Param("key") String key, @org.kurento.client.internal.server.Param("value") String value);
@@ -223,22 +256,21 @@ public interface MediaObject extends KurentoObject {
  * @see MediaObject#addTag
  *
  * @param key
- *       Key of the tag
+ *       Key of the tag.
  * @param value
- *       Value of the tag
+ *       Value assoicated to the key.
  *
  **/
     void addTag(@org.kurento.client.internal.server.Param("key") String key, @org.kurento.client.internal.server.Param("value") String value, Continuation<Void> cont);
 
 /**
  *
- * Request a SessionSpec offer.
- *    This can be used to initiate a connection.
+ * Adds a new tag to the media object. If the tag is already present, it changes the value.
  *
  * @param key
- *       Key of the tag
+ *       Key of the tag.
  * @param value
- *       Value of the tag
+ *       Value assoicated to the key.
  *
  **/
     void addTag(Transaction tx, @org.kurento.client.internal.server.Param("key") String key, @org.kurento.client.internal.server.Param("value") String value);
@@ -246,7 +278,7 @@ public interface MediaObject extends KurentoObject {
 
 /**
  *
- * Remove the tag (key and value) associated to a tag
+ * Removes an existing tag. If the tag was not defined before, nothing happens.
  *
  * @param key
  *       Key of the tag to remove
@@ -269,7 +301,7 @@ public interface MediaObject extends KurentoObject {
 
 /**
  *
- * Remove the tag (key and value) associated to a tag
+ * Removes an existing tag. If the tag was not defined before, nothing happens.
  *
  * @param key
  *       Key of the tag to remove
@@ -280,7 +312,7 @@ public interface MediaObject extends KurentoObject {
 
 /**
  *
- * Returns the value associated to the given key.
+ * Returns the value of a certain tag. If the key is not defined, it returns a MEDIA_OBJECT_TAG_KEY_NOT_FOUND
  *
  * @param key
  *       Tag key.
@@ -303,7 +335,7 @@ public interface MediaObject extends KurentoObject {
 
 /**
  *
- * Returns the value associated to the given key.
+ * Returns the value of a certain tag. If the key is not defined, it returns a MEDIA_OBJECT_TAG_KEY_NOT_FOUND
  *
  * @param key
  *       Tag key.
@@ -314,8 +346,8 @@ public interface MediaObject extends KurentoObject {
 
 /**
  *
- * Returns all the MediaObject tags.
- * @return An array containing all pairs key-value associated to the MediaObject. *
+ * Returns all this MediaObject's tags.
+ * @return An array containing all key-value pairs associated with the MediaObject. *
  **/
   java.util.List<org.kurento.client.Tag> getTags();
 
@@ -331,8 +363,8 @@ public interface MediaObject extends KurentoObject {
 
 /**
  *
- * Returns all the MediaObject tags.
- * @return An array containing all pairs key-value associated to the MediaObject. *
+ * Returns all this MediaObject's tags.
+ * @return An array containing all key-value pairs associated with the MediaObject. *
  **/
     TFuture<java.util.List<org.kurento.client.Tag>> getTags(Transaction tx);
 

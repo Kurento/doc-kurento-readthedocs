@@ -8,7 +8,11 @@ package org.kurento.client;
 
 /**
  *
- * Indicates that the state of the connection has changed
+ * This event is raised when the connection between two peers changes. It contains the old and the new state. Possible values are
+ *       <ul>
+ *         <li>CONNECTED</li>
+ *         <li>DISCONNECTED</li>
+ *       </ul>
  *
  **/
 public class ConnectionStateChangedEvent extends MediaEvent {
@@ -28,7 +32,11 @@ public class ConnectionStateChangedEvent extends MediaEvent {
 
 /**
  *
- * Indicates that the state of the connection has changed
+ * This event is raised when the connection between two peers changes. It contains the old and the new state. Possible values are
+ *       <ul>
+ *         <li>CONNECTED</li>
+ *         <li>DISCONNECTED</li>
+ *       </ul>
  *
  * @param source
  *       Object that raised the event

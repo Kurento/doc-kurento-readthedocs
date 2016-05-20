@@ -31,7 +31,64 @@
         <h2>
             <span class="ancestors"><a href="module-core_abstracts.html">core/abstracts</a>.</span>BaseRtpEndpoint</h2>
         
-            <div class="class-description">Base class to manage common RTP features.</div>
+            <div class="class-description">This class extends from the SdpEndpoint, and handles RTP communications. All
+       <ul style='list-style-type:circle'>
+         <li>
+           ConnectionStateChangedEvent: This event is raised when the 
+           connection between two peers changes. It can have two values
+           <ul>
+             <li>CONNECTED</li>
+             <li>DISCONNECTED</li>
+           </ul>
+         </li>
+         <li>
+           MediaStateChangedEvent: Based on RTCP packet flow, this event 
+           provides more reliable information about the state of media flow. 
+           Since RTCP packets are not flowing at a constant rate (minimizing 
+           a browser with an RTCPeerConnection might affect this interval, 
+           for instance), there is a guard period of about 5s. This traduces 
+           in a period where there might be no media flowing, but the event 
+           hasn't been fired yet. Nevertheless, this is the most reliable and
+           <ul>
+             <li>CONNECTED: There is an RTCP packet flow between peers.</li>
+             <li>DISCONNECTED: No RTCP packets have been received, or at 
+             least 5s have passed since the last packet arrived.</li>
+           </ul>
+         </li>
+       </ul>
+       Part of the bandwidth control of the video component of the media 
+       session is done here. The values of the properties described are in 
+       kbps.
+       <ul style='list-style-type:circle'>
+         <li>
+           Input bandwidth control mechanism: Configuration interval used to 
+           inform remote peer the range of bitrates that can be pushed into 
+           this BaseRtpEndpoint object.
+           <ul>
+             <li>
+               setMinVideoRecvBandwidth: sets min bitrate limits expected for
+             </li>
+           </ul>
+           Max values are announced in the SDP, while min values are set to 
+           limit the lower value of REMB packages. It follows that min values
+         </li>
+         <li>
+           Output bandwidth control mechanism: Configuration interval used to
+           <ul>
+             <li>
+               setMinVideoSendBandwidth: sets the minimum bitrate for video 
+               to be sent to remote peer. 0 is considered unconstrained.
+             </li>
+             <li>
+               setMaxVideoSendBandwidth: sets maximum bitrate limits for 
+               video sent to remote peer. 0 is considered unconstrained.
+             </li>
+           </ul>
+         </li>
+       </ul>
+       All bandwidth control parameters must be changed before the SDP 
+       negotiation takes place, and can't be changed afterwards.
+       </p></div>
         
     
 </header>
@@ -194,7 +251,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line359">line 359</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line412">line 412</a>
     </li></ul></dd>
     
 
@@ -252,7 +309,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line367">line 367</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line420">line 420</a>
     </li></ul></dd>
     
 
@@ -279,16 +336,178 @@
 
     
 
-    <h4 class="name" id="getChilds"><span class="type-signature"></span>getChilds<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    <h4 class="name" id="getChildren"><span class="type-signature"></span>getChildren<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
 
     
 
 
 
 <div class="description">
-    Childs of current object, all returned objects have parent set to current 
+    Children of current object. All returned objects have parent set to current 
 object
 </div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaObject.html#~getChildrenCallback">module:core/abstracts.MediaObject~getChildrenCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaObject.html#getChildren">module:core/abstracts.MediaObject#getChildren</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line184">line 184</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="getChilds"><span class="type-signature"></span>getChilds<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+
+    
+
+
 
 
 
@@ -385,6 +604,9 @@ object
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use children instead. Children of current object, all returned objects have 
+parent set to current object</li></ul></dd>
+    
 
     
 
@@ -397,7 +619,7 @@ object
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line170">line 170</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line217">line 217</a>
     </li></ul></dd>
     
 
@@ -453,7 +675,11 @@ object
 
 
 <div class="description">
-    State of the connection
+    Connection state. Possible values are
+          <ul>
+            <li>CONNECTED</li>
+            <li>DISCONNECTED</li>
+          </ul>
 </div>
 
 
@@ -558,7 +784,7 @@ object
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line70">line 70</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line131">line 131</a>
     </li></ul></dd>
     
 
@@ -724,7 +950,7 @@ object
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line201">line 201</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line248">line 248</a>
     </li></ul></dd>
     
 
@@ -780,10 +1006,8 @@ object
 
 
 <div class="description">
-    Maximum audio bandwidth for receiving.
-  Unit: kbps(kilobits per second).
-   0: unlimited.
-  Default value: 0
+    Maximum bandwidth for audio reception, in kbps. The default value is 500. A 
+ value of 0 sets this as leaves this unconstrained. <hr/><b>Note</b> This has
 </div>
 
 
@@ -893,7 +1117,7 @@ object
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line72">line 72</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line75">line 75</a>
     </li></ul></dd>
     
 
@@ -1060,7 +1284,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line86">line 86</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line105">line 105</a>
     </li></ul></dd>
     
 
@@ -1116,7 +1340,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bandwidth for transcoding. 0 = unlimited.
+    Maximum video bitrate for transcoding. 0 = unlimited.
   Unit: bps(bits per second).
   Default value: MAXINT
 </div>
@@ -1228,7 +1452,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line148">line 148</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line167">line 167</a>
     </li></ul></dd>
     
 
@@ -1284,10 +1508,9 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bandwidth for receiving.
-  Unit: kbps(kilobits per second).
-   0: unlimited.
-  Default value: 500
+    Maximum bandwidth for video reception, in kbps. The default value is 500. A 
+ value of 0 sets this as unconstrained. <hr/><b>Note</b> This has to be set 
+ before the SDP is generated.
 </div>
 
 
@@ -1453,10 +1676,8 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bandwidth for sending.
-  Unit: kbps(kilobits per second).
-   0: unlimited.
-  Default value: 500
+    Maximum bandwidth for video transmission, in kbps. The default value is 500 
+kbps. 0 is considered unconstrained.
 </div>
 
 
@@ -1561,7 +1782,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line99">line 99</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line158">line 158</a>
     </li></ul></dd>
     
 
@@ -1618,7 +1839,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 <div class="description">
     <a href="module-core.MediaPipeline.html">MediaPipeline</a> to which this MediaObject 
-belong, or the pipeline itself if invoked over a <a href="module-core.MediaPipeline.html">MediaPipeline</a>
+belongs, or the pipeline itself if invoked on a <a href="module-core.MediaPipeline.html">MediaPipeline</a>
 </div>
 
 
@@ -1728,7 +1949,7 @@ belong, or the pipeline itself if invoked over a <a href="module-core.MediaPipel
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line229">line 229</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line276">line 276</a>
     </li></ul></dd>
     
 
@@ -1784,7 +2005,11 @@ belong, or the pipeline itself if invoked over a <a href="module-core.MediaPipel
 
 
 <div class="description">
-    State of the media
+    Media flow state. Possible values are
+          <ul>
+            <li>CONNECTED: There is an RTCP flow.</li>
+            <li>DISCONNECTED: No RTCP packets have been received for at least
+          </ul>
 </div>
 
 
@@ -1889,7 +2114,7 @@ belong, or the pipeline itself if invoked over a <a href="module-core.MediaPipel
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line158">line 158</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line219">line 219</a>
     </li></ul></dd>
     
 
@@ -2056,7 +2281,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line210">line 210</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line229">line 229</a>
     </li></ul></dd>
     
 
@@ -2112,7 +2337,7 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Minimum video bandwidth for transcoding.
+    Minimum video bitrate for transcoding.
   Unit: bps(bits per second).
   Default value: 0
 </div>
@@ -2224,7 +2449,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line272">line 272</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line291">line 291</a>
     </li></ul></dd>
     
 
@@ -2280,10 +2505,8 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Minimum video bandwidth for receiving.
-  Unit: kbps(kilobits per second).
-   0: unlimited.
-  Default value: 100
+    Minimum bandwidth announced for video reception, in kbps. The default value 
+is 100 kbps. 0 is considered unconstrained.
 </div>
 
 
@@ -2388,7 +2611,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line187">line 187</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line246">line 246</a>
     </li></ul></dd>
     
 
@@ -2444,10 +2667,8 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Minimum video bandwidth for sending.
-  Unit: kbps(kilobits per second).
-   0: unlimited.
-  Default value: 100
+    Minimum bandwidth for video transmission, in kbps. The default value is 100 
+kbps. 0 is considered unconstrained.
 </div>
 
 
@@ -2552,7 +2773,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line249">line 249</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line304">line 304</a>
     </li></ul></dd>
     
 
@@ -2608,8 +2829,9 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Object name. This is just a comodity to simplify developers life debugging, 
-it is not used internally for indexing nor idenfiying the objects. By default
+    Object name. This is just a comodity to simplify developers' life debugging, 
+it is not used internally for indexing nor idenfiying the objects. By 
+default, it's the object's id.
 </div>
 
 
@@ -2719,7 +2941,7 @@ it is not used internally for indexing nor idenfiying the objects. By default
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line261">line 261</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line309">line 309</a>
     </li></ul></dd>
     
 
@@ -2875,7 +3097,7 @@ the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abs
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line321">line 321</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line370">line 370</a>
     </li></ul></dd>
     
 
@@ -2931,7 +3153,7 @@ the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abs
 
 
 <div class="description">
-    Parameters of the congestion control algorithm
+    Advanced parameters to configure the congestion control algorithm.
 </div>
 
 
@@ -3036,7 +3258,7 @@ the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abs
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line308">line 308</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line361">line 361</a>
     </li></ul></dd>
     
 
@@ -3092,8 +3314,8 @@ the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abs
 
 
 <div class="description">
-    This property allows activate/deactivate sending the element tags in all its 
-events.
+    This property activates or deactivates sending the element's tags in all 
+events fired.
 </div>
 
 
@@ -3203,7 +3425,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line353">line 353</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line402">line 402</a>
     </li></ul></dd>
     
 
@@ -3259,10 +3481,8 @@ events.
 
 
 <div class="description">
-    Maximum audio bandwidth for receiving.
-  Unit: kbps(kilobits per second).
-   0: unlimited.
-  Default value: 0
+    Maximum bandwidth for audio reception, in kbps. The default value is 500. A 
+ value of 0 sets this as leaves this unconstrained. <hr/><b>Note</b> This has
 </div>
 
 
@@ -3403,7 +3623,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line102">line 102</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line103">line 103</a>
     </li></ul></dd>
     
 
@@ -3601,7 +3821,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line117">line 117</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line136">line 136</a>
     </li></ul></dd>
     
 
@@ -3657,7 +3877,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bandwidth for transcoding. 0 = unlimited.
+    Maximum video bitrate for transcoding. 0 = unlimited.
   Unit: bps(bits per second).
   Default value: MAXINT
 </div>
@@ -3800,7 +4020,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line177">line 177</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line196">line 196</a>
     </li></ul></dd>
     
 
@@ -3856,10 +4076,9 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bandwidth for receiving.
-  Unit: kbps(kilobits per second).
-   0: unlimited.
-  Default value: 500
+    Maximum bandwidth for video reception, in kbps. The default value is 500. A 
+ value of 0 sets this as unconstrained. <hr/><b>Note</b> This has to be set 
+ before the SDP is generated.
 </div>
 
 
@@ -4000,7 +4219,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line164">line 164</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line163">line 163</a>
     </li></ul></dd>
     
 
@@ -4056,10 +4275,8 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bandwidth for sending.
-  Unit: kbps(kilobits per second).
-   0: unlimited.
-  Default value: 500
+    Maximum bandwidth for video transmission, in kbps. The default value is 500 
+kbps. 0 is considered unconstrained.
 </div>
 
 
@@ -4195,7 +4412,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line129">line 129</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line186">line 186</a>
     </li></ul></dd>
     
 
@@ -4393,7 +4610,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line241">line 241</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line260">line 260</a>
     </li></ul></dd>
     
 
@@ -4449,7 +4666,7 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Minimum video bandwidth for transcoding.
+    Minimum video bitrate for transcoding.
   Unit: bps(bits per second).
   Default value: 0
 </div>
@@ -4592,7 +4809,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line301">line 301</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line320">line 320</a>
     </li></ul></dd>
     
 
@@ -4648,10 +4865,8 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Minimum video bandwidth for receiving.
-  Unit: kbps(kilobits per second).
-   0: unlimited.
-  Default value: 100
+    Minimum bandwidth announced for video reception, in kbps. The default value 
+is 100 kbps. 0 is considered unconstrained.
 </div>
 
 
@@ -4787,7 +5002,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line217">line 217</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -4843,10 +5058,8 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Minimum video bandwidth for sending.
-  Unit: kbps(kilobits per second).
-   0: unlimited.
-  Default value: 100
+    Minimum bandwidth for video transmission, in kbps. The default value is 100 
+kbps. 0 is considered unconstrained.
 </div>
 
 
@@ -4982,7 +5195,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line279">line 279</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line332">line 332</a>
     </li></ul></dd>
     
 
@@ -5038,8 +5251,9 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Object name. This is just a comodity to simplify developers life debugging, 
-it is not used internally for indexing nor idenfiying the objects. By default
+    Object name. This is just a comodity to simplify developers' life debugging, 
+it is not used internally for indexing nor idenfiying the objects. By 
+default, it's the object's id.
 </div>
 
 
@@ -5180,7 +5394,7 @@ it is not used internally for indexing nor idenfiying the objects. By default
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line289">line 289</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -5236,7 +5450,7 @@ it is not used internally for indexing nor idenfiying the objects. By default
 
 
 <div class="description">
-    Parameters of the congestion control algorithm
+    Advanced parameters to configure the congestion control algorithm.
 </div>
 
 
@@ -5372,7 +5586,7 @@ it is not used internally for indexing nor idenfiying the objects. By default
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line335">line 335</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line388">line 388</a>
     </li></ul></dd>
     
 
@@ -5428,8 +5642,8 @@ it is not used internally for indexing nor idenfiying the objects. By default
 
 
 <div class="description">
-    This property allows activate/deactivate sending the element tags in all its 
-events.
+    This property activates or deactivates sending the element's tags in all 
+events fired.
 </div>
 
 
@@ -5570,7 +5784,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line381">line 381</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line430">line 430</a>
     </li></ul></dd>
     
 
@@ -5744,7 +5958,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line81">line 81</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line142">line 142</a>
     </li></ul></dd>
     
 
@@ -5894,7 +6108,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line110">line 110</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line169">line 169</a>
     </li></ul></dd>
     
 
@@ -6044,7 +6258,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line169">line 169</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line230">line 230</a>
     </li></ul></dd>
     
 
@@ -6194,7 +6408,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line198">line 198</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line257">line 257</a>
     </li></ul></dd>
     
 
@@ -6344,7 +6558,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line260">line 260</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line315">line 315</a>
     </li></ul></dd>
     
 
@@ -6494,7 +6708,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line319">line 319</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line372">line 372</a>
     </li></ul></dd>
     
 
@@ -6621,7 +6835,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line144">line 144</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line201">line 201</a>
     </li></ul></dd>
     
 
@@ -6748,7 +6962,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line232">line 232</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line289">line 289</a>
     </li></ul></dd>
     
 
@@ -6875,7 +7089,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line294">line 294</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line347">line 347</a>
     </li></ul></dd>
     
 
@@ -7002,7 +7216,7 @@ events.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line350">line 350</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line403">line 403</a>
     </li></ul></dd>
     
 
@@ -7048,7 +7262,7 @@ events.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Apr 26 2016 11:05:01 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri May 20 2016 13:26:14 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

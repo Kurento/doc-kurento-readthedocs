@@ -8,7 +8,7 @@ package org.kurento.client;
 
 /**
  *
- * Indicates that an element has been disconnected
+ * Indicates that an element has been disconnected from another
  *
  **/
 public class ElementDisconnectedEvent extends MediaEvent {
@@ -40,7 +40,7 @@ public class ElementDisconnectedEvent extends MediaEvent {
 
 /**
  *
- * Indicates that an element has been disconnected
+ * Indicates that an element has been disconnected from another
  *
  * @param source
  *       Object that raised the event

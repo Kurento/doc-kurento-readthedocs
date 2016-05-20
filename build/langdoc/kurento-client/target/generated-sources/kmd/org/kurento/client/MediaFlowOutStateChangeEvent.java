@@ -8,7 +8,12 @@ package org.kurento.client;
 
 /**
  *
- * Indicates that the Media Element is sending data to the MediaPipeline
+ * Fired when the outgoing media flow begins or ends. The event contains:
+ *       <ul>
+ *         <li>State: whether the endpoint is sending media (FLOWING) or not (NOT_FLOWING).</li>
+ *         <li>padName. The name of the pad that changed state.</li>
+ *         <li>MediaType: The type of media flowing.</li>
+ *       </ul>
  *
  **/
 public class MediaFlowOutStateChangeEvent extends MediaEvent {
@@ -34,7 +39,12 @@ public class MediaFlowOutStateChangeEvent extends MediaEvent {
 
 /**
  *
- * Indicates that the Media Element is sending data to the MediaPipeline
+ * Fired when the outgoing media flow begins or ends. The event contains:
+ *       <ul>
+ *         <li>State: whether the endpoint is sending media (FLOWING) or not (NOT_FLOWING).</li>
+ *         <li>padName. The name of the pad that changed state.</li>
+ *         <li>MediaType: The type of media flowing.</li>
+ *       </ul>
  *
  * @param source
  *       Object that raised the event

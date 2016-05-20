@@ -8,7 +8,7 @@ package org.kurento.client;
 
 /**
  *
- * Emitted when encryption is used and any stream reached the soft key usage limit and will expire soon.
+ * Fired when encryption is used and any stream reached the soft key usage limit, which means it will expire soon.
  *
  **/
 public class OnKeySoftLimitEvent extends MediaEvent {
@@ -22,7 +22,7 @@ public class OnKeySoftLimitEvent extends MediaEvent {
 
 /**
  *
- * Emitted when encryption is used and any stream reached the soft key usage limit and will expire soon.
+ * Fired when encryption is used and any stream reached the soft key usage limit, which means it will expire soon.
  *
  * @param source
  *       Object that raised the event

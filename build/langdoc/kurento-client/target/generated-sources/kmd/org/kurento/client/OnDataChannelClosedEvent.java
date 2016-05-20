@@ -8,7 +8,7 @@ package org.kurento.client;
 
 /**
  *
- * Notify the destruction of a data channel.
+ * Event fired when a data channel is closed.
  *
  **/
 public class OnDataChannelClosedEvent extends MediaEvent {
@@ -22,7 +22,7 @@ public class OnDataChannelClosedEvent extends MediaEvent {
 
 /**
  *
- * Notify the destruction of a data channel.
+ * Event fired when a data channel is closed.
  *
  * @param source
  *       Object that raised the event

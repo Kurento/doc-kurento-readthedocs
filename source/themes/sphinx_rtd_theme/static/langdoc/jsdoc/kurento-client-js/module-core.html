@@ -633,7 +633,12 @@
 
 
 <div class="description">
-    Indicates that the state of the connection has changed
+    This event is raised when the connection between two peers changes. It 
+contains the old and the new state. Possible values are
+      <ul>
+        <li>CONNECTED</li>
+        <li>DISCONNECTED</li>
+      </ul>
 </div>
 
 
@@ -800,7 +805,7 @@
 
 
 <div class="description">
-    Indicates that an element has been connected to other
+    Indicates that an element has been connected to another
 </div>
 
 
@@ -975,7 +980,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line31">line 31</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -1013,7 +1018,7 @@
 
 
 <div class="description">
-    Indicates that an element has been disconnected
+    Indicates that an element has been disconnected from another
 </div>
 
 
@@ -1188,7 +1193,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line48">line 48</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -1226,7 +1231,7 @@
 
 
 <div class="description">
-    An error related to the MediaObject has occurred
+    Fired whenever an undefined error related to the MediaObject has occurred
 </div>
 
 
@@ -1378,7 +1383,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line65">line 65</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line70">line 70</a>
     </li></ul></dd>
     
 
@@ -1522,7 +1527,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line80">line 80</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -1560,7 +1565,13 @@
 
 
 <div class="description">
-    Indicates that the Media Element is receiving media from the MediaPipeline
+    Fired when the incoming media flow begins or ends. The event contains:
+      <ul>
+        <li>State: whether the endpoint is receiving media (FLOWING) or not 
+        (NOT_FLOWING).</li>
+        <li>padName. The name of the pad that changed state.</li>
+        <li>MediaType: The type of media flowing.</li>
+      </ul>
 </div>
 
 
@@ -1712,7 +1723,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line91">line 91</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line96">line 96</a>
     </li></ul></dd>
     
 
@@ -1750,7 +1761,13 @@
 
 
 <div class="description">
-    Indicates that the Media Element is sending data to the MediaPipeline
+    Fired when the outgoing media flow begins or ends. The event contains:
+      <ul>
+        <li>State: whether the endpoint is sending media (FLOWING) or not 
+        (NOT_FLOWING).</li>
+        <li>padName. The name of the pad that changed state.</li>
+        <li>MediaType: The type of media flowing.</li>
+      </ul>
 </div>
 
 
@@ -1902,7 +1919,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line106">line 106</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line117">line 117</a>
     </li></ul></dd>
     
 
@@ -1984,7 +2001,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line121">line 121</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -2066,7 +2083,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line127">line 127</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line144">line 144</a>
     </li></ul></dd>
     
 
@@ -2104,7 +2121,13 @@
 
 
 <div class="description">
-    Indicates that the state of the media has changed
+    This event is fired when the media connection between two peers changes, 
+based on the RTCP packet flow. It contains the old and the new state. 
+Possible values are
+      <ul>
+        <li>CONNECTED</li>
+        <li>DISCONNECTED</li>
+      </ul>
 </div>
 
 
@@ -2233,7 +2256,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line133">line 133</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -2377,7 +2400,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line146">line 146</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line169">line 169</a>
     </li></ul></dd>
     
 
@@ -2521,7 +2544,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line157">line 157</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line180">line 180</a>
     </li></ul></dd>
     
 
@@ -2697,7 +2720,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line168">line 168</a>
+        <a href="node_modules_kurento-client-core_lib_events.js.html">node_modules/kurento-client-core/lib/events.js</a>, <a href="node_modules_kurento-client-core_lib_events.js.html#line191">line 191</a>
     </li></ul></dd>
     
 
@@ -2741,7 +2764,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Apr 26 2016 11:05:01 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri May 20 2016 13:26:14 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

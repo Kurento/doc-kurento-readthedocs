@@ -8,7 +8,7 @@ package org.kurento.client;
 
 /**
  *
- * An error related to the MediaObject has occurred
+ * Fired whenever an undefined error related to the MediaObject has occurred
  *
  **/
 public class ErrorEvent extends RaiseBaseEvent {
@@ -34,7 +34,7 @@ public class ErrorEvent extends RaiseBaseEvent {
 
 /**
  *
- * An error related to the MediaObject has occurred
+ * Fired whenever an undefined error related to the MediaObject has occurred
  *
  * @param source
  *       Object that raised the event

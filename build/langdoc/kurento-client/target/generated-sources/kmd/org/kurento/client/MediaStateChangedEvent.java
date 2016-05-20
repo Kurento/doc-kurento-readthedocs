@@ -8,7 +8,11 @@ package org.kurento.client;
 
 /**
  *
- * Indicates that the state of the media has changed
+ * This event is fired when the media connection between two peers changes, based on the RTCP packet flow. It contains the old and the new state. Possible values are
+ *       <ul>
+ *         <li>CONNECTED</li>
+ *         <li>DISCONNECTED</li>
+ *       </ul>
  *
  **/
 public class MediaStateChangedEvent extends MediaEvent {
@@ -28,7 +32,11 @@ public class MediaStateChangedEvent extends MediaEvent {
 
 /**
  *
- * Indicates that the state of the media has changed
+ * This event is fired when the media connection between two peers changes, based on the RTCP packet flow. It contains the old and the new state. Possible values are
+ *       <ul>
+ *         <li>CONNECTED</li>
+ *         <li>DISCONNECTED</li>
+ *       </ul>
  *
  * @param source
  *       Object that raised the event

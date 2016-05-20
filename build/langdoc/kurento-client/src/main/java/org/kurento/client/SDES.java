@@ -15,13 +15,13 @@ public class SDES  {
 
 /**
  *
- * The cryptographic master key. It should be 30 bytes length when AES_128_CM cipher is used or 46 bytes length for AES_256_CM cipher), If no key is provided a random one will be used
+ *  A string representing the cryptographic key used. The length varies depending on the cryptographic method used (30 bytes length for AES_128_CM, or 46 bytes length for AES_256_CM). If no key is provided a random one will be generated using the `getrandom` system call
  *
  **/
     private String key;
 /**
  *
- * The crypto-suite used
+ * Selects the cryptographic suite to be used. For available values, please see the CryptoSuite enum.
  *
  **/
     private org.kurento.client.CryptoSuite crypto;
@@ -39,7 +39,7 @@ public class SDES  {
 
 /**
  *
- * get The cryptographic master key. It should be 30 bytes length when AES_128_CM cipher is used or 46 bytes length for AES_256_CM cipher), If no key is provided a random one will be used
+ * get  A string representing the cryptographic key used. The length varies depending on the cryptographic method used (30 bytes length for AES_128_CM, or 46 bytes length for AES_256_CM). If no key is provided a random one will be generated using the `getrandom` system call
  *
  **/
     public String getKey(){
@@ -48,7 +48,7 @@ public class SDES  {
 
 /**
  *
- * set The cryptographic master key. It should be 30 bytes length when AES_128_CM cipher is used or 46 bytes length for AES_256_CM cipher), If no key is provided a random one will be used
+ * set  A string representing the cryptographic key used. The length varies depending on the cryptographic method used (30 bytes length for AES_128_CM, or 46 bytes length for AES_256_CM). If no key is provided a random one will be generated using the `getrandom` system call
  *
  **/
     public void setKey(String key){
@@ -57,7 +57,7 @@ public class SDES  {
 
 /**
  *
- * get The crypto-suite used
+ * get Selects the cryptographic suite to be used. For available values, please see the CryptoSuite enum.
  *
  **/
     public org.kurento.client.CryptoSuite getCrypto(){
@@ -66,7 +66,7 @@ public class SDES  {
 
 /**
  *
- * set The crypto-suite used
+ * set Selects the cryptographic suite to be used. For available values, please see the CryptoSuite enum.
  *
  **/
     public void setCrypto(org.kurento.client.CryptoSuite crypto){

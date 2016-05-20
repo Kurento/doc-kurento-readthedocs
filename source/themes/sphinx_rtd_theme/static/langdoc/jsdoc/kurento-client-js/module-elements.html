@@ -1224,7 +1224,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_PlayerEndpoint.js.html">node_modules/kurento-client-elements/lib/PlayerEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_PlayerEndpoint.js.html#line228">line 228</a>
+        <a href="node_modules_kurento-client-elements_lib_PlayerEndpoint.js.html">node_modules/kurento-client-elements/lib/PlayerEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_PlayerEndpoint.js.html#line283">line 283</a>
     </li></ul></dd>
     
 
@@ -1378,7 +1378,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line165">line 165</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line263">line 263</a>
     </li></ul></dd>
     
 
@@ -1532,7 +1532,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RtpEndpoint.js.html">node_modules/kurento-client-elements/lib/RtpEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RtpEndpoint.js.html#line89">line 89</a>
+        <a href="node_modules_kurento-client-elements_lib_RtpEndpoint.js.html">node_modules/kurento-client-elements/lib/RtpEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RtpEndpoint.js.html#line173">line 173</a>
     </li></ul></dd>
     
 
@@ -1686,7 +1686,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line501">line 501</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line718">line 718</a>
     </li></ul></dd>
     
 
@@ -1814,7 +1814,8 @@
 
 
 <div class="description">
-    Notify of the new pair of ICE candidates used by the ice library.
+    Event fired when a new pair of ICE candidates is used by the ICE library. 
+This could also happen in the middle of a session, though not likely.
 </div>
 
 
@@ -1958,7 +1959,7 @@
 
 
 <div class="description">
-    Notify the destruction of a data channel.
+    Event fired when a data channel is closed.
 </div>
 
 
@@ -2064,7 +2065,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line35">line 35</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line36">line 36</a>
     </li></ul></dd>
     
 
@@ -2102,7 +2103,7 @@
 
 
 <div class="description">
-    Notify the creation of a new data channel.
+    Event fired when a new data channel is created.
 </div>
 
 
@@ -2208,7 +2209,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line46">line 46</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line47">line 47</a>
     </li></ul></dd>
     
 
@@ -2246,7 +2247,7 @@
 
 
 <div class="description">
-    Notify of a new gathered local candidate.
+    Notifies a new local candidate. These candidates should be sent to the remote
 </div>
 
 
@@ -2313,7 +2314,7 @@
 
             
 
-            <td class="description last">New gathered local candidate</td>
+            <td class="description last">New local candidate</td>
         </tr>
 
     
@@ -2352,7 +2353,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line57">line 57</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line58">line 58</a>
     </li></ul></dd>
     
 
@@ -2390,7 +2391,8 @@
 
 
 <div class="description">
-    Notify about the change of an ICE component state.
+    Event fired when and ICE component state changes. See 
+:rom:cls:`IceComponentState` for a list of possible states.
 </div>
 
 
@@ -2542,7 +2544,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line68">line 68</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line69">line 69</a>
     </li></ul></dd>
     
 
@@ -2580,7 +2582,7 @@
 
 
 <div class="description">
-    Notify that all candidates have been gathered.
+    Event fired when al ICE candidates have been gathered.
 </div>
 
 
@@ -2624,7 +2626,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line83">line 83</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -2662,8 +2664,8 @@
 
 
 <div class="description">
-    Emitted when encryption is used and any stream reached the soft key usage 
-limit and will expire soon.
+    Fired when encryption is used and any stream reached the soft key usage 
+limit, which means it will expire soon.
 </div>
 
 
@@ -2769,7 +2771,7 @@ limit and will expire soon.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line89">line 89</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -2807,7 +2809,7 @@ limit and will expire soon.
 
 
 <div class="description">
-    Raised when the recorder goes to pause state
+    Fired when the recorder goes to pause state
 </div>
 
 
@@ -2851,7 +2853,7 @@ limit and will expire soon.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line101">line 101</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line103">line 103</a>
     </li></ul></dd>
     
 
@@ -2889,8 +2891,8 @@ limit and will expire soon.
 
 
 <div class="description">
-    Raised when the recoding effectively starts. ie: Media is received by the 
-recorder once record method has been called.
+    Fired when the recoding effectively starts. ie: Media is received by the 
+recorder and record method has been called.
 </div>
 
 
@@ -2934,7 +2936,7 @@ recorder once record method has been called.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line107">line 107</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line109">line 109</a>
     </li></ul></dd>
     
 
@@ -2972,7 +2974,7 @@ recorder once record method has been called.
 
 
 <div class="description">
-    Raised when the recorder has been stopped and all the media has been written 
+    Fired when the recorder has been stopped and all the media has been written 
 to storage.
 </div>
 
@@ -3017,7 +3019,7 @@ to storage.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line114">line 114</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line116">line 116</a>
     </li></ul></dd>
     
 
@@ -3061,7 +3063,7 @@ to storage.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Apr 26 2016 11:05:02 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri May 20 2016 13:26:15 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

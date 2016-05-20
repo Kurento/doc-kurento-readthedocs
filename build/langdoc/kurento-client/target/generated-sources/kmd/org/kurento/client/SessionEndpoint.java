@@ -7,7 +7,7 @@ package org.kurento.client;
 
 /**
  *
- * Session based endpoint. A session is considered to be started when the media exchange starts. On the other hand, sessions terminate when a timeout, defined by the developer, takes place after the connection is lost.
+ * All networked Endpoints that require to manage connection sessions with remote peers implement this interface.
  *
  **/
 @org.kurento.client.internal.RemoteClass

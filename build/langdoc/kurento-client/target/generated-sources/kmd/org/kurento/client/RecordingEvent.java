@@ -8,7 +8,7 @@ package org.kurento.client;
 
 /**
  *
- * Raised when the recoding effectively starts. ie: Media is received by the recorder once record method has been called.
+ * Fired when the recoding effectively starts. ie: Media is received by the recorder and record method has been called.
  *
  **/
 public class RecordingEvent extends MediaEvent {
@@ -16,7 +16,7 @@ public class RecordingEvent extends MediaEvent {
 
 /**
  *
- * Raised when the recoding effectively starts. ie: Media is received by the recorder once record method has been called.
+ * Fired when the recoding effectively starts. ie: Media is received by the recorder and record method has been called.
  *
  * @param source
  *       Object that raised the event

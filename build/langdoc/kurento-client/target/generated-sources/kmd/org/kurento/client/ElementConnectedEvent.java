@@ -8,7 +8,7 @@ package org.kurento.client;
 
 /**
  *
- * Indicates that an element has been connected to other
+ * Indicates that an element has been connected to another
  *
  **/
 public class ElementConnectedEvent extends MediaEvent {
@@ -40,7 +40,7 @@ public class ElementConnectedEvent extends MediaEvent {
 
 /**
  *
- * Indicates that an element has been connected to other
+ * Indicates that an element has been connected to another
  *
  * @param source
  *       Object that raised the event
