@@ -124,7 +124,7 @@ the following picture:
    :align:   center
    :alt:     One to one video call signaling protocol
 
-   *Magic mirror signaling protocol*
+   *One to one video call signaling protocol*
 
 As you can see in the diagram, an :term:`SDP` and :term:`ICE` candidates needs
 to be exchanged between client and server to establish the :term:`WebRTC`
