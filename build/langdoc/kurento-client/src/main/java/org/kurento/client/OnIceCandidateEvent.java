@@ -8,6 +8,7 @@ package org.kurento.client;
 
 /**
  *
+ * @deprecated
  * Notifies a new local candidate. These candidates should be sent to the remote peer, to complete the ICE negotiation process.
  *
  **/
@@ -22,6 +23,7 @@ public class OnIceCandidateEvent extends MediaEvent {
 
 /**
  *
+ * @deprecated
  * Notifies a new local candidate. These candidates should be sent to the remote peer, to complete the ICE negotiation process.
  *
  * @param source

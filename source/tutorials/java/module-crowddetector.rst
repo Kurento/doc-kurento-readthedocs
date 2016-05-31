@@ -30,7 +30,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-crowddetector
-    git checkout 6.4.1-dev
+    git checkout 6.5.0
     mvn compile exec:java
 
 The web application starts on port 8443 in the localhost by default. Therefore,
@@ -302,17 +302,17 @@ and the crowd detector module (*crowddetector*):
       <dependency>
          <groupId>org.kurento</groupId>
          <artifactId>kurento-client</artifactId>
-         <version>6.4.1-dev</version>
+         <version>6.5.0</version>
       </dependency> 
       <dependency> 
          <groupId>org.kurento</groupId>
          <artifactId>kurento-utils-js</artifactId>
-         <version>6.4.1-dev</version>
+         <version>6.5.0</version>
       </dependency>
       <dependency>
          <groupId>org.kurento.module</groupId>
          <artifactId>crowddetector</artifactId>
-         <version>6.4.1-dev</version>
+         <version>6.5.0</version>
       </dependency>
    </dependencies>
 

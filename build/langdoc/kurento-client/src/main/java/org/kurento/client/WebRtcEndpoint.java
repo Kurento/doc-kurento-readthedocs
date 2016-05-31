@@ -844,6 +844,44 @@ public interface WebRtcEndpoint extends BaseRtpEndpoint {
     @org.kurento.client.internal.server.EventSubscription(OnIceCandidateEvent.class)
     void removeOnIceCandidateListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
     /**
+     * Add a {@link EventListener} for event {@link IceCandidateFoundEvent}. Synchronous call.
+     *
+     * @param  listener Listener to be called on IceCandidateFoundEvent
+     * @return ListenerSubscription for the given Listener
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceCandidateFoundEvent.class)
+    ListenerSubscription addIceCandidateFoundListener(EventListener<IceCandidateFoundEvent> listener);
+    /**
+     * Add a {@link EventListener} for event {@link IceCandidateFoundEvent}. Asynchronous call.
+     * Calls Continuation&lt;ListenerSubscription&gt; when it has been added.
+     *
+     * @param listener Listener to be called on IceCandidateFoundEvent
+     * @param cont     Continuation to be called when the listener is registered
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceCandidateFoundEvent.class)
+    void addIceCandidateFoundListener(EventListener<IceCandidateFoundEvent> listener, Continuation<ListenerSubscription> cont);
+    
+	/**
+     * Remove a {@link ListenerSubscription} for event {@link IceCandidateFoundEvent}. Synchronous call.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceCandidateFoundEvent.class)
+    void removeIceCandidateFoundListener(ListenerSubscription listenerSubscription);
+    /**
+     * Remove a {@link ListenerSubscription} for event {@link IceCandidateFoundEvent}. Asynchronous call.
+     * Calls Continuation&lt;Void&gt; when it has been removed.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     * @param cont                 Continuation to be called when the listener is removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceCandidateFoundEvent.class)
+    void removeIceCandidateFoundListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
+    /**
      * Add a {@link EventListener} for event {@link OnIceGatheringDoneEvent}. Synchronous call.
      *
      * @param  listener Listener to be called on OnIceGatheringDoneEvent
@@ -881,6 +919,44 @@ public interface WebRtcEndpoint extends BaseRtpEndpoint {
      **/
     @org.kurento.client.internal.server.EventSubscription(OnIceGatheringDoneEvent.class)
     void removeOnIceGatheringDoneListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
+    /**
+     * Add a {@link EventListener} for event {@link IceGatheringDoneEvent}. Synchronous call.
+     *
+     * @param  listener Listener to be called on IceGatheringDoneEvent
+     * @return ListenerSubscription for the given Listener
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceGatheringDoneEvent.class)
+    ListenerSubscription addIceGatheringDoneListener(EventListener<IceGatheringDoneEvent> listener);
+    /**
+     * Add a {@link EventListener} for event {@link IceGatheringDoneEvent}. Asynchronous call.
+     * Calls Continuation&lt;ListenerSubscription&gt; when it has been added.
+     *
+     * @param listener Listener to be called on IceGatheringDoneEvent
+     * @param cont     Continuation to be called when the listener is registered
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceGatheringDoneEvent.class)
+    void addIceGatheringDoneListener(EventListener<IceGatheringDoneEvent> listener, Continuation<ListenerSubscription> cont);
+    
+	/**
+     * Remove a {@link ListenerSubscription} for event {@link IceGatheringDoneEvent}. Synchronous call.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceGatheringDoneEvent.class)
+    void removeIceGatheringDoneListener(ListenerSubscription listenerSubscription);
+    /**
+     * Remove a {@link ListenerSubscription} for event {@link IceGatheringDoneEvent}. Asynchronous call.
+     * Calls Continuation&lt;Void&gt; when it has been removed.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     * @param cont                 Continuation to be called when the listener is removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceGatheringDoneEvent.class)
+    void removeIceGatheringDoneListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
     /**
      * Add a {@link EventListener} for event {@link OnIceComponentStateChangedEvent}. Synchronous call.
      *
@@ -920,6 +996,44 @@ public interface WebRtcEndpoint extends BaseRtpEndpoint {
     @org.kurento.client.internal.server.EventSubscription(OnIceComponentStateChangedEvent.class)
     void removeOnIceComponentStateChangedListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
     /**
+     * Add a {@link EventListener} for event {@link IceComponentStateChangeEvent}. Synchronous call.
+     *
+     * @param  listener Listener to be called on IceComponentStateChangeEvent
+     * @return ListenerSubscription for the given Listener
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceComponentStateChangeEvent.class)
+    ListenerSubscription addIceComponentStateChangeListener(EventListener<IceComponentStateChangeEvent> listener);
+    /**
+     * Add a {@link EventListener} for event {@link IceComponentStateChangeEvent}. Asynchronous call.
+     * Calls Continuation&lt;ListenerSubscription&gt; when it has been added.
+     *
+     * @param listener Listener to be called on IceComponentStateChangeEvent
+     * @param cont     Continuation to be called when the listener is registered
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceComponentStateChangeEvent.class)
+    void addIceComponentStateChangeListener(EventListener<IceComponentStateChangeEvent> listener, Continuation<ListenerSubscription> cont);
+    
+	/**
+     * Remove a {@link ListenerSubscription} for event {@link IceComponentStateChangeEvent}. Synchronous call.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceComponentStateChangeEvent.class)
+    void removeIceComponentStateChangeListener(ListenerSubscription listenerSubscription);
+    /**
+     * Remove a {@link ListenerSubscription} for event {@link IceComponentStateChangeEvent}. Asynchronous call.
+     * Calls Continuation&lt;Void&gt; when it has been removed.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     * @param cont                 Continuation to be called when the listener is removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(IceComponentStateChangeEvent.class)
+    void removeIceComponentStateChangeListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
+    /**
      * Add a {@link EventListener} for event {@link OnDataChannelOpenedEvent}. Synchronous call.
      *
      * @param  listener Listener to be called on OnDataChannelOpenedEvent
@@ -958,6 +1072,44 @@ public interface WebRtcEndpoint extends BaseRtpEndpoint {
     @org.kurento.client.internal.server.EventSubscription(OnDataChannelOpenedEvent.class)
     void removeOnDataChannelOpenedListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
     /**
+     * Add a {@link EventListener} for event {@link DataChannelOpenEvent}. Synchronous call.
+     *
+     * @param  listener Listener to be called on DataChannelOpenEvent
+     * @return ListenerSubscription for the given Listener
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(DataChannelOpenEvent.class)
+    ListenerSubscription addDataChannelOpenListener(EventListener<DataChannelOpenEvent> listener);
+    /**
+     * Add a {@link EventListener} for event {@link DataChannelOpenEvent}. Asynchronous call.
+     * Calls Continuation&lt;ListenerSubscription&gt; when it has been added.
+     *
+     * @param listener Listener to be called on DataChannelOpenEvent
+     * @param cont     Continuation to be called when the listener is registered
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(DataChannelOpenEvent.class)
+    void addDataChannelOpenListener(EventListener<DataChannelOpenEvent> listener, Continuation<ListenerSubscription> cont);
+    
+	/**
+     * Remove a {@link ListenerSubscription} for event {@link DataChannelOpenEvent}. Synchronous call.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(DataChannelOpenEvent.class)
+    void removeDataChannelOpenListener(ListenerSubscription listenerSubscription);
+    /**
+     * Remove a {@link ListenerSubscription} for event {@link DataChannelOpenEvent}. Asynchronous call.
+     * Calls Continuation&lt;Void&gt; when it has been removed.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     * @param cont                 Continuation to be called when the listener is removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(DataChannelOpenEvent.class)
+    void removeDataChannelOpenListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
+    /**
      * Add a {@link EventListener} for event {@link OnDataChannelClosedEvent}. Synchronous call.
      *
      * @param  listener Listener to be called on OnDataChannelClosedEvent
@@ -995,6 +1147,44 @@ public interface WebRtcEndpoint extends BaseRtpEndpoint {
      **/
     @org.kurento.client.internal.server.EventSubscription(OnDataChannelClosedEvent.class)
     void removeOnDataChannelClosedListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
+    /**
+     * Add a {@link EventListener} for event {@link DataChannelCloseEvent}. Synchronous call.
+     *
+     * @param  listener Listener to be called on DataChannelCloseEvent
+     * @return ListenerSubscription for the given Listener
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(DataChannelCloseEvent.class)
+    ListenerSubscription addDataChannelCloseListener(EventListener<DataChannelCloseEvent> listener);
+    /**
+     * Add a {@link EventListener} for event {@link DataChannelCloseEvent}. Asynchronous call.
+     * Calls Continuation&lt;ListenerSubscription&gt; when it has been added.
+     *
+     * @param listener Listener to be called on DataChannelCloseEvent
+     * @param cont     Continuation to be called when the listener is registered
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(DataChannelCloseEvent.class)
+    void addDataChannelCloseListener(EventListener<DataChannelCloseEvent> listener, Continuation<ListenerSubscription> cont);
+    
+	/**
+     * Remove a {@link ListenerSubscription} for event {@link DataChannelCloseEvent}. Synchronous call.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(DataChannelCloseEvent.class)
+    void removeDataChannelCloseListener(ListenerSubscription listenerSubscription);
+    /**
+     * Remove a {@link ListenerSubscription} for event {@link DataChannelCloseEvent}. Asynchronous call.
+     * Calls Continuation&lt;Void&gt; when it has been removed.
+     *
+     * @param listenerSubscription Listener subscription to be removed
+     * @param cont                 Continuation to be called when the listener is removed
+     *
+     **/
+    @org.kurento.client.internal.server.EventSubscription(DataChannelCloseEvent.class)
+    void removeDataChannelCloseListener(ListenerSubscription listenerSubscription, Continuation<Void> cont);
     /**
      * Add a {@link EventListener} for event {@link NewCandidatePairSelectedEvent}. Synchronous call.
      *

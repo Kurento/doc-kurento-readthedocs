@@ -8,6 +8,7 @@ package org.kurento.client;
 
 /**
  *
+ * @deprecated
  * Event fired when al ICE candidates have been gathered.
  *
  **/
@@ -16,6 +17,7 @@ public class OnIceGatheringDoneEvent extends MediaEvent {
 
 /**
  *
+ * @deprecated
  * Event fired when al ICE candidates have been gathered.
  *
  * @param source

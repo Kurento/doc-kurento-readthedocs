@@ -8,6 +8,7 @@ package org.kurento.client;
 
 /**
  *
+ * @deprecated
  * Event fired when a new data channel is created.
  *
  **/
@@ -22,6 +23,7 @@ public class OnDataChannelOpenedEvent extends MediaEvent {
 
 /**
  *
+ * @deprecated
  * Event fired when a new data channel is created.
  *
  * @param source

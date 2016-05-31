@@ -8,6 +8,7 @@ package org.kurento.client;
 
 /**
  *
+ * @deprecated
  * Event fired when and ICE component state changes. See :rom:cls:`IceComponentState` for a list of possible states.
  *
  **/
@@ -34,6 +35,7 @@ public class OnIceComponentStateChangedEvent extends MediaEvent {
 
 /**
  *
+ * @deprecated
  * Event fired when and ICE component state changes. See :rom:cls:`IceComponentState` for a list of possible states.
  *
  * @param source

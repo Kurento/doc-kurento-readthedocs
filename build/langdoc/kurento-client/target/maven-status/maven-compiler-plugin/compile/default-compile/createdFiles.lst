@@ -10,11 +10,13 @@ org/kurento/client/KurentoClient.class
 org/kurento/client/internal/transport/jsonrpc/RomClientJsonRpcClient$1.class
 org/kurento/client/VideoInfo.class
 org/kurento/client/ServerInfo.class
+org/kurento/client/IceComponentStateChangeEvent.class
 org/kurento/client/RTCInboundRTPStreamStats.class
 org/kurento/client/EventListener.class
 org/kurento/client/TransactionExecutionException.class
 org/kurento/client/MediaType.class
 org/kurento/client/MediaStateChangedEvent.class
+org/kurento/client/IceGatheringDoneEvent.class
 org/kurento/client/internal/server/Param.class
 org/kurento/client/internal/client/RomManager.class
 org/kurento/client/OnKeySoftLimitEvent.class
@@ -66,8 +68,8 @@ org/kurento/client/internal/client/RemoteObjectFactory$1.class
 org/kurento/client/internal/client/RemoteObject$ObjectStatus.class
 org/kurento/client/internal/server/RemoteObjectManager$ObjectHolder.class
 org/kurento/client/internal/server/ProtocolException.class
-org/kurento/client/internal/client/RemoteObject$3.class
 org/kurento/client/AudioCaps.class
+org/kurento/client/internal/client/RemoteObject$3.class
 org/kurento/client/ImageOverlayFilter$Builder.class
 org/kurento/client/Composite.class
 org/kurento/client/RembParams.class
@@ -91,8 +93,8 @@ org/kurento/client/IceCandidatePair.class
 org/kurento/client/VideoCaps.class
 org/kurento/client/internal/transport/jsonrpc/RomJsonRpcConstants.class
 org/kurento/client/internal/client/RemoteObjectInvocationHandler.class
-org/kurento/client/RaiseBaseEvent.class
 org/kurento/client/RTCOutboundRTPStreamStats.class
+org/kurento/client/RaiseBaseEvent.class
 org/kurento/client/RTCMediaStreamTrackStats.class
 org/kurento/client/RtpEndpoint$Builder.class
 org/kurento/client/TransactionRollbackException.class
@@ -101,6 +103,7 @@ org/kurento/client/DispatcherOneToMany$Builder.class
 org/kurento/client/RTCDataChannelState.class
 org/kurento/client/internal/client/RemoteObjectFactory.class
 org/kurento/client/Dispatcher$Builder.class
+org/kurento/client/DataChannelCloseEvent.class
 org/kurento/client/RecorderEndpoint.class
 org/kurento/client/AbstractBuilder.class
 org/kurento/client/Hub.class
@@ -139,6 +142,7 @@ org/kurento/client/HttpPostEndpoint.class
 org/kurento/client/internal/client/RemoteObjectInvocationHandler$1.class
 org/kurento/client/DispatcherOneToMany.class
 org/kurento/client/FaceOverlayFilter.class
+org/kurento/client/DataChannelOpenEvent.class
 org/kurento/client/MediaElement.class
 org/kurento/client/ElementConnectedEvent.class
 org/kurento/client/internal/transport/jsonrpc/RomClientJsonRpcClient$4.class
@@ -157,6 +161,7 @@ org/kurento/client/RTCCodec.class
 org/kurento/client/internal/client/RomManager$3.class
 org/kurento/client/GStreamerFilter.class
 org/kurento/client/OnIceComponentStateChangedEvent.class
+org/kurento/client/IceCandidateFoundEvent.class
 org/kurento/client/internal/transport/serialization/ModuleClassesManager.class
 org/kurento/client/internal/client/RemoteObjectEventListener.class
 org/kurento/client/TransactionNotCommitedException.class
