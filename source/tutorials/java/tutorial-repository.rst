@@ -34,7 +34,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-hello-world-repository/
-    git checkout 6.5.0
+    git checkout 6.5.1-SNAPSHOT
     mvn compile exec:java
 
 Access the application connecting to the URL https://localhost:8443/ in a WebRTC
@@ -631,12 +631,12 @@ client-side:
       <dependency>
          <groupId>org.kurento</groupId>
          <artifactId>kurento-client</artifactId>
-         <version>6.5.0</version>
+         <version>6.5.1-SNAPSHOT</version>
       </dependency> 
       <dependency> 
          <groupId>org.kurento</groupId>
          <artifactId>kurento-utils-js</artifactId>
-         <version>6.5.0</version>
+         <version>6.5.1-SNAPSHOT</version>
       </dependency> 
    </dependencies>
 
@@ -675,5 +675,5 @@ follows:
    .. sourcecode:: js
 
       "dependencies": {
-         "kurento-utils": "6.5.0"
+         "kurento-utils": "6.5.1-dev"
       }
