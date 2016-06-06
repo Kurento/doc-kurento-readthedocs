@@ -287,8 +287,7 @@
 
 
 <div class="description">
-    Children of current object. All returned objects have parent set to current 
-object
+    children of this <code>MediaObject</code>.
 </div>
 
 
@@ -398,7 +397,7 @@ object
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line186">line 186</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line201">line 201</a>
     </li></ul></dd>
     
 
@@ -548,8 +547,7 @@ object
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use children instead. Children of current object, all returned objects have 
-parent set to current object</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>(Use children instead) children of this <code>MediaObject</code>.</li></ul></dd>
     
 
     
@@ -563,7 +561,7 @@ parent set to current object</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line219">line 219</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line233">line 233</a>
     </li></ul></dd>
     
 
@@ -619,7 +617,7 @@ parent set to current object</li></ul></dd>
 
 
 <div class="description">
-    Number of seconds since Epoch when the element was created
+    <code>MediaObject</code> creation time in seconds since Epoch.
 </div>
 
 
@@ -729,7 +727,7 @@ parent set to current object</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line250">line 250</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line264">line 264</a>
     </li></ul></dd>
     
 
@@ -1120,8 +1118,9 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    <a href="module-core.MediaPipeline.html">MediaPipeline</a> to which this MediaObject 
-belongs, or the pipeline itself if invoked on a <a href="module-core.MediaPipeline.html">MediaPipeline</a>
+    <a href="module-core.MediaPipeline.html">MediaPipeline</a> to which this 
+<code>MediaObject</code> belongs. It returns itself when invoked for a 
+pipeline object.
 </div>
 
 
@@ -1231,7 +1230,7 @@ belongs, or the pipeline itself if invoked on a <a href="module-core.MediaPipeli
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line278">line 278</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line292">line 292</a>
     </li></ul></dd>
     
 
@@ -1622,9 +1621,9 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Object name. This is just a comodity to simplify developers' life debugging, 
-it is not used internally for indexing nor idenfiying the objects. By 
-default, it's the object's id.
+    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
+developers' life debugging, it is not used internally for indexing nor 
+idenfiying the objects. By default, it's the object's ID.
 </div>
 
 
@@ -1734,7 +1733,7 @@ default, it's the object's id.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line311">line 311</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line325">line 325</a>
     </li></ul></dd>
     
 
@@ -1790,8 +1789,7 @@ default, it's the object's id.
 
 
 <div class="description">
-    parent of this media object. The type of the parent depends on the type of 
-the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abstracts.MediaElement.html">MediaElement</a>; the parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html"></div>     <h5>Parameters:</h5>
+    parent of this <code>MediaObject</code>. The parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html"></div>     <h5>Parameters:</h5>
     
 
 <table class="params">
@@ -1890,7 +1888,7 @@ the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abs
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line372">line 372</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line384">line 384</a>
     </li></ul></dd>
     
 
@@ -1946,8 +1944,7 @@ the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abs
 
 
 <div class="description">
-    This property activates or deactivates sending the element's tags in all 
-events fired.
+    flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -2057,7 +2054,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line404">line 404</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line415">line 415</a>
     </li></ul></dd>
     
 
@@ -2907,9 +2904,9 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Object name. This is just a comodity to simplify developers' life debugging, 
-it is not used internally for indexing nor idenfiying the objects. By 
-default, it's the object's id.
+    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
+developers' life debugging, it is not used internally for indexing nor 
+idenfiying the objects. By default, it's the object's ID.
 </div>
 
 
@@ -3050,7 +3047,7 @@ default, it's the object's id.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line340">line 340</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line354">line 354</a>
     </li></ul></dd>
     
 
@@ -3106,8 +3103,7 @@ default, it's the object's id.
 
 
 <div class="description">
-    This property activates or deactivates sending the element's tags in all 
-events fired.
+    flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -3248,7 +3244,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line432">line 432</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line442">line 442</a>
     </li></ul></dd>
     
 
@@ -3314,7 +3310,7 @@ events fired.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue May 31 2016 15:26:32 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 11:14:55 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -31,21 +31,34 @@
         <h2>
             <span class="ancestors"><a href="module-core_abstracts.html">core/abstracts</a>.</span>MediaObject</h2>
         
-            <div class="class-description"><p>This is the base interface for all elements. It is used to manage 
- properties common to all Kurento objects:
+            <div class="class-description"><p>Base interface used to manage capabilities common to all Kurento 
+ elements. This includes both: <a href="module-core_abstracts.MediaElement.html">  MediaElement</a> and <a href="module-core.MediaPipeline.html">MediaPipeline</a></p>
+       <h4>Properties</h4>
        <ul>
-         <li>ID: every object has a unique identifier based on a GUID and the
-         <li>name: This is a free text that can be used to provide a firendly
-         <li>tags: This is metadata that can be attached to the media 
-         element. </li>
+         <li><b>id</b>: unique identifier assigned to this 
+         <code>MediaObject</code> at instantiation time. <a href="module-core.MediaPipeline.html">MediaPipeline</a> IDs are generated with a 
+         GUID followed by suffix <code>_kurento.MediaPipeline</code>. <a href="module-core_abstracts.MediaElement.html">MediaElement</a> IDs are also a GUID
+           <blockquote>
+           <dl>
+             <dt><i>MediaPipeline ID example</i></dt>
+             <dd><code>907cac3a-809a-4bbe-a93e-ae7e944c5cae_kurento.MediaPipeline</code></dd>
+             <dt><i>MediaElement ID example</i></dt> 
+             <dd><code>907cac3a-809a-4bbe-a93e-ae7e944c5cae_kurento.MediaPipeline/403da25a-805b-4cf1-8c55-f190588e6c9b_kurento.WebRtcEndpoint</code></dd>
+           </dl>
+           </blockquote>
+         </li>
+         <li><b>name</b>: free text intended to provide a friendly name for 
+         this <code>MediaObject</code>. Its default value is the same as the 
+         ID.</li>
+         <li><b>tags</b>: key-value pairs intended for applications to 
+         associate metadata to this <code>MediaObject</code> instance.</li>
        </ul>
-       </p>
        <p>
-       <h2>Events fired:</h2>
-       <ul><li>ErrorEvent: In case something goes wrong. Since most errors 
-       are asynchronous, it is recommended to suscribe to this 
-       event.</li></ul>
-       </p></div>
+       <h4>Events</h4>
+       <ul>
+         <li>`ErrorEvent`: reports asynchronous error events. It is 
+         recommended to always subscribe a listener to this event, as regular
+       </ul></div>
         
     
 </header>
@@ -206,7 +219,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line793">line 793</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line805">line 805</a>
     </li></ul></dd>
     
 
@@ -264,7 +277,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line799">line 799</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line811">line 811</a>
     </li></ul></dd>
     
 
@@ -298,7 +311,8 @@
 
 
 <div class="description">
-    Adds a new tag to the media object. If the tag is already present, it changes
+    Adds a new tag to this <code>MediaObject</code>. If the tag is already 
+present, it changes the value.
 </div>
 
 
@@ -360,7 +374,7 @@
 
             
 
-            <td class="description last">Key of the tag.</td>
+            <td class="description last">Tag name.</td>
         </tr>
 
     
@@ -391,7 +405,7 @@
 
             
 
-            <td class="description last">Value assoicated to the key.</td>
+            <td class="description last">Value associated to this tag.</td>
         </tr>
 
     
@@ -465,7 +479,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line472">line 472</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line483">line 483</a>
     </li></ul></dd>
     
 
@@ -521,8 +535,8 @@
 
 
 <div class="description">
-    Returns the value of a certain tag. If the key is not defined, it returns a 
-MEDIA_OBJECT_TAG_KEY_NOT_FOUND
+    Returns the value of given tag, or MEDIA_OBJECT_TAG_KEY_NOT_FOUND if tag is 
+not defined.
 </div>
 
 
@@ -658,7 +672,7 @@ MEDIA_OBJECT_TAG_KEY_NOT_FOUND
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line507">line 507</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line518">line 518</a>
     </li></ul></dd>
     
 
@@ -714,7 +728,7 @@ MEDIA_OBJECT_TAG_KEY_NOT_FOUND
 
 
 <div class="description">
-    Returns all this MediaObject's tags.
+    Returns all tags attached to this <code>MediaObject</code>.
 </div>
 
 
@@ -819,7 +833,7 @@ MEDIA_OBJECT_TAG_KEY_NOT_FOUND
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line538">line 538</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line549">line 549</a>
     </li></ul></dd>
     
 
@@ -875,7 +889,7 @@ MEDIA_OBJECT_TAG_KEY_NOT_FOUND
 
 
 <div class="description">
-    Removes an existing tag. If the tag was not defined before, nothing happens.
+    Removes an existing tag. Exists silently with no error if tag is not defined.
 </div>
 
 
@@ -937,7 +951,7 @@ MEDIA_OBJECT_TAG_KEY_NOT_FOUND
 
             
 
-            <td class="description last">Key of the tag to remove</td>
+            <td class="description last">Tag name to be removed</td>
         </tr>
 
     
@@ -1011,7 +1025,7 @@ MEDIA_OBJECT_TAG_KEY_NOT_FOUND
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line568">line 568</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line580">line 580</a>
     </li></ul></dd>
     
 
@@ -1067,8 +1081,7 @@ MEDIA_OBJECT_TAG_KEY_NOT_FOUND
 
 
 <div class="description">
-    Children of current object. All returned objects have parent set to current 
-object
+    children of this <code>MediaObject</code>.
 </div>
 
 
@@ -1173,7 +1186,7 @@ object
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line186">line 186</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line201">line 201</a>
     </li></ul></dd>
     
 
@@ -1318,8 +1331,7 @@ object
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use children instead. Children of current object, all returned objects have 
-parent set to current object</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>(Use children instead) children of this <code>MediaObject</code>.</li></ul></dd>
     
 
     
@@ -1333,7 +1345,7 @@ parent set to current object</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line219">line 219</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line233">line 233</a>
     </li></ul></dd>
     
 
@@ -1389,7 +1401,7 @@ parent set to current object</li></ul></dd>
 
 
 <div class="description">
-    Number of seconds since Epoch when the element was created
+    <code>MediaObject</code> creation time in seconds since Epoch.
 </div>
 
 
@@ -1494,7 +1506,7 @@ parent set to current object</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line250">line 250</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line264">line 264</a>
     </li></ul></dd>
     
 
@@ -1550,8 +1562,9 @@ parent set to current object</li></ul></dd>
 
 
 <div class="description">
-    <a href="module-core.MediaPipeline.html">MediaPipeline</a> to which this MediaObject 
-belongs, or the pipeline itself if invoked on a <a href="module-core.MediaPipeline.html">MediaPipeline</a>
+    <a href="module-core.MediaPipeline.html">MediaPipeline</a> to which this 
+<code>MediaObject</code> belongs. It returns itself when invoked for a 
+pipeline object.
 </div>
 
 
@@ -1656,7 +1669,7 @@ belongs, or the pipeline itself if invoked on a <a href="module-core.MediaPipeli
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line278">line 278</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line292">line 292</a>
     </li></ul></dd>
     
 
@@ -1712,9 +1725,9 @@ belongs, or the pipeline itself if invoked on a <a href="module-core.MediaPipeli
 
 
 <div class="description">
-    Object name. This is just a comodity to simplify developers' life debugging, 
-it is not used internally for indexing nor idenfiying the objects. By 
-default, it's the object's id.
+    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
+developers' life debugging, it is not used internally for indexing nor 
+idenfiying the objects. By default, it's the object's ID.
 </div>
 
 
@@ -1819,7 +1832,7 @@ default, it's the object's id.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line311">line 311</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line325">line 325</a>
     </li></ul></dd>
     
 
@@ -1875,8 +1888,7 @@ default, it's the object's id.
 
 
 <div class="description">
-    parent of this media object. The type of the parent depends on the type of 
-the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abstracts.MediaElement.html">MediaElement</a>; the parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html"></div>     <h5>Parameters:</h5>
+    parent of this <code>MediaObject</code>. The parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html"></div>     <h5>Parameters:</h5>
     
 
 <table class="params">
@@ -1970,7 +1982,7 @@ the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abs
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line372">line 372</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line384">line 384</a>
     </li></ul></dd>
     
 
@@ -2026,8 +2038,7 @@ the element. The parent of a :rom:cls:`MediaPad` is its <a href="module-core_abs
 
 
 <div class="description">
-    This property activates or deactivates sending the element's tags in all 
-events fired.
+    flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -2132,7 +2143,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line404">line 404</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line415">line 415</a>
     </li></ul></dd>
     
 
@@ -2188,9 +2199,9 @@ events fired.
 
 
 <div class="description">
-    Object name. This is just a comodity to simplify developers' life debugging, 
-it is not used internally for indexing nor idenfiying the objects. By 
-default, it's the object's id.
+    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
+developers' life debugging, it is not used internally for indexing nor 
+idenfiying the objects. By default, it's the object's ID.
 </div>
 
 
@@ -2326,7 +2337,7 @@ default, it's the object's id.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line340">line 340</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line354">line 354</a>
     </li></ul></dd>
     
 
@@ -2382,8 +2393,7 @@ default, it's the object's id.
 
 
 <div class="description">
-    This property activates or deactivates sending the element's tags in all 
-events fired.
+    flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -2519,7 +2529,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line432">line 432</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line442">line 442</a>
     </li></ul></dd>
     
 
@@ -2670,7 +2680,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line489">line 489</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line500">line 500</a>
     </li></ul></dd>
     
 
@@ -2820,7 +2830,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line202">line 202</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line217">line 217</a>
     </li></ul></dd>
     
 
@@ -2970,7 +2980,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line235">line 235</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line249">line 249</a>
     </li></ul></dd>
     
 
@@ -3120,7 +3130,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line261">line 261</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line275">line 275</a>
     </li></ul></dd>
     
 
@@ -3270,7 +3280,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line294">line 294</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line308">line 308</a>
     </li></ul></dd>
     
 
@@ -3420,7 +3430,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line322">line 322</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line336">line 336</a>
     </li></ul></dd>
     
 
@@ -3570,7 +3580,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line388">line 388</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line400">line 400</a>
     </li></ul></dd>
     
 
@@ -3720,7 +3730,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line415">line 415</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line426">line 426</a>
     </li></ul></dd>
     
 
@@ -3870,7 +3880,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line522">line 522</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line533">line 533</a>
     </li></ul></dd>
     
 
@@ -3979,7 +3989,8 @@ events fired.
 
             
 
-            <td class="description last">An array containing all key-value pairs associated with the MediaObject.</td>
+            <td class="description last">An array containing all key-value pairs associated with this 
+ <code>MediaObject</code>.</td>
         </tr>
 
     
@@ -4020,7 +4031,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line549">line 549</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line560">line 560</a>
     </li></ul></dd>
     
 
@@ -4147,7 +4158,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line583">line 583</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line595">line 595</a>
     </li></ul></dd>
     
 
@@ -4274,7 +4285,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line355">line 355</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line369">line 369</a>
     </li></ul></dd>
     
 
@@ -4401,7 +4412,7 @@ events fired.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line447">line 447</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line457">line 457</a>
     </li></ul></dd>
     
 
@@ -4447,7 +4458,7 @@ events fired.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue May 31 2016 15:26:37 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jun 06 2016 11:14:55 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>
