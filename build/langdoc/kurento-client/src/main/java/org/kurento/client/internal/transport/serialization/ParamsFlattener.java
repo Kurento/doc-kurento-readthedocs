@@ -51,7 +51,7 @@ public class ParamsFlattener {
 
   private static final Logger log = LoggerFactory.getLogger(ParamsFlattener.class);
 
-  private ModuleClassesManager moduleClassesManager = new ModuleClassesManager();
+  private final ModuleClassesManager moduleClassesManager = new ModuleClassesManager();
 
   public enum RomType {
     VOID, INTEGER, BOOLEAN, FLOAT, DOUBLE, LONG, STRING, CT_ENUM, CT_REGISTER, LIST, REMOTE_CLASS, MAP
@@ -153,7 +153,7 @@ public class ParamsFlattener {
    * <li>If param is an RemoteObject, is sent is reference String</li>
    * <li>If param is a complex object, a Props object is created for it. The Props object has an
    * entry for each property with its name and value. The value of the property is also flatten.
-   Endpoint </li>
+   * Endpoint</li>
    * </ul>
    *
    * @param param
@@ -389,7 +389,8 @@ public class ParamsFlattener {
           }
 
           return unflattedComplexType(clazz, props, manager);
-
+        } else if (value instanceof List) {
+          return unflattenList(paramName, (List<?>) value, type, manager);
         } else {
           throw new ProtocolException(
               "A objectRef coded with a String or a Props is expected for param type '" + type
@@ -408,6 +409,8 @@ public class ParamsFlattener {
         Type typeArgs = paramType.getActualTypeArguments()[1];
         return unflattenMap(paramName, (Props) value, typeArgs, manager);
       }
+    } else if (type instanceof List) {
+      return unflattenList(paramName, (List<?>) value, type, manager);
     }
 
     throw new ProtocolException("Type '" + type + "' is not supported");
