@@ -194,7 +194,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line256">line 256</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line289">line 289</a>
     </li></ul></dd>
     
 
@@ -252,7 +252,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line264">line 264</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line297">line 297</a>
     </li></ul></dd>
     
 
@@ -423,6 +423,167 @@
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
         <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line230">line 230</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".getUsedMemory"><span class="type-signature">(static) </span>getUsedMemory<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+
+    
+
+
+
+<div class="description">
+    Returns the amount of memory that the server is using in KiB
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.ServerManager.html#~getUsedMemoryCallback">module:core/abstracts.ServerManager~getUsedMemoryCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line261">line 261</a>
     </li></ul></dd>
     
 
@@ -3416,6 +3577,156 @@ idenfiying the objects. By default, it's the object's ID.
 
 
             
+                
+
+    
+
+    <h4 class="name" id="~getUsedMemoryCallback"><span class="type-signature"></span>getUsedMemoryCallback<span class="signature">(error, result)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">external:int64</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The amount of KiB of memory being used</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line278">line 278</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
     
 
     
@@ -3435,7 +3746,7 @@ idenfiying the objects. By default, it's the object's ID.
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Fri Jun 24 2016 12:01:19 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Mon Jul 18 2016 12:36:22 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

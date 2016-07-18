@@ -132,6 +132,31 @@ public interface ServerManager extends MediaObject {
  **/
     TFuture<String> getKmd(Transaction tx, @org.kurento.client.internal.server.Param("moduleName") String moduleName);
 
+
+/**
+ *
+ * Returns the amount of memory that the server is using in KiB
+ * @return The amount of KiB of memory being used *
+ **/
+  long getUsedMemory();
+
+/**
+ *
+ * Asynchronous version of getUsedMemory:
+ * {@link Continuation#onSuccess} is called when the action is
+ * done. If an error occurs, {@link Continuation#onError} is called.
+ * @see ServerManager#getUsedMemory
+ *
+ **/
+    void getUsedMemory(Continuation<Long> cont);
+
+/**
+ *
+ * Returns the amount of memory that the server is using in KiB
+ * @return The amount of KiB of memory being used *
+ **/
+    TFuture<Long> getUsedMemory(Transaction tx);
+
     /**
      * Add a {@link EventListener} for event {@link ObjectCreatedEvent}. Synchronous call.
      *

@@ -47,6 +47,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/TFutureImpl.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/SdpEndpoint.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/GStreamerFilter.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/Handler.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/ZBarFilter.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/CodeFoundEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/ParamAnnotationUtils.java
@@ -92,6 +93,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCPeerConnectionStats.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/TransactionException.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/VideoCodec.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/ReconnectedHandler.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/MediaSessionStartedEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/MediaFlowInStateChangeEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCCertificateStats.java
@@ -146,6 +148,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCDataChannelState.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/KmsUrlLoader.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/server/KurentoServerTransportException.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/KurentoClientBuilder.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/server/ProtocolException.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/Endpoint.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/OnDataChannelClosedEvent.java

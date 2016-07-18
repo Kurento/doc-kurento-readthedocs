@@ -56,6 +56,9 @@ public class KurentoClient {
   private long requesTimeout = PropertiesManager.getProperty("kurento.client.requestTimeout",
       10000);
 
+  private long connectionTimeout = PropertiesManager.getProperty("kurento.client.connectionTimeout",
+      5000);
+
   private String id;
 
   private ServerManager serverManager;
@@ -67,6 +70,10 @@ public class KurentoClient {
   private String label;
 
   public static synchronized String getKmsUrl(String id, Properties properties) {
+
+    if (properties == null) {
+      properties = new Properties();
+    }
 
     if (kmsUrlLoader == null) {
 
@@ -139,13 +146,95 @@ public class KurentoClient {
         JsonRpcConnectionListenerKurento.create(listener));
     configureJsonRpcClient(client);
     return new KurentoClient(client);
+  }
 
+  protected static KurentoClient create(String kmsWsUri, Properties properties,
+      final Handler connectedHandler, final Handler connectionFailedHandler,
+      final Handler reconnectingHandler, final Handler disconnectedHandler,
+      final ReconnectedHandler reconnectedHandler, Long tryReconnectingMaxTime,
+      Long connectionTimeout) {
+
+    String clientId = null;
+    if (kmsWsUri == null) {
+      clientId = UUID.randomUUID().toString();
+      kmsWsUri = getKmsUrl(clientId, properties);
+    }
+
+    KurentoClient kurentoClient = null;
+
+    log.info("Connecting to KMS in {}", kmsWsUri);
+
+    JsonRpcClientWebSocket client = new JsonRpcClientWebSocket(kmsWsUri);
+
+    if (connectionTimeout != null) {
+      client.setConnectionTimeout(connectionTimeout);
+    }
+
+    if (connectedHandler != null) {
+      client.onConnected(new org.kurento.jsonrpc.client.Handler() {
+        @Override
+        public void run() {
+          connectedHandler.run();
+        }
+      });
+    }
+
+    if (connectionFailedHandler != null) {
+      client.onConnectionFailed(new org.kurento.jsonrpc.client.Handler() {
+        @Override
+        public void run() {
+          connectionFailedHandler.run();
+        }
+      });
+    }
+
+    if (reconnectingHandler != null) {
+      client.onReconnecting(new org.kurento.jsonrpc.client.Handler() {
+        @Override
+        public void run() {
+          reconnectingHandler.run();
+        }
+      });
+    }
+
+    if (disconnectedHandler != null) {
+      client.onDisconnected(new org.kurento.jsonrpc.client.Handler() {
+        @Override
+        public void run() {
+          disconnectedHandler.run();
+        }
+      });
+    }
+
+    if (reconnectedHandler != null) {
+      client.onReconnected(new org.kurento.jsonrpc.client.ReconnectedHandler() {
+        @Override
+        public void run(boolean sameServer) {
+          reconnectedHandler.run(sameServer);
+        }
+      });
+    }
+
+    configureJsonRpcClient(client);
+
+    if (tryReconnectingMaxTime != null) {
+      client.setTryReconnectingMaxTime(tryReconnectingMaxTime);
+    }
+
+    kurentoClient = new KurentoClient(client);
+
+    if (clientId != null) {
+      kurentoClient.setId(clientId);
+    }
+
+    return kurentoClient;
   }
 
   protected KurentoClient(JsonRpcClient client) {
     this.client = client;
     this.manager = new RomManager(new RomClientJsonRpcClient(client));
     client.setRequestTimeout(requesTimeout);
+    client.setConnectionTimeout(connectionTimeout);
     if (client instanceof JsonRpcClientWebSocket) {
       ((JsonRpcClientWebSocket) client).enableHeartbeat(KEEPALIVE_TIME);
     }
