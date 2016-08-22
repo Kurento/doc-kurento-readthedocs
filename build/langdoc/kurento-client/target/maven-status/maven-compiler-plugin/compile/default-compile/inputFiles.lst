@@ -5,8 +5,8 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/EventListener.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/DataChannelCloseEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/MediaObject.java
-/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCStatsIceCandidateType.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/IceGatheringDoneEvent.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCStatsIceCandidateType.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/IceCandidateFoundEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/PausedEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/SessionEndpoint.java
@@ -34,6 +34,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/client/operation/InvokeOperation.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/EndOfStreamEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RtpEndpoint.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/CertificateKeyType.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/AlphaBlending.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCIceCandidatePairStats.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/client/operation/SubscriptionOperation.java
@@ -48,8 +49,8 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/SdpEndpoint.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/GStreamerFilter.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/Handler.java
-/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/ZBarFilter.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/CodeFoundEvent.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/ZBarFilter.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/ParamAnnotationUtils.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/TransactionNotExecutedException.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/IceCandidatePair.java

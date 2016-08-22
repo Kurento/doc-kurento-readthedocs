@@ -1223,6 +1223,18 @@ public interface WebRtcEndpoint extends BaseRtpEndpoint {
       props.add("useDataChannels",Boolean.TRUE);
       return this;
     }
+/**
+ *
+ * Sets a value for certificateKeyType in Builder for WebRtcEndpoint.
+ *
+ * @param certificateKeyType
+ *       Define the type of the certificate used in dtls
+ *
+ **/
+    public Builder withCertificateKeyType(org.kurento.client.CertificateKeyType certificateKeyType){
+      props.add("certificateKeyType",certificateKeyType);
+      return this;
+    }
     }
 
 

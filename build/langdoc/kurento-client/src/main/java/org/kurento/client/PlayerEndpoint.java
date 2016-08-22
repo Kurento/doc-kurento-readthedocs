@@ -221,6 +221,18 @@ public interface PlayerEndpoint extends UriEndpoint {
       props.add("useEncodedMedia",Boolean.TRUE);
       return this;
     }
+/**
+ *
+ * Sets a value for networkCache in Builder for PlayerEndpoint.
+ *
+ * @param networkCache
+ *       When using rtsp sources. Amount of ms to buffer
+ *
+ **/
+    public Builder withNetworkCache(int networkCache){
+      props.add("networkCache",networkCache);
+      return this;
+    }
     }
 
 
