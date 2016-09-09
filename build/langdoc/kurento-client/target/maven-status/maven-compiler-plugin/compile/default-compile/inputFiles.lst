@@ -1,6 +1,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/ServerType.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/RTCInboundRTPStreamStats.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/KurentoConnectionListener.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/UriEndpointStateChangedEvent.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/transport/serialization/ParamsFlattener.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/EventListener.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/DataChannelCloseEvent.java
@@ -153,6 +154,7 @@
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/server/ProtocolException.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/Endpoint.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/OnDataChannelClosedEvent.java
+/opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/UriEndpointState.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/Hub.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/target/generated-sources/kmd/org/kurento/client/AudioCodec.java
 /opt/kurento/doc-kurento/build/langdoc/kurento-client/src/main/java/org/kurento/client/internal/NotEnoughResourcesException.java

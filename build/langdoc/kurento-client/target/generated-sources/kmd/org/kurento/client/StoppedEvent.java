@@ -8,7 +8,7 @@ package org.kurento.client;
 
 /**
  *
- * Fired when the recorder has been stopped and all the media has been written to storage.
+ * @deprecated</br>Fired when the recorder has been stopped and all the media has been written to storage.
  *
  **/
 public class StoppedEvent extends MediaEvent {
@@ -16,7 +16,7 @@ public class StoppedEvent extends MediaEvent {
 
 /**
  *
- * Fired when the recorder has been stopped and all the media has been written to storage.
+ * @deprecated</br>Fired when the recorder has been stopped and all the media has been written to storage.
  *
  * @param source
  *       Object that raised the event
