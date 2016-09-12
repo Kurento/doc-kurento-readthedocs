@@ -38,7 +38,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-pointerdetector
-    git checkout 6.5.1-dev
+    git checkout 6.6.0
     npm install
 
 If you have problems installing any of the dependencies, please remove them and
@@ -290,7 +290,7 @@ file for managing this dependency is:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client" : "6.5.1-dev"
+      "kurento-client" : "6.6.0"
    }
 
 At the client side, dependencies are managed using Bower. Take a look to the
@@ -300,8 +300,8 @@ file and pay attention to the following section:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "6.5.1-dev",
-      "kurento-module-pointerdetector": "6.5.1-dev"
+      "kurento-utils" : "6.6.0",
+      "kurento-module-pointerdetector": "6.6.0"
    }
 
 .. note::
