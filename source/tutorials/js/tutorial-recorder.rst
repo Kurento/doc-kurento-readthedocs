@@ -29,7 +29,7 @@ be installed using `npm`:term: :
 
    sudo npm install http-server -g
 
-You will need to download the source code form GitHub. There are two implementations
+You will need to download the source code from GitHub. There are two implementations
 of this tutorial, but they are functionally the same. It's just the internal
 implementation that changes. After checking out the code, you can start the
 web server.
@@ -69,7 +69,7 @@ Understanding this example
 
 In the first part of this demo, the local stream is sent to Kurento Media Server,
 which returns it back to the client and records to the same time. In order to
-implement this behavior we need to create a`Media Pipeline`:term: consisting of a
+implement this behavior, we need to create a`Media Pipeline`:term: consisting of a
 **WebRtcEndpoint** and a **RecorderEnpoint**.
 
 The second part of this demo shows how to play recorded media. To achieve this,
@@ -77,7 +77,7 @@ we need to create a `Media Pipeline`:term: composed by a **WebRtcEndpoint** and
 a **PlayerEndpoint**. The *uri* property of the player is the uri of the 
 recorded file.
 
-There are two implementations for this demo to be found in github:
+There are two implementations for this demo to be found in GitHub:
 
 * Using `callbacks <https://github.com/Kurento/kurento-tutorial-js/tree/master/kurento-recorder>`_.
 * Using `yield <https://github.com/Kurento/kurento-tutorial-js/tree/master/kurento-hello-world-recorder-generator>`_.
@@ -147,7 +147,7 @@ to show the video camera (local stream) and the video tag *videoOutput* to show
 the remote stream provided by the Kurento Media Server.
 
 Inside this function, a call to *generateOffer* is performed. This function
-accepts a callback in which the SDP offer is received. In this callback we
+accepts a callback in which the SDP offer is received. In this callback, we
 create an instance of the *KurentoClient* class that will manage communications
 with the Kurento Media Server. So, we need to provide the URI of its WebSocket
 endpoint. In this example, we assume it's listening in port 8433 at the same
@@ -226,7 +226,7 @@ If everything works correctly, we have an instance of a media pipeline (variable
      });
 
 
-When stop button is clicked, the recoder element stops to record, and all
+When the stop button is clicked, the recorder element stops recording, and all
 elements are released.
 
 .. sourcecode:: javascript
