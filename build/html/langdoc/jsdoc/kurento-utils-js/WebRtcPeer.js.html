@@ -51,6 +51,7 @@ var hark = require('hark')
 var EventEmitter = require('events').EventEmitter
 var recursive = require('merge').recursive.bind(undefined, true)
 var sdpTranslator = require('sdp-translator')
+var logger = window.Logger || console
 
 // var gUM = navigator.mediaDevices.getUserMedia || function (constraints) {
 //   return new Promise(navigator.getUserMedia(constraints, function (stream) {
@@ -63,7 +64,7 @@ try {
   require('kurento-browser-extensions')
 } catch (error) {
   if (typeof getScreenConstraints === 'undefined') {
-    console.warn('screen sharing is not available')
+    logger.warn('screen sharing is not available')
 
     getScreenConstraints = function getScreenConstraints(sendSource, callback) {
       callback(new Error("This library is not enabled for screen sharing"))
@@ -87,12 +88,12 @@ var browser = parser.getBrowser()
 
 var usePlanB = false
 if (browser.name === 'Chrome' || browser.name === 'Chromium') {
-  console.log(browser.name + ": using SDP PlanB")
+  logger.info(browser.name + ": using SDP PlanB")
   usePlanB = true
 }
 
 function noop(error) {
-  if (error) console.error(error)
+  if (error) logger.error(error)
 }
 
 function trackStop(track) {
@@ -163,7 +164,7 @@ function removeFIDFromOffer(sdp) {
 function getSimulcastInfo(videoStream) {
   var videoTracks = videoStream.getVideoTracks();
   if (!videoTracks.length) {
-    console.warn('No video tracks available in the video stream')
+    logger.warn('No video tracks available in the video stream')
     return ''
   }
   var lines = [
@@ -393,7 +394,7 @@ function WebRtcPeer(mode, options, callback) {
       candidate = new RTCIceCandidate(iceCandidate)
     }
 
-    console.log('ICE candidate received')
+    logger.debug('Remote ICE candidate received', iceCandidate)
     callback = (callback || noop).bind(this)
     addIceCandidate(candidate, callback)
   }
@@ -427,18 +428,18 @@ function WebRtcPeer(mode, options, callback) {
     var constraints = recursive(browserDependantConstraints,
       connectionConstraints)
 
-    console.log('constraints: ' + JSON.stringify(constraints))
+    logger.info('constraints: ' + JSON.stringify(constraints))
 
     pc.createOffer(constraints).then(function (offer) {
-      console.log('Created SDP offer')
+      logger.info('Created SDP offer')
       offer = mangleSdpToAddSimulcast(offer)
       return pc.setLocalDescription(offer)
     }).then(function () {
       var localDescription = pc.localDescription
-      console.log('Local description set', localDescription.sdp)
+      logger.info('Local description set', localDescription.sdp)
       if (multistream &amp;&amp; usePlanB) {
         localDescription = interop.toUnifiedPlan(localDescription)
-        console.log('offer::origPlanB->UnifiedPlan', dumpSDP(
+        logger.info('offer::origPlanB->UnifiedPlan', dumpSDP(
           localDescription))
       }
       callback(null, localDescription.sdp, self.processAnswer.bind(
@@ -463,7 +464,7 @@ function WebRtcPeer(mode, options, callback) {
       remoteVideo.src = url
       remoteVideo.load()
 
-      console.log('Remote URL:', url)
+      logger.info('Remote URL:', url)
     }
   }
 
@@ -476,7 +477,7 @@ function WebRtcPeer(mode, options, callback) {
     if (dataChannel &amp;&amp; dataChannel.readyState === 'open') {
       dataChannel.send(data)
     } else {
-      console.warn(
+      logger.warn(
         'Trying to send data over a non-existing or closed data channel')
     }
   }
@@ -501,11 +502,11 @@ function WebRtcPeer(mode, options, callback) {
 
     if (multistream &amp;&amp; usePlanB) {
       var planBAnswer = interop.toPlanB(answer)
-      console.log('asnwer::planB', dumpSDP(planBAnswer))
+      logger.info('asnwer::planB', dumpSDP(planBAnswer))
       answer = planBAnswer
     }
 
-    console.log('SDP answer received, setting remote description')
+    logger.info('SDP answer received, setting remote description')
 
     if (pc.signalingState === 'closed') {
       return callback('PeerConnection is closed')
@@ -539,11 +540,11 @@ function WebRtcPeer(mode, options, callback) {
 
     if (multistream &amp;&amp; usePlanB) {
       var planBOffer = interop.toPlanB(offer)
-      console.log('offer::planB', dumpSDP(planBOffer))
+      logger.info('offer::planB', dumpSDP(planBOffer))
       offer = planBOffer
     }
 
-    console.log('SDP offer received, setting remote description')
+    logger.info('SDP offer received, setting remote description')
 
     if (pc.signalingState === 'closed') {
       return callback('PeerConnection is closed')
@@ -555,16 +556,16 @@ function WebRtcPeer(mode, options, callback) {
       return pc.createAnswer()
     }).then(function (answer) {
       answer = mangleSdpToAddSimulcast(answer)
-      console.log('Created SDP answer')
+      logger.info('Created SDP answer')
       return pc.setLocalDescription(answer)
     }).then(function () {
       var localDescription = pc.localDescription
       if (multistream &amp;&amp; usePlanB) {
         localDescription = interop.toUnifiedPlan(localDescription)
-        console.log('answer::origPlanB->UnifiedPlan', dumpSDP(
+        logger.info('answer::origPlanB->UnifiedPlan', dumpSDP(
           localDescription))
       }
-      console.log('Local description set', localDescription.sdp)
+      logger.info('Local description set', localDescription.sdp)
       callback(null, localDescription.sdp)
     }).catch(callback)
   }
@@ -572,14 +573,14 @@ function WebRtcPeer(mode, options, callback) {
   function mangleSdpToAddSimulcast(answer) {
     if (simulcast) {
       if (browser.name === 'Chrome' || browser.name === 'Chromium') {
-        console.log('Adding multicast info')
+        logger.info('Adding multicast info')
         answer = new RTCSessionDescription({
           'type': answer.type,
           'sdp': removeFIDFromOffer(answer.sdp) + getSimulcastInfo(
             videoStream)
         })
       } else {
-        console.warn('Simulcast is only available in Chrome browser.')
+        logger.warn('Simulcast is only available in Chrome browser.')
       }
     }
 
@@ -737,7 +738,7 @@ WebRtcPeer.prototype.getRemoteStream = function (index) {
  * @function module:kurentoUtils.WebRtcPeer.prototype.dispose
  */
 WebRtcPeer.prototype.dispose = function () {
-  console.log('Disposing WebRtcPeer')
+  logger.info('Disposing WebRtcPeer')
 
   var pc = this.peerConnection
   var dc = this.dataChannel
@@ -760,7 +761,7 @@ WebRtcPeer.prototype.dispose = function () {
       pc.close()
     }
   } catch (err) {
-    console.warn('Exception disposing webrtc peer ' + err)
+    logger.warn('Exception disposing webrtc peer ' + err)
   }
 
   this.emit('_dispose')
@@ -823,7 +824,7 @@ exports.hark = harkUtils
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Mon Oct 10 2016 13:53:59 GMT+0000 (UTC)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.2</a> on Mon Oct 31 2016 16:32:41 GMT+0000 (UTC)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -260,7 +260,7 @@ Demo dependencies are located in file `bower.json <https://github.com/Kurento/ku
 
    "dependencies": {
       "kurento-client": "6.6.1-dev",
-      "kurento-utils": "6.6.1-dev"
+      "kurento-utils": "6.6.2-dev"
    }
 
 .. note::

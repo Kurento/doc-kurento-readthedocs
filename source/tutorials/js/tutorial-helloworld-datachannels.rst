@@ -239,7 +239,7 @@ They are managed using `Bower`:term:.
 
    "dependencies": {
       "kurento-client": "6.6.1-dev",
-      "kurento-utils": "6.6.1-dev"
+      "kurento-utils": "6.6.2-dev"
    }
 
 .. note::

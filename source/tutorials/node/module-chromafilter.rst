@@ -265,7 +265,7 @@ file and pay attention to the following section:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "6.6.1-dev",
+      "kurento-utils" : "6.6.2-dev",
       "kurento-module-pointerdetector": "6.6.1-dev"
    }
 
