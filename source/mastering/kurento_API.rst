@@ -68,7 +68,7 @@ developers:
    and sending back the resulting stream*
 
 Kurento API is an object oriented API. That is, there are classes that can be
-instantiated. This classes define operations that can be invoked over objects
+instantiated. These classes define operations that can be invoked over objects
 of this classes. The classes can have an inheritance relationship with other
 classes, inheriting operations from parent classes to children ones.
 
