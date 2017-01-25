@@ -64,7 +64,7 @@ developers:
    :alt:    Media Pipeline Example
 
    *Example of a Media Pipeline implementing an interactive multimedia application
-   receiving media from a WebRtcEndpoint, overlaying and image on the detected faces
+   receiving media from a WebRtcEndpoint, overlaying an image on the detected faces
    and sending back the resulting stream*
 
 Kurento API is an object oriented API. That is, there are classes that can be
