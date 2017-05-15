@@ -27,13 +27,12 @@ Kurento is based on two concepts that act as building blocks for application
 developers:
 
 -  **Media Elements**. A Media element is a functional unit performing a
-   specific action on a media stream. Media elements are a way of every
-   capability is represented as a self-contained “black box” (the media
-   element) to the application developer, who does not need to understand the
-   low-level details of the element for using it. Media elements are capable of
-   *receiving* media from other elements (through media sources) and of
-   *sending* media to other elements (through media sinks). Depending on their
-   function, media elements can be split into different groups:
+   specific action on a media stream. Every capability is represented as a
+   self-contained “black box” (the media element) to the application developer,
+   who does not need to understand the low-level details of the element for
+   using it. Media elements are capable of *receiving* media from other elements
+   (through media sources) and of *sending* media to other elements (through media
+   sinks). Depending on their function, media elements can be split into different groups:
 
    -  **Input Endpoints**: Media elements capable of receiving media and
       injecting it into a pipeline. There are several types of input endpoints.
@@ -47,7 +46,7 @@ developers:
    -  **Hubs**: Media Objects in charge of managing multiple media flows
       in a pipeline. A Hub has several hub ports where other media elements are
       connected. Depending on the Hub type, there are different ways to control
-      the media. For example, there are a Hub called Composite that merge all
+      the media. For example, there is a Hub called Composite that merges all
       input video streams in a unique output video stream with all inputs in a
       grid.
    -  **Output Endpoints**: Media elements capable of taking a media
@@ -355,7 +354,7 @@ The following class diagram shows the relationships of the hubs.
     "Hub" -> "DispatcherOneToMany";
 
 
-You see the details of the Kurento Clients see the JavaDoc/JsDoc:
+To see the details of the Kurento Clients see the JavaDoc/JsDoc:
 
 - `kurento-client-java <../_static/langdoc/javadoc/index.html>`_ : JavaDoc of Kurento
   Java Client.
