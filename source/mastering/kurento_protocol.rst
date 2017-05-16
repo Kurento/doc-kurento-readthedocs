@@ -63,8 +63,8 @@ following members:
 -  **id**: this member is mandatory and it must match the value of the *id*
    member in the *request* message.
 -  **result**: its value is determined by the method invoked on the server.
-   In case the connection is rejected, it's returned an message with a
-   *rejected* attribute containing an message with a *code* and *message*
+   In case the connection is rejected, it's returned a message with a
+   *rejected* attribute containing a message with a *code* and *message*
    attributes with the reason why the session was not accepted, and no
    sessionId is defined.
 
@@ -92,7 +92,7 @@ members:
    member in the *request* message. If there was an error in detecting the *id*
    in the *request* message (e.g. *Parse Error/Invalid Request*), it equals to
    null.
--  **error**: an message describing the error through the following members:
+-  **error**: a message describing the error through the following members:
 
    -  **code**: an integer number that indicates the error type that
       occurred.
@@ -108,7 +108,7 @@ The following example shows a typical error response::
       "id": 1,
       "error": {
         "code": "33",
-        "message": "Invalid paramter format"
+        "message": "Invalid parameter format"
       }
     }
 
@@ -116,28 +116,28 @@ Kurento API over JSON-RPC
 =========================
 
 As explained in :doc:`Kurento API section <kurento_API>`, Kurento Media Server
-exposes a full fledged API to let applications to process media in several ways.
+exposes a full fledged API to let applications process media in several ways.
 
-To allow this rich API, Kurento Clients require requires full-duplex
-communications between client and server infrastructure. For this reason, the
-Kurento Protocol is based on WebSocket transports.
+To allow this rich API, Kurento Clients require full-duplex communications between
+client and server infrastructure. For this reason, the Kurento Protocol is based
+on WebSocket transport.
 
 Previous to issuing commands, the Kurento Client requires establishing a
 WebSocket connection with Kurento Media Server to the URL:
 ``ws://hostname:port/kurento``
 
-Once the WebSocket has been established, the Kurento Protocol offers different
-types of request/response messages:
+Once the WebSocket connection has been established, the Kurento Protocol
+offers different types of request/response messages:
 
  - **ping**: Keep-alive method between client and Kurento Media Server.
  - **create**: Instantiates a new media object, that is, a pipeline or media
    element.
  - **invoke**: Calls a method of an existing media object.
- - **subscribe**: Creates a subscription to an event in a object.
+ - **subscribe**: Creates a subscription to an event in an object.
  - **unsubscribe**: Removes an existing subscription to an event.
- - **release**: Deletes the object and release resources used by it.
+ - **release**: Deletes the object and releases resources used by it.
 
-The Kurento Protocol allows to Kurento Media Server send requests to clients:
+The Kurento Protocol also allows the Kurento Media Server to send requests to clients:
 
  - **onEvent**: This request is sent from Kurento Media server to clients
    when an event occurs.
@@ -151,8 +151,8 @@ on a ``ping`` method sent by the client, which must be replied with a ``pong``
 message from the server. If no response is obtained in a time interval, the
 client is aware that the connectivity with the media server has been lost.The
 parameter ``interval`` is the time out to receive the ``Pong`` message from the
-server, in milliseconds. By default this value is ``240000`` (i.e. 40 seconds).
-This is an example of ``ping`` request::
+server, in milliseconds. By default this value is ``240000`` (i.e. 240 seconds).
+This is an example of ``ping`` request::x6
 
    {
        "id": 1,
@@ -219,10 +219,11 @@ identifier of the current session::
    }
 
 The response message contains the identifier of the new object in the field
-value. As usual, the message ``id`` must match with the request message. The
-``sessionId`` is also returned in each response. The following example shows a
-request message requesting the creation of an object of the type
-``WebRtcEndpoint`` within an existing Media Pipeline (identified by the
+``value``. As usual, the message ``id`` must match with the request message. The
+``sessionId`` is also returned in each response.
+
+The following example shows a request message requesting the creation of an object
+of the type ``WebRtcEndpoint`` within an existing Media Pipeline (identified by the
 parameter ``mediaPipeline``). Notice that in this request, the ``sessionId`` is
 already present, while in the previous example it was not (since at that point
 was unknown for the client)::
@@ -236,21 +237,6 @@ was unknown for the client)::
                "mediaPipeline": "6ba9067f-cdcf-4ea6-a6ee-d74519585acd_kurento.MediaPipeline"
            },
            "properties": {},
-           "sessionId": "bd4d6227-0463-4d52-b1c3-c71f0be68466"
-       },
-       "jsonrpc": "2.0"
-   }
-
-The following example shows a request message requesting the creation of an
-object of the type ``WebRtcEndpoint`` within an existing Media Pipeline
-(identified by the parameter ``mediaPipeline``). Notice that in this request,
-the ``sessionId`` is already present, while in the previous example it was not
-(since at that point was unknown for the client)::
-
-   {
-       "id": 3,
-       "result": {
-           "value": "6ba9067f-cdcf-4ea6-a6ee-d74519585acd_kurento.MediaPipeline/087b7777-aab5-4787-816f-f0de19e5b1d9_kurento.WebRtcEndpoint",
            "sessionId": "bd4d6227-0463-4d52-b1c3-c71f0be68466"
        },
        "jsonrpc": "2.0"
@@ -414,7 +400,7 @@ server send to client has all the information about the event:
     are key-value metadata that can be used by developers for custom purposes.
     Tags are returned with each event by the media server in this field.
 
-The following example shows a notification sent for server to client to notify
+The following example shows a notification sent from server to client to notify
 an event of type ``EndOfStream`` for a ``PlayerEndpoint`` object::
 
     {
@@ -446,11 +432,11 @@ garbage collector.
 A Media Element is collected when the client is disconnected longer than 4
 minutes. After that time, these media elements are disposed automatically.
 
-Therefore the WebSocket connection between client and KMS be active any time. In
-case of temporary network disconnection, KMS implements a mechanism to allow
+Therefore the WebSocket connection between client and KMS must be active at any time.
+In case of a temporary network disconnection, KMS implements a mechanism to allow
 the client reconnection.
 
-There is an special kind of message with the format above. This message allows a
+There is a special kind of message with the format below. This message allows a
 client to reconnect to the same KMS previously connected::
 
     {
@@ -501,8 +487,8 @@ Kurento API
 ===========
 
 In order to implement a Kurento client you need the reference documentation. The
-best way to know all details is take a look to IDL file that defines the
-interface of the Kurento elements. We have defined a custom IDL format based on
+best way to know all details is to take a look at IDL files that define the
+interface of Kurento elements. We have defined a custom IDL format based on
 JSON. From it, we generate the client code for Java and JavaScript. Kurento API
 is defined in the following IDL files:
 
@@ -521,7 +507,7 @@ client and the Kurento Media Server in order to create a WebRTC in loopback.
 This example is fully depicted in the :doc:`tutorials <../tutorials>` section.
 The steps are the following:
 
-1. Client sends a request message in order to a media pipeline::
+1. Client sends a request message in order to create a media pipeline::
 
     {
       "id":1,
@@ -591,7 +577,7 @@ to create a loopback::
       "jsonrpc":"2.0"
     }
 
-6. KMS carry out the connection and acknowledges the operation::
+6. KMS carries out the connection and acknowledges the operation::
 
     {
       "id":3,
@@ -618,7 +604,7 @@ order to negotiate SDP in WebRTC::
       "jsonrpc":"2.0"
     }
 
-8. KMS carry out the SDP negotiation and returns the SDP answer::
+8. KMS carries out the SDP negotiation and returns the SDP answer::
 
     {
       "id":4,
@@ -633,7 +619,7 @@ Kurento Module Creator
 ======================
 
 The default Kurento clients (Java and JavaScript) are created using a tool
-called **Kurento Module Creator**. Therefore, this tool can be also be used to
+called **Kurento Module Creator**. Therefore, this tool can also be used to
 create custom clients in other languages.
 
 Kurento Module Creator can be installed in an Ubuntu machine using the following
