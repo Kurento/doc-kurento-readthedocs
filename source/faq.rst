@@ -13,8 +13,8 @@ How do I...
 ...install Kurento Media Server in an Amazon EC2 instance?
 ----------------------------------------------------------
 
-   If you are installing Kurento in a NAT environment (i.e. in any cloud
-   provider), you'll need to provide a STUN server configuration in
+   If you are installing Kurento in a NAT environment (i.e. behind a
+   router), you'll need to provide a STUN server configuration in
    ``/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini``. Apart from that,
    you will have to open all UDP ports in your security group, as STUN will use
    any port available from the whole 0-65535 range.
