@@ -52,5 +52,5 @@ to our :doc:`tutorials<tutorials>` in form of working demo applications. You
 can choose your favorite technology to build multimedia applications: **Java**,
 **Browser JavaScript** or **Node.js**.
 
-If you want to make the most of Kurento, please take a look to the
+If you want to make the most of Kurento, please take a look at the
 :doc:`advanced documentation<mastering_kurento>`.
