@@ -83,7 +83,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-nav-search">
         <a href="{{ pathto(master_doc) }}" class="fa fa-home">
-          <!--<img style="width:159px;border-radius:0" src="{{ pathto('_static/img/kurento-rect-logo2.png',1) }}"/>-->
+          <img style="width:159px;border-radius:0" src="{{ pathto('_static/img/kurento-rect-logo2.png',1) }}"/>
           <span style="font-size:0.8em">v6.6.1</span></a>
         {% include "searchbox.html" %}
       </div>
@@ -113,9 +113,30 @@
       <div class="wy-nav-content">
         <div class="rst-content">
           {% include "breadcrumbs.html" %}
-          %..test..%
+          
+          <a href="http://openvidu.io" style="
+              color: #0088aa;
+          "><div style="
+              margin-top: 30px;
+              margin-bottom: 30px;
+              text-align: center;
+              padding: 20px;
+              background-color: rgba(0, 136, 170, 0.05);
+              border: solid 3px #0088aa;
+              border-radius: 4px;
+          ">
+              <img src="http://openvidu.io/img/logos/openvidu_vert_grey_bg_transp_cropped.png" style="
+              width: 350px;
+          ">
+              <p style="
+              font-size: 19px;
+              margin-top: 20px;
+              margin-bottom: 0;
+          ">Discover the new easier way to develop Kurento video applications</p>
+              </div>
+          </a>
+          
           <div role="main">
-            ..
             {% block body %}{% endblock %}
           </div>
           {% include "footer.html" %}
