@@ -6,7 +6,7 @@ Introduction
 ============
 
 Besides WebRTC connections, Kurento Media Server is able to manage standard RTP
-streams, allowing to connect an instance of KMS to a wide variety of devides.
+streams, allowing to connect an instance of KMS to a wide variety of devices.
 
 There are two things to note when dealing with RTP connections, regarding the
 automatic congestion control algorithms that KMS implements, and the NAT
@@ -23,7 +23,7 @@ basic RTP streams.
 
 Also it is important to note that KMS implements REMB propagation between the
 sender and receiver legs of a connection. This means that when KMS is used as a
-proxy between a video sender and one or more vide receivers, the smallest REMB
+proxy between a video sender and one or more video receivers, the smallest REMB
 value from the receivers will be relayed to the sender. This allows the sender
 to choose a lower bitrate that will accomodate all of the receivers connected to
 KMS at the other side.
@@ -89,7 +89,7 @@ This mechanism has the following requisites and/or limitations:
   `IETF RFC 4961 <https://tools.ietf.org/html/rfc4961>`__.
 - The active peer must actually send some RTP/RTCP packets before the passive
   peer is able to send any data back. In other words, it is not possible to
-  stablish a one-way stream where only the passive peer sends data to the active
+  establish a one-way stream where only the passive peer sends data to the active
   peer.
 
 This is how to enable the Connection-Oriented Media Transport mode:
