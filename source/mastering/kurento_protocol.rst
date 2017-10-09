@@ -521,7 +521,7 @@ client and the Kurento Media Server in order to create a WebRTC in loopback.
 This example is fully depicted in the :doc:`tutorials <../tutorials>` section.
 The steps are the following:
 
-1. Client sends a request message in order to a media pipeline::
+1. Client sends a request message in order to create a media pipeline::
 
     {
       "id":1,
