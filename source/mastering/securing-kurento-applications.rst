@@ -166,7 +166,8 @@ by default. For this reason, you'll need to force them to accept it.
 
 * Browser applications: You'll need to manually accept the certificate as
   trusted one before secure WebSocket connections can be established. By
-  default, this can be done by connecting to https://localhost:8433/kurento and accepting the certificate in the browser.
+  default, this can be done by connecting to connecting to
+  https://localhost:8433/kurento and accepting the certificate in the browser.
 
 * Java applications, follow the instructions of this
   `link <http://www.mkyong.com/webservices/jax-ws/suncertpathbuilderexception-unable-to-find-valid-certification-path-to-requested-target/>`_

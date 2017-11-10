@@ -64,7 +64,7 @@ After that, install Kurento Media Server 6 as depicted at the top of this page.
 STUN and TURN servers
 =====================
 
-If Kurento Media Server or any of its clients are located behind a :term:`NAT`,
+If Kurento Media Server or any of its cliens are located behind a :term:`NAT`,
 you need to use a :term:`STUN` or :term:`TURN` server in order to achieve
 :term:`NAT traversal`. In most cases, STUN is effective in addressing the NAT
 issue with most consumer network devices (routers). However, it doesn't work for

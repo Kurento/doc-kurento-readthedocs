@@ -118,7 +118,7 @@ Kurento API over JSON-RPC
 As explained in :doc:`Kurento API section <kurento_API>`, Kurento Media Server
 exposes a full fledged API to let applications to process media in several ways.
 
-To allow this rich API, Kurento Clients require full-duplex
+To allow this rich API, Kurento Clients require requires full-duplex
 communications between client and server infrastructure. For this reason, the
 Kurento Protocol is based on WebSocket transports.
 
@@ -521,7 +521,7 @@ client and the Kurento Media Server in order to create a WebRTC in loopback.
 This example is fully depicted in the :doc:`tutorials <../tutorials>` section.
 The steps are the following:
 
-1. Client sends a request message in order to create a media pipeline::
+1. Client sends a request message in order to a media pipeline::
 
     {
       "id":1,

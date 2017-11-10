@@ -300,7 +300,7 @@ modules are summarized in the following picture
    :align: center
    :alt:   Main interactions in a RTC session
 
-*Main interactions in a WebRTC session. Interactions taking place in a Real Time Communications (RTC) session. During the negotiation phase, a Session Description Protocol (SDP) message is exchanged offering the capabilities of the client. As a result, Kurento Media Server generates an SDP answer that can be used by the client for establishing the media exchange.*
+*Main interactions in a WebRTC session. Interactions taking place in a Real Time Communications (RTC) session. During the negotiation phase, a Session Description Protocol (SDP) message is exchanged offering the capabilities of the client. As a result, Kurento Media Server generates an SDP answer that can be used by the client for extablishing the media exchange.*
 
 The application developer is able to create the desired pipeline during the
 negotiation phase, so that the real time multimedia stream is processed
