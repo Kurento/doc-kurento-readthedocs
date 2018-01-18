@@ -5,14 +5,14 @@
 # IMPORTANT: Notice that DOC_VERSION should be the same as variable "release" in conf.py,
 # so when this variable is updated, it should be also updated in conf.py
 
-DOC_VERSION = 6.6.2-dev
-KMS_VERSION = 6.6.2-dev
-CLIENT_JAVA_VERSION = 6.6.3-SNAPSHOT
-CLIENT_JS_VERSION = 6.6.2-dev
-UTILS_JS_VERSION = 6.6.3-dev
-TUTORIAL_JAVA_VERSION = 6.6.3-SNAPSHOT
-TUTORIAL_JS_VERSION = 6.6.2-dev
-TUTORIAL_NODE_VERSION = 6.6.2-dev
+DOC_VERSION = 6.6.2
+KMS_VERSION = 6.6.2
+CLIENT_JAVA_VERSION = 6.6.2
+CLIENT_JS_VERSION = 6.6.0
+UTILS_JS_VERSION = 6.6.2
+TUTORIAL_JAVA_VERSION = 6.6.2
+TUTORIAL_JS_VERSION = 6.6.1
+TUTORIAL_NODE_VERSION = 6.6.1
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
@@ -233,7 +233,7 @@ dist: langdoc html epub latexpdf
 	cp $(BUILDDIR)/epub/Kurento.epub $(BUILDDIR)/latex/Kurento.pdf $(BUILDDIR)/html &&\
 	tar zcvf $(BUILDDIR)/dist/kurento-docs-$(DOC_VERSION).tgz -C $(BUILDDIR)/html .
 
-readthedocs: langdoc
+ci-readthedocs: langdoc
 	find ./source -name "*.html" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
 	find ./source -name "*.rst" -exec sed -i -e "s@|DOC_VERSION|@$(DOC_VERSION)@" {} \;
 	find ./source -name "*.rst" -exec sed -i -e "s@|KMS_VERSION|@$(KMS_VERSION)@" {} \;
