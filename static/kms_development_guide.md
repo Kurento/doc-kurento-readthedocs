@@ -370,10 +370,56 @@ More launch options, handled by GStreamer:
 https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gst-running.html
 
 
+##### Logging levels and categories
 
+Each different **component** of KMS is able to create its own logging messages. Besides that, each individual logging message has an importance **level**, which defines how critical (or verbose) the message is. These are the different message levels, as defined by the GStreamer logging library:
+- **(1) ERROR**: Logs all fatal errors. These are errors that do not allow the core or elements to perform the requested action. The application can still recover if programmed to handle the conditions that triggered the error.
+- **(2) WARNING**: Logs all warnings. Typically these are non-fatal, but user-visible problems are expected to happen.
+- **(3) FIXME**: Logs all fixme messages. Fixme messages are messages that indicate that something in the executed code path is not fully implemented or handled yet. The purpose of this message is to make it easier to spot incomplete/unfinished pieces of code when reading the debug log.
+- **(4) INFO**: Logs all informational messages. These are typically used for events in the system that only happen once, or are important and rare enough to be logged at this level.
+- **(5) DEBUG**: Logs all debug messages. These are general debug messages for events that happen only a limited number of times during an object's lifetime; these include setup, teardown, change of parameters, ...
+- **(6) LOG**: Logs all log messages. These are messages for events that happen repeatedly during an object's lifetime; these include streaming and steady-state conditions.
+- **(7) TRACE**: Logs all trace messages. These messages for events that happen repeatedly during an object's lifetime such as the ref/unref cycles.
+- **(9) MEMDUMP**: Log all memory dump messages. Memory dump messages are used to log (small) chunks of data as memory dumps in the log. They will be displayed as hexdump with ASCII characters.
+
+Logging categories and levels can be set by two methods:
+
+- Use the specific command-line argument while launching KMS. For example:
+
+  ```
+  --gst-debug-level=3 \
+  --gst-debug=Kurento*:4,kms*:4
+  ```
+
+- Use the environment variable `GST_DEBUG`. For example:
+
+  ```
+  export GST_DEBUG="3,Kurento*:4,kms*:4"
+  ```
+
+Here are some tips on what logging components and levels could be most useful depending on what is the issue to be analyzed:
+
+- Global level: **3** (higher than 3 would mean too much noise from GStreamer).
+- Unit tests: `check:5`.
+- SDP processing: `kmssdpsession:4`.
+- COMEDIA port discovery: `rtpendpoint:4`.
+- ICE candidate gathering:
+  - At the Nice Agent (handling of candidates): `kmsiceniceagent:5`.
+  - At the KMS WebRtcSession (decision logic): `kmswebrtcsession:5`.
+  - At the WebRtcEndpoint (very basic logging): `webrtcendpoint:4`.
+- REMB congestion control:
+  - Only effective REMB send/recv values: `kmsremb:5`.
+  - Full handling of all source SSRCs: `kmsremb:6`.
+- MediaFlow{In|Out} state changes: `KurentoMediaElementImpl:5`.
+- RPC calls: `KurentoWebSocketTransport:5`.
+- RTP Sync: `kmsutils:5,rtpsynchronizer:5,rtpsynccontext:5,basertpendpoint:5`.
+- Player: `playerendpoint:5`.
+- Recorder: `KurentoRecorderEndpointImpl:4,recorderendpoint:5,qtmux:5`.
 
 
 ##### ICE troubleshooting: libnice debug log
+
+The ICE protocol is used together with STUN and TURN servers to discover the public IP and ports of all peers in a WebRTC call; in KMS, all this process is managed by a 3rd-party library called 'libnice'.
 
 This library has its own logging system, but it comes disabled by default. A developer can enable it easily, which can prove useful in situations where a developer is studying an issue with the ICE process. However, the debug output of 'libnice' is very verbose, so it makes sense that it comes disabled by default for production systems.
 
