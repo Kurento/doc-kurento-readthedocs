@@ -16,12 +16,12 @@ For the impatient: running this example
 
 First of all, you should install Kurento Media Server to run this demo. Please
 visit the :doc:`installation guide </user/installation>` for further
-information. In addition, the built-in module ``kms-crowddetector-6.0`` should
+information. In addition, the built-in module ``kms-crowddetector`` should
 be also installed:
 
 .. sourcecode:: bash
 
-    sudo apt-get install kms-crowddetector-6.0
+    sudo apt-get install kms-crowddetector
 
 Be sure to have installed `Node.js`:term: and `Bower`:term: in your system. In
 an Ubuntu machine, you can install both as follows:
@@ -39,7 +39,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-crowddetector
-    git checkout 6.7.0-dev
+    git checkout 6.7.0
     npm install
 
 If you have problems installing any of the dependencies, please remove them and
@@ -320,7 +320,7 @@ file for managing this dependency is:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client" : "6.7.0-dev"
+      "kurento-client" : "6.7.0"
    }
 
 At the client side, dependencies are managed using Bower. Take a look to the
@@ -330,8 +330,8 @@ file and pay attention to the following section:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "6.7.0-dev",
-      "kurento-module-pointerdetector": "6.7.0-dev"
+      "kurento-utils" : "6.7.0",
+      "kurento-module-pointerdetector": "6.7.0"
    }
 
 .. note::

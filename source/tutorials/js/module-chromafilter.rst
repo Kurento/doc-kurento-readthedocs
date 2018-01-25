@@ -15,12 +15,12 @@ For the impatient: running this example
 
 First of all, you should install Kurento Media Server to run this demo. Please
 visit the :doc:`installation guide </user/installation>` for further
-information. In addition, the built-in module ``kms-chroma-6.0`` should be also
+information. In addition, the built-in module ``kms-chroma`` should be also
 installed:
 
 .. sourcecode:: bash
 
-    sudo apt-get install kms-chroma-6.0
+    sudo apt-get install kms-chroma
 
 Be sure to have installed `Node.js`:term: and `Bower`:term: in your system. In
 an Ubuntu machine, you can install both as follows:
@@ -46,7 +46,7 @@ start the HTTP server:
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-chroma
-    git checkout 6.7.0-dev
+    git checkout 6.7.0
     bower install
     http-server -p 8443 -S -C keys/server.crt -K keys/server.key
 
@@ -212,9 +212,9 @@ file, as follows:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.7.0-dev",
-      "kurento-utils": "6.7.0-dev"
-      "kurento-module-pointerdetector": "6.7.0-dev"
+      "kurento-client": "6.7.0",
+      "kurento-utils": "6.7.0"
+      "kurento-module-pointerdetector": "6.7.0"
    }
 
 To get these dependencies, just run the following shell command:
