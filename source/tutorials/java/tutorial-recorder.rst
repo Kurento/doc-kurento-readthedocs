@@ -24,7 +24,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-hello-world-recording
-    git checkout 6.7.0
+    git checkout 6.7.0-dev
     mvn compile exec:java
 
 Access the application connecting to the URL https://localhost:8443/ in a WebRTC

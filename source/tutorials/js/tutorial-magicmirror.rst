@@ -41,7 +41,7 @@ start the HTTP server:
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-magic-mirror
-    git checkout 6.7.0
+    git checkout 6.7.0-dev
     bower install
     http-server -p 8443 -S -C keys/server.crt -K keys/server.key
 
@@ -255,8 +255,8 @@ file, as follows:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.7.0",
-      "kurento-utils": "6.7.0"
+      "kurento-client": "6.7.0-dev",
+      "kurento-utils": "6.7.0-dev"
    }
 
 .. note::
