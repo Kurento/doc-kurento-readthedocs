@@ -38,7 +38,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-chroma
-    git checkout 6.7.0-dev
+    git checkout 6.7.1-dev
     npm install
 
 If you have problems installing any of the dependencies, please remove them and
@@ -255,7 +255,7 @@ file for managing this dependency is:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client" : "6.7.0-dev"
+      "kurento-client" : "6.7.1-dev"
    }
 
 At the client side, dependencies are managed using Bower. Take a look to the
@@ -265,8 +265,8 @@ file and pay attention to the following section:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "6.7.0-dev",
-      "kurento-module-pointerdetector": "6.7.0-dev"
+      "kurento-utils" : "6.7.1-dev",
+      "kurento-module-pointerdetector": "6.7.1-dev"
    }
 
 .. note::

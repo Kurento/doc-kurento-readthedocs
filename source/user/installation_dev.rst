@@ -34,7 +34,7 @@ The steps to install a pre-release version of KMS are pretty much the same as th
    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5AFA7A83
 
    sudo tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
-   # Packages for Kurento Media Server - Pre-Release versions
+   # Kurento Media Server - Pre-Release packages
    deb [arch=amd64] http://ubuntu.openvidu.io/dev $DISTRO kms6
    EOF
 
@@ -156,7 +156,7 @@ Adding a repository to Maven can be done at three scope levels:
 
   After this is included, use the ``-Pkurento`` switch in your next Maven run to enable the new profile, so all artifacts get downloaded into you local repository. Once in your local repository, Maven can successfully resolve the dependencies and the profile no longer needs to be activated in future runs.
 
-For more information about adding snapshot repositories to Maven, check their official documentation: `Guide to Testing Development Versions of Plugins <https://maven.apache.org/guides/development/guide-testing-development-plugins.html>`_.
+For more information about adding snapshot repositories to Maven, check their official documentation: `Guide to Testing Development Versions of Plugins <https://maven.apache.org/guides/development/guide-testing-development-plugins.html>`__.
 
 
 

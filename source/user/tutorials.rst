@@ -18,7 +18,7 @@ This section contains tutorials showing how to use Kurento framework to build di
 
 .. note::
 
-   These tutorials require ``https`` in order to use WebRTC. Following `instructions </mastering/securing-kurento-applications.html>`_ will provide further information about how to enable application security.
+   These tutorials require ``HTTPS`` in order to use WebRTC. Following instructions will provide further information about how to enable application security.
 
 
 
@@ -47,6 +47,18 @@ This web application consists on a :term:`WebRTC` *loopback* video communication
    Java </tutorials/java/tutorial-magicmirror>
    Browser JavaScript </tutorials/js/tutorial-magicmirror>
    Node.js </tutorials/node/tutorial-magicmirror>
+
+
+
+RTP Receiver
+============
+
+This web application showcases reception of an incoming RTP or SRTP stream, and playback via a WebRTC connection.
+
+.. toctree::
+   :maxdepth: 1
+
+   Java </tutorials/java/tutorial-rtp-receiver>
 
 
 

@@ -19,7 +19,7 @@ Amazon Web Services
 
 The Kurento project provides an *AWS CloudFormation* template file. It can be used to create an EC2 instance that comes with everything needed and totally pre-configured to run KMS, including a `Coturn`_ server. Follow these steps to use it:
 
-1. Access the `AWS CloudFormation Console <https://console.aws.amazon.com/cloudformation>`_.
+1. Access the `AWS CloudFormation Console <https://console.aws.amazon.com/cloudformation>`__.
 
 2. Click on *Create Stack*.
 
@@ -63,8 +63,8 @@ Currently, the main development environment for KMS is Ubuntu 16.04 (Xenial), so
    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5AFA7A83
 
    sudo tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
-   # Packages for Kurento Media Server - Release 6.7.0
-   deb [arch=amd64] http://ubuntu.openvidu.io/6.7.0 $DISTRO kms6
+   # Kurento Media Server - Release packages
+   deb [arch=amd64] http://ubuntu.openvidu.io/6.7.1 $DISTRO kms6
    EOF
 
 **Third Step**. Finally, install KMS:
