@@ -1,6 +1,10 @@
-=================
-Development Guide
-=================
+===============
+Developer Guide
+===============
+
+This section is a comprehensive guide for development of *Kurento itself*. The intended reader of this text is any person who wants to get involved in writing code for the Kurento project, or to understand how the source code of this project is structured.
+
+If you are looking to write applications that make use of Kurento, then you should read :doc:`/user/writing_applications`.
 
 .. contents:: Table of Contents
 
@@ -64,22 +68,22 @@ There are several types of repositories:
 
 - **Main Repositories**: The core of KMS is located in Main Repositories. As of version 6.7.0, these repositories are:
 
+  - `kurento-module-creator <https://github.com/Kurento/kurento-module-creator>`__: It is a code generation tool for generating code scaffolding for plugins. This code includes KMS code and Kurento client code. It has mainly Java code.
   - `kms-cmake-utils <https://github.com/Kurento/kms-cmake-utils>`__: Contains a set of utilities for building KMS with CMake.
   - `kms-core <https://github.com/Kurento/kms-core>`__: Contains the core GStreamer code. This is the base library that is needed for other libraries. It has 80% C code and a 20% C++ code.
   - `kms-elements <https://github.com/Kurento/kms-elements>`__: Contains the main elements offering pipeline capabilities like WebRtc, Rtp, Player, Recorder, etc. It has 80% C code and a 20% C++ code.
   - `kms-filters <https://github.com/Kurento/kms-filters>`__: Contains the basic video filters included in KMS. It has 65% C code and a 35% C++ code.
   - `kms-jsonrpc <https://github.com/Kurento/kms-jsonrpc>`__: Kurento protocol is based on JsonRpc, and makes use of a JsonRpc library contained in this repository. It has C++ code.
   - `kurento-media-server <https://github.com/Kurento/kurento-media-server>`__: Contains the main entry point of KMS. That is, the main() function for the server executable code. This application depends on libraries located in the above repositories. It has mainly C++ code.
-  - `kurento-module-creator <https://github.com/Kurento/kurento-module-creator>`__: It is a code generation tool for generating code scaffolding for plugins. This code includes KMS code and Kurento client code. It has mainly Java code.
 
 - **Omni-Build Repository**: The `kms-omni-build <https://github.com/Kurento/kms-omni-build>`__ repository is a dummy umbrella for the other KMS Main Repositories. It has no actual code; instead, it only has the required CMake code to allow building the whole KMS project in one go. For this, it gets a copy of the required repositories via Git submodules.
 
 - **Module Repositories**: KMS is distributed with some basic GStreamer pipeline elements, but other elements are available in form of modules. These modules are stored individually in Module Repositories. Currently, we have the following ones:
 
-  - `kms-crowddetector <https://github.com/Kurento/kms-crowddetector>`__
   - `kms-chroma <https://github.com/Kurento/kms-chroma>`__
-  - `kms-pointerdetector <https://github.com/Kurento/kms-pointerdetector>`__
+  - `kms-crowddetector <https://github.com/Kurento/kms-crowddetector>`__
   - `kms-platedetector <https://github.com/Kurento/kms-platedetector>`__
+  - `kms-pointerdetector <https://github.com/Kurento/kms-pointerdetector>`__
 
 - **Client Repositories**: Client Applications can be developed in Java, JavaScript with Node.js, or JavaScript directly in the browser. Each of these languages have their support tools made available in their respective repositories.
 
@@ -89,8 +93,8 @@ There are several types of repositories:
    - `kms-plugin-sample <https://github.com/Kurento/kms-plugin-sample>`__
    - `kms-opencv-plugin-sample <https://github.com/Kurento/kms-opencv-plugin-sample>`__
    - `kurento-tutorial-java <https://github.com/Kurento/kurento-tutorial-java>`__
-   - `kurento-tutorial-node <https://github.com/Kurento/kurento-tutorial-node>`__
    - `kurento-tutorial-js <https://github.com/Kurento/kurento-tutorial-js>`__
+   - `kurento-tutorial-node <https://github.com/Kurento/kurento-tutorial-node>`__
 
 A KMS developer must know how to work with KMS Fork and Main Repositories and understand that each of these have a different development life cycle. The majority of development for KMS will occur at the KMS Main Repositories, while it's unusual to make changes in Fork Repositories except for updating their upstream versions.
 
@@ -107,7 +111,7 @@ This graph shows the dependencies between all modules that form part of Kurento:
 
 
 
-.. _development-dependency-list:
+.. _dev-dependency-list:
 
 Module dependency list
 ----------------------
@@ -156,7 +160,7 @@ KMS is a C/C++ project developed with an Ubuntu system as main target, which mea
 Libraries
 ---------
 
-It is not a trivial task to configure the compiler to use a set of libraries because a library can be composed of several `.so` and `.h` files. To make this task easier, `pkg-config <https://www.freedesktop.org/wiki/Software/pkg-config>`__ is a helper tool used when compiling applications and libraries. In short: when a library is installed in a system, it registers itself in the `pkg-config` database with all its required files, which allows to later query those values in order to compile with the library in question.
+It is not a trivial task to configure the compiler to use a set of libraries because a library can be composed of several *.so* and *.h* files. To make this task easier, `pkg-config <https://www.freedesktop.org/wiki/Software/pkg-config>`__ is a helper tool used when compiling applications and libraries. In short: when a library is installed in a system, it registers itself in the ``pkg-config`` database with all its required files, which allows to later query those values in order to compile with the library in question.
 
 For example, if you want to compile a C program which depends on GLib 2.0, you can run:
 
@@ -169,15 +173,15 @@ For example, if you want to compile a C program which depends on GLib 2.0, you c
 Debian packages
 ---------------
 
-In a Debian/Ubuntu system, development libraries are distributed as Debian packages which are made available in public package repositories. When a C or C++ project is developed in these systems, it is usual to distribute it also in Debian packages. It is then possible to install them with the command `apt-get install`, which will handle automatically all the package's dependencies.
+In a Debian/Ubuntu system, development libraries are distributed as Debian packages which are made available in public package repositories. When a C or C++ project is developed in these systems, it is usual to distribute it also in Debian packages. It is then possible to install them with the command ``apt-get install``, which will handle automatically all the package's dependencies.
 
 When a library is packaged, the result usually consists of several packages. These are some pointers on the most common naming conventions for packages, although they are not always strictly enforced by Debian or Ubuntu maintainers:
 
-- **bin package**: Package containing the binary files for the library itself. Applications are linked against them during development, and they are also loaded in production. The package name starts with `lib`, followed by the name of the library.
-- **dev package**: Contains files needed to link with the library during development. The package name starts with `lib` and ends with `-dev`. For example: `libboost-dev` or `libglib2.0-dev`.
-- **dbg package**: Contains debug symbols to ease error debugging during development. The package name starts with `lib` and ends with `-dbg`. For example: `libboost-dbg`.
-- **doc package**: Contains documentation for the library. Used in development. The package name starts with `lib` and ends with `-doc`. For example: `libboost-doc`.
-- **src package**: Package containing the source code for the library. It uses the same package name as the bin version, but it is accessed with the command `apt-get source` instead of `apt-get install`.
+- **bin package**: Package containing the binary files for the library itself. Applications are linked against them during development, and they are also loaded in production. The package name starts with *lib*, followed by the name of the library.
+- **dev package**: Contains files needed to link with the library during development. The package name starts with *lib* and ends with *-dev*. For example: *libboost-dev* or *libglib2.0-dev*.
+- **dbg package**: Contains debug symbols to ease error debugging during development. The package name starts with *lib* and ends with *-dbg*. For example: *libboost-dbg*.
+- **doc package**: Contains documentation for the library. Used in development. The package name starts with *lib* and ends with *-doc*. For example: *libboost-doc*.
+- **src package**: Package containing the source code for the library. It uses the same package name as the bin version, but it is accessed with the command ``apt-get source`` instead of ``apt-get install``.
 
 
 
@@ -186,9 +190,9 @@ Build tools
 
 There are several tools for building C/C++ projects: Autotools, Make, CMake, Gradle, etc. The most prominent tool for building projects is the Makefile, and all the other tools tend to be simply wrappers around this one. KMS uses CMake, which generates native Makefiles to build and package the project. There are some IDEs that recognize CMake projects directly, such as `JetBrains CLion <https://www.jetbrains.com/clion/>`__ or `Qt Creator <https://www.qt.io/ide/>`__.
 
-A CMake projects consists of several `CMakeLists.txt` files, which define how to compile and package native code into binaries and shared libraries. These files also contain a list of the libraries (dependencies) needed to build the code.
+A CMake projects consists of several *CMakeLists.txt* files, which define how to compile and package native code into binaries and shared libraries. These files also contain a list of the libraries (dependencies) needed to build the code.
 
-To specify a dependency it is necessary to know how to configure this library in the compiler. The already mentioned `pkg-config` tool is the standard de-facto for this task, so CMake comes with the ability to use `pkg-config` under the hood. There are also some libraries built with CMake that use some specific CMake-only utilities.
+To specify a dependency it is necessary to know how to configure this library in the compiler. The already mentioned ``pkg-config`` tool is the standard de-facto for this task, so CMake comes with the ability to use ``pkg-config`` under the hood. There are also some libraries built with CMake that use some specific CMake-only utilities.
 
 
 
@@ -203,9 +207,9 @@ KMS Main Repositories declare libraries in CMake, assuming they are or can be in
 - **libnice**, a library located in a Fork Repository.
 - **ffmpeg**, a public library.
 
-For this reason, **kms-core**, **ffmpeg** and **libnice** libraries have to be installed in the system before building the project **kms-elements**.
+Thus *kms-core*, *ffmpeg* and *libnice* libraries have to be installed in the system before building the project **kms-elements**.
 
-In KMS, we have developed a custom CMake command to search a library in several places. This command is called **`generic_find`** and it is located in the **kms-cmake-utils** repository.
+In KMS, we have developed a custom CMake command to search a library in several places. This command is called ``generic_find`` and it is located in the *kms-cmake-utils* repository.
 
 **kms-omni-build** is an special project because it is designed to build all KMS Main Repositories from a single entry point. This repo brings the other KMS Main Repositories as Git submodules: it makes KMS development easier because if you build this project, you don't need to manually install the libraries of the other KMS Main Repositories. However, all other development and support libraries must still be installed manually.
 
@@ -218,13 +222,13 @@ To build KMS from sources you first have to decide on which part you want to wor
   - Change code in the current fork.
   - Synchronize the fork with a new release of forked library.
 
-- **Generate Debian packages**: To distribute KMS is necessary to generate Debian packages from KMS Fork and Main Repositories.
+- **Generate Debian packages**: To distribute KMS it is necessary to generate Debian packages from KMS Fork and Main Repositories.
 
 As you can see, there are a lot of possibilities. In the next sections we'll explain the best way to build KMS in these different contexts.
 
 
 
-.. _development-kms:
+.. _dev-kms:
 
 Developing KMS
 --------------
@@ -240,7 +244,7 @@ To work directly with KMS source code, or to just build KMS from sources, the ea
 
 
 
-.. _development-repository:
+.. _dev-repository:
 
 Add Kurento repository
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -275,94 +279,101 @@ Run:
 
 .. code-block:: bash
 
-   PACKAGES=(
-     # Development tools
-     build-essential
-     gdb
-     pkg-config
-     cmake
-     clang
-     debhelper
-     valgrind
-     git
-     wget
-     maven
-     default-jdk
+    PACKAGES=(
+      # Development tools
+      build-essential
+      cmake
+      debhelper
+      default-jdk
+      gdb
+      git
+      maven
+      pkg-config
+      valgrind
+      wget
 
-     # System development libraries
-     libboost-dev
-     libboost-filesystem-dev
-     libboost-log-dev
-     libboost-program-options-dev
-     libboost-regex-dev
-     libboost-system-dev
-     libboost-test-dev
-     libboost-thread-dev
-     libevent-dev
-     libglib2.0-dev
-     libglibmm-2.4-dev
-     libopencv-dev
-     libsigc++-2.0-dev
-     libsoup2.4-dev
-     libssl-dev
-     libvpx-dev
-     libxml2-utils
-     uuid-dev
+      # 'maven-debian-helper' installs an old Maven version in Ubuntu 14.04 (Trusty),
+      # so this ensures that the effective version is the one from 'maven'.
+      maven-debian-helper-
 
-     # Kurento external libraries
-     gstreamer1.5-plugins-base
-     gstreamer1.5-plugins-good
-     gstreamer1.5-plugins-ugly
-     gstreamer1.5-plugins-bad
-     gstreamer1.5-libav
-     gstreamer1.5-nice
-     gstreamer1.5-tools
-     gstreamer1.5-x
-     libgstreamer1.5-dev
-     libgstreamer-plugins-base1.5-dev
-     libnice-dev
-     openh264-gst-plugins-bad-1.5
-     openwebrtc-gst-plugins-dev
-     kmsjsoncpp-dev
-     ffmpeg
-   )
+      # System development libraries
+      libboost-dev
+      libboost-filesystem-dev
+      libboost-log-dev
+      libboost-program-options-dev
+      libboost-regex-dev
+      libboost-system-dev
+      libboost-test-dev
+      libboost-thread-dev
+      libevent-dev
+      libglib2.0-dev
+      libglibmm-2.4-dev
+      libopencv-dev
+      libsigc++-2.0-dev
+      libsoup2.4-dev
+      libssl-dev
+      libvpx-dev
+      libxml2-utils
+      uuid-dev
 
-   sudo apt-get update
-   sudo apt-get install "${PACKAGES[@]}"
+      # Kurento external libraries
+      gstreamer1.5-plugins-base
+      gstreamer1.5-plugins-good
+      gstreamer1.5-plugins-ugly
+      gstreamer1.5-plugins-bad
+      gstreamer1.5-libav
+      gstreamer1.5-nice
+      gstreamer1.5-tools
+      gstreamer1.5-x
+      libgstreamer1.5-dev
+      libgstreamer-plugins-base1.5-dev
+      libnice-dev
+      openh264-gst-plugins-bad-1.5
+      openwebrtc-gst-plugins-dev
+      kmsjsoncpp-dev
+      ffmpeg
+    )
+
+    sudo apt-get update
+    sudo apt-get install "${PACKAGES[@]}"
 
 Optionally, install the debugging symbols if you will be using a debugger to troubleshoot bugs in KMS. Run:
 
 .. code-block:: bash
 
-   PACKAGES=(
-     # Kurento external libraries
-     gstreamer1.5-plugins-base-dbg
-     gstreamer1.5-plugins-good-dbg
-     gstreamer1.5-plugins-ugly-dbg
-     gstreamer1.5-plugins-bad-dbg
-     gstreamer1.5-libav-dbg
-     libgstreamer1.5-0-dbg
-     libnice-dbg
-     libsrtp1-dbg
-     openwebrtc-gst-plugins-dbg
-     kmsjsoncpp-dbg
+    PACKAGES=(
+      # Third-party libraries
+      libglib2.0-0-dbg
+      libssl1.0.0-dbg
 
-     # KMS main components
-     kms-jsonrpc-dbg
-     kms-core-dbg
-     kms-elements-dbg
-     kms-filters-dbg
-     kurento-media-server-dbg
+      # Kurento external libraries
+      gstreamer1.5-plugins-base-dbg
+      gstreamer1.5-plugins-good-dbg
+      gstreamer1.5-plugins-ugly-dbg
+      gstreamer1.5-plugins-bad-dbg
+      gstreamer1.5-libav-dbg
+      libgstreamer1.5-0-dbg
+      libnice-dbg
+      libsrtp1-dbg
+      openwebrtc-gst-plugins-dbg
+      kmsjsoncpp-dbg
 
-     # KMS extra modules
-     kms-chroma-dbg
-     kms-crowddetector-dbg
-     kms-platedetector-dbg
-     kms-pointerdetector-dbg
-   )
+      # KMS main components
+      kms-jsonrpc-dbg
+      kms-core-dbg
+      kms-elements-dbg
+      kms-filters-dbg
+      kurento-media-server-dbg
 
-   sudo apt-get update
-   sudo apt-get install "${PACKAGES[@]}"
+      # KMS extra modules
+      kms-chroma-dbg
+      kms-crowddetector-dbg
+      kms-platedetector-dbg
+      kms-pointerdetector-dbg
+    )
+
+    sudo apt-get update
+    sudo apt-get install "${PACKAGES[@]}"
 
 
 
@@ -380,13 +391,13 @@ Run:
 
 Optionally, change to the master branch of each submodule, if you will be developing on each one of those:
 
-.. code-block:: bash
+.. code-block:: text
 
    REF=master
    for d in $(find . -maxdepth 1 -mindepth 1 -type d)
    do pushd $d ; git checkout "$REF" ; popd ; done
 
-You can also set `REF` to any other branch or tag, such as `REF=6.7.0`. This will bring the code to the state it had in that version.
+You can also set ``REF`` to any other branch or tag, such as ``REF=6.7.0``. This will bring the code to the state it had in that version.
 
 
 
@@ -395,7 +406,7 @@ Build KMS
 
 Run:
 
-.. code-block:: bash
+.. code-block:: text
 
    TYPE=Debug
    mkdir build-$TYPE \
@@ -403,15 +414,17 @@ Run:
      && cmake -DCMAKE_BUILD_TYPE=$TYPE -DCMAKE_VERBOSE_MAKEFILE=ON .. \
      && make
 
-CMake accepts the following build types: `Debug`, `Release`, `RelWithDebInfo`. So, for a Release build, you would run `TYPE=Release` instead of `TYPE=Debug`.
+CMake accepts the following build types: *Debug*, *Release*, *RelWithDebInfo*. So, for a Release build, you would run ``TYPE=Release`` instead of ``TYPE=Debug``.
 
-**Important note**: the standard way of compiling a project with CMake is to create a `build` directory and run the `cmake` and `make` commands from there. This allows the developer to have different build folders for different purposes. However **do not use this technique** if you are trying to compile a subdirectory of **kms-omni-build**. For example, if you do this to build `kms-ombi-build/kms-core`, no more that one build folder can be present at a time in `kms-ombi-build/kms-core/build`. If you want to keep several builds of a single module, it is better to just work on a separate Git clone of that repository.
+.. note::
+
+   The standard way of compiling a project with CMake is to create a *build* directory and run the ``cmake`` and ``make`` commands from there. This allows the developer to have different build folders for different purposes. However **do not use this technique** if you are trying to compile a subdirectory of **kms-omni-build**. For example, if you do this to build *kms-ombi-build/kms-core*, no more that one build folder can be present at a time in *kms-ombi-build/kms-core/build*. If you want to keep several builds of a single module, it is better to just work on a separate Git clone of that repository.
 
 It is also possible to enable GCC's AddressSanitizer or ThreadSanitizer with these flags:
 
 .. code-block:: text
 
-   -DENABLE_ANALYZER_ASAN=ON  # Enable the AddressSanitizer (aka ASan) memory error detector. Implies CMAKE_BUILD_TYPE=Release.
+   -DENABLE_ANALYZER_ASAN=ON  # Enable the AddressSanitizer (aka ASan) memory error detector. Implies ``CMAKE_BUILD_TYPE=Release``.
    -DSANITIZE_ADDRESS=ON
    -DSANITIZE_THREAD=ON
    -DSANITIZE_LINK_STATIC=ON
@@ -427,7 +440,7 @@ Run:
 
 .. code-block:: bash
 
-   export GST_DEBUG="3,Kurento*:4,kms*:4,rtpendpoint:4,webrtcendpoint:4"
+   export GST_DEBUG='3,Kurento*:4,kms*:4,rtpendpoint:4,webrtcendpoint:4'
 
    kurento-media-server/server/kurento-media-server \
      --modules-path=. \
@@ -435,7 +448,7 @@ Run:
      --conf-file=./config/kurento.conf.json \
      --gst-plugin-path=.
 
-You can set the logging level of specific categories with the option `--gst-debug`, which can be used multiple times, once for each category. Besides that, the global logging level is specified with `--gst-debug-level`. These values can also be defined in the environment variable ``GST_DEBUG`` (see :doc:`/features/logging`).
+You can set the logging level of specific categories with the option ``--gst-debug``, which can be used multiple times, once for each category. Besides that, the global logging level is specified with ``--gst-debug-level``. These values can also be defined in the environment variable ``GST_DEBUG`` (see :doc:`/features/logging`).
 
 Other launch options that could be useful:
 
@@ -453,29 +466,29 @@ https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer/html/gst-run
 Build and run KMS unit tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-KMS uses the Check unit testing framework for C (https://libcheck.github.io/check/). To build and run all tests, change the last one of the build commands from `make` to `make check`.
+KMS uses the Check unit testing framework for C (https://libcheck.github.io/check/). To build and run all tests, change the last one of the build commands from ``make`` to ``make check``.
 
-To build and run one specific test, use `make <TestName>.check`. For example:
+To build and run one specific test, use ``make <TestName>.check``. For example:
 
-.. code-block:: bash
+.. code-block:: text
 
    make test_agnosticbin.check
 
-If you want to analyze memory usage with Valgrind, use `make <TestName>.valgrind`. For example:
+If you want to analyze memory usage with Valgrind, use ``make <TestName>.valgrind``. For example:
 
-.. code-block:: bash
+.. code-block:: text
 
    make test_agnosticbin.valgrind
 
-Each test has some amount of debug logging which will get printed; check these messages in the file `./Testing/Temporary/LastTest.log` after running a test suite. To find the starting point of each individual test in this log file, look for the words "*test start*". Example:
+Each test has some amount of debug logging which will get printed; check these messages in the file *./Testing/Temporary/LastTest.log* after running a test suite. To find the starting point of each individual test in this log file, look for the words "*test start*". Example:
 
-.. code-block:: bash
+.. code-block:: text
 
    webrtcendpoint.c:1848:test_vp8_sendrecv: test start
 
 
 
-.. _development-clean:
+.. _dev-clean:
 
 Clean your system
 ~~~~~~~~~~~~~~~~~
@@ -486,30 +499,30 @@ Run:
 
 .. code-block:: text
 
-   PACKAGES=(
-     # KMS main components + extra modules
-     '^(kms|kurento).*'
+    PACKAGES=(
+      # KMS main components + extra modules
+      '^(kms|kurento).*'
 
-     # Kurento external libraries
-     ffmpeg
-     '^gir1.2-gst.*1.5'
-     gir1.2-nice-0.1
-     '^(lib)?gstreamer.*1.5.*'
-     '^lib(nice|s3-2|srtp|usrsctp).*'
-     '^srtp-.*'
-     '^openh264(-gst-plugins-bad-1.5)?'
-     '^openwebrtc-gst-plugins.*'
+      # Kurento external libraries
+      ffmpeg
+      '^gir1.2-gst.*1.5'
+      gir1.2-nice-0.1
+      '^(lib)?gstreamer.*1.5.*'
+      '^lib(nice|s3-2|srtp|usrsctp).*'
+      '^srtp-.*'
+      '^openh264(-gst-plugins-bad-1.5)?'
+      '^openwebrtc-gst-plugins.*'
 
-     # System development libraries
-     '^libboost-?(filesystem|log|program-options|regex|system|test|thread)?-dev'
-     '^lib(glib2.0|glibmm-2.4|opencv|sigc++-2.0|soup2.4|ssl|tesseract|vpx)-dev'
-     uuid-dev
-   )
+      # System development libraries
+      '^libboost-?(filesystem|log|program-options|regex|system|test|thread)?-dev'
+      '^lib(glib2.0|glibmm-2.4|opencv|sigc++-2.0|soup2.4|ssl|tesseract|vpx)-dev'
+      uuid-dev
+    )
 
-   # Run a loop over all package names and uninstall them.
-   for PACKAGE in "${PACKAGES[@]}"; do
-     sudo apt-get purge --auto-remove "$PACKAGE" || { echo "Skip unexisting"; }
-   done
+    # Run a loop over all package names and uninstall them.
+    for PACKAGE in "${PACKAGES[@]}"; do
+      sudo apt-get purge --auto-remove "$PACKAGE" || { echo "Skip unexisting"; }
+    done
 
 
 
@@ -532,7 +545,7 @@ This is of course an extremely cumbersome process to follow during anything more
 In-place linking
 ~~~~~~~~~~~~~~~~
 
-The other work method consists on changing the system library path so it points to the working copy where the fork library is being modified. Typically, this involves building the fork with its specific tool (which often is Automake), changing the environment variable `LD_LIBRARY_PATH`, and running KMS with such configuration that any required shared libraries will load the modified version instead of the one installed in the system.
+The other work method consists on changing the system library path so it points to the working copy where the fork library is being modified. Typically, this involves building the fork with its specific tool (which often is Automake), changing the environment variable ``LD_LIBRARY_PATH``, and running KMS with such configuration that any required shared libraries will load the modified version instead of the one installed in the system.
 
 This allows for the fastest development cycle, however the specific instructions to do this are very project-dependent. For example, when working on the GStreamer fork, maybe you want to run GStreamer without using any of the libraries installed in the system (see https://cgit.freedesktop.org/gstreamer/gstreamer/tree/scripts/gst-uninstalled).
 
@@ -543,110 +556,95 @@ This allows for the fastest development cycle, however the specific instructions
 Generating Debian packages
 --------------------------
 
-You can create Debian packages for KMS itself and for forked libraries. We have four public repositories, containing packages generated from KMS Main Repositories and KMS Fork Repositories:
+You can easily create Debian packages for KMS itself and for any of the forked libraries. Packages are generated by a Python script called *compile_project.py*, which can be found in the `adm-scripts <https://github.com/Kurento/adm-scripts>`__ repository, and you can use it to generate Debian packages locally in your machine. Versions number of all packages are timestamped, so a developer is able to know explicitly which version of each package has been installed at any given time.
 
-- Repositories for Ubuntu 14.04 (Trusty):
+Follow these steps to generate Debian packages from any of the Kurento repositories:
 
-   - Release: `http://ubuntu.kurento.org trusty kms6`
-   - Development: `http://ubuntu.kurento.org trusty-dev kms6`
+1. (**Optional**) Make sure the system is in a clean state. The section :ref:`dev-clean` explains how to do this.
 
-- Repositories for Ubuntu 16.04 (Xenial):
+2. (**Optional**) Add Kurento Packages Repository. The section about :ref:`Dependency resolution <dev-depresolution>` explains what is the effect of adding the repo, and the section :ref:`dev-repository` explains how to do this.
 
-   - Release: `http://ubuntu.kurento.org xenial kms6`
-   - Development: `http://ubuntu.kurento.org xenial-dev kms6`
+3. Install system tools and Python modules. Run:
 
-We also have several Continuous-Integration ("CI") jobs such that every time a patch is accepted in Git's `master` branch, a new development package of that repository is generated and uploaded to the development repositories. Packages are generated by a Python script called `compile_project.py`, which is stored in the `adm-scripts <https://github.com/Kurento/adm-scripts>`__ repository, and you can use it to generate Debian packages locally in your machine.
+   .. code-block:: bash
 
-Versions number of Development packages are timestamped, so a developer is able to know explicitly which version of each package has been installed at any given time. On the other hand, Release packages follow the `Semantic Versioning <http://semver.org>`__ system.
+      PACKAGES=(
+        # Packaging tools
+        build-essential
+        debhelper
+        curl
+        fakeroot
+        flex
+        git
+        libcommons-validator-java
+        python
+        python-apt
+        python-debian
+        python-git
+        python-requests
+        python-yaml
+        realpath
+        subversion
+        wget
+      )
 
+      sudo apt-get update
+      sudo apt-get install "${PACKAGES[@]}"
 
+   .. note::
 
-Example: kms-core
-~~~~~~~~~~~~~~~~~
+      - ``subversion`` (svn) is used by *compile_project.py* due to GitHub's lack of support for the *git-archive* protocol (see https://github.com/isaacs/github/issues/554).
+      - ``flex`` should be automatically installed by gstreamer, but a bug in package version detection needs to get fixed.
+      - ``realpath`` is used by *adm-scripts/kurento_check_version.sh*.
 
-**Optional**: Make sure the system is in a clean state: the section :ref:`development-clean` explains how to do this.
+4. Download the Kurento CI tools. Run:
 
-**Optional**: Add Kurento Packages Repository. The section about :ref:`Dependency resolution <development-depresolution>` explains what is the effect of adding the repo, and the section :ref:`development-repository` explains how to do this.
+   .. code-block:: text
 
-Install system tools and Python modules. Run:
+      git clone https://github.com/Kurento/adm-scripts.git
+      export PATH="$PWD/adm-scripts:$PATH"
 
-.. code-block:: bash
+5. Download and build packages for the desired module. Run:
 
-   PACKAGES=(
-     # Packaging tools
-     build-essential
-     debhelper
-     curl
-     fakeroot
-     flex
-     git
-     libcommons-validator-java
-     python
-     python-apt
-     python-debian
-     python-git
-     python-requests
-     python-yaml
-     realpath
-     subversion
-     wget
-   )
+   .. code-block:: text
 
-   sudo apt-get update
-   sudo apt-get install "${PACKAGES[@]}"
-
-Download and setup packaging tools:
-
-.. code-block:: bash
-
-   git clone https://github.com/Kurento/adm-scripts.git
-   export PATH="$PWD/adm-scripts:$PATH"
-
-Download and build packages for the desired module:
-
-.. code-block:: bash
-
-   git clone https://github.com/Kurento/kms-core.git
-   cd kms-core
-   sudo PATH="$PWD/../adm-scripts:$PATH" PYTHONUNBUFFERED=1 \
-     ../adm-scripts/kms/compile_project.py \
-     --base_url https://github.com/Kurento compile
-
-.. note::
-
-   - `subversion` (svn) is used by `compile_project.py` due to GitHub's lack of support for the `git-archive` protocol (see https://github.com/isaacs/github/issues/554).
-   - `flex` should be installed by gstreamer, but a bug in package version detection needs to get fixed.
-   - `realpath` is used by `adm-scripts/kurento_check_version.sh`.
+      git clone https://github.com/Kurento/kms-core.git
+      cd kms-core
+      sudo PATH="$PWD/../adm-scripts:$PATH" PYTHONUNBUFFERED=1 \
+        ../adm-scripts/kms/compile_project.py \
+        --base_url https://github.com/Kurento compile
 
 
 
-.. _development-depresolution:
+.. _dev-depresolution:
 
 Dependency resolution: to repo or not to repo
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The script `compile_project.py` is able to resolve all dependencies for any given module. For each dependency, the following process will happen:
+The script *compile_project.py* is able to resolve all dependencies for any given module. For each dependency, the following process will happen:
 
-1. If the dependency is already available to `apt-get` from the Kurento Packages Repository, it will get downloaded and installed. This means that the dependency will not get built locally.
+1. If the dependency is already available to ``apt-get`` from the Kurento Packages Repository, it will get downloaded and installed. This means that the dependency will not get built locally.
 
-2. If the dependency is not available to `apt-get`, its corresponding project will be cloned from the Git repo, built, and packaged itself. This triggers a recursive call to `compile_project.py`, which in turn will try to satisfy all the dependencies corresponding to that sub-project.
+2. If the dependency is not available to ``apt-get``, its corresponding project will be cloned from the Git repo, built, and packaged itself. This triggers a recursive call to *compile_project.py*, which in turn will try to satisfy all the dependencies corresponding to that sub-project.
 
-It is very important to keep in mind the dependency resolution mechanism that happens in the Python script, because it can affect which packages get built in the development machine. **If the Kurento Packages Repository has been configured for `apt-get`, then all dependencies for a given module will be downloaded and installed from the repo, instead of being built**. On the other hand, if the Kurento repo has not been configured, then all dependencies will be built from source.
+It is very important to keep in mind the dependency resolution mechanism that happens in the Python script, because it can affect which packages get built in the development machine. **If the Kurento Packages Repository has been configured for ``apt-get``, then all dependencies for a given module will be downloaded and installed from the repo, instead of being built**. On the other hand, if the Kurento repo has not been configured, then all dependencies will be built from source.
 
-This can have a very big impact on the amount of modules that need to be built to satisfy the dependencies of a given project. The most prominent example is **kurento-media-server**: it basically depends on _everything_ else. If the Kurento repo is available to `apt-get`, then all of KMS libraries will be downloaded and installed. If the repo is not available, then all source code of KMS will get downloaded and built, including the whole GStreamer libraries and other forked libraries.
+This can have a very big impact on the amount of modules that need to be built to satisfy the dependencies of a given project. The most prominent example is **kurento-media-server**: it basically depends on *everything* else. If the Kurento repo is available to ``apt-get``, then all of KMS libraries will be downloaded and installed. If the repo is not available, then all source code of KMS will get downloaded and built, including the whole GStreamer libraries and other forked libraries.
 
-**Important Note**: This only applies to Ubuntu 16.04 (Xenial), for which the official package repositories already contain all required development libraries to build the whole KMS. However, for Ubuntu 14.04 (Trusty) the official repos are missing some required packages, so the Kurento Packages Repository must be configured in the system in order to build all of KMS. Refer to the following sections.
+.. note::
+
+   This only applies to Ubuntu 16.04 (Xenial), for which the official package repositories already contain all required development libraries to build the whole KMS. However, for Ubuntu 14.04 (Trusty) the official repos are missing some required packages, so the Kurento Packages Repository must be configured in the system in order to build all of KMS. Refer to the following sections.
 
 
 
 Package generation script
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is the full procedure followed by the `compile_project.py` script:
+This is the full procedure followed by the *compile_project.py* script:
 
-1. Check if all development dependencies for the given module are installed in the system. This check is done by parsing the file **`debian/control`** of the project.
-2. If some dependencies are not installed, `apt-get` tries to install them.
-3. For each dependency defined in the file `.build.yaml`, the script checks if it got installed during the previous step. If it wasn't, then the script checks if these dependencies can be found in the source code repository given as argument. The script then proceeds to find this dependency's real name and requirements by checking its online copy of the `debian/control` file.
+1. Check if all development dependencies for the given module are installed in the system. This check is done by parsing the file *debian/control* of the project.
+2. If some dependencies are not installed, ``apt-get`` tries to install them.
+3. For each dependency defined in the file *.build.yaml*, the script checks if it got installed during the previous step. If it wasn't, then the script checks if these dependencies can be found in the source code repository given as argument. The script then proceeds to find this dependency's real name and requirements by checking its online copy of the *debian/control* file.
 4. Every dependency with source repository, as found in the previous step, is cloned and the script is run recursively with that module.
 5. When all development dependencies are installed (either from package repositories or compiling from source code), the initially requested module is built, and its Debian packages are generated and installed.
 
@@ -664,20 +662,20 @@ kms-core          libglib2.0-dev (>= 2.46)         2.40            2.48         
 gst-plugins-base  libsoup2.4-dev (>= 2.48)         2.44            2.52            2.50
 libsrtp           libssl-dev (>= 1.0.2)            1.0.1f          1.0.2g          1.0.2g
 gst-plugins-bad   libde265-dev (any)               none            1.0.2           0.9
-                  libx265-dev (any)                none            1.9             1.7
-                  libass-dev (>= 0.10.2)           0.10.1          0.13.1          0.10.2
-                  libgnutls28-dev, librtmp-dev                                                      [2]
+gst-plugins-bad   libx265-dev (any)                none            1.9             1.7
+gst-plugins-bad   libass-dev (>= 0.10.2)           0.10.1          0.13.1          0.10.2
+gst-plugins-bad   libgnutls28-dev, librtmp-dev                                                      [2]
 kms-elements      libnice-dev (>= 0.1.13)          0.1.4           0.1.13          0.1.13
 libnice           libgupnp-igd-1.0-dev (>= 0.2.4)  0.2.2           0.2.4           0.2.4
 ================  ===============================  ==============  ==============  ===============  =====
 
-[1] It actually builds and works fine with 2.40, but the required version of GLib was first raised from 2.40 to 2.42 and later to 2.46 in commits `b10d318b` and `7f703bed`, justified as providing huge performance improvements in `mutex` and `g_object_ref`.
+[1] It actually builds and works fine with 2.40, but the required version of GLib was first raised from 2.40 to 2.42 and later to 2.46 in commits ``b10d318b`` and ``7f703bed``, justified as providing huge performance improvements in ``mutex`` and ``g_object_ref``.
 
-[2] The latter depends on 'libgnutls-dev', which conflicts with the former (only in 14.04). Solution: use 'librtmp-dev' from Kurento repo, which doesn't depend on 'libgnutls-dev'.
+[2] The latter depends on *libgnutls-dev*, which conflicts with the former (only in 14.04). Solution: use *librtmp-dev* from Kurento repo, which doesn't depend on *libgnutls-dev*.
 
-This list of dependencies means that it is not possible to build the whole KMS on Ubuntu Trusty, at least not without the Kurento Packages Repository already configured in the system. But as we mentioned in the previous section, the mere presence of this repo will skip building as many packages as possible if the build script is able to find them already available for install with `apt-get`.
+This list of dependencies means that it is not possible to build the whole KMS on Ubuntu Trusty, at least not without the Kurento Packages Repository already configured in the system. But as we mentioned in the previous section, the mere presence of this repo will skip building as many packages as possible if the build script is able to find them already available for install with ``apt-get``.
 
-In the case that we want to force building the whole KMS libraries and modules -*as opposed to downloading them from the repo*- the solution to this problem is to clone each module separately, and manually build them one by one, in the order given by their :ref:`development-dependency-list`.
+In case that we want to force building the whole KMS libraries and modules -*as opposed to downloading them from the repo*- the solution to this problem is to clone each module separately, and manually build them one by one, in the order given by their :ref:`dev-dependency-list`.
 
 
 
@@ -691,8 +689,8 @@ How to add or update external libraries
 
 Add or change it in these files:
 
-- 'debian/control'.
-- 'CMakeLists.txt'.
+- *debian/control*.
+- *CMakeLists.txt*.
 
 
 
@@ -700,9 +698,9 @@ How to add new fork libraries
 -----------------------------
 
 1. Fork the repository.
-2. Create a '.build.yaml' file in this repository, listing its project dependencies (if any).
-3. Add dependency to 'debian/control' in the project that uses it.
-4. Add dependency to 'CMakeLists.txt' in the project that uses it.
+2. Create a *.build.yaml* file in this repository, listing its project dependencies (if any).
+3. Add dependency to *debian/control* in the project that uses it.
+4. Add dependency to *CMakeLists.txt* in the project that uses it.
 
 
 
@@ -710,4 +708,4 @@ Known problems
 --------------
 
 - Sometimes the GStreamer fork doesn't compile correctly. Try again.
-- Some unit tests can fail, especially if the storage server (which contains some required input files) is having connectivity issues. If tests fail, packages are not generated. To skip tests, edit the file 'debian/rules' and change `-DGENERATE_TESTS=TRUE` to `-DGENERATE_TESTS=FALSE -DDISABLE_TESTS=TRUE`.
+- Some unit tests can fail, especially if the storage server (which contains some required input files) is having connectivity issues. If tests fail, packages are not generated. To skip tests, edit the file *debian/rules* and change ``-DGENERATE_TESTS=TRUE`` to ``-DGENERATE_TESTS=FALSE -DDISABLE_TESTS=TRUE``.
