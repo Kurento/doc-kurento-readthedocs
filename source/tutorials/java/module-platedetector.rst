@@ -35,7 +35,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-platedetector
-    git checkout 6.7.1
+    git checkout 6.7.2-dev
     mvn compile exec:java
 
 The web application starts on port 8443 in the localhost by default. Therefore,
