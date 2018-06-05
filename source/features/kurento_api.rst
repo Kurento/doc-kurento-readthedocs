@@ -32,7 +32,7 @@ Kurento is based on two concepts that act as building blocks for application dev
 
      *Example of a Media Pipeline implementing an interactive multimedia application receiving media from a WebRtcEndpoint, overlaying and image on the detected faces and sending back the resulting stream*
 
-Kurento API is an object-oriented API. That is, there are classes that can be instantiated. This classes define operations that can be invoked over objects of this classes. The classes can have an inheritance relationship with other classes, inheriting operations from parent classes to children ones.
+Kurento API is an object-oriented API. That is, there are classes that can be instantiated. These classes define operations that can be invoked over objects of these classes. The classes can have an inheritance relationship with other classes, inheriting operations from parent classes to children ones.
 
 The following class diagram shows some of the relationships of the main classes in the Kurento API:
 
