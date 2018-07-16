@@ -19,7 +19,7 @@ How to use it
 =============
 
 * **Minified file** - Download the file from
-  `here <http://builds.kurento.org/release/|VERSION|/js/kurento-utils.min.js>`__.
+  `here <http://builds.kurento.org/release/6.7.2-dev/js/kurento-utils.min.js>`__.
 
 * **NPM** - Install and use library in your NodeJS files.
 
@@ -290,7 +290,7 @@ select an appropriate source for a track and, once selected, to influence how a
 source operates. ``getUserMedia()`` uses constraints to help select an
 appropriate source for a track and configure it. For more information about
 media constraints and its values, you can check
-`here  <http://www.w3.org/TR/mediacapture-streams/>`__.
+`here  <https://www.w3.org/TR/mediacapture-streams/>`__.
 
 By default, if the mediaConstraints is undefined, this constraints are used when
 ``getUserMedia`` is called::
@@ -438,7 +438,7 @@ Build for browser
 =================
 
 After you download the project, to build the browser version of the library
-you'll only need to execute the `grunt <http://gruntjs.com/>`__ task runner. The
+you'll only need to execute the `grunt <https://gruntjs.com/>`__ task runner. The
 file needed will be generated on the *dist* folder. Alternatively, if you don't
 have it globally installed, you can run a local copy by executing:
 

@@ -1,21 +1,3 @@
-.. raw:: html
-
-    <a href="user/about_openvidu.html" style="color: #0088aa;">
-    <div style="margin-top: 30px;
-                margin-bottom: 30px;
-                text-align: center;
-                padding: 20px;
-                background-color: rgba(0, 136, 170, 0.05);
-                border: solid 3px #0088aa;
-                border-radius: 4px;">
-      <img src="http://openvidu.io/img/logos/openvidu_vert_grey_bg_transp_cropped.png"
-           style="width: 350px;">
-      <p style="font-size: 19px; margin-top: 20px; margin-bottom: 0;">
-        Discover the new easier way to develop Kurento video applications
-      </p>
-    </div>
-    </a>
-
 ==================
 Welcome to Kurento
 ==================
@@ -24,7 +6,7 @@ Welcome to Kurento
 
 The code is open source, released under the terms of `Apache License Version 2.0`_ and `available on GitHub`_.
 
-.. _Apache License Version 2.0: http://www.apache.org/licenses/LICENSE-2.0
+.. _Apache License Version 2.0: https://www.apache.org/licenses/LICENSE-2.0
 .. _available on GitHub: https://github.com/Kurento
 
 You can read more on our page :doc:`About Kurento and WebRTC </user/about>`. Check now how to :doc:`get started </user/quickstart>` with Kurento and take a look at our :doc:`tutorials </user/tutorials>`, which showcase some demo applications.

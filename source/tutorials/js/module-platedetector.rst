@@ -52,7 +52,7 @@ start the HTTP server:
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-platedetector
-    git checkout |VERSION|
+    git checkout 6.7.2-dev
     bower install
     http-server -p 8443 -S -C keys/server.crt -K keys/server.key
 
@@ -193,9 +193,9 @@ file, as follows:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "|VERSION|",
-      "kurento-utils": "|VERSION|"
-      "kurento-module-pointerdetector": "|VERSION|"
+      "kurento-client": "6.7.2-dev",
+      "kurento-utils": "6.7.2-dev"
+      "kurento-module-pointerdetector": "6.7.2-dev"
    }
 
 To get these dependencies, just run the following shell command:
@@ -206,4 +206,4 @@ To get these dependencies, just run the following shell command:
 
 .. note::
 
-   We are in active development. You can find the latest versions at `Bower <http://bower.io/search/>`_.
+   We are in active development. You can find the latest versions at `Bower <https://bower.io/search/>`_.

@@ -35,7 +35,7 @@ Clone source code from GitHub and then start the HTTP server:
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-loopback-stats
-    git checkout |VERSION|
+    git checkout 6.7.2-dev
     bower install
     http-server -p 8443 -S -C keys/server.crt -K keys/server.key
 
@@ -263,11 +263,11 @@ Demo dependencies are located in file `bower.json <https://github.com/Kurento/ku
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "|VERSION|",
-      "kurento-utils": "|VERSION|"
+      "kurento-client": "6.7.2-dev",
+      "kurento-utils": "6.7.2-dev"
    }
 
 .. note::
 
    We are in active development. You can find the latest version of
-   Kurento JavaScript Client at `Bower <http://bower.io/search/?q=kurento-client>`_.
+   Kurento JavaScript Client at `Bower <https://bower.io/search/?q=kurento-client>`_.
