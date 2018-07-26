@@ -53,27 +53,27 @@ There are several types of repositories:
 
   These are the current Fork Repositories, as of KMS version 6.7:
 
+  - `jsoncpp <https://github.com/Kurento/jsoncpp>`__
+  - `libsrtp <https://github.com/Kurento/libsrtp>`__
+  - `openh264 <https://github.com/Kurento/openh264>`__
+  - `usrsctp <https://github.com/Kurento/usrsctp>`__
   - `gstreamer <https://github.com/Kurento/gstreamer>`__ (libgstreamer1.5)
   - `gst-plugins-base <https://github.com/Kurento/gst-plugins-base>`__
   - `gst-plugins-good <https://github.com/Kurento/gst-plugins-good>`__
   - `gst-plugins-bad <https://github.com/Kurento/gst-plugins-bad>`__
   - `gst-plugins-ugly <https://github.com/Kurento/gst-plugins-ugly>`__
   - `gst-libav <https://github.com/Kurento/gst-libav>`__
-  - `jsoncpp <https://github.com/Kurento/jsoncpp>`__
-  - `libsrtp <https://github.com/Kurento/libsrtp>`__
-  - `libnice <https://github.com/Kurento/libnice>`__ (gstreamer1.0-nice, gstreamer1.5-nice)
   - `openwebrtc-gst-plugins <https://github.com/Kurento/openwebrtc-gst-plugins>`__
-  - `openh264 <https://github.com/Kurento/openh264>`__
-  - `usrsctp <https://github.com/Kurento/usrsctp>`__
+  - `libnice <https://github.com/Kurento/libnice>`__ (gstreamer1.0-nice, gstreamer1.5-nice)
 
 - **Main Repositories**: The core of KMS is located in Main Repositories. As of version 6.7, these repositories are:
 
   - `kurento-module-creator <https://github.com/Kurento/kurento-module-creator>`__: It is a code generation tool for generating code scaffolding for plugins. This code includes KMS code and Kurento client code. It has mainly Java code.
   - `kms-cmake-utils <https://github.com/Kurento/kms-cmake-utils>`__: Contains a set of utilities for building KMS with CMake.
+  - `kms-jsonrpc <https://github.com/Kurento/kms-jsonrpc>`__: Kurento protocol is based on JsonRpc, and makes use of a JsonRpc library contained in this repository. It has C++ code.
   - `kms-core <https://github.com/Kurento/kms-core>`__: Contains the core GStreamer code. This is the base library that is needed for other libraries. It has 80% C code and a 20% C++ code.
   - `kms-elements <https://github.com/Kurento/kms-elements>`__: Contains the main elements offering pipeline capabilities like WebRtc, Rtp, Player, Recorder, etc. It has 80% C code and a 20% C++ code.
   - `kms-filters <https://github.com/Kurento/kms-filters>`__: Contains the basic video filters included in KMS. It has 65% C code and a 35% C++ code.
-  - `kms-jsonrpc <https://github.com/Kurento/kms-jsonrpc>`__: Kurento protocol is based on JsonRpc, and makes use of a JsonRpc library contained in this repository. It has C++ code.
   - `kurento-media-server <https://github.com/Kurento/kurento-media-server>`__: Contains the main entry point of KMS. That is, the main() function for the server executable code. This application depends on libraries located in the above repositories. It has mainly C++ code.
 
 - **Omni-Build Repository**: The `kms-omni-build <https://github.com/Kurento/kms-omni-build>`__ repository is a dummy umbrella for the other KMS Main Repositories. It has no actual code; instead, it only has the required CMake code to allow building the whole KMS project in one go. For this, it gets a copy of the required repositories via Git submodules.
@@ -90,8 +90,8 @@ There are several types of repositories:
 - **Tutorial or demo repositories**: There are several repositories that contain sample code for developers that use Kurento or want to develop a custom Kurento module. Currently these are:
 
    - `kms-datachannelexample <https://github.com/Kurento/kms-datachannelexample>`__
-   - `kms-plugin-sample <https://github.com/Kurento/kms-plugin-sample>`__
    - `kms-opencv-plugin-sample <https://github.com/Kurento/kms-opencv-plugin-sample>`__
+   - `kms-plugin-sample <https://github.com/Kurento/kms-plugin-sample>`__
    - `kurento-tutorial-java <https://github.com/Kurento/kurento-tutorial-java>`__
    - `kurento-tutorial-js <https://github.com/Kurento/kurento-tutorial-js>`__
    - `kurento-tutorial-node <https://github.com/Kurento/kurento-tutorial-node>`__
@@ -120,15 +120,15 @@ As the dependency graph is not strictly linear, there are multiple possible ways
 
 **Externals**:
 
-1. gstreamer
+1. jsoncpp
 2. libsrtp
 3. openh264
 4. usrsctp
-5. jsoncpp
+5. gstreamer
 6. gst-plugins-base
 7. gst-plugins-good
-8. gst-plugins-ugly
-9. gst-plugins-bad
+8. gst-plugins-bad
+9. gst-plugins-ugly
 10. gst-libav
 11. openwebrtc-gst-plugins
 12. libnice
@@ -289,7 +289,6 @@ Run:
       git
       maven
       pkg-config
-      valgrind
       wget
 
       # 'maven-debian-helper' installs an old Maven version in Ubuntu 14.04 (Trusty),
@@ -319,8 +318,8 @@ Run:
       # Kurento external libraries
       gstreamer1.5-plugins-base
       gstreamer1.5-plugins-good
-      gstreamer1.5-plugins-ugly
       gstreamer1.5-plugins-bad
+      gstreamer1.5-plugins-ugly
       gstreamer1.5-libav
       gstreamer1.5-nice
       gstreamer1.5-tools
@@ -346,12 +345,16 @@ Run:
 
 .. code-block:: bash
 
-   git clone https://github.com/Kurento/kms-omni-build.git \
-     && cd kms-omni-build \
-     && git submodule init \
-     && git submodule update --recursive --remote
+   git clone https://github.com/Kurento/kms-omni-build.git
+   cd kms-omni-build/
+   git submodule update --init --recursive
+   git submodule update --remote
 
-Optionally, change to the master branch of each submodule, if you will be developing on each one of those:
+.. note::
+
+   ``--recursive`` and ``--remote`` are not used together, because each individual submodule may have some other submodules that are intended to be loaded in some specific commit, and we don't want to update those with upstream's latest changes.
+
+Change to the *master* branch of each submodule, if you will be developing on each one of those:
 
 .. code-block:: text
 
@@ -371,10 +374,10 @@ Run:
 .. code-block:: text
 
    TYPE=Debug
-   mkdir build-$TYPE \
-     && cd build-$TYPE \
-     && cmake -DCMAKE_BUILD_TYPE=$TYPE -DCMAKE_VERBOSE_MAKEFILE=ON .. \
-     && make
+   mkdir build-$TYPE
+   cd build-$TYPE/
+   cmake -DCMAKE_BUILD_TYPE=$TYPE ..
+   make
 
 CMake accepts the following build types: *Debug*, *Release*, *RelWithDebInfo*. So, for a Release build, you would run ``TYPE=Release`` instead of ``TYPE=Debug``.
 
@@ -393,6 +396,19 @@ It is also possible to enable GCC's AddressSanitizer or ThreadSanitizer with the
 
 [TODO: finish testing that these modes do actually work]
 
+Verbose mode can be enabled too:
+
+.. code-block:: text
+
+   -DCMAKE_VERBOSE_MAKEFILE=ON
+
+Lastly, it's possible to run either Unit tests or Valgrind tests, by using different *make* targets:
+
+.. code-block:: text
+
+   make check
+   make valgrind
+
 
 
 Launch KMS
@@ -402,13 +418,13 @@ Run:
 
 .. code-block:: bash
 
-   export GST_DEBUG="3,Kurento*:4,kms*:4,*rtpendpoint:4,webrtcendpoint:4"
+   export GST_DEBUG="3,Kurento*:4,kms*:4,sdp*:4,webrtc*:4,*rtpendpoint:4,rtp*handler:4,rtpsynchronizer:4,agnosticbin:4"
 
    kurento-media-server/server/kurento-media-server \
-     --modules-path=. \
-     --modules-config-path=./config \
-     --conf-file=./config/kurento.conf.json \
-     --gst-plugin-path=.
+       --modules-path=. \
+       --modules-config-path=./config \
+       --conf-file=./config/kurento.conf.json \
+       --gst-plugin-path=.
 
 You can set the logging level of specific categories with the option ``--gst-debug``, which can be used multiple times, once for each category. Besides that, the global logging level is specified with ``--gst-debug-level``. These values can also be defined in the environment variable ``GST_DEBUG`` (see :doc:`/features/logging`).
 
@@ -432,7 +448,7 @@ KMS uses the Check unit testing framework for C (https://libcheck.github.io/chec
 
 .. note::
 
-   It is recommended to first disable GStreamer log colors, that way the resulting log files won't contain extraneous escape sequences such as *^[[31;01m ^[[00m*. Also, it could be useful to specify a higher logging level than the default; set the environment variable *GST_DEBUG*, as explained in :ref:`logging-levels`.
+   It is recommended to first disable GStreamer log colors, that way the resulting log files won't contain extraneous escape sequences such as ``^[[31;01m ^[[00m``. Also, it could be useful to specify a higher logging level than the default; set the environment variable *GST_DEBUG*, as explained in :ref:`logging-levels`.
 
    The complete command would look like this:
 
@@ -543,7 +559,6 @@ Follow these steps to generate Debian packages from any of the Kurento repositor
    .. code-block:: bash
 
       PACKAGES=(
-        # Packaging tools
         build-essential
         debhelper
         curl
@@ -551,13 +566,13 @@ Follow these steps to generate Debian packages from any of the Kurento repositor
         flex
         git
         libcommons-validator-java
+        lsb-release
         python
         python-apt
         python-debian
         python-git
         python-requests
         python-yaml
-        realpath
         subversion
         wget
       )
@@ -567,26 +582,39 @@ Follow these steps to generate Debian packages from any of the Kurento repositor
 
    .. note::
 
-      - ``subversion`` (svn) is used by *compile_project.py* due to GitHub's lack of support for the *git-archive* protocol (see https://github.com/isaacs/github/issues/554).
-      - ``flex`` should be automatically installed by gstreamer, but a bug in package version detection needs to get fixed.
-      - ``realpath`` is used by *adm-scripts/kurento_check_version.sh*.
+      - ``flex`` will be automatically installed by GStreamer, but for now a bug in package version detection prevents that.
+      - ``libcommons-validator-java`` seems to be required to build *gstreamer* (it failed with lots of errors from *jade*, when building documentation files).
+      - ``lsb-release`` is used in the Python build script (*compile_project.py*) to detect the name of the current distribution.
+      - ``subversion`` (svn) is used in the Python build script (*compile_project.py*) due to GitHub's lack of support for git-archive protocol (see https://github.com/isaacs/github/issues/554).
 
-4. Download the Kurento CI tools. Run:
+4. Download the Kurento CI scripts and the desired module. Run:
 
    .. code-block:: text
 
       git clone https://github.com/Kurento/adm-scripts.git
-      export PATH="$PWD/adm-scripts:$PATH"
+      git clone https://github.com/Kurento/kms-core.git
 
-5. Download and build packages for the desired module. Run:
+   But instead of *kms-core*, use the one you intend to build.
+
+5. Build packages for the desired module. Run:
 
    .. code-block:: text
 
-      git clone https://github.com/Kurento/kms-core.git
-      cd kms-core
-      sudo PATH="$PWD/../adm-scripts:$PATH" PYTHONUNBUFFERED=1 \
-        ../adm-scripts/kms/compile_project.py \
-        --base_url https://github.com/Kurento compile
+      sudo -s
+      cd kms-core/
+
+      export PYTHONUNBUFFERED=1
+      export PATH="$PWD/../adm-scripts:$PATH"
+
+      ../adm-scripts/kms/compile_project.py \
+          --base_url https://github.com/Kurento \
+          compile
+
+   Other variable you can export is ``DEB_BUILD_OPTIONS``, in order to disable any of unit testing, doc generation (which at the Debian level is mostly nothing, this doesn't refer to the whole Kurento project documentation site), and binary stripping. For example:
+
+   .. code-block:: text
+
+      export DEB_BUILD_OPTIONS="nocheck nodoc nostrip"
 
 
 
@@ -675,6 +703,35 @@ How to add new fork libraries
 2. Create a *.build.yaml* file in this repository, listing its project dependencies (if any).
 3. Add dependency to *debian/control* in the project that uses it.
 4. Add dependency to *CMakeLists.txt* in the project that uses it.
+
+
+
+How to work with API changes
+----------------------------
+
+What to do when you are developing a new feature that spans across KMS and the public API? This is a summary of the actions done in CI by ``adm-scripts/kurento_generate_java_module.sh`` and ``adm-scripts/kurento_maven_deploy.sh``:
+
+1. Work on your changes, which may include changing the KMS files where the Kurento API is defined.
+
+2. Generate client SDK dependencies:
+
+   .. code-block:: bash
+
+      cd <module>  # E.g. kms-filters
+      rm -rf build
+      mkdir build && cd build
+      cmake .. -DGENERATE_JAVA_CLIENT_PROJECT=TRUE -DDISABLE_LIBRARIES_GENERATION=TRUE
+      cd java
+      mvn clean install
+
+3. Generate client SDK:
+
+   .. code-block:: bash
+
+      cd kurento-java
+      mvn clean install
+
+4. At this point, the new Java packages have been generated and installed *in the local repository*. Your Java application can now make use of any changes that were introduced in the API.
 
 
 
