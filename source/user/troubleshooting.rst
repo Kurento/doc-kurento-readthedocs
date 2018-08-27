@@ -16,9 +16,9 @@ Media Server
 Media Server crashed
 --------------------
 
-If the Media Server crashes, it will generate an **error log** and also in typical Ubuntu systems, the Linux Kernel will generate a **crash core dump**.
+If the Media Server crashes, it will generate an **error log** file. Also, in typical Ubuntu systems, the Linux Kernel will generate a **crash core dump**.
 
-However, these files won't contain much useful information if the relevant debug symbols are not installed. Before :ref:`filing a bug report <support-community>`, make sure to install all ``-dbg`` packages:
+However, these files won't contain much useful information if the relevant debug symbols are not installed. Before :ref:`filing a bug report <support-community>`, make sure to run your breaking test case *after* having installed all ``-dbg`` packages:
 
 .. code-block:: bash
 
@@ -56,7 +56,7 @@ However, these files won't contain much useful information if the relevant debug
     sudo apt-get update
     sudo apt-get install "${PACKAGES[@]}"
 
-As an example, see what an error log from Kurento looks like after a crash, when debug symbols are NOT installed:
+As an example, see what an error log from Kurento looks like after a crash, when debug symbols are NOT installed. This doesn't help much to debug the crash, because there is no source code information in the stack trace:
 
 .. code-block:: text
 
@@ -96,7 +96,7 @@ As an example, see what an error log from Kurento looks like after a crash, when
    [gst_proxy_pad_chain_default]
    /usr/lib/x86_64-linux-gnu/libgstreamer-1.5.so.0:0x5F5E3
 
-And now this is that same crash, after installing the packages *libglib2.0-0-dbg*, *libgstreamer1.5-0-dbg*, and *kms-core-dbg*:
+And now this is that same crash, after installing (among others) the packages *libglib2.0-0-dbg*, *libgstreamer1.5-0-dbg*, and *kms-core-dbg*. This stack trace is much more helpful, because it now indicates the exact file names and line numbers where the crash happened:
 
 .. code-block:: text
 
@@ -136,7 +136,7 @@ And now this is that same crash, after installing the packages *libglib2.0-0-dbg
    [gst_proxy_pad_chain_default]
    /opt/kurento/gst/gstghostpad.c:127
 
-Note how most lines of the stack trace are now indicating specific file names and line numbers, which would be a huge help for any developer to know where to start looking for any potential bug.
+Now that file names and line numbers are present in the stack trace, a developer will know where to start looking for any potential bug. However, it's important to note that such an stack trace, while helpful, is not a replacement for proper runtime information provided by a debugging session. So most crashes like this will need further investigation before they can be fixed.
 
 
 
@@ -245,6 +245,23 @@ If the machine is disconnected during the actual installation of this package, t
 .. code-block:: bash
 
    sudo apt-get install --reinstall openh264
+
+
+
+Missing video or audio streams
+------------------------------
+
+A typical cause for missing streams is that the network topology requires using either STUN or TURN, to overcome the NAT configuration of some intermediate router. If that's the case, the solution is to set up a STUN or a TURN server, and configure its details in the corresponding file, as explained in :ref:`installation-stun-turn`.
+
+There are some logging messages that could indicate a bad configuration of STUN or TURN; these are useful to look for:
+
+.. code-block:: text
+
+   STUN server Port not found in config; using default value: 3478
+   STUN server IP address not found in config; NAT traversal requires either STUN or TURN server
+   TURN server IP address not found in config; NAT traversal requires either STUN or TURN server
+
+If you see these messages, it's a clear indication that STUN or TURN are not properly configured in KMS.
 
 
 
