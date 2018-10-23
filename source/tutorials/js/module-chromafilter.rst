@@ -46,7 +46,7 @@ start the HTTP server:
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-chroma
-    git checkout |VERSION|
+    git checkout 6.8.1
     bower install
     http-server -p 8443 -S -C keys/server.crt -K keys/server.key
 
@@ -212,9 +212,9 @@ file, as follows:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "|VERSION|",
-      "kurento-utils": "|VERSION|"
-      "kurento-module-pointerdetector": "|VERSION|"
+      "kurento-client": "6.8.1",
+      "kurento-utils": "6.8.1"
+      "kurento-module-pointerdetector": "6.8.1"
    }
 
 To get these dependencies, just run the following shell command:
