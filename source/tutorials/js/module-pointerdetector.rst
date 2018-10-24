@@ -46,7 +46,7 @@ start the HTTP server:
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-pointerdetector
-    git checkout 6.8.1
+    git checkout 6.8.0
     bower install
     http-server -p 8443 -S -C keys/server.crt -K keys/server.key
 
@@ -252,9 +252,9 @@ file, as follows:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.8.1",
-      "kurento-utils": "6.8.1"
-      "kurento-module-pointerdetector": "6.8.1"
+      "kurento-client": "6.8.0",
+      "kurento-utils": "6.8.0"
+      "kurento-module-pointerdetector": "6.8.0"
    }
 
 To get these dependencies, just run the following shell command:
