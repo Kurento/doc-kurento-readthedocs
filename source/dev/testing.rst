@@ -39,19 +39,19 @@ The most important classes of this diagram are the following:
 
    - Reporting: An HTML report summarizing the results of a test suite executed with KTF is automatically created for Kurento tests. This report is called ``report.html`` and it is located by default on the ``target`` folder when tests are executed with Maven.
 
-   - Retries mechanism: In order to detect flaky tests, a retries mechanism is present in KTF. This mechanism allows to repeat a failed test a configurable number of times.    
+   - Retries mechanism: In order to detect flaky tests, a retries mechanism is present in KTF. This mechanism allows to repeat a failed test a configurable number of times.
 
 - `KurentoClientTest <https://github.com/Kurento/kurento-java/blob/master/kurento-integration-tests/kurento-test/src/main/java/org/kurento/test/base/KurentoClientTest.java>`_: It provides an instance of **Kurento Media Server** (KMS) together with a instance of a **Kurento Java Client** to control KMS. There are two options to run this KMS (see KTF API section for configuration details):
 
    - Local KMS. To use this option, it is a pre-requisite to have KMS installed in the machine running this type of tests.
 
-   - KMS in a **Docker** container. To use this option, it is a pre-requisite to have `Docker https://www.docker.com/`_ installed in the machine running this type of tests.
+   - KMS in a **Docker** container. To use this option, it is a pre-requisite to have `Docker <https://www.docker.com/>`_ installed in the machine running this type of tests.
 
 
 E2E Tests
 =========
 
-This section introduces the different types of E2E implmemented with KTF for Kurento.
+This section introduces the different types of E2E implemented with KTF for Kurento.
 
 Running tests
 =============
