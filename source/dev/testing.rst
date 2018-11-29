@@ -13,7 +13,9 @@ Testing
 Software testing is a broad term within software engineering encompassing a wide spectrum of different concepts. Depending on the size of the System Under Test (SUT) and the scenario in which it is exercised, testing can be carried out at different levels. There is no universal classification for all the different testing levels. Nevertheless, the following levels are broadly accepted:
 
 - Unit: individual program units are tested. Unit tests typically focus on the functionality of individual objects or methods.
+
 - Integration: units are combined to create composite components. Integration tests focus on the interaction of different units.
+
 - System: all of the components are integrated and the system is tested as a whole.
 
 There is a special type of system tests called **end-to-end** (E2E). In E2E tests, the final user is typically impersonated, i.e., simulated using automation techniques. The main benefit of E2E tests is the simulation of real user scenarios in an automated fashion. As described in the rest of this document, a rich variety of E2E has been implemented to assess Kurento.
@@ -53,7 +55,13 @@ Stability tests verifies Kurento capabilities in different scenarios:
 Tutorials
 ---------
 
-The documentation of Kurento includes a number of tutorials `tutorials <https://doc-kurento.readthedocs.io/en/stable/user/tutorials.html>`_ which allows to understand Kurento capabilities using ready to be used simple applications. Kurento tutorials have been developed for three technologies: Java, JavaScript, and Node.js. Moreover, for some of the Java tutorials, different E2E tests have been created.
+The documentation of Kurento includes a number of tutorials `tutorials <https://doc-kurento.readthedocs.io/en/stable/user/tutorials.html>`_ which allows to understand Kurento capabilities using ready to be used simple applications. Kurento tutorials have been developed for three technologies: Java, JavaScript, and Node.js. Moreover, for some of the Java tutorials, different E2E tests have been created. These tests are available in the project `kurento-tutorial-test <https://github.com/Kurento/kurento-tutorial-test/>`_. In order to run these tests, Maven should be used:
+
+.. code-block:: bash
+
+   git clone https://github.com/Kurento/kurento-tutorial-test
+   cd kurento-tutorial-test
+   mvn verify
 
 API
 ---
@@ -63,7 +71,7 @@ The `Kurento API <https://doc-kurento.readthedocs.io/en/stable/features/kurento_
 Running tests
 =============
 
-Most of the Kurento tests have been created using a custom Java library called **Kurento Testing Framework** (KTF). For more details about this framework, please take a look to the next section. If you are interested only in running a group of E2E tests in order to assess Kurento, please keep reading this section.
+Functional and stability Kurento tests have been created using a custom Java library called **Kurento Testing Framework** (KTF). For more details about this framework, please take a look to the next section. If you are interested only in running a group of functional or stability E2E tests in order to assess Kurento, please keep reading this section.
 
 Maven is the the way which E2E Kurento are executed. Therefore, in order to run E2E tests, first we need in have Java and Maven installed. The next step is cloning the GitHub repository which contains the test sources. Most of them are located in the `kurento-test <https://github.com/Kurento/kurento-java/tree/master/kurento-integration-tests/kurento-test>`_ project, located inside of `kurento-test <https://github.com/Kurento/kurento-java/>`_. Once we have this project, we need to invoke Maven to execute tests, for example as follows:
 
@@ -79,7 +87,13 @@ Let's take a closer look to the Maven command:
 
 - ``-pl kurento-integration-tests/kurento-test``: Maven option to select a single project for the goal, in this case ``kurento-test``.
 
-- ``-Dgroups=org.kurento.commons.testing.SystemFunctionalTests``: The Kurento E2E test suite is divided into different `JUnit 4's categories <https://github.com/junit-team/junit4/wiki/categories>`_. This option allows to select `IntegrationTests <https://github.com/Kurento/kurento-java/blob/master/kurento-commons/src/main/java/org/kurento/commons/testing/IntegrationTests.java>`_.
+- ``-Dgroups=org.kurento.commons.testing.IntegrationTests``: The Kurento E2E test suite is divided into different `JUnit 4's categories <https://github.com/junit-team/junit4/wiki/categories>`_. This option allows to select different types of `IntegrationTests <https://github.com/Kurento/kurento-java/blob/master/kurento-commons/src/main/java/org/kurento/commons/testing/IntegrationTests.java>`_. The most used values for this group are:
+
+   - ``SystemFunctionalTests`` : To run functional tests (as defined in section before).
+
+   - ``SystemStabilityTests`` : To run stability tests (as defined in section before).
+
+   - ``KurentoClientTests``: To run Java API tests (as defined in section before). If this option is used, the project should be also changed using ``-pl kurento-integration-tests/kurento-client-test``
 
 - ``-Dtest=WebRtcOneLoopbackTest``: Although not mandatory, it is highly recommended to select a test or group of test using the parameter ``-Dtest`` of Maven. Using this command we can select a test using the Java class name. Moreover, the wildcard ``*`` can be used. Kurento tests follow a fixed notation for test naming, and so, this can be used to select a group of tests, as follows:
 
@@ -144,35 +158,13 @@ Kurento Media Server (KMS) is the heart of Kurento and therefore it must be prop
 ..
    This table has been generated using http://www.tablesgenerator.com/text_tables
 
-Web server
-----------
+For example, in order to run the complete WebRTC functional test suite against a local instance KMS, the Maven would be as follows:
 
-Kurento is typically consumed using a web application. E2E tests follow this architecture, and so, a web application up and running in a web server is required. Kurento-test provides a sample web application out-of-the-box aimed to assess main Kurento features. Also, a custom web application for tests can be specified using its URL. The following table summarizes the configuration options for the test web applications.
+.. code-block:: bash
 
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
-| **Parameter**          | **Description**                                                                                                                                                                                                                                                                                              | **Default value** |
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
-| ``test.app.autostart`` | Specifies whether test application where Selenium browsers connect must be started by test or if it is externally managed:                                                                                                                                                                                   | ``testsuite``     |
-|                        |                                                                                                                                                                                                                                                                                                              |                   |
-|                        |                                                                                                                                                                                                                                                                                                              |                   |
-|                        | - ``false`` : Test application is externally managed and not started by test. URL where Selenium browsers connect must be then specified by properties: ``test.host``, ``test.port``, ``test.path`` and ``test.protocol``.                                                                                   |                   |
-|                        |                                                                                                                                                                                                                                                                                                              |                   |
-|                        |                                                                                                                                                                                                                                                                                                              |                   |
-|                        | - ``test`` : test application is started before each test execution.                                                                                                                                                                                                                                         |                   |
-|                        |                                                                                                                                                                                                                                                                                                              |                   |
-|                        |                                                                                                                                                                                                                                                                                                              |                   |
-|                        | - ``testsuite``: Test application is started at the beginning of test execution.                                                                                                                                                                                                                             |                   |
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
-| ``test.host``          | IP address or host name of the URL where Selenium browsers will connect when test application is externally managed (``-Dtest.app.autostart=false``). Notice this address must be reachable by Selenium browsers and hence network topology between browser and test application must be taken into account. | ``127.0.0.1``     |
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
-| ``test.port``          | Specifies port number where test application must bind in order to listen for browser requests.                                                                                                                                                                                                              | ``7779``          |
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
-| ``test.path``          | Path of the URL where Selenium connects when test application is externally managed (``-Dtest.app.autostart=false``).                                                                                                                                                                                        | ``/``             |
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
-| ``test.protocol``      | Protocol of the URL where Selenium browsers will connect when test application is externally managed (``-Dtest.app.autostart=false``).                                                                                                                                                                       | ``http``          |
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
-| ``test.url.timeout``   | Timeout (in seconds) to wait that web under test is available.                                                                                                                                                                                                                                               | ``500``           |
-+------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+   mvn verify -pl kurento-integration-tests/kurento-test -Pintegration -Dgroups=org.kurento.commons.testing.SystemFunctionalTests -Dtest.kms.autostart=false -Dtest=WebRtc*
+
+In this case, an instance of KMS should be available in the machine running the tests. Concretely, KMS should be accessible in the URL ``ws://localhost:8888/kurento`` (which is the default value for ``kms.ws.uri``).
 
 Browsers
 --------
@@ -211,6 +203,43 @@ In order to test automatically the web application under test using Kurento, web
 | ``saucelab.max.duration``     | Maximum duration for a given SauceLabs session (in seconds)                                                                                                                                      | ``1800``                            |
 +-------------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------+
 
+For example, in order to run the complete WebRTC functional test suite using *dockerized* browsers and recordings, the command would be as follows:
+
+.. code-block:: bash
+
+   mvn verify -pl kurento-integration-tests/kurento-test -Pintegration -Dgroups=org.kurento.commons.testing.SystemFunctionalTests -Dtest.selenium.scope=docker -Dtest.selenium.record=true -Dtest=WebRtc*
+
+In order to avoid wasting to much space disks, recording are deleted at the end of the test if the test is succeeded. For failed tests, recordings will be available by the default on the path ``target/surefire-reports/`` (this can be change using the property ``-Dtest.project.path``).
+
+Web server
+----------
+
+Kurento is typically consumed using a web application. E2E tests follow this architecture, and so, a web application up and running in a web server is required. Kurento-test provides a sample web application out-of-the-box aimed to assess main Kurento features. Also, a custom web application for tests can be specified using its URL. The following table summarizes the configuration options for the test web applications.
+
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+| **Parameter**          | **Description**                                                                                                                                                                                                                                                                                              | **Default value** |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+| ``test.app.autostart`` | Specifies whether test application where Selenium browsers connect must be started by test or if it is externally managed:                                                                                                                                                                                   | ``testsuite``     |
+|                        |                                                                                                                                                                                                                                                                                                              |                   |
+|                        |                                                                                                                                                                                                                                                                                                              |                   |
+|                        | - ``false`` : Test application is externally managed and not started by test. URL where Selenium browsers connect must be then specified by properties: ``test.host``, ``test.port``, ``test.path`` and ``test.protocol``.                                                                                   |                   |
+|                        |                                                                                                                                                                                                                                                                                                              |                   |
+|                        |                                                                                                                                                                                                                                                                                                              |                   |
+|                        | - ``test`` : test application is started before each test execution.                                                                                                                                                                                                                                         |                   |
+|                        |                                                                                                                                                                                                                                                                                                              |                   |
+|                        |                                                                                                                                                                                                                                                                                                              |                   |
+|                        | - ``testsuite``: Test application is started at the beginning of test execution.                                                                                                                                                                                                                             |                   |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+| ``test.host``          | IP address or host name of the URL where Selenium browsers will connect when test application is externally managed (``-Dtest.app.autostart=false``). Notice this address must be reachable by Selenium browsers and hence network topology between browser and test application must be taken into account. | ``127.0.0.1``     |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+| ``test.port``          | Specifies port number where test application must bind in order to listen for browser requests.                                                                                                                                                                                                              | ``7779``          |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+| ``test.path``          | Path of the URL where Selenium connects when test application is externally managed (``-Dtest.app.autostart=false``).                                                                                                                                                                                        | ``/``             |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+| ``test.protocol``      | Protocol of the URL where Selenium browsers will connect when test application is externally managed (``-Dtest.app.autostart=false``).                                                                                                                                                                       | ``http``          |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
+| ``test.url.timeout``   | Timeout (in seconds) to wait that web under test is available.                                                                                                                                                                                                                                               | ``500``           |
++------------------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------+
 
 Fake clients
 ------------
@@ -244,6 +273,8 @@ Kurento tests can be configured in many different ways. The following table summ
 | ``test.num.retries``           | Number of retries for failed tests                                                                                                                                                                                                                   | ``1``                              |
 +--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
 | ``test.report``                | Path for HTML report                                                                                                                                                                                                                                 | ``target/report.html``             |
++--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
+| ``test.project.path``          | Path for test file output (e.g. recordings).                                                                                                                                                                                                         | ``target/surefire-reports/``       |
 +--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
 | ``test.workspace``             | Absolute path of working directory used by tests as temporary storage. Make sure test user has full access to this folder. Notice this is the path seen by container when scope is set to docker.                                                    | ``/tmp``                           |
 +--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
