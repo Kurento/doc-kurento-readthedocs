@@ -143,7 +143,7 @@ Now that file names and line numbers are present in the stack trace, a developer
 Media Server disconnects from Application Server
 ------------------------------------------------
 
-E.g. Kurento keeps disconnecting every 30 minutes on high load peek time.
+E.g. Kurento keeps disconnecting every 30 minutes on high load peak time.
 
 Checklist:
 
@@ -196,6 +196,54 @@ Checklist:
 
 
 
+CPU usage grows too high
+------------------------
+
+Kurento Media Pipelines can get pretty complex if your use case requires so, which would mean more processing power is required to run them; however, even for the simplest cases it's possible that you find out unexpected spikes in CPU usage, which in extreme cases could end up crashing the server due to resource exhaustion in the machine.
+
+Check these points in an attempt to find possible causes for the high CPU usage:
+
+* Currently Kurento has performance issues with source videos bigger or equal to 720p. 1080p is not recommended (although it might work but the Kurento team hasn't done any factual analysis to prove it).
+
+* Source and destination video codecs must be compatible. This has always been a source of performance problems in WebRTC communications.
+
+  - For example, if some participants are using Firefox and talking in a room, they will probably negotiate **VP8** codec with Kurento; then later someone enters with Safari, CPU usage explodes due to transcoding is now suddenly required, because Safari only supports **H.264** (VP8 support was added only since Desktop Safari v68).
+  - Another example is you have some VP8 streams running nicely but then stream recording is enabled with the **MP4** recording profile, which uses H.264. Same story: video needs to be converted, and that uses a lot of CPU.
+
+* Also check if other processes are running in the same machine and using the CPU. For example, if Coturn is running and using a lot of resources because too many users end up connecting via Relay (TURN).
+
+Of these, video transcoding is the main user of CPU cycles, because encoding video is a computationally expensive operation. As mentioned earlier, keep an eye on the *TRANSCODING* events sent from Kurento to your Application Server, or alternatively look for ``TRANSCODING is ACTIVE`` messages in the media server logs.
+
+If you see that TRANSCODING is ACTIVE at some point, you may get a bit more information about why, by enabling this line:
+
+.. code-block:: bash
+
+   export GST_DEBUG="${GST_DEBUG:-3},Kurento*:5,agnosticbin*:5"
+
+in your daemon settings file, ``/etc/default/kurento-media-server``.
+
+Then look for these messages in the media server log output:
+
+* ``Current output caps: [...]``
+* ``Downstream input caps: [...]``
+* ``Find TreeBin with output caps: [...]``
+
+Which will end up with either of these sets of messages:
+
+* If source codec is compatible with destination:
+
+  - ``TreeBin found! Reuse it``
+  - ``TRANSCODING is INACTIVE for this media``
+
+* If source codec is **not** compatible with destination:
+
+  - ``TreeBin not found! Connection requires transcoding``
+  - ``TRANSCODING is ACTIVE for this media``
+
+The *input caps* and *output caps* mentioned in the first messages can help understand what codec is being received by Kurento and what is being expected at the other side.
+
+
+
 Service init doesn't work
 -------------------------
 
@@ -234,7 +282,7 @@ OpenH264 not found
 Also these conditions apply:
 
 - Packages *openh264-gst-plugins-bad-1.5* and *openh264* are already installed.
-- The file */usr/lib/x86_64-linux-gnu/libopenh264.so* is a broken link to the unexisting file */usr/lib/x86_64-linux-gnu/libopenh264.so.0*.
+- The file */usr/lib/x86_64-linux-gnu/libopenh264.so* is a broken link to the non-existing file */usr/lib/x86_64-linux-gnu/libopenh264.so.0*.
 
 **Reason**: The package *openh264* didn't install correctly. This package is just a wrapper that needs Internet connectivity during its installation stage, to download a binary blob file from this URL: http://ciscobinary.openh264.org/libopenh264-1.4.0-linux64.so.bz2
 
@@ -311,7 +359,7 @@ As opposed to that, the console output for when a connection is successfully don
    DEBUG o.k.j.c.AbstractJsonRpcClientWebSocket : [KurentoClient]  Connecting webSocket client to server ws://localhost:8888/kurento
    INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Connecting native client
    INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Creating new NioEventLoopGroup
-   INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Inititating new Netty channel. Will create new handler too!
+   INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Initiating new Netty channel. Will create new handler too!
    DEBUG o.k.j.c.JsonRpcClientNettyWebSocket    : [KurentoClient]  channel active
    DEBUG o.k.j.c.JsonRpcClientNettyWebSocket    : [KurentoClient]  WebSocket Client connected!
    INFO org.kurento.tutorial.player.Application : Started Application in 1.841 seconds (JVM running for 4.547)
@@ -340,7 +388,7 @@ This is how this process would look like. In this example, KMS was restarted so 
    INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Connecting native client
    INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Closing previously existing channel when connecting native client
    DEBUG o.k.j.c.JsonRpcClientNettyWebSocket    : [KurentoClient]  Closing client
-   INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Inititating new Netty channel. Will create new handler too!
+   INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Initiating new Netty channel. Will create new handler too!
    WARN o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Trying to close a JsonRpcClientNettyWebSocket with channel == null
    DEBUG o.k.j.c.AbstractJsonRpcClientWebSocket : TryReconnectingForever=true
    DEBUG o.k.j.c.AbstractJsonRpcClientWebSocket : TryReconnectingMaxTime=0
@@ -360,7 +408,7 @@ This is how this process would look like. In this example, KMS was restarted so 
    DEBUG o.k.j.c.AbstractJsonRpcClientWebSocket : [KurentoClient]  Connecting webSocket client to server ws://localhost:8888/kurento
    INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Connecting native client
    INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Creating new NioEventLoopGroup
-   INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Inititating new Netty channel. Will create new handler too!
+   INFO o.k.j.c.JsonRpcClientNettyWebSocket     : [KurentoClient]  Initiating new Netty channel. Will create new handler too!
    DEBUG o.k.j.c.JsonRpcClientNettyWebSocket    : [KurentoClient]  channel active
    DEBUG o.k.j.c.JsonRpcClientNettyWebSocket    : [KurentoClient]  WebSocket Client connected!
    DEBUG o.k.j.c.AbstractJsonRpcClientWebSocket : [KurentoClient]  Req-> {"id":2,"method":"connect","jsonrpc":"2.0"}
@@ -453,7 +501,7 @@ Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.
 
     It is recommended to start recording only after media arrives, either to the endpoint that is the source of the media connected to the recorder, to the recorder itself, or both. Users may use the MediaFlowIn and MediaFlowOut events, and synchronize the recording with the moment media comes in. In any case, nothing will be stored in the file until the first media packets arrive.
 
-Follow this checklist to see if everything is correctly configured:
+Follow this checklist to see if any of these problems is preventing the RecorderEndpoint from working correctly:
 
 - The RecorderEndpoint is configured for both audio and video, but only video (or only audio) is being provided by the application.
 - Availability of audio/video devices at recorder client initialization, and just before starting the recording.
