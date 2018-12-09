@@ -28,7 +28,17 @@ This section introduces the different types of E2E implemented to assess differe
 Functional
 ----------
 
-Functional tests are aimed to evaluate a given capability provided by Kurento. The main types of functional tests for Kurento are the following:
+Functional tests are aimed to evaluate a given capability provided by Kurento. These tests have created in Java. You can find the source code in the repository `kurento-test <https://github.com/Kurento/kurento-java/tree/master/kurento-integration-tests/kurento-test>`_ within `kurento-java <https://github.com/Kurento/kurento-java/>`_.  In order to run functional tests, Maven should be used as follows:
+
+.. code-block:: bash
+
+   git clone https://github.com/Kurento/kurento-java
+   cd kurento-java
+   mvn verify -pl kurento-integration-tests/kurento-test -Pintegration -Dgroups=org.kurento.commons.testing.SystemFunctionalTests
+
+By default, these tests required a local Kurento Media Server installed in the machine running the tests. In addition, Chrome and Firefox browsers are also required. For further information about running these tests, please read next section.
+
+The main types of functional tests for Kurento are the following:
 
 - WebRTC. Real-time media in the web is one of the core Kurento capabilities, and therefore, a rich test suite to assess the use of WebRTC in Kurento has been implemented. Moreover, two special WebRTC features are also tested:
 
@@ -42,7 +52,6 @@ Functional tests are aimed to evaluate a given capability provided by Kurento. T
 
 - Composite/Dispatcher. KMS allows to mix media using different media elements (``Composite`` and ``Dispatcher``). These tests are aimed to asses the result of this media mixing.
 
-
 Stability
 ---------
 
@@ -51,6 +60,14 @@ Stability tests verifies Kurento capabilities in different scenarios:
 - Running media pipelines in large amount of time.
 
 - Using a lot of resources (CPU, memory) of a KMS instance.
+
+Stability tests have been also created using Java, and they are contained in the project `kurento-test <https://github.com/Kurento/kurento-java/tree/master/kurento-integration-tests/kurento-test>`_. Again, we use Maven to execute stability tests against a local KMS and using also local browsers (Chrome, Firefox):
+
+.. code-block:: bash
+
+   git clone https://github.com/Kurento/kurento-java
+   cd kurento-java
+   mvn verify -pl kurento-integration-tests/kurento-test -Pintegration -Dgroups=org.kurento.commons.testing.SystemStabilityTests
 
 Tutorials
 ---------
@@ -66,7 +83,15 @@ The documentation of Kurento includes a number of tutorials `tutorials <https://
 API
 ---
 
-The `Kurento API <https://doc-kurento.readthedocs.io/en/stable/features/kurento_api.html>`_ is available in two languages: Java and JavaScript. For both of them, a test suite has been created to verify the correctness of the Kurento API against a running instance of KMS. In you want to run API tests for Java, please take a look to the next section of this document. In order to run JavaScript API tests against a running instance of local KMS, the command to be used is the following:
+The `Kurento API <https://doc-kurento.readthedocs.io/en/stable/features/kurento_api.html>`_ is available in two languages: Java and JavaScript. For both of them, a test suite has been created to verify the correctness of the Kurento API against a running instance of KMS. In you want to run API tests for Java, as usual for Kurento tests, Maven is required, as follows:
+
+.. code-block:: bash
+
+   git clone https://github.com/Kurento/kurento-java
+   cd kurento-java
+   mvn verify -pl kurento-integration-tests/kurento-client-test -Pintegration -Dgroups=org.kurento.commons.testing.KurentoClientTests
+
+In order to run JavaScript API tests against a running instance of local KMS, the command to be used is the following:
 
 .. code-block:: bash
 
@@ -79,7 +104,7 @@ The `Kurento API <https://doc-kurento.readthedocs.io/en/stable/features/kurento_
 Running Java tests
 ==================
 
-Functional and stability Kurento tests have been created using a custom Java library called **Kurento Testing Framework** (KTF). For more details about this framework, please take a look to the next section. If you are interested only in running a group of functional or stability E2E tests in order to assess Kurento, please keep reading this section.
+Functional, stability, and Java API tests for Kurento have been created using a custom Java library called **Kurento Testing Framework** (KTF). For more details about this framework, please take a look to the next section. If you are interested only in running a group of functional or stability E2E tests in order to assess Kurento, please keep reading this section.
 
 Maven is the the way which E2E Kurento are executed. Therefore, in order to run E2E tests, first we need in have Java and Maven installed. The next step is cloning the GitHub repository which contains the test sources. Most of them are located in the `kurento-test <https://github.com/Kurento/kurento-java/tree/master/kurento-integration-tests/kurento-test>`_ project, located inside of `kurento-java <https://github.com/Kurento/kurento-java/>`_. Inside this project, we need to invoke Maven to execute tests, for example as follows:
 
@@ -97,9 +122,11 @@ Let's take a closer look to the Maven command:
 
 - ``-Dgroups=org.kurento.commons.testing.IntegrationTests``: The Kurento E2E test suite is divided into different `JUnit 4's categories <https://github.com/junit-team/junit4/wiki/categories>`_. This option allows to select different types of `IntegrationTests <https://github.com/Kurento/kurento-java/blob/master/kurento-commons/src/main/java/org/kurento/commons/testing/IntegrationTests.java>`_. The most used values for this group are:
 
-   - ``SystemFunctionalTests`` : To run functional tests (as defined in section before).
+   - ``IntegrationTests``: Parent category for all Kurento E2E tests.
 
-   - ``SystemStabilityTests`` : To run stability tests (as defined in section before).
+   - ``SystemFunctionalTests``: To run functional tests (as defined in section before).
+
+   - ``SystemStabilityTests``: To run stability tests (as defined in section before).
 
    - ``KurentoClientTests``: To run Java API tests (as defined in section before). If this option is used, the project should be also changed using ``-pl kurento-integration-tests/kurento-client-test``
 
@@ -115,7 +142,15 @@ Let's take a closer look to the Maven command:
 
    - ``-Dtest=Dispatcher*``: Used to execute all the functional Kurento tests for dispatcher.
 
-Kurento test are highly configurable. This configuration is done simply adding extra JVM parameters (i.e. ``-Dparameter=value``) to the previous Maven command. The following sections summarizes the main test parameters and its default values organized in different categories.
+An HTML report summarizing the results of a test suite executed with KTF is automatically created for Kurento tests. This report is called ``report.html`` and it is located by default on the ``target`` folder when tests are executed with Maven. The following picture shows an example of the content of this report.
+
+.. figure:: ../images/kurento-test-report.png
+   :align:   center
+   :alt:     Kurento Test Framework report sample
+
+   *Kurento Test Framework report sample*
+
+Kurento tests are highly configurable. This configuration is done simply adding extra JVM parameters (i.e. ``-Dparameter=value``) to the previous Maven command. The following sections summarizes the main test parameters and its default values organized in different categories.
 
 Kurento Media Server
 --------------------
@@ -315,6 +350,8 @@ Kurento tests can be configured in many different ways. The following table summ
 +--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
 | ``s3.hostname``                | Bucket’s hostname from S3 machine                                                                                                                                                                                                                    | none                               |
 +--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
+| ``test.files.s3``              | S3 machine where test files (videos) are located.                                                                                                                                                                                                    | ``kurento-s3-test``                |
++--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
 | ``test.seek.repetitions``      | Number of times the tests with seek feature will be executed                                                                                                                                                                                         | ``100``                            |
 +--------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------+
 | ``test.num.sessions``          | Number of total sessions executed in stability tests                                                                                                                                                                                                 | ``50``                             |
@@ -341,7 +378,7 @@ The most important classes of this diagram are the following:
 
    - Improved test lifecycle: KTF enhances the lyfecycle of JUnit 4 test cases, watching the result of tests (passed, failed). Moreover, KTF provides extra annotations to be used in different parts of the test lifecycle, such as `FailedTest <https://github.com/Kurento/kurento-java/blob/master/kurento-integration-tests/kurento-test/src/main/java/org/kurento/test/lifecycle/FailedTest.java>`_, `FinishedTest <https://github.com/Kurento/kurento-java/blob/master/kurento-integration-tests/kurento-test/src/main/java/org/kurento/test/lifecycle/FinishedTest.java>`_, `FinishedTestClass <https://github.com/Kurento/kurento-java/blob/master/kurento-integration-tests/kurento-test/src/main/java/org/kurento/test/lifecycle/FinishedTestClass.java>`_, `StartedTest <https://github.com/Kurento/kurento-java/blob/master/kurento-integration-tests/kurento-test/src/main/java/org/kurento/test/lifecycle/StartedTest.java>`_, `StartedTestClass <https://github.com/Kurento/kurento-java/blob/master/kurento-integration-tests/kurento-test/src/main/java/org/kurento/test/lifecycle/StartedTestClass.java>`_, or `SucceededTest <https://github.com/Kurento/kurento-java/blob/master/kurento-integration-tests/kurento-test/src/main/java/org/kurento/test/lifecycle/SucceededTest.java>`_.
 
-   - Reporting: An HTML report summarizing the results of a test suite executed with KTF is automatically created for Kurento tests. This report is called ``report.html`` and it is located by default on the ``target`` folder when tests are executed with Maven.
+   - Reporting: As introduced before, an HTML report summarizing the results of a test suite executed with KTF is automatically created for Kurento tests (``report.html``, located by default on the ``target`` folder when tests are executed with Maven).
 
    - Retries mechanism: In order to detect flaky tests, a retries mechanism is present in KTF. This mechanism allows to repeat a failed test a configurable number of times.
 
