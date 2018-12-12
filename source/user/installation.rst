@@ -102,7 +102,7 @@ Currently, the main development environment for KMS is Ubuntu 16.04 (Xenial), so
 
       sudo tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
       # Kurento Media Server - Release packages
-      deb [arch=amd64] http://ubuntu.openvidu.io/6.8.1 $DISTRO kms6
+      deb [arch=amd64] http://ubuntu.openvidu.io/6.9.0 $DISTRO kms6
       EOF
 
 3. Install KMS:
