@@ -2,21 +2,15 @@
 Support
 =======
 
-Usage Questions
-===============
+If you are facing an issue with Kurento Media Server, follow this basic check list:
 
-If you have questions about how to use Kurento, or have an issue that isn't related to a bug, `Stack Overflow`_ is the best place to ask. Tag questions with ``kurento`` so other folks can find them easily.
+* Step 1. Test with the **latest version** of Kurento Media Server: **6.9.0**. Follow the installation instructions here: :doc:`/user/installation`.
 
-Another option you have is to contact the community through the `Kurento Public Mailing List`_, which is a medium that allows more discussion to happen around topics.
+* Step 2: If the problem still happens in the latest version, and the Kurento developers are already tracking progress for a solution in a bug report or a support contract, you may test the latest (unreleased) changes by installing a nightly version of KMS: :doc:`/user/installation_dev`.
 
-Good questions to ask would be:
+* Step 3: When your issue exists in both the latest and nightly versions, try resorting to the :ref:`Open-Source Community <support-community>`. Kurento users might be having the same issue and maybe you can find help in there.
 
-- What is the best Media Pipeline to use for <place your use case here>?
-- How do I check that the ICE connectivity checks are working properly for WebRTC?
-- Which audio/video codec combination should I use to ensure no transcoding needs to take place?
-
-.. _Stack Overflow: https://stackoverflow.com/questions/tagged/kurento?sort=frequent
-.. _Kurento Public Mailing List: https://groups.google.com/forum/#!forum/kurento
+* Step 4: If you want full attention from the Kurento team, get in contact with us to request :ref:`Commercial Support <support-commercial>`.
 
 
 
@@ -25,7 +19,21 @@ Good questions to ask would be:
 Community Support
 =================
 
-Kurento is a community supported project, nobody is paid explicitly to offer user support. **All people answering your questions are doing it with their own time, so please be kind and provide as much information as possible.**
+Kurento is a project mainly supported by its Open-Source Community. **All people answering your questions are doing it with their own time, so please be kind and provide as much information as possible.**
+
+If you have questions about configuration, infrastructure, or general usage of Kurento Media Server, `Stack Overflow`_ is the best place to ask. Tag questions with `kurento`_ so other folks can find them easily.
+
+Another option is to contact the Community through the `Kurento Public Mailing List`_, which is a discussion forum.
+
+Good questions to ask would be:
+
+- What is the best Media Pipeline to use for <place your use case here>?
+- How do I check that the ICE connectivity checks are working properly for WebRTC?
+- Which audio/video codec combination should I use to ensure no transcoding needs to take place?
+
+.. _kurento:
+.. _Stack Overflow: https://stackoverflow.com/questions/tagged/kurento?sort=frequent
+.. _Kurento Public Mailing List: https://groups.google.com/forum/#!forum/kurento
 
 
 
@@ -34,7 +42,7 @@ Bugs & Support Issues
 
 You can file bug reports on our `Issue Tracker`_, and they will be addressed as soon as possible.
 
-**Support is a volunteer effort**, and there is no guaranteed response time. If you need answers quickly, you can buy commercial support as explained below.
+**Support is a volunteered effort**, and there is no guaranteed response time. If you need answers quickly, you can get in contact with us to request :ref:`Commercial Support <support-commercial>`.
 
 .. _Issue Tracker: https://github.com/Kurento/bugtracker/issues
 
@@ -47,7 +55,7 @@ Reporting Issues
 
 When reporting a bug, please include as much information as possible, this will help us solve the problem. Also, try to follow these guidelines as closely as possible, because they make it easier for people to work on the issue, and that means more chances that the issue gets fixed:
 
-- **Be proactive**. If you are working with an old version of Kurento, please check with newer versions, specially with the :doc:`latest development version </user/installation_dev>`. We can't emphasize this enough: *it's the first thing that we are going to ask*.
+- **Be proactive**. If you are working with an old version of Kurento, please check with newer versions, specially with the :doc:`nightly version </user/installation_dev>`. We can't emphasize this enough: *it's the first thing that we are going to ask*.
 
 - **Be curious**. Has it been asked before? Is it really a bug? Everybody hates duplicated reports. The Search tool is your friend!
 
@@ -65,7 +73,13 @@ If you definitely think you have hit a bug, try to include these in your bug rep
 
 
 
+.. _support-commercial:
+
 Commercial Support
 ==================
 
-We offer commercial support for Kurento, custom features, as well as consulting around all media server issues. You can contact us at openvidu@gmail.com to learn more.
+Kurento is formed by a small team of people. This means that our task pipeline is quite restricted, and most feature or support requests end up being stored in the backlog for a long time. We advance as fast as we can, but time and resources are limited and at the end of the day there is so much that we can do.
+
+If you have some needs that require urgent attention, or want to help with funding development on the Kurento project, we offer consultancy and support services on demand.
+
+Please contact us at openvidu@gmail.com and let us know about your project!
