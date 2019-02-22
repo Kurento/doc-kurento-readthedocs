@@ -174,7 +174,9 @@ Add Kurento repository
 
 These steps are pretty much the same as those explained in :ref:`installation-local`, with the only change of using a different package repository.
 
-1. Define what version of Ubuntu is installed in your system. Open a terminal and copy **only one** of these lines:
+1. Define what version of Ubuntu is installed in your system.
+
+   Open a terminal and run **only one** of these lines:
 
    .. code-block:: bash
 
@@ -182,7 +184,9 @@ These steps are pretty much the same as those explained in :ref:`installation-lo
       DISTRO="xenial"  # KMS for Ubuntu 16.04 (Xenial)
       DISTRO="bionic"  # KMS for Ubuntu 18.04 (Bionic)
 
-2. Add the Kurento repository to your system configuration. Run these two commands in the same terminal you used in the previous step:
+2. Add the Kurento repository to your system configuration.
+
+   Run these two commands in the same terminal you used in the previous step:
 
    .. code-block:: text
 
@@ -267,7 +271,7 @@ Run:
 .. code-block:: bash
 
    git clone https://github.com/Kurento/kms-omni-build.git
-   cd kms-omni-build/
+   cd kms-omni-build
    git submodule update --init --recursive
    git submodule update --remote
 
@@ -296,7 +300,7 @@ Run:
 
    TYPE=Debug
    mkdir build-$TYPE
-   cd build-$TYPE/
+   cd build-$TYPE
    cmake -DCMAKE_BUILD_TYPE=$TYPE ..
    make
 
@@ -304,7 +308,9 @@ CMake accepts the following build types: *Debug*, *Release*, *RelWithDebInfo*. S
 
 .. note::
 
-   The standard way of compiling a project with CMake is to create a *build* directory and run the ``cmake`` and ``make`` commands from there. This allows the developer to have different build folders for different purposes. However **do not use this technique** if you are trying to compile a subdirectory of **kms-omni-build**. For example, if you do this to build *kms-omni-build/kms-core*, no more that one build folder can be present at a time in *kms-ombi-build/kms-core/build*. If you want to keep several builds of a single module, it is better to just work on a separate Git clone of that repository.
+   If your ``cmake`` command fails, make sure you don't have multiple ``build`` directories below **kms-omni-build** or any of its subdirectories. We have seen that having multiple build dirs can cause issues, so it's better to only have one.
+
+   If you want to work with multiple build dirs at the same time, it's better to just work on a separate Git clone, outside the **kms-omni-build** directory.
 
 It is also possible to enable GCC's AddressSanitizer or ThreadSanitizer with these flags:
 
@@ -315,7 +321,7 @@ It is also possible to enable GCC's AddressSanitizer or ThreadSanitizer with the
    -DSANITIZE_THREAD=ON
    -DSANITIZE_LINK_STATIC=ON
 
-[TODO: finish testing that these modes do actually work]
+[TODO: integration with these tools is not really finished]
 
 Verbose mode can be enabled too:
 
@@ -521,7 +527,7 @@ Follow these steps to generate Debian packages from any of the Kurento repositor
       export PYTHONUNBUFFERED=1
       export PATH="$PWD/adm-scripts:$PWD/adm-scripts/kms:$PATH"
 
-      cd kms-core/
+      cd kms-core
       compile_project.py --base_url https://github.com/Kurento compile
 
    Another variable you can export is ``DEB_BUILD_OPTIONS``, in order to disable any of unit testing, doc generation (which at the Debian level is mostly nothing, this doesn't refer to the whole Kurento project documentation site), and binary stripping. For example:
