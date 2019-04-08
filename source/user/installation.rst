@@ -103,7 +103,7 @@ KMS has explicit support KMS has explicit support for two Long-Term Support (*LT
 
       sudo tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
       # Kurento Media Server - Release packages
-      deb [arch=amd64] http://ubuntu.openvidu.io/6.9.0 $DISTRO kms6
+      deb [arch=amd64] http://ubuntu.openvidu.io/6.10.0 $DISTRO kms6
       EOF
 
 4. Install KMS:
