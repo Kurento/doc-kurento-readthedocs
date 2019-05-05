@@ -19,7 +19,7 @@ First of all, install Kurento Media Server: :doc:`/user/installation`. Start the
 
    This is not an issue if you will run both KMS and the tutorial demo locally, because browsers (at least Chrome at the time of this writing) allow connecting to insecure WebSockets from HTTPS pages, as long as everything happens in ``localhost``.
 
-Install :term:`Node.js`, :term:`Bower`, and an HTTP server in your system:
+Install :term:`Node.js`, :term:`Bower`, and a web server in your system:
 
 .. code-block:: bash
 
