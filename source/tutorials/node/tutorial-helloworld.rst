@@ -29,6 +29,7 @@ an Ubuntu machine, you can install both as follows:
 
    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
    sudo apt-get install -y nodejs
+   sudo apt-get install -y npm
    sudo npm install -g bower
 
 To launch the application, you need to clone the GitHub project where this demo
@@ -40,6 +41,9 @@ is hosted, install it and run it:
     cd kurento-tutorial-node/kurento-hello-world
     git checkout 6.10.0
     npm install
+    cd static
+    bower install --allow-root 
+    cd ..
     npm start
 
 If you have problems installing any of the dependencies, please remove them and
