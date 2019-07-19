@@ -3,7 +3,7 @@ Node.js - Hello world
 %%%%%%%%%%%%%%%%%%%%%
 
 This web application has been designed to introduce the principles of
-programming with Kurento for Node.js developers. It consists on a
+programming with Kurento for Node.js developers. It consists of a
 `WebRTC`:term: video communication in mirror (*loopback*). This tutorial
 assumes you have basic knowledge of JavaScript, Node.js, HTML and WebRTC. We
 also recommend reading the
@@ -22,14 +22,16 @@ You need to have installed the Kurento Media Server before running this example.
 Read the :doc:`installation guide </user/installation>` for further
 information.
 
-Be sure to have installed `Node.js`:term: and `Bower`:term: in your system. In
-an Ubuntu machine, you can install both as follows:
+Be sure to install `Bower`:term: and `Node.js`:term: **version 8.x** in your system.
+In an Ubuntu machine, you can install both as follows:
 
 .. sourcecode:: bash
 
    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
    sudo apt-get install -y nodejs
    sudo npm install -g bower
+
+Also, Node.js should already include NPM, the Node.js package manager.
 
 To launch the application, you need to clone the GitHub project where this demo
 is hosted, install it and run it:
@@ -40,6 +42,9 @@ is hosted, install it and run it:
     cd kurento-tutorial-node/kurento-hello-world
     git checkout 6.10.0
     npm install
+    cd static
+    bower install --allow-root
+    cd ..
     npm start
 
 If you have problems installing any of the dependencies, please remove them and
