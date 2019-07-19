@@ -155,7 +155,7 @@ this demo has been developed using **Java** and `Spring Boot`:term:.
 
    You can use whatever Java server side technology you prefer to build web
    applications with Kurento. For example, a pure Java EE application, SIP
-   Servlets, Play, Vertex, etc. We have choose Spring Boot for convenience.
+   Servlets, Play, Vert.x, etc. We have choose Spring Boot for convenience.
 
 In the following figure you can see a class diagram of the server side code:
 
@@ -227,7 +227,7 @@ Bean.
 This web application follows a *Single Page Application* architecture
 (`SPA`:term:), and uses a `WebSocket`:term: to communicate client with server
 by means of requests and responses. Specifically, the main app class implements
-the interface ``WebSocketConfigurer`` to register a ``WebSocketHanlder`` to
+the interface ``WebSocketConfigurer`` to register a ``WebSocketHandler`` to
 process WebSocket requests in the path ``/call``.
 
 `CallHandler <https://github.com/Kurento/kurento-tutorial-java/blob/master/kurento-one2one-call-advanced/src/main/java/org/kurento/tutorial/one2onecalladv/CallHandler.java>`_
