@@ -39,7 +39,7 @@ You also need the source code of this demo; clone it from GitHub, then start the
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-recorder
-    git checkout 6.10.0
+    git checkout 6.11.0
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 
@@ -288,8 +288,8 @@ Demo dependencies are located in file `bower.json <https://github.com/Kurento/ku
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.10.0",
-      "kurento-utils": "6.10.0"
+      "kurento-client": "6.11.0",
+      "kurento-utils": "6.11.0"
    }
 
 .. note::
