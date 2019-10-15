@@ -4,7 +4,7 @@ Troubleshooting Issues
 
 If you are facing an issue with Kurento Media Server, follow this basic check list:
 
-* Step 1. Test with the **latest version** of Kurento Media Server: **6.11.0**. Follow the installation instructions here: :doc:`/user/installation`.
+* Step 1. Test with the **latest version** of Kurento Media Server: **6.12.0**. Follow the installation instructions here: :doc:`/user/installation`.
 
 * Step 2: If the problem still happens in the latest version, and the Kurento developers have started working on a solution, they might instruct you to test with the latest (unreleased) changes by installing a nightly version of KMS: :doc:`/user/installation_dev`.
 
@@ -552,11 +552,11 @@ Zero-size video files
 
 If you are trying to generate a video recording, keep in mind that **the endpoint will wait until all tracks (audio, video) start arriving**.
 
-.. ifconfig:: "false" == "true"
+.. ifconfig:: "true" == "true"
 
-   Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.11.0/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
+   Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.12.0/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
-.. ifconfig:: "false" != "true"
+.. ifconfig:: "true" != "true"
 
    Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/latest/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
