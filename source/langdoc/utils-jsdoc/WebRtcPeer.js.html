@@ -474,38 +474,27 @@ function WebRtcPeer(mode, options, callback) {
   this.generateOffer = function (callback) {
     callback = callback.bind(this)
 
-    var offerAudio = true
-    var offerVideo = true
-    // Constraints must have both blocks
+    let useAudio = true
+    let useVideo = true
+
     if (mediaConstraints) {
-      offerAudio = (typeof mediaConstraints.audio === 'boolean') ?
+      useAudio = (typeof mediaConstraints.audio === 'boolean') ?
         mediaConstraints.audio : true
-      offerVideo = (typeof mediaConstraints.video === 'boolean') ?
+      useVideo = (typeof mediaConstraints.video === 'boolean') ?
         mediaConstraints.video : true
     }
 
-    var browserDependantConstraints = {
-      offerToReceiveAudio: (mode !== 'sendonly' &amp;&amp; offerAudio),
-      offerToReceiveVideo: (mode !== 'sendonly' &amp;&amp; offerVideo)
+    if (useAudio) {
+      pc.addTransceiver('audio', {
+        direction: mode
+      });
     }
 
-    //safari WebRtcPeerRecvonly fix
-    if (mode === 'recvonly' &amp;&amp; pc.addTransceiver &amp;&amp;
-      browserDependantConstraints.offerToReceiveAudio) {
-      pc.addTransceiver('audio')
+    if (useVideo) {
+      pc.addTransceiver('video', {
+        direction: mode
+      });
     }
-    if (mode === 'recvonly' &amp;&amp; pc.addTransceiver &amp;&amp;
-      browserDependantConstraints.offerToReceiveVideo) {
-      pc.addTransceiver('video')
-    }
-
-    //FIXME: clarify possible constraints passed to createOffer()
-    /*var constraints = recursive(browserDependantConstraints,
-      connectionConstraints)*/
-
-    var constraints = browserDependantConstraints;
-
-    logger.debug('constraints: ' + JSON.stringify(constraints))
 
     if (typeof AdapterJS !== 'undefined' &amp;&amp; AdapterJS
       .webrtcDetectedBrowser === 'IE' &amp;&amp; AdapterJS.webrtcDetectedVersion >= 9
@@ -527,9 +516,9 @@ function WebRtcPeer(mode, options, callback) {
         pc.setLocalDescription(offer, setLocalDescriptionOnSuccess,
           callback);
       };
-      pc.createOffer(createOfferOnSuccess, callback, constraints);
+      pc.createOffer(createOfferOnSuccess, callback);
     } else {
-      pc.createOffer(constraints).then(function (offer) {
+      pc.createOffer().then(function (offer) {
         logger.debug('Created SDP offer');
         offer = mangleSdpToAddSimulcast(offer);
         return pc.setLocalDescription(offer);
@@ -548,7 +537,8 @@ function WebRtcPeer(mode, options, callback) {
       }).catch(callback);
 
     }
-  };
+  }
+
   this.getLocalSessionDescriptor = function () {
     return pc.localDescription
   }
