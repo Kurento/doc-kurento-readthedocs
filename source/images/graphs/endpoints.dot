@@ -28,8 +28,11 @@ digraph endpoints {
 
   "HttpEndpoint" -> "HttpPostEndpoint";
 
-  "SdpEndpoint" -> "RtpEndpoint";
-  "SdpEndpoint" -> "WebRtcEndpoint";
+  "BaseRtpEndpoint" [style = "dashed"];
+  "SdpEndpoint" -> "BaseRtpEndpoint";
+
+  "BaseRtpEndpoint" -> "RtpEndpoint";
+  "BaseRtpEndpoint" -> "WebRtcEndpoint";
 
   "UriEndpoint" -> "PlayerEndpoint";
   "UriEndpoint" -> "RecorderEndpoint";
