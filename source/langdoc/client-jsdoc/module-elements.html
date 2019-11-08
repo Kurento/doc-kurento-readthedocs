@@ -1428,7 +1428,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line334">line 334</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line341">line 341</a>
     </li></ul></dd>
     
 
@@ -1748,7 +1748,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line790">line 790</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1144">line 1144</a>
     </li></ul></dd>
     
 
@@ -2188,7 +2188,9 @@
 
 
 <div class="description">
-    Notifies a new local candidate. These candidates should be sent to the remote
+    Notifies a new local candidate.
+These candidates should be sent to the remote peer, to complete the ICE 
+negotiation process.
 </div>
 
 
@@ -2338,8 +2340,8 @@
 
 
 <div class="description">
-    Event fired when and ICE component state changes. See 
-:rom:cls:`IceComponentState` for a list of possible states.
+    Event fired when and ICE component state changes.
+See :rom:cls:`IceComponentState` for a list of possible states.
 </div>
 
 
@@ -2491,7 +2493,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line59">line 59</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line61">line 61</a>
     </li></ul></dd>
     
 
@@ -2579,7 +2581,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line75">line 75</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line77">line 77</a>
     </li></ul></dd>
     
 
@@ -2623,7 +2625,7 @@
 
 
 <div class="description">
-    Event fired when a new pair of ICE candidates is used by the ICE library. 
+    Event fired when a new pair of ICE candidates is used by the ICE library.
 This could also happen in the middle of a session, though not likely.
 </div>
 
@@ -2730,7 +2732,7 @@ This could also happen in the middle of a session, though not likely.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line81">line 81</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line83">line 83</a>
     </li></ul></dd>
     
 
@@ -2773,6 +2775,10 @@ This could also happen in the middle of a session, though not likely.
 
 
 
+<div class="description">
+    Event fired when a data channel is closed.
+</div>
+
 
 
 
@@ -2864,6 +2870,8 @@ This could also happen in the middle of a session, though not likely.
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use <code>DataChannelClose</code> instead.</li></ul></dd>
+    
 
     
 
@@ -2876,7 +2884,7 @@ This could also happen in the middle of a session, though not likely.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line93">line 93</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line95">line 95</a>
     </li></ul></dd>
     
 
@@ -2919,6 +2927,10 @@ This could also happen in the middle of a session, though not likely.
 
 
 
+<div class="description">
+    Event fired when a new data channel is created.
+</div>
+
 
 
 
@@ -3010,6 +3022,8 @@ This could also happen in the middle of a session, though not likely.
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use <code>DataChannelOpen</code> instead.</li></ul></dd>
+    
 
     
 
@@ -3022,7 +3036,7 @@ This could also happen in the middle of a session, though not likely.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line104">line 104</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line107">line 107</a>
     </li></ul></dd>
     
 
@@ -3064,6 +3078,12 @@ This could also happen in the middle of a session, though not likely.
     
 
 
+
+<div class="description">
+    Notifies a new local candidate.
+These candidates should be sent to the remote peer, to complete the ICE 
+negotiation process.
+</div>
 
 
 
@@ -3156,6 +3176,8 @@ This could also happen in the middle of a session, though not likely.
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use <code>IceCandidateFound</code> instead.</li></ul></dd>
+    
 
     
 
@@ -3168,7 +3190,7 @@ This could also happen in the middle of a session, though not likely.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line115">line 115</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line119">line 119</a>
     </li></ul></dd>
     
 
@@ -3210,6 +3232,11 @@ This could also happen in the middle of a session, though not likely.
     
 
 
+
+<div class="description">
+    Event fired when and ICE component state changes.
+See :rom:cls:`IceComponentState` for a list of possible states.
+</div>
 
 
 
@@ -3348,6 +3375,8 @@ This could also happen in the middle of a session, though not likely.
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use <code>IceComponentStateChange</code> instead.</li></ul></dd>
+    
 
     
 
@@ -3360,7 +3389,7 @@ This could also happen in the middle of a session, though not likely.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line127">line 127</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line133">line 133</a>
     </li></ul></dd>
     
 
@@ -3403,6 +3432,10 @@ This could also happen in the middle of a session, though not likely.
 
 
 
+<div class="description">
+    Event fired when al ICE candidates have been gathered.
+</div>
+
 
 
 
@@ -3432,6 +3465,8 @@ This could also happen in the middle of a session, though not likely.
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use <code>IceGatheringDone</code> instead.</li></ul></dd>
+    
 
     
 
@@ -3444,7 +3479,7 @@ This could also happen in the middle of a session, though not likely.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line143">line 143</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line150">line 150</a>
     </li></ul></dd>
     
 
@@ -3595,7 +3630,7 @@ limit, which means it will expire soon.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line149">line 149</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line157">line 157</a>
     </li></ul></dd>
     
 
@@ -3679,7 +3714,7 @@ limit, which means it will expire soon.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line161">line 161</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line169">line 169</a>
     </li></ul></dd>
     
 
@@ -3768,7 +3803,7 @@ recorder and record method has been called.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line167">line 167</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line175">line 175</a>
     </li></ul></dd>
     
 
@@ -3852,7 +3887,7 @@ recorder and record method has been called.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line174">line 174</a>
+        <a href="node_modules_kurento-client-elements_lib_events.js.html">node_modules/kurento-client-elements/lib/events.js</a>, <a href="node_modules_kurento-client-elements_lib_events.js.html#line182">line 182</a>
     </li></ul></dd>
     
 

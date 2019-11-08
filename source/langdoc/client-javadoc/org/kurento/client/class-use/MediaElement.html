@@ -90,7 +90,7 @@
 <tr class="altColor">
 <td class="colFirst"><code>interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></span></code>
-<div class="block">This class extends from the SdpEndpoint, and handles RTP communications.</div>
+<div class="block">Handles RTP communications.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -168,8 +168,7 @@
 <tr class="rowColor">
 <td class="colFirst"><code>interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/RecorderEndpoint.html" title="interface in org.kurento.client">RecorderEndpoint</a></span></code>
-<div class="block">
-   Provides the functionality to store contents.</div>
+<div class="block">Provides the functionality to store contents.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -181,7 +180,8 @@
 <tr class="rowColor">
 <td class="colFirst"><code>interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></span></code>
-<div class="block">This interface is implemented by Endpoints that require an SDP negotiation for the setup of a networked media session with remote peers.</div>
+<div class="block">Interface implemented by Endpoints that require an SDP negotiation for the setup
+ of a networked media session with remote peers.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -199,8 +199,7 @@
 <tr class="altColor">
 <td class="colFirst"><code>interface&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></span></code>
-<div class="block">
-       Control interface for Kurento WebRTC endpoint.</div>
+<div class="block">Control interface for Kurento WebRTC endpoint.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -226,13 +225,13 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ElementConnectedEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ElementConnectedEvent.html#getSink--">getSink</a></span>()</code>
+<td class="colLast"><span class="typeNameLabel">ElementDisconnectedEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ElementDisconnectedEvent.html#getSink--">getSink</a></span>()</code>
 <div class="block">Getter for the sink property</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></code></td>
-<td class="colLast"><span class="typeNameLabel">ElementDisconnectedEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ElementDisconnectedEvent.html#getSink--">getSink</a></span>()</code>
+<td class="colLast"><span class="typeNameLabel">ElementConnectedEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ElementConnectedEvent.html#getSink--">getSink</a></span>()</code>
 <div class="block">Getter for the sink property</div>
 </td>
 </tr>
@@ -254,7 +253,7 @@
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#connect-org.kurento.client.MediaElement-">connect</a></span>(<a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -270,7 +269,7 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#connect-org.kurento.client.MediaElement-org.kurento.client.MediaType-">connect</a></span>(<a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
        <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -288,7 +287,7 @@
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#connect-org.kurento.client.MediaElement-org.kurento.client.MediaType-java.lang.String-">connect</a></span>(<a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
        <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -308,7 +307,7 @@
        <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sinkMediaDescription)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -327,7 +326,7 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#connect-org.kurento.client.Transaction-org.kurento.client.MediaElement-">connect</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
        <a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -335,7 +334,7 @@
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#connect-org.kurento.client.Transaction-org.kurento.client.MediaElement-org.kurento.client.MediaType-">connect</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
        <a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
        <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -344,7 +343,7 @@
        <a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
        <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -354,7 +353,7 @@
        <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sinkMediaDescription)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -471,13 +470,13 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">ElementConnectedEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ElementConnectedEvent.html#setSink-org.kurento.client.MediaElement-">setSink</a></span>(<a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink)</code>
+<td class="colLast"><span class="typeNameLabel">ElementDisconnectedEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ElementDisconnectedEvent.html#setSink-org.kurento.client.MediaElement-">setSink</a></span>(<a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink)</code>
 <div class="block">Setter for the sink property</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">ElementDisconnectedEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ElementDisconnectedEvent.html#setSink-org.kurento.client.MediaElement-">setSink</a></span>(<a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink)</code>
+<td class="colLast"><span class="typeNameLabel">ElementConnectedEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ElementConnectedEvent.html#setSink-org.kurento.client.MediaElement-">setSink</a></span>(<a href="../../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink)</code>
 <div class="block">Setter for the sink property</div>
 </td>
 </tr>

@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6,"i27":6,"i28":6,"i29":6,"i30":6,"i31":6,"i32":6,"i33":6,"i34":6,"i35":6,"i36":6,"i37":6,"i38":6,"i39":6,"i40":6,"i41":6,"i42":6,"i43":6,"i44":6,"i45":6,"i46":6,"i47":6,"i48":6,"i49":6,"i50":6,"i51":6,"i52":6,"i53":6,"i54":6,"i55":6,"i56":6,"i57":6,"i58":6,"i59":6,"i60":6,"i61":6,"i62":6,"i63":6,"i64":6,"i65":6,"i66":6,"i67":6,"i68":6,"i69":6,"i70":6,"i71":6,"i72":6,"i73":6,"i74":6,"i75":6,"i76":6,"i77":6,"i78":6,"i79":6,"i80":6,"i81":6,"i82":6,"i83":6,"i84":6,"i85":6,"i86":6,"i87":6,"i88":6,"i89":6,"i90":6,"i91":6,"i92":6,"i93":6,"i94":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6,"i27":6,"i28":6,"i29":6,"i30":6,"i31":6,"i32":6,"i33":6,"i34":6,"i35":6,"i36":6,"i37":6,"i38":6,"i39":6,"i40":6,"i41":6,"i42":6,"i43":6,"i44":6,"i45":6,"i46":6,"i47":6,"i48":6,"i49":6,"i50":6,"i51":6,"i52":6,"i53":6,"i54":6,"i55":6,"i56":6,"i57":6,"i58":6,"i59":6,"i60":6,"i61":6,"i62":6,"i63":6,"i64":6,"i65":6,"i66":6,"i67":6,"i68":6,"i69":6,"i70":6,"i71":6,"i72":6,"i73":6,"i74":6,"i75":6,"i76":6,"i77":6,"i78":6,"i79":6,"i80":6,"i81":6,"i82":6,"i83":6,"i84":6,"i85":6,"i86":6,"i87":6,"i88":6,"i89":6,"i90":6,"i91":6,"i92":6,"i93":6,"i94":6,"i95":6,"i96":6,"i97":6,"i98":6,"i99":6,"i100":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -107,138 +107,259 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public interface <span class="typeNameLabel">WebRtcEndpoint</span>
 extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></pre>
-<div class="block"><p>
-       Control interface for Kurento WebRTC endpoint.
-       </p>
-       <p>
-       This endpoint is one side of a peer-to-peer WebRTC communication, being the other peer a WebRTC capable browser -using the RTCPeerConnection API-, a native WebRTC app or even another Kurento Media Server.
-       </p>
-       <p>
-       In order to establish a WebRTC communication, peers engage in an SDP negotiation process, where one of the peers (the offerer) sends an offer, while the other peer (the offeree) responds with an answer. This endpoint can function in both situations
-       <ul>
-         <li>
-           As offerer: The negotiation process is initiated by the media server
-           <ul style='list-style-type:circle'>
-             <li>KMS generates the SDP offer through the <code>generateOffer</code> method. This <i>offer</i> must then be sent to the remote peer (the offeree) through the signaling channel, for processing.</li>
-             <li>The remote peer process the <i>offer</i>, and generates an <i>answer</i> to this <i>offer</i>. The <i>answer</i> is sent back to the media server.</li>
-             <li>Upon receiving the <i>answer</i>, the endpoint must invoke the <code>processAnswer</code> method.</li>
-           </ul>
-         </li>
-         <li>
-           As offeree: The negotiation process is initiated by the remote peer
-           <ul>
-             <li>The remote peer, acting as offerer, generates an SDP <i>offer</i> and sends it to the WebRTC endpoint in Kurento.</li>
-             <li>The endpoint will process the <i>offer</i> invoking the <code>processOffer</code> method. The result of this method will be a string, containing an SDP <i>answer</i>.</li>
-             <li>The SDP <i>answer</i> must be sent back to the offerer, so it can be processed.</li>
-           </ul>
-         </li>
-       </ul>
-       </p>
-       <p>
-       SDPs are sent without ICE candidates, following the Trickle ICE optimization. Once the SDP negotiation is completed, both peers proceed with the ICE discovery process, intended to set up a bidirectional media connection. During this process, each peer
-       <ul>
-         <li>Discovers ICE candidates for itself, containing pairs of IPs and ports.</li>
-         <li>ICE candidates are sent via the signaling channel as they are discovered, to the remote peer for probing.</li>
-         <li>ICE connectivity checks are run as soon as the new candidate description, from the remote peer, is available.</li>
-       </ul>
-       Once a suitable pair of candidates (one for each peer) is discovered, the media session can start. The harvesting process in Kurento, begins with the invocation of the <code>gatherCandidates</code> method. Since the whole Trickle ICE purpose is to speed-up connectivity, candidates are generated asynchronously. Therefore, in order to capture the candidates, the user must subscribe to the event <code>IceCandidateFound</code>. It is important that the event listener is bound before invoking <code>gatherCandidates</code>, otherwise a suitable candidate might be lost, and connection might not be established.
-       </p>
-       <p>
-       It's important to keep in mind that WebRTC connection is an asynchronous process, when designing interactions between different MediaElements. For example, it would be pointless to start recording before media is flowing. In order to be notified of state changes, the application can subscribe to events generated by the WebRtcEndpoint. Following is a full list of events generated by WebRtcEndpoint:
-       <ul>
-         <li>
-           <code>IceComponentStateChange</code>: This event informs only about changes in the ICE connection state. Possible values are:
-           <ul style='list-style-type:circle'>
-             <li><code>DISCONNECTED</code>: No activity scheduled</li>
-             <li><code>GATHERING</code>: Gathering local candidates</li>
-             <li><code>CONNECTING</code>: Establishing connectivity</li>
-             <li><code>CONNECTED</code>: At least one working candidate pair</li>
-             <li><code>READY</code>: ICE concluded, candidate pair selection is now final</li>
-             <li><code>FAILED</code>: Connectivity checks have been completed, but media connection was not established</li>
-           </ul>
-           The transitions between states are covered in RFC5245.
-           It could be said that it's network-only, as it only takes into account the state of the network connection, ignoring other higher level stuff, like DTLS handshake, RTCP flow, etc.  This implies that, while the component state is <code>CONNECTED</code>, there might be no media flowing between the peers. This makes this event useful only to receive low-level information about the connection between peers. Even more, while other events might leave a graceful period of time before firing, this event fires immediately after the state change is detected.
-         </li>
-         <li>
-           <code>IceCandidateFound</code>: Raised when a new candidate is discovered. ICE candidates must be sent to the remote peer of the connection. Failing to do so for some or all of the candidates might render the connection unusable.
-         </li>
-         <li>
-           <code>IceGatheringDone</code>: Raised when the ICE harvesting process is completed. This means that all candidates have already been discovered.
-         </li>
-         <li>
-           <code>NewCandidatePairSelected</code>: Raised when a new ICE candidate pair gets selected. The pair contains both local and remote candidates being used for a component. This event can be raised during a media session, if a new pair of candidates with higher priority in the link are found.
-         </li>
-         <li>
-           <code>DataChannelOpen</code>: Raised when a data channel is open.
-         </li>
-         <li>
-           <code>DataChannelClose</code>: Raised when a data channel is closed.
-         </li>
-       </ul>
-       </p>
-       <p>
-       Registering to any of above events requires the application to provide a callback function. Each event provides different information, so it is recommended to consult the signature of the event listeners.
-       </p>
-       <p>
-       Flow control and congestion management is one of the most important features of WebRTC. WebRTC connections start with the lowest bandwidth configured and slowly ramps up to the maximum available bandwidth, or to the higher limit of the exploration range in case no bandwidth limitation is detected. Notice that WebRtcEndpoints in Kurento are designed in a way that multiple WebRTC connections fed by the same stream share quality. When a new connection is added, as it requires to start with low bandwidth, it will cause the rest of connections to experience a transient period of degraded quality, until it stabilizes its bitrate. This doesn't apply when transcoding is involved. Transcoders will adjust their output bitrate based in bandwidth requirements, but it won't affect the original stream. If an incoming WebRTC stream needs to be transcoded, for whatever reason, all WebRtcEndpoints fed from transcoder output will share a separate quality than the ones connected directly to the original stream.
-       </p>
-       <p>
-       The default bandwidth range of the endpoint is 100kbps-500kbps, but it can be changed separately for input/output directions and for audio/video streams.
-       <ul>
-         <li>
-           Input bandwidth control mechanism: Configuration interval used to inform remote peer the range of bitrates that can be pushed into this WebRtcEndpoint object.
-           <ul style='list-style-type:circle'>
-             <li>
-               setMin/MaxVideoRecvBandwidth: sets Min/Max bitrate limits expected for received video stream.
-             </li>
-             <li>
-               setMin/MaxAudioRecvBandwidth: sets Min/Max bitrate limits expected for received audio stream.
-             </li>
-           </ul>
-           Max values are announced in the SDP, while min values are set to limit the lower value of REMB packages. It follows that min values will only have effect in peers that support this control mechanism, such as Chrome.
-         </li>
-         <li>
-           Output bandwidth control mechanism: Configuration interval used to control bitrate of the output video stream sent to remote peer. It is important to keep in mind that pushed bitrate depends on network and remote peer capabilities. Remote peers can also announce bandwidth limitation in their SDPs (through the <code>b=<modifier>:<value></code> tag). Kurento will always enforce bitrate limitations specified by the remote peer over internal configurations.
-           <ul style='list-style-type:circle'>
-             <li>
-               setMin/MaxVideoSendBandwidth: sets Min/Max bitrate limits  for video sent to remote peer
-             </li>
-           </ul>
-         </li>
-       </ul>
-       All bandwidth control parameters must be changed before the SDP negotiation takes place, and can't be changed afterwards.
-       </p>
-       <p>
-       DataChannels allow other media elements that make use of the DataPad, to send arbitrary data. For instance, if there is a filter that publishes event information, it'll be sent to the remote peer through the channel. There is no API available for programmers to make use of this feature in the WebRtcElement. DataChannels can be configured to provide the following:
-       <ul>
-         <li>
-           Reliable or partially reliable delivery of sent messages
-         </li>
-         <li>
-           In-order or out-of-order delivery of sent messages
-         </li>
-       </ul>
-       Unreliable, out-of-order delivery is equivalent to raw UDP semantics. The message may make it, or it may not, and order is not important. However, the channel can be configured to be <i>partially reliable</i> by specifying the maximum number of retransmissions or setting a time limit for retransmissions: the WebRTC stack will handle the acknowledgments and timeouts.
-       </p>
-       <p>
-       The possibility to create DataChannels in a WebRtcEndpoint must be explicitly enabled when creating the endpoint, as this feature is disabled by default. If this is the case, they can be created invoking the createDataChannel method. The arguments for this method, all of them optional, provide the necessary configuration:
-       <ul>
-         <li>
-          <code>label</code>: assigns a label to the DataChannel. This can help identify each possible channel separately.
-         </li>
-         <li>
-           <code>ordered</code>: specifies if the DataChannel guarantees order, which is the default mode. If maxPacketLifetime and maxRetransmits have not been set, this enables reliable mode.
-         </li>
-         <li>
-           <code>maxPacketLifeTime</code>: The time window in milliseconds, during which transmissions and retransmissions may take place in unreliable mode. This forces unreliable mode, even if <code>ordered</code> has been activated.
-         </li>
-         <li>
-           <code>maxRetransmits</code>: maximum number of retransmissions that are attempted in unreliable mode. This forces unreliable mode, even if <code>ordered</code> has been activated.
-         </li>
-         <li>
-           <code>Protocol</code>: Name of the subprotocol used for data communication.
-         </li>
-       </ul></div>
+<div class="block">Control interface for Kurento WebRTC endpoint.
+ <p>
+   This endpoint is one side of a peer-to-peer WebRTC communication, being the
+   other peer a WebRTC capable browser -using the RTCPeerConnection API-, a
+   native WebRTC app or even another Kurento Media Server.
+ </p>
+ <p>
+   In order to establish a WebRTC communication, peers engage in an SDP
+   negotiation process, where one of the peers (the offerer) sends an offer,
+   while the other peer (the offeree) responds with an answer. This endpoint can
+   function in both situations
+ </p>
+ <ul>
+   <li>
+     As offerer: The negotiation process is initiated by the media server
+     <ul>
+       <li>
+         KMS generates the SDP offer through the
+         <code>generateOffer</code> method. This <i>offer</i> must then be sent
+         to the remote peer (the offeree) through the signaling channel, for
+         processing.
+       </li>
+       <li>
+         The remote peer processes the <i>offer</i>, and generates an
+         <i>answer</i>. The <i>answer</i> is sent back to the media server.
+       </li>
+       <li>
+         Upon receiving the <i>answer</i>, the endpoint must invoke the
+         <code>processAnswer</code> method.
+       </li>
+     </ul>
+   </li>
+   <li>
+     As offeree: The negotiation process is initiated by the remote peer
+     <ul>
+       <li>
+         The remote peer, acting as offerer, generates an SDP <i>offer</i> and
+         sends it to the WebRTC endpoint in Kurento.
+       </li>
+       <li>
+         The endpoint will process the <i>offer</i> invoking the
+         <code>processOffer</code> method. The result of this method will be a
+         string, containing an SDP <i>answer</i>.
+       </li>
+       <li>
+         The SDP <i>answer</i> must be sent back to the offerer, so it can be
+         processed.
+       </li>
+     </ul>
+   </li>
+ </ul>
+ <p>
+   SDPs are sent without ICE candidates, following the Trickle ICE optimization.
+   Once the SDP negotiation is completed, both peers proceed with the ICE
+   discovery process, intended to set up a bidirectional media connection. During
+   this process, each peer
+ </p>
+ <ul>
+   <li>
+     Discovers ICE candidates for itself, containing pairs of IPs and ports.
+   </li>
+   <li>
+     ICE candidates are sent via the signaling channel as they are discovered, to
+     the remote peer for probing.
+   </li>
+   <li>
+     ICE connectivity checks are run as soon as the new candidate description,
+     from the remote peer, is available.
+   </li>
+ </ul>
+ <p>
+   Once a suitable pair of candidates (one for each peer) is discovered, the
+   media session can start. The harvesting process in Kurento, begins with the
+   invocation of the <code>gatherCandidates</code> method. Since the whole
+   Trickle ICE purpose is to speed-up connectivity, candidates are generated
+   asynchronously. Therefore, in order to capture the candidates, the user must
+   subscribe to the event <code>IceCandidateFound</code>. It is important that
+   the event listener is bound before invoking <code>gatherCandidates</code>,
+   otherwise a suitable candidate might be lost, and connection might not be
+   established.
+ </p>
+ <p>
+   It's important to keep in mind that WebRTC connection is an asynchronous
+   process, when designing interactions between different MediaElements. For
+   example, it would be pointless to start recording before media is flowing. In
+   order to be notified of state changes, the application can subscribe to events
+   generated by the WebRtcEndpoint. Following is a full list of events generated
+   by WebRtcEndpoint:
+ </p>
+ <ul>
+   <li>
+     <code>IceComponentStateChange</code>: This event informs only about changes
+     in the ICE connection state. Possible values are:
+     <ul>
+       <li><code>DISCONNECTED</code>: No activity scheduled</li>
+       <li><code>GATHERING</code>: Gathering local candidates</li>
+       <li><code>CONNECTING</code>: Establishing connectivity</li>
+       <li><code>CONNECTED</code>: At least one working candidate pair</li>
+       <li>
+         <code>READY</code>: ICE concluded, candidate pair selection is now final
+       </li>
+       <li>
+         <code>FAILED</code>: Connectivity checks have been completed, but media
+         connection was not established
+       </li>
+     </ul>
+     The transitions between states are covered in RFC5245. It could be said that
+     it's network-only, as it only takes into account the state of the network
+     connection, ignoring other higher level stuff, like DTLS handshake, RTCP
+     flow, etc. This implies that, while the component state is
+     <code>CONNECTED</code>, there might be no media flowing between the peers.
+     This makes this event useful only to receive low-level information about the
+     connection between peers. Even more, while other events might leave a
+     graceful period of time before firing, this event fires immediately after
+     the state change is detected.
+   </li>
+   <li>
+     <code>IceCandidateFound</code>: Raised when a new candidate is discovered.
+     ICE candidates must be sent to the remote peer of the connection. Failing to
+     do so for some or all of the candidates might render the connection
+     unusable.
+   </li>
+   <li>
+     <code>IceGatheringDone</code>: Raised when the ICE harvesting process is
+     completed. This means that all candidates have already been discovered.
+   </li>
+   <li>
+     <code>NewCandidatePairSelected</code>: Raised when a new ICE candidate pair
+     gets selected. The pair contains both local and remote candidates being used
+     for a component. This event can be raised during a media session, if a new
+     pair of candidates with higher priority in the link are found.
+   </li>
+   <li><code>DataChannelOpen</code>: Raised when a data channel is open.</li>
+   <li><code>DataChannelClose</code>: Raised when a data channel is closed.</li>
+ </ul>
+ <p>
+   Registering to any of above events requires the application to provide a
+   callback function. Each event provides different information, so it is
+   recommended to consult the signature of the event listeners.
+ </p>
+ <p>
+   Flow control and congestion management is one of the most important features
+   of WebRTC. WebRTC connections start with the lowest bandwidth configured and
+   slowly ramps up to the maximum available bandwidth, or to the higher limit of
+   the exploration range in case no bandwidth limitation is detected. Notice that
+   WebRtcEndpoints in Kurento are designed in a way that multiple WebRTC
+   connections fed by the same stream share quality. When a new connection is
+   added, as it requires to start with low bandwidth, it will cause the rest of
+   connections to experience a transient period of degraded quality, until it
+   stabilizes its bitrate. This doesn't apply when transcoding is involved.
+   Transcoders will adjust their output bitrate based in bandwidth requirements,
+   but it won't affect the original stream. If an incoming WebRTC stream needs to
+   be transcoded, for whatever reason, all WebRtcEndpoints fed from transcoder
+   output will share a separate quality than the ones connected directly to the
+   original stream.
+ </p>
+ <p>
+   The default bandwidth range of the endpoint is 100kbps-500kbps, but it can be
+   changed separately for input/output directions and for audio/video streams.
+ </p>
+ <ul>
+   <li>
+     Input bandwidth control mechanism: Configuration interval used to inform
+     remote peer the range of bitrates that can be pushed into this
+     WebRtcEndpoint object.
+     <ul>
+       <li>
+         setMin/MaxVideoRecvBandwidth: sets Min/Max bitrate limits expected for
+         received video stream.
+       </li>
+       <li>
+         setMin/MaxAudioRecvBandwidth: sets Min/Max bitrate limits expected for
+         received audio stream.
+       </li>
+     </ul>
+     Max values are announced in the SDP, while min values are set to limit the
+     lower value of REMB packages. It follows that min values will only have
+     effect in peers that support this control mechanism, such as Chrome.
+   </li>
+   <li>
+     Output bandwidth control mechanism: Configuration interval used to control
+     bitrate of the output video stream sent to remote peer. It is important to
+     keep in mind that pushed bitrate depends on network and remote peer
+     capabilities. Remote peers can also announce bandwidth limitation in their
+     SDPs (through the <code>b={modifier}:{value}</code> tag). Kurento will
+     always enforce bitrate limitations specified by the remote peer over
+     internal configurations.
+     <ul>
+       <li>
+         setMin/MaxVideoSendBandwidth: sets Min/Max bitrate limits for video sent
+         to remote peer
+       </li>
+     </ul>
+   </li>
+ </ul>
+ <p>
+   All bandwidth control parameters must be changed before the SDP negotiation
+   takes place, and can't be changed afterwards.
+ </p>
+ <p>
+   DataChannels allow other media elements that make use of the DataPad, to send
+   arbitrary data. For instance, if there is a filter that publishes event
+   information, it'll be sent to the remote peer through the channel. There is no
+   API available for programmers to make use of this feature in the
+   WebRtcElement. DataChannels can be configured to provide the following:
+ </p>
+ <ul>
+   <li>
+     Reliable or partially reliable delivery of sent messages
+   </li>
+   <li>
+     In-order or out-of-order delivery of sent messages
+   </li>
+ </ul>
+ <p>
+   Unreliable, out-of-order delivery is equivalent to raw UDP semantics. The
+   message may make it, or it may not, and order is not important. However, the
+   channel can be configured to be <i>partially reliable</i> by specifying the
+   maximum number of retransmissions or setting a time limit for retransmissions:
+   the WebRTC stack will handle the acknowledgments and timeouts.
+ </p>
+ <p>
+   The possibility to create DataChannels in a WebRtcEndpoint must be explicitly
+   enabled when creating the endpoint, as this feature is disabled by default. If
+   this is the case, they can be created invoking the createDataChannel method.
+   The arguments for this method, all of them optional, provide the necessary
+   configuration:
+ </p>
+ <ul>
+   <li>
+     <code>label</code>: assigns a label to the DataChannel. This can help
+     identify each possible channel separately.
+   </li>
+   <li>
+     <code>ordered</code>: specifies if the DataChannel guarantees order, which
+     is the default mode. If maxPacketLifetime and maxRetransmits have not been
+     set, this enables reliable mode.
+   </li>
+   <li>
+     <code>maxPacketLifeTime</code>: The time window in milliseconds, during
+     which transmissions and retransmissions may take place in unreliable mode.
+     This forces unreliable mode, even if <code>ordered</code> has been
+     activated.
+   </li>
+   <li>
+     <code>maxRetransmits</code>: maximum number of retransmissions that are
+     attempted in unreliable mode. This forces unreliable mode, even if
+     <code>ordered</code> has been activated.
+   </li>
+   <li>
+     <code>Protocol</code>: Name of the subprotocol used for data communication.
+   </li>
+ </ul></div>
 </li>
 </ul>
 </div>
@@ -626,7 +747,7 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <tr id="i46" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#gatherCandidates--">gatherCandidates</a></span>()</code>
-<div class="block">Start the gathering of ICE candidates.</br>It must be called after SdpEndpoint::generateOffer or SdpEndpoint::processOffer for Trickle ICE.</div>
+<div class="block">Start the gathering of ICE candidates.</div>
 </td>
 </tr>
 <tr id="i47" class="rowColor">
@@ -640,300 +761,338 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <tr id="i48" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#gatherCandidates-org.kurento.client.Transaction-">gatherCandidates</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Start the gathering of ICE candidates.</br>It must be called after SdpEndpoint::generateOffer or SdpEndpoint::processOffer for Trickle ICE.</div>
+<div class="block">Start the gathering of ICE candidates.</div>
 </td>
 </tr>
 <tr id="i49" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddresses--">getExternalAddresses</a></span>()</code>
+<div class="block">Get External IP addresses.</div>
+</td>
+</tr>
+<tr id="i50" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddresses-org.kurento.client.Continuation-">getExternalAddresses</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
+<div class="block">Get External IP addresses.</div>
+</td>
+</tr>
+<tr id="i51" class="rowColor">
+<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddresses-org.kurento.client.Transaction-">getExternalAddresses</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Get External IP addresses.</div>
+</td>
+</tr>
+<tr id="i52" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceCandidatePair.html" title="class in org.kurento.client">IceCandidatePair</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getICECandidatePairs--">getICECandidatePairs</a></span>()</code>
 <div class="block">Get the ICE candidate pair (local and remote candidates) used by the ice library for each stream.</div>
 </td>
 </tr>
-<tr id="i50" class="altColor">
+<tr id="i53" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getICECandidatePairs-org.kurento.client.Continuation-">getICECandidatePairs</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceCandidatePair.html" title="class in org.kurento.client">IceCandidatePair</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Get the ICE candidate pair (local and remote candidates) used by the ice library for each stream.</div>
 </td>
 </tr>
-<tr id="i51" class="rowColor">
+<tr id="i54" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceCandidatePair.html" title="class in org.kurento.client">IceCandidatePair</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getICECandidatePairs-org.kurento.client.Transaction-">getICECandidatePairs</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get the ICE candidate pair (local and remote candidates) used by the ice library for each stream.</div>
 </td>
 </tr>
-<tr id="i52" class="altColor">
+<tr id="i55" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceConnection.html" title="class in org.kurento.client">IceConnection</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getIceConnectionState--">getIceConnectionState</a></span>()</code>
 <div class="block">Get the ICE connection state for all the connections.</div>
 </td>
 </tr>
-<tr id="i53" class="rowColor">
+<tr id="i56" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getIceConnectionState-org.kurento.client.Continuation-">getIceConnectionState</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceConnection.html" title="class in org.kurento.client">IceConnection</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Get the ICE connection state for all the connections.</div>
 </td>
 </tr>
-<tr id="i54" class="altColor">
+<tr id="i57" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceConnection.html" title="class in org.kurento.client">IceConnection</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getIceConnectionState-org.kurento.client.Transaction-">getIceConnectionState</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get the ICE connection state for all the connections.</div>
 </td>
 </tr>
-<tr id="i55" class="rowColor">
+<tr id="i58" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerAddress--">getStunServerAddress</a></span>()</code>
-<div class="block">Get address of the STUN server (Only IP address are supported)</div>
-</td>
-</tr>
-<tr id="i56" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerAddress-org.kurento.client.Continuation-">getStunServerAddress</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
-<div class="block">Get address of the STUN server (Only IP address are supported)</div>
-</td>
-</tr>
-<tr id="i57" class="rowColor">
-<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerAddress-org.kurento.client.Transaction-">getStunServerAddress</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get address of the STUN server (Only IP address are supported)</div>
-</td>
-</tr>
-<tr id="i58" class="altColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort--">getStunServerPort</a></span>()</code>
-<div class="block">Get port of the STUN server</div>
+<div class="block">Get STUN server IP address.</div>
 </td>
 </tr>
 <tr id="i59" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort-org.kurento.client.Continuation-">getStunServerPort</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get port of the STUN server</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerAddress-org.kurento.client.Continuation-">getStunServerAddress</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
+<div class="block">Get STUN server IP address.</div>
 </td>
 </tr>
 <tr id="i60" class="altColor">
-<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort-org.kurento.client.Transaction-">getStunServerPort</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get port of the STUN server</div>
+<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerAddress-org.kurento.client.Transaction-">getStunServerAddress</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Get STUN server IP address.</div>
 </td>
 </tr>
 <tr id="i61" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl--">getTurnUrl</a></span>()</code>
-<div class="block">Get TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort--">getStunServerPort</a></span>()</code>
+<div class="block">Get Port of the STUN server</div>
 </td>
 </tr>
 <tr id="i62" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl-org.kurento.client.Continuation-">getTurnUrl</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
-<div class="block">Get TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort-org.kurento.client.Continuation-">getStunServerPort</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
+<div class="block">Get Port of the STUN server</div>
 </td>
 </tr>
 <tr id="i63" class="rowColor">
-<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl-org.kurento.client.Transaction-">getTurnUrl</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort-org.kurento.client.Transaction-">getStunServerPort</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Get Port of the STUN server</div>
 </td>
 </tr>
 <tr id="i64" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl--">getTurnUrl</a></span>()</code>
+<div class="block">Get TURN server URL.</div>
+</td>
+</tr>
+<tr id="i65" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl-org.kurento.client.Continuation-">getTurnUrl</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
+<div class="block">Get TURN server URL.</div>
+</td>
+</tr>
+<tr id="i66" class="altColor">
+<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl-org.kurento.client.Transaction-">getTurnUrl</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Get TURN server URL.</div>
+</td>
+</tr>
+<tr id="i67" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeDataChannelCloseListener-org.kurento.client.ListenerSubscription-">removeDataChannelCloseListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/DataChannelCloseEvent.html" title="class in org.kurento.client"><code>DataChannelCloseEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i65" class="rowColor">
+<tr id="i68" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeDataChannelCloseListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeDataChannelCloseListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/DataChannelCloseEvent.html" title="class in org.kurento.client"><code>DataChannelCloseEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i66" class="altColor">
+<tr id="i69" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeDataChannelOpenListener-org.kurento.client.ListenerSubscription-">removeDataChannelOpenListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/DataChannelOpenEvent.html" title="class in org.kurento.client"><code>DataChannelOpenEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i67" class="rowColor">
+<tr id="i70" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeDataChannelOpenListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeDataChannelOpenListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                              <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/DataChannelOpenEvent.html" title="class in org.kurento.client"><code>DataChannelOpenEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i68" class="altColor">
+<tr id="i71" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceCandidateFoundListener-org.kurento.client.ListenerSubscription-">removeIceCandidateFoundListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceCandidateFoundEvent.html" title="class in org.kurento.client"><code>IceCandidateFoundEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i69" class="rowColor">
+<tr id="i72" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceCandidateFoundListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeIceCandidateFoundListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceCandidateFoundEvent.html" title="class in org.kurento.client"><code>IceCandidateFoundEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i70" class="altColor">
+<tr id="i73" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceComponentStateChangeListener-org.kurento.client.ListenerSubscription-">removeIceComponentStateChangeListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceComponentStateChangeEvent.html" title="class in org.kurento.client"><code>IceComponentStateChangeEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i71" class="rowColor">
+<tr id="i74" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceComponentStateChangeListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeIceComponentStateChangeListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                      <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceComponentStateChangeEvent.html" title="class in org.kurento.client"><code>IceComponentStateChangeEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i72" class="altColor">
+<tr id="i75" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceGatheringDoneListener-org.kurento.client.ListenerSubscription-">removeIceGatheringDoneListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceGatheringDoneEvent.html" title="class in org.kurento.client"><code>IceGatheringDoneEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i73" class="rowColor">
+<tr id="i76" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceGatheringDoneListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeIceGatheringDoneListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceGatheringDoneEvent.html" title="class in org.kurento.client"><code>IceGatheringDoneEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i74" class="altColor">
+<tr id="i77" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeNewCandidatePairSelectedListener-org.kurento.client.ListenerSubscription-">removeNewCandidatePairSelectedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/NewCandidatePairSelectedEvent.html" title="class in org.kurento.client"><code>NewCandidatePairSelectedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i75" class="rowColor">
+<tr id="i78" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeNewCandidatePairSelectedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeNewCandidatePairSelectedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                       <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/NewCandidatePairSelectedEvent.html" title="class in org.kurento.client"><code>NewCandidatePairSelectedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i76" class="altColor">
+<tr id="i79" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnDataChannelClosedListener-org.kurento.client.ListenerSubscription-">removeOnDataChannelClosedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnDataChannelClosedEvent.html" title="class in org.kurento.client"><code>OnDataChannelClosedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i77" class="rowColor">
+<tr id="i80" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnDataChannelClosedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnDataChannelClosedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                  <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnDataChannelClosedEvent.html" title="class in org.kurento.client"><code>OnDataChannelClosedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i78" class="altColor">
+<tr id="i81" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnDataChannelOpenedListener-org.kurento.client.ListenerSubscription-">removeOnDataChannelOpenedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnDataChannelOpenedEvent.html" title="class in org.kurento.client"><code>OnDataChannelOpenedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i79" class="rowColor">
+<tr id="i82" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnDataChannelOpenedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnDataChannelOpenedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                  <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnDataChannelOpenedEvent.html" title="class in org.kurento.client"><code>OnDataChannelOpenedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i80" class="altColor">
+<tr id="i83" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceCandidateListener-org.kurento.client.ListenerSubscription-">removeOnIceCandidateListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceCandidateEvent.html" title="class in org.kurento.client"><code>OnIceCandidateEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i81" class="rowColor">
+<tr id="i84" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceCandidateListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnIceCandidateListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                             <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceCandidateEvent.html" title="class in org.kurento.client"><code>OnIceCandidateEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i82" class="altColor">
+<tr id="i85" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceComponentStateChangedListener-org.kurento.client.ListenerSubscription-">removeOnIceComponentStateChangedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html" title="class in org.kurento.client"><code>OnIceComponentStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i83" class="rowColor">
+<tr id="i86" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceComponentStateChangedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnIceComponentStateChangedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html" title="class in org.kurento.client"><code>OnIceComponentStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i84" class="altColor">
+<tr id="i87" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceGatheringDoneListener-org.kurento.client.ListenerSubscription-">removeOnIceGatheringDoneListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceGatheringDoneEvent.html" title="class in org.kurento.client"><code>OnIceGatheringDoneEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i85" class="rowColor">
+<tr id="i88" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceGatheringDoneListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnIceGatheringDoneListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                 <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceGatheringDoneEvent.html" title="class in org.kurento.client"><code>OnIceGatheringDoneEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i86" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerAddress-java.lang.String-">setStunServerAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress)</code>
-<div class="block">Set address of the STUN server (Only IP address are supported)</div>
-</td>
-</tr>
-<tr id="i87" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerAddress-java.lang.String-org.kurento.client.Continuation-">setStunServerAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress,
-                    <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set address of the STUN server (Only IP address are supported)</div>
-</td>
-</tr>
-<tr id="i88" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerAddress-java.lang.String-org.kurento.client.Transaction-">setStunServerAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress,
-                    <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set address of the STUN server (Only IP address are supported)</div>
-</td>
-</tr>
 <tr id="i89" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerPort-int-">setStunServerPort</a></span>(int&nbsp;stunServerPort)</code>
-<div class="block">Set port of the STUN server</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddresses-java.lang.String-">setExternalAddresses</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddresses)</code>
+<div class="block">Set External IP addresses.</div>
 </td>
 </tr>
 <tr id="i90" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerPort-int-org.kurento.client.Continuation-">setStunServerPort</a></span>(int&nbsp;stunServerPort,
-                 <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set port of the STUN server</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddresses-java.lang.String-org.kurento.client.Continuation-">setExternalAddresses</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddresses,
+                    <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
+<div class="block">Set External IP addresses.</div>
 </td>
 </tr>
 <tr id="i91" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerPort-int-org.kurento.client.Transaction-">setStunServerPort</a></span>(int&nbsp;stunServerPort,
-                 <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set port of the STUN server</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddresses-java.lang.String-org.kurento.client.Transaction-">setExternalAddresses</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddresses,
+                    <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Set External IP addresses.</div>
 </td>
 </tr>
 <tr id="i92" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setTurnUrl-java.lang.String-">setTurnUrl</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl)</code>
-<div class="block">Set TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerAddress-java.lang.String-">setStunServerAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress)</code>
+<div class="block">Set STUN server IP address.</div>
 </td>
 </tr>
 <tr id="i93" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setTurnUrl-java.lang.String-org.kurento.client.Continuation-">setTurnUrl</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl,
-          <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerAddress-java.lang.String-org.kurento.client.Continuation-">setStunServerAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress,
+                    <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
+<div class="block">Set STUN server IP address.</div>
 </td>
 </tr>
 <tr id="i94" class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerAddress-java.lang.String-org.kurento.client.Transaction-">setStunServerAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress,
+                    <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Set STUN server IP address.</div>
+</td>
+</tr>
+<tr id="i95" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerPort-int-">setStunServerPort</a></span>(int&nbsp;stunServerPort)</code>
+<div class="block">Set Port of the STUN server</div>
+</td>
+</tr>
+<tr id="i96" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerPort-int-org.kurento.client.Continuation-">setStunServerPort</a></span>(int&nbsp;stunServerPort,
+                 <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
+<div class="block">Set Port of the STUN server</div>
+</td>
+</tr>
+<tr id="i97" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerPort-int-org.kurento.client.Transaction-">setStunServerPort</a></span>(int&nbsp;stunServerPort,
+                 <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Set Port of the STUN server</div>
+</td>
+</tr>
+<tr id="i98" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setTurnUrl-java.lang.String-">setTurnUrl</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl)</code>
+<div class="block">Set TURN server URL.</div>
+</td>
+</tr>
+<tr id="i99" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setTurnUrl-java.lang.String-org.kurento.client.Continuation-">setTurnUrl</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl,
+          <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
+<div class="block">Set TURN server URL.</div>
+</td>
+</tr>
+<tr id="i100" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setTurnUrl-java.lang.String-org.kurento.client.Transaction-">setTurnUrl</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl,
           <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<div class="block">Set TURN server URL.</div>
 </td>
 </tr>
 </table>
@@ -993,6 +1152,266 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="getExternalAddresses--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalAddresses</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getExternalAddresses()</pre>
+<div class="block">Get External IP addresses.
+ <p>
+   If you know what will be the external or public IP address of the media server
+   (e.g. because your deployment has an static IP), you can specify it here.
+   Doing so has several advantages:
+ </p>
+ <ol>
+   <li>
+     The WebRTC ICE gathering process will be much quicker. Normally, it needs to
+     gather local IP addresses, but this step can be skipped if you provide them
+     beforehand.
+   </li>
+   <li>
+     It will ensure that the media server always decides to use the correct
+     network interface. With WebRTC ICE gathering it's possible that, under some
+     circumstances (in systems with virtual network interfaces such as
+     <code>docker0</code>) the ICE process ends up choosing the wrong local IP.
+   </li>
+   <li>
+     You will not need to configure STUN/TURN for the media server (see settings
+     below). STUN/TURN are needed only when the media server needs to find out
+     what is its own external IP. If you set it up here, then there is no need
+     for the STUN/TURN auto-discovery.
+   </li>
+ </ol>
+ <p>
+   <code>externalAddresses</code> is a comma-separated list of IP addresses;
+   domain names are NOT supported.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddresses=1.1.1.1</code></li>
+   <li><code>externalAddresses=1.1.1.1,2.2.2.2,3.3.3.3</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="getExternalAddresses-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalAddresses</h4>
+<pre>void&nbsp;getExternalAddresses(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
+<div class="block">Get External IP addresses.
+ <p>
+   If you know what will be the external or public IP address of the media server
+   (e.g. because your deployment has an static IP), you can specify it here.
+   Doing so has several advantages:
+ </p>
+ <ol>
+   <li>
+     The WebRTC ICE gathering process will be much quicker. Normally, it needs to
+     gather local IP addresses, but this step can be skipped if you provide them
+     beforehand.
+   </li>
+   <li>
+     It will ensure that the media server always decides to use the correct
+     network interface. With WebRTC ICE gathering it's possible that, under some
+     circumstances (in systems with virtual network interfaces such as
+     <code>docker0</code>) the ICE process ends up choosing the wrong local IP.
+   </li>
+   <li>
+     You will not need to configure STUN/TURN for the media server (see settings
+     below). STUN/TURN are needed only when the media server needs to find out
+     what is its own external IP. If you set it up here, then there is no need
+     for the STUN/TURN auto-discovery.
+   </li>
+ </ol>
+ <p>
+   <code>externalAddresses</code> is a comma-separated list of IP addresses;
+   domain names are NOT supported.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddresses=1.1.1.1</code></li>
+   <li><code>externalAddresses=1.1.1.1,2.2.2.2,3.3.3.3</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="getExternalAddresses-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalAddresses</h4>
+<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getExternalAddresses(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Get External IP addresses.
+ <p>
+   If you know what will be the external or public IP address of the media server
+   (e.g. because your deployment has an static IP), you can specify it here.
+   Doing so has several advantages:
+ </p>
+ <ol>
+   <li>
+     The WebRTC ICE gathering process will be much quicker. Normally, it needs to
+     gather local IP addresses, but this step can be skipped if you provide them
+     beforehand.
+   </li>
+   <li>
+     It will ensure that the media server always decides to use the correct
+     network interface. With WebRTC ICE gathering it's possible that, under some
+     circumstances (in systems with virtual network interfaces such as
+     <code>docker0</code>) the ICE process ends up choosing the wrong local IP.
+   </li>
+   <li>
+     You will not need to configure STUN/TURN for the media server (see settings
+     below). STUN/TURN are needed only when the media server needs to find out
+     what is its own external IP. If you set it up here, then there is no need
+     for the STUN/TURN auto-discovery.
+   </li>
+ </ol>
+ <p>
+   <code>externalAddresses</code> is a comma-separated list of IP addresses;
+   domain names are NOT supported.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddresses=1.1.1.1</code></li>
+   <li><code>externalAddresses=1.1.1.1,2.2.2.2,3.3.3.3</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalAddresses-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalAddresses</h4>
+<pre>void&nbsp;setExternalAddresses(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddresses)</pre>
+<div class="block">Set External IP addresses.
+ <p>
+   If you know what will be the external or public IP address of the media server
+   (e.g. because your deployment has an static IP), you can specify it here.
+   Doing so has several advantages:
+ </p>
+ <ol>
+   <li>
+     The WebRTC ICE gathering process will be much quicker. Normally, it needs to
+     gather local IP addresses, but this step can be skipped if you provide them
+     beforehand.
+   </li>
+   <li>
+     It will ensure that the media server always decides to use the correct
+     network interface. With WebRTC ICE gathering it's possible that, under some
+     circumstances (in systems with virtual network interfaces such as
+     <code>docker0</code>) the ICE process ends up choosing the wrong local IP.
+   </li>
+   <li>
+     You will not need to configure STUN/TURN for the media server (see settings
+     below). STUN/TURN are needed only when the media server needs to find out
+     what is its own external IP. If you set it up here, then there is no need
+     for the STUN/TURN auto-discovery.
+   </li>
+ </ol>
+ <p>
+   <code>externalAddresses</code> is a comma-separated list of IP addresses;
+   domain names are NOT supported.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddresses=1.1.1.1</code></li>
+   <li><code>externalAddresses=1.1.1.1,2.2.2.2,3.3.3.3</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalAddresses-java.lang.String-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalAddresses</h4>
+<pre>void&nbsp;setExternalAddresses(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddresses,
+                          <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
+<div class="block">Set External IP addresses.
+ <p>
+   If you know what will be the external or public IP address of the media server
+   (e.g. because your deployment has an static IP), you can specify it here.
+   Doing so has several advantages:
+ </p>
+ <ol>
+   <li>
+     The WebRTC ICE gathering process will be much quicker. Normally, it needs to
+     gather local IP addresses, but this step can be skipped if you provide them
+     beforehand.
+   </li>
+   <li>
+     It will ensure that the media server always decides to use the correct
+     network interface. With WebRTC ICE gathering it's possible that, under some
+     circumstances (in systems with virtual network interfaces such as
+     <code>docker0</code>) the ICE process ends up choosing the wrong local IP.
+   </li>
+   <li>
+     You will not need to configure STUN/TURN for the media server (see settings
+     below). STUN/TURN are needed only when the media server needs to find out
+     what is its own external IP. If you set it up here, then there is no need
+     for the STUN/TURN auto-discovery.
+   </li>
+ </ol>
+ <p>
+   <code>externalAddresses</code> is a comma-separated list of IP addresses;
+   domain names are NOT supported.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddresses=1.1.1.1</code></li>
+   <li><code>externalAddresses=1.1.1.1,2.2.2.2,3.3.3.3</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalAddresses-java.lang.String-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalAddresses</h4>
+<pre>void&nbsp;setExternalAddresses(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddresses,
+                          <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Set External IP addresses.
+ <p>
+   If you know what will be the external or public IP address of the media server
+   (e.g. because your deployment has an static IP), you can specify it here.
+   Doing so has several advantages:
+ </p>
+ <ol>
+   <li>
+     The WebRTC ICE gathering process will be much quicker. Normally, it needs to
+     gather local IP addresses, but this step can be skipped if you provide them
+     beforehand.
+   </li>
+   <li>
+     It will ensure that the media server always decides to use the correct
+     network interface. With WebRTC ICE gathering it's possible that, under some
+     circumstances (in systems with virtual network interfaces such as
+     <code>docker0</code>) the ICE process ends up choosing the wrong local IP.
+   </li>
+   <li>
+     You will not need to configure STUN/TURN for the media server (see settings
+     below). STUN/TURN are needed only when the media server needs to find out
+     what is its own external IP. If you set it up here, then there is no need
+     for the STUN/TURN auto-discovery.
+   </li>
+ </ol>
+ <p>
+   <code>externalAddresses</code> is a comma-separated list of IP addresses;
+   domain names are NOT supported.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddresses=1.1.1.1</code></li>
+   <li><code>externalAddresses=1.1.1.1,2.2.2.2,3.3.3.3</code></li>
+ </ul></div>
+</li>
+</ul>
 <a name="getStunServerAddress--">
 <!--   -->
 </a>
@@ -1000,7 +1419,18 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getStunServerAddress</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getStunServerAddress()</pre>
-<div class="block">Get address of the STUN server (Only IP address are supported)</div>
+<div class="block">Get STUN server IP address.
+ <p>The ICE process uses STUN to punch holes through NAT firewalls.</p>
+ <p>
+   <code>stunServerAddress</code> MUST be an IP address; domain names are NOT
+   supported.
+ </p>
+ <p>
+   You need to use a well-working STUN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>).
+ </p></div>
 </li>
 </ul>
 <a name="getStunServerAddress-org.kurento.client.Continuation-">
@@ -1010,7 +1440,18 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getStunServerAddress</h4>
 <pre>void&nbsp;getStunServerAddress(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get address of the STUN server (Only IP address are supported)</div>
+<div class="block">Get STUN server IP address.
+ <p>The ICE process uses STUN to punch holes through NAT firewalls.</p>
+ <p>
+   <code>stunServerAddress</code> MUST be an IP address; domain names are NOT
+   supported.
+ </p>
+ <p>
+   You need to use a well-working STUN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>).
+ </p></div>
 </li>
 </ul>
 <a name="getStunServerAddress-org.kurento.client.Transaction-">
@@ -1020,7 +1461,18 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getStunServerAddress</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getStunServerAddress(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get address of the STUN server (Only IP address are supported)</div>
+<div class="block">Get STUN server IP address.
+ <p>The ICE process uses STUN to punch holes through NAT firewalls.</p>
+ <p>
+   <code>stunServerAddress</code> MUST be an IP address; domain names are NOT
+   supported.
+ </p>
+ <p>
+   You need to use a well-working STUN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>).
+ </p></div>
 </li>
 </ul>
 <a name="setStunServerAddress-java.lang.String-">
@@ -1030,7 +1482,18 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>setStunServerAddress</h4>
 <pre>void&nbsp;setStunServerAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress)</pre>
-<div class="block">Set address of the STUN server (Only IP address are supported)</div>
+<div class="block">Set STUN server IP address.
+ <p>The ICE process uses STUN to punch holes through NAT firewalls.</p>
+ <p>
+   <code>stunServerAddress</code> MUST be an IP address; domain names are NOT
+   supported.
+ </p>
+ <p>
+   You need to use a well-working STUN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>).
+ </p></div>
 </li>
 </ul>
 <a name="setStunServerAddress-java.lang.String-org.kurento.client.Continuation-">
@@ -1041,7 +1504,18 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <h4>setStunServerAddress</h4>
 <pre>void&nbsp;setStunServerAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress,
                           <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set address of the STUN server (Only IP address are supported)</div>
+<div class="block">Set STUN server IP address.
+ <p>The ICE process uses STUN to punch holes through NAT firewalls.</p>
+ <p>
+   <code>stunServerAddress</code> MUST be an IP address; domain names are NOT
+   supported.
+ </p>
+ <p>
+   You need to use a well-working STUN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>).
+ </p></div>
 </li>
 </ul>
 <a name="setStunServerAddress-java.lang.String-org.kurento.client.Transaction-">
@@ -1052,7 +1526,18 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <h4>setStunServerAddress</h4>
 <pre>void&nbsp;setStunServerAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress,
                           <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set address of the STUN server (Only IP address are supported)</div>
+<div class="block">Set STUN server IP address.
+ <p>The ICE process uses STUN to punch holes through NAT firewalls.</p>
+ <p>
+   <code>stunServerAddress</code> MUST be an IP address; domain names are NOT
+   supported.
+ </p>
+ <p>
+   You need to use a well-working STUN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>).
+ </p></div>
 </li>
 </ul>
 <a name="getStunServerPort--">
@@ -1062,7 +1547,7 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getStunServerPort</h4>
 <pre>int&nbsp;getStunServerPort()</pre>
-<div class="block">Get port of the STUN server</div>
+<div class="block">Get Port of the STUN server</div>
 </li>
 </ul>
 <a name="getStunServerPort-org.kurento.client.Continuation-">
@@ -1072,7 +1557,7 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getStunServerPort</h4>
 <pre>void&nbsp;getStunServerPort(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get port of the STUN server</div>
+<div class="block">Get Port of the STUN server</div>
 </li>
 </ul>
 <a name="getStunServerPort-org.kurento.client.Transaction-">
@@ -1082,7 +1567,7 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getStunServerPort</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getStunServerPort(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get port of the STUN server</div>
+<div class="block">Get Port of the STUN server</div>
 </li>
 </ul>
 <a name="setStunServerPort-int-">
@@ -1092,7 +1577,7 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>setStunServerPort</h4>
 <pre>void&nbsp;setStunServerPort(int&nbsp;stunServerPort)</pre>
-<div class="block">Set port of the STUN server</div>
+<div class="block">Set Port of the STUN server</div>
 </li>
 </ul>
 <a name="setStunServerPort-int-org.kurento.client.Continuation-">
@@ -1103,7 +1588,7 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <h4>setStunServerPort</h4>
 <pre>void&nbsp;setStunServerPort(int&nbsp;stunServerPort,
                        <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set port of the STUN server</div>
+<div class="block">Set Port of the STUN server</div>
 </li>
 </ul>
 <a name="setStunServerPort-int-org.kurento.client.Transaction-">
@@ -1114,7 +1599,7 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <h4>setStunServerPort</h4>
 <pre>void&nbsp;setStunServerPort(int&nbsp;stunServerPort,
                        <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set port of the STUN server</div>
+<div class="block">Set Port of the STUN server</div>
 </li>
 </ul>
 <a name="getTurnUrl--">
@@ -1124,7 +1609,32 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getTurnUrl</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getTurnUrl()</pre>
-<div class="block">Get TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<div class="block">Get TURN server URL.
+ <p>
+   When STUN is not enough to open connections through some NAT firewalls, using
+   TURN is the remaining alternative.
+ </p>
+ <p>
+   Note that TURN is a superset of STUN, so you don't need to configure STUN if
+   you are using TURN.
+ </p>
+ <p>The provided URL should follow one of these formats:</p>
+ <ul>
+   <li><code>user:password@ipaddress:port</code></li>
+   <li>
+     <code>user:password@ipaddress:port?transport=[udp|tcp|tls]</code>
+   </li>
+ </ul>
+ <p>
+   <code>ipaddress</code> MUST be an IP address; domain names are NOT supported.<br />
+   <code>transport</code> is OPTIONAL. Possible values: udp, tcp, tls. Default: udp.
+ </p>
+ <p>
+   You need to use a well-working TURN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>) AND one Relay Candidate (type <code>relay</code>).
+ </p></div>
 </li>
 </ul>
 <a name="getTurnUrl-org.kurento.client.Continuation-">
@@ -1134,7 +1644,32 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getTurnUrl</h4>
 <pre>void&nbsp;getTurnUrl(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<div class="block">Get TURN server URL.
+ <p>
+   When STUN is not enough to open connections through some NAT firewalls, using
+   TURN is the remaining alternative.
+ </p>
+ <p>
+   Note that TURN is a superset of STUN, so you don't need to configure STUN if
+   you are using TURN.
+ </p>
+ <p>The provided URL should follow one of these formats:</p>
+ <ul>
+   <li><code>user:password@ipaddress:port</code></li>
+   <li>
+     <code>user:password@ipaddress:port?transport=[udp|tcp|tls]</code>
+   </li>
+ </ul>
+ <p>
+   <code>ipaddress</code> MUST be an IP address; domain names are NOT supported.<br />
+   <code>transport</code> is OPTIONAL. Possible values: udp, tcp, tls. Default: udp.
+ </p>
+ <p>
+   You need to use a well-working TURN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>) AND one Relay Candidate (type <code>relay</code>).
+ </p></div>
 </li>
 </ul>
 <a name="getTurnUrl-org.kurento.client.Transaction-">
@@ -1144,7 +1679,32 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getTurnUrl</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getTurnUrl(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<div class="block">Get TURN server URL.
+ <p>
+   When STUN is not enough to open connections through some NAT firewalls, using
+   TURN is the remaining alternative.
+ </p>
+ <p>
+   Note that TURN is a superset of STUN, so you don't need to configure STUN if
+   you are using TURN.
+ </p>
+ <p>The provided URL should follow one of these formats:</p>
+ <ul>
+   <li><code>user:password@ipaddress:port</code></li>
+   <li>
+     <code>user:password@ipaddress:port?transport=[udp|tcp|tls]</code>
+   </li>
+ </ul>
+ <p>
+   <code>ipaddress</code> MUST be an IP address; domain names are NOT supported.<br />
+   <code>transport</code> is OPTIONAL. Possible values: udp, tcp, tls. Default: udp.
+ </p>
+ <p>
+   You need to use a well-working TURN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>) AND one Relay Candidate (type <code>relay</code>).
+ </p></div>
 </li>
 </ul>
 <a name="setTurnUrl-java.lang.String-">
@@ -1154,7 +1714,32 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>setTurnUrl</h4>
 <pre>void&nbsp;setTurnUrl(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl)</pre>
-<div class="block">Set TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<div class="block">Set TURN server URL.
+ <p>
+   When STUN is not enough to open connections through some NAT firewalls, using
+   TURN is the remaining alternative.
+ </p>
+ <p>
+   Note that TURN is a superset of STUN, so you don't need to configure STUN if
+   you are using TURN.
+ </p>
+ <p>The provided URL should follow one of these formats:</p>
+ <ul>
+   <li><code>user:password@ipaddress:port</code></li>
+   <li>
+     <code>user:password@ipaddress:port?transport=[udp|tcp|tls]</code>
+   </li>
+ </ul>
+ <p>
+   <code>ipaddress</code> MUST be an IP address; domain names are NOT supported.<br />
+   <code>transport</code> is OPTIONAL. Possible values: udp, tcp, tls. Default: udp.
+ </p>
+ <p>
+   You need to use a well-working TURN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>) AND one Relay Candidate (type <code>relay</code>).
+ </p></div>
 </li>
 </ul>
 <a name="setTurnUrl-java.lang.String-org.kurento.client.Continuation-">
@@ -1165,7 +1750,32 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <h4>setTurnUrl</h4>
 <pre>void&nbsp;setTurnUrl(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl,
                 <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<div class="block">Set TURN server URL.
+ <p>
+   When STUN is not enough to open connections through some NAT firewalls, using
+   TURN is the remaining alternative.
+ </p>
+ <p>
+   Note that TURN is a superset of STUN, so you don't need to configure STUN if
+   you are using TURN.
+ </p>
+ <p>The provided URL should follow one of these formats:</p>
+ <ul>
+   <li><code>user:password@ipaddress:port</code></li>
+   <li>
+     <code>user:password@ipaddress:port?transport=[udp|tcp|tls]</code>
+   </li>
+ </ul>
+ <p>
+   <code>ipaddress</code> MUST be an IP address; domain names are NOT supported.<br />
+   <code>transport</code> is OPTIONAL. Possible values: udp, tcp, tls. Default: udp.
+ </p>
+ <p>
+   You need to use a well-working TURN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>) AND one Relay Candidate (type <code>relay</code>).
+ </p></div>
 </li>
 </ul>
 <a name="setTurnUrl-java.lang.String-org.kurento.client.Transaction-">
@@ -1176,7 +1786,32 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <h4>setTurnUrl</h4>
 <pre>void&nbsp;setTurnUrl(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl,
                 <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<div class="block">Set TURN server URL.
+ <p>
+   When STUN is not enough to open connections through some NAT firewalls, using
+   TURN is the remaining alternative.
+ </p>
+ <p>
+   Note that TURN is a superset of STUN, so you don't need to configure STUN if
+   you are using TURN.
+ </p>
+ <p>The provided URL should follow one of these formats:</p>
+ <ul>
+   <li><code>user:password@ipaddress:port</code></li>
+   <li>
+     <code>user:password@ipaddress:port?transport=[udp|tcp|tls]</code>
+   </li>
+ </ul>
+ <p>
+   <code>ipaddress</code> MUST be an IP address; domain names are NOT supported.<br />
+   <code>transport</code> is OPTIONAL. Possible values: udp, tcp, tls. Default: udp.
+ </p>
+ <p>
+   You need to use a well-working TURN server. Use this to check if it works:<br />
+   https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/<br />
+   From that check, you should get at least one Server-Reflexive Candidate (type
+   <code>srflx</code>) AND one Relay Candidate (type <code>relay</code>).
+ </p></div>
 </li>
 </ul>
 <a name="getICECandidatePairs--">
@@ -1246,7 +1881,13 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>gatherCandidates</h4>
 <pre>void&nbsp;gatherCandidates()</pre>
-<div class="block">Start the gathering of ICE candidates.</br>It must be called after SdpEndpoint::generateOffer or SdpEndpoint::processOffer for Trickle ICE. If invoked before generating or processing an SDP offer, the candidates gathered will be added to the SDP processed.</div>
+<div class="block">Start the gathering of ICE candidates.
+ <p>
+   It must be called after <code>SdpEndpoint::generateOffer</code> or
+   <code>SdpEndpoint::processOffer</code> for <strong>Trickle ICE</strong>. If
+   invoked before generating or processing an SDP offer, the candidates gathered
+   will be added to the SDP processed.
+ </p></div>
 </li>
 </ul>
 <a name="gatherCandidates-org.kurento.client.Continuation-">
@@ -1272,7 +1913,13 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>gatherCandidates</h4>
 <pre>void&nbsp;gatherCandidates(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Start the gathering of ICE candidates.</br>It must be called after SdpEndpoint::generateOffer or SdpEndpoint::processOffer for Trickle ICE. If invoked before generating or processing an SDP offer, the candidates gathered will be added to the SDP processed.</div>
+<div class="block">Start the gathering of ICE candidates.
+ <p>
+   It must be called after <code>SdpEndpoint::generateOffer</code> or
+   <code>SdpEndpoint::processOffer</code> for <strong>Trickle ICE</strong>. If
+   invoked before generating or processing an SDP offer, the candidates gathered
+   will be added to the SDP processed.
+ </p></div>
 </li>
 </ul>
 <a name="addIceCandidate-org.kurento.client.IceCandidate-">
@@ -1334,23 +1981,39 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
                        int&nbsp;maxPacketLifeTime,
                        int&nbsp;maxRetransmits,
                        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;protocol)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
 <dd><code>ordered</code> - If the data channel should guarantee order or not. If true, and maxPacketLifeTime and maxRetransmits have not been provided, reliable mode is activated.</dd>
-<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
-<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
+<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
+<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
 <dd><code>protocol</code> - Name of the subprotocol used for data communication</dd>
 </dl>
 </li>
@@ -1374,10 +2037,10 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
 <dd><code>ordered</code> - If the data channel should guarantee order or not. If true, and maxPacketLifeTime and maxRetransmits have not been provided, reliable mode is activated.</dd>
-<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
-<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
+<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
+<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
 <dd><code>protocol</code> - Name of the subprotocol used for data communication</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../org/kurento/client/WebRtcEndpoint.html#createDataChannel-java.lang.String-boolean-int-int-java.lang.String-"><code>createDataChannel(java.lang.String, boolean, int, int, java.lang.String)</code></a></dd>
@@ -1396,23 +2059,39 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
                        int&nbsp;maxPacketLifeTime,
                        int&nbsp;maxRetransmits,
                        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;protocol)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
 <dd><code>ordered</code> - If the data channel should guarantee order or not. If true, and maxPacketLifeTime and maxRetransmits have not been provided, reliable mode is activated.</dd>
-<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
-<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
+<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
+<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
 <dd><code>protocol</code> - Name of the subprotocol used for data communication</dd>
 </dl>
 </li>
@@ -1472,15 +2151,31 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>createDataChannel</h4>
 <pre>void&nbsp;createDataChannel()</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 </li>
 </ul>
 <a name="createDataChannel-org.kurento.client.Continuation-">
@@ -1506,15 +2201,31 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>createDataChannel</h4>
 <pre>void&nbsp;createDataChannel(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 </li>
 </ul>
 <a name="createDataChannel-java.lang.String-">
@@ -1524,15 +2235,31 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>createDataChannel</h4>
 <pre>void&nbsp;createDataChannel(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;label)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
@@ -1566,15 +2293,31 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <h4>createDataChannel</h4>
 <pre>void&nbsp;createDataChannel(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;label)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
@@ -1589,15 +2332,31 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <h4>createDataChannel</h4>
 <pre>void&nbsp;createDataChannel(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;label,
                        boolean&nbsp;ordered)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
@@ -1635,15 +2394,31 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <pre>void&nbsp;createDataChannel(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;label,
                        boolean&nbsp;ordered)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
@@ -1660,21 +2435,37 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <pre>void&nbsp;createDataChannel(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;label,
                        boolean&nbsp;ordered,
                        int&nbsp;maxPacketLifeTime)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
 <dd><code>ordered</code> - If the data channel should guarantee order or not. If true, and maxPacketLifeTime and maxRetransmits have not been provided, reliable mode is activated.</dd>
-<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
+<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
 </dl>
 </li>
 </ul>
@@ -1695,8 +2486,8 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
 <dd><code>ordered</code> - If the data channel should guarantee order or not. If true, and maxPacketLifeTime and maxRetransmits have not been provided, reliable mode is activated.</dd>
-<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
+<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../org/kurento/client/WebRtcEndpoint.html#createDataChannel-java.lang.String-boolean-int-int-java.lang.String-"><code>createDataChannel(java.lang.String, boolean, int, int, java.lang.String)</code></a></dd>
 </dl>
@@ -1712,21 +2503,37 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
                        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;label,
                        boolean&nbsp;ordered,
                        int&nbsp;maxPacketLifeTime)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
 <dd><code>ordered</code> - If the data channel should guarantee order or not. If true, and maxPacketLifeTime and maxRetransmits have not been provided, reliable mode is activated.</dd>
-<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
+<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
 </dl>
 </li>
 </ul>
@@ -1740,23 +2547,39 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
                        boolean&nbsp;ordered,
                        int&nbsp;maxPacketLifeTime,
                        int&nbsp;maxRetransmits)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
 <dd><code>ordered</code> - If the data channel should guarantee order or not. If true, and maxPacketLifeTime and maxRetransmits have not been provided, reliable mode is activated.</dd>
-<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
-<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
+<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
+<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
 </dl>
 </li>
 </ul>
@@ -1778,10 +2601,10 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
 <dd><code>ordered</code> - If the data channel should guarantee order or not. If true, and maxPacketLifeTime and maxRetransmits have not been provided, reliable mode is activated.</dd>
-<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
-<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
+<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
+<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../org/kurento/client/WebRtcEndpoint.html#createDataChannel-java.lang.String-boolean-int-int-java.lang.String-"><code>createDataChannel(java.lang.String, boolean, int, int, java.lang.String)</code></a></dd>
 </dl>
@@ -1798,23 +2621,39 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
                        boolean&nbsp;ordered,
                        int&nbsp;maxPacketLifeTime,
                        int&nbsp;maxRetransmits)</pre>
-<div class="block">Create a new data channel, if data channels are supported. If they are not supported, this method throws an exception.
-           Being supported means that the WebRtcEndpoint has been created with data channel support, the client also supports data channels, and they have been negotaited in the SDP exchange.
-           Otherwise, the method throws an exception, indicating that the operation is not possible.</br>
-           Data channels can work in either unreliable mode (analogous to User Datagram Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol or TCP).
-           The two modes have a simple distinction:
-           <ul>
-             <li>Reliable mode guarantees the transmission of messages and also the order in which they are delivered. This takes extra overhead, thus potentially making this mode slower.</li>
-             <li>Unreliable mode does not guarantee every message will get to the other side nor what order they get there. This removes the overhead, allowing this mode to work much faster.</li>
-           </ul></div>
+<div class="block">Create a new data channel, if data channels are supported.
+ <p>
+   Being supported means that the WebRtcEndpoint has been created with data
+   channel support, the client also supports data channels, and they have been
+   negotiated in the SDP exchange. Otherwise, the method throws an exception,
+   indicating that the operation is not possible.
+ </p>
+ <p>
+   Data channels can work in either unreliable mode (analogous to User Datagram
+   Protocol or UDP) or reliable mode (analogous to Transmission Control Protocol
+   or TCP). The two modes have a simple distinction:
+ </p>
+ <ul>
+   <li>
+     Reliable mode guarantees the transmission of messages and also the order in
+     which they are delivered. This takes extra overhead, thus potentially making
+     this mode slower.
+   </li>
+   <li>
+     Unreliable mode does not guarantee every message will get to the other side
+     nor what order they get there. This removes the overhead, allowing this mode
+     to work much faster.
+   </li>
+ </ul>
+ <p>If data channels are not supported, this method throws an exception.</p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>label</code> - Channel's label</dd>
 <dd><code>ordered</code> - If the data channel should guarantee order or not. If true, and maxPacketLifeTime and maxRetransmits have not been provided, reliable mode is activated.</dd>
-<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
-<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.</br>
-                     <hr/><b>Note</b> This forces unreliable mode, even if <code>ordered</code> has been activated</dd>
+<dd><code>maxPacketLifeTime</code> - The time window (in milliseconds) during which transmissions and retransmissions may take place in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
+<dd><code>maxRetransmits</code> - maximum number of retransmissions that are attempted in unreliable mode.
+       Note that this forces unreliable mode, even if <code>ordered</code> has been activated.</dd>
 </dl>
 </li>
 </ul>

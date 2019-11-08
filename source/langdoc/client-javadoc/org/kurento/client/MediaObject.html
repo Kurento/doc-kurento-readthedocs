@@ -111,26 +111,51 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public interface <span class="typeNameLabel">MediaObject</span>
 extends <a href="../../../org/kurento/client/KurentoObject.html" title="interface in org.kurento.client">KurentoObject</a></pre>
-<div class="block"><p>Base interface used to manage capabilities common to all Kurento elements. This includes both: <code>MediaElement</code> and <code>MediaPipeline</code></p>
-       <h4>Properties</h4>
-       <ul>
-         <li><b>id</b>: unique identifier assigned to this <code>MediaObject</code> at instantiation time. <code>MediaPipeline</code> IDs are generated with a GUID followed by suffix <code>_kurento.MediaPipeline</code>. <code>MediaElement</code> IDs are also a GUID with suffix <code>_kurento.elemenType</code> and prefixed by parent's ID.
-           <blockquote>
-           <dl>
-             <dt><i>MediaPipeline ID example</i></dt>
-             <dd><code>907cac3a-809a-4bbe-a93e-ae7e944c5cae_kurento.MediaPipeline</code></dd>
-             <dt><i>MediaElement ID example</i></dt> <dd><code>907cac3a-809a-4bbe-a93e-ae7e944c5cae_kurento.MediaPipeline/403da25a-805b-4cf1-8c55-f190588e6c9b_kurento.WebRtcEndpoint</code></dd>
-           </dl>
-           </blockquote>
-         </li>
-         <li><b>name</b>: free text intended to provide a friendly name for this <code>MediaObject</code>. Its default value is the same as the ID.</li>
-         <li><b>tags</b>: key-value pairs intended for applications to associate metadata to this <code>MediaObject</code> instance.</li>
-       </ul>
-       <p>
-       <h4>Events</h4>
-       <ul>
-         <li>`ErrorEvent`: reports asynchronous error events. It is recommended to always subscribe a listener to this event, as regular error from the pipeline will be notified through it, instead of through an exception when invoking a method.</li>
-       </ul></div>
+<div class="block">Base interface used to manage capabilities common to all Kurento elements.
+ <h4>Properties</h4>
+ <ul>
+   <li>
+     <b>id</b>: unique identifier assigned to this <code>MediaObject</code> at
+     instantiation time. <code>MediaPipeline</code> IDs are generated with a GUID
+     followed by suffix <code>_kurento.MediaPipeline</code>.
+     <code>MediaElement</code> IDs are also a GUID with suffix
+     <code>_kurento.{ElementType}</code> and prefixed by parent's ID.
+     <blockquote>
+       <dl>
+         <dt><i>MediaPipeline ID example</i></dt>
+         <dd>
+           <code>
+             907cac3a-809a-4bbe-a93e-ae7e944c5cae_kurento.MediaPipeline
+           </code>
+         </dd>
+         <dt><i>MediaElement ID example</i></dt>
+         <dd>
+           <code>
+             907cac3a-809a-4bbe-a93e-ae7e944c5cae_kurento.MediaPipeline/403da25a-805b-4cf1-8c55-f190588e6c9b_kurento.WebRtcEndpoint
+           </code>
+         </dd>
+       </dl>
+     </blockquote>
+   </li>
+   <li>
+     <b>name</b>: free text intended to provide a friendly name for this
+     <code>MediaObject</code>. Its default value is the same as the ID.
+   </li>
+   <li>
+     <b>tags</b>: key-value pairs intended for applications to associate metadata
+     to this <code>MediaObject</code> instance.
+   </li>
+ </ul>
+ <p></p>
+ <h4>Events</h4>
+ <ul>
+   <li>
+     <b>ErrorEvent</b>: reports asynchronous error events. It is recommended to
+     always subscribe a listener to this event, as regular error from the
+     pipeline will be notified through it, instead of through an exception when
+     invoking a method.
+   </li>
+ </ul></div>
 </li>
 </ul>
 </div>
@@ -190,26 +215,26 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getChildren--">getChildren</a></span>()</code>
-<div class="block">Get children of this <code>MediaObject</code>.</div>
+<div class="block">Get Children of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getChildren-org.kurento.client.Continuation-">getChildren</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&gt;&nbsp;cont)</code>
-<div class="block">Get children of this <code>MediaObject</code>.</div>
+<div class="block">Get Children of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getChildren-org.kurento.client.Transaction-">getChildren</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get children of this <code>MediaObject</code>.</div>
+<div class="block">Get Children of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getChilds--">getChilds</a></span>()</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get  (Use children instead) children of this <code>MediaObject</code>.</span></div>
+<div class="block"><span class="deprecationComment">Use children instead.</span></div>
 </div>
 </td>
 </tr>
@@ -217,7 +242,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getChilds-org.kurento.client.Continuation-">getChilds</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get  (Use children instead) children of this <code>MediaObject</code>.</span></div>
+<div class="block"><span class="deprecationComment">Use children instead.</span></div>
 </div>
 </td>
 </tr>
@@ -225,7 +250,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getChilds-org.kurento.client.Transaction-">getChilds</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get  (Use children instead) children of this <code>MediaObject</code>.</span></div>
+<div class="block"><span class="deprecationComment">Use children instead.</span></div>
 </div>
 </td>
 </tr>
@@ -250,19 +275,19 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getId--">getId</a></span>()</code>
-<div class="block">Get unique identifier of this <code>MediaObject</code>.</div>
+<div class="block">Get Unique identifier of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getId-org.kurento.client.Continuation-">getId</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
-<div class="block">Get unique identifier of this <code>MediaObject</code>.</div>
+<div class="block">Get Unique identifier of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getId-org.kurento.client.Transaction-">getId</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get unique identifier of this <code>MediaObject</code>.</div>
+<div class="block">Get Unique identifier of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr id="i17" class="rowColor">
@@ -286,55 +311,55 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <tr id="i20" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getName--">getName</a></span>()</code>
-<div class="block">Get this <code>MediaObject</code>'s name.</div>
+<div class="block">Get This <code>MediaObject</code>'s name.</div>
 </td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getName-org.kurento.client.Continuation-">getName</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
-<div class="block">Get this <code>MediaObject</code>'s name.</div>
+<div class="block">Get This <code>MediaObject</code>'s name.</div>
 </td>
 </tr>
 <tr id="i22" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getName-org.kurento.client.Transaction-">getName</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get this <code>MediaObject</code>'s name.</div>
+<div class="block">Get This <code>MediaObject</code>'s name.</div>
 </td>
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getParent--">getParent</a></span>()</code>
-<div class="block">Get parent of this <code>MediaObject</code>.</div>
+<div class="block">Get Parent of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr id="i24" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getParent-org.kurento.client.Continuation-">getParent</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&nbsp;cont)</code>
-<div class="block">Get parent of this <code>MediaObject</code>.</div>
+<div class="block">Get Parent of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr id="i25" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getParent-org.kurento.client.Transaction-">getParent</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get parent of this <code>MediaObject</code>.</div>
+<div class="block">Get Parent of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr id="i26" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getSendTagsInEvents--">getSendTagsInEvents</a></span>()</code>
-<div class="block">Get flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Get Flag activating or deactivating sending the element's tags in fired events.</div>
 </td>
 </tr>
 <tr id="i27" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getSendTagsInEvents-org.kurento.client.Continuation-">getSendTagsInEvents</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;&nbsp;cont)</code>
-<div class="block">Get flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Get Flag activating or deactivating sending the element's tags in fired events.</div>
 </td>
 </tr>
 <tr id="i28" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getSendTagsInEvents-org.kurento.client.Transaction-">getSendTagsInEvents</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Get Flag activating or deactivating sending the element's tags in fired events.</div>
 </td>
 </tr>
 <tr id="i29" class="rowColor">
@@ -417,41 +442,41 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <tr id="i40" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#setName-java.lang.String-">setName</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>
-<div class="block">Set this <code>MediaObject</code>'s name.</div>
+<div class="block">Set This <code>MediaObject</code>'s name.</div>
 </td>
 </tr>
 <tr id="i41" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#setName-java.lang.String-org.kurento.client.Continuation-">setName</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
        <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set this <code>MediaObject</code>'s name.</div>
+<div class="block">Set This <code>MediaObject</code>'s name.</div>
 </td>
 </tr>
 <tr id="i42" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#setName-java.lang.String-org.kurento.client.Transaction-">setName</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
        <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set this <code>MediaObject</code>'s name.</div>
+<div class="block">Set This <code>MediaObject</code>'s name.</div>
 </td>
 </tr>
 <tr id="i43" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#setSendTagsInEvents-boolean-">setSendTagsInEvents</a></span>(boolean&nbsp;sendTagsInEvents)</code>
-<div class="block">Set flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Set Flag activating or deactivating sending the element's tags in fired events.</div>
 </td>
 </tr>
 <tr id="i44" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#setSendTagsInEvents-boolean-org.kurento.client.Continuation-">setSendTagsInEvents</a></span>(boolean&nbsp;sendTagsInEvents,
                    <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Set Flag activating or deactivating sending the element's tags in fired events.</div>
 </td>
 </tr>
 <tr id="i45" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#setSendTagsInEvents-boolean-org.kurento.client.Transaction-">setSendTagsInEvents</a></span>(boolean&nbsp;sendTagsInEvents,
                    <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Set Flag activating or deactivating sending the element's tags in fired events.</div>
 </td>
 </tr>
 </table>
@@ -513,7 +538,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getParent</h4>
 <pre><a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&nbsp;getParent()</pre>
-<div class="block">Get parent of this <code>MediaObject</code>. The parent of a <code>Hub</code> or a <code>MediaElement</code> is its <code>MediaPipeline</code>. A <code>MediaPipeline</code> has no parent, so this property will be null.</div>
+<div class="block">Get Parent of this <code>MediaObject</code>.
+ <p>
+   The parent of a <code>Hub</code> or a <code>MediaElement</code> is its
+   <code>MediaPipeline</code>. A <code>MediaPipeline</code> has no parent, so this
+   property will be null.
+ </p></div>
 </li>
 </ul>
 <a name="getParent-org.kurento.client.Continuation-">
@@ -523,7 +553,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getParent</h4>
 <pre>void&nbsp;getParent(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get parent of this <code>MediaObject</code>. The parent of a <code>Hub</code> or a <code>MediaElement</code> is its <code>MediaPipeline</code>. A <code>MediaPipeline</code> has no parent, so this property will be null.</div>
+<div class="block">Get Parent of this <code>MediaObject</code>.
+ <p>
+   The parent of a <code>Hub</code> or a <code>MediaElement</code> is its
+   <code>MediaPipeline</code>. A <code>MediaPipeline</code> has no parent, so this
+   property will be null.
+ </p></div>
 </li>
 </ul>
 <a name="getParent-org.kurento.client.Transaction-">
@@ -533,7 +568,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getParent</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&nbsp;getParent(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get parent of this <code>MediaObject</code>. The parent of a <code>Hub</code> or a <code>MediaElement</code> is its <code>MediaPipeline</code>. A <code>MediaPipeline</code> has no parent, so this property will be null.</div>
+<div class="block">Get Parent of this <code>MediaObject</code>.
+ <p>
+   The parent of a <code>Hub</code> or a <code>MediaElement</code> is its
+   <code>MediaPipeline</code>. A <code>MediaPipeline</code> has no parent, so this
+   property will be null.
+ </p></div>
 </li>
 </ul>
 <a name="getId--">
@@ -543,7 +583,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getId</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getId()</pre>
-<div class="block">Get unique identifier of this <code>MediaObject</code>. It's a synthetic identifier composed by a GUID and <code>MediaObject</code> type. The ID is prefixed with the parent ID when the object has parent: <i>ID_parent/ID_media-object</i>.</div>
+<div class="block">Get Unique identifier of this <code>MediaObject</code>.
+ <p>
+   It's a synthetic identifier composed by a GUID and
+   <code>MediaObject</code> type. The ID is prefixed with the parent ID when the
+   object has parent: <i>ID_parent/ID_media-object</i>.
+ </p></div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../org/kurento/client/KurentoObject.html#getId--">getId</a></code>&nbsp;in interface&nbsp;<code><a href="../../../org/kurento/client/KurentoObject.html" title="interface in org.kurento.client">KurentoObject</a></code></dd>
@@ -557,7 +602,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getId</h4>
 <pre>void&nbsp;getId(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get unique identifier of this <code>MediaObject</code>. It's a synthetic identifier composed by a GUID and <code>MediaObject</code> type. The ID is prefixed with the parent ID when the object has parent: <i>ID_parent/ID_media-object</i>.</div>
+<div class="block">Get Unique identifier of this <code>MediaObject</code>.
+ <p>
+   It's a synthetic identifier composed by a GUID and
+   <code>MediaObject</code> type. The ID is prefixed with the parent ID when the
+   object has parent: <i>ID_parent/ID_media-object</i>.
+ </p></div>
 </li>
 </ul>
 <a name="getId-org.kurento.client.Transaction-">
@@ -567,7 +617,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getId</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getId(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get unique identifier of this <code>MediaObject</code>. It's a synthetic identifier composed by a GUID and <code>MediaObject</code> type. The ID is prefixed with the parent ID when the object has parent: <i>ID_parent/ID_media-object</i>.</div>
+<div class="block">Get Unique identifier of this <code>MediaObject</code>.
+ <p>
+   It's a synthetic identifier composed by a GUID and
+   <code>MediaObject</code> type. The ID is prefixed with the parent ID when the
+   object has parent: <i>ID_parent/ID_media-object</i>.
+ </p></div>
 </li>
 </ul>
 <a name="getChilds--">
@@ -577,7 +632,8 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getChilds</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&nbsp;getChilds()</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Get  (Use children instead) children of this <code>MediaObject</code>.</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use children instead.</span></div>
+<div class="block">Get Children of this <code>MediaObject</code>.</div>
 </li>
 </ul>
 <a name="getChilds-org.kurento.client.Continuation-">
@@ -587,7 +643,8 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getChilds</h4>
 <pre>void&nbsp;getChilds(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&gt;&nbsp;cont)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Get  (Use children instead) children of this <code>MediaObject</code>.</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use children instead.</span></div>
+<div class="block">Get Children of this <code>MediaObject</code>.</div>
 </li>
 </ul>
 <a name="getChilds-org.kurento.client.Transaction-">
@@ -597,7 +654,8 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getChilds</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&gt;&nbsp;getChilds(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Get  (Use children instead) children of this <code>MediaObject</code>.</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use children instead.</span></div>
+<div class="block">Get Children of this <code>MediaObject</code>.</div>
 </li>
 </ul>
 <a name="getChildren--">
@@ -607,7 +665,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getChildren</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&nbsp;getChildren()</pre>
-<div class="block">Get children of this <code>MediaObject</code>.</div>
+<div class="block">Get Children of this <code>MediaObject</code>.</div>
 </li>
 </ul>
 <a name="getChildren-org.kurento.client.Continuation-">
@@ -617,7 +675,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getChildren</h4>
 <pre>void&nbsp;getChildren(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&gt;&nbsp;cont)</pre>
-<div class="block">Get children of this <code>MediaObject</code>.</div>
+<div class="block">Get Children of this <code>MediaObject</code>.</div>
 </li>
 </ul>
 <a name="getChildren-org.kurento.client.Transaction-">
@@ -627,7 +685,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getChildren</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&gt;&nbsp;getChildren(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get children of this <code>MediaObject</code>.</div>
+<div class="block">Get Children of this <code>MediaObject</code>.</div>
 </li>
 </ul>
 <a name="getName--">
@@ -637,7 +695,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getName</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getName()</pre>
-<div class="block">Get this <code>MediaObject</code>'s name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's ID.</div>
+<div class="block">Get This <code>MediaObject</code>'s name.
+ <p>
+   This is just sugar to simplify developers' life debugging, it is not used
+   internally for indexing nor identifying the objects. By default, it's the
+   object's ID.
+ </p></div>
 </li>
 </ul>
 <a name="getName-org.kurento.client.Continuation-">
@@ -647,7 +710,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getName</h4>
 <pre>void&nbsp;getName(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get this <code>MediaObject</code>'s name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's ID.</div>
+<div class="block">Get This <code>MediaObject</code>'s name.
+ <p>
+   This is just sugar to simplify developers' life debugging, it is not used
+   internally for indexing nor identifying the objects. By default, it's the
+   object's ID.
+ </p></div>
 </li>
 </ul>
 <a name="getName-org.kurento.client.Transaction-">
@@ -657,7 +725,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getName</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getName(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get this <code>MediaObject</code>'s name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's ID.</div>
+<div class="block">Get This <code>MediaObject</code>'s name.
+ <p>
+   This is just sugar to simplify developers' life debugging, it is not used
+   internally for indexing nor identifying the objects. By default, it's the
+   object's ID.
+ </p></div>
 </li>
 </ul>
 <a name="setName-java.lang.String-">
@@ -667,7 +740,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>setName</h4>
 <pre>void&nbsp;setName(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</pre>
-<div class="block">Set this <code>MediaObject</code>'s name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's ID.</div>
+<div class="block">Set This <code>MediaObject</code>'s name.
+ <p>
+   This is just sugar to simplify developers' life debugging, it is not used
+   internally for indexing nor identifying the objects. By default, it's the
+   object's ID.
+ </p></div>
 </li>
 </ul>
 <a name="setName-java.lang.String-org.kurento.client.Continuation-">
@@ -678,7 +756,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <h4>setName</h4>
 <pre>void&nbsp;setName(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
              <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set this <code>MediaObject</code>'s name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's ID.</div>
+<div class="block">Set This <code>MediaObject</code>'s name.
+ <p>
+   This is just sugar to simplify developers' life debugging, it is not used
+   internally for indexing nor identifying the objects. By default, it's the
+   object's ID.
+ </p></div>
 </li>
 </ul>
 <a name="setName-java.lang.String-org.kurento.client.Transaction-">
@@ -689,7 +772,12 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <h4>setName</h4>
 <pre>void&nbsp;setName(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name,
              <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set this <code>MediaObject</code>'s name. This is just a comodity to simplify developers' life debugging, it is not used internally for indexing nor idenfiying the objects. By default, it's the object's ID.</div>
+<div class="block">Set This <code>MediaObject</code>'s name.
+ <p>
+   This is just sugar to simplify developers' life debugging, it is not used
+   internally for indexing nor identifying the objects. By default, it's the
+   object's ID.
+ </p></div>
 </li>
 </ul>
 <a name="getSendTagsInEvents--">
@@ -699,7 +787,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getSendTagsInEvents</h4>
 <pre>boolean&nbsp;getSendTagsInEvents()</pre>
-<div class="block">Get flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Get Flag activating or deactivating sending the element's tags in fired events.</div>
 </li>
 </ul>
 <a name="getSendTagsInEvents-org.kurento.client.Continuation-">
@@ -709,7 +797,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getSendTagsInEvents</h4>
 <pre>void&nbsp;getSendTagsInEvents(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Get Flag activating or deactivating sending the element's tags in fired events.</div>
 </li>
 </ul>
 <a name="getSendTagsInEvents-org.kurento.client.Transaction-">
@@ -719,7 +807,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getSendTagsInEvents</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;&nbsp;getSendTagsInEvents(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Get Flag activating or deactivating sending the element's tags in fired events.</div>
 </li>
 </ul>
 <a name="setSendTagsInEvents-boolean-">
@@ -729,7 +817,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>setSendTagsInEvents</h4>
 <pre>void&nbsp;setSendTagsInEvents(boolean&nbsp;sendTagsInEvents)</pre>
-<div class="block">Set flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Set Flag activating or deactivating sending the element's tags in fired events.</div>
 </li>
 </ul>
 <a name="setSendTagsInEvents-boolean-org.kurento.client.Continuation-">
@@ -740,7 +828,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <h4>setSendTagsInEvents</h4>
 <pre>void&nbsp;setSendTagsInEvents(boolean&nbsp;sendTagsInEvents,
                          <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Set Flag activating or deactivating sending the element's tags in fired events.</div>
 </li>
 </ul>
 <a name="setSendTagsInEvents-boolean-org.kurento.client.Transaction-">
@@ -751,7 +839,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <h4>setSendTagsInEvents</h4>
 <pre>void&nbsp;setSendTagsInEvents(boolean&nbsp;sendTagsInEvents,
                          <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Set Flag activating or deactivating sending the element's tags in fired events.</div>
 </li>
 </ul>
 <a name="getCreationTime--">
@@ -792,7 +880,8 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <h4>addTag</h4>
 <pre>void&nbsp;addTag(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
             <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</pre>
-<div class="block">Adds a new tag to this <code>MediaObject</code>. If the tag is already present, it changes the value.</div>
+<div class="block">Adds a new tag to this <code>MediaObject</code>.
+ If the tag is already present, it changes the value.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>key</code> - Tag name.</dd>
@@ -830,7 +919,8 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <pre>void&nbsp;addTag(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
             <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
             <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;value)</pre>
-<div class="block">Adds a new tag to this <code>MediaObject</code>. If the tag is already present, it changes the value.</div>
+<div class="block">Adds a new tag to this <code>MediaObject</code>.
+ If the tag is already present, it changes the value.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>key</code> - Tag name.</dd>
@@ -845,7 +935,8 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>removeTag</h4>
 <pre>void&nbsp;removeTag(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
-<div class="block">Removes an existing tag. Exists silently with no error if tag is not defined.</div>
+<div class="block">Removes an existing tag.
+ Exists silently with no error if tag is not defined.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>key</code> - Tag name to be removed</dd>
@@ -879,7 +970,8 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <h4>removeTag</h4>
 <pre>void&nbsp;removeTag(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key)</pre>
-<div class="block">Removes an existing tag. Exists silently with no error if tag is not defined.</div>
+<div class="block">Removes an existing tag.
+ Exists silently with no error if tag is not defined.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>key</code> - Tag name to be removed</dd>

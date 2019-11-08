@@ -73,10 +73,52 @@
 <h1 title="Deprecated API" class="title">Deprecated API</h1>
 <h2 title="Contents">Contents</h2>
 <ul>
+<li><a href="#class">Deprecated Classes</a></li>
 <li><a href="#method">Deprecated Methods</a></li>
+<li><a href="#constructor">Deprecated Constructors</a></li>
 </ul>
 </div>
-<div class="contentContainer"><a name="method">
+<div class="contentContainer"><a name="class">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<table class="deprecatedSummary" border="0" cellpadding="3" cellspacing="0" summary="Deprecated Classes table, listing deprecated classes, and an explanation">
+<caption><span>Deprecated Classes</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Class and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colOne"><a href="org/kurento/client/OnDataChannelClosedEvent.html" title="class in org.kurento.client">org.kurento.client.OnDataChannelClosedEvent</a>
+<div class="block"><span class="deprecationComment">Use <code>DataChannelClose</code> instead.</span></div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="org/kurento/client/OnDataChannelOpenedEvent.html" title="class in org.kurento.client">org.kurento.client.OnDataChannelOpenedEvent</a>
+<div class="block"><span class="deprecationComment">Use <code>DataChannelOpen</code> instead.</span></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="org/kurento/client/OnIceCandidateEvent.html" title="class in org.kurento.client">org.kurento.client.OnIceCandidateEvent</a>
+<div class="block"><span class="deprecationComment">Use <code>IceCandidateFound</code> instead.</span></div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="org/kurento/client/OnIceComponentStateChangedEvent.html" title="class in org.kurento.client">org.kurento.client.OnIceComponentStateChangedEvent</a>
+<div class="block"><span class="deprecationComment">Use <code>IceComponentStateChange</code> instead.</span></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="org/kurento/client/OnIceGatheringDoneEvent.html" title="class in org.kurento.client">org.kurento.client.OnIceGatheringDoneEvent</a>
+<div class="block"><span class="deprecationComment">Use <code>IceGatheringDone</code> instead.</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<a name="method">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -89,101 +131,77 @@
 <tbody>
 <tr class="altColor">
 <td class="colOne"><a href="org/kurento/client/MediaObject.html#getChilds--">org.kurento.client.MediaObject.getChilds()</a>
-<div class="block"><span class="deprecationComment">Get  (Use children instead) children of this <code>MediaObject</code>.</span></div>
+<div class="block"><span class="deprecationComment">Use children instead.</span></div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><a href="org/kurento/client/MediaObject.html#getChilds-org.kurento.client.Continuation-">org.kurento.client.MediaObject.getChilds(Continuation&lt;List&lt;MediaObject&gt;&gt;)</a>
-<div class="block"><span class="deprecationComment">Get  (Use children instead) children of this <code>MediaObject</code>.</span></div>
+<div class="block"><span class="deprecationComment">Use children instead.</span></div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colOne"><a href="org/kurento/client/MediaObject.html#getChilds-org.kurento.client.Transaction-">org.kurento.client.MediaObject.getChilds(Transaction)</a>
-<div class="block"><span class="deprecationComment">Get  (Use children instead) children of this <code>MediaObject</code>.</span></div>
+<div class="block"><span class="deprecationComment">Use children instead.</span></div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#getMaxOuputBitrate--">org.kurento.client.MediaElement.getMaxOuputBitrate()</a>
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#getMaxOuputBitrate-org.kurento.client.Continuation-">org.kurento.client.MediaElement.getMaxOuputBitrate(Continuation&lt;Integer&gt;)</a>
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#getMaxOuputBitrate-org.kurento.client.Transaction-">org.kurento.client.MediaElement.getMaxOuputBitrate(Transaction)</a>
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#getMinOuputBitrate--">org.kurento.client.MediaElement.getMinOuputBitrate()</a>
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#getMinOuputBitrate-org.kurento.client.Continuation-">org.kurento.client.MediaElement.getMinOuputBitrate(Continuation&lt;Integer&gt;)</a>
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#getMinOuputBitrate-org.kurento.client.Transaction-">org.kurento.client.MediaElement.getMinOuputBitrate(Transaction)</a>
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#setMaxOuputBitrate-int-">org.kurento.client.MediaElement.setMaxOuputBitrate(int)</a>
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#setMaxOuputBitrate-int-org.kurento.client.Continuation-">org.kurento.client.MediaElement.setMaxOuputBitrate(int, Continuation&lt;Void&gt;)</a>
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#setMaxOuputBitrate-int-org.kurento.client.Transaction-">org.kurento.client.MediaElement.setMaxOuputBitrate(int, Transaction)</a>
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#setMinOuputBitrate-int-">org.kurento.client.MediaElement.setMinOuputBitrate(int)</a>
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#setMinOuputBitrate-int-org.kurento.client.Continuation-">org.kurento.client.MediaElement.setMinOuputBitrate(int, Continuation&lt;Void&gt;)</a>
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#setMinOuputBitrate-int-org.kurento.client.Transaction-">org.kurento.client.MediaElement.setMinOuputBitrate(int, Transaction)</a>
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -194,6 +212,46 @@
 <tr class="altColor">
 <td class="colOne"><a href="org/kurento/client/MediaElement.html#setOutputBitrate-org.kurento.client.Transaction-int-">org.kurento.client.MediaElement.setOutputBitrate(Transaction, int)</a>
 <div class="block"><span class="deprecationComment">Allows change the target bitrate for the media output, if the media is encoded using VP8 or H264. This method only works if it is called before the media starts to flow.</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<a name="constructor">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<table class="deprecatedSummary" border="0" cellpadding="3" cellspacing="0" summary="Deprecated Constructors table, listing deprecated constructors, and an explanation">
+<caption><span>Deprecated Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colOne"><a href="org/kurento/client/OnDataChannelClosedEvent.html#OnDataChannelClosedEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-int-">org.kurento.client.OnDataChannelClosedEvent(MediaObject, String, String, List&lt;Tag&gt;, String, int)</a>
+<div class="block"><span class="deprecationComment">Use <code>DataChannelClose</code> instead.</span></div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="org/kurento/client/OnDataChannelOpenedEvent.html#OnDataChannelOpenedEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-int-">org.kurento.client.OnDataChannelOpenedEvent(MediaObject, String, String, List&lt;Tag&gt;, String, int)</a>
+<div class="block"><span class="deprecationComment">Use <code>DataChannelOpen</code> instead.</span></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="org/kurento/client/OnIceCandidateEvent.html#OnIceCandidateEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-org.kurento.client.IceCandidate-">org.kurento.client.OnIceCandidateEvent(MediaObject, String, String, List&lt;Tag&gt;, String, IceCandidate)</a>
+<div class="block"><span class="deprecationComment">Use <code>IceCandidateFound</code> instead.</span></div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colOne"><a href="org/kurento/client/OnIceComponentStateChangedEvent.html#OnIceComponentStateChangedEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-int-int-org.kurento.client.IceComponentState-">org.kurento.client.OnIceComponentStateChangedEvent(MediaObject, String, String, List&lt;Tag&gt;, String, int, int, IceComponentState)</a>
+<div class="block"><span class="deprecationComment">Use <code>IceComponentStateChange</code> instead.</span></div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colOne"><a href="org/kurento/client/OnIceGatheringDoneEvent.html#OnIceGatheringDoneEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-">org.kurento.client.OnIceGatheringDoneEvent(MediaObject, String, String, List&lt;Tag&gt;, String)</a>
+<div class="block"><span class="deprecationComment">Use <code>IceGatheringDone</code> instead.</span></div>
 </td>
 </tr>
 </tbody>

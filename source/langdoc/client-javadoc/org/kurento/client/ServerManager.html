@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6,"i27":6,"i28":6,"i29":6,"i30":6,"i31":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -153,30 +153,50 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 </td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getCpuCount--">getCpuCount</a></span>()</code>
+<div class="block">Number of CPU cores that the media server can use.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getCpuCount-org.kurento.client.Continuation-">getCpuCount</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
+<div class="block">Asynchronous version of getCpuCount:
+ <a href="../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getCpuCount-org.kurento.client.Transaction-">getCpuCount</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Number of CPU cores that the media server can use.</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/ServerInfo.html" title="class in org.kurento.client">ServerInfo</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getInfo--">getInfo</a></span>()</code>
 <div class="block">Get Server information, version, modules, factories, etc</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getInfo-org.kurento.client.Continuation-">getInfo</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../org/kurento/client/ServerInfo.html" title="class in org.kurento.client">ServerInfo</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Server information, version, modules, factories, etc</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../org/kurento/client/ServerInfo.html" title="class in org.kurento.client">ServerInfo</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getInfo-org.kurento.client.Transaction-">getInfo</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get Server information, version, modules, factories, etc</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getKmd-java.lang.String-">getKmd</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;moduleName)</code>
 <div class="block">Returns the kmd associated to a module</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getKmd-java.lang.String-org.kurento.client.Continuation-">getKmd</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;moduleName,
       <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
@@ -185,74 +205,96 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
  done.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getKmd-org.kurento.client.Transaction-java.lang.String-">getKmd</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;moduleName)</code>
 <div class="block">Returns the kmd associated to a module</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getMetadata--">getMetadata</a></span>()</code>
 <div class="block">Get Metadata stored in the server</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getMetadata-org.kurento.client.Continuation-">getMetadata</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Metadata stored in the server</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getMetadata-org.kurento.client.Transaction-">getMetadata</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get Metadata stored in the server</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getPipelines--">getPipelines</a></span>()</code>
 <div class="block">Get All the pipelines available in the server</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getPipelines-org.kurento.client.Continuation-">getPipelines</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Get All the pipelines available in the server</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getPipelines-org.kurento.client.Transaction-">getPipelines</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get All the pipelines available in the server</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getSessions--">getSessions</a></span>()</code>
 <div class="block">Get All active sessions in the server</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getSessions-org.kurento.client.Continuation-">getSessions</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Get All active sessions in the server</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getSessions-org.kurento.client.Transaction-">getSessions</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get All active sessions in the server</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
-<td class="colFirst"><code>long</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getUsedMemory--">getUsedMemory</a></span>()</code>
-<div class="block">Returns the amount of memory that the server is using in KiB</div>
+<tr id="i22" class="altColor">
+<td class="colFirst"><code>float</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getUsedCpu-int-">getUsedCpu</a></span>(int&nbsp;interval)</code>
+<div class="block">Average CPU usage of the server.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i23" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getUsedCpu-int-org.kurento.client.Continuation-">getUsedCpu</a></span>(int&nbsp;interval,
+          <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang">Float</a>&gt;&nbsp;cont)</code>
+<div class="block">Asynchronous version of getUsedCpu:
+ <a href="../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</td>
+</tr>
+<tr id="i24" class="altColor">
+<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang">Float</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getUsedCpu-org.kurento.client.Transaction-int-">getUsedCpu</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
+          int&nbsp;interval)</code>
+<div class="block">Average CPU usage of the server.</div>
+</td>
+</tr>
+<tr id="i25" class="rowColor">
+<td class="colFirst"><code>long</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getUsedMemory--">getUsedMemory</a></span>()</code>
+<div class="block">Returns the amount of memory that the server is using, in KiB</div>
+</td>
+</tr>
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getUsedMemory-org.kurento.client.Continuation-">getUsedMemory</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getUsedMemory:
@@ -260,32 +302,32 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
  done.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#getUsedMemory-org.kurento.client.Transaction-">getUsedMemory</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Returns the amount of memory that the server is using in KiB</div>
+<div class="block">Returns the amount of memory that the server is using, in KiB</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#removeObjectCreatedListener-org.kurento.client.ListenerSubscription-">removeObjectCreatedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/ObjectCreatedEvent.html" title="class in org.kurento.client"><code>ObjectCreatedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#removeObjectCreatedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeObjectCreatedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                            <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/ObjectCreatedEvent.html" title="class in org.kurento.client"><code>ObjectCreatedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#removeObjectDestroyedListener-org.kurento.client.ListenerSubscription-">removeObjectDestroyedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/ObjectDestroyedEvent.html" title="class in org.kurento.client"><code>ObjectDestroyedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/ServerManager.html#removeObjectDestroyedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeObjectDestroyedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                              <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
@@ -453,7 +495,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>moduleName</code> - Name of the module to get its kmd file</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The kmd file *</dd>
+<dd>The kmd file. *</dd>
 </dl>
 </li>
 </ul>
@@ -489,7 +531,155 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>moduleName</code> - Name of the module to get its kmd file</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The kmd file *</dd>
+<dd>The kmd file. *</dd>
+</dl>
+</li>
+</ul>
+<a name="getCpuCount--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCpuCount</h4>
+<pre>int&nbsp;getCpuCount()</pre>
+<div class="block">Number of CPU cores that the media server can use.
+ <p>
+   Linux processes can be configured to use only a subset of the cores that are
+   available in the system, via the process affinity settings
+   (<strong>sched_setaffinity(2)</strong>). With this method it is possible to
+   know the number of cores that the media server can use in the machine where it
+   is running.
+ </p>
+ <p>
+   For example, it's possible to limit the core affinity inside a Docker
+   container by running with a command such as
+   <em>docker run --cpuset-cpus='0,1'</em>.
+ </p>
+ <p>
+   Note that the return value represents the number of
+   <em>logical</em> processing units available, i.e. CPU cores including
+   Hyper-Threading.
+ </p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Number of CPU cores available for the media server. *</dd>
+</dl>
+</li>
+</ul>
+<a name="getCpuCount-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCpuCount</h4>
+<pre>void&nbsp;getCpuCount(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
+<div class="block">Asynchronous version of getCpuCount:
+ <a href="../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done. If an error occurs, <a href="../../../org/kurento/client/Continuation.html#onError-java.lang.Throwable-"><code>Continuation.onError(java.lang.Throwable)</code></a> is called.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/kurento/client/ServerManager.html#getCpuCount--"><code>getCpuCount()</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getCpuCount-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getCpuCount</h4>
+<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getCpuCount(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Number of CPU cores that the media server can use.
+ <p>
+   Linux processes can be configured to use only a subset of the cores that are
+   available in the system, via the process affinity settings
+   (<strong>sched_setaffinity(2)</strong>). With this method it is possible to
+   know the number of cores that the media server can use in the machine where it
+   is running.
+ </p>
+ <p>
+   For example, it's possible to limit the core affinity inside a Docker
+   container by running with a command such as
+   <em>docker run --cpuset-cpus='0,1'</em>.
+ </p>
+ <p>
+   Note that the return value represents the number of
+   <em>logical</em> processing units available, i.e. CPU cores including
+   Hyper-Threading.
+ </p></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>Number of CPU cores available for the media server. *</dd>
+</dl>
+</li>
+</ul>
+<a name="getUsedCpu-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUsedCpu</h4>
+<pre>float&nbsp;getUsedCpu(int&nbsp;interval)</pre>
+<div class="block">Average CPU usage of the server.
+ <p>
+   This method measures the average CPU usage of the media server during the
+   requested interval. Normally you will want to choose an interval between 1000
+   and 10000 ms.
+ </p>
+ <p>
+   The returned value represents the global system CPU usage of the media server,
+   as an average across all processing units (CPU cores).
+ </p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>interval</code> - Time to measure the average CPU usage, in milliseconds.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>CPU usage %. *</dd>
+</dl>
+</li>
+</ul>
+<a name="getUsedCpu-int-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUsedCpu</h4>
+<pre>void&nbsp;getUsedCpu(int&nbsp;interval,
+                <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang">Float</a>&gt;&nbsp;cont)</pre>
+<div class="block">Asynchronous version of getUsedCpu:
+ <a href="../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done. If an error occurs, <a href="../../../org/kurento/client/Continuation.html#onError-java.lang.Throwable-"><code>Continuation.onError(java.lang.Throwable)</code></a> is called.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>interval</code> - Time to measure the average CPU usage, in milliseconds.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/kurento/client/ServerManager.html#getUsedCpu-int-"><code>getUsedCpu(int)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getUsedCpu-org.kurento.client.Transaction-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getUsedCpu</h4>
+<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang">Float</a>&gt;&nbsp;getUsedCpu(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
+                          int&nbsp;interval)</pre>
+<div class="block">Average CPU usage of the server.
+ <p>
+   This method measures the average CPU usage of the media server during the
+   requested interval. Normally you will want to choose an interval between 1000
+   and 10000 ms.
+ </p>
+ <p>
+   The returned value represents the global system CPU usage of the media server,
+   as an average across all processing units (CPU cores).
+ </p></div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>interval</code> - Time to measure the average CPU usage, in milliseconds.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>CPU usage %. *</dd>
 </dl>
 </li>
 </ul>
@@ -500,10 +690,10 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getUsedMemory</h4>
 <pre>long&nbsp;getUsedMemory()</pre>
-<div class="block">Returns the amount of memory that the server is using in KiB</div>
+<div class="block">Returns the amount of memory that the server is using, in KiB</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The amount of KiB of memory being used *</dd>
+<dd>Used memory, in KiB. *</dd>
 </dl>
 </li>
 </ul>
@@ -530,10 +720,10 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getUsedMemory</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;getUsedMemory(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Returns the amount of memory that the server is using in KiB</div>
+<div class="block">Returns the amount of memory that the server is using, in KiB</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The amount of KiB of memory being used *</dd>
+<dd>Used memory, in KiB. *</dd>
 </dl>
 </li>
 </ul>

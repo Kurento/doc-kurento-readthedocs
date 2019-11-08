@@ -90,20 +90,20 @@
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#generateOffer-org.kurento.client.Transaction-">generateOffer</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Generates an SDP offer with  media capabilities of the Endpoint.</div>
+<div class="block">Generates an SDP offer with media capabilities of the Endpoint.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getChildren-org.kurento.client.Transaction-">getChildren</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get children of this <code>MediaObject</code>.</div>
+<div class="block">Get Children of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getChilds-org.kurento.client.Transaction-">getChilds</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get  (Use children instead) children of this <code>MediaObject</code>.</span></div>
+<div class="block"><span class="deprecationComment">Use children instead.</span></div>
 </div>
 </td>
 </tr>
@@ -121,26 +121,38 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getCpuCount-org.kurento.client.Transaction-">getCpuCount</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Number of CPU cores that the media server can use.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getCreationTime-org.kurento.client.Transaction-">getCreationTime</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get <code>MediaObject</code> creation time in seconds since Epoch.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">PlayerEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/PlayerEndpoint.html#getElementGstreamerDot-org.kurento.client.Transaction-">getElementGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get Returns the GStreamer DOT string for this element's private pipeline</div>
 </td>
 </tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddresses-org.kurento.client.Transaction-">getExternalAddresses</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Get External IP addresses.</div>
+</td>
+</tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Hub.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/Hub.html#getGstreamerDot-org.kurento.client.Transaction-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Returns a string in dot (graphviz) format that represents the gstreamer elements inside the pipeline</div>
+<td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.Transaction-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Return a .dot file describing the topology of the media element.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.Transaction-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">This method returns a .dot file describing the topology of the media element.</div>
+<td class="colLast"><span class="typeNameLabel">Hub.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/Hub.html#getGstreamerDot-org.kurento.client.Transaction-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Returns a string in dot (graphviz) format that represents the gstreamer elements inside the pipeline</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -151,16 +163,16 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">Hub.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/Hub.html#getGstreamerDot-org.kurento.client.Transaction-org.kurento.client.GstreamerDotDetails-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
+<td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.Transaction-org.kurento.client.GstreamerDotDetails-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                <a href="../../../../org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details)</code>
-<div class="block">Returns a string in dot (graphviz) format that represents the gstreamer elements inside the pipeline</div>
+<div class="block">Return a .dot file describing the topology of the media element.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.Transaction-org.kurento.client.GstreamerDotDetails-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
+<td class="colLast"><span class="typeNameLabel">Hub.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/Hub.html#getGstreamerDot-org.kurento.client.Transaction-org.kurento.client.GstreamerDotDetails-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                <a href="../../../../org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details)</code>
-<div class="block">This method returns a .dot file describing the topology of the media element.</div>
+<div class="block">Returns a string in dot (graphviz) format that represents the gstreamer elements inside the pipeline</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -185,7 +197,7 @@
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getId-org.kurento.client.Transaction-">getId</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get unique identifier of this <code>MediaObject</code>.</div>
+<div class="block">Get Unique identifier of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -210,22 +222,20 @@
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#getLocalSessionDescriptor-org.kurento.client.Transaction-">getLocalSessionDescriptor</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">This method returns the local SDP.</div>
+<div class="block">Returns the local SDP.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#getMaxAudioRecvBandwidth-org.kurento.client.Transaction-">getMaxAudioRecvBandwidth</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get  Maximum bandwidth for audio reception, in kbps.</div>
+<div class="block">Get Maximum bandwidth for audio reception.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getMaxOuputBitrate-org.kurento.client.Transaction-">getMaxOuputBitrate</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -238,13 +248,14 @@
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#getMaxVideoRecvBandwidth-org.kurento.client.Transaction-">getMaxVideoRecvBandwidth</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get  Maximum bandwidth for video reception, in kbps.</div>
+<div class="block">Get Maximum bandwidth for video reception.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Transaction-">getMaxVideoSendBandwidth</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get Maximum bandwidth for video transmission, in kbps.</div>
+<div class="block">Get Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -269,9 +280,7 @@
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getMinOuputBitrate-org.kurento.client.Transaction-">getMinOuputBitrate</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -284,25 +293,26 @@
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth-org.kurento.client.Transaction-">getMinVideoRecvBandwidth</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get Minimum bandwidth announced for video reception, in kbps.</div>
+<div class="block">Get Minimum bitrate announced for video reception.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Transaction-">getMinVideoSendBandwidth</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get Minimum bandwidth for video transmission, in kbps.</div>
+<div class="block">Get Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getName-org.kurento.client.Transaction-">getName</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get this <code>MediaObject</code>'s name.</div>
+<div class="block">Get This <code>MediaObject</code>'s name.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getParent-org.kurento.client.Transaction-">getParent</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get parent of this <code>MediaObject</code>.</div>
+<div class="block">Get Parent of this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -332,7 +342,7 @@
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getSendTagsInEvents-org.kurento.client.Transaction-">getSendTagsInEvents</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get flag activating or deactivating sending the element's tags in fired events.</div>
+<div class="block">Get Flag activating or deactivating sending the element's tags in fired events.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -405,13 +415,13 @@
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getStunServerAddress-org.kurento.client.Transaction-">getStunServerAddress</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get address of the STUN server (Only IP address are supported)</div>
+<div class="block">Get STUN server IP address.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort-org.kurento.client.Transaction-">getStunServerPort</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get port of the STUN server</div>
+<div class="block">Get Port of the STUN server</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -430,7 +440,7 @@
 <tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl-org.kurento.client.Transaction-">getTurnUrl</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get TURN server URL with this format: <code>user:password@address:port(?transport=[udp|tcp|tls])</code>.</br><code>address</code> must be an IP (not a domain).</br><code>transport</code> is optional (UDP by default).</div>
+<div class="block">Get TURN server URL.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -446,25 +456,32 @@
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getUsedMemory-org.kurento.client.Transaction-">getUsedMemory</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Returns the amount of memory that the server is using in KiB</div>
+<td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang">Float</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getUsedCpu-org.kurento.client.Transaction-int-">getUsedCpu</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
+          int&nbsp;interval)</code>
+<div class="block">Average CPU usage of the server.</div>
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getUsedMemory-org.kurento.client.Transaction-">getUsedMemory</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Returns the amount of memory that the server is using, in KiB</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../../org/kurento/client/VideoInfo.html" title="class in org.kurento.client">VideoInfo</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">PlayerEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/PlayerEndpoint.html#getVideoInfo-org.kurento.client.Transaction-">getVideoInfo</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get Returns info about the source being played</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaFlowingIn-org.kurento.client.Transaction-org.kurento.client.MediaType-">isMediaFlowingIn</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                 <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</code>
 <div class="block">This method indicates whether the media element is receiving media of a certain type.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaFlowingIn-org.kurento.client.Transaction-org.kurento.client.MediaType-java.lang.String-">isMediaFlowingIn</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                 <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
@@ -472,14 +489,14 @@
 <div class="block">This method indicates whether the media element is receiving media of a certain type.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaFlowingOut-org.kurento.client.Transaction-org.kurento.client.MediaType-">isMediaFlowingOut</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                  <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</code>
 <div class="block">This method indicates whether the media element is emitting media of a certain type.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaFlowingOut-org.kurento.client.Transaction-org.kurento.client.MediaType-java.lang.String-">isMediaFlowingOut</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                  <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
@@ -487,14 +504,14 @@
 <div class="block">This method indicates whether the media element is emitting media of a certain type.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaTranscoding-org.kurento.client.Transaction-org.kurento.client.MediaType-">isMediaTranscoding</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                   <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</code>
 <div class="block">Indicates whether this media element is actively transcoding between input and output pads.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaTranscoding-org.kurento.client.Transaction-org.kurento.client.MediaType-java.lang.String-">isMediaTranscoding</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                   <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
@@ -502,14 +519,14 @@
 <div class="block">Indicates whether this media element is actively transcoding between input and output pads.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#processAnswer-org.kurento.client.Transaction-java.lang.String-">processAnswer</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;answer)</code>
-<div class="block">Generates an SDP offer with  media capabilities of the Endpoint.</div>
+<div class="block">Generates an SDP offer with media capabilities of the Endpoint.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#processOffer-org.kurento.client.Transaction-java.lang.String-">processOffer</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
             <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;offer)</code>

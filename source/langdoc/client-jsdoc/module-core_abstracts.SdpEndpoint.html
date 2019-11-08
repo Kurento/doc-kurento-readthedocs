@@ -31,14 +31,15 @@
         <h2><span class="attribs"><span class="type-signature">(abstract) </span></span>
             <span class="ancestors"><a href="module-core_abstracts.html">core/abstracts</a>.</span>SdpEndpoint<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">This interface is implemented by Endpoints that require an SDP negotiation 
- for the setup of a networked media session with remote peers. The API 
- provides the following functionality:
-       <ul>
-         <li>Generate SDP offers.</li>
-         <li>Process SDP offers.</li>
-         <li>Configure SDP related params.</li>
-       </ul></div>
+            <div class="class-description">Interface implemented by Endpoints that require an SDP negotiation for the 
+ setup
+ of a networked media session with remote peers.
+ <p>The API provides the following functionality:</p>
+ <ul>
+   <li>Generate SDP offers.</li>
+   <li>Process SDP offers.</li>
+   <li>Configure SDP related params.</li>
+ </ul></div>
         
     
 </header>
@@ -202,7 +203,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line439">line 439</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line458">line 458</a>
     </li></ul></dd>
     
 
@@ -260,7 +261,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line447">line 447</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line466">line 466</a>
     </li></ul></dd>
     
 
@@ -296,18 +297,18 @@
 
 
 <div class="description">
-    Generates an SDP offer with  media capabilities of the Endpoint.
-          Exceptions
-          <ul>
-            <li>
-              SDP_END_POINT_ALREADY_NEGOTIATED If the endpoint is already 
-              negotiated.
-            </li>
-            <li>
-              SDP_END_POINT_GENERATE_OFFER_ERROR if the generated offer is 
-              empty. This is most likely due to an internal error.
-            </li>
-          </ul>
+    Generates an SDP offer with media capabilities of the Endpoint.
+Throws:
+<ul>
+  <li>
+    SDP_END_POINT_ALREADY_NEGOTIATED If the endpoint is already negotiated.
+  </li>
+  <li>
+    SDP_END_POINT_GENERATE_OFFER_ERROR if the generated offer is empty. This 
+    is
+    most likely due to an internal error.
+  </li>
+</ul>
 </div>
 
 
@@ -412,7 +413,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line226">line 226</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line245">line 245</a>
     </li></ul></dd>
     
 
@@ -474,20 +475,18 @@
 
 
 <div class="description">
-    This method returns the local SDP. The output depends on the negotiation 
-stage:
-          <ul>
-            <li>
-              No offer has been generated: returns null.
-            </li>
-            <li>
-              Offer has been generated: return the SDP offer.
-            </li>
-            <li>
-              Offer has been generated and answer processed: retruns the 
-              agreed SDP.
-            </li>
-          </ul>
+    Returns the local SDP.
+<ul>
+  <li>
+    No offer has been generated: returns null.
+  </li>
+  <li>
+    Offer has been generated: returns the SDP offer.
+  </li>
+  <li>
+    Offer has been generated and answer processed: returns the agreed SDP.
+  </li>
+</ul>
 </div>
 
 
@@ -592,7 +591,7 @@ stage:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line272">line 272</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line289">line 289</a>
     </li></ul></dd>
     
 
@@ -654,8 +653,8 @@ stage:
 
 
 <div class="description">
-    This method returns the remote SDP. If the negotiation process is not 
-complete, it will return NULL.
+    This method returns the remote SDP.
+If the negotiation process is not complete, it will return NULL.
 </div>
 
 
@@ -760,7 +759,7 @@ complete, it will return NULL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line306">line 306</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line323">line 323</a>
     </li></ul></dd>
     
 
@@ -822,26 +821,24 @@ complete, it will return NULL.
 
 
 <div class="description">
-    Generates an SDP offer with  media capabilities of the Endpoint.
-          Exceptions
-          <ul>
-            <li>
-              SDP_PARSE_ERROR If the offer is empty or has errors.
-            </li>
-            <li>
-              SDP_END_POINT_ALREADY_NEGOTIATED If the endpoint is already 
-              negotiated.
-            </li>
-            <li>
-              SDP_END_POINT_PROCESS_ANSWER_ERROR if the result of processing 
-              the answer is an empty string. This is most likely due to an 
-              internal error.
-            </li>
-            <li>
-              SDP_END_POINT_NOT_OFFER_GENERATED If the method is invoked 
-              before the generateOffer method.
-            </li>
-          </ul>
+    Generates an SDP offer with media capabilities of the Endpoint.
+Throws:
+<ul>
+  <li>
+    SDP_PARSE_ERROR If the offer is empty or has errors.
+  </li>
+  <li>
+    SDP_END_POINT_ALREADY_NEGOTIATED If the endpoint is already negotiated.
+  </li>
+  <li>
+    SDP_END_POINT_PROCESS_ANSWER_ERROR if the result of processing the answer
+    an empty string. This is most likely due to an internal error.
+  </li>
+  <li>
+    SDP_END_POINT_NOT_OFFER_GENERATED If the method is invoked before the
+    generateOffer method.
+  </li>
+</ul>
 </div>
 
 
@@ -977,7 +974,7 @@ complete, it will return NULL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line361">line 361</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line376">line 376</a>
     </li></ul></dd>
     
 
@@ -1039,21 +1036,25 @@ complete, it will return NULL.
 
 
 <div class="description">
-    Processes SDP offer of the remote peer, and generates an SDP answer based on
-          Exceptions
-          <ul>
-            <li>
-              SDP_PARSE_ERROR If the offer is empty or has errors.
-            </li>
-            <li>
-              SDP_END_POINT_ALREADY_NEGOTIATED If the endpoint is already 
-              negotiated.
-            </li>
-            <li>
-              SDP_END_POINT_PROCESS_OFFER_ERROR if the generated offer is 
-              empty. This is most likely due to an internal error.
-            </li>
-          </ul>
+    Processes SDP offer of the remote peer, and generates an SDP answer based on 
+the endpoint's capabilities.
+<p>
+  If no matching capabilities are found, the SDP will contain no codecs.
+</p>
+Throws:
+<ul>
+  <li>
+    SDP_PARSE_ERROR If the offer is empty or has errors.
+  </li>
+  <li>
+    SDP_END_POINT_ALREADY_NEGOTIATED If the endpoint is already negotiated.
+  </li>
+  <li>
+    SDP_END_POINT_PROCESS_OFFER_ERROR if the generated offer is empty. This 
+    is
+    most likely due to an internal error.
+  </li>
+</ul>
 </div>
 
 
@@ -1189,7 +1190,7 @@ complete, it will return NULL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line411">line 411</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line430">line 430</a>
     </li></ul></dd>
     
 
@@ -1251,7 +1252,7 @@ complete, it will return NULL.
 
 
 <div class="description">
-    children of this <code>MediaObject</code>.
+    Children of this <code>MediaObject</code>.
 </div>
 
 
@@ -1361,7 +1362,7 @@ complete, it will return NULL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line199">line 199</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line219">line 219</a>
     </li></ul></dd>
     
 
@@ -1421,6 +1422,10 @@ complete, it will return NULL.
     
 
 
+
+<div class="description">
+    Children of this <code>MediaObject</code>.
+</div>
 
 
 
@@ -1517,7 +1522,7 @@ complete, it will return NULL.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>(Use children instead) children of this <code>MediaObject</code>.</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use children instead.</li></ul></dd>
     
 
     
@@ -1531,7 +1536,7 @@ complete, it will return NULL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line254">line 254</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -1703,7 +1708,7 @@ complete, it will return NULL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line308">line 308</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line328">line 328</a>
     </li></ul></dd>
     
 
@@ -1765,8 +1770,13 @@ complete, it will return NULL.
 
 
 <div class="description">
-    Maximum bandwidth for audio reception, in kbps. The default value is 500. A 
- value of 0 sets this as leaves this unconstrained. <hr/><b>Note</b> This has
+    Maximum bandwidth for audio reception.
+<p>This has to be set before the SDP is generated.</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 500.</li>
+  <li>0 = unconstrained.</li>
+</ul>
 </div>
 
 
@@ -1871,7 +1881,7 @@ complete, it will return NULL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line77">line 77</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line83">line 83</a>
     </li></ul></dd>
     
 
@@ -1931,6 +1941,10 @@ complete, it will return NULL.
     
 
 
+
+<div class="description">
+    Maximum video bandwidth for transcoding.
+</div>
 
 
 
@@ -2027,10 +2041,8 @@ complete, it will return NULL.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use maxOutputBitrate instead of this function. 
-Maximum video bandwidth for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#maxOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -2044,7 +2056,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line109">line 109</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -2106,9 +2118,12 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bitrate for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT
+    Maximum video bitrate for transcoding.
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: MAXINT.</li>
+  <li>0 = unlimited.</li>
+</ul>
 </div>
 
 
@@ -2218,7 +2233,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line179">line 179</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line195">line 195</a>
     </li></ul></dd>
     
 
@@ -2280,9 +2295,13 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum bandwidth for video reception, in kbps. The default value is 500. A 
- value of 0 sets this as unconstrained. <hr/><b>Note</b> This has to be set 
- before the SDP is generated.
+    Maximum bandwidth for video reception.
+<p>This has to be set before the SDP is generated.</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 500.</li>
+  <li>0 = unconstrained.</li>
+</ul>
 </div>
 
 
@@ -2387,7 +2406,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line144">line 144</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line159">line 159</a>
     </li></ul></dd>
     
 
@@ -2561,7 +2580,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line342">line 342</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line362">line 362</a>
     </li></ul></dd>
     
 
@@ -2621,6 +2640,10 @@ pipeline object.
     
 
 
+
+<div class="description">
+    Minimum video bandwidth for transcoding.
+</div>
 
 
 
@@ -2717,10 +2740,8 @@ pipeline object.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use minOutputBitrate instead of this function. 
-Minimum video bandwidth for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#minOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -2734,7 +2755,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line249">line 249</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line267">line 267</a>
     </li></ul></dd>
     
 
@@ -2797,8 +2818,10 @@ Minimum video bandwidth for transcoding.
 
 <div class="description">
     Minimum video bitrate for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 0.</li>
+</ul>
 </div>
 
 
@@ -2908,7 +2931,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line319">line 319</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -2970,9 +2993,12 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
-developers' life debugging, it is not used internally for indexing nor 
-idenfiying the objects. By default, it's the object's ID.
+    This <code>MediaObject</code>'s name.
+<p>
+  This is just sugar to simplify developers' life debugging, it is not used
+  internally for indexing nor identifying the objects. By default, it's the
+  object's ID.
+</p>
 </div>
 
 
@@ -3082,7 +3108,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line398">line 398</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line421">line 421</a>
     </li></ul></dd>
     
 
@@ -3144,7 +3170,23 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    parent of this <code>MediaObject</code>. The parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html"></div>     <h5>Parameters:</h5>
+    Parent of this <code>MediaObject</code>.
+<p>
+  The parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html">MediaElement</a> is its
+  <a href="module-core.MediaPipeline.html">MediaPipeline</a>. A <a href="module-core.MediaPipeline.html">MediaPipeline</a> has no parent, so this
+  property will be null.
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
 <table class="params">
@@ -3243,7 +3285,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line465">line 465</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line497">line 497</a>
     </li></ul></dd>
     
 
@@ -3297,7 +3339,7 @@ idenfiying the objects. By default, it's the object's ID.
     
 
     
-    <h4 class="name" id="getSendTagsInEvents"><span class="type-signature"></span>getSendTagsInEvents<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a></a></span></h4>
+    <h4 class="name" id="getSendTagsInEvents"><span class="type-signature"></span>getSendTagsInEvents<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
     
@@ -3305,7 +3347,7 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    flag activating or deactivating sending the element's tags in fired events.
+    Flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -3415,7 +3457,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line519">line 519</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line551">line 551</a>
     </li></ul></dd>
     
 
@@ -3477,8 +3519,13 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    Maximum bandwidth for audio reception, in kbps. The default value is 500. A 
- value of 0 sets this as leaves this unconstrained. <hr/><b>Note</b> This has
+    Maximum bandwidth for audio reception.
+<p>This has to be set before the SDP is generated.</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 500.</li>
+  <li>0 = unconstrained.</li>
+</ul>
 </div>
 
 
@@ -3614,7 +3661,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line111">line 111</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line122">line 122</a>
     </li></ul></dd>
     
 
@@ -3674,6 +3721,10 @@ idenfiying the objects. By default, it's the object's ID.
     
 
 
+
+<div class="description">
+    Maximum video bandwidth for transcoding.
+</div>
 
 
 
@@ -3801,10 +3852,8 @@ idenfiying the objects. By default, it's the object's ID.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use maxOutputBitrate instead of this function. 
-Maximum video bandwidth for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#maxOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -3818,7 +3867,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line146">line 146</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line159">line 159</a>
     </li></ul></dd>
     
 
@@ -3880,9 +3929,12 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bitrate for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT
+    Maximum video bitrate for transcoding.
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: MAXINT.</li>
+  <li>0 = unlimited.</li>
+</ul>
 </div>
 
 
@@ -4023,7 +4075,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line214">line 214</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line233">line 233</a>
     </li></ul></dd>
     
 
@@ -4085,9 +4137,13 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum bandwidth for video reception, in kbps. The default value is 500. A 
- value of 0 sets this as unconstrained. <hr/><b>Note</b> This has to be set 
- before the SDP is generated.
+    Maximum bandwidth for video reception.
+<p>This has to be set before the SDP is generated.</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 500.</li>
+  <li>0 = unconstrained.</li>
+</ul>
 </div>
 
 
@@ -4223,7 +4279,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line179">line 179</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line198">line 198</a>
     </li></ul></dd>
     
 
@@ -4283,6 +4339,10 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
 
 
+
+<div class="description">
+    Minimum video bandwidth for transcoding.
+</div>
 
 
 
@@ -4410,10 +4470,8 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use minOutputBitrate instead of this function. 
-Minimum video bandwidth for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#minOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -4427,7 +4485,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line286">line 286</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line303">line 303</a>
     </li></ul></dd>
     
 
@@ -4490,8 +4548,10 @@ Minimum video bandwidth for transcoding.
 
 <div class="description">
     Minimum video bitrate for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 0.</li>
+</ul>
 </div>
 
 
@@ -4632,7 +4692,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line354">line 354</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line375">line 375</a>
     </li></ul></dd>
     
 
@@ -4694,9 +4754,12 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
-developers' life debugging, it is not used internally for indexing nor 
-idenfiying the objects. By default, it's the object's ID.
+    This <code>MediaObject</code>'s name.
+<p>
+  This is just sugar to simplify developers' life debugging, it is not used
+  internally for indexing nor identifying the objects. By default, it's the
+  object's ID.
+</p>
 </div>
 
 
@@ -4837,7 +4900,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line433">line 433</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line459">line 459</a>
     </li></ul></dd>
     
 
@@ -4899,7 +4962,7 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    flag activating or deactivating sending the element's tags in fired events.
+    Flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -5040,7 +5103,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line552">line 552</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line584">line 584</a>
     </li></ul></dd>
     
 
@@ -5220,7 +5283,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line243">line 243</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line262">line 262</a>
     </li></ul></dd>
     
 
@@ -5335,7 +5398,7 @@ idenfiying the objects. By default, it's the object's ID.
 
             
 
-            <td class="description last">The last agreed SessionSpec</td>
+            <td class="description last">The last agreed SessionSpec.</td>
         </tr>
 
     
@@ -5376,7 +5439,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line289">line 289</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line306">line 306</a>
     </li></ul></dd>
     
 
@@ -5532,7 +5595,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line94">line 94</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line100">line 100</a>
     </li></ul></dd>
     
 
@@ -5688,7 +5751,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line161">line 161</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line176">line 176</a>
     </li></ul></dd>
     
 
@@ -5803,7 +5866,7 @@ idenfiying the objects. By default, it's the object's ID.
 
             
 
-            <td class="description last">The last agreed User Agent session description</td>
+            <td class="description last">The last agreed User Agent session description.</td>
         </tr>
 
     
@@ -5844,7 +5907,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line323">line 323</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line340">line 340</a>
     </li></ul></dd>
     
 
@@ -6000,7 +6063,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line378">line 378</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line393">line 393</a>
     </li></ul></dd>
     
 
@@ -6115,7 +6178,7 @@ idenfiying the objects. By default, it's the object's ID.
 
             
 
-            <td class="description last">The chosen configuration from the ones stated in the SDP offer</td>
+            <td class="description last">The chosen configuration from the ones stated in the SDP offer.</td>
         </tr>
 
     
@@ -6156,7 +6219,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line428">line 428</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line447">line 447</a>
     </li></ul></dd>
     
 
@@ -6289,7 +6352,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line128">line 128</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line139">line 139</a>
     </li></ul></dd>
     
 
@@ -6422,7 +6485,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line196">line 196</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line215">line 215</a>
     </li></ul></dd>
     
 

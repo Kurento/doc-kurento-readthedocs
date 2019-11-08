@@ -504,7 +504,7 @@
 
 
 <div class="description">
-    children of this <code>MediaObject</code>.
+    Children of this <code>MediaObject</code>.
 </div>
 
 
@@ -614,7 +614,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line199">line 199</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line219">line 219</a>
     </li></ul></dd>
     
 
@@ -674,6 +674,10 @@
     
 
 
+
+<div class="description">
+    Children of this <code>MediaObject</code>.
+</div>
 
 
 
@@ -770,7 +774,7 @@
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>(Use children instead) children of this <code>MediaObject</code>.</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use children instead.</li></ul></dd>
     
 
     
@@ -784,7 +788,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line254">line 254</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -846,11 +850,11 @@
 
 
 <div class="description">
-    Connection state. Possible values are
-          <ul>
-            <li>CONNECTED</li>
-            <li>DISCONNECTED</li>
-          </ul>
+    Connection state.
+<ul>
+  <li>CONNECTED</li>
+  <li>DISCONNECTED</li>
+</ul>
 </div>
 
 
@@ -960,7 +964,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line133">line 133</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line171">line 171</a>
     </li></ul></dd>
     
 
@@ -1132,7 +1136,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line308">line 308</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line328">line 328</a>
     </li></ul></dd>
     
 
@@ -1194,8 +1198,13 @@
 
 
 <div class="description">
-    Maximum bandwidth for audio reception, in kbps. The default value is 500. A 
- value of 0 sets this as leaves this unconstrained. <hr/><b>Note</b> This has
+    Maximum bandwidth for audio reception.
+<p>This has to be set before the SDP is generated.</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 500.</li>
+  <li>0 = unconstrained.</li>
+</ul>
 </div>
 
 
@@ -1305,7 +1314,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line77">line 77</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line83">line 83</a>
     </li></ul></dd>
     
 
@@ -1365,6 +1374,10 @@
     
 
 
+
+<div class="description">
+    Maximum video bandwidth for transcoding.
+</div>
 
 
 
@@ -1461,10 +1474,8 @@
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use maxOutputBitrate instead of this function. 
-Maximum video bandwidth for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#maxOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -1478,7 +1489,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line109">line 109</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -1540,9 +1551,12 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bitrate for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT
+    Maximum video bitrate for transcoding.
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: MAXINT.</li>
+  <li>0 = unlimited.</li>
+</ul>
 </div>
 
 
@@ -1652,7 +1666,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line179">line 179</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line195">line 195</a>
     </li></ul></dd>
     
 
@@ -1714,9 +1728,13 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum bandwidth for video reception, in kbps. The default value is 500. A 
- value of 0 sets this as unconstrained. <hr/><b>Note</b> This has to be set 
- before the SDP is generated.
+    Maximum bandwidth for video reception.
+<p>This has to be set before the SDP is generated.</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 500.</li>
+  <li>0 = unconstrained.</li>
+</ul>
 </div>
 
 
@@ -1826,7 +1844,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line144">line 144</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line159">line 159</a>
     </li></ul></dd>
     
 
@@ -1888,8 +1906,27 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum bandwidth for video transmission, in kbps. The default value is 500 
-kbps. 0 is considered unconstrained.
+    Maximum video transmission bitrate used for bandwidth
+estimations in the congestion control algorithm (REMB).
+<p>
+  With this parameter you can control the maximum video quality that will be
+  sent when reacting to good network conditions. Setting this parameter to a
+  high value permits the video quality to raise when the network conditions 
+  get
+  better.
+</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 500.</li>
+  <li>
+    0 = unconstrained: the video bitrate will grow until all the available
+    network bandwidth is used by the stream.<br>
+    Note that this might have a bad effect if more than one stream is running
+    (as all of them would try to raise the video bitrate indefinitely, until 
+    the
+    network gets saturated).
+  </li>
+</ul>
 </div>
 
 
@@ -1999,7 +2036,7 @@ kbps. 0 is considered unconstrained.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line166">line 166</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line223">line 223</a>
     </li></ul></dd>
     
 
@@ -2173,7 +2210,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line342">line 342</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line362">line 362</a>
     </li></ul></dd>
     
 
@@ -2235,11 +2272,12 @@ pipeline object.
 
 
 <div class="description">
-    Media flow state. Possible values are
-          <ul>
-            <li>CONNECTED: There is an RTCP flow.</li>
-            <li>DISCONNECTED: No RTCP packets have been received for at least
-          </ul>
+    Media flow state.
+<ul>
+  <li>CONNECTED: There is an RTCP flow.</li>
+  <li>DISCONNECTED: No RTCP packets have been received for at least 5 
+  sec.</li>
+</ul>
 </div>
 
 
@@ -2349,7 +2387,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line235">line 235</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line312">line 312</a>
     </li></ul></dd>
     
 
@@ -2409,6 +2447,10 @@ pipeline object.
     
 
 
+
+<div class="description">
+    Minimum video bandwidth for transcoding.
+</div>
 
 
 
@@ -2505,10 +2547,8 @@ pipeline object.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use minOutputBitrate instead of this function. 
-Minimum video bandwidth for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#minOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -2522,7 +2562,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line249">line 249</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line267">line 267</a>
     </li></ul></dd>
     
 
@@ -2585,8 +2625,10 @@ Minimum video bandwidth for transcoding.
 
 <div class="description">
     Minimum video bitrate for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 0.</li>
+</ul>
 </div>
 
 
@@ -2696,7 +2738,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line319">line 319</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -2758,8 +2800,13 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Minimum bandwidth announced for video reception, in kbps. The default and 
-absolute minimum value is 30 kbps, even if a lower value is set.
+    Minimum bitrate announced for video reception.
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 30.</li>
+  <li>The absolute minimum value is 30 kbps, even if a lower value is 
+  set.</li>
+</ul>
 </div>
 
 
@@ -2869,7 +2916,7 @@ absolute minimum value is 30 kbps, even if a lower value is set.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line268">line 268</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line350">line 350</a>
     </li></ul></dd>
     
 
@@ -2931,8 +2978,31 @@ absolute minimum value is 30 kbps, even if a lower value is set.
 
 
 <div class="description">
-    Minimum bandwidth for video transmission, in kbps. The default value is 100 
-kbps. 0 is considered unconstrained.
+    Minimum video transmission bitrate used for bandwidth
+estimations in the congestion control algorithm (REMB).
+<p>
+  With this parameter you can control the minimum video quality that will be
+  sent when reacting to bad network conditions. Setting this parameter to a 
+  low
+  value permits the video quality to drop when the network conditions get 
+  worse.
+</p>
+<p>
+  Note that if you set this parameter too high (trying to avoid bad video
+  quality altogether), you would be limiting the adaptation ability of the
+  congestion control algorithm, and your stream might be unable to ever 
+  recover
+  from adverse network conditions.
+</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 100.</li>
+  <li>
+    0 = unconstrained: the video bitrate will drop as needed, even to the
+    lowest possible quality, which might make the video completely blurry and
+    pixelated.
+  </li>
+</ul>
 </div>
 
 
@@ -3042,7 +3112,7 @@ kbps. 0 is considered unconstrained.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line334">line 334</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line444">line 444</a>
     </li></ul></dd>
     
 
@@ -3104,9 +3174,12 @@ kbps. 0 is considered unconstrained.
 
 
 <div class="description">
-    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
-developers' life debugging, it is not used internally for indexing nor 
-idenfiying the objects. By default, it's the object's ID.
+    This <code>MediaObject</code>'s name.
+<p>
+  This is just sugar to simplify developers' life debugging, it is not used
+  internally for indexing nor identifying the objects. By default, it's the
+  object's ID.
+</p>
 </div>
 
 
@@ -3216,7 +3289,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line398">line 398</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line421">line 421</a>
     </li></ul></dd>
     
 
@@ -3278,7 +3351,23 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    parent of this <code>MediaObject</code>. The parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html"></div>     <h5>Parameters:</h5>
+    Parent of this <code>MediaObject</code>.
+<p>
+  The parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html">MediaElement</a> is its
+  <a href="module-core.MediaPipeline.html">MediaPipeline</a>. A <a href="module-core.MediaPipeline.html">MediaPipeline</a> has no parent, so this
+  property will be null.
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
 <table class="params">
@@ -3377,7 +3466,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line465">line 465</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line497">line 497</a>
     </li></ul></dd>
     
 
@@ -3431,7 +3520,7 @@ idenfiying the objects. By default, it's the object's ID.
     
 
     
-    <h4 class="name" id="getRembParams"><span class="type-signature"></span>getRembParams<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a></a></span></h4>
+    <h4 class="name" id="getRembParams"><span class="type-signature"></span>getRembParams<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
     
@@ -3549,7 +3638,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line399">line 399</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line532">line 532</a>
     </li></ul></dd>
     
 
@@ -3611,7 +3700,7 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    flag activating or deactivating sending the element's tags in fired events.
+    Flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -3721,7 +3810,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line519">line 519</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line551">line 551</a>
     </li></ul></dd>
     
 
@@ -3783,8 +3872,13 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    Maximum bandwidth for audio reception, in kbps. The default value is 500. A 
- value of 0 sets this as leaves this unconstrained. <hr/><b>Note</b> This has
+    Maximum bandwidth for audio reception.
+<p>This has to be set before the SDP is generated.</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 500.</li>
+  <li>0 = unconstrained.</li>
+</ul>
 </div>
 
 
@@ -3925,7 +4019,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line111">line 111</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line122">line 122</a>
     </li></ul></dd>
     
 
@@ -3985,6 +4079,10 @@ idenfiying the objects. By default, it's the object's ID.
     
 
 
+
+<div class="description">
+    Maximum video bandwidth for transcoding.
+</div>
 
 
 
@@ -4112,10 +4210,8 @@ idenfiying the objects. By default, it's the object's ID.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use maxOutputBitrate instead of this function. 
-Maximum video bandwidth for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#maxOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -4129,7 +4225,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line146">line 146</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line159">line 159</a>
     </li></ul></dd>
     
 
@@ -4191,9 +4287,12 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bitrate for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT
+    Maximum video bitrate for transcoding.
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: MAXINT.</li>
+  <li>0 = unlimited.</li>
+</ul>
 </div>
 
 
@@ -4334,7 +4433,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line214">line 214</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line233">line 233</a>
     </li></ul></dd>
     
 
@@ -4396,9 +4495,13 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum bandwidth for video reception, in kbps. The default value is 500. A 
- value of 0 sets this as unconstrained. <hr/><b>Note</b> This has to be set 
- before the SDP is generated.
+    Maximum bandwidth for video reception.
+<p>This has to be set before the SDP is generated.</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 500.</li>
+  <li>0 = unconstrained.</li>
+</ul>
 </div>
 
 
@@ -4539,7 +4642,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line179">line 179</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line198">line 198</a>
     </li></ul></dd>
     
 
@@ -4601,8 +4704,27 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum bandwidth for video transmission, in kbps. The default value is 500 
-kbps. 0 is considered unconstrained.
+    Maximum video transmission bitrate used for bandwidth
+estimations in the congestion control algorithm (REMB).
+<p>
+  With this parameter you can control the maximum video quality that will be
+  sent when reacting to good network conditions. Setting this parameter to a
+  high value permits the video quality to raise when the network conditions 
+  get
+  better.
+</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 500.</li>
+  <li>
+    0 = unconstrained: the video bitrate will grow until all the available
+    network bandwidth is used by the stream.<br>
+    Note that this might have a bad effect if more than one stream is running
+    (as all of them would try to raise the video bitrate indefinitely, until 
+    the
+    network gets saturated).
+  </li>
+</ul>
 </div>
 
 
@@ -4743,7 +4865,7 @@ kbps. 0 is considered unconstrained.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line200">line 200</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line276">line 276</a>
     </li></ul></dd>
     
 
@@ -4803,6 +4925,10 @@ kbps. 0 is considered unconstrained.
     
 
 
+
+<div class="description">
+    Minimum video bandwidth for transcoding.
+</div>
 
 
 
@@ -4930,10 +5056,8 @@ kbps. 0 is considered unconstrained.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use minOutputBitrate instead of this function. 
-Minimum video bandwidth for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#minOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -4947,7 +5071,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line286">line 286</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line303">line 303</a>
     </li></ul></dd>
     
 
@@ -5010,8 +5134,10 @@ Minimum video bandwidth for transcoding.
 
 <div class="description">
     Minimum video bitrate for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 0.</li>
+</ul>
 </div>
 
 
@@ -5152,7 +5278,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line354">line 354</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line375">line 375</a>
     </li></ul></dd>
     
 
@@ -5214,8 +5340,13 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    Minimum bandwidth announced for video reception, in kbps. The default and 
-absolute minimum value is 30 kbps, even if a lower value is set.
+    Minimum bitrate announced for video reception.
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 30.</li>
+  <li>The absolute minimum value is 30 kbps, even if a lower value is 
+  set.</li>
+</ul>
 </div>
 
 
@@ -5356,7 +5487,7 @@ absolute minimum value is 30 kbps, even if a lower value is set.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line302">line 302</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line389">line 389</a>
     </li></ul></dd>
     
 
@@ -5418,8 +5549,31 @@ absolute minimum value is 30 kbps, even if a lower value is set.
 
 
 <div class="description">
-    Minimum bandwidth for video transmission, in kbps. The default value is 100 
-kbps. 0 is considered unconstrained.
+    Minimum video transmission bitrate used for bandwidth
+estimations in the congestion control algorithm (REMB).
+<p>
+  With this parameter you can control the minimum video quality that will be
+  sent when reacting to bad network conditions. Setting this parameter to a 
+  low
+  value permits the video quality to drop when the network conditions get 
+  worse.
+</p>
+<p>
+  Note that if you set this parameter too high (trying to avoid bad video
+  quality altogether), you would be limiting the adaptation ability of the
+  congestion control algorithm, and your stream might be unable to ever 
+  recover
+  from adverse network conditions.
+</p>
+<ul>
+  <li>Unit: kbps (kilobits per second).</li>
+  <li>Default: 100.</li>
+  <li>
+    0 = unconstrained: the video bitrate will drop as needed, even to the
+    lowest possible quality, which might make the video completely blurry and
+    pixelated.
+  </li>
+</ul>
 </div>
 
 
@@ -5560,7 +5714,7 @@ kbps. 0 is considered unconstrained.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line368">line 368</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line501">line 501</a>
     </li></ul></dd>
     
 
@@ -5622,9 +5776,12 @@ kbps. 0 is considered unconstrained.
 
 
 <div class="description">
-    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
-developers' life debugging, it is not used internally for indexing nor 
-idenfiying the objects. By default, it's the object's ID.
+    This <code>MediaObject</code>'s name.
+<p>
+  This is just sugar to simplify developers' life debugging, it is not used
+  internally for indexing nor identifying the objects. By default, it's the
+  object's ID.
+</p>
 </div>
 
 
@@ -5765,7 +5922,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line433">line 433</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line459">line 459</a>
     </li></ul></dd>
     
 
@@ -5968,7 +6125,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line432">line 432</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line565">line 565</a>
     </li></ul></dd>
     
 
@@ -6030,7 +6187,7 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    flag activating or deactivating sending the element's tags in fired events.
+    Flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -6171,7 +6328,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line552">line 552</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line584">line 584</a>
     </li></ul></dd>
     
 

@@ -111,14 +111,36 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public interface <span class="typeNameLabel">MediaElement</span>
 extends <a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a></pre>
-<div class="block"><p>This is the basic building block of the media server, that can be interconnected inside a pipeline. A <code>MediaElement</code> is a module that encapsulates a specific media capability, and that is able to exchange media with other <code>MediaElement</code>s through an internal element called pad.
-       </p>
-       <p>
-       A pad can be defined as an input or output interface. Input pads are called sinks, and it's where the media elements receive media from other media elements. Output interfaces are called sources, and it's the pad used by the media element to feed media to other media elements. There can be only one sink pad per media element. On the other hand, the number of source pads is unconstrained. This means that a certain media element can receive media only from one element at a time, while it can send media to many others. Pads are created on demand, when the connect method is invoked. When two media elements are connected, one media pad is created for each type of media connected. For example, if you connect AUDIO and VIDEO between two media elements, each one will need to create two new pads: one for AUDIO and one for VIDEO.
-       </p>
-       <p>
-       When media elements are connected, it can be the case that the encoding required in both input and output pads is not the same, and thus it needs to be transcoded. This is something that is handled transparently by the MediaElement internals, but such transcoding has a toll in the form of a higher CPU load, so connecting MediaElements that need media encoded in different formats is something to consider as a high load operation. The event `MediaTranscodingStateChange` allows to inform the client application of whether media transcoding is being enabled or not inside any MediaElement object.
-       </p></div>
+<div class="block">The basic building block of the media server, that can be interconnected inside a pipeline.
+ <p>
+   A <code>MediaElement</code> is a module that encapsulates a specific media
+   capability, and that is able to exchange media with other MediaElements
+   through an internal element called <b>pad</b>.
+ </p>
+ <p>
+   A pad can be defined as an input or output interface. Input pads are called
+   sinks, and it's where the media elements receive media from other media
+   elements. Output interfaces are called sources, and it's the pad used by the
+   media element to feed media to other media elements. There can be only one
+   sink pad per media element. On the other hand, the number of source pads is
+   unconstrained. This means that a certain media element can receive media only
+   from one element at a time, while it can send media to many others. Pads are
+   created on demand, when the connect method is invoked. When two media elements
+   are connected, one media pad is created for each type of media connected. For
+   example, if you connect AUDIO and VIDEO between two media elements, each one
+   will need to create two new pads: one for AUDIO and one for VIDEO.
+ </p>
+ <p>
+   When media elements are connected, it can be the case that the encoding
+   required in both input and output pads is not the same, and thus it needs to
+   be transcoded. This is something that is handled transparently by the
+   MediaElement internals, but such transcoding has a toll in the form of a
+   higher CPU load, so connecting MediaElements that need media encoded in
+   different formats is something to consider as a high load operation. The event
+   `MediaTranscodingStateChange` allows to inform the client application of
+   whether media transcoding is being enabled or not inside any MediaElement
+   object.
+ </p></div>
 </li>
 </ul>
 </div>
@@ -205,7 +227,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#connect-org.kurento.client.MediaElement-">connect</a></span>(<a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr id="i11" class="rowColor">
@@ -221,7 +243,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#connect-org.kurento.client.MediaElement-org.kurento.client.MediaType-">connect</a></span>(<a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
        <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -239,7 +261,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#connect-org.kurento.client.MediaElement-org.kurento.client.MediaType-java.lang.String-">connect</a></span>(<a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
        <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
@@ -259,7 +281,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
        <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sinkMediaDescription)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr id="i17" class="rowColor">
@@ -278,7 +300,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#connect-org.kurento.client.Transaction-org.kurento.client.MediaElement-">connect</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
        <a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr id="i19" class="rowColor">
@@ -286,7 +308,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#connect-org.kurento.client.Transaction-org.kurento.client.MediaElement-org.kurento.client.MediaType-">connect</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
        <a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
        <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr id="i20" class="altColor">
@@ -295,7 +317,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
        <a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
        <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr id="i21" class="rowColor">
@@ -305,7 +327,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
        <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription,
        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sinkMediaDescription)</code>
-<div class="block">Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected.</div>
+<div class="block">Connects two elements, with the media flowing from left to right.</div>
 </td>
 </tr>
 <tr id="i22" class="altColor">
@@ -417,7 +439,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <tr id="i34" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#getGstreamerDot--">getGstreamerDot</a></span>()</code>
-<div class="block">This method returns a .dot file describing the topology of the media element.</div>
+<div class="block">Return a .dot file describing the topology of the media element.</div>
 </td>
 </tr>
 <tr id="i35" class="rowColor">
@@ -431,7 +453,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <tr id="i36" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.GstreamerDotDetails-">getGstreamerDot</a></span>(<a href="../../../org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details)</code>
-<div class="block">This method returns a .dot file describing the topology of the media element.</div>
+<div class="block">Return a .dot file describing the topology of the media element.</div>
 </td>
 </tr>
 <tr id="i37" class="rowColor">
@@ -446,23 +468,21 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <tr id="i38" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.Transaction-">getGstreamerDot</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">This method returns a .dot file describing the topology of the media element.</div>
+<div class="block">Return a .dot file describing the topology of the media element.</div>
 </td>
 </tr>
 <tr id="i39" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.Transaction-org.kurento.client.GstreamerDotDetails-">getGstreamerDot</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                <a href="../../../org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details)</code>
-<div class="block">This method returns a .dot file describing the topology of the media element.</div>
+<div class="block">Return a .dot file describing the topology of the media element.</div>
 </td>
 </tr>
 <tr id="i40" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#getMaxOuputBitrate--">getMaxOuputBitrate</a></span>()</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -470,9 +490,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#getMaxOuputBitrate-org.kurento.client.Continuation-">getMaxOuputBitrate</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -480,9 +498,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#getMaxOuputBitrate-org.kurento.client.Transaction-">getMaxOuputBitrate</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -508,9 +524,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#getMinOuputBitrate--">getMinOuputBitrate</a></span>()</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -518,9 +532,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#getMinOuputBitrate-org.kurento.client.Continuation-">getMinOuputBitrate</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -528,9 +540,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#getMinOuputBitrate-org.kurento.client.Transaction-">getMinOuputBitrate</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -960,9 +970,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#setMaxOuputBitrate-int-">setMaxOuputBitrate</a></span>(int&nbsp;maxOuputBitrate)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -971,9 +979,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#setMaxOuputBitrate-int-org.kurento.client.Continuation-">setMaxOuputBitrate</a></span>(int&nbsp;maxOuputBitrate,
                   <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -982,9 +988,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#setMaxOuputBitrate-int-org.kurento.client.Transaction-">setMaxOuputBitrate</a></span>(int&nbsp;maxOuputBitrate,
                   <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -1012,9 +1016,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#setMinOuputBitrate-int-">setMinOuputBitrate</a></span>(int&nbsp;minOuputBitrate)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -1023,9 +1025,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#setMinOuputBitrate-int-org.kurento.client.Continuation-">setMinOuputBitrate</a></span>(int&nbsp;minOuputBitrate,
                   <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -1034,9 +1034,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#setMinOuputBitrate-int-org.kurento.client.Transaction-">setMinOuputBitrate</a></span>(int&nbsp;minOuputBitrate,
                   <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
 </div>
 </td>
 </tr>
@@ -1144,9 +1142,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getMinOuputBitrate</h4>
 <pre>int&nbsp;getMinOuputBitrate()</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Get Minimum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="getMinOuputBitrate-org.kurento.client.Continuation-">
@@ -1156,9 +1153,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getMinOuputBitrate</h4>
 <pre>void&nbsp;getMinOuputBitrate(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Get Minimum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="getMinOuputBitrate-org.kurento.client.Transaction-">
@@ -1168,9 +1164,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getMinOuputBitrate</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMinOuputBitrate(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Get Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Get Minimum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="setMinOuputBitrate-int-">
@@ -1180,9 +1175,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>setMinOuputBitrate</h4>
 <pre>void&nbsp;setMinOuputBitrate(int&nbsp;minOuputBitrate)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Set Minimum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="setMinOuputBitrate-int-org.kurento.client.Continuation-">
@@ -1193,9 +1187,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setMinOuputBitrate</h4>
 <pre>void&nbsp;setMinOuputBitrate(int&nbsp;minOuputBitrate,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Set Minimum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="setMinOuputBitrate-int-org.kurento.client.Transaction-">
@@ -1206,9 +1199,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setMinOuputBitrate</h4>
 <pre>void&nbsp;setMinOuputBitrate(int&nbsp;minOuputBitrate,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Set Deprecated due to a typo. Use minOutputBitrate instead of this function. Minimum video bandwidth for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#minOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Set Minimum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="getMinOutputBitrate--">
@@ -1219,8 +1211,10 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>getMinOutputBitrate</h4>
 <pre>int&nbsp;getMinOutputBitrate()</pre>
 <div class="block">Get Minimum video bitrate for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</div>
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: 0.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMinOutputBitrate-org.kurento.client.Continuation-">
@@ -1231,8 +1225,10 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>getMinOutputBitrate</h4>
 <pre>void&nbsp;getMinOutputBitrate(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
 <div class="block">Get Minimum video bitrate for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</div>
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: 0.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMinOutputBitrate-org.kurento.client.Transaction-">
@@ -1243,8 +1239,10 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>getMinOutputBitrate</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMinOutputBitrate(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
 <div class="block">Get Minimum video bitrate for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</div>
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: 0.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMinOutputBitrate-int-">
@@ -1255,8 +1253,10 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setMinOutputBitrate</h4>
 <pre>void&nbsp;setMinOutputBitrate(int&nbsp;minOutputBitrate)</pre>
 <div class="block">Set Minimum video bitrate for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</div>
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: 0.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMinOutputBitrate-int-org.kurento.client.Continuation-">
@@ -1268,8 +1268,10 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <pre>void&nbsp;setMinOutputBitrate(int&nbsp;minOutputBitrate,
                          <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
 <div class="block">Set Minimum video bitrate for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</div>
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: 0.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMinOutputBitrate-int-org.kurento.client.Transaction-">
@@ -1281,8 +1283,10 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <pre>void&nbsp;setMinOutputBitrate(int&nbsp;minOutputBitrate,
                          <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
 <div class="block">Set Minimum video bitrate for transcoding.
-   Unit: bps(bits per second).
-   Default value: 0</div>
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: 0.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMaxOuputBitrate--">
@@ -1292,9 +1296,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getMaxOuputBitrate</h4>
 <pre>int&nbsp;getMaxOuputBitrate()</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Get Maximum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="getMaxOuputBitrate-org.kurento.client.Continuation-">
@@ -1304,9 +1307,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getMaxOuputBitrate</h4>
 <pre>void&nbsp;getMaxOuputBitrate(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Get Maximum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="getMaxOuputBitrate-org.kurento.client.Transaction-">
@@ -1316,9 +1318,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getMaxOuputBitrate</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMaxOuputBitrate(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Get Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Get Maximum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="setMaxOuputBitrate-int-">
@@ -1328,9 +1329,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>setMaxOuputBitrate</h4>
 <pre>void&nbsp;setMaxOuputBitrate(int&nbsp;maxOuputBitrate)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Set Maximum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="setMaxOuputBitrate-int-org.kurento.client.Continuation-">
@@ -1341,9 +1341,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setMaxOuputBitrate</h4>
 <pre>void&nbsp;setMaxOuputBitrate(int&nbsp;maxOuputBitrate,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Set Maximum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="setMaxOuputBitrate-int-org.kurento.client.Transaction-">
@@ -1354,9 +1353,8 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setMaxOuputBitrate</h4>
 <pre>void&nbsp;setMaxOuputBitrate(int&nbsp;maxOuputBitrate,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Set Deprecated due to a typo. Use maxOutputBitrate instead of this function. Maximum video bandwidth for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Deprecated due to a typo. Use <code>#maxOutputBitrate</code> instead of this function.</span></div>
+<div class="block">Set Maximum video bandwidth for transcoding.</div>
 </li>
 </ul>
 <a name="getMaxOutputBitrate--">
@@ -1366,9 +1364,12 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getMaxOutputBitrate</h4>
 <pre>int&nbsp;getMaxOutputBitrate()</pre>
-<div class="block">Get Maximum video bitrate for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</div>
+<div class="block">Get Maximum video bitrate for transcoding.
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: MAXINT.</li>
+   <li>0 = unlimited.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMaxOutputBitrate-org.kurento.client.Continuation-">
@@ -1378,9 +1379,12 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getMaxOutputBitrate</h4>
 <pre>void&nbsp;getMaxOutputBitrate(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get Maximum video bitrate for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</div>
+<div class="block">Get Maximum video bitrate for transcoding.
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: MAXINT.</li>
+   <li>0 = unlimited.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMaxOutputBitrate-org.kurento.client.Transaction-">
@@ -1390,9 +1394,12 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getMaxOutputBitrate</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMaxOutputBitrate(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get Maximum video bitrate for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</div>
+<div class="block">Get Maximum video bitrate for transcoding.
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: MAXINT.</li>
+   <li>0 = unlimited.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMaxOutputBitrate-int-">
@@ -1402,9 +1409,12 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>setMaxOutputBitrate</h4>
 <pre>void&nbsp;setMaxOutputBitrate(int&nbsp;maxOutputBitrate)</pre>
-<div class="block">Set Maximum video bitrate for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</div>
+<div class="block">Set Maximum video bitrate for transcoding.
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: MAXINT.</li>
+   <li>0 = unlimited.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMaxOutputBitrate-int-org.kurento.client.Continuation-">
@@ -1415,9 +1425,12 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setMaxOutputBitrate</h4>
 <pre>void&nbsp;setMaxOutputBitrate(int&nbsp;maxOutputBitrate,
                          <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set Maximum video bitrate for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</div>
+<div class="block">Set Maximum video bitrate for transcoding.
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: MAXINT.</li>
+   <li>0 = unlimited.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMaxOutputBitrate-int-org.kurento.client.Transaction-">
@@ -1428,9 +1441,12 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setMaxOutputBitrate</h4>
 <pre>void&nbsp;setMaxOutputBitrate(int&nbsp;maxOutputBitrate,
                          <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set Maximum video bitrate for transcoding. 0 = unlimited.
-   Unit: bps(bits per second).
-   Default value: MAXINT</div>
+<div class="block">Set Maximum video bitrate for transcoding.
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: MAXINT.</li>
+   <li>0 = unlimited.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getSourceConnections-org.kurento.client.MediaType-java.lang.String-">
@@ -1441,7 +1457,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>getSourceConnections</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&nbsp;getSourceConnections(<a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                                                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;description)</pre>
-<div class="block">Gets information about the sink pads of this media element. Since sink pads are the interface through which a media element gets it's media, whatever is connected to an element's sink pad is formally a source of media. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the sink pads of this media element.
+ <p>
+   Since sink pads are the interface through which a media element gets it's
+   media, whatever is connected to an element's sink pad is formally a source of
+   media. Media can be filtered by type, or by the description given to the pad
+   though which both elements are connected.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code>, <code>#MediaType.VIDEO</code> or <code>#MediaType.DATA</code></dd>
@@ -1481,7 +1503,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&gt;&nbsp;getSourceConnections(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                                                           <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                                                           <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;description)</pre>
-<div class="block">Gets information about the sink pads of this media element. Since sink pads are the interface through which a media element gets it's media, whatever is connected to an element's sink pad is formally a source of media. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the sink pads of this media element.
+ <p>
+   Since sink pads are the interface through which a media element gets it's
+   media, whatever is connected to an element's sink pad is formally a source of
+   media. Media can be filtered by type, or by the description given to the pad
+   though which both elements are connected.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code>, <code>#MediaType.VIDEO</code> or <code>#MediaType.DATA</code></dd>
@@ -1499,7 +1527,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>getSinkConnections</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&nbsp;getSinkConnections(<a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                                                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;description)</pre>
-<div class="block">Gets information about the source pads of this media element. Since source pads connect to other media element's sinks, this is formally the sink of media from the element's perspective. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the source pads of this media element.
+ <p>
+   Since source pads connect to other media element's sinks, this is formally the
+   sink of media from the element's perspective. Media can be filtered by type,
+   or by the description given to the pad though which both elements are
+   connected.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code>, <code>#MediaType.VIDEO</code> or <code>#MediaType.DATA</code></dd>
@@ -1539,7 +1573,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&gt;&nbsp;getSinkConnections(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                                                         <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                                                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;description)</pre>
-<div class="block">Gets information about the source pads of this media element. Since source pads connect to other media element's sinks, this is formally the sink of media from the element's perspective. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the source pads of this media element.
+ <p>
+   Since source pads connect to other media element's sinks, this is formally the
+   sink of media from the element's perspective. Media can be filtered by type,
+   or by the description given to the pad though which both elements are
+   connected.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code>, <code>#MediaType.VIDEO</code> or <code>#MediaType.DATA</code></dd>
@@ -1559,17 +1599,33 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
              <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription,
              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sinkMediaDescription)</pre>
-<div class="block"><p>Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected. The element given as parameter to the method will be the sink, and it will create one sink pad per media type connected.
-           </p>
-           <p>
-           If otherwise not specified, all types of media are connected by default (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of media if not all of them will be used. For this purpose, the connect method can be invoked more than once on the same two elements, but with different media types.
-           </p>
-           <p>
-           The connection is unidirectional. If a bidirectional connection is desired, the position of the media elements must be inverted. For instance, webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order to create a WebRTC one-2one conversation, the user would need to especify the connection on the other direction with webrtc2.connect(webrtc1).
-           </p>
-           <p>
-           Even though one media element can have one sink pad per type of media, only one media element can be connected to another at a given time. If a media element is connected to another, the former will become the source of the sink media element, regardles whether there was another element connected or not.
-           </p></div>
+<div class="block">Connects two elements, with the media flowing from left to right.
+ <p>
+   The element that invokes the connect will be the source of media, creating one
+   sink pad for each type of media connected. The element given as parameter to
+   the method will be the sink, and it will create one sink pad per media type
+   connected.
+ </p>
+ <p>
+   If otherwise not specified, all types of media are connected by default
+   (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of
+   media if not all of them will be used. For this purpose, the connect method
+   can be invoked more than once on the same two elements, but with different
+   media types.
+ </p>
+ <p>
+   The connection is unidirectional. If a bidirectional connection is desired,
+   the position of the media elements must be inverted. For instance,
+   webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order
+   to create a WebRTC one-2one conversation, the user would need to specify the
+   connection on the other direction with webrtc2.connect(webrtc1).
+ </p>
+ <p>
+   Even though one media element can have one sink pad per type of media, only
+   one media element can be connected to another at a given time. If a media
+   element is connected to another, the former will become the source of the sink
+   media element, regardless whether there was another element connected or not.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sink</code> - the target <code>MediaElement</code> that will receive media</dd>
@@ -1615,17 +1671,33 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
              <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription,
              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sinkMediaDescription)</pre>
-<div class="block"><p>Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected. The element given as parameter to the method will be the sink, and it will create one sink pad per media type connected.
-           </p>
-           <p>
-           If otherwise not specified, all types of media are connected by default (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of media if not all of them will be used. For this purpose, the connect method can be invoked more than once on the same two elements, but with different media types.
-           </p>
-           <p>
-           The connection is unidirectional. If a bidirectional connection is desired, the position of the media elements must be inverted. For instance, webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order to create a WebRTC one-2one conversation, the user would need to especify the connection on the other direction with webrtc2.connect(webrtc1).
-           </p>
-           <p>
-           Even though one media element can have one sink pad per type of media, only one media element can be connected to another at a given time. If a media element is connected to another, the former will become the source of the sink media element, regardles whether there was another element connected or not.
-           </p></div>
+<div class="block">Connects two elements, with the media flowing from left to right.
+ <p>
+   The element that invokes the connect will be the source of media, creating one
+   sink pad for each type of media connected. The element given as parameter to
+   the method will be the sink, and it will create one sink pad per media type
+   connected.
+ </p>
+ <p>
+   If otherwise not specified, all types of media are connected by default
+   (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of
+   media if not all of them will be used. For this purpose, the connect method
+   can be invoked more than once on the same two elements, but with different
+   media types.
+ </p>
+ <p>
+   The connection is unidirectional. If a bidirectional connection is desired,
+   the position of the media elements must be inverted. For instance,
+   webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order
+   to create a WebRTC one-2one conversation, the user would need to specify the
+   connection on the other direction with webrtc2.connect(webrtc1).
+ </p>
+ <p>
+   Even though one media element can have one sink pad per type of media, only
+   one media element can be connected to another at a given time. If a media
+   element is connected to another, the former will become the source of the sink
+   media element, regardless whether there was another element connected or not.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sink</code> - the target <code>MediaElement</code> that will receive media</dd>
@@ -1708,7 +1780,11 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>setAudioFormat</h4>
 <pre>void&nbsp;setAudioFormat(<a href="../../../org/kurento/client/AudioCaps.html" title="class in org.kurento.client">AudioCaps</a>&nbsp;caps)</pre>
-<div class="block">Sets the type of data for the audio stream. MediaElements that do not support configuration of audio capabilities will throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception.</div>
+<div class="block">Sets the type of data for the audio stream.
+ <p>
+   MediaElements that do not support configuration of audio capabilities will
+   throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>caps</code> - The format for the stream of audio</dd>
@@ -1742,7 +1818,11 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setAudioFormat</h4>
 <pre>void&nbsp;setAudioFormat(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                     <a href="../../../org/kurento/client/AudioCaps.html" title="class in org.kurento.client">AudioCaps</a>&nbsp;caps)</pre>
-<div class="block">Sets the type of data for the audio stream. MediaElements that do not support configuration of audio capabilities will throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception.</div>
+<div class="block">Sets the type of data for the audio stream.
+ <p>
+   MediaElements that do not support configuration of audio capabilities will
+   throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>caps</code> - The format for the stream of audio</dd>
@@ -1756,7 +1836,11 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>setVideoFormat</h4>
 <pre>void&nbsp;setVideoFormat(<a href="../../../org/kurento/client/VideoCaps.html" title="class in org.kurento.client">VideoCaps</a>&nbsp;caps)</pre>
-<div class="block">Sets the type of data for the video stream. MediaElements that do not support configuration of video capabilities will throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception</div>
+<div class="block">Sets the type of data for the video stream.
+ <p>
+   MediaElements that do not support configuration of video capabilities will
+   throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>caps</code> - The format for the stream of video</dd>
@@ -1790,7 +1874,11 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setVideoFormat</h4>
 <pre>void&nbsp;setVideoFormat(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                     <a href="../../../org/kurento/client/VideoCaps.html" title="class in org.kurento.client">VideoCaps</a>&nbsp;caps)</pre>
-<div class="block">Sets the type of data for the video stream. MediaElements that do not support configuration of video capabilities will throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception</div>
+<div class="block">Sets the type of data for the video stream.
+ <p>
+   MediaElements that do not support configuration of video capabilities will
+   throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>caps</code> - The format for the stream of video</dd>
@@ -1804,21 +1892,22 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getGstreamerDot</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getGstreamerDot(<a href="../../../org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details)</pre>
-<div class="block">This method returns a .dot file describing the topology of the media element. The element can be queried for certain type of data
-           <ul>
-             <li>SHOW_ALL: default value</li>
-             <li>SHOW_CAPS_DETAILS</li>
-             <li>SHOW_FULL_PARAMS</li>
-             <li>SHOW_MEDIA_TYPE</li>
-             <li>SHOW_NON_DEFAULT_PARAMS</li>
-             <li>SHOW_STATES</li>
-             <li>SHOW_VERBOSE</li>
-           </ul></div>
+<div class="block">Return a .dot file describing the topology of the media element.
+ <p>The element can be queried for certain type of data:</p>
+ <ul>
+   <li>SHOW_ALL: default value</li>
+   <li>SHOW_CAPS_DETAILS</li>
+   <li>SHOW_FULL_PARAMS</li>
+   <li>SHOW_MEDIA_TYPE</li>
+   <li>SHOW_NON_DEFAULT_PARAMS</li>
+   <li>SHOW_STATES</li>
+   <li>SHOW_VERBOSE</li>
+ </ul></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>details</code> - Details of graph</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The dot graph *</dd>
+<dd>The dot graph. *</dd>
 </dl>
 </li>
 </ul>
@@ -1849,21 +1938,22 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>getGstreamerDot</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getGstreamerDot(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                                 <a href="../../../org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details)</pre>
-<div class="block">This method returns a .dot file describing the topology of the media element. The element can be queried for certain type of data
-           <ul>
-             <li>SHOW_ALL: default value</li>
-             <li>SHOW_CAPS_DETAILS</li>
-             <li>SHOW_FULL_PARAMS</li>
-             <li>SHOW_MEDIA_TYPE</li>
-             <li>SHOW_NON_DEFAULT_PARAMS</li>
-             <li>SHOW_STATES</li>
-             <li>SHOW_VERBOSE</li>
-           </ul></div>
+<div class="block">Return a .dot file describing the topology of the media element.
+ <p>The element can be queried for certain type of data:</p>
+ <ul>
+   <li>SHOW_ALL: default value</li>
+   <li>SHOW_CAPS_DETAILS</li>
+   <li>SHOW_FULL_PARAMS</li>
+   <li>SHOW_MEDIA_TYPE</li>
+   <li>SHOW_NON_DEFAULT_PARAMS</li>
+   <li>SHOW_STATES</li>
+   <li>SHOW_VERBOSE</li>
+ </ul></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>details</code> - Details of graph</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The dot graph *</dd>
+<dd>The dot graph. *</dd>
 </dl>
 </li>
 </ul>
@@ -1981,7 +2071,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code> or <code>#MediaType.VIDEO</code></dd>
 <dd><code>sinkMediaDescription</code> - Description of the sink</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>TRUE if there is media, FALSE in other case *</dd>
+<dd>TRUE if there is media, FALSE in other case. *</dd>
 </dl>
 </li>
 </ul>
@@ -2021,7 +2111,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code> or <code>#MediaType.VIDEO</code></dd>
 <dd><code>sinkMediaDescription</code> - Description of the sink</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>TRUE if there is media, FALSE in other case *</dd>
+<dd>TRUE if there is media, FALSE in other case. *</dd>
 </dl>
 </li>
 </ul>
@@ -2039,7 +2129,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code> or <code>#MediaType.VIDEO</code></dd>
 <dd><code>sourceMediaDescription</code> - Description of the source</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>TRUE if there is media, FALSE in other case *</dd>
+<dd>TRUE if there is media, FALSE in other case. *</dd>
 </dl>
 </li>
 </ul>
@@ -2079,7 +2169,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code> or <code>#MediaType.VIDEO</code></dd>
 <dd><code>sourceMediaDescription</code> - Description of the source</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>TRUE if there is media, FALSE in other case *</dd>
+<dd>TRUE if there is media, FALSE in other case. *</dd>
 </dl>
 </li>
 </ul>
@@ -2150,7 +2240,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getSourceConnections</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&nbsp;getSourceConnections()</pre>
-<div class="block">Gets information about the sink pads of this media element. Since sink pads are the interface through which a media element gets it's media, whatever is connected to an element's sink pad is formally a source of media. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the sink pads of this media element.
+ <p>
+   Since sink pads are the interface through which a media element gets it's
+   media, whatever is connected to an element's sink pad is formally a source of
+   media. Media can be filtered by type, or by the description given to the pad
+   though which both elements are connected.
+ </p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A list of the connections information that are sending media to this element. The list will be empty if no sources are found. *</dd>
@@ -2180,7 +2276,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getSourceConnections</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&gt;&nbsp;getSourceConnections(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Gets information about the sink pads of this media element. Since sink pads are the interface through which a media element gets it's media, whatever is connected to an element's sink pad is formally a source of media. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the sink pads of this media element.
+ <p>
+   Since sink pads are the interface through which a media element gets it's
+   media, whatever is connected to an element's sink pad is formally a source of
+   media. Media can be filtered by type, or by the description given to the pad
+   though which both elements are connected.
+ </p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A list of the connections information that are sending media to this element. The list will be empty if no sources are found. *</dd>
@@ -2194,7 +2296,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getSourceConnections</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&nbsp;getSourceConnections(<a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</pre>
-<div class="block">Gets information about the sink pads of this media element. Since sink pads are the interface through which a media element gets it's media, whatever is connected to an element's sink pad is formally a source of media. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the sink pads of this media element.
+ <p>
+   Since sink pads are the interface through which a media element gets it's
+   media, whatever is connected to an element's sink pad is formally a source of
+   media. Media can be filtered by type, or by the description given to the pad
+   though which both elements are connected.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code>, <code>#MediaType.VIDEO</code> or <code>#MediaType.DATA</code></dd>
@@ -2230,7 +2338,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>getSourceConnections</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&gt;&nbsp;getSourceConnections(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                                                           <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</pre>
-<div class="block">Gets information about the sink pads of this media element. Since sink pads are the interface through which a media element gets it's media, whatever is connected to an element's sink pad is formally a source of media. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the sink pads of this media element.
+ <p>
+   Since sink pads are the interface through which a media element gets it's
+   media, whatever is connected to an element's sink pad is formally a source of
+   media. Media can be filtered by type, or by the description given to the pad
+   though which both elements are connected.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code>, <code>#MediaType.VIDEO</code> or <code>#MediaType.DATA</code></dd>
@@ -2246,7 +2360,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getSinkConnections</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&nbsp;getSinkConnections()</pre>
-<div class="block">Gets information about the source pads of this media element. Since source pads connect to other media element's sinks, this is formally the sink of media from the element's perspective. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the source pads of this media element.
+ <p>
+   Since source pads connect to other media element's sinks, this is formally the
+   sink of media from the element's perspective. Media can be filtered by type,
+   or by the description given to the pad though which both elements are
+   connected.
+ </p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A list of the connections information that are receiving media from this element. The list will be empty if no sources are found. *</dd>
@@ -2276,7 +2396,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getSinkConnections</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&gt;&nbsp;getSinkConnections(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Gets information about the source pads of this media element. Since source pads connect to other media element's sinks, this is formally the sink of media from the element's perspective. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the source pads of this media element.
+ <p>
+   Since source pads connect to other media element's sinks, this is formally the
+   sink of media from the element's perspective. Media can be filtered by type,
+   or by the description given to the pad though which both elements are
+   connected.
+ </p></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>A list of the connections information that are receiving media from this element. The list will be empty if no sources are found. *</dd>
@@ -2290,7 +2416,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getSinkConnections</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&nbsp;getSinkConnections(<a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</pre>
-<div class="block">Gets information about the source pads of this media element. Since source pads connect to other media element's sinks, this is formally the sink of media from the element's perspective. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the source pads of this media element.
+ <p>
+   Since source pads connect to other media element's sinks, this is formally the
+   sink of media from the element's perspective. Media can be filtered by type,
+   or by the description given to the pad though which both elements are
+   connected.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code>, <code>#MediaType.VIDEO</code> or <code>#MediaType.DATA</code></dd>
@@ -2326,7 +2458,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>getSinkConnections</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&gt;&nbsp;getSinkConnections(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                                                         <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</pre>
-<div class="block">Gets information about the source pads of this media element. Since source pads connect to other media element's sinks, this is formally the sink of media from the element's perspective. Media can be filtered by type, or by the description given to the pad though which both elements are connected.</div>
+<div class="block">Gets information about the source pads of this media element.
+ <p>
+   Since source pads connect to other media element's sinks, this is formally the
+   sink of media from the element's perspective. Media can be filtered by type,
+   or by the description given to the pad though which both elements are
+   connected.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code>, <code>#MediaType.VIDEO</code> or <code>#MediaType.DATA</code></dd>
@@ -2342,17 +2480,33 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>connect</h4>
 <pre>void&nbsp;connect(<a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink)</pre>
-<div class="block"><p>Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected. The element given as parameter to the method will be the sink, and it will create one sink pad per media type connected.
-           </p>
-           <p>
-           If otherwise not specified, all types of media are connected by default (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of media if not all of them will be used. For this purpose, the connect method can be invoked more than once on the same two elements, but with different media types.
-           </p>
-           <p>
-           The connection is unidirectional. If a bidirectional connection is desired, the position of the media elements must be inverted. For instance, webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order to create a WebRTC one-2one conversation, the user would need to especify the connection on the other direction with webrtc2.connect(webrtc1).
-           </p>
-           <p>
-           Even though one media element can have one sink pad per type of media, only one media element can be connected to another at a given time. If a media element is connected to another, the former will become the source of the sink media element, regardles whether there was another element connected or not.
-           </p></div>
+<div class="block">Connects two elements, with the media flowing from left to right.
+ <p>
+   The element that invokes the connect will be the source of media, creating one
+   sink pad for each type of media connected. The element given as parameter to
+   the method will be the sink, and it will create one sink pad per media type
+   connected.
+ </p>
+ <p>
+   If otherwise not specified, all types of media are connected by default
+   (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of
+   media if not all of them will be used. For this purpose, the connect method
+   can be invoked more than once on the same two elements, but with different
+   media types.
+ </p>
+ <p>
+   The connection is unidirectional. If a bidirectional connection is desired,
+   the position of the media elements must be inverted. For instance,
+   webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order
+   to create a WebRTC one-2one conversation, the user would need to specify the
+   connection on the other direction with webrtc2.connect(webrtc1).
+ </p>
+ <p>
+   Even though one media element can have one sink pad per type of media, only
+   one media element can be connected to another at a given time. If a media
+   element is connected to another, the former will become the source of the sink
+   media element, regardless whether there was another element connected or not.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sink</code> - the target <code>MediaElement</code> that will receive media</dd>
@@ -2386,17 +2540,33 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>connect</h4>
 <pre>void&nbsp;connect(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
              <a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink)</pre>
-<div class="block"><p>Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected. The element given as parameter to the method will be the sink, and it will create one sink pad per media type connected.
-           </p>
-           <p>
-           If otherwise not specified, all types of media are connected by default (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of media if not all of them will be used. For this purpose, the connect method can be invoked more than once on the same two elements, but with different media types.
-           </p>
-           <p>
-           The connection is unidirectional. If a bidirectional connection is desired, the position of the media elements must be inverted. For instance, webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order to create a WebRTC one-2one conversation, the user would need to especify the connection on the other direction with webrtc2.connect(webrtc1).
-           </p>
-           <p>
-           Even though one media element can have one sink pad per type of media, only one media element can be connected to another at a given time. If a media element is connected to another, the former will become the source of the sink media element, regardles whether there was another element connected or not.
-           </p></div>
+<div class="block">Connects two elements, with the media flowing from left to right.
+ <p>
+   The element that invokes the connect will be the source of media, creating one
+   sink pad for each type of media connected. The element given as parameter to
+   the method will be the sink, and it will create one sink pad per media type
+   connected.
+ </p>
+ <p>
+   If otherwise not specified, all types of media are connected by default
+   (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of
+   media if not all of them will be used. For this purpose, the connect method
+   can be invoked more than once on the same two elements, but with different
+   media types.
+ </p>
+ <p>
+   The connection is unidirectional. If a bidirectional connection is desired,
+   the position of the media elements must be inverted. For instance,
+   webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order
+   to create a WebRTC one-2one conversation, the user would need to specify the
+   connection on the other direction with webrtc2.connect(webrtc1).
+ </p>
+ <p>
+   Even though one media element can have one sink pad per type of media, only
+   one media element can be connected to another at a given time. If a media
+   element is connected to another, the former will become the source of the sink
+   media element, regardless whether there was another element connected or not.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sink</code> - the target <code>MediaElement</code> that will receive media</dd>
@@ -2411,17 +2581,33 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>connect</h4>
 <pre>void&nbsp;connect(<a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
              <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</pre>
-<div class="block"><p>Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected. The element given as parameter to the method will be the sink, and it will create one sink pad per media type connected.
-           </p>
-           <p>
-           If otherwise not specified, all types of media are connected by default (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of media if not all of them will be used. For this purpose, the connect method can be invoked more than once on the same two elements, but with different media types.
-           </p>
-           <p>
-           The connection is unidirectional. If a bidirectional connection is desired, the position of the media elements must be inverted. For instance, webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order to create a WebRTC one-2one conversation, the user would need to especify the connection on the other direction with webrtc2.connect(webrtc1).
-           </p>
-           <p>
-           Even though one media element can have one sink pad per type of media, only one media element can be connected to another at a given time. If a media element is connected to another, the former will become the source of the sink media element, regardles whether there was another element connected or not.
-           </p></div>
+<div class="block">Connects two elements, with the media flowing from left to right.
+ <p>
+   The element that invokes the connect will be the source of media, creating one
+   sink pad for each type of media connected. The element given as parameter to
+   the method will be the sink, and it will create one sink pad per media type
+   connected.
+ </p>
+ <p>
+   If otherwise not specified, all types of media are connected by default
+   (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of
+   media if not all of them will be used. For this purpose, the connect method
+   can be invoked more than once on the same two elements, but with different
+   media types.
+ </p>
+ <p>
+   The connection is unidirectional. If a bidirectional connection is desired,
+   the position of the media elements must be inverted. For instance,
+   webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order
+   to create a WebRTC one-2one conversation, the user would need to specify the
+   connection on the other direction with webrtc2.connect(webrtc1).
+ </p>
+ <p>
+   Even though one media element can have one sink pad per type of media, only
+   one media element can be connected to another at a given time. If a media
+   element is connected to another, the former will become the source of the sink
+   media element, regardless whether there was another element connected or not.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sink</code> - the target <code>MediaElement</code> that will receive media</dd>
@@ -2459,17 +2645,33 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <pre>void&nbsp;connect(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
              <a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
              <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</pre>
-<div class="block"><p>Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected. The element given as parameter to the method will be the sink, and it will create one sink pad per media type connected.
-           </p>
-           <p>
-           If otherwise not specified, all types of media are connected by default (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of media if not all of them will be used. For this purpose, the connect method can be invoked more than once on the same two elements, but with different media types.
-           </p>
-           <p>
-           The connection is unidirectional. If a bidirectional connection is desired, the position of the media elements must be inverted. For instance, webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order to create a WebRTC one-2one conversation, the user would need to especify the connection on the other direction with webrtc2.connect(webrtc1).
-           </p>
-           <p>
-           Even though one media element can have one sink pad per type of media, only one media element can be connected to another at a given time. If a media element is connected to another, the former will become the source of the sink media element, regardles whether there was another element connected or not.
-           </p></div>
+<div class="block">Connects two elements, with the media flowing from left to right.
+ <p>
+   The element that invokes the connect will be the source of media, creating one
+   sink pad for each type of media connected. The element given as parameter to
+   the method will be the sink, and it will create one sink pad per media type
+   connected.
+ </p>
+ <p>
+   If otherwise not specified, all types of media are connected by default
+   (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of
+   media if not all of them will be used. For this purpose, the connect method
+   can be invoked more than once on the same two elements, but with different
+   media types.
+ </p>
+ <p>
+   The connection is unidirectional. If a bidirectional connection is desired,
+   the position of the media elements must be inverted. For instance,
+   webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order
+   to create a WebRTC one-2one conversation, the user would need to specify the
+   connection on the other direction with webrtc2.connect(webrtc1).
+ </p>
+ <p>
+   Even though one media element can have one sink pad per type of media, only
+   one media element can be connected to another at a given time. If a media
+   element is connected to another, the former will become the source of the sink
+   media element, regardless whether there was another element connected or not.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sink</code> - the target <code>MediaElement</code> that will receive media</dd>
@@ -2486,17 +2688,33 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <pre>void&nbsp;connect(<a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
              <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription)</pre>
-<div class="block"><p>Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected. The element given as parameter to the method will be the sink, and it will create one sink pad per media type connected.
-           </p>
-           <p>
-           If otherwise not specified, all types of media are connected by default (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of media if not all of them will be used. For this purpose, the connect method can be invoked more than once on the same two elements, but with different media types.
-           </p>
-           <p>
-           The connection is unidirectional. If a bidirectional connection is desired, the position of the media elements must be inverted. For instance, webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order to create a WebRTC one-2one conversation, the user would need to especify the connection on the other direction with webrtc2.connect(webrtc1).
-           </p>
-           <p>
-           Even though one media element can have one sink pad per type of media, only one media element can be connected to another at a given time. If a media element is connected to another, the former will become the source of the sink media element, regardles whether there was another element connected or not.
-           </p></div>
+<div class="block">Connects two elements, with the media flowing from left to right.
+ <p>
+   The element that invokes the connect will be the source of media, creating one
+   sink pad for each type of media connected. The element given as parameter to
+   the method will be the sink, and it will create one sink pad per media type
+   connected.
+ </p>
+ <p>
+   If otherwise not specified, all types of media are connected by default
+   (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of
+   media if not all of them will be used. For this purpose, the connect method
+   can be invoked more than once on the same two elements, but with different
+   media types.
+ </p>
+ <p>
+   The connection is unidirectional. If a bidirectional connection is desired,
+   the position of the media elements must be inverted. For instance,
+   webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order
+   to create a WebRTC one-2one conversation, the user would need to specify the
+   connection on the other direction with webrtc2.connect(webrtc1).
+ </p>
+ <p>
+   Even though one media element can have one sink pad per type of media, only
+   one media element can be connected to another at a given time. If a media
+   element is connected to another, the former will become the source of the sink
+   media element, regardless whether there was another element connected or not.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sink</code> - the target <code>MediaElement</code> that will receive media</dd>
@@ -2538,17 +2756,33 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
              <a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a>&nbsp;sink,
              <a href="../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription)</pre>
-<div class="block"><p>Connects two elements, with the media flowing from left to right: the elements that invokes the connect wil be the source of media, creating one sink pad for each type of media connected. The element given as parameter to the method will be the sink, and it will create one sink pad per media type connected.
-           </p>
-           <p>
-           If otherwise not specified, all types of media are connected by default (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of media if not all of them will be used. For this purpose, the connect method can be invoked more than once on the same two elements, but with different media types.
-           </p>
-           <p>
-           The connection is unidirectional. If a bidirectional connection is desired, the position of the media elements must be inverted. For instance, webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order to create a WebRTC one-2one conversation, the user would need to especify the connection on the other direction with webrtc2.connect(webrtc1).
-           </p>
-           <p>
-           Even though one media element can have one sink pad per type of media, only one media element can be connected to another at a given time. If a media element is connected to another, the former will become the source of the sink media element, regardles whether there was another element connected or not.
-           </p></div>
+<div class="block">Connects two elements, with the media flowing from left to right.
+ <p>
+   The element that invokes the connect will be the source of media, creating one
+   sink pad for each type of media connected. The element given as parameter to
+   the method will be the sink, and it will create one sink pad per media type
+   connected.
+ </p>
+ <p>
+   If otherwise not specified, all types of media are connected by default
+   (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of
+   media if not all of them will be used. For this purpose, the connect method
+   can be invoked more than once on the same two elements, but with different
+   media types.
+ </p>
+ <p>
+   The connection is unidirectional. If a bidirectional connection is desired,
+   the position of the media elements must be inverted. For instance,
+   webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In order
+   to create a WebRTC one-2one conversation, the user would need to specify the
+   connection on the other direction with webrtc2.connect(webrtc1).
+ </p>
+ <p>
+   Even though one media element can have one sink pad per type of media, only
+   one media element can be connected to another at a given time. If a media
+   element is connected to another, the former will become the source of the sink
+   media element, regardless whether there was another element connected or not.
+ </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>sink</code> - the target <code>MediaElement</code> that will receive media</dd>
@@ -2726,19 +2960,20 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getGstreamerDot</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getGstreamerDot()</pre>
-<div class="block">This method returns a .dot file describing the topology of the media element. The element can be queried for certain type of data
-           <ul>
-             <li>SHOW_ALL: default value</li>
-             <li>SHOW_CAPS_DETAILS</li>
-             <li>SHOW_FULL_PARAMS</li>
-             <li>SHOW_MEDIA_TYPE</li>
-             <li>SHOW_NON_DEFAULT_PARAMS</li>
-             <li>SHOW_STATES</li>
-             <li>SHOW_VERBOSE</li>
-           </ul></div>
+<div class="block">Return a .dot file describing the topology of the media element.
+ <p>The element can be queried for certain type of data:</p>
+ <ul>
+   <li>SHOW_ALL: default value</li>
+   <li>SHOW_CAPS_DETAILS</li>
+   <li>SHOW_FULL_PARAMS</li>
+   <li>SHOW_MEDIA_TYPE</li>
+   <li>SHOW_NON_DEFAULT_PARAMS</li>
+   <li>SHOW_STATES</li>
+   <li>SHOW_VERBOSE</li>
+ </ul></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The dot graph *</dd>
+<dd>The dot graph. *</dd>
 </dl>
 </li>
 </ul>
@@ -2765,19 +3000,20 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>getGstreamerDot</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getGstreamerDot(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">This method returns a .dot file describing the topology of the media element. The element can be queried for certain type of data
-           <ul>
-             <li>SHOW_ALL: default value</li>
-             <li>SHOW_CAPS_DETAILS</li>
-             <li>SHOW_FULL_PARAMS</li>
-             <li>SHOW_MEDIA_TYPE</li>
-             <li>SHOW_NON_DEFAULT_PARAMS</li>
-             <li>SHOW_STATES</li>
-             <li>SHOW_VERBOSE</li>
-           </ul></div>
+<div class="block">Return a .dot file describing the topology of the media element.
+ <p>The element can be queried for certain type of data:</p>
+ <ul>
+   <li>SHOW_ALL: default value</li>
+   <li>SHOW_CAPS_DETAILS</li>
+   <li>SHOW_FULL_PARAMS</li>
+   <li>SHOW_MEDIA_TYPE</li>
+   <li>SHOW_NON_DEFAULT_PARAMS</li>
+   <li>SHOW_STATES</li>
+   <li>SHOW_VERBOSE</li>
+ </ul></div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>The dot graph *</dd>
+<dd>The dot graph. *</dd>
 </dl>
 </li>
 </ul>
@@ -2837,7 +3073,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code> or <code>#MediaType.VIDEO</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>TRUE if there is media, FALSE in other case *</dd>
+<dd>TRUE if there is media, FALSE in other case. *</dd>
 </dl>
 </li>
 </ul>
@@ -2873,7 +3109,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code> or <code>#MediaType.VIDEO</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>TRUE if there is media, FALSE in other case *</dd>
+<dd>TRUE if there is media, FALSE in other case. *</dd>
 </dl>
 </li>
 </ul>
@@ -2889,7 +3125,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code> or <code>#MediaType.VIDEO</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>TRUE if there is media, FALSE in other case *</dd>
+<dd>TRUE if there is media, FALSE in other case. *</dd>
 </dl>
 </li>
 </ul>
@@ -2925,7 +3161,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>mediaType</code> - One of <code>#MediaType.AUDIO</code> or <code>#MediaType.VIDEO</code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>TRUE if there is media, FALSE in other case *</dd>
+<dd>TRUE if there is media, FALSE in other case. *</dd>
 </dl>
 </li>
 </ul>

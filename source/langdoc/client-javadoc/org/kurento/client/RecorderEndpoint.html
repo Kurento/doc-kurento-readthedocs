@@ -107,13 +107,14 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public interface <span class="typeNameLabel">RecorderEndpoint</span>
 extends <a href="../../../org/kurento/client/UriEndpoint.html" title="interface in org.kurento.client">UriEndpoint</a></pre>
-<div class="block"><p>
-   Provides the functionality to store contents. The recorder can store in local
-   files or in a network resource. It receives a media stream from another
-   MediaElement (i.e. the source), and stores it in the designated location.
+<div class="block">Provides the functionality to store contents.
+ <p>
+   The recorder can store in local files or in a network resource. It receives a
+   media stream from another <code>MediaElement</code> (i.e. the source), and
+   stores it in the designated location.
  </p>
  <p>
-   The following information has to be provided In order to create a
+   The following information has to be provided in order to create a
    RecorderEndpoint, and cannot be changed afterwards:
  </p>
  <ul>
@@ -146,8 +147,9 @@ extends <a href="../../../org/kurento/client/UriEndpoint.html" title="interface 
      value is <code>file:///var/lib/kurento/</code>
    </li>
    <li>
-     The media profile (@MediaProfileSpecType) used to store the file. This will
-     determine the encoding. See below for more details about media profile.
+     The media profile (<code>#MediaProfileSpecType</code>) used to store the file.
+     This will determine the encoding. See below for more details about media
+     profile.
    </li>
    <li>
      Optionally, the user can select if the endpoint will stop processing once
@@ -161,9 +163,9 @@ extends <a href="../../../org/kurento/client/UriEndpoint.html" title="interface 
    for that URI. If it's an HTTP server, it must be accessible from the machine
    where media server is running, and also have the correct access rights.
    Otherwise, the media server won't be able to store any information, and an
-   ErrorEvent will be fired. Please note that if you haven't subscribed to that
-   type of event, you can be left wondering why your media is not being saved,
-   while the error message was ignored.
+   <a href="../../../org/kurento/client/ErrorEvent.html" title="class in org.kurento.client"><code>ErrorEvent</code></a> will be fired. Please note that if you haven't subscribed to
+   that type of event, you can be left wondering why your media is not being
+   saved, while the error message was ignored.
  </p>
  <p>
    The media profile is quite an important parameter, as it will determine
@@ -172,8 +174,11 @@ extends <a href="../../../org/kurento/client/UriEndpoint.html" title="interface 
    media will be transcoded into a suitable format. This will result in a higher
    CPU load and will impact overall performance of the media server.
  </p>
- For example: Say that your pipeline will receive <b>VP8</b>-encoded video from
- WebRTC, and sends it to a RecorderEndpoint; depending on the format selected...
+ <p>
+   For example: Say that your pipeline will receive <b>VP8</b>-encoded video from
+   WebRTC, and sends it to a RecorderEndpoint; depending on the format
+   selected...
+ </p>
  <ul>
    <li>
      WEBM: The input codec is the same as the recording format, so no transcoding
@@ -188,8 +193,10 @@ extends <a href="../../../org/kurento/client/UriEndpoint.html" title="interface 
      means more CPU load.
    </li>
  </ul>
- From this you can see how selecting the correct format for your application is a
- very important decision.
+ <p>
+   From this you can see how selecting the correct format for your application is
+   a very important decision.
+ </p>
  <p>
    Recording will start as soon as the user invokes the record method. The
    recorder will then store, in the location indicated, the media that the source

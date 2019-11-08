@@ -111,48 +111,88 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public interface <span class="typeNameLabel">BaseRtpEndpoint</span>
 extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></pre>
-<div class="block">This class extends from the SdpEndpoint, and handles RTP communications. All endpoints that rely on this network protocol, like the RTPEndpoint or the WebRtcEndpoint, inherit from this. The endpoint provides information about the connection state and the media state. These can be consulted at any time through the mediaState and the connectionState properties. It is also possible subscribe to events fired when these properties change.
-       <ul style='list-style-type:circle'>
-         <li>
-           ConnectionStateChangedEvent: This event is raised when the connection between two peers changes. It can have two values
-           <ul>
-             <li>CONNECTED</li>
-             <li>DISCONNECTED</li>
-           </ul>
-         </li>
-         <li>
-           MediaStateChangedEvent: Based on RTCP packet flow, this event provides more reliable information about the state of media flow. Since RTCP packets are not flowing at a constant rate (minimizing a browser with an RTCPeerConnection might affect this interval, for instance), there is a guard period of about 5s. This traduces in a period where there might be no media flowing, but the event hasn't been fired yet. Nevertheless, this is the most reliable and useful way of knowing what the state of media exchange is. Possible values are:
-           <ul>
-             <li>CONNECTED: There is an RTCP packet flow between peers.</li>
-             <li>DISCONNECTED: No RTCP packets have been received, or at least 5s have passed since the last packet arrived.</li>
-           </ul>
-         </li>
-       </ul>
-       Part of the bandwidth control of the video component of the media session is done here. The values of the properties described are in kbps.
-       <ul style='list-style-type:circle'>
-         <li>
-           Input bandwidth control mechanism: Configuration interval used to inform remote peer the range of bitrates that can be pushed into this BaseRtpEndpoint object.
-           <ul>
-             <li>
-               setMinVideoRecvBandwidth: sets min bitrate limits expected for the received video stream. This value is set to limit the lower value of REMB packages, if supported by the implementing class.
-             </li>
-           </ul>
-           Max values are announced in the SDP, while min values are set to limit the lower value of REMB packages. It follows that min values will only have effect in peers that support this control mechanism, such as Chrome.
-         </li>
-         <li>
-           Output bandwidth control mechanism: Configuration interval used to control bitrate of the output video stream sent to remote peer. It is important to keep in mind that pushed bitrate depends on network and remote peer capabilities. Remote peers can also announce bandwidth limitation in their SDPs (through the b=<modifier>:<value> tag).   Kurento will always enforce bitrate limitations specified by the remote peer over internal configurations.
-           <ul>
-             <li>
-               setMinVideoSendBandwidth: sets the minimum bitrate for video to be sent to remote peer. 0 is considered unconstrained.
-             </li>
-             <li>
-               setMaxVideoSendBandwidth: sets maximum bitrate limits for video sent to remote peer. 0 is considered unconstrained.
-             </li>
-           </ul>
-         </li>
-       </ul>
-       All bandwidth control parameters must be changed before the SDP negotiation takes place, and can't be changed afterwards.
-       </p></div>
+<div class="block">Handles RTP communications.
+ <p>
+   All endpoints that rely on the RTP protocol, like the RtpEndpoint or the
+   WebRtcEndpoint, inherit from this class. The endpoint provides information
+   about the connection state and the media state, which can be consulted at any
+   time through the <code>#mediaState</code> and the <code>#connectionState</code>
+   properties. It is also possible subscribe to events fired when these
+   properties change.
+ </p>
+ <ul>
+   <li>
+     ConnectionStateChangedEvent: This event is raised when the connection
+     between two peers changes. It can have two values:
+     <ul>
+       <li>CONNECTED</li>
+       <li>DISCONNECTED</li>
+     </ul>
+   </li>
+   <li>
+     MediaStateChangedEvent: Based on RTCP packet flow, this event provides more
+     reliable information about the state of media flow. Since RTCP packets are
+     not flowing at a constant rate (minimizing a browser with an
+     RTCPeerConnection might affect this interval, for instance), there is a
+     guard period of about 5s. This traduces in a period where there might be no
+     media flowing, but the event hasn't been fired yet. Nevertheless, this is
+     the most reliable and useful way of knowing what the state of media exchange
+     is. Possible values are:
+     <ul>
+       <li>CONNECTED: There is an RTCP packet flow between peers.</li>
+       <li>
+         DISCONNECTED: No RTCP packets have been received, or at least 5s have
+         passed since the last packet arrived.
+       </li>
+     </ul>
+   </li>
+ </ul>
+ <p>
+   Part of the bandwidth control of the video component of the media session is
+   done here. The values of the properties described are in kbps:
+ </p>
+ <ul>
+   <li>
+     Input bandwidth control mechanism: Configuration interval used to inform
+     remote peer the range of bitrates that can be pushed into this
+     BaseRtpEndpoint object.
+     <ul>
+       <li>
+         setMinVideoRecvBandwidth: sets min bitrate limits expected for the
+         received video stream. This value is set to limit the lower value of
+         REMB packages, if supported by the implementing class.
+       </li>
+     </ul>
+     Max values are announced in the SDP, while min values are set to limit the
+     lower value of REMB packages. It follows that min values will only have
+     effect in peers that support this control mechanism, such as Chrome.
+   </li>
+   <li>
+     Output bandwidth control mechanism: Configuration interval used to control
+     bitrate of the output video stream sent to remote peer. It is important to
+     keep in mind that pushed bitrate depends on network and remote peer
+     capabilities. Remote peers can also announce bandwidth limitation in their
+     SDPs (through the <code>b={modifier}:{value}</code> tag). Kurento will
+     always enforce bitrate limitations specified by the remote peer over
+     internal configurations.
+     <ul>
+       <li>
+         setMinVideoSendBandwidth: sets the minimum bitrate for video to be sent
+         to remote peer. 0 is considered unconstrained.
+       </li>
+       <li>
+         setMaxVideoSendBandwidth: sets maximum bitrate limits for video sent to
+         remote peer. 0 is considered unconstrained.
+       </li>
+     </ul>
+   </li>
+ </ul>
+ <p>
+   <b>
+     All bandwidth control parameters must be changed before the SDP negotiation
+     takes place, and can't be changed afterwards.
+   </b>
+ </p></div>
 </li>
 </ul>
 </div>
@@ -218,19 +258,22 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth--">getMaxVideoSendBandwidth</a></span>()</code>
-<div class="block">Get Maximum bandwidth for video transmission, in kbps.</div>
+<div class="block">Get Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Continuation-">getMaxVideoSendBandwidth</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Maximum bandwidth for video transmission, in kbps.</div>
+<div class="block">Get Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Transaction-">getMaxVideoSendBandwidth</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get Maximum bandwidth for video transmission, in kbps.</div>
+<div class="block">Get Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
@@ -254,37 +297,40 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth--">getMinVideoRecvBandwidth</a></span>()</code>
-<div class="block">Get Minimum bandwidth announced for video reception, in kbps.</div>
+<div class="block">Get Minimum bitrate announced for video reception.</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth-org.kurento.client.Continuation-">getMinVideoRecvBandwidth</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Minimum bandwidth announced for video reception, in kbps.</div>
+<div class="block">Get Minimum bitrate announced for video reception.</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth-org.kurento.client.Transaction-">getMinVideoRecvBandwidth</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get Minimum bandwidth announced for video reception, in kbps.</div>
+<div class="block">Get Minimum bitrate announced for video reception.</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth--">getMinVideoSendBandwidth</a></span>()</code>
-<div class="block">Get Minimum bandwidth for video transmission, in kbps.</div>
+<div class="block">Get Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Continuation-">getMinVideoSendBandwidth</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Minimum bandwidth for video transmission, in kbps.</div>
+<div class="block">Get Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Transaction-">getMinVideoSendBandwidth</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get Minimum bandwidth for video transmission, in kbps.</div>
+<div class="block">Get Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i19" class="rowColor">
@@ -334,61 +380,67 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <tr id="i26" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-">setMaxVideoSendBandwidth</a></span>(int&nbsp;maxVideoSendBandwidth)</code>
-<div class="block">Set Maximum bandwidth for video transmission, in kbps.</div>
+<div class="block">Set Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i27" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Continuation-">setMaxVideoSendBandwidth</a></span>(int&nbsp;maxVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Maximum bandwidth for video transmission, in kbps.</div>
+<div class="block">Set Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i28" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Transaction-">setMaxVideoSendBandwidth</a></span>(int&nbsp;maxVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set Maximum bandwidth for video transmission, in kbps.</div>
+<div class="block">Set Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i29" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-">setMinVideoRecvBandwidth</a></span>(int&nbsp;minVideoRecvBandwidth)</code>
-<div class="block">Set Minimum bandwidth announced for video reception, in kbps.</div>
+<div class="block">Set Minimum bitrate announced for video reception.</div>
 </td>
 </tr>
 <tr id="i30" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Continuation-">setMinVideoRecvBandwidth</a></span>(int&nbsp;minVideoRecvBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Minimum bandwidth announced for video reception, in kbps.</div>
+<div class="block">Set Minimum bitrate announced for video reception.</div>
 </td>
 </tr>
 <tr id="i31" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Transaction-">setMinVideoRecvBandwidth</a></span>(int&nbsp;minVideoRecvBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set Minimum bandwidth announced for video reception, in kbps.</div>
+<div class="block">Set Minimum bitrate announced for video reception.</div>
 </td>
 </tr>
 <tr id="i32" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-">setMinVideoSendBandwidth</a></span>(int&nbsp;minVideoSendBandwidth)</code>
-<div class="block">Set Minimum bandwidth for video transmission, in kbps.</div>
+<div class="block">Set Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i33" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Continuation-">setMinVideoSendBandwidth</a></span>(int&nbsp;minVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Minimum bandwidth for video transmission, in kbps.</div>
+<div class="block">Set Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i34" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Transaction-">setMinVideoSendBandwidth</a></span>(int&nbsp;minVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set Minimum bandwidth for video transmission, in kbps.</div>
+<div class="block">Set Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
 <tr id="i35" class="rowColor">
@@ -468,7 +520,12 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoRecvBandwidth</h4>
 <pre>int&nbsp;getMinVideoRecvBandwidth()</pre>
-<div class="block">Get Minimum bandwidth announced for video reception, in kbps. The default and absolute minimum value is 30 kbps, even if a lower value is set.</div>
+<div class="block">Get Minimum bitrate announced for video reception.
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 30.</li>
+   <li>The absolute minimum value is 30 kbps, even if a lower value is set.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMinVideoRecvBandwidth-org.kurento.client.Continuation-">
@@ -478,7 +535,12 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoRecvBandwidth</h4>
 <pre>void&nbsp;getMinVideoRecvBandwidth(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get Minimum bandwidth announced for video reception, in kbps. The default and absolute minimum value is 30 kbps, even if a lower value is set.</div>
+<div class="block">Get Minimum bitrate announced for video reception.
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 30.</li>
+   <li>The absolute minimum value is 30 kbps, even if a lower value is set.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMinVideoRecvBandwidth-org.kurento.client.Transaction-">
@@ -488,7 +550,12 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoRecvBandwidth</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMinVideoRecvBandwidth(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get Minimum bandwidth announced for video reception, in kbps. The default and absolute minimum value is 30 kbps, even if a lower value is set.</div>
+<div class="block">Get Minimum bitrate announced for video reception.
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 30.</li>
+   <li>The absolute minimum value is 30 kbps, even if a lower value is set.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMinVideoRecvBandwidth-int-">
@@ -498,7 +565,12 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>setMinVideoRecvBandwidth</h4>
 <pre>void&nbsp;setMinVideoRecvBandwidth(int&nbsp;minVideoRecvBandwidth)</pre>
-<div class="block">Set Minimum bandwidth announced for video reception, in kbps. The default and absolute minimum value is 30 kbps, even if a lower value is set.</div>
+<div class="block">Set Minimum bitrate announced for video reception.
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 30.</li>
+   <li>The absolute minimum value is 30 kbps, even if a lower value is set.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMinVideoRecvBandwidth-int-org.kurento.client.Continuation-">
@@ -509,7 +581,12 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMinVideoRecvBandwidth</h4>
 <pre>void&nbsp;setMinVideoRecvBandwidth(int&nbsp;minVideoRecvBandwidth,
                               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set Minimum bandwidth announced for video reception, in kbps. The default and absolute minimum value is 30 kbps, even if a lower value is set.</div>
+<div class="block">Set Minimum bitrate announced for video reception.
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 30.</li>
+   <li>The absolute minimum value is 30 kbps, even if a lower value is set.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMinVideoRecvBandwidth-int-org.kurento.client.Transaction-">
@@ -520,7 +597,12 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMinVideoRecvBandwidth</h4>
 <pre>void&nbsp;setMinVideoRecvBandwidth(int&nbsp;minVideoRecvBandwidth,
                               <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set Minimum bandwidth announced for video reception, in kbps. The default and absolute minimum value is 30 kbps, even if a lower value is set.</div>
+<div class="block">Set Minimum bitrate announced for video reception.
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 30.</li>
+   <li>The absolute minimum value is 30 kbps, even if a lower value is set.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMinVideoSendBandwidth--">
@@ -530,7 +612,28 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoSendBandwidth</h4>
 <pre>int&nbsp;getMinVideoSendBandwidth()</pre>
-<div class="block">Get Minimum bandwidth for video transmission, in kbps. The default value is 100 kbps. 0 is considered unconstrained.</div>
+<div class="block">Get Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the minimum video quality that will be
+   sent when reacting to bad network conditions. Setting this parameter to a low
+   value permits the video quality to drop when the network conditions get worse.
+ </p>
+ <p>
+   Note that if you set this parameter too high (trying to avoid bad video
+   quality altogether), you would be limiting the adaptation ability of the
+   congestion control algorithm, and your stream might be unable to ever recover
+   from adverse network conditions.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 100.</li>
+   <li>
+     0 = unconstrained: the video bitrate will drop as needed, even to the
+     lowest possible quality, which might make the video completely blurry and
+     pixelated.
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMinVideoSendBandwidth-org.kurento.client.Continuation-">
@@ -540,7 +643,28 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoSendBandwidth</h4>
 <pre>void&nbsp;getMinVideoSendBandwidth(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get Minimum bandwidth for video transmission, in kbps. The default value is 100 kbps. 0 is considered unconstrained.</div>
+<div class="block">Get Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the minimum video quality that will be
+   sent when reacting to bad network conditions. Setting this parameter to a low
+   value permits the video quality to drop when the network conditions get worse.
+ </p>
+ <p>
+   Note that if you set this parameter too high (trying to avoid bad video
+   quality altogether), you would be limiting the adaptation ability of the
+   congestion control algorithm, and your stream might be unable to ever recover
+   from adverse network conditions.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 100.</li>
+   <li>
+     0 = unconstrained: the video bitrate will drop as needed, even to the
+     lowest possible quality, which might make the video completely blurry and
+     pixelated.
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMinVideoSendBandwidth-org.kurento.client.Transaction-">
@@ -550,7 +674,28 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoSendBandwidth</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMinVideoSendBandwidth(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get Minimum bandwidth for video transmission, in kbps. The default value is 100 kbps. 0 is considered unconstrained.</div>
+<div class="block">Get Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the minimum video quality that will be
+   sent when reacting to bad network conditions. Setting this parameter to a low
+   value permits the video quality to drop when the network conditions get worse.
+ </p>
+ <p>
+   Note that if you set this parameter too high (trying to avoid bad video
+   quality altogether), you would be limiting the adaptation ability of the
+   congestion control algorithm, and your stream might be unable to ever recover
+   from adverse network conditions.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 100.</li>
+   <li>
+     0 = unconstrained: the video bitrate will drop as needed, even to the
+     lowest possible quality, which might make the video completely blurry and
+     pixelated.
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMinVideoSendBandwidth-int-">
@@ -560,7 +705,28 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>setMinVideoSendBandwidth</h4>
 <pre>void&nbsp;setMinVideoSendBandwidth(int&nbsp;minVideoSendBandwidth)</pre>
-<div class="block">Set Minimum bandwidth for video transmission, in kbps. The default value is 100 kbps. 0 is considered unconstrained.</div>
+<div class="block">Set Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the minimum video quality that will be
+   sent when reacting to bad network conditions. Setting this parameter to a low
+   value permits the video quality to drop when the network conditions get worse.
+ </p>
+ <p>
+   Note that if you set this parameter too high (trying to avoid bad video
+   quality altogether), you would be limiting the adaptation ability of the
+   congestion control algorithm, and your stream might be unable to ever recover
+   from adverse network conditions.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 100.</li>
+   <li>
+     0 = unconstrained: the video bitrate will drop as needed, even to the
+     lowest possible quality, which might make the video completely blurry and
+     pixelated.
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMinVideoSendBandwidth-int-org.kurento.client.Continuation-">
@@ -571,7 +737,28 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMinVideoSendBandwidth</h4>
 <pre>void&nbsp;setMinVideoSendBandwidth(int&nbsp;minVideoSendBandwidth,
                               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set Minimum bandwidth for video transmission, in kbps. The default value is 100 kbps. 0 is considered unconstrained.</div>
+<div class="block">Set Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the minimum video quality that will be
+   sent when reacting to bad network conditions. Setting this parameter to a low
+   value permits the video quality to drop when the network conditions get worse.
+ </p>
+ <p>
+   Note that if you set this parameter too high (trying to avoid bad video
+   quality altogether), you would be limiting the adaptation ability of the
+   congestion control algorithm, and your stream might be unable to ever recover
+   from adverse network conditions.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 100.</li>
+   <li>
+     0 = unconstrained: the video bitrate will drop as needed, even to the
+     lowest possible quality, which might make the video completely blurry and
+     pixelated.
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMinVideoSendBandwidth-int-org.kurento.client.Transaction-">
@@ -582,7 +769,28 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMinVideoSendBandwidth</h4>
 <pre>void&nbsp;setMinVideoSendBandwidth(int&nbsp;minVideoSendBandwidth,
                               <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set Minimum bandwidth for video transmission, in kbps. The default value is 100 kbps. 0 is considered unconstrained.</div>
+<div class="block">Set Minimum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the minimum video quality that will be
+   sent when reacting to bad network conditions. Setting this parameter to a low
+   value permits the video quality to drop when the network conditions get worse.
+ </p>
+ <p>
+   Note that if you set this parameter too high (trying to avoid bad video
+   quality altogether), you would be limiting the adaptation ability of the
+   congestion control algorithm, and your stream might be unable to ever recover
+   from adverse network conditions.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 100.</li>
+   <li>
+     0 = unconstrained: the video bitrate will drop as needed, even to the
+     lowest possible quality, which might make the video completely blurry and
+     pixelated.
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMaxVideoSendBandwidth--">
@@ -592,7 +800,25 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMaxVideoSendBandwidth</h4>
 <pre>int&nbsp;getMaxVideoSendBandwidth()</pre>
-<div class="block">Get Maximum bandwidth for video transmission, in kbps. The default value is 500 kbps. 0 is considered unconstrained.</div>
+<div class="block">Get Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the maximum video quality that will be
+   sent when reacting to good network conditions. Setting this parameter to a
+   high value permits the video quality to raise when the network conditions get
+   better.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 500.</li>
+   <li>
+     0 = unconstrained: the video bitrate will grow until all the available
+     network bandwidth is used by the stream.<br>
+     Note that this might have a bad effect if more than one stream is running
+     (as all of them would try to raise the video bitrate indefinitely, until the
+     network gets saturated).
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMaxVideoSendBandwidth-org.kurento.client.Continuation-">
@@ -602,7 +828,25 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMaxVideoSendBandwidth</h4>
 <pre>void&nbsp;getMaxVideoSendBandwidth(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get Maximum bandwidth for video transmission, in kbps. The default value is 500 kbps. 0 is considered unconstrained.</div>
+<div class="block">Get Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the maximum video quality that will be
+   sent when reacting to good network conditions. Setting this parameter to a
+   high value permits the video quality to raise when the network conditions get
+   better.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 500.</li>
+   <li>
+     0 = unconstrained: the video bitrate will grow until all the available
+     network bandwidth is used by the stream.<br>
+     Note that this might have a bad effect if more than one stream is running
+     (as all of them would try to raise the video bitrate indefinitely, until the
+     network gets saturated).
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMaxVideoSendBandwidth-org.kurento.client.Transaction-">
@@ -612,7 +856,25 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMaxVideoSendBandwidth</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMaxVideoSendBandwidth(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get Maximum bandwidth for video transmission, in kbps. The default value is 500 kbps. 0 is considered unconstrained.</div>
+<div class="block">Get Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the maximum video quality that will be
+   sent when reacting to good network conditions. Setting this parameter to a
+   high value permits the video quality to raise when the network conditions get
+   better.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 500.</li>
+   <li>
+     0 = unconstrained: the video bitrate will grow until all the available
+     network bandwidth is used by the stream.<br>
+     Note that this might have a bad effect if more than one stream is running
+     (as all of them would try to raise the video bitrate indefinitely, until the
+     network gets saturated).
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMaxVideoSendBandwidth-int-">
@@ -622,7 +884,25 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>setMaxVideoSendBandwidth</h4>
 <pre>void&nbsp;setMaxVideoSendBandwidth(int&nbsp;maxVideoSendBandwidth)</pre>
-<div class="block">Set Maximum bandwidth for video transmission, in kbps. The default value is 500 kbps. 0 is considered unconstrained.</div>
+<div class="block">Set Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the maximum video quality that will be
+   sent when reacting to good network conditions. Setting this parameter to a
+   high value permits the video quality to raise when the network conditions get
+   better.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 500.</li>
+   <li>
+     0 = unconstrained: the video bitrate will grow until all the available
+     network bandwidth is used by the stream.<br>
+     Note that this might have a bad effect if more than one stream is running
+     (as all of them would try to raise the video bitrate indefinitely, until the
+     network gets saturated).
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMaxVideoSendBandwidth-int-org.kurento.client.Continuation-">
@@ -633,7 +913,25 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMaxVideoSendBandwidth</h4>
 <pre>void&nbsp;setMaxVideoSendBandwidth(int&nbsp;maxVideoSendBandwidth,
                               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set Maximum bandwidth for video transmission, in kbps. The default value is 500 kbps. 0 is considered unconstrained.</div>
+<div class="block">Set Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the maximum video quality that will be
+   sent when reacting to good network conditions. Setting this parameter to a
+   high value permits the video quality to raise when the network conditions get
+   better.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 500.</li>
+   <li>
+     0 = unconstrained: the video bitrate will grow until all the available
+     network bandwidth is used by the stream.<br>
+     Note that this might have a bad effect if more than one stream is running
+     (as all of them would try to raise the video bitrate indefinitely, until the
+     network gets saturated).
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="setMaxVideoSendBandwidth-int-org.kurento.client.Transaction-">
@@ -644,7 +942,25 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMaxVideoSendBandwidth</h4>
 <pre>void&nbsp;setMaxVideoSendBandwidth(int&nbsp;maxVideoSendBandwidth,
                               <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set Maximum bandwidth for video transmission, in kbps. The default value is 500 kbps. 0 is considered unconstrained.</div>
+<div class="block">Set Maximum video transmission bitrate used for bandwidth
+ estimations in the congestion control algorithm (REMB).
+ <p>
+   With this parameter you can control the maximum video quality that will be
+   sent when reacting to good network conditions. Setting this parameter to a
+   high value permits the video quality to raise when the network conditions get
+   better.
+ </p>
+ <ul>
+   <li>Unit: kbps (kilobits per second).</li>
+   <li>Default: 500.</li>
+   <li>
+     0 = unconstrained: the video bitrate will grow until all the available
+     network bandwidth is used by the stream.<br>
+     Note that this might have a bad effect if more than one stream is running
+     (as all of them would try to raise the video bitrate indefinitely, until the
+     network gets saturated).
+   </li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMediaState--">
@@ -654,11 +970,11 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMediaState</h4>
 <pre><a href="../../../org/kurento/client/MediaState.html" title="enum in org.kurento.client">MediaState</a>&nbsp;getMediaState()</pre>
-<div class="block">Get Media flow state. Possible values are
-           <ul>
-             <li>CONNECTED: There is an RTCP flow.</li>
-             <li>DISCONNECTED: No RTCP packets have been received for at least 5 sec.</li>
-           </ul></div>
+<div class="block">Get Media flow state.
+ <ul>
+   <li>CONNECTED: There is an RTCP flow.</li>
+   <li>DISCONNECTED: No RTCP packets have been received for at least 5 sec.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMediaState-org.kurento.client.Continuation-">
@@ -668,11 +984,11 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMediaState</h4>
 <pre>void&nbsp;getMediaState(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../org/kurento/client/MediaState.html" title="enum in org.kurento.client">MediaState</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get Media flow state. Possible values are
-           <ul>
-             <li>CONNECTED: There is an RTCP flow.</li>
-             <li>DISCONNECTED: No RTCP packets have been received for at least 5 sec.</li>
-           </ul></div>
+<div class="block">Get Media flow state.
+ <ul>
+   <li>CONNECTED: There is an RTCP flow.</li>
+   <li>DISCONNECTED: No RTCP packets have been received for at least 5 sec.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getMediaState-org.kurento.client.Transaction-">
@@ -682,11 +998,11 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMediaState</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../org/kurento/client/MediaState.html" title="enum in org.kurento.client">MediaState</a>&gt;&nbsp;getMediaState(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get Media flow state. Possible values are
-           <ul>
-             <li>CONNECTED: There is an RTCP flow.</li>
-             <li>DISCONNECTED: No RTCP packets have been received for at least 5 sec.</li>
-           </ul></div>
+<div class="block">Get Media flow state.
+ <ul>
+   <li>CONNECTED: There is an RTCP flow.</li>
+   <li>DISCONNECTED: No RTCP packets have been received for at least 5 sec.</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getConnectionState--">
@@ -696,11 +1012,11 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getConnectionState</h4>
 <pre><a href="../../../org/kurento/client/ConnectionState.html" title="enum in org.kurento.client">ConnectionState</a>&nbsp;getConnectionState()</pre>
-<div class="block">Get Connection state. Possible values are
-           <ul>
-             <li>CONNECTED</li>
-             <li>DISCONNECTED</li>
-           </ul></div>
+<div class="block">Get Connection state.
+ <ul>
+   <li>CONNECTED</li>
+   <li>DISCONNECTED</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getConnectionState-org.kurento.client.Continuation-">
@@ -710,11 +1026,11 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getConnectionState</h4>
 <pre>void&nbsp;getConnectionState(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../org/kurento/client/ConnectionState.html" title="enum in org.kurento.client">ConnectionState</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get Connection state. Possible values are
-           <ul>
-             <li>CONNECTED</li>
-             <li>DISCONNECTED</li>
-           </ul></div>
+<div class="block">Get Connection state.
+ <ul>
+   <li>CONNECTED</li>
+   <li>DISCONNECTED</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getConnectionState-org.kurento.client.Transaction-">
@@ -724,11 +1040,11 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getConnectionState</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../org/kurento/client/ConnectionState.html" title="enum in org.kurento.client">ConnectionState</a>&gt;&nbsp;getConnectionState(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get Connection state. Possible values are
-           <ul>
-             <li>CONNECTED</li>
-             <li>DISCONNECTED</li>
-           </ul></div>
+<div class="block">Get Connection state.
+ <ul>
+   <li>CONNECTED</li>
+   <li>DISCONNECTED</li>
+ </ul></div>
 </li>
 </ul>
 <a name="getRembParams--">

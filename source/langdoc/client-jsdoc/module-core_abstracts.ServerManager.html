@@ -202,7 +202,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line291">line 291</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line389">line 389</a>
     </li></ul></dd>
     
 
@@ -260,7 +260,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line299">line 299</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line397">line 397</a>
     </li></ul></dd>
     
 
@@ -281,6 +281,191 @@
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getCpuCount"><span class="type-signature">(static) </span>getCpuCount<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Number of CPU cores that the media server can use.
+<p>
+  Linux processes can be configured to use only a subset of the cores that 
+  are
+  available in the system, via the process affinity settings
+  (<strong>sched_setaffinity(2)</strong>). With this method it is possible to
+  know the number of cores that the media server can use in the machine where
+  is running.
+</p>
+<p>
+  For example, it's possible to limit the core affinity inside a Docker
+  container by running with a command such as
+  <em>docker run --cpuset-cpus='0,1'</em>.
+</p>
+<p>
+  Note that the return value represents the number of
+  <em>logical</em> processing units available, i.e. CPU cores including
+  Hyper-Threading.
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.ServerManager.html#~getCpuCountCallback">module:core/abstracts.ServerManager~getCpuCountCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line245">line 245</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
 
         
             
@@ -432,7 +617,216 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line230">line 230</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line281">line 281</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".getUsedCpu"><span class="type-signature">(static) </span>getUsedCpu<span class="signature">(interval, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Average CPU usage of the server.
+<p>
+  This method measures the average CPU usage of the media server during the
+  requested interval. Normally you will want to choose an interval between 
+  1000
+  and 10000 ms.
+</p>
+<p>
+  The returned value represents the global system CPU usage of the media 
+  server,
+  as an average across all processing units (CPU cores).
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>interval</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Time to measure the average CPU usage, in milliseconds.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.ServerManager.html#~getUsedCpuCallback">module:core/abstracts.ServerManager~getUsedCpuCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line328">line 328</a>
     </li></ul></dd>
     
 
@@ -494,7 +888,7 @@
 
 
 <div class="description">
-    Returns the amount of memory that the server is using in KiB
+    Returns the amount of memory that the server is using, in KiB
 </div>
 
 
@@ -599,7 +993,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line263">line 263</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line361">line 361</a>
     </li></ul></dd>
     
 
@@ -661,7 +1055,7 @@
 
 
 <div class="description">
-    children of this <code>MediaObject</code>.
+    Children of this <code>MediaObject</code>.
 </div>
 
 
@@ -771,7 +1165,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line199">line 199</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line219">line 219</a>
     </li></ul></dd>
     
 
@@ -831,6 +1225,10 @@
     
 
 
+
+<div class="description">
+    Children of this <code>MediaObject</code>.
+</div>
 
 
 
@@ -927,7 +1325,7 @@
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>(Use children instead) children of this <code>MediaObject</code>.</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use children instead.</li></ul></dd>
     
 
     
@@ -941,7 +1339,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line254">line 254</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -1113,7 +1511,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line308">line 308</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line328">line 328</a>
     </li></ul></dd>
     
 
@@ -1454,7 +1852,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line342">line 342</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line362">line 362</a>
     </li></ul></dd>
     
 
@@ -1683,9 +2081,12 @@ pipeline object.
 
 
 <div class="description">
-    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
-developers' life debugging, it is not used internally for indexing nor 
-idenfiying the objects. By default, it's the object's ID.
+    This <code>MediaObject</code>'s name.
+<p>
+  This is just sugar to simplify developers' life debugging, it is not used
+  internally for indexing nor identifying the objects. By default, it's the
+  object's ID.
+</p>
 </div>
 
 
@@ -1795,7 +2196,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line398">line 398</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line421">line 421</a>
     </li></ul></dd>
     
 
@@ -1857,7 +2258,23 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    parent of this <code>MediaObject</code>. The parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html"></div>     <h5>Parameters:</h5>
+    Parent of this <code>MediaObject</code>.
+<p>
+  The parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html">MediaElement</a> is its
+  <a href="module-core.MediaPipeline.html">MediaPipeline</a>. A <a href="module-core.MediaPipeline.html">MediaPipeline</a> has no parent, so this
+  property will be null.
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
 <table class="params">
@@ -1956,7 +2373,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line465">line 465</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line497">line 497</a>
     </li></ul></dd>
     
 
@@ -2010,7 +2427,7 @@ idenfiying the objects. By default, it's the object's ID.
     
 
     
-    <h4 class="name" id="getPipelines"><span class="type-signature"></span>getPipelines<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a></a></span></h4>
+    <h4 class="name" id="getPipelines"><span class="type-signature"></span>getPipelines<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
     
@@ -2185,7 +2602,7 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    flag activating or deactivating sending the element's tags in fired events.
+    Flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -2295,7 +2712,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line519">line 519</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line551">line 551</a>
     </li></ul></dd>
     
 
@@ -2524,9 +2941,12 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
-developers' life debugging, it is not used internally for indexing nor 
-idenfiying the objects. By default, it's the object's ID.
+    This <code>MediaObject</code>'s name.
+<p>
+  This is just sugar to simplify developers' life debugging, it is not used
+  internally for indexing nor identifying the objects. By default, it's the
+  object's ID.
+</p>
 </div>
 
 
@@ -2667,7 +3087,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line433">line 433</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line459">line 459</a>
     </li></ul></dd>
     
 
@@ -2729,7 +3149,7 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    flag activating or deactivating sending the element's tags in fired events.
+    Flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -2870,7 +3290,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line552">line 552</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line584">line 584</a>
     </li></ul></dd>
     
 
@@ -2925,6 +3345,162 @@ idenfiying the objects. By default, it's the object's ID.
         <h3 class="subsection-title">Type Definitions</h3>
 
         
+                
+
+    
+
+    
+    <h4 class="name" id="~getCpuCountCallback"><span class="type-signature"></span>getCpuCountCallback<span class="signature">(error, result)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Number of CPU cores available for the media server.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line262">line 262</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
                 
 
     
@@ -3165,7 +3741,7 @@ idenfiying the objects. By default, it's the object's ID.
 
             
 
-            <td class="description last">The kmd file</td>
+            <td class="description last">The kmd file.</td>
         </tr>
 
     
@@ -3206,7 +3782,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line247">line 247</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line298">line 298</a>
     </li></ul></dd>
     
 
@@ -3710,6 +4286,162 @@ idenfiying the objects. By default, it's the object's ID.
     
 
     
+    <h4 class="name" id="~getUsedCpuCallback"><span class="type-signature"></span>getUsedCpuCallback<span class="signature">(error, result)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Number.html">external:Number</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">CPU usage %.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line345">line 345</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+
+    
+
+    
     <h4 class="name" id="~getUsedMemoryCallback"><span class="type-signature"></span>getUsedMemoryCallback<span class="signature">(error, result)</span><span class="type-signature"></span></h4>
     
 
@@ -3789,7 +4521,7 @@ idenfiying the objects. By default, it's the object's ID.
 
             
 
-            <td class="description last">The amount of KiB of memory being used</td>
+            <td class="description last">Used memory, in KiB.</td>
         </tr>
 
     
@@ -3830,7 +4562,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line280">line 280</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html">node_modules/kurento-client-core/lib/abstracts/ServerManager.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_ServerManager.js.html#line378">line 378</a>
     </li></ul></dd>
     
 

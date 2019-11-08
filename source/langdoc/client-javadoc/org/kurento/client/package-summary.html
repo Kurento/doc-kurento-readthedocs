@@ -91,7 +91,7 @@
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></td>
 <td class="colLast">
-<div class="block">This class extends from the SdpEndpoint, and handles RTP communications.</div>
+<div class="block">Handles RTP communications.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -210,7 +210,7 @@
 <tr class="altColor">
 <td class="colFirst"><a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></td>
 <td class="colLast">
-<div class="block">This is the basic building block of the media server, that can be interconnected inside a pipeline.</div>
+<div class="block">The basic building block of the media server, that can be interconnected inside a pipeline.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -257,8 +257,7 @@
 <tr class="altColor">
 <td class="colFirst"><a href="../../../org/kurento/client/RecorderEndpoint.html" title="interface in org.kurento.client">RecorderEndpoint</a></td>
 <td class="colLast">
-<div class="block">
-   Provides the functionality to store contents.</div>
+<div class="block">Provides the functionality to store contents.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -270,7 +269,8 @@
 <tr class="altColor">
 <td class="colFirst"><a href="../../../org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></td>
 <td class="colLast">
-<div class="block">This interface is implemented by Endpoints that require an SDP negotiation for the setup of a networked media session with remote peers.</div>
+<div class="block">Interface implemented by Endpoints that require an SDP negotiation for the setup
+ of a networked media session with remote peers.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -302,8 +302,7 @@
 <tr class="altColor">
 <td class="colFirst"><a href="../../../org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></td>
 <td class="colLast">
-<div class="block">
-       Control interface for Kurento WebRTC endpoint.</div>
+<div class="block">Control interface for Kurento WebRTC endpoint.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -454,7 +453,7 @@
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../org/kurento/client/IceCandidate.html" title="class in org.kurento.client">IceCandidate</a></td>
 <td class="colLast">
-<div class="block">IceCandidate representation based on standard (http://www.w3.org/TR/webrtc/#rtcicecandidate-type).</div>
+<div class="block">IceCandidate representation based on <code>RTCIceCandidate</code> interface.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -579,23 +578,33 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../org/kurento/client/OnDataChannelClosedEvent.html" title="class in org.kurento.client">OnDataChannelClosedEvent</a></td>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">Deprecated
+<div class="block"><span class="deprecationComment">Use <code>DataChannelClose</code> instead.</span></div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="../../../org/kurento/client/OnDataChannelOpenedEvent.html" title="class in org.kurento.client">OnDataChannelOpenedEvent</a></td>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">Deprecated
+<div class="block"><span class="deprecationComment">Use <code>DataChannelOpen</code> instead.</span></div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../org/kurento/client/OnIceCandidateEvent.html" title="class in org.kurento.client">OnIceCandidateEvent</a></td>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">Deprecated
+<div class="block"><span class="deprecationComment">Use <code>IceCandidateFound</code> instead.</span></div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html" title="class in org.kurento.client">OnIceComponentStateChangedEvent</a></td>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">Deprecated
+<div class="block"><span class="deprecationComment">Use <code>IceComponentStateChange</code> instead.</span></div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><a href="../../../org/kurento/client/OnIceGatheringDoneEvent.html" title="class in org.kurento.client">OnIceGatheringDoneEvent</a></td>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">Deprecated
+<div class="block"><span class="deprecationComment">Use <code>IceGatheringDone</code> instead.</span></div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><a href="../../../org/kurento/client/OnKeySoftLimitEvent.html" title="class in org.kurento.client">OnKeySoftLimitEvent</a></td>

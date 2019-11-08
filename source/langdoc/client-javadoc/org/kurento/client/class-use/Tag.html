@@ -89,14 +89,14 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/Tag.html" title="class in org.kurento.client">Tag</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">RaiseBaseEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/RaiseBaseEvent.html#getTags--">getTags</a></span>()</code>
-<div class="block">Getter for the tags property</div>
+<td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getTags--">getTags</a></span>()</code>
+<div class="block">Returns all tags attached to this <code>MediaObject</code>.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/Tag.html" title="class in org.kurento.client">Tag</a>&gt;</code></td>
-<td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getTags--">getTags</a></span>()</code>
-<div class="block">Returns all tags attached to this <code>MediaObject</code>.</div>
+<td class="colLast"><span class="typeNameLabel">RaiseBaseEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/RaiseBaseEvent.html#getTags--">getTags</a></span>()</code>
+<div class="block">Getter for the tags property</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -371,7 +371,11 @@
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;timestampMillis,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/Tag.html" title="class in org.kurento.client">Tag</a>&gt;&nbsp;tags,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
-                        int&nbsp;channelId)</code>&nbsp;</td>
+                        int&nbsp;channelId)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>DataChannelClose</code> instead.</span></div>
+</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/OnDataChannelOpenedEvent.html#OnDataChannelOpenedEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-int-">OnDataChannelOpenedEvent</a></span>(<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&nbsp;source,
@@ -379,7 +383,11 @@
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;timestampMillis,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/Tag.html" title="class in org.kurento.client">Tag</a>&gt;&nbsp;tags,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
-                        int&nbsp;channelId)</code>&nbsp;</td>
+                        int&nbsp;channelId)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>DataChannelOpen</code> instead.</span></div>
+</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/OnIceCandidateEvent.html#OnIceCandidateEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-org.kurento.client.IceCandidate-">OnIceCandidateEvent</a></span>(<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&nbsp;source,
@@ -387,7 +395,11 @@
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;timestampMillis,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/Tag.html" title="class in org.kurento.client">Tag</a>&gt;&nbsp;tags,
                    <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
-                   <a href="../../../../org/kurento/client/IceCandidate.html" title="class in org.kurento.client">IceCandidate</a>&nbsp;candidate)</code>&nbsp;</td>
+                   <a href="../../../../org/kurento/client/IceCandidate.html" title="class in org.kurento.client">IceCandidate</a>&nbsp;candidate)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>IceCandidateFound</code> instead.</span></div>
+</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/OnIceComponentStateChangedEvent.html#OnIceComponentStateChangedEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-int-int-org.kurento.client.IceComponentState-">OnIceComponentStateChangedEvent</a></span>(<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&nbsp;source,
@@ -397,14 +409,22 @@
                                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
                                int&nbsp;streamId,
                                int&nbsp;componentId,
-                               <a href="../../../../org/kurento/client/IceComponentState.html" title="enum in org.kurento.client">IceComponentState</a>&nbsp;state)</code>&nbsp;</td>
+                               <a href="../../../../org/kurento/client/IceComponentState.html" title="enum in org.kurento.client">IceComponentState</a>&nbsp;state)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>IceComponentStateChange</code> instead.</span></div>
+</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/OnIceGatheringDoneEvent.html#OnIceGatheringDoneEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-">OnIceGatheringDoneEvent</a></span>(<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&nbsp;source,
                        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;timestamp,
                        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;timestampMillis,
                        <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/Tag.html" title="class in org.kurento.client">Tag</a>&gt;&nbsp;tags,
-                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type)</code>&nbsp;</td>
+                       <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>IceGatheringDone</code> instead.</span></div>
+</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/OnKeySoftLimitEvent.html#OnKeySoftLimitEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-org.kurento.client.MediaType-">OnKeySoftLimitEvent</a></span>(<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&nbsp;source,

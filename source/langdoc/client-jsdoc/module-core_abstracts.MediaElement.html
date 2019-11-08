@@ -31,31 +31,47 @@
         <h2><span class="attribs"><span class="type-signature">(abstract) </span></span>
             <span class="ancestors"><a href="module-core_abstracts.html">core/abstracts</a>.</span>MediaElement<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>This is the basic building block of the media server, that can be 
- interconnected inside a pipeline. A <a href="module-core_abstracts.MediaElement.html">MediaElement</a> is a module that 
- encapsulates a specific media capability, and that is able to exchange media
-       </p>
-       <p>
-       A pad can be defined as an input or output interface. Input pads are 
-       called sinks, and it's where the media elements receive media from 
-       other media elements. Output interfaces are called sources, and it's 
-       the pad used by the media element to feed media to other media 
-       elements. There can be only one sink pad per media element. On the 
-       other hand, the number of source pads is unconstrained. This means 
-       that a certain media element can receive media only from one element 
-       at a time, while it can send media to many others. Pads are created on
-       </p>
-       <p>
-       When media elements are connected, it can be the case that the 
-       encoding required in both input and output pads is not the same, and 
-       thus it needs to be transcoded. This is something that is handled 
-       transparently by the MediaElement internals, but such transcoding has 
-       a toll in the form of a higher CPU load, so connecting MediaElements 
-       that need media encoded in different formats is something to consider 
-       as a high load operation. The event `MediaTranscodingStateChange` 
-       allows to inform the client application of whether media transcoding 
-       is being enabled or not inside any MediaElement object.
-       </p></div>
+            <div class="class-description">The basic building block of the media server, that can be interconnected 
+ inside a pipeline.
+ <p>
+   A <a href="module-core_abstracts.MediaElement.html">MediaElement</a> is a module that
+   capability, and that is able to exchange media with other MediaElements
+   through an internal element called <b>pad</b>.
+ </p>
+ <p>
+   A pad can be defined as an input or output interface. Input pads are 
+   called
+   sinks, and it's where the media elements receive media from other media
+   elements. Output interfaces are called sources, and it's the pad used by 
+   the
+   media element to feed media to other media elements. There can be only one
+   sink pad per media element. On the other hand, the number of source pads 
+   is
+   unconstrained. This means that a certain media element can receive media 
+   only
+   from one element at a time, while it can send media to many others. Pads 
+   are
+   created on demand, when the connect method is invoked. When two media 
+   elements
+   are connected, one media pad is created for each type of media connected. 
+   For
+   example, if you connect AUDIO and VIDEO between two media elements, each 
+   one
+   will need to create two new pads: one for AUDIO and one for VIDEO.
+ </p>
+ <p>
+   When media elements are connected, it can be the case that the encoding
+   required in both input and output pads is not the same, and thus it needs 
+   to
+   be transcoded. This is something that is handled transparently by the
+   MediaElement internals, but such transcoding has a toll in the form of a
+   higher CPU load, so connecting MediaElements that need media encoded in
+   different formats is something to consider as a high load operation. The 
+   event
+   `MediaTranscodingStateChange` allows to inform the client application of
+   whether media transcoding is being enabled or not inside any MediaElement
+   object.
+ </p></div>
         
     
 </header>
@@ -232,7 +248,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1169">line 1169</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1215">line 1215</a>
     </li></ul></dd>
     
 
@@ -290,7 +306,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1177">line 1177</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1223">line 1223</a>
     </li></ul></dd>
     
 
@@ -326,33 +342,39 @@
 
 
 <div class="description">
-    <p>Connects two elements, with the media flowing from left to right: the 
-elements that invokes the connect wil be the source of media, creating one 
-sink pad for each type of media connected. The element given as parameter to 
-the method will be the sink, and it will create one sink pad per media type 
-connected.
-          </p>
-          <p>
-          If otherwise not specified, all types of media are connected by 
-          default (AUDIO, VIDEO and DATA). It is recommended to connect the 
-          specific types of media if not all of them will be used. For this 
-          purpose, the connect method can be invoked more than once on the 
-          same two elements, but with different media types.
-          </p>
-          <p>
-          The connection is unidirectional. If a bidirectional connection is 
-          desired, the position of the media elements must be inverted. For 
-          instance, webrtc1.connect(webrtc2) is connecting webrtc1 as source 
-          of webrtc2. In order to create a WebRTC one-2one conversation, the 
-          user would need to especify the connection on the other direction 
-          with webrtc2.connect(webrtc1).
-          </p>
-          <p>
-          Even though one media element can have one sink pad per type of 
-          media, only one media element can be connected to another at a 
-          given time. If a media element is connected to another, the former 
-          will become the source of the sink media element, regardles whether
-          </p>
+    Connects two elements, with the media flowing from left to right.
+<p>
+  The element that invokes the connect will be the source of media, creating 
+  one
+  sink pad for each type of media connected. The element given as parameter 
+  to
+  the method will be the sink, and it will create one sink pad per media type
+  connected.
+</p>
+<p>
+  If otherwise not specified, all types of media are connected by default
+  (AUDIO, VIDEO and DATA). It is recommended to connect the specific types of
+  media if not all of them will be used. For this purpose, the connect method
+  can be invoked more than once on the same two elements, but with different
+  media types.
+</p>
+<p>
+  The connection is unidirectional. If a bidirectional connection is desired,
+  the position of the media elements must be inverted. For instance,
+  webrtc1.connect(webrtc2) is connecting webrtc1 as source of webrtc2. In 
+  order
+  to create a WebRTC one-2one conversation, the user would need to specify 
+  the
+  connection on the other direction with webrtc2.connect(webrtc1).
+</p>
+<p>
+  Even though one media element can have one sink pad per type of media, only
+  one media element can be connected to another at a given time. If a media
+  element is connected to another, the former will become the source of the 
+  sink
+  media element, regardless whether there was another element connected or 
+  not.
+</p>
 </div>
 
 
@@ -589,7 +611,7 @@ connected.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line430">line 430</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line457">line 457</a>
     </li></ul></dd>
     
 
@@ -889,7 +911,7 @@ source media element, and the sink pads of the sink media element.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line552">line 552</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line579">line 579</a>
     </li></ul></dd>
     
 
@@ -951,16 +973,17 @@ source media element, and the sink pads of the sink media element.
 
 
 <div class="description">
-    This method returns a .dot file describing the topology of the media element.
-          <ul>
-            <li>SHOW_ALL: default value</li>
-            <li>SHOW_CAPS_DETAILS</li>
-            <li>SHOW_FULL_PARAMS</li>
-            <li>SHOW_MEDIA_TYPE</li>
-            <li>SHOW_NON_DEFAULT_PARAMS</li>
-            <li>SHOW_STATES</li>
-            <li>SHOW_VERBOSE</li>
-          </ul>
+    Return a .dot file describing the topology of the media element.
+<p>The element can be queried for certain type of data:</p>
+<ul>
+  <li>SHOW_ALL: default value</li>
+  <li>SHOW_CAPS_DETAILS</li>
+  <li>SHOW_FULL_PARAMS</li>
+  <li>SHOW_MEDIA_TYPE</li>
+  <li>SHOW_NON_DEFAULT_PARAMS</li>
+  <li>SHOW_STATES</li>
+  <li>SHOW_VERBOSE</li>
+</ul>
 </div>
 
 
@@ -1098,7 +1121,7 @@ source media element, and the sink pads of the sink media element.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line625">line 625</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line653">line 653</a>
     </li></ul></dd>
     
 
@@ -1160,10 +1183,15 @@ source media element, and the sink pads of the sink media element.
 
 
 <div class="description">
-    Gets information about the source pads of this media element. Since source 
-pads connect to other media element's sinks, this is formally the sink of 
-media from the element's perspective. Media can be filtered by type, or by 
-the description given to the pad though which both elements are connected.
+    Gets information about the source pads of this media element.
+<p>
+  Since source pads connect to other media element's sinks, this is formally 
+  the
+  sink of media from the element's perspective. Media can be filtered by 
+  type,
+  or by the description given to the pad though which both elements are
+  connected.
+</p>
 </div>
 
 
@@ -1335,7 +1363,7 @@ the description given to the pad though which both elements are connected.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line689">line 689</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line722">line 722</a>
     </li></ul></dd>
     
 
@@ -1397,10 +1425,15 @@ the description given to the pad though which both elements are connected.
 
 
 <div class="description">
-    Gets information about the sink pads of this media element. Since sink pads 
-are the interface through which a media element gets it's media, whatever is 
-connected to an element's sink pad is formally a source of media. Media can 
-be filtered by type, or by the description given to the pad though which both
+    Gets information about the sink pads of this media element.
+<p>
+  Since sink pads are the interface through which a media element gets it's
+  media, whatever is connected to an element's sink pad is formally a source 
+  of
+  media. Media can be filtered by type, or by the description given to the 
+  pad
+  though which both elements are connected.
+</p>
 </div>
 
 
@@ -1572,7 +1605,7 @@ be filtered by type, or by the description given to the pad though which both
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line758">line 758</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line796">line 796</a>
     </li></ul></dd>
     
 
@@ -1772,7 +1805,7 @@ be filtered by type, or by the description given to the pad though which both
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line819">line 819</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line857">line 857</a>
     </li></ul></dd>
     
 
@@ -2007,7 +2040,7 @@ exist, if will return false.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line884">line 884</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line922">line 922</a>
     </li></ul></dd>
     
 
@@ -2239,7 +2272,7 @@ certain type. The media source pad can be identified individually, if needed.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line947">line 947</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line985">line 985</a>
     </li></ul></dd>
     
 
@@ -2475,7 +2508,7 @@ types, raising a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR otherwise.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1014">line 1014</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1052">line 1052</a>
     </li></ul></dd>
     
 
@@ -2537,7 +2570,11 @@ types, raising a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR otherwise.
 
 
 <div class="description">
-    Sets the type of data for the audio stream. MediaElements that do not support
+    Sets the type of data for the audio stream.
+<p>
+  MediaElements that do not support configuration of audio capabilities will
+  throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception.
+</p>
 </div>
 
 
@@ -2673,7 +2710,7 @@ types, raising a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR otherwise.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1072">line 1072</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1114">line 1114</a>
     </li></ul></dd>
     
 
@@ -2871,7 +2908,7 @@ media starts to flow.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1109">line 1109</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1151">line 1151</a>
     </li></ul></dd>
     
 
@@ -2933,7 +2970,11 @@ media starts to flow.</li></ul></dd>
 
 
 <div class="description">
-    Sets the type of data for the video stream. MediaElements that do not support
+    Sets the type of data for the video stream.
+<p>
+  MediaElements that do not support configuration of video capabilities will
+  throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception
+</p>
 </div>
 
 
@@ -3069,7 +3110,7 @@ media starts to flow.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1143">line 1143</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1189">line 1189</a>
     </li></ul></dd>
     
 
@@ -3131,7 +3172,7 @@ media starts to flow.</li></ul></dd>
 
 
 <div class="description">
-    children of this <code>MediaObject</code>.
+    Children of this <code>MediaObject</code>.
 </div>
 
 
@@ -3241,7 +3282,7 @@ media starts to flow.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line199">line 199</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line219">line 219</a>
     </li></ul></dd>
     
 
@@ -3301,6 +3342,10 @@ media starts to flow.</li></ul></dd>
     
 
 
+
+<div class="description">
+    Children of this <code>MediaObject</code>.
+</div>
 
 
 
@@ -3397,7 +3442,7 @@ media starts to flow.</li></ul></dd>
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>(Use children instead) children of this <code>MediaObject</code>.</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use children instead.</li></ul></dd>
     
 
     
@@ -3411,7 +3456,7 @@ media starts to flow.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line254">line 254</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line274">line 274</a>
     </li></ul></dd>
     
 
@@ -3583,7 +3628,7 @@ media starts to flow.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line308">line 308</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line328">line 328</a>
     </li></ul></dd>
     
 
@@ -3643,6 +3688,10 @@ media starts to flow.</li></ul></dd>
     
 
 
+
+<div class="description">
+    Maximum video bandwidth for transcoding.
+</div>
 
 
 
@@ -3734,10 +3783,8 @@ media starts to flow.</li></ul></dd>
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use maxOutputBitrate instead of this function. 
-Maximum video bandwidth for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#maxOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -3751,7 +3798,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line109">line 109</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line123">line 123</a>
     </li></ul></dd>
     
 
@@ -3813,9 +3860,12 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bitrate for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT
+    Maximum video bitrate for transcoding.
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: MAXINT.</li>
+  <li>0 = unlimited.</li>
+</ul>
 </div>
 
 
@@ -3920,7 +3970,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line179">line 179</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line195">line 195</a>
     </li></ul></dd>
     
 
@@ -4094,7 +4144,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line342">line 342</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line362">line 362</a>
     </li></ul></dd>
     
 
@@ -4154,6 +4204,10 @@ pipeline object.
     
 
 
+
+<div class="description">
+    Minimum video bandwidth for transcoding.
+</div>
 
 
 
@@ -4245,10 +4299,8 @@ pipeline object.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use minOutputBitrate instead of this function. 
-Minimum video bandwidth for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#minOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -4262,7 +4314,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line249">line 249</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line267">line 267</a>
     </li></ul></dd>
     
 
@@ -4325,8 +4377,10 @@ Minimum video bandwidth for transcoding.
 
 <div class="description">
     Minimum video bitrate for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 0.</li>
+</ul>
 </div>
 
 
@@ -4431,7 +4485,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line319">line 319</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -4493,9 +4547,12 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
-developers' life debugging, it is not used internally for indexing nor 
-idenfiying the objects. By default, it's the object's ID.
+    This <code>MediaObject</code>'s name.
+<p>
+  This is just sugar to simplify developers' life debugging, it is not used
+  internally for indexing nor identifying the objects. By default, it's the
+  object's ID.
+</p>
 </div>
 
 
@@ -4605,7 +4662,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line398">line 398</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line421">line 421</a>
     </li></ul></dd>
     
 
@@ -4667,7 +4724,23 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    parent of this <code>MediaObject</code>. The parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html"></div>     <h5>Parameters:</h5>
+    Parent of this <code>MediaObject</code>.
+<p>
+  The parent of a <a href="module-core_abstracts.Hub.html">Hub</a> or a <a href="module-core_abstracts.MediaElement.html">MediaElement</a> is its
+  <a href="module-core.MediaPipeline.html">MediaPipeline</a>. A <a href="module-core.MediaPipeline.html">MediaPipeline</a> has no parent, so this
+  property will be null.
+</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
     
 
 <table class="params">
@@ -4766,7 +4839,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line465">line 465</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line497">line 497</a>
     </li></ul></dd>
     
 
@@ -4820,7 +4893,7 @@ idenfiying the objects. By default, it's the object's ID.
     
 
     
-    <h4 class="name" id="getSendTagsInEvents"><span class="type-signature"></span>getSendTagsInEvents<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a></a></span></h4>
+    <h4 class="name" id="getSendTagsInEvents"><span class="type-signature"></span>getSendTagsInEvents<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
     
@@ -4828,7 +4901,7 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    flag activating or deactivating sending the element's tags in fired events.
+    Flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -4938,7 +5011,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line519">line 519</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line551">line 551</a>
     </li></ul></dd>
     
 
@@ -4998,6 +5071,10 @@ idenfiying the objects. By default, it's the object's ID.
     
 
 
+
+<div class="description">
+    Maximum video bandwidth for transcoding.
+</div>
 
 
 
@@ -5120,10 +5197,8 @@ idenfiying the objects. By default, it's the object's ID.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use maxOutputBitrate instead of this function. 
-Maximum video bandwidth for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#maxOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -5137,7 +5212,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line146">line 146</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line159">line 159</a>
     </li></ul></dd>
     
 
@@ -5199,9 +5274,12 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
 
 
 <div class="description">
-    Maximum video bitrate for transcoding. 0 = unlimited.
-  Unit: bps(bits per second).
-  Default value: MAXINT
+    Maximum video bitrate for transcoding.
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: MAXINT.</li>
+  <li>0 = unlimited.</li>
+</ul>
 </div>
 
 
@@ -5337,7 +5415,7 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line214">line 214</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line233">line 233</a>
     </li></ul></dd>
     
 
@@ -5397,6 +5475,10 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
 
 
+
+<div class="description">
+    Minimum video bandwidth for transcoding.
+</div>
 
 
 
@@ -5519,10 +5601,8 @@ Maximum video bandwidth for transcoding. 0 = unlimited.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use minOutputBitrate instead of this function. 
-Minimum video bandwidth for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use module:core/abstracts.MediaElement#minOutputBitrate instead of this 
+function.</li></ul></dd>
     
 
     
@@ -5536,7 +5616,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line286">line 286</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line303">line 303</a>
     </li></ul></dd>
     
 
@@ -5599,8 +5679,10 @@ Minimum video bandwidth for transcoding.
 
 <div class="description">
     Minimum video bitrate for transcoding.
-  Unit: bps(bits per second).
-  Default value: 0
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 0.</li>
+</ul>
 </div>
 
 
@@ -5736,7 +5818,7 @@ Minimum video bandwidth for transcoding.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line354">line 354</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line375">line 375</a>
     </li></ul></dd>
     
 
@@ -5798,9 +5880,12 @@ Minimum video bandwidth for transcoding.
 
 
 <div class="description">
-    this <code>MediaObject</code>'s name. This is just a comodity to simplify 
-developers' life debugging, it is not used internally for indexing nor 
-idenfiying the objects. By default, it's the object's ID.
+    This <code>MediaObject</code>'s name.
+<p>
+  This is just sugar to simplify developers' life debugging, it is not used
+  internally for indexing nor identifying the objects. By default, it's the
+  object's ID.
+</p>
 </div>
 
 
@@ -5941,7 +6026,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line433">line 433</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line459">line 459</a>
     </li></ul></dd>
     
 
@@ -6003,7 +6088,7 @@ idenfiying the objects. By default, it's the object's ID.
 
 
 <div class="description">
-    flag activating or deactivating sending the element's tags in fired events.
+    Flag activating or deactivating sending the element's tags in fired events.
 </div>
 
 
@@ -6144,7 +6229,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line552">line 552</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line584">line 584</a>
     </li></ul></dd>
     
 
@@ -6301,7 +6386,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line523">line 523</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line550">line 550</a>
     </li></ul></dd>
     
 
@@ -6434,7 +6519,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line599">line 599</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line626">line 626</a>
     </li></ul></dd>
     
 
@@ -6549,7 +6634,7 @@ idenfiying the objects. By default, it's the object's ID.
 
             
 
-            <td class="description last">The dot graph</td>
+            <td class="description last">The dot graph.</td>
         </tr>
 
     
@@ -6590,7 +6675,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line661">line 661</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line689">line 689</a>
     </li></ul></dd>
     
 
@@ -6746,7 +6831,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line126">line 126</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line140">line 140</a>
     </li></ul></dd>
     
 
@@ -6902,7 +6987,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line196">line 196</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line212">line 212</a>
     </li></ul></dd>
     
 
@@ -7058,7 +7143,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line266">line 266</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line284">line 284</a>
     </li></ul></dd>
     
 
@@ -7214,7 +7299,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line336">line 336</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line355">line 355</a>
     </li></ul></dd>
     
 
@@ -7371,7 +7456,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line729">line 729</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line762">line 762</a>
     </li></ul></dd>
     
 
@@ -7528,7 +7613,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line798">line 798</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line836">line 836</a>
     </li></ul></dd>
     
 
@@ -7686,7 +7771,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line855">line 855</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line893">line 893</a>
     </li></ul></dd>
     
 
@@ -7801,7 +7886,7 @@ idenfiying the objects. By default, it's the object's ID.
 
             
 
-            <td class="description last">TRUE if there is media, FALSE in other case</td>
+            <td class="description last">TRUE if there is media, FALSE in other case.</td>
         </tr>
 
     
@@ -7842,7 +7927,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line923">line 923</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line961">line 961</a>
     </li></ul></dd>
     
 
@@ -7957,7 +8042,7 @@ idenfiying the objects. By default, it's the object's ID.
 
             
 
-            <td class="description last">TRUE if there is media, FALSE in other case</td>
+            <td class="description last">TRUE if there is media, FALSE in other case.</td>
         </tr>
 
     
@@ -7998,7 +8083,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line986">line 986</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1024">line 1024</a>
     </li></ul></dd>
     
 
@@ -8154,7 +8239,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1053">line 1053</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1091">line 1091</a>
     </li></ul></dd>
     
 
@@ -8287,7 +8372,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1089">line 1089</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1131">line 1131</a>
     </li></ul></dd>
     
 
@@ -8420,7 +8505,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line163">line 163</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line176">line 176</a>
     </li></ul></dd>
     
 
@@ -8553,7 +8638,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line231">line 231</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line250">line 250</a>
     </li></ul></dd>
     
 
@@ -8686,7 +8771,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line303">line 303</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line320">line 320</a>
     </li></ul></dd>
     
 
@@ -8819,7 +8904,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line371">line 371</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line392">line 392</a>
     </li></ul></dd>
     
 
@@ -8952,7 +9037,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1126">line 1126</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1168">line 1168</a>
     </li></ul></dd>
     
 
@@ -9085,7 +9170,7 @@ idenfiying the objects. By default, it's the object's ID.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1160">line 1160</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line1206">line 1206</a>
     </li></ul></dd>
     
 

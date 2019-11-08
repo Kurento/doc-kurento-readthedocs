@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":42,"i1":42,"i2":42,"i3":42,"i4":42,"i5":42};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -122,9 +122,14 @@ var activeTableTab = "activeTableTab";
 <dd><a href="../../../org/kurento/client/Event.html" title="interface in org.kurento.client">Event</a></dd>
 </dl>
 <hr>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>IceComponentStateChange</code> instead.</span></div>
+</div>
 <br>
 <pre>public class <span class="typeNameLabel">OnIceComponentStateChangedEvent</span>
 extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in org.kurento.client">MediaEvent</a></pre>
+<div class="block">Event fired when and ICE component state changes.
+ See :rom:cls:`IceComponentState` for a list of possible states.</div>
 </li>
 </ul>
 </div>
@@ -150,7 +155,11 @@ extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in or
                                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
                                int&nbsp;streamId,
                                int&nbsp;componentId,
-                               <a href="../../../org/kurento/client/IceComponentState.html" title="enum in org.kurento.client">IceComponentState</a>&nbsp;state)</code>&nbsp;</td>
+                               <a href="../../../org/kurento/client/IceComponentState.html" title="enum in org.kurento.client">IceComponentState</a>&nbsp;state)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>IceComponentStateChange</code> instead.</span></div>
+</div>
+</td>
 </tr>
 </table>
 </li>
@@ -162,7 +171,7 @@ extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in or
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -170,36 +179,42 @@ extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in or
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html#getComponentId--">getComponentId</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Getter for the componentId property</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/IceComponentState.html" title="enum in org.kurento.client">IceComponentState</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html#getState--">getState</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Getter for the state property</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html#getStreamId--">getStreamId</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Getter for the streamId property</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html#setComponentId-int-">setComponentId</a></span>(int&nbsp;componentId)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Setter for the componentId property</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html#setState-org.kurento.client.IceComponentState-">setState</a></span>(<a href="../../../org/kurento/client/IceComponentState.html" title="enum in org.kurento.client">IceComponentState</a>&nbsp;state)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Setter for the state property</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html#setStreamId-int-">setStreamId</a></span>(int&nbsp;streamId)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Setter for the streamId property</div>
 </td>
 </tr>
@@ -253,6 +268,9 @@ extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in or
                                        int&nbsp;streamId,
                                        int&nbsp;componentId,
                                        <a href="../../../org/kurento/client/IceComponentState.html" title="enum in org.kurento.client">IceComponentState</a>&nbsp;state)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>IceComponentStateChange</code> instead.</span></div>
+<div class="block">Event fired when and ICE component state changes.
+ See :rom:cls:`IceComponentState` for a list of possible states.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>source</code> - Object that raised the event</dd>
@@ -281,6 +299,7 @@ extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in or
 <li class="blockList">
 <h4>getStreamId</h4>
 <pre>public&nbsp;int&nbsp;getStreamId()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Getter for the streamId property</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -295,6 +314,7 @@ extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in or
 <li class="blockList">
 <h4>setStreamId</h4>
 <pre>public&nbsp;void&nbsp;setStreamId(int&nbsp;streamId)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Setter for the streamId property</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -309,6 +329,7 @@ extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in or
 <li class="blockList">
 <h4>getComponentId</h4>
 <pre>public&nbsp;int&nbsp;getComponentId()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Getter for the componentId property</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -323,6 +344,7 @@ extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in or
 <li class="blockList">
 <h4>setComponentId</h4>
 <pre>public&nbsp;void&nbsp;setComponentId(int&nbsp;componentId)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Setter for the componentId property</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -337,6 +359,7 @@ extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in or
 <li class="blockList">
 <h4>getState</h4>
 <pre>public&nbsp;<a href="../../../org/kurento/client/IceComponentState.html" title="enum in org.kurento.client">IceComponentState</a>&nbsp;getState()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Getter for the state property</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -351,6 +374,7 @@ extends <a href="../../../org/kurento/client/MediaEvent.html" title="class in or
 <li class="blockList">
 <h4>setState</h4>
 <pre>public&nbsp;void&nbsp;setState(<a href="../../../org/kurento/client/IceComponentState.html" title="enum in org.kurento.client">IceComponentState</a>&nbsp;state)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Setter for the state property</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
