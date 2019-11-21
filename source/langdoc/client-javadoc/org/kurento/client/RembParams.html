@@ -182,7 +182,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/RembParams.html#getRembOnConnect--">getRembOnConnect</a></span>()</code>
-<div class="block">get REMB propagated upstream when video sending is started in a new connected endpoint.</div>
+<div class="block">get Initial local REMB bandwidth estimation that gets propagated when a new endpoint is connected.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -230,7 +230,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/RembParams.html#setRembOnConnect-java.lang.Integer-">setRembOnConnect</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;rembOnConnect)</code>
-<div class="block">set REMB propagated upstream when video sending is started in a new connected endpoint.</div>
+<div class="block">set Initial local REMB bandwidth estimation that gets propagated when a new endpoint is connected.</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
@@ -446,8 +446,27 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>getRembOnConnect</h4>
 <pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;getRembOnConnect()</pre>
-<div class="block">get REMB propagated upstream when video sending is started in a new connected endpoint.
-   Unit: bps(bits per second)</div>
+<div class="block">get Initial local REMB bandwidth estimation that gets propagated when a new endpoint is connected.
+ <p>
+   The REMB congestion control algorithm works by gradually increasing the output
+   video bitrate, until the available bandwidth is fully used or the maximum send
+   bitrate has been reached. This is a slow, progressive change, which starts at
+   300 kbps by default. You can change the default starting point of REMB
+   estimations, by setting this parameter.
+ </p>
+ <p>
+   <b>WARNING</b>: If you set this parameter to a high value that is
+   <i>higher than the network capacity</i>, then all endpoints will start already
+   in a congested state, providing very bad video quality until the congestion
+   control algorithm is able to recover from the situation. Network congestion is
+   very unpredictable, so be careful when changing this parameter; for most use
+   cases it is safer to just start with a low initial value and allow the REMB
+   algorithm to raise until the optimum bitrate is reached.
+ </p>
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: 300000 (300 kbps).</li>
+ </ul></div>
 </li>
 </ul>
 <a name="setRembOnConnect-java.lang.Integer-">
@@ -457,8 +476,27 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>setRembOnConnect</h4>
 <pre>public&nbsp;void&nbsp;setRembOnConnect(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&nbsp;rembOnConnect)</pre>
-<div class="block">set REMB propagated upstream when video sending is started in a new connected endpoint.
-   Unit: bps(bits per second)</div>
+<div class="block">set Initial local REMB bandwidth estimation that gets propagated when a new endpoint is connected.
+ <p>
+   The REMB congestion control algorithm works by gradually increasing the output
+   video bitrate, until the available bandwidth is fully used or the maximum send
+   bitrate has been reached. This is a slow, progressive change, which starts at
+   300 kbps by default. You can change the default starting point of REMB
+   estimations, by setting this parameter.
+ </p>
+ <p>
+   <b>WARNING</b>: If you set this parameter to a high value that is
+   <i>higher than the network capacity</i>, then all endpoints will start already
+   in a congested state, providing very bad video quality until the congestion
+   control algorithm is able to recover from the situation. Network congestion is
+   very unpredictable, so be careful when changing this parameter; for most use
+   cases it is safer to just start with a low initial value and allow the REMB
+   algorithm to raise until the optimum bitrate is reached.
+ </p>
+ <ul>
+   <li>Unit: bps (bits per second).</li>
+   <li>Default: 300000 (300 kbps).</li>
+ </ul></div>
 </li>
 </ul>
 </li>

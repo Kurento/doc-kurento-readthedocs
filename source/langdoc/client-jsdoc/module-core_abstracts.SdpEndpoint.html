@@ -203,7 +203,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line458">line 458</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line490">line 490</a>
     </li></ul></dd>
     
 
@@ -261,7 +261,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line466">line 466</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line498">line 498</a>
     </li></ul></dd>
     
 
@@ -413,7 +413,7 @@ Throws:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line245">line 245</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line277">line 277</a>
     </li></ul></dd>
     
 
@@ -591,7 +591,7 @@ Throws:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line289">line 289</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line321">line 321</a>
     </li></ul></dd>
     
 
@@ -759,7 +759,7 @@ If the negotiation process is not complete, it will return NULL.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line323">line 323</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line355">line 355</a>
     </li></ul></dd>
     
 
@@ -974,7 +974,7 @@ Throws:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line376">line 376</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line408">line 408</a>
     </li></ul></dd>
     
 
@@ -1190,7 +1190,7 @@ Throws:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line430">line 430</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line462">line 462</a>
     </li></ul></dd>
     
 
@@ -1770,11 +1770,19 @@ Throws:
 
 
 <div class="description">
-    Maximum bandwidth for audio reception.
-<p>This has to be set before the SDP is generated.</p>
+    Maximum bitrate expected for the received audio stream.
+<p>
+  This is used to put a limit on the bitrate that the remote peer will send 
+  to
+  this endpoint. The net effect of setting this parameter is that
+  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
+  maximum bandwidth attribute will be added to the SDP media section:
+  <code>b=AS:{value}</code>.
+</p>
+<p>Note: This parameter has to be set before the SDP is generated.</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 500.</li>
+  <li>Default: 0.</li>
   <li>0 = unconstrained.</li>
 </ul>
 </div>
@@ -1881,7 +1889,7 @@ Throws:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line83">line 83</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -2295,11 +2303,19 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bandwidth for video reception.
-<p>This has to be set before the SDP is generated.</p>
+    Maximum bitrate expected for the received video stream.
+<p>
+  This is used to put a limit on the bitrate that the remote peer will send 
+  to
+  this endpoint. The net effect of setting this parameter is that
+  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
+  maximum bandwidth attribute will be added to the SDP media section:
+  <code>b=AS:{value}</code>.
+</p>
+<p>Note: This parameter has to be set before the SDP is generated.</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 500.</li>
+  <li>Default: 0.</li>
   <li>0 = unconstrained.</li>
 </ul>
 </div>
@@ -2406,7 +2422,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line159">line 159</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line183">line 183</a>
     </li></ul></dd>
     
 
@@ -3519,11 +3535,19 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bandwidth for audio reception.
-<p>This has to be set before the SDP is generated.</p>
+    Maximum bitrate expected for the received audio stream.
+<p>
+  This is used to put a limit on the bitrate that the remote peer will send 
+  to
+  this endpoint. The net effect of setting this parameter is that
+  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
+  maximum bandwidth attribute will be added to the SDP media section:
+  <code>b=AS:{value}</code>.
+</p>
+<p>Note: This parameter has to be set before the SDP is generated.</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 500.</li>
+  <li>Default: 0.</li>
   <li>0 = unconstrained.</li>
 </ul>
 </div>
@@ -3661,7 +3685,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line122">line 122</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -4137,11 +4161,19 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bandwidth for video reception.
-<p>This has to be set before the SDP is generated.</p>
+    Maximum bitrate expected for the received video stream.
+<p>
+  This is used to put a limit on the bitrate that the remote peer will send 
+  to
+  this endpoint. The net effect of setting this parameter is that
+  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
+  maximum bandwidth attribute will be added to the SDP media section:
+  <code>b=AS:{value}</code>.
+</p>
+<p>Note: This parameter has to be set before the SDP is generated.</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 500.</li>
+  <li>Default: 0.</li>
   <li>0 = unconstrained.</li>
 </ul>
 </div>
@@ -4279,7 +4311,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line198">line 198</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line230">line 230</a>
     </li></ul></dd>
     
 
@@ -5283,7 +5315,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line262">line 262</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line294">line 294</a>
     </li></ul></dd>
     
 
@@ -5439,7 +5471,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line306">line 306</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line338">line 338</a>
     </li></ul></dd>
     
 
@@ -5595,7 +5627,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line100">line 100</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line108">line 108</a>
     </li></ul></dd>
     
 
@@ -5751,7 +5783,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line176">line 176</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line200">line 200</a>
     </li></ul></dd>
     
 
@@ -5907,7 +5939,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line340">line 340</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line372">line 372</a>
     </li></ul></dd>
     
 
@@ -6063,7 +6095,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line393">line 393</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line425">line 425</a>
     </li></ul></dd>
     
 
@@ -6219,7 +6251,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line447">line 447</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line479">line 479</a>
     </li></ul></dd>
     
 
@@ -6352,7 +6384,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line139">line 139</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line155">line 155</a>
     </li></ul></dd>
     
 
@@ -6485,7 +6517,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line215">line 215</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line247">line 247</a>
     </li></ul></dd>
     
 

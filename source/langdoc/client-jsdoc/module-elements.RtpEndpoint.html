@@ -964,7 +964,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line171">line 171</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line190">line 190</a>
     </li></ul></dd>
     
 
@@ -1198,11 +1198,19 @@
 
 
 <div class="description">
-    Maximum bandwidth for audio reception.
-<p>This has to be set before the SDP is generated.</p>
+    Maximum bitrate expected for the received audio stream.
+<p>
+  This is used to put a limit on the bitrate that the remote peer will send 
+  to
+  this endpoint. The net effect of setting this parameter is that
+  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
+  maximum bandwidth attribute will be added to the SDP media section:
+  <code>b=AS:{value}</code>.
+</p>
+<p>Note: This parameter has to be set before the SDP is generated.</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 500.</li>
+  <li>Default: 0.</li>
   <li>0 = unconstrained.</li>
 </ul>
 </div>
@@ -1314,7 +1322,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line83">line 83</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -1728,11 +1736,19 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bandwidth for video reception.
-<p>This has to be set before the SDP is generated.</p>
+    Maximum bitrate expected for the received video stream.
+<p>
+  This is used to put a limit on the bitrate that the remote peer will send 
+  to
+  this endpoint. The net effect of setting this parameter is that
+  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
+  maximum bandwidth attribute will be added to the SDP media section:
+  <code>b=AS:{value}</code>.
+</p>
+<p>Note: This parameter has to be set before the SDP is generated.</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 500.</li>
+  <li>Default: 0.</li>
   <li>0 = unconstrained.</li>
 </ul>
 </div>
@@ -1844,7 +1860,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line159">line 159</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line183">line 183</a>
     </li></ul></dd>
     
 
@@ -1906,7 +1922,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video transmission bitrate used for bandwidth
+    Maximum video transmission bitrate used for local bandwidth
 estimations in the congestion control algorithm (REMB).
 <p>
   With this parameter you can control the maximum video quality that will be
@@ -1915,12 +1931,30 @@ estimations in the congestion control algorithm (REMB).
   get
   better.
 </p>
+<p>
+  Note that the default value of <strong>500 kbps</strong> is a VERY
+  conservative one, and leads to a low maximum video quality. Most 
+  applications
+  will probably want to increase this parameter to higher values such as 2000
+  mbps) or even 10000 (10 mbps).
+</p>
+<p>
+  The REMB congestion control algorithm works by gradually increasing the 
+  output
+  video bitrate, until the available bandwidth is fully used or the maximum 
+  send
+  bitrate has been reached. This is a slow, progressive change, which starts 
+  at
+  300 kbps by default. You can change the default starting point of REMB
+  estimations, by setting the
+  <strong>RembParams.rembOnConnect</strong> parameter.
+</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 500.</li>
   <li>
     0 = unconstrained: the video bitrate will grow until all the available
-    network bandwidth is used by the stream.<br>
+    network bandwidth is used by the stream.<br />
     Note that this might have a bad effect if more than one stream is running
     (as all of them would try to raise the video bitrate indefinitely, until 
     the
@@ -2036,7 +2070,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line223">line 223</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line260">line 260</a>
     </li></ul></dd>
     
 
@@ -2387,7 +2421,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line312">line 312</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line367">line 367</a>
     </li></ul></dd>
     
 
@@ -2800,12 +2834,22 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum bitrate announced for video reception.
+    Minimum bitrate expected for the received video stream.
+<p>
+  This is used to set a minimum value of REMB during bandwidth estimation, if
+  supported by the implementing class. It follows that min values will only 
+  have
+  effect in remote peers that support this congestion control mechanism, such
+  Chrome.
+</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 30.</li>
-  <li>The absolute minimum value is 30 kbps, even if a lower value is 
-  set.</li>
+  <li>Default: 0.</li>
+  <li>
+    Note: The absolute minimum REMB value is 30 kbps, even if a lower value 
+    is
+    set here.
+  </li>
 </ul>
 </div>
 
@@ -2916,7 +2960,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line350">line 350</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line415">line 415</a>
     </li></ul></dd>
     
 
@@ -2978,7 +3022,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video transmission bitrate used for bandwidth
+    Minimum video transmission bitrate used for local bandwidth
 estimations in the congestion control algorithm (REMB).
 <p>
   With this parameter you can control the minimum video quality that will be
@@ -3112,7 +3156,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line444">line 444</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line519">line 519</a>
     </li></ul></dd>
     
 
@@ -3638,7 +3682,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line532">line 532</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line607">line 607</a>
     </li></ul></dd>
     
 
@@ -3872,11 +3916,19 @@ estimations in the congestion control algorithm (REMB).
 
 
 <div class="description">
-    Maximum bandwidth for audio reception.
-<p>This has to be set before the SDP is generated.</p>
+    Maximum bitrate expected for the received audio stream.
+<p>
+  This is used to put a limit on the bitrate that the remote peer will send 
+  to
+  this endpoint. The net effect of setting this parameter is that
+  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
+  maximum bandwidth attribute will be added to the SDP media section:
+  <code>b=AS:{value}</code>.
+</p>
+<p>Note: This parameter has to be set before the SDP is generated.</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 500.</li>
+  <li>Default: 0.</li>
   <li>0 = unconstrained.</li>
 </ul>
 </div>
@@ -4019,7 +4071,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line122">line 122</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line138">line 138</a>
     </li></ul></dd>
     
 
@@ -4495,11 +4547,19 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bandwidth for video reception.
-<p>This has to be set before the SDP is generated.</p>
+    Maximum bitrate expected for the received video stream.
+<p>
+  This is used to put a limit on the bitrate that the remote peer will send 
+  to
+  this endpoint. The net effect of setting this parameter is that
+  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
+  maximum bandwidth attribute will be added to the SDP media section:
+  <code>b=AS:{value}</code>.
+</p>
+<p>Note: This parameter has to be set before the SDP is generated.</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 500.</li>
+  <li>Default: 0.</li>
   <li>0 = unconstrained.</li>
 </ul>
 </div>
@@ -4642,7 +4702,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line198">line 198</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line230">line 230</a>
     </li></ul></dd>
     
 
@@ -4704,7 +4764,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video transmission bitrate used for bandwidth
+    Maximum video transmission bitrate used for local bandwidth
 estimations in the congestion control algorithm (REMB).
 <p>
   With this parameter you can control the maximum video quality that will be
@@ -4713,12 +4773,30 @@ estimations in the congestion control algorithm (REMB).
   get
   better.
 </p>
+<p>
+  Note that the default value of <strong>500 kbps</strong> is a VERY
+  conservative one, and leads to a low maximum video quality. Most 
+  applications
+  will probably want to increase this parameter to higher values such as 2000
+  mbps) or even 10000 (10 mbps).
+</p>
+<p>
+  The REMB congestion control algorithm works by gradually increasing the 
+  output
+  video bitrate, until the available bandwidth is fully used or the maximum 
+  send
+  bitrate has been reached. This is a slow, progressive change, which starts 
+  at
+  300 kbps by default. You can change the default starting point of REMB
+  estimations, by setting the
+  <strong>RembParams.rembOnConnect</strong> parameter.
+</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 500.</li>
   <li>
     0 = unconstrained: the video bitrate will grow until all the available
-    network bandwidth is used by the stream.<br>
+    network bandwidth is used by the stream.<br />
     Note that this might have a bad effect if more than one stream is running
     (as all of them would try to raise the video bitrate indefinitely, until 
     the
@@ -4865,7 +4943,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line276">line 276</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line331">line 331</a>
     </li></ul></dd>
     
 
@@ -5340,12 +5418,22 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum bitrate announced for video reception.
+    Minimum bitrate expected for the received video stream.
+<p>
+  This is used to set a minimum value of REMB during bandwidth estimation, if
+  supported by the implementing class. It follows that min values will only 
+  have
+  effect in remote peers that support this congestion control mechanism, such
+  Chrome.
+</p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 30.</li>
-  <li>The absolute minimum value is 30 kbps, even if a lower value is 
-  set.</li>
+  <li>Default: 0.</li>
+  <li>
+    Note: The absolute minimum REMB value is 30 kbps, even if a lower value 
+    is
+    set here.
+  </li>
 </ul>
 </div>
 
@@ -5487,7 +5575,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line389">line 389</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line464">line 464</a>
     </li></ul></dd>
     
 
@@ -5549,7 +5637,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video transmission bitrate used for bandwidth
+    Minimum video transmission bitrate used for local bandwidth
 estimations in the congestion control algorithm (REMB).
 <p>
   With this parameter you can control the minimum video quality that will be
@@ -5714,7 +5802,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line501">line 501</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line576">line 576</a>
     </li></ul></dd>
     
 
@@ -6125,7 +6213,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line565">line 565</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line640">line 640</a>
     </li></ul></dd>
     
 
