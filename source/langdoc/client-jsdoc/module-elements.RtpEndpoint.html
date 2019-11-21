@@ -3210,6 +3210,208 @@ estimations in the congestion control algorithm (REMB).
     
 
     
+    <h4 class="name" id="getMtu"><span class="type-signature"></span>getMtu<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Maximum Transmission Unit (MTU) used for RTP.
+<p>
+  This setting affects the maximum size that will be used by RTP payloads. 
+  You
+  can change it from the default, if you think that a different value would 
+  be
+  beneficial for the typical network settings of your application.
+</p>
+<p>
+  The default value is 1200 Bytes. This is the same as in <b>libwebrtc</b> 
+  (from
+  webrtc.org), as used by `Firefox
+  <https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16>`__
+  or `Chrome
+  <https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d>`__.
+  You can read more about this value in `Why RTP max packet size is 1200 in
+  WebRTC?
+  <https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion>`__.
+</p>
+<p>
+  <b>WARNING</b>: Change this value ONLY if you really know what you are 
+  doing
+  and you have strong reasons to do so. Do NOT change this parameter just
+  because it <i>seems</i> to work better for some reduced scope tests. The
+  default value is a consensus chosen by people who have deep knowledge about
+  network optimization.
+</p>
+<ul>
+  <li>Unit: Bytes.</li>
+  <li>Default: 1200.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.BaseRtpEndpoint.html#~getMtuCallback">module:core/abstracts.BaseRtpEndpoint~getMtuCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.BaseRtpEndpoint.html#getMtu">module:core/abstracts.BaseRtpEndpoint#getMtu</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line637">line 637</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getName"><span class="type-signature"></span>getName<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
@@ -3682,7 +3884,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line607">line 607</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line731">line 731</a>
     </li></ul></dd>
     
 
@@ -5856,6 +6058,239 @@ estimations in the congestion control algorithm (REMB).
     
 
     
+    <h4 class="name" id="setMtu"><span class="type-signature"></span>setMtu<span class="signature">(mtu, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Maximum Transmission Unit (MTU) used for RTP.
+<p>
+  This setting affects the maximum size that will be used by RTP payloads. 
+  You
+  can change it from the default, if you think that a different value would 
+  be
+  beneficial for the typical network settings of your application.
+</p>
+<p>
+  The default value is 1200 Bytes. This is the same as in <b>libwebrtc</b> 
+  (from
+  webrtc.org), as used by `Firefox
+  <https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16>`__
+  or `Chrome
+  <https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d>`__.
+  You can read more about this value in `Why RTP max packet size is 1200 in
+  WebRTC?
+  <https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion>`__.
+</p>
+<p>
+  <b>WARNING</b>: Change this value ONLY if you really know what you are 
+  doing
+  and you have strong reasons to do so. Do NOT change this parameter just
+  because it <i>seems</i> to work better for some reduced scope tests. The
+  default value is a consensus chosen by people who have deep knowledge about
+  network optimization.
+</p>
+<ul>
+  <li>Unit: Bytes.</li>
+  <li>Default: 1200.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mtu</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.BaseRtpEndpoint.html#~setMtuCallback">module:core/abstracts.BaseRtpEndpoint~setMtuCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.BaseRtpEndpoint.html#setMtu">module:core/abstracts.BaseRtpEndpoint#setMtu</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line700">line 700</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="setName"><span class="type-signature"></span>setName<span class="signature">(name, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
@@ -6213,7 +6648,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line640">line 640</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line764">line 764</a>
     </li></ul></dd>
     
 

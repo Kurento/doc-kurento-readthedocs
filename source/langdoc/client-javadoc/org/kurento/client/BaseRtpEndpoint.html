@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6,"i27":6,"i28":6,"i29":6,"i30":6,"i31":6,"i32":6,"i33":6,"i34":6,"i35":6,"i36":6,"i37":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6,"i27":6,"i28":6,"i29":6,"i30":6,"i31":6,"i32":6,"i33":6,"i34":6,"i35":6,"i36":6,"i37":6,"i38":6,"i39":6,"i40":6,"i41":6,"i42":6,"i43":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -345,57 +345,75 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 </td>
 </tr>
 <tr id="i19" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMtu--">getMtu</a></span>()</code>
+<div class="block">Get Maximum Transmission Unit (MTU) used for RTP.</div>
+</td>
+</tr>
+<tr id="i20" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMtu-org.kurento.client.Continuation-">getMtu</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
+<div class="block">Get Maximum Transmission Unit (MTU) used for RTP.</div>
+</td>
+</tr>
+<tr id="i21" class="rowColor">
+<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMtu-org.kurento.client.Transaction-">getMtu</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Get Maximum Transmission Unit (MTU) used for RTP.</div>
+</td>
+</tr>
+<tr id="i22" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/RembParams.html" title="class in org.kurento.client">RembParams</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getRembParams--">getRembParams</a></span>()</code>
 <div class="block">Get Advanced parameters to configure the congestion control algorithm.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getRembParams-org.kurento.client.Continuation-">getRembParams</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../org/kurento/client/RembParams.html" title="class in org.kurento.client">RembParams</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Advanced parameters to configure the congestion control algorithm.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../org/kurento/client/RembParams.html" title="class in org.kurento.client">RembParams</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getRembParams-org.kurento.client.Transaction-">getRembParams</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get Advanced parameters to configure the congestion control algorithm.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#removeConnectionStateChangedListener-org.kurento.client.ListenerSubscription-">removeConnectionStateChangedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/ConnectionStateChangedEvent.html" title="class in org.kurento.client"><code>ConnectionStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#removeConnectionStateChangedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeConnectionStateChangedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                     <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/ConnectionStateChangedEvent.html" title="class in org.kurento.client"><code>ConnectionStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#removeMediaStateChangedListener-org.kurento.client.ListenerSubscription-">removeMediaStateChangedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/MediaStateChangedEvent.html" title="class in org.kurento.client"><code>MediaStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#removeMediaStateChangedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeMediaStateChangedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/MediaStateChangedEvent.html" title="class in org.kurento.client"><code>MediaStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-">setMaxVideoSendBandwidth</a></span>(int&nbsp;maxVideoSendBandwidth)</code>
 <div class="block">Set Maximum video transmission bitrate used for local bandwidth
  estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i30" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Continuation-">setMaxVideoSendBandwidth</a></span>(int&nbsp;maxVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
@@ -403,7 +421,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i31" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Transaction-">setMaxVideoSendBandwidth</a></span>(int&nbsp;maxVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
@@ -411,34 +429,34 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i32" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-">setMinVideoRecvBandwidth</a></span>(int&nbsp;minVideoRecvBandwidth)</code>
 <div class="block">Set Minimum bitrate expected for the received video stream.</div>
 </td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Continuation-">setMinVideoRecvBandwidth</a></span>(int&nbsp;minVideoRecvBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Set Minimum bitrate expected for the received video stream.</div>
 </td>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Transaction-">setMinVideoRecvBandwidth</a></span>(int&nbsp;minVideoRecvBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Set Minimum bitrate expected for the received video stream.</div>
 </td>
 </tr>
-<tr id="i32" class="altColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-">setMinVideoSendBandwidth</a></span>(int&nbsp;minVideoSendBandwidth)</code>
 <div class="block">Set Minimum video transmission bitrate used for local bandwidth
  estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
-<tr id="i33" class="rowColor">
+<tr id="i36" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Continuation-">setMinVideoSendBandwidth</a></span>(int&nbsp;minVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
@@ -446,7 +464,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
-<tr id="i34" class="altColor">
+<tr id="i37" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Transaction-">setMinVideoSendBandwidth</a></span>(int&nbsp;minVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
@@ -454,20 +472,40 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  estimations in the congestion control algorithm (REMB).</div>
 </td>
 </tr>
-<tr id="i35" class="rowColor">
+<tr id="i38" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMtu-int-">setMtu</a></span>(int&nbsp;mtu)</code>
+<div class="block">Set Maximum Transmission Unit (MTU) used for RTP.</div>
+</td>
+</tr>
+<tr id="i39" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMtu-int-org.kurento.client.Continuation-">setMtu</a></span>(int&nbsp;mtu,
+      <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
+<div class="block">Set Maximum Transmission Unit (MTU) used for RTP.</div>
+</td>
+</tr>
+<tr id="i40" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMtu-int-org.kurento.client.Transaction-">setMtu</a></span>(int&nbsp;mtu,
+      <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Set Maximum Transmission Unit (MTU) used for RTP.</div>
+</td>
+</tr>
+<tr id="i41" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setRembParams-org.kurento.client.RembParams-">setRembParams</a></span>(<a href="../../../org/kurento/client/RembParams.html" title="class in org.kurento.client">RembParams</a>&nbsp;rembParams)</code>
 <div class="block">Set Advanced parameters to configure the congestion control algorithm.</div>
 </td>
 </tr>
-<tr id="i36" class="altColor">
+<tr id="i42" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setRembParams-org.kurento.client.RembParams-org.kurento.client.Continuation-">setRembParams</a></span>(<a href="../../../org/kurento/client/RembParams.html" title="class in org.kurento.client">RembParams</a>&nbsp;rembParams,
              <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Set Advanced parameters to configure the congestion control algorithm.</div>
 </td>
 </tr>
-<tr id="i37" class="rowColor">
+<tr id="i43" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setRembParams-org.kurento.client.RembParams-org.kurento.client.Transaction-">setRembParams</a></span>(<a href="../../../org/kurento/client/RembParams.html" title="class in org.kurento.client">RembParams</a>&nbsp;rembParams,
              <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
@@ -1193,6 +1231,224 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  <ul>
    <li>CONNECTED</li>
    <li>DISCONNECTED</li>
+ </ul></div>
+</li>
+</ul>
+<a name="getMtu--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMtu</h4>
+<pre>int&nbsp;getMtu()</pre>
+<div class="block">Get Maximum Transmission Unit (MTU) used for RTP.
+ <p>
+   This setting affects the maximum size that will be used by RTP payloads. You
+   can change it from the default, if you think that a different value would be
+   beneficial for the typical network settings of your application.
+ </p>
+ <p>
+   The default value is 1200 Bytes. This is the same as in <b>libwebrtc</b> (from
+   webrtc.org), as used by `Firefox
+   <https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16>`__
+   or `Chrome
+   <https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d>`__.
+   You can read more about this value in `Why RTP max packet size is 1200 in
+   WebRTC?
+   <https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion>`__.
+ </p>
+ <p>
+   <b>WARNING</b>: Change this value ONLY if you really know what you are doing
+   and you have strong reasons to do so. Do NOT change this parameter just
+   because it <i>seems</i> to work better for some reduced scope tests. The
+   default value is a consensus chosen by people who have deep knowledge about
+   network optimization.
+ </p>
+ <ul>
+   <li>Unit: Bytes.</li>
+   <li>Default: 1200.</li>
+ </ul></div>
+</li>
+</ul>
+<a name="getMtu-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMtu</h4>
+<pre>void&nbsp;getMtu(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
+<div class="block">Get Maximum Transmission Unit (MTU) used for RTP.
+ <p>
+   This setting affects the maximum size that will be used by RTP payloads. You
+   can change it from the default, if you think that a different value would be
+   beneficial for the typical network settings of your application.
+ </p>
+ <p>
+   The default value is 1200 Bytes. This is the same as in <b>libwebrtc</b> (from
+   webrtc.org), as used by `Firefox
+   <https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16>`__
+   or `Chrome
+   <https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d>`__.
+   You can read more about this value in `Why RTP max packet size is 1200 in
+   WebRTC?
+   <https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion>`__.
+ </p>
+ <p>
+   <b>WARNING</b>: Change this value ONLY if you really know what you are doing
+   and you have strong reasons to do so. Do NOT change this parameter just
+   because it <i>seems</i> to work better for some reduced scope tests. The
+   default value is a consensus chosen by people who have deep knowledge about
+   network optimization.
+ </p>
+ <ul>
+   <li>Unit: Bytes.</li>
+   <li>Default: 1200.</li>
+ </ul></div>
+</li>
+</ul>
+<a name="getMtu-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMtu</h4>
+<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMtu(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Get Maximum Transmission Unit (MTU) used for RTP.
+ <p>
+   This setting affects the maximum size that will be used by RTP payloads. You
+   can change it from the default, if you think that a different value would be
+   beneficial for the typical network settings of your application.
+ </p>
+ <p>
+   The default value is 1200 Bytes. This is the same as in <b>libwebrtc</b> (from
+   webrtc.org), as used by `Firefox
+   <https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16>`__
+   or `Chrome
+   <https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d>`__.
+   You can read more about this value in `Why RTP max packet size is 1200 in
+   WebRTC?
+   <https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion>`__.
+ </p>
+ <p>
+   <b>WARNING</b>: Change this value ONLY if you really know what you are doing
+   and you have strong reasons to do so. Do NOT change this parameter just
+   because it <i>seems</i> to work better for some reduced scope tests. The
+   default value is a consensus chosen by people who have deep knowledge about
+   network optimization.
+ </p>
+ <ul>
+   <li>Unit: Bytes.</li>
+   <li>Default: 1200.</li>
+ </ul></div>
+</li>
+</ul>
+<a name="setMtu-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setMtu</h4>
+<pre>void&nbsp;setMtu(int&nbsp;mtu)</pre>
+<div class="block">Set Maximum Transmission Unit (MTU) used for RTP.
+ <p>
+   This setting affects the maximum size that will be used by RTP payloads. You
+   can change it from the default, if you think that a different value would be
+   beneficial for the typical network settings of your application.
+ </p>
+ <p>
+   The default value is 1200 Bytes. This is the same as in <b>libwebrtc</b> (from
+   webrtc.org), as used by `Firefox
+   <https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16>`__
+   or `Chrome
+   <https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d>`__.
+   You can read more about this value in `Why RTP max packet size is 1200 in
+   WebRTC?
+   <https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion>`__.
+ </p>
+ <p>
+   <b>WARNING</b>: Change this value ONLY if you really know what you are doing
+   and you have strong reasons to do so. Do NOT change this parameter just
+   because it <i>seems</i> to work better for some reduced scope tests. The
+   default value is a consensus chosen by people who have deep knowledge about
+   network optimization.
+ </p>
+ <ul>
+   <li>Unit: Bytes.</li>
+   <li>Default: 1200.</li>
+ </ul></div>
+</li>
+</ul>
+<a name="setMtu-int-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setMtu</h4>
+<pre>void&nbsp;setMtu(int&nbsp;mtu,
+            <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
+<div class="block">Set Maximum Transmission Unit (MTU) used for RTP.
+ <p>
+   This setting affects the maximum size that will be used by RTP payloads. You
+   can change it from the default, if you think that a different value would be
+   beneficial for the typical network settings of your application.
+ </p>
+ <p>
+   The default value is 1200 Bytes. This is the same as in <b>libwebrtc</b> (from
+   webrtc.org), as used by `Firefox
+   <https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16>`__
+   or `Chrome
+   <https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d>`__.
+   You can read more about this value in `Why RTP max packet size is 1200 in
+   WebRTC?
+   <https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion>`__.
+ </p>
+ <p>
+   <b>WARNING</b>: Change this value ONLY if you really know what you are doing
+   and you have strong reasons to do so. Do NOT change this parameter just
+   because it <i>seems</i> to work better for some reduced scope tests. The
+   default value is a consensus chosen by people who have deep knowledge about
+   network optimization.
+ </p>
+ <ul>
+   <li>Unit: Bytes.</li>
+   <li>Default: 1200.</li>
+ </ul></div>
+</li>
+</ul>
+<a name="setMtu-int-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setMtu</h4>
+<pre>void&nbsp;setMtu(int&nbsp;mtu,
+            <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Set Maximum Transmission Unit (MTU) used for RTP.
+ <p>
+   This setting affects the maximum size that will be used by RTP payloads. You
+   can change it from the default, if you think that a different value would be
+   beneficial for the typical network settings of your application.
+ </p>
+ <p>
+   The default value is 1200 Bytes. This is the same as in <b>libwebrtc</b> (from
+   webrtc.org), as used by `Firefox
+   <https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16>`__
+   or `Chrome
+   <https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d>`__.
+   You can read more about this value in `Why RTP max packet size is 1200 in
+   WebRTC?
+   <https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion>`__.
+ </p>
+ <p>
+   <b>WARNING</b>: Change this value ONLY if you really know what you are doing
+   and you have strong reasons to do so. Do NOT change this parameter just
+   because it <i>seems</i> to work better for some reduced scope tests. The
+   default value is a consensus chosen by people who have deep knowledge about
+   network optimization.
+ </p>
+ <ul>
+   <li>Unit: Bytes.</li>
+   <li>Default: 1200.</li>
  </ul></div>
 </li>
 </ul>
