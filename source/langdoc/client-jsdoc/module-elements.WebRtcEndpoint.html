@@ -232,7 +232,7 @@
    <strong>
      Check the extended documentation of these parameters in
      <a href="module-core_abstracts.SdpEndpoint.html">SdpEndpoint</a>, <a href="module-core_abstracts.BaseRtpEndpoint.html">BaseRtpEndpoint</a>, and
-     :rom:cls:`RembParams`.
+     <a href="module-core_complexTypes.RembParams.html">RembParams</a>.
    </strong>
  </p>
  <ul>
@@ -243,32 +243,14 @@
      <ul>
        <li>
          <strong>{get,set}MinVideoRecvBandwidth</strong>: Minimum bitrate
-         expected for the received video stream. This is used to set a 
-         minimum
-         value of local REMB during bandwidth estimation, if supported by the
-         implementing class. It follows that min values will only have effect
-         remote peers that support this congestion control mechanism, such as
-         Chrome.
+         requested on the received video stream.
        </li>
        <li>
          <strong>{get,set}Max{Audio,Video}RecvBandwidth</strong>: Maximum 
          bitrate
-         expected for the received stream. This is used to put a limit on the
-         bitrate that the remote peer will send to this endpoint. The net 
-         effect
-         of setting this parameter is that
-         <i>when Kurento generates an SDP Offer</i>, an 'Application 
-         Specific'
-         (AS) maximum bandwidth attribute will be added to the SDP media 
-         section:
-         <code>b=AS:{value}</code>.
+         expected for the received stream.
        </li>
      </ul>
-     Max values are announced in the SDP, while min values are used to set a
-     minimum value of local REMB during bandwidth estimation, if supported by
-     implementing class. It follows that min values will only have effect in
-     remote peers that support this congestion control mechanism, such as 
-     Chrome.
    </li>
    <li>
      Output bandwidth: Configuration values used to control bitrate of the 
@@ -749,7 +731,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1134">line 1134</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1234">line 1234</a>
     </li></ul></dd>
     
 
@@ -807,7 +789,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1154">line 1154</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1254">line 1254</a>
     </li></ul></dd>
     
 
@@ -979,7 +961,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line904">line 904</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1004">line 1004</a>
     </li></ul></dd>
     
 
@@ -1177,7 +1159,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line938">line 938</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1038">line 1038</a>
     </li></ul></dd>
     
 
@@ -1544,7 +1526,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1019">line 1019</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1119">line 1119</a>
     </li></ul></dd>
     
 
@@ -1718,7 +1700,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1092">line 1092</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1192">line 1192</a>
     </li></ul></dd>
     
 
@@ -2240,7 +2222,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line190">line 190</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line177">line 177</a>
     </li></ul></dd>
     
 
@@ -2466,6 +2448,200 @@
     
 
     
+    <h4 class="name" id="getExternalAddress"><span class="type-signature"></span>getExternalAddress<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    External (public) IP address of the media server.
+<p>
+  If you know what will be the external or public IP address of the media 
+  server
+  (e.g. because your deployment has an static IP), you can specify it here.
+  Doing so has the advantage of not needing to configure STUN/TURN for the 
+  media
+  server.
+</p>
+<p>
+  STUN/TURN are needed only when the media server sits behind a NAT and needs
+  find out its own external IP address. However, if you set a static external
+  address with this parameter, then there is no need for the STUN/TURN
+  auto-discovery.
+</p>
+<p>
+  The effect of this parameter is that ALL local ICE candidates that are
+  gathered (for WebRTC) will contain the provided external IP address instead
+  the local one.
+</p>
+<p>
+  <code>externalAddress</code> is an IPv4 or IPv6 address.
+</p>
+<p>Examples:</p>
+<ul>
+  <li><code>externalAddress=10.70.35.2</code></li>
+  <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-elements.WebRtcEndpoint.html#~getExternalAddressCallback">module:elements.WebRtcEndpoint~getExternalAddressCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line432">line 432</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getICECandidatePairs"><span class="type-signature"></span>getICECandidatePairs<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
@@ -2580,7 +2756,7 @@ for each stream.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line424">line 424</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line524">line 524</a>
     </li></ul></dd>
     
 
@@ -2747,7 +2923,7 @@ for each stream.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line456">line 456</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line556">line 556</a>
     </li></ul></dd>
     
 
@@ -3533,14 +3709,18 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video transmission bitrate used for local bandwidth
-estimations in the congestion control algorithm (REMB).
+    Maximum video bitrate sent to remote peer.
 <p>
   With this parameter you can control the maximum video quality that will be
   sent when reacting to good network conditions. Setting this parameter to a
   high value permits the video quality to raise when the network conditions 
   get
   better.
+</p>
+<p>
+  This parameter provides a way to limit the bitrate requested by remote REMB
+  bandwidth estimations: the bitrate sent will be always equal or less than
+  this parameter, even if the remote peer requests higher bitrates.
 </p>
 <p>
   Note that the default value of <strong>500 kbps</strong> is a VERY
@@ -3557,8 +3737,7 @@ estimations in the congestion control algorithm (REMB).
   bitrate has been reached. This is a slow, progressive change, which starts 
   at
   300 kbps by default. You can change the default starting point of REMB
-  estimations, by setting the
-  <strong>RembParams.rembOnConnect</strong> parameter.
+  estimations, by setting <code>RembParams.rembOnConnect</code>.
 </p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
@@ -3681,7 +3860,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line260">line 260</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line250">line 250</a>
     </li></ul></dd>
     
 
@@ -4032,7 +4211,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line367">line 367</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line360">line 360</a>
     </li></ul></dd>
     
 
@@ -4445,13 +4624,17 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum bitrate expected for the received video stream.
+    Minimum bitrate requested on the received video stream.
 <p>
-  This is used to set a minimum value of REMB during bandwidth estimation, if
-  supported by the implementing class. It follows that min values will only 
-  have
-  effect in remote peers that support this congestion control mechanism, such
-  Chrome.
+  This is used to set a minimum value of local REMB during bandwidth 
+  estimation,
+  if supported by the implementing class. The REMB estimation will then be 
+  sent
+  to remote peers, requesting them to send at least the indicated video 
+  bitrate.
+  It follows that min values will only have effect in remote peers that 
+  support
+  this congestion control mechanism, such as Chrome.
 </p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
@@ -4571,7 +4754,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line415">line 415</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line412">line 412</a>
     </li></ul></dd>
     
 
@@ -4633,14 +4816,20 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video transmission bitrate used for local bandwidth
-estimations in the congestion control algorithm (REMB).
+    Minimum video bitrate sent to remote peer.
 <p>
   With this parameter you can control the minimum video quality that will be
   sent when reacting to bad network conditions. Setting this parameter to a 
   low
   value permits the video quality to drop when the network conditions get 
   worse.
+</p>
+<p>
+  This parameter provides a way to override the bitrate requested by remote 
+  REMB
+  bandwidth estimations: the bitrate sent will be always equal or greater 
+  than
+  this parameter, even if the remote peer requests even lower bitrates.
 </p>
 <p>
   Note that if you set this parameter too high (trying to avoid bad video
@@ -4767,7 +4956,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line519">line 519</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line526">line 526</a>
     </li></ul></dd>
     
 
@@ -4840,13 +5029,22 @@ estimations in the congestion control algorithm (REMB).
 <p>
   The default value is 1200 Bytes. This is the same as in <b>libwebrtc</b> 
   (from
-  webrtc.org), as used by `Firefox
-  <https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16>`__
-  or `Chrome
-  <https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d>`__.
-  You can read more about this value in `Why RTP max packet size is 1200 in
-  WebRTC?
-  <https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion>`__.
+  webrtc.org), as used by
+  <a
+    href='https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16'
+    >Firefox</a
+  >
+  or
+  <a
+    href='https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d'
+    >Chrome</a
+  >
+  . You can read more about this value in
+  <a
+    href='https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion'
+    >Why RTP max packet size is 1200 in WebRTC?</a
+  >
+  .
 </p>
 <p>
   <b>WARNING</b>: Change this value ONLY if you really know what you are 
@@ -4969,7 +5167,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line637">line 637</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line659">line 659</a>
     </li></ul></dd>
     
 
@@ -5345,7 +5543,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line520">line 520</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line620">line 620</a>
     </li></ul></dd>
     
 
@@ -5694,7 +5892,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line731">line 731</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line762">line 762</a>
     </li></ul></dd>
     
 
@@ -6046,7 +6244,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line629">line 629</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line729">line 729</a>
     </li></ul></dd>
     
 
@@ -6213,7 +6411,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line706">line 706</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line806">line 806</a>
     </li></ul></dd>
     
 
@@ -6411,7 +6609,232 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line801">line 801</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line901">line 901</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setExternalAddress"><span class="type-signature"></span>setExternalAddress<span class="signature">(externalAddress, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    External (public) IP address of the media server.
+<p>
+  If you know what will be the external or public IP address of the media 
+  server
+  (e.g. because your deployment has an static IP), you can specify it here.
+  Doing so has the advantage of not needing to configure STUN/TURN for the 
+  media
+  server.
+</p>
+<p>
+  STUN/TURN are needed only when the media server sits behind a NAT and needs
+  find out its own external IP address. However, if you set a static external
+  address with this parameter, then there is no need for the STUN/TURN
+  auto-discovery.
+</p>
+<p>
+  The effect of this parameter is that ALL local ICE candidates that are
+  gathered (for WebRTC) will contain the provided external IP address instead
+  the local one.
+</p>
+<p>
+  <code>externalAddress</code> is an IPv4 or IPv6 address.
+</p>
+<p>Examples:</p>
+<ul>
+  <li><code>externalAddress=10.70.35.2</code></li>
+  <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>externalAddress</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-String.html">external:String</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-elements.WebRtcEndpoint.html#~setExternalAddressCallback">module:elements.WebRtcEndpoint~setExternalAddressCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line492">line 492</a>
     </li></ul></dd>
     
 
@@ -7321,14 +7744,18 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video transmission bitrate used for local bandwidth
-estimations in the congestion control algorithm (REMB).
+    Maximum video bitrate sent to remote peer.
 <p>
   With this parameter you can control the maximum video quality that will be
   sent when reacting to good network conditions. Setting this parameter to a
   high value permits the video quality to raise when the network conditions 
   get
   better.
+</p>
+<p>
+  This parameter provides a way to limit the bitrate requested by remote REMB
+  bandwidth estimations: the bitrate sent will be always equal or less than
+  this parameter, even if the remote peer requests higher bitrates.
 </p>
 <p>
   Note that the default value of <strong>500 kbps</strong> is a VERY
@@ -7345,8 +7772,7 @@ estimations in the congestion control algorithm (REMB).
   bitrate has been reached. This is a slow, progressive change, which starts 
   at
   300 kbps by default. You can change the default starting point of REMB
-  estimations, by setting the
-  <strong>RembParams.rembOnConnect</strong> parameter.
+  estimations, by setting <code>RembParams.rembOnConnect</code>.
 </p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
@@ -7500,7 +7926,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line331">line 331</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line324">line 324</a>
     </li></ul></dd>
     
 
@@ -7975,13 +8401,17 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum bitrate expected for the received video stream.
+    Minimum bitrate requested on the received video stream.
 <p>
-  This is used to set a minimum value of REMB during bandwidth estimation, if
-  supported by the implementing class. It follows that min values will only 
-  have
-  effect in remote peers that support this congestion control mechanism, such
-  Chrome.
+  This is used to set a minimum value of local REMB during bandwidth 
+  estimation,
+  if supported by the implementing class. The REMB estimation will then be 
+  sent
+  to remote peers, requesting them to send at least the indicated video 
+  bitrate.
+  It follows that min values will only have effect in remote peers that 
+  support
+  this congestion control mechanism, such as Chrome.
 </p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
@@ -8132,7 +8562,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line464">line 464</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line465">line 465</a>
     </li></ul></dd>
     
 
@@ -8194,14 +8624,20 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video transmission bitrate used for local bandwidth
-estimations in the congestion control algorithm (REMB).
+    Minimum video bitrate sent to remote peer.
 <p>
   With this parameter you can control the minimum video quality that will be
   sent when reacting to bad network conditions. Setting this parameter to a 
   low
   value permits the video quality to drop when the network conditions get 
   worse.
+</p>
+<p>
+  This parameter provides a way to override the bitrate requested by remote 
+  REMB
+  bandwidth estimations: the bitrate sent will be always equal or greater 
+  than
+  this parameter, even if the remote peer requests even lower bitrates.
 </p>
 <p>
   Note that if you set this parameter too high (trying to avoid bad video
@@ -8359,7 +8795,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line576">line 576</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line589">line 589</a>
     </li></ul></dd>
     
 
@@ -8432,13 +8868,22 @@ estimations in the congestion control algorithm (REMB).
 <p>
   The default value is 1200 Bytes. This is the same as in <b>libwebrtc</b> 
   (from
-  webrtc.org), as used by `Firefox
-  <https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16>`__
-  or `Chrome
-  <https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d>`__.
-  You can read more about this value in `Why RTP max packet size is 1200 in
-  WebRTC?
-  <https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion>`__.
+  webrtc.org), as used by
+  <a
+    href='https://dxr.mozilla.org/mozilla-central/rev/b5c5ba07d3dbd0d07b66fa42a103f4df2c27d3a2/media/webrtc/trunk/webrtc/media/engine/constants.cc#16'
+    >Firefox</a
+  >
+  or
+  <a
+    href='https://codesearch.chromium.org/chromium/src/third_party/webrtc/media/engine/constants.cc?l=15&rcl=6dd488b2e55125644263e4837f1abd950d5e410d'
+    >Chrome</a
+  >
+  . You can read more about this value in
+  <a
+    href='https://groups.google.com/d/topic/discuss-webrtc/gH5ysR3SoZI/discussion'
+    >Why RTP max packet size is 1200 in WebRTC?</a
+  >
+  .
 </p>
 <p>
   <b>WARNING</b>: Change this value ONLY if you really know what you are 
@@ -8592,7 +9037,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line700">line 700</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line731">line 731</a>
     </li></ul></dd>
     
 
@@ -9030,7 +9475,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line585">line 585</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line685">line 685</a>
     </li></ul></dd>
     
 
@@ -9233,7 +9678,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line764">line 764</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line795">line 795</a>
     </li></ul></dd>
     
 
@@ -9647,7 +10092,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line675">line 675</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line775">line 775</a>
     </li></ul></dd>
     
 
@@ -9845,7 +10290,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line739">line 739</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line839">line 839</a>
     </li></ul></dd>
     
 
@@ -10074,7 +10519,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line865">line 865</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line965">line 965</a>
     </li></ul></dd>
     
 
@@ -10231,7 +10676,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line921">line 921</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1021">line 1021</a>
     </li></ul></dd>
     
 
@@ -10364,7 +10809,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line955">line 955</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1055">line 1055</a>
     </li></ul></dd>
     
 
@@ -10497,7 +10942,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1071">line 1071</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1171">line 1171</a>
     </li></ul></dd>
     
 
@@ -10630,7 +11075,163 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1109">line 1109</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1209">line 1209</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+
+    
+
+    
+    <h4 class="name" id="~getExternalAddressCallback"><span class="type-signature"></span>getExternalAddressCallback<span class="signature">(error, result)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-String.html">external:String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line449">line 449</a>
     </li></ul></dd>
     
 
@@ -10786,7 +11387,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line441">line 441</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line541">line 541</a>
     </li></ul></dd>
     
 
@@ -10942,7 +11543,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line473">line 473</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line573">line 573</a>
     </li></ul></dd>
     
 
@@ -11098,7 +11699,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line537">line 537</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line637">line 637</a>
     </li></ul></dd>
     
 
@@ -11254,7 +11855,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line646">line 646</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line746">line 746</a>
     </li></ul></dd>
     
 
@@ -11410,7 +12011,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line723">line 723</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line823">line 823</a>
     </li></ul></dd>
     
 
@@ -11566,7 +12167,140 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line818">line 818</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line918">line 918</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+
+    
+
+    
+    <h4 class="name" id="~setExternalAddressCallback"><span class="type-signature"></span>setExternalAddressCallback<span class="signature">(error)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line509">line 509</a>
     </li></ul></dd>
     
 
@@ -11699,7 +12433,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line602">line 602</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line702">line 702</a>
     </li></ul></dd>
     
 
@@ -11832,7 +12566,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line692">line 692</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line792">line 792</a>
     </li></ul></dd>
     
 
@@ -11965,7 +12699,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line756">line 756</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line856">line 856</a>
     </li></ul></dd>
     
 
@@ -12098,7 +12832,7 @@ estimations in the congestion control algorithm (REMB).
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line882">line 882</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line982">line 982</a>
     </li></ul></dd>
     
 

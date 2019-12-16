@@ -1365,6 +1365,18 @@
 <dd>
 <div class="block">get Factor used to increase exponentially the next REMB when it is below the threshold.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#getExternalAddress--">getExternalAddress()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Get External (public) IP address of the media server.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#getExternalAddress-org.kurento.client.Continuation-">getExternalAddress(Continuation&lt;String&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Get External (public) IP address of the media server.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#getExternalAddress-org.kurento.client.Transaction-">getExternalAddress(Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Get External (public) IP address of the media server.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/ModuleInfo.html#getFactories--">getFactories()</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/ModuleInfo.html" title="class in org.kurento.client">ModuleInfo</a></dt>
 <dd>
 <div class="block">get Module available factories</div>
@@ -1737,18 +1749,15 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth--">getMaxVideoSendBandwidth()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Get Maximum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Continuation-">getMaxVideoSendBandwidth(Continuation&lt;Integer&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Get Maximum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Transaction-">getMaxVideoSendBandwidth(Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Get Maximum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/MediaObject.html#getMediaPipeline--">getMediaPipeline()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a></dt>
 <dd>
@@ -1854,30 +1863,27 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth--">getMinVideoRecvBandwidth()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum bitrate expected for the received video stream.</div>
+<div class="block">Get Minimum bitrate requested on the received video stream.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth-org.kurento.client.Continuation-">getMinVideoRecvBandwidth(Continuation&lt;Integer&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum bitrate expected for the received video stream.</div>
+<div class="block">Get Minimum bitrate requested on the received video stream.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth-org.kurento.client.Transaction-">getMinVideoRecvBandwidth(Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum bitrate expected for the received video stream.</div>
+<div class="block">Get Minimum bitrate requested on the received video stream.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth--">getMinVideoSendBandwidth()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Get Minimum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Continuation-">getMinVideoSendBandwidth(Continuation&lt;Integer&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Get Minimum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Transaction-">getMinVideoSendBandwidth(Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Get Minimum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/ServerInfo.html#getModules--">getModules()</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/ServerInfo.html" title="class in org.kurento.client">ServerInfo</a></dt>
 <dd>
@@ -4066,6 +4072,18 @@
 <dd>
 <div class="block">set Factor used to increase exponentially the next REMB when it is below the threshold.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-">setExternalAddress(String)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Set External (public) IP address of the media server.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-org.kurento.client.Continuation-">setExternalAddress(String, Continuation&lt;Void&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Set External (public) IP address of the media server.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-org.kurento.client.Transaction-">setExternalAddress(String, Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Set External (public) IP address of the media server.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/ModuleInfo.html#setFactories-java.util.List-">setFactories(List&lt;String&gt;)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/ModuleInfo.html" title="class in org.kurento.client">ModuleInfo</a></dt>
 <dd>
 <div class="block">set Module available factories</div>
@@ -4286,18 +4304,15 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-">setMaxVideoSendBandwidth(int)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Set Maximum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Continuation-">setMaxVideoSendBandwidth(int, Continuation&lt;Void&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Set Maximum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Transaction-">setMaxVideoSendBandwidth(int, Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Set Maximum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/RTCRTPStreamStats.html#setMediaTrackId-java.lang.String-">setMediaTrackId(String)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/RTCRTPStreamStats.html" title="class in org.kurento.client">RTCRTPStreamStats</a></dt>
 <dd>
@@ -4367,30 +4382,27 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-">setMinVideoRecvBandwidth(int)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum bitrate expected for the received video stream.</div>
+<div class="block">Set Minimum bitrate requested on the received video stream.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Continuation-">setMinVideoRecvBandwidth(int, Continuation&lt;Void&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum bitrate expected for the received video stream.</div>
+<div class="block">Set Minimum bitrate requested on the received video stream.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Transaction-">setMinVideoRecvBandwidth(int, Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum bitrate expected for the received video stream.</div>
+<div class="block">Set Minimum bitrate requested on the received video stream.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-">setMinVideoSendBandwidth(int)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Set Minimum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Continuation-">setMinVideoSendBandwidth(int, Continuation&lt;Void&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Set Minimum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Transaction-">setMinVideoSendBandwidth(int, Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum video transmission bitrate used for local bandwidth
- estimations in the congestion control algorithm (REMB).</div>
+<div class="block">Set Minimum video bitrate sent to remote peer.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/ServerInfo.html#setModules-java.util.List-">setModules(List&lt;ModuleInfo&gt;)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/ServerInfo.html" title="class in org.kurento.client">ServerInfo</a></dt>
 <dd>
