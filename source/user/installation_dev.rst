@@ -143,7 +143,7 @@ Adding a repository to Maven can be done at three scope levels:
         <dependency>
           <groupId>org.kurento</groupId>
           <artifactId>kurento-client</artifactId>
-          <version>6.12.0-SNAPSHOT</version>
+          <version>6.13.0-SNAPSHOT</version>
         </dependency>
 
   2. If you have not specified a dependency version, use the ``-U`` switch in your next Maven run to force updating all dependencies.

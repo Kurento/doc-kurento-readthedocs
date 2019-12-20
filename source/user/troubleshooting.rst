@@ -4,7 +4,7 @@ Troubleshooting Issues
 
 If you are facing an issue with Kurento Media Server, follow this basic check list:
 
-* Step 1. Test with the **latest version** of Kurento Media Server: **6.12.0**. Follow the installation instructions here: :doc:`/user/installation`.
+* Step 1. Test with the **latest version** of Kurento Media Server: **6.13.0**. Follow the installation instructions here: :doc:`/user/installation`.
 
 * Step 2: If the problem still happens in the latest version, and the Kurento developers have started working on a solution, they might instruct you to test with the latest (unreleased) changes by installing a nightly version of KMS: :doc:`/user/installation_dev`.
 
@@ -27,7 +27,7 @@ This document outlines several bits of knowledge that can prove very useful when
 Media Server Crashes
 ====================
 
-We want Kurento to be as stable as possible! When you notice a server crash, it's a good time to report a bug so we can know about the issue. But before that, we need you to make sure that you are running the **latest version** of Kurento Media Server: **6.12.0**, and then collect some information about the crash:
+We want Kurento to be as stable as possible! When you notice a server crash, it's a good time to report a bug so we can know about the issue. But before that, we need you to make sure that you are running the **latest version** of Kurento Media Server: **6.13.0**, and then collect some information about the crash:
 
 * Kurento tries to write an **execution stack trace** in the file ``/var/log/kurento-media-server/errors.log``. This stack trace will only be useful if you have **all debug packages installed**, by following these instructions: :ref:`dev-dbg`. If that's the case, open the *errors.log* file and look for a line similar to this one:
 
@@ -458,7 +458,7 @@ There is a multitude of possible reasons for a failed WebRTC connection, so you 
 
   This is one of the most hard to catch examples we've seen in our `mailing list <https://groups.google.com/d/topic/kurento/t25_QQSc_Bo/discussion>`__:
 
-      > The problem was that our Socket.IO client did not correctly *URL-Encode* its JSON payload when *xhr-polling*, which resulted in all "plus" signs ('+') being changed into spaces (' ') on the server. This meant that the ``ufrag`` in the client's SDP was invalid if it contained a plus sign! Only some of the connections failed because not all ``ufrag``s contain plus signs.
+      > The problem was that our Socket.IO client did not correctly *URL-Encode* its JSON payload when *xhr-polling*, which resulted in all "plus" signs ('+') being changed into spaces (' ') on the server. This meant that the ``ufrag`` in the client's SDP was invalid if it contained a plus sign! Only some of the connections failed because not all ``ufrag`` contain plus signs.
 
 
 
@@ -615,11 +615,11 @@ Zero-size video files
 
 If you are trying to generate a video recording, keep in mind that **the endpoint will wait until all tracks (audio, video) start arriving**.
 
-.. ifconfig:: "false" == "true"
+.. ifconfig:: "true" == "true"
 
-   Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.12.0/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
+   Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.13.0/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
-.. ifconfig:: "false" != "true"
+.. ifconfig:: "true" != "true"
 
    Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/latest/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
