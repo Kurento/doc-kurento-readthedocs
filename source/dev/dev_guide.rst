@@ -364,21 +364,21 @@ Run:
 
 .. _dev-dbg:
 
-Install debugging symbols
-=========================
+Install debug symbols
+=====================
 
-Whenever working with KMS source code itself, of during any analysis of crash in either the server or any 3rd-party library, you'll want to have debugging symbols installed. These provide for full information about the source file name and line where problems are happening; this information is paramount for a successful debug session, and you'll also need to provide these details when requesting support or :ref:`filing a bug report <support-community>`.
+Whenever working with KMS source code itself, of during any analysis of crash in either the server or any 3rd-party library, you'll want to have debug symbols installed. These provide for full information about the source file name and line where problems are happening; this information is paramount for a successful debug session, and you'll also need to provide these details when requesting support or :ref:`filing a bug report <support-community>`.
 
 **Installing the debug symbols does not impose any extra load to the system**. So, it doesn't really hurt at all to have them installed even in production setups, where they will prove useful whenever an unexpected crash happens to bring the system down and a postmortem stack trace is automatically generated.
 
-First thing to do is to enable the Ubuntu's official **Debug Symbol Packages** repository:
+After having :doc:`installed Kurento </user/installation>`, first thing to do is to enable the Ubuntu's official **Debug Symbol Packages** repository:
 
 .. code-block:: bash
 
    sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
        gnupg
 
-   apt-key adv \
+   sudo apt-key adv \
        --keyserver keyserver.ubuntu.com \
        --recv-keys F2EDC64DC5AEE1F6B9C621F0C8CAB6595FDFF622
 
@@ -388,11 +388,10 @@ First thing to do is to enable the Ubuntu's official **Debug Symbol Packages** r
        source /etc/lsb-release
    fi
 
-   tee /etc/apt/sources.list.d/ddebs.list >/dev/null <<EOF
+   sudo tee "/etc/apt/sources.list.d/ddebs.list" >/dev/null <<EOF
    # Packages with debug symbols
    deb http://ddebs.ubuntu.com ${DISTRIB_CODENAME} main restricted universe multiverse
    deb http://ddebs.ubuntu.com ${DISTRIB_CODENAME}-updates main restricted universe multiverse
-   deb http://ddebs.ubuntu.com ${DISTRIB_CODENAME}-proposed main restricted universe multiverse
    EOF
 
 Now, install all debug symbols relevant to KMS:
@@ -401,6 +400,31 @@ Now, install all debug symbols relevant to KMS:
 
    sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
        kurento-dbg
+
+.. warning::
+
+   [FIXME] As of this writing, the package ``kurento-dbg`` works on Ubuntu 16.04 (Xenial), but it fails on Ubuntu 18.04 (Bionic). **If you are using Ubuntu 18.04**, then install these packages instead:
+
+   .. code-block:: bash
+
+      sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
+          libc6-dbg \
+          libglib2.0-0-dbgsym \
+          kmsjsoncpp-dbg \
+          libnice10-dbgsym \
+          openwebrtc-gst-plugins-dbg \
+          libgstreamer1.5-0-dbg \
+          gstreamer1.5-libav-dbg \
+          gstreamer1.5-nice-dbgsym \
+          gstreamer1.5-plugins-bad-dbg \
+          gstreamer1.5-plugins-base-dbg \
+          gstreamer1.5-plugins-good-dbg \
+          gstreamer1.5-plugins-ugly-dbg \
+          kms-jsonrpc-dbg \
+          kms-core-dbg \
+          kms-elements-dbg \
+          kms-filters-dbg \
+          kurento-media-server-dbg
 
 
 
@@ -411,7 +435,7 @@ Let's see a couple examples that show the difference between the same stack trac
 
 .. code-block:: text
 
-   # ==== NOT USEFUL: WITHOUT debugging symbols ====
+   # ==== NOT USEFUL: WITHOUT debug symbols ====
 
    $ cat /var/log/kurento-media-server/errors.log
    Segmentation fault (thread 139667051341568, pid 14132)
@@ -427,7 +451,7 @@ Let's see a couple examples that show the difference between the same stack trac
 
 .. code-block:: text
 
-   # ==== USEFUL: WITH debugging symbols ====
+   # ==== USEFUL: WITH debug symbols ====
 
    $ cat /var/log/kurento-media-server/errors.log
    Segmentation fault (thread 140672899761920, pid 15217)
