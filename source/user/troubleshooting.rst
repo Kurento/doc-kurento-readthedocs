@@ -4,13 +4,15 @@ Troubleshooting Issues
 
 If you are facing an issue with Kurento Media Server, follow this basic check list:
 
-* Step 1. Test with the **latest version** of Kurento Media Server: **6.13.0**. Follow the installation instructions here: :doc:`/user/installation`.
+* **Step 1**: Test with the **latest version** of Kurento Media Server: **6.13.0**. Follow the installation instructions here: :doc:`/user/installation`.
 
-* Step 2: If the problem still happens in the latest version, and the Kurento developers have started working on a solution, they might instruct you to test with the latest (unreleased) changes by installing a nightly version of KMS: :doc:`/user/installation_dev`.
+* **Step 2**: Test with the latest (unreleased) changes by installing a nightly version: :doc:`/user/installation_dev`.
 
-* Step 3: When your issue exists in both the latest and nightly versions, try resorting to the :ref:`Open-Source Community <support-community>`. Kurento users might be having the same issue and maybe you can find help in there.
+* **Step 3**: Search for your issue in our `GitHub bugtracker <https://github.com/Kurento/bugtracker/issues>`__ and the `Kurento Public Mailing List <https://groups.google.com/forum/#!forum/kurento>`__.
 
-* Step 4: If you want full attention from the Kurento team, get in contact with us to request :ref:`Commercial Support <support-commercial>`.
+* **Step 4**: If you want full attention from the Kurento team, get in contact with us to request :ref:`Commercial Support <support-commercial>`.
+
+For more information about how to request support, and how to submit bug reports and commercial enquiries, have a look at the :doc:`/user/support` page.
 
 
 
@@ -45,7 +47,7 @@ We want Kurento to be as stable as possible! When you notice a server crash, it'
 
 * We might ask you to run with a special build of Kurento that comes with support for `AddressSanitizer <https://github.com/google/sanitizers/wiki/AddressSanitizer>`__, a memory access error detector.
 
-  For this, you would need to make several high-impact changes in your system, so instead of breaking everybody's setup we decided it's better to just publish a Docker image that contains everything you need: `Kurento Docker images with AddressSanitizer <https://hub.docker.com/r/kurento/kurento-media-server-dev/tags?name=asan>`__. If we ask for it, you would have to provide the `Docker logs <https://docs.docker.com/engine/reference/commandline/logs/>`__ from running this.
+  To do this, you would need to make several high-impact changes in your system, so instead of breaking everybody's setup we decided it's better to just publish a Docker image that contains everything you need: `Kurento Docker images with AddressSanitizer <https://hub.docker.com/r/kurento/kurento-media-server-dev/tags?name=asan>`__. If we ask for it, you would have to provide the `Docker logs <https://docs.docker.com/engine/reference/commandline/logs/>`__ from running this.
 
   For this reason (and also for better test repeatability), it's a very good idea that you have your services thought out in a way that it's possible to **run Kurento Media Server from Docker**, at any time, regardless of what is your normal / usual method of deploying Kurento.
 
@@ -69,31 +71,15 @@ GLib and GStreamer use a lot of ``assert()`` functions to check for valid condit
 
 However, these messages don't cause a crash in the server; instead, it will keep working, although there will be some session that is wrongly affected by this issue.
 
-Finding the spot where the ``assert()`` fails is a bit hard, though; you need to:
+Finding the spot where the ``assert()`` fails requires running in debug mode, though. You need to:
 
-1) Install debug symbols: :ref:`dev-dbg`.
-
-2) Enable debug breaks in the asserts:
+1. Enable GDB breaks in the asserts (for example, by adding to ``/etc/default/kurento-media-server``):
 
    .. code-block:: bash
 
       export G_DEBUG=fatal-warnings
 
-3) Enable kernel core dumps:
-
-   .. code-block:: bash
-
-      ulimit -c unlimited
-
-4) Run with GDB and get a backtrace:
-
-   .. code-block:: bash
-
-      gdb /usr/bin/kurento-media-server
-      (gdb) run
-      # Wait until the assert happens and GDB breaks
-      (gdb) info stack
-      (gdb) backtrace
+2. Run with GDB and get a backtrace, as explained in :ref:`dev-gdb`.
 
 
 
@@ -254,6 +240,25 @@ You have several ways to override the default settings for variable bitrate:
   - *setMinOutputBitrate()* / *setMaxOutputBitrate()*
 
     This setting is also configurable in */etc/kurento/modules/kurento/MediaElement.conf.ini*
+
+
+
+Video has green artifacts
+-------------------------
+
+This is typically caused by missing information in the video decoder, most probably due to a high packet loss rate in the network.
+
+The *H.264* and `VP8 <https://tools.ietf.org/html/rfc6386#section-9.2>`__ video codecs use a color encoding system called `YCbCr <https://en.wikipedia.org/wiki/YCbCr>`__ (sometimes also written as *YCrCb*), which the decoder has to convert into the well known `RGB <https://en.wikipedia.org/wiki/RGB_color_model>`__ ("*Red-Green-Blue*") model that is used by computer screens. When there is data loss, the decoder will assume that all missing values are 0 (zero). It just turns out that a YCbCr value of **(0,0,0)** is equivalent to the **green** color in RGB.
+
+When this problem happens, Kurento sends retransmission requests to the source of the RTP stream. However, in cases of heavy packet loss, there isn't much else that can be done and enough losses will build up until the video decoding gets negatively affected. In situations like this, the most effective change you can do is to reduce the video resolution and/or quality at the sender.
+
+Cisco has too a nice paragraph covering this in their Knowledge Base: `Pink and green patches in a video stream <https://www.cisco.com/c/en/us/td/docs/telepresence/infrastructure/articles/cisco_telepresence_pink_green_patches_video_stream_kb_136.html>`__
+
+    **Why do I see pink or green patches in my video stream [...]?**
+
+    *Pink and green patches or lines seen in decoded video are often the result of packet loss or incorrect data in the video stream. Many video codecs (including H.261, H.263 and H.264) use the Y'CbCr system to represent color space, where Y' is the 'luma' (brightness) component and Cb and Cr are the blue and red chroma components respectively. For many Y'CbCr values there is no equivalent RGB value and the colour seen on the display depends on the details of the algorithm used. A Y'CbCr value of (0,0,0) is often converted into the green color while a Y'CbCr value of (255,255,255) leads to a pink color.*
+
+    *If you encounter the symptoms described above, follow normal packet loss and network troubleshooting procedures.*
 
 
 
