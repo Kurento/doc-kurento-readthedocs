@@ -66,6 +66,17 @@ Docker image
 
 Kurento's Docker Hub contains images built from each KMS release. Just head to the `kurento-media-server Docker Hub page <https://hub.docker.com/r/kurento/kurento-media-server>`__, and follow the instructions you'll find there.
 
+.. note::
+
+   You shouldn't expose a large port range in your Docker containers; instead, prefer using ``--network host``.
+
+   To elaborate a bit more, as `Yorgos Saslis <https://github.com/gsaslis>`__ mentioned `here <https://github.com/kubernetes/kubernetes/issues/23864#issuecomment-387070644>`__:
+
+       the problem is that - given the current state of Docker - it seems you should NOT even be trying to expose large numbers of ports. You are advised to use the host network anyway, due to the overhead involved with large port ranges. (it adds both latency, as well as consumes significant resources - e.g. see https://www.percona.com/blog/2016/02/05/measuring-docker-cpu-network-overhead/ )
+
+       If you are looking for a more official source, there is still (for years) an open issue in Docker about this:
+       `moby/moby#11185 (comment) <https://github.com/moby/moby/issues/11185#issuecomment-245983651>`__
+
 
 
 .. _installation-local:
@@ -139,7 +150,15 @@ Local Upgrade
 
 To upgrade a previous installation of Kurento Media Server, you'll need to edit the file ``/etc/apt/sources.list.d/kurento.list``, setting the new version number. After this file has been changed, there are 2 options to actually apply the upgrade:
 
-A. Completely uninstall the old version, and install the new one.
+A. Simply upgrade all system packages. This is the standard procedure expected by Debian & Ubuntu maintainer methodology. Upgrading all system packages is a way to ensure that everything is set to the latest version, and all bug fixes & security updates are applied too, so this is the most recommended method:
+
+   .. code-block:: bash
+
+      sudo apt-get update && sudo apt-get dist-upgrade
+
+  Keep in mind that this is the recommended method only for server installations of Debian/Ubuntu, not for Docker containers. The `Best practices for writing Dockerfiles <https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#apt-get>`__ recommends against running ``upgrade`` or ``dist-upgrade`` inside Docker containers.
+
+B. Completely uninstall the old Kurento version, and install the new one.
 
    Note however that **apt-get doesn't remove all dependencies** that were installed with Kurento. You will need to use *aptitude* for this, which works better than *apt-get*:
 
@@ -147,12 +166,6 @@ A. Completely uninstall the old version, and install the new one.
 
       sudo aptitude remove kurento-media-server
       sudo apt-get update && sudo apt-get install kurento-media-server
-
-B. Upgrade all system packages. This makes sure that all packages in the system get to their latest versions after changing any of the files in */etc/apt/sources.list*:
-
-   .. code-block:: bash
-
-      sudo apt-get update && sudo apt-get dist-upgrade
 
 Be careful! If you don't follow one of these methods, then you'll probably end up with a **mixed installation of old and new packages**. You don't want that to happen: it is a surefire way to get wrong behaviors and crashes.
 
