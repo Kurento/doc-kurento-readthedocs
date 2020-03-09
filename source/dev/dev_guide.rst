@@ -373,58 +373,29 @@ Whenever working with KMS source code itself, of during any analysis of crash in
 
 After having :doc:`installed Kurento </user/installation>`, first thing to do is to enable the Ubuntu's official **Debug Symbol Packages** repository:
 
-.. code-block:: bash
+.. code-block:: text
 
-   sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
-       gnupg
-
+   # Import the Ubuntu debug repository signing key
    sudo apt-key adv \
        --keyserver keyserver.ubuntu.com \
        --recv-keys F2EDC64DC5AEE1F6B9C621F0C8CAB6595FDFF622
 
-   if [[ -f /etc/upstream-release/lsb-release ]]; then
-       source /etc/upstream-release/lsb-release
-   else
-       source /etc/lsb-release
-   fi
+   # Get Ubuntu version definitions
+   source /etc/upstream-release/lsb-release 2>/dev/null || source /etc/lsb-release
 
+   # Add the repository URLs to apt
    sudo tee "/etc/apt/sources.list.d/ddebs.list" >/dev/null <<EOF
-   # Packages with debug symbols
+   # Official Ubuntu repos with debug packages
    deb http://ddebs.ubuntu.com ${DISTRIB_CODENAME} main restricted universe multiverse
    deb http://ddebs.ubuntu.com ${DISTRIB_CODENAME}-updates main restricted universe multiverse
    EOF
 
-Now, install all debug symbols relevant to KMS:
+Now, install all debug symbols that are relevant to KMS:
 
-.. code-block:: bash
+.. code-block:: text
 
    sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
        kurento-dbg
-
-.. warning::
-
-   [FIXME] As of this writing, the package ``kurento-dbg`` works on Ubuntu 16.04 (Xenial), but it fails on Ubuntu 18.04 (Bionic). **If you are using Ubuntu 18.04**, then install these packages instead:
-
-   .. code-block:: bash
-
-      sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
-          libc6-dbg \
-          libglib2.0-0-dbgsym \
-          kmsjsoncpp-dbg \
-          libnice10-dbgsym \
-          openwebrtc-gst-plugins-dbg \
-          libgstreamer1.5-0-dbg \
-          gstreamer1.5-libav-dbg \
-          gstreamer1.5-nice-dbgsym \
-          gstreamer1.5-plugins-bad-dbg \
-          gstreamer1.5-plugins-base-dbg \
-          gstreamer1.5-plugins-good-dbg \
-          gstreamer1.5-plugins-ugly-dbg \
-          kms-jsonrpc-dbg \
-          kms-core-dbg \
-          kms-elements-dbg \
-          kms-filters-dbg \
-          kurento-media-server-dbg
 
 
 
