@@ -40,7 +40,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-hello-world
-    git checkout 6.13.0
+    git checkout master
     npm install
     cd static
     bower install --allow-root

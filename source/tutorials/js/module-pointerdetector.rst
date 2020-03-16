@@ -39,7 +39,7 @@ You also need the source code of this demo; clone it from GitHub, then start the
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-pointerdetector
-    git checkout 6.13.0
+    git checkout master
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 
