@@ -300,7 +300,7 @@ file and pay attention to the following section:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "6.13.0",
+      "kurento-utils" : "6.13.1",
       "kurento-module-pointerdetector": "6.13.0"
    }
 

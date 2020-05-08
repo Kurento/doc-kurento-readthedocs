@@ -273,7 +273,7 @@ file, as follows:
 
    "dependencies": {
       "kurento-client": "6.13.0",
-      "kurento-utils": "6.13.0"
+      "kurento-utils": "6.13.1"
    }
 
 To get these dependencies, just run the following shell command:

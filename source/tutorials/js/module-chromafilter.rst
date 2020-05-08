@@ -207,7 +207,7 @@ file, as follows:
 
    "dependencies": {
       "kurento-client": "6.13.0",
-      "kurento-utils": "6.13.0"
+      "kurento-utils": "6.13.1"
       "kurento-module-pointerdetector": "6.13.0"
    }
 

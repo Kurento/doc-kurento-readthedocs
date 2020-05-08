@@ -35,7 +35,7 @@ Follow these steps to use it:
 
    .. code-block:: text
 
-      https://s3-eu-west-1.amazonaws.com/aws.kurento.org/KMS-Coturn-cfn-6.13.0.yaml
+      https://s3-eu-west-1.amazonaws.com/aws.kurento.org/KMS-Coturn-cfn-6.13.2.yaml
 
 4. Follow through the steps of the configuration wizard:
 
@@ -112,7 +112,7 @@ Open a terminal and run these commands:
       # Add the repository to Apt
       sudo tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
       # Kurento Media Server - Release packages
-      deb [arch=amd64] http://ubuntu.openvidu.io/6.13.0 $DISTRIB_CODENAME kms6
+      deb [arch=amd64] http://ubuntu.openvidu.io/6.13.2 $DISTRIB_CODENAME kms6
       EOF
 
 3. Install KMS:

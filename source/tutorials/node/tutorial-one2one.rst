@@ -634,7 +634,7 @@ file and pay attention to the following section:
 
    "dependencies": {
       [...]
-      "kurento-utils" : "6.13.0"
+      "kurento-utils" : "6.13.1"
    }
 
 .. note::
