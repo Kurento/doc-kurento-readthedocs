@@ -51,7 +51,8 @@ var hark = require('hark')
 var EventEmitter = require('events').EventEmitter
 var recursive = require('merge').recursive.bind(undefined, true)
 var sdpTranslator = require('sdp-translator')
-var logger = (typeof window === 'undefined') ? console : window.Logger || console
+var logger = (typeof window === 'undefined') ? console : window.Logger ||
+  console
 
 // var gUM = navigator.mediaDevices.getUserMedia || function (constraints) {
 //   return new Promise(navigator.getUserMedia(constraints, function (stream) {
@@ -82,7 +83,8 @@ var MEDIA_CONSTRAINTS = {
 
 // Somehow, the UAParser constructor gets an empty window object.
 // We need to pass the user agent string in order to get information
-var ua = (typeof window !== 'undefined' &amp;&amp; window.navigator) ? window.navigator.userAgent : ''
+var ua = (typeof window !== 'undefined' &amp;&amp; window.navigator) ? window.navigator
+  .userAgent : ''
 var parser = new UAParser(ua)
 var browser = parser.getBrowser()
 
@@ -801,7 +803,8 @@ function WebRtcPeer(mode, options, callback) {
     }
     self.removeAllListeners();
 
-    if (typeof window !== 'undefined' &amp;&amp; window.cancelChooseDesktopMedia !== undefined) {
+    if (typeof window !== 'undefined' &amp;&amp; window.cancelChooseDesktopMedia !==
+      undefined) {
       window.cancelChooseDesktopMedia(guid)
     }
   })
