@@ -206,9 +206,9 @@ file, as follows:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.13.0",
-      "kurento-utils": "6.13.1"
-      "kurento-module-pointerdetector": "6.13.0"
+      "kurento-client": "6.14.0",
+      "kurento-utils": "6.14.0"
+      "kurento-module-pointerdetector": "6.14.0"
    }
 
 To get these dependencies, just run the following shell command:

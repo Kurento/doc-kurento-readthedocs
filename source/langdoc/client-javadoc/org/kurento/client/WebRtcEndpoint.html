@@ -45,7 +45,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.13.2-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.14.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -780,19 +780,19 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <tr id="i49" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddress--">getExternalAddress</a></span>()</code>
-<div class="block">Get External (public) IP address of the media server.</div>
+<div class="block">Get External IP address of the media server.</div>
 </td>
 </tr>
 <tr id="i50" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddress-org.kurento.client.Continuation-">getExternalAddress</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
-<div class="block">Get External (public) IP address of the media server.</div>
+<div class="block">Get External IP address of the media server.</div>
 </td>
 </tr>
 <tr id="i51" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddress-org.kurento.client.Transaction-">getExternalAddress</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get External (public) IP address of the media server.</div>
+<div class="block">Get External IP address of the media server.</div>
 </td>
 </tr>
 <tr id="i52" class="altColor">
@@ -1049,21 +1049,21 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <tr id="i92" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-">setExternalAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress)</code>
-<div class="block">Set External (public) IP address of the media server.</div>
+<div class="block">Set External IP address of the media server.</div>
 </td>
 </tr>
 <tr id="i93" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-org.kurento.client.Continuation-">setExternalAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
                   <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set External (public) IP address of the media server.</div>
+<div class="block">Set External IP address of the media server.</div>
 </td>
 </tr>
 <tr id="i94" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-org.kurento.client.Transaction-">setExternalAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
                   <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set External (public) IP address of the media server.</div>
+<div class="block">Set External IP address of the media server.</div>
 </td>
 </tr>
 <tr id="i95" class="rowColor">
@@ -1203,218 +1203,6 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="getExternalAddress--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getExternalAddress</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getExternalAddress()</pre>
-<div class="block">Get External (public) IP address of the media server.
- <p>
-   If you know what will be the external or public IP address of the media server
-   (e.g. because your deployment has an static IP), you can specify it here.
-   Doing so has the advantage of not needing to configure STUN/TURN for the media
-   server.
- </p>
- <p>
-   STUN/TURN are needed only when the media server sits behind a NAT and needs to
-   find out its own external IP address. However, if you set a static external IP
-   address with this parameter, then there is no need for the STUN/TURN
-   auto-discovery.
- </p>
- <p>
-   The effect of this parameter is that ALL local ICE candidates that are
-   gathered (for WebRTC) will contain the provided external IP address instead of
-   the local one.
- </p>
- <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
- </p>
- <p>Examples:</p>
- <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
-   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
- </ul></div>
-</li>
-</ul>
-<a name="getExternalAddress-org.kurento.client.Continuation-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getExternalAddress</h4>
-<pre>void&nbsp;getExternalAddress(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get External (public) IP address of the media server.
- <p>
-   If you know what will be the external or public IP address of the media server
-   (e.g. because your deployment has an static IP), you can specify it here.
-   Doing so has the advantage of not needing to configure STUN/TURN for the media
-   server.
- </p>
- <p>
-   STUN/TURN are needed only when the media server sits behind a NAT and needs to
-   find out its own external IP address. However, if you set a static external IP
-   address with this parameter, then there is no need for the STUN/TURN
-   auto-discovery.
- </p>
- <p>
-   The effect of this parameter is that ALL local ICE candidates that are
-   gathered (for WebRTC) will contain the provided external IP address instead of
-   the local one.
- </p>
- <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
- </p>
- <p>Examples:</p>
- <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
-   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
- </ul></div>
-</li>
-</ul>
-<a name="getExternalAddress-org.kurento.client.Transaction-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getExternalAddress</h4>
-<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getExternalAddress(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get External (public) IP address of the media server.
- <p>
-   If you know what will be the external or public IP address of the media server
-   (e.g. because your deployment has an static IP), you can specify it here.
-   Doing so has the advantage of not needing to configure STUN/TURN for the media
-   server.
- </p>
- <p>
-   STUN/TURN are needed only when the media server sits behind a NAT and needs to
-   find out its own external IP address. However, if you set a static external IP
-   address with this parameter, then there is no need for the STUN/TURN
-   auto-discovery.
- </p>
- <p>
-   The effect of this parameter is that ALL local ICE candidates that are
-   gathered (for WebRTC) will contain the provided external IP address instead of
-   the local one.
- </p>
- <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
- </p>
- <p>Examples:</p>
- <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
-   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
- </ul></div>
-</li>
-</ul>
-<a name="setExternalAddress-java.lang.String-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setExternalAddress</h4>
-<pre>void&nbsp;setExternalAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress)</pre>
-<div class="block">Set External (public) IP address of the media server.
- <p>
-   If you know what will be the external or public IP address of the media server
-   (e.g. because your deployment has an static IP), you can specify it here.
-   Doing so has the advantage of not needing to configure STUN/TURN for the media
-   server.
- </p>
- <p>
-   STUN/TURN are needed only when the media server sits behind a NAT and needs to
-   find out its own external IP address. However, if you set a static external IP
-   address with this parameter, then there is no need for the STUN/TURN
-   auto-discovery.
- </p>
- <p>
-   The effect of this parameter is that ALL local ICE candidates that are
-   gathered (for WebRTC) will contain the provided external IP address instead of
-   the local one.
- </p>
- <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
- </p>
- <p>Examples:</p>
- <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
-   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
- </ul></div>
-</li>
-</ul>
-<a name="setExternalAddress-java.lang.String-org.kurento.client.Continuation-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setExternalAddress</h4>
-<pre>void&nbsp;setExternalAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
-                        <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set External (public) IP address of the media server.
- <p>
-   If you know what will be the external or public IP address of the media server
-   (e.g. because your deployment has an static IP), you can specify it here.
-   Doing so has the advantage of not needing to configure STUN/TURN for the media
-   server.
- </p>
- <p>
-   STUN/TURN are needed only when the media server sits behind a NAT and needs to
-   find out its own external IP address. However, if you set a static external IP
-   address with this parameter, then there is no need for the STUN/TURN
-   auto-discovery.
- </p>
- <p>
-   The effect of this parameter is that ALL local ICE candidates that are
-   gathered (for WebRTC) will contain the provided external IP address instead of
-   the local one.
- </p>
- <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
- </p>
- <p>Examples:</p>
- <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
-   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
- </ul></div>
-</li>
-</ul>
-<a name="setExternalAddress-java.lang.String-org.kurento.client.Transaction-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setExternalAddress</h4>
-<pre>void&nbsp;setExternalAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
-                        <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set External (public) IP address of the media server.
- <p>
-   If you know what will be the external or public IP address of the media server
-   (e.g. because your deployment has an static IP), you can specify it here.
-   Doing so has the advantage of not needing to configure STUN/TURN for the media
-   server.
- </p>
- <p>
-   STUN/TURN are needed only when the media server sits behind a NAT and needs to
-   find out its own external IP address. However, if you set a static external IP
-   address with this parameter, then there is no need for the STUN/TURN
-   auto-discovery.
- </p>
- <p>
-   The effect of this parameter is that ALL local ICE candidates that are
-   gathered (for WebRTC) will contain the provided external IP address instead of
-   the local one.
- </p>
- <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
- </p>
- <p>Examples:</p>
- <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
-   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
- </ul></div>
-</li>
-</ul>
 <a name="getNetworkInterfaces--">
 <!--   -->
 </a>
@@ -2039,6 +1827,212 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
    From that check, you should get at least one Server-Reflexive Candidate (type
    <code>srflx</code>) AND one Relay Candidate (type <code>relay</code>).
  </p></div>
+</li>
+</ul>
+<a name="getExternalAddress--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalAddress</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getExternalAddress()</pre>
+<div class="block">Get External IP address of the media server.
+ <p>
+   This setting is normally NOT needed. Only use it if you know what you're
+   doing, and understand 100% WHY you want it. For the majority of cases, you
+   should prefer configuring STUN or TURN servers over using this setting.
+ </p>
+ <p>
+   This setting implements a hack that will mangle all local ICE candidates so
+   that their candidate address is replaced with the provided external address,
+   even for candidates of type 'host'. In doing so, this KMS will not need a
+   STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to using the STUN or TURN settings above.
+ </p>
+ <p>
+   <code>externalAddress</code> is an IPv4 or IPv6 address.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="getExternalAddress-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalAddress</h4>
+<pre>void&nbsp;getExternalAddress(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
+<div class="block">Get External IP address of the media server.
+ <p>
+   This setting is normally NOT needed. Only use it if you know what you're
+   doing, and understand 100% WHY you want it. For the majority of cases, you
+   should prefer configuring STUN or TURN servers over using this setting.
+ </p>
+ <p>
+   This setting implements a hack that will mangle all local ICE candidates so
+   that their candidate address is replaced with the provided external address,
+   even for candidates of type 'host'. In doing so, this KMS will not need a
+   STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to using the STUN or TURN settings above.
+ </p>
+ <p>
+   <code>externalAddress</code> is an IPv4 or IPv6 address.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="getExternalAddress-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalAddress</h4>
+<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getExternalAddress(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Get External IP address of the media server.
+ <p>
+   This setting is normally NOT needed. Only use it if you know what you're
+   doing, and understand 100% WHY you want it. For the majority of cases, you
+   should prefer configuring STUN or TURN servers over using this setting.
+ </p>
+ <p>
+   This setting implements a hack that will mangle all local ICE candidates so
+   that their candidate address is replaced with the provided external address,
+   even for candidates of type 'host'. In doing so, this KMS will not need a
+   STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to using the STUN or TURN settings above.
+ </p>
+ <p>
+   <code>externalAddress</code> is an IPv4 or IPv6 address.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalAddress-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalAddress</h4>
+<pre>void&nbsp;setExternalAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress)</pre>
+<div class="block">Set External IP address of the media server.
+ <p>
+   This setting is normally NOT needed. Only use it if you know what you're
+   doing, and understand 100% WHY you want it. For the majority of cases, you
+   should prefer configuring STUN or TURN servers over using this setting.
+ </p>
+ <p>
+   This setting implements a hack that will mangle all local ICE candidates so
+   that their candidate address is replaced with the provided external address,
+   even for candidates of type 'host'. In doing so, this KMS will not need a
+   STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to using the STUN or TURN settings above.
+ </p>
+ <p>
+   <code>externalAddress</code> is an IPv4 or IPv6 address.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalAddress-java.lang.String-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalAddress</h4>
+<pre>void&nbsp;setExternalAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
+                        <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
+<div class="block">Set External IP address of the media server.
+ <p>
+   This setting is normally NOT needed. Only use it if you know what you're
+   doing, and understand 100% WHY you want it. For the majority of cases, you
+   should prefer configuring STUN or TURN servers over using this setting.
+ </p>
+ <p>
+   This setting implements a hack that will mangle all local ICE candidates so
+   that their candidate address is replaced with the provided external address,
+   even for candidates of type 'host'. In doing so, this KMS will not need a
+   STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to using the STUN or TURN settings above.
+ </p>
+ <p>
+   <code>externalAddress</code> is an IPv4 or IPv6 address.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalAddress-java.lang.String-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalAddress</h4>
+<pre>void&nbsp;setExternalAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
+                        <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Set External IP address of the media server.
+ <p>
+   This setting is normally NOT needed. Only use it if you know what you're
+   doing, and understand 100% WHY you want it. For the majority of cases, you
+   should prefer configuring STUN or TURN servers over using this setting.
+ </p>
+ <p>
+   This setting implements a hack that will mangle all local ICE candidates so
+   that their candidate address is replaced with the provided external address,
+   even for candidates of type 'host'. In doing so, this KMS will not need a
+   STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to using the STUN or TURN settings above.
+ </p>
+ <p>
+   <code>externalAddress</code> is an IPv4 or IPv6 address.
+ </p>
+ <p>Examples:</p>
+ <ul>
+   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
 </li>
 </ul>
 <a name="getICECandidatePairs--">
@@ -3612,7 +3606,7 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.13.2-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.14.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">

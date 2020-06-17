@@ -170,7 +170,7 @@ Our Sphinx-based project is hosted in the `doc-kurento`_ repository. Here, the m
 
 - **init-workdir**. This target constitutes the first step to be run before most other targets. Our documentation source files contain substitution keywords in some parts, in the form ``| KEYWORD |``, which is expected to be substituted by some actual value during the generation process. Currently, the only keyword in use is ``VERSION``, which must be expanded to the actual version of the documentation being built.
 
-  For example, here is the *VERSION_KMS* keyword when substituted with its final value: ``6.13.2``.
+  For example, here is the *VERSION_KMS* keyword when substituted with its final value: ``6.14.0``.
 
   Yes, Sphinx does already include a substitutions feature by itself, and the keyword ``VERSION`` is precisely one of the supported substitutions. Sadly, this feature of Sphinx is very unreliable. For example, it won't work if the keyword is located inside a literal code block, or inside an URL. So, we must resort to performing the substitutions by ourselves if we want reliable results.
 
@@ -196,6 +196,6 @@ In order to overcome this limitation, we opted for the simple solution of handli
 1. Read The Docs has been configured to watch for changes in the `doc-kurento-readthedocs`_ repo, instead of *doc-kurento*.
 2. The *init-workdir* and *langdoc* targets run locally from our *doc-kurento* repo.
 3. The resulting files from those targets are copied as-is to the *doc-kurento-readthedocs* repository.
-4. Everything is then committed and pushed to this later repo, thus triggering a new RTD build.
+4. Everything is then committed and pushed to this latter repo, thus triggering a new RTD build.
 
 .. _doc-kurento-readthedocs: https://github.com/Kurento/doc-kurento-readthedocs

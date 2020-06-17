@@ -517,7 +517,7 @@ file for managing this dependency is:
 
    "dependencies": {
       [...]
-      "kurento-client" : "6.13.0"
+      "kurento-client" : "6.14.0"
    }
 
 At the client side, dependencies are managed using :term:`Bower`. Take a look to
@@ -529,7 +529,7 @@ file and pay attention to the following section:
 
    "dependencies": {
       [...]
-      "kurento-utils" : "6.13.1"
+      "kurento-utils" : "6.14.0"
    }
 
 .. note::
