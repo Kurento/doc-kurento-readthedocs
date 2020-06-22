@@ -600,11 +600,11 @@ Zero-size video files
 
 If you are trying to generate a video recording, keep in mind that **the endpoint will wait until all tracks (audio, video) start arriving**.
 
-.. ifconfig:: "true" == "true"
+.. ifconfig:: "false" == "true"
 
    Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.14.0/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
-.. ifconfig:: "true" != "true"
+.. ifconfig:: "false" != "true"
 
    Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/latest/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
