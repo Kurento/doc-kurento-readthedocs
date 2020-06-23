@@ -4,38 +4,43 @@ Writing Kurento Modules
 
 .. contents:: Table of Contents
 
+
+
+Scaffolding and development
+===========================
+
 You can develop your own modules to expand the features of Kurento Media Server. There are two main flavors of Kurento modules:
 
 * Modules based on :term:`OpenCV`. These are recommended if you would like to add features such as **Computer Vision** or **Augmented Reality**.
 
 * Modules based on :term:`GStreamer`. This kind of modules provide a generic entry point for media processing within the GStreamer framework. Such modules are more powerful, but also they are more difficult to develop. It is necessary to have good knowledge of GStreamer development.
 
-The starting point to develop a filter is to create a basic structure for the source codem what we'll call the *scaffold*. This is done with the ``kurento-module-scaffold`` tool, which comes included in the ``kurento-media-server-dev`` package. To install it, run this command:
+The starting point to develop a filter is to create a basic structure for the source code, what we'll call the *scaffolding*. This is done with the ``kurento-module-scaffold`` tool, which comes included with the ``kurento-media-server-dev`` package. To install it, run this command:
 
-.. code-block:: text
+.. code-block:: console
 
    sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
        kurento-media-server-dev
 
-Now use the scaffold tool. For example:
+Now use the scaffold tool to generate code for your new module. For example:
 
 * For an OpenCV module:
 
-  .. code-block:: text
+  .. code-block:: console
 
      kurento-module-scaffold MyCvModule cv-module-dir true
 
 * For a GStreamer module:
 
-  .. code-block:: text
+  .. code-block:: console
 
      kurento-module-scaffold MyGstModule gst-module-dir
 
-The scaffolding tool generates the folder tree, all the needed *CMakeLists.txt* files to build with CMake, and example files of Kurento Module Descriptor files (.kmd); these files contain the description of the module, including its constructor, methods, properties, events, and the complex types defined by the developer.
+The scaffolding tool generates a complete folder tree, with all the needed *CMakeLists.txt* files to build with CMake. You'll also find empty Kurento Module Descriptor files (*.kmd*), which must contain a complete description of the module: constructor, methods, properties, events, and the complex types defined by the developer.
 
-Once your *KMD* files have been filled with all information, it is time to generate the corresponding server stub code with ``kurento-module-creator``. Run this from the root directory of your module:
+Once your *.kmd* files have been filled with a complete description of the module, it is time to generate the corresponding server stub code with ``kurento-module-creator``. Run this from the root directory of your module:
 
-.. code-block:: text
+.. code-block:: console
 
    mkdir build && cd build/
    cmake ..
@@ -46,7 +51,7 @@ The following sections detail how to create your module, depending on the filter
 
 
 OpenCV module
-=============
+-------------
 
 There are several files in ``src/server/implementation/objects/``:
 
@@ -64,7 +69,7 @@ The file ``<ModuleName>OpenCVImpl.cpp`` contains functions to deal with the meth
 
 
 GStreamer module
-================
+----------------
 
 In this case, these are the files that you'll find under ``src/``:
 
@@ -88,7 +93,7 @@ In the file ``<ModuleName>Impl.cpp`` you have to invoke the methods of your GStr
 
 
 For both kind of modules
-========================
+------------------------
 
 If you need extra compilation dependencies, you can add compilation rules to the *kurento-module-creator* using the function ``generate_code`` in the ``src/server/CMakeLists.txt`` file.
 
@@ -100,7 +105,7 @@ The following parameters are available:
 
 * ``MODELS`` (required)
 
-  This parameter receives the folders where the models (*KMD* files) are located.
+  This parameter receives the folders where the models (*.kmd* files) are located.
 
 * ``INTERFACE_LIB_EXTRA_SOURCES``, ``INTERFACE_LIB_EXTRA_HEADERS``, ``INTERFACE_LIB_EXTRA_INCLUDE_DIRS``, ``INTERFACE_LIB_EXTRA_LIBRARIES``
 
@@ -120,7 +125,7 @@ The following parameters are available:
 
   .. code-block:: text
 
-     ``libname[<VersionRange>]``
+     libname[<VersionRange>]
 
   where ``<VersionRange>`` can use these symbols: ``AND``, ``OR``, ``<``, ``<=``, ``>``, ``>=``, ``^``, and ``~``.
 
@@ -131,83 +136,147 @@ The following parameters are available:
 
 
 
-Using the module
-================
+Installation and usage
+======================
 
-Using the module comprises two sides of the same coin:
+Before being able to use your new module, its binary files must be installed to the host where Kurento Media Server is running. Using a module with Kurento comprises two sides of the same coin:
 
-1. Installing the module in the media server. This makes KMS know about the module and allows the server to use it when clients attempt to instantiate a new object that is exported by the module code.
+1. Install the module. This allows KMS to know about the module, and allows the media server to use it when clients attempt to instantiate a new object that is exported by the module code.
 
-2. Using the module from client applications. This is done by using client code that gets automatically-generated from the Kurento Module Descriptor files (.kmd).
+2. Use the module from client applications. Technically this step is optional, but unless your application directly implements the :doc:`Kurento Protocol </features/kurento_protocol>`, you will want to use the client-side module API. This is done by using client code that gets automatically generated from the Kurento Module Descriptor files (*.kmd*).
 
 
 
-Install with KMS
+Installation
+------------
+
+You can make your compiled module files in several different ways, depending on your preference:
+
+* Build the module into a Debian package file (*.deb*).
+
+  This is the easiest and most convenient method for end users of the module, as they will just have to perform a simple package installation on any system where KMS is already running. It doesn't require the user to know anything about plugin paths or how the module files must be laid out on disk.
+
+  To build a Debian package file, you can either use the **kurento-buildpackage** tool as described in :ref:`dev-packages`, or do it manually by installing and running the appropriate tools:
+
+  .. code-block:: console
+
+     # Install dpkg-buildpackage, the Debian package builder
+     sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
+         dpkg-dev
+
+     # Run dpkg-buildpackage to build Debian packages
+     dpkg-buildpackage -us -uc
+
+     # Copy the generated packages to their final destination
+     cp ../*.*deb /path/to/destination/
+
+  The Debian builder tool ends up generating one or more *.deb* package files **in the parent directory** from where it was called, together with some additional files that can be ignored. For example:
+
+  .. code-block:: console
+
+     $ ls -1 ../*.*deb
+     ../my-gst-module-dev_0.0.1~rc1_amd64.deb
+     ../my-gst-module_0.0.1~rc1_amd64.deb
+
+  Depending on the contents of the module project, the Debian package builder can generate multiple *.deb* files:
+
+  * The file without any suffix contains the shared library code that has been compiled from our source code. This is the file that end users of the module will need to install in their systems.
+  * ``-dev`` packages contain header files and are used by *other developers* to build their software upon the module's code. This is not needed by end users.
+  * ``-doc`` packages usually contain *manpages* and other documentation, if the module contained any.
+  * ``-dbg`` and ``-dbgsym`` packages contain the debug symbols that have been extracted from the compilation process. It can be used by other developers to troubleshoot crashes and provide bug reports.
+
+  Now copy and install the package(s) into any Debian- or Ubuntu-based system where KMS is already installed:
+
+  .. code-block:: console
+
+     sudo dpkg -i my-gst-module_0.0.1~rc1_amd64.deb
+
+  For more information about the process of creating Debian packages, check these resources:
+
+  * `Debian Building Tutorial <https://wiki.debian.org/BuildingTutorial>`__
+  * `Debian Policy Manual <https://www.debian.org/doc/debian-policy/index.html>`__
+
+* It is also possible to just copy the module's binary files, anywhere in the machine where KMS is installed. You can then define the following environment variables in the file ``/etc/default/kurento`` in order to instruct KMS about the place where the plugin files have been copied:
+
+  .. code-block:: console
+
+     KURENTO_MODULES_PATH+=" /path/to/module"
+     GST_PLUGIN_PATH+=" /path/to/module"
+
+  KMS will then add these paths to the path lookup it performs at startup, when looking for all available plugins.
+
+When you are ready, you should **verify the module installation**. Run KMS twice, with the ``--version`` and ``--list`` arguments. The former shows a list of all installed modules and their versions, while the latter prints a list of all the actual *MediaObject* Factories that can be invoked from the JSON-RPC API server. Your own module should show up in both lists:
+
+.. code-block:: console
+
+   $ /usr/bin/kurento-media-server --version
+   Kurento Media Server version: 6.12.0
+   Found modules:
+       'core' version 6.12.0
+       'elements' version 6.12.0
+       'filters' version 6.12.0
+       'mygstmodule' version 0.0.1~0.gd61e201
+
+   $ /usr/bin/kurento-media-server --list
+   Available factories:
+       [...]
+       MyGstModule
+       mygstmodule.MyGstModule
+
+
+
+Installation in Docker
+----------------------
+
+It is perfectly possible to install and use additional Kurento modules with Docker-based deployments of Kurento. To do so, it is possible to follow any of the installation methods described above, just instead of copying files to a host server, you would copy them into a Docker image or container.
+
+Our recommendation is to leverage the `FROM <https://docs.docker.com/engine/reference/builder/#from>`__ feature of *Dockerfiles*, to derive directly from a `Kurento Docker image <https://hub.docker.com/r/kurento/kurento-media-server>`__, and create your own fully customized image.
+
+A *Dockerfile* such as this one would be a good enough starting point:
+
+.. code-block:: docker
+
+   FROM kurento/kurento-media-server:latest
+   COPY my-gst-module_0.0.1~rc1_amd64.deb /
+   RUN dpkg -i /my-gst-module_0.0.1~rc1_amd64.deb
+
+Now build the new image:
+
+.. code-block:: console
+
+   $ docker build --tag kms-with-my-gst-module:latest .
+   Step 1/3 : FROM kurento/kurento-media-server:latest
+   Step 2/3 : COPY my-gst-module_0.0.1~rc1_amd64.deb /
+   Step 3/3 : RUN dpkg -i /my-gst-module_0.0.1~rc1_amd64.deb
+   Successfully built d10d3b4a8202
+   Successfully tagged kms-with-my-gst-module:latest
+
+And verify your module is correctly loaded by KMS:
+
+.. code-block:: console
+
+   $ docker run --rm kms-with-my-gst-module:latest --version
+   Kurento Media Server version: 6.12.0
+   Found modules:
+       'core' version 6.12.0
+       'elements' version 6.12.0
+       'filters' version 6.12.0
+       'mygstmodule' version 0.0.1~0.gd61e201
+
+   $ docker run --rm kms-with-my-gst-module:latest --list
+   Available factories:
+       [...]
+       MyGstModule
+       mygstmodule.MyGstModule
+
+
+
+Java client code
 ----------------
-
-Once the module logic is implemented and the compilation process is finished, you need to install your module before being able to use it from a Kurento Pipeline. There are a couple ways to do this:
-
-A. You can generate a Debian package, and then install it in the machine where KMS is running.
-
-   This is the easiest method for end users, because it is just a simple package installation over an already running system. It doesn't require the user to know anything about plugin paths.
-
-   To build a Debian package file (``.deb``), install and run the appropriate tools:
-
-   .. code-block:: text
-
-      # Install dpkg-buildpackage, the Debian package builder
-      sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
-          dpkg-dev
-
-      # Run dpkg-buildpackage to build Debian package files
-      dpkg-buildpackage -us -uc
-
-      # Copy the generated package files to their final destination
-      cp ../*.*deb /path/to/destination/
-
-   This will end up generating one or more Debian package files **in the parent directory**, together with some additional files that are specific to Debian and can be deleted. For example:
-
-   .. code-block:: text
-
-      ls -1 ../*.*deb
-      ../my-gst-module-dev_0.0.1~rc1_amd64.deb
-      ../my-gst-module_0.0.1~rc1_amd64.deb
-
-   It it important to understand the different packages that can be generated by the Debian package builder:
-
-   * The file without any suffix contains the shared library code that has been compiled from our source code. This is the file that end users of our module will need to install in their systems.
-   * ``-dev`` packages contain header files and are used by *other developers* to build their software upon our own code. This is unneeded by end users.
-   * ``-doc`` packages usually contain *manpages* and other documentation, if we wrote it for the package.
-   * ``-dbg`` and ``-dbgsym`` packages contain the debug symbols that have been extracted from the compilation of our module. It can be used by other developers to troubleshoot crashes and provide bug reports.
-
-   Now that we have our packages built, we just have to copy and install them into the target machine where KMS is already installed:
-
-   .. code-block:: text
-
-      sudo dpkg -i my-gst-module_0.0.1~rc1_amd64.deb
-
-   For more information about the Debian package creation process, check these resources:
-
-   * `Debian Building Tutorial <https://wiki.debian.org/BuildingTutorial>`__
-   * `Debian Policy Manual <https://www.debian.org/doc/debian-policy/index.html>`__
-
-B. It is also possible to build our module, and just copy the resulting binary artifacts. You can then define the following environment variables in the file ``/etc/default/kurento`` in order to instruct Kurento about the place where your plugin files are stored:
-
-   .. code-block:: text
-
-      KURENTO_MODULES_PATH+=" <ModulePath>/build/src"
-      GST_PLUGIN_PATH+=" <ModulePath>/build/src"
-
-   KMS will then add these paths to the path lookup it performs at startup, when looking for all available plugins.
-
-
-
-Generate client code: Java
---------------------------
 
 Run from the ``build/`` directory:
 
-.. code-block:: text
+.. code-block:: console
 
    cd build/
    cmake .. -DGENERATE_JAVA_CLIENT_PROJECT=TRUE
@@ -224,12 +293,12 @@ This generates a ``java/`` directory, containing all the client code. You can no
 
 
 
-Generate client code: JavaScript
---------------------------------
+JavaScript client code
+----------------------
 
 Run from the ``build/`` directory:
 
-.. code-block:: text
+.. code-block:: console
 
    cmake .. -DGENERATE_JS_CLIENT_PROJECT=TRUE
 
