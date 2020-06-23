@@ -42,7 +42,7 @@ Once your *.kmd* files have been filled with a complete description of the modul
 
 .. code-block:: console
 
-   mkdir build && cd build/
+   mkdir -p build/ && cd build/
    cmake ..
    make
 
@@ -150,62 +150,58 @@ Before being able to use your new module, its binary files must be installed to 
 Installing locally
 ------------------
 
-You can make your compiled module files in several different ways, depending on your preference:
+The recommended way to distribute a module is to build it into a Debian package file (*.deb*). This is the easiest and most convenient method for end users of the module, as they will just have to perform a simple package installation on any system where KMS is already running. Besides, this doesn't require the user to know anything about plugin paths or how the module files must be laid out on disk.
 
-* Build the module into a Debian package file (*.deb*).
+To build a Debian package file, you can either use the **kurento-buildpackage** tool as described in :ref:`dev-packages`, or do it manually by installing and running the appropriate tools:
 
-  This is the easiest and most convenient method for end users of the module, as they will just have to perform a simple package installation on any system where KMS is already running. It doesn't require the user to know anything about plugin paths or how the module files must be laid out on disk.
+.. code-block:: console
 
-  To build a Debian package file, you can either use the **kurento-buildpackage** tool as described in :ref:`dev-packages`, or do it manually by installing and running the appropriate tools:
+   # Install dpkg-buildpackage, the Debian package builder
+   sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
+       dpkg-dev
 
-  .. code-block:: console
+   # Run dpkg-buildpackage to build Debian packages
+   dpkg-buildpackage -us -uc
 
-     # Install dpkg-buildpackage, the Debian package builder
-     sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
-         dpkg-dev
+   # Copy the generated packages to their final destination
+   cp ../*.*deb /path/to/destination/
 
-     # Run dpkg-buildpackage to build Debian packages
-     dpkg-buildpackage -us -uc
+The Debian builder tool ends up generating one or more *.deb* package files **in the parent directory** from where it was called, together with some additional files that can be ignored. For example:
 
-     # Copy the generated packages to their final destination
-     cp ../*.*deb /path/to/destination/
+.. code-block:: console
 
-  The Debian builder tool ends up generating one or more *.deb* package files **in the parent directory** from where it was called, together with some additional files that can be ignored. For example:
+   $ ls -1 ../*.*deb
+   ../my-gst-module-dev_0.0.1~rc1_amd64.deb
+   ../my-gst-module_0.0.1~rc1_amd64.deb
 
-  .. code-block:: console
+Depending on the contents of the module project, the Debian package builder can generate multiple *.deb* files:
 
-     $ ls -1 ../*.*deb
-     ../my-gst-module-dev_0.0.1~rc1_amd64.deb
-     ../my-gst-module_0.0.1~rc1_amd64.deb
+* The file without any suffix contains the shared library code that has been compiled from our source code. This is the file that end users of the module will need to install in their systems.
+* ``-dev`` packages contain header files and are used by *other developers* to build their software upon the module's code. This is not needed by end users.
+* ``-doc`` packages usually contain *manpages* and other documentation, if the module contained any.
+* ``-dbg`` and ``-dbgsym`` packages contain the debug symbols that have been extracted from the compilation process. It can be used by other developers to troubleshoot crashes and provide bug reports.
 
-  Depending on the contents of the module project, the Debian package builder can generate multiple *.deb* files:
+Now copy and install the package(s) into any Debian- or Ubuntu-based system where KMS is already installed:
 
-  * The file without any suffix contains the shared library code that has been compiled from our source code. This is the file that end users of the module will need to install in their systems.
-  * ``-dev`` packages contain header files and are used by *other developers* to build their software upon the module's code. This is not needed by end users.
-  * ``-doc`` packages usually contain *manpages* and other documentation, if the module contained any.
-  * ``-dbg`` and ``-dbgsym`` packages contain the debug symbols that have been extracted from the compilation process. It can be used by other developers to troubleshoot crashes and provide bug reports.
+.. code-block:: console
 
-  Now copy and install the package(s) into any Debian- or Ubuntu-based system where KMS is already installed:
+   sudo dpkg -i my-gst-module_0.0.1~rc1_amd64.deb
 
-  .. code-block:: console
+For more information about the process of creating Debian packages, check these resources:
 
-     sudo dpkg -i my-gst-module_0.0.1~rc1_amd64.deb
+* `Debian Building Tutorial <https://wiki.debian.org/BuildingTutorial>`__
+* `Debian Policy Manual <https://www.debian.org/doc/debian-policy/index.html>`__
 
-  For more information about the process of creating Debian packages, check these resources:
+**Alternatively**, it is also possible to just build the module and manually copy its binary files to the destination system. You can then define the following environment variables in the file ``/etc/default/kurento``, to instruct KMS about where the plugin files have been copied:
 
-  * `Debian Building Tutorial <https://wiki.debian.org/BuildingTutorial>`__
-  * `Debian Policy Manual <https://www.debian.org/doc/debian-policy/index.html>`__
+.. code-block:: console
 
-* It is also possible to just copy the module's binary files, anywhere in the machine where KMS is installed. You can then define the following environment variables in the file ``/etc/default/kurento`` in order to instruct KMS about the place where the plugin files have been copied:
+   KURENTO_MODULES_PATH+=" /path/to/module"
+   GST_PLUGIN_PATH+=" /path/to/module"
 
-  .. code-block:: console
+KMS will then add these paths to the path lookup it performs at startup, when looking for all available plugins.
 
-     KURENTO_MODULES_PATH+=" /path/to/module"
-     GST_PLUGIN_PATH+=" /path/to/module"
-
-  KMS will then add these paths to the path lookup it performs at startup, when looking for all available plugins.
-
-When you are ready, you should **verify the module installation**. Run KMS twice, with the ``--version`` and ``--list`` arguments. The former shows a list of all installed modules and their versions, while the latter prints a list of all the actual *MediaObject* Factories that can be invoked from the JSON-RPC API server. Your own module should show up in both lists:
+When ready, you should **verify the module installation**. Run KMS twice, with the ``--version`` and ``--list`` arguments. The former shows a list of all installed modules and their versions, while the latter prints a list of all the actual *MediaObject* Factories that clients can invoke with the JSON-RPC API. Your own module should show up in both lists:
 
 .. code-block:: console
 
@@ -228,7 +224,7 @@ When you are ready, you should **verify the module installation**. Run KMS twice
 Installing in Docker
 --------------------
 
-It is perfectly possible to install and use additional Kurento modules with Docker-based deployments of Kurento. To do so, first follow any of the installation methods described above, but then instead of copying files to a host server you would add them into a Docker image or container.
+It is perfectly possible to install and use additional Kurento modules with Docker-based deployments of Kurento Media Server. To do so, first follow any of the installation methods described above, but then instead of copying files to a host server you would add them into a Docker image or container.
 
 Our recommendation is to leverage the `FROM <https://docs.docker.com/engine/reference/builder/#from>`__ feature of *Dockerfiles*, to derive directly from a `Kurento Docker image <https://hub.docker.com/r/kurento/kurento-media-server>`__, and create your own fully customized image.
 
@@ -274,14 +270,14 @@ And verify your module is correctly loaded by KMS:
 Java client code
 ----------------
 
-Run from the ``build/`` directory:
+Run this from the root directory of your module:
 
 .. code-block:: console
 
-   cd build/
+   mkdir -p build/ && cd build/
    cmake .. -DGENERATE_JAVA_CLIENT_PROJECT=TRUE
 
-This generates a ``java/`` directory, containing all the client code. You can now run ``make java_install`` and your module will be installed in your Maven local repository. To use the module in your Maven project, you have to add the dependency to the ``pom.xml`` file:
+This generates a ``build/java/`` directory, containing all the client code. You can now run ``make java_install`` and your module will be installed in your Maven local repository. To use the module in your Maven project, you have to add the dependency to the ``pom.xml`` file:
 
 .. code-block:: xml
 
@@ -296,15 +292,16 @@ This generates a ``java/`` directory, containing all the client code. You can no
 JavaScript client code
 ----------------------
 
-Run from the ``build/`` directory:
+Run this from the root directory of your module:
 
 .. code-block:: console
 
+   mkdir -p build/ && cd build/
    cmake .. -DGENERATE_JS_CLIENT_PROJECT=TRUE
 
-This generates a ``java/`` directory, containing all the client code. You can now manually copy this code to your application. Alternatively, you can use :term:`Bower` (for *Browser JavaScript*) or :term:`NPM` (for *Node*). To do that, you should add your JavaScript module as a dependency in your *bower.json* or *package.json* file, respectively:
+This generates a ``build/js/`` directory, containing all the client code. You can now manually copy this code to your application. Alternatively, you can use :term:`Bower` (for *Browser JavaScript*) or :term:`NPM` (for *Node*). To do that, you should add your JavaScript module as a dependency in your *bower.json* or *package.json* file, respectively:
 
-.. code-block:: js
+.. code-block:: json-object
 
    "dependencies": {
      "modulename": "0.0.1"
