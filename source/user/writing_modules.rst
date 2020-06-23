@@ -147,8 +147,8 @@ Before being able to use your new module, its binary files must be installed to 
 
 
 
-Installation
-------------
+Installing locally
+------------------
 
 You can make your compiled module files in several different ways, depending on your preference:
 
@@ -225,10 +225,10 @@ When you are ready, you should **verify the module installation**. Run KMS twice
 
 
 
-Installation in Docker
-----------------------
+Installing in Docker
+--------------------
 
-It is perfectly possible to install and use additional Kurento modules with Docker-based deployments of Kurento. To do so, it is possible to follow any of the installation methods described above, just instead of copying files to a host server, you would copy them into a Docker image or container.
+It is perfectly possible to install and use additional Kurento modules with Docker-based deployments of Kurento. To do so, first follow any of the installation methods described above, but then instead of copying files to a host server you would add them into a Docker image or container.
 
 Our recommendation is to leverage the `FROM <https://docs.docker.com/engine/reference/builder/#from>`__ feature of *Dockerfiles*, to derive directly from a `Kurento Docker image <https://hub.docker.com/r/kurento/kurento-media-server>`__, and create your own fully customized image.
 
