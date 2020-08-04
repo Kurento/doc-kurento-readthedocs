@@ -31,10 +31,11 @@
         <h2><span class="attribs"><span class="type-signature"></span></span>
             <span class="ancestors"><a href="module-elements.html">elements</a>.</span>RecorderEndpoint<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Provides the functionality to store contents.
+            <div class="class-description">Provides functionality to store media contents.
  <p>
-   The Recorder can store media in local files or in a network resource. It
-   receives a media stream from another <a href="module-core_abstracts.MediaElement.html">MediaElement</a> (i.e. the
+   The RecorderEndpoint can store media in local files or in a network 
+   resource.
+   It receives a media stream from another <a href="module-core_abstracts.MediaElement.html">MediaElement</a> (i.e. the
    source), and stores it in the designated location.
  </p>
  <p>
@@ -54,7 +55,10 @@
          </ul>
        </li>
        <li>
-         HTTP: Method PUT used against a remote server.
+         HTTP: A POST request will be used against a remote server. The 
+         server
+         must support using the <i>chunked</i> encoding mode (HTTP header
+         <code>Transfer-Encoding: chunked</code>).
          <ul>
            <li><code>http(s)://{server-ip}/path/to/file</code></li>
            <li>
@@ -106,7 +110,8 @@
    </li>
    <li>
      To save into an HTTP server, the server must be accessible through the
-     network, and also have the correct access rights.
+     network, and also have the correct access rights to the destination 
+     path.
    </li>
  </ul>
  <p>
@@ -549,7 +554,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line338">line 338</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line343">line 343</a>
     </li></ul></dd>
     
 
@@ -607,7 +612,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line358">line 358</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line363">line 363</a>
     </li></ul></dd>
     
 
@@ -748,7 +753,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line257">line 257</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line262">line 262</a>
     </li></ul></dd>
     
 
@@ -915,7 +920,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line288">line 288</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line293">line 293</a>
     </li></ul></dd>
     
 
@@ -4575,7 +4580,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line274">line 274</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line279">line 279</a>
     </li></ul></dd>
     
 
@@ -4708,7 +4713,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line305">line 305</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line310">line 310</a>
     </li></ul></dd>
     
 
@@ -4758,7 +4763,7 @@ function.</li></ul></dd>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a>
 </footer>
 
 <script> prettyPrint(); </script>

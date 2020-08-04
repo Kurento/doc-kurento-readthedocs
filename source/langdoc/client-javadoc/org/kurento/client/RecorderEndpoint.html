@@ -107,10 +107,10 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public interface <span class="typeNameLabel">RecorderEndpoint</span>
 extends <a href="../../../org/kurento/client/UriEndpoint.html" title="interface in org.kurento.client">UriEndpoint</a></pre>
-<div class="block">Provides the functionality to store contents.
+<div class="block">Provides functionality to store media contents.
  <p>
-   The Recorder can store media in local files or in a network resource. It
-   receives a media stream from another <code>MediaElement</code> (i.e. the
+   The RecorderEndpoint can store media in local files or in a network resource.
+   It receives a media stream from another <code>MediaElement</code> (i.e. the
    source), and stores it in the designated location.
  </p>
  <p>
@@ -129,7 +129,9 @@ extends <a href="../../../org/kurento/client/UriEndpoint.html" title="interface 
          </ul>
        </li>
        <li>
-         HTTP: Method PUT used against a remote server.
+         HTTP: A POST request will be used against a remote server. The server
+         must support using the <i>chunked</i> encoding mode (HTTP header
+         <code>Transfer-Encoding: chunked</code>).
          <ul>
            <li><code>http(s)://{server-ip}/path/to/file</code></li>
            <li>
@@ -176,7 +178,7 @@ extends <a href="../../../org/kurento/client/UriEndpoint.html" title="interface 
    </li>
    <li>
      To save into an HTTP server, the server must be accessible through the
-     network, and also have the correct access rights.
+     network, and also have the correct access rights to the destination path.
    </li>
  </ul>
  <p>
