@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6,"i27":6,"i28":6,"i29":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -111,9 +111,8 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public interface <span class="typeNameLabel">SdpEndpoint</span>
 extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interface in org.kurento.client">SessionEndpoint</a></pre>
-<div class="block">Interface implemented by Endpoints that require an SDP negotiation for the setup
- of a networked media session with remote peers.
- <p>The API provides the following functionality:</p>
+<div class="block">Interface implemented by Endpoints that require an SDP Offer/Answer negotiation in order to configure a media session.
+ <p>Functionality provided by this API:</p>
  <ul>
    <li>Generate SDP offers.</li>
    <li>Process SDP offers.</li>
@@ -152,18 +151,40 @@ extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interf
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#generateOffer-org.kurento.client.OfferOptions-">generateOffer</a></span>(<a href="../../../org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a>&nbsp;options)</code>
+<div class="block">Generates an SDP offer with media capabilities of the Endpoint.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#generateOffer-org.kurento.client.OfferOptions-org.kurento.client.Continuation-">generateOffer</a></span>(<a href="../../../org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a>&nbsp;options,
+             <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
+<div class="block">Asynchronous version of generateOffer:
+ <a href="../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#generateOffer-org.kurento.client.Transaction-">generateOffer</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Generates an SDP offer with media capabilities of the Endpoint.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#generateOffer-org.kurento.client.Transaction-org.kurento.client.OfferOptions-">generateOffer</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
+             <a href="../../../org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a>&nbsp;options)</code>
+<div class="block">Generates an SDP offer with media capabilities of the Endpoint.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getLocalSessionDescriptor--">getLocalSessionDescriptor</a></span>()</code>
 <div class="block">Returns the local SDP.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getLocalSessionDescriptor-org.kurento.client.Continuation-">getLocalSessionDescriptor</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getLocalSessionDescriptor:
@@ -171,55 +192,55 @@ extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interf
  done.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getLocalSessionDescriptor-org.kurento.client.Transaction-">getLocalSessionDescriptor</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Returns the local SDP.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getMaxAudioRecvBandwidth--">getMaxAudioRecvBandwidth</a></span>()</code>
 <div class="block">Get Maximum bitrate expected for the received audio stream.</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getMaxAudioRecvBandwidth-org.kurento.client.Continuation-">getMaxAudioRecvBandwidth</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Maximum bitrate expected for the received audio stream.</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getMaxAudioRecvBandwidth-org.kurento.client.Transaction-">getMaxAudioRecvBandwidth</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get Maximum bitrate expected for the received audio stream.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getMaxVideoRecvBandwidth--">getMaxVideoRecvBandwidth</a></span>()</code>
 <div class="block">Get Maximum bitrate expected for the received video stream.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getMaxVideoRecvBandwidth-org.kurento.client.Continuation-">getMaxVideoRecvBandwidth</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Maximum bitrate expected for the received video stream.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getMaxVideoRecvBandwidth-org.kurento.client.Transaction-">getMaxVideoRecvBandwidth</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get Maximum bitrate expected for the received video stream.</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getRemoteSessionDescriptor--">getRemoteSessionDescriptor</a></span>()</code>
 <div class="block">This method returns the remote SDP.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getRemoteSessionDescriptor-org.kurento.client.Continuation-">getRemoteSessionDescriptor</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getRemoteSessionDescriptor:
@@ -227,19 +248,19 @@ extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interf
  done.</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#getRemoteSessionDescriptor-org.kurento.client.Transaction-">getRemoteSessionDescriptor</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">This method returns the remote SDP.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#processAnswer-java.lang.String-">processAnswer</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;answer)</code>
 <div class="block">Generates an SDP offer with media capabilities of the Endpoint.</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#processAnswer-java.lang.String-org.kurento.client.Continuation-">processAnswer</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;answer,
              <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
@@ -248,20 +269,20 @@ extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interf
  done.</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#processAnswer-org.kurento.client.Transaction-java.lang.String-">processAnswer</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
              <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;answer)</code>
 <div class="block">Generates an SDP offer with media capabilities of the Endpoint.</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#processOffer-java.lang.String-">processOffer</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;offer)</code>
 <div class="block">Processes SDP offer of the remote peer, and generates an SDP answer based on the endpoint's capabilities.</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#processOffer-java.lang.String-org.kurento.client.Continuation-">processOffer</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;offer,
             <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
@@ -270,47 +291,47 @@ extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interf
  done.</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#processOffer-org.kurento.client.Transaction-java.lang.String-">processOffer</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
             <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;offer)</code>
 <div class="block">Processes SDP offer of the remote peer, and generates an SDP answer based on the endpoint's capabilities.</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#setMaxAudioRecvBandwidth-int-">setMaxAudioRecvBandwidth</a></span>(int&nbsp;maxAudioRecvBandwidth)</code>
 <div class="block">Set Maximum bitrate expected for the received audio stream.</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#setMaxAudioRecvBandwidth-int-org.kurento.client.Continuation-">setMaxAudioRecvBandwidth</a></span>(int&nbsp;maxAudioRecvBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Set Maximum bitrate expected for the received audio stream.</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#setMaxAudioRecvBandwidth-int-org.kurento.client.Transaction-">setMaxAudioRecvBandwidth</a></span>(int&nbsp;maxAudioRecvBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Set Maximum bitrate expected for the received audio stream.</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#setMaxVideoRecvBandwidth-int-">setMaxVideoRecvBandwidth</a></span>(int&nbsp;maxVideoRecvBandwidth)</code>
 <div class="block">Set Maximum bitrate expected for the received video stream.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#setMaxVideoRecvBandwidth-int-org.kurento.client.Continuation-">setMaxVideoRecvBandwidth</a></span>(int&nbsp;maxVideoRecvBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Set Maximum bitrate expected for the received video stream.</div>
 </td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/SdpEndpoint.html#setMaxVideoRecvBandwidth-int-org.kurento.client.Transaction-">setMaxVideoRecvBandwidth</a></span>(int&nbsp;maxVideoRecvBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
@@ -640,13 +661,13 @@ extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interf
  </ul></div>
 </li>
 </ul>
-<a name="generateOffer--">
+<a name="generateOffer-org.kurento.client.OfferOptions-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>generateOffer</h4>
-<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;generateOffer()</pre>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;generateOffer(<a href="../../../org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a>&nbsp;options)</pre>
 <div class="block">Generates an SDP offer with media capabilities of the Endpoint.
  Throws:
  <ul>
@@ -659,34 +680,40 @@ extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interf
    </li>
  </ul></div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>options</code> - An <code>OfferOptions</code> providing options requested for the offer.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The SDP offer. *</dd>
 </dl>
 </li>
 </ul>
-<a name="generateOffer-org.kurento.client.Continuation-">
+<a name="generateOffer-org.kurento.client.OfferOptions-org.kurento.client.Continuation-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>generateOffer</h4>
-<pre>void&nbsp;generateOffer(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
+<pre>void&nbsp;generateOffer(<a href="../../../org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a>&nbsp;options,
+                   <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
 <div class="block">Asynchronous version of generateOffer:
  <a href="../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>Continuation.onSuccess(F)</code></a> is called when the action is
  done. If an error occurs, <a href="../../../org/kurento/client/Continuation.html#onError-java.lang.Throwable-"><code>Continuation.onError(java.lang.Throwable)</code></a> is called.</div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>options</code> - An <code>OfferOptions</code> providing options requested for the offer.</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../org/kurento/client/SdpEndpoint.html#generateOffer--"><code>generateOffer()</code></a></dd>
+<dd><a href="../../../org/kurento/client/SdpEndpoint.html#generateOffer-org.kurento.client.OfferOptions-"><code>generateOffer(org.kurento.client.OfferOptions)</code></a></dd>
 </dl>
 </li>
 </ul>
-<a name="generateOffer-org.kurento.client.Transaction-">
+<a name="generateOffer-org.kurento.client.Transaction-org.kurento.client.OfferOptions-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>generateOffer</h4>
-<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;generateOffer(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;generateOffer(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
+                              <a href="../../../org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a>&nbsp;options)</pre>
 <div class="block">Generates an SDP offer with media capabilities of the Endpoint.
  Throws:
  <ul>
@@ -699,6 +726,8 @@ extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interf
    </li>
  </ul></div>
 <dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>options</code> - An <code>OfferOptions</code> providing options requested for the offer.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The SDP offer. *</dd>
 </dl>
@@ -974,7 +1003,7 @@ extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interf
 <a name="getRemoteSessionDescriptor-org.kurento.client.Transaction-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getRemoteSessionDescriptor</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getRemoteSessionDescriptor(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
@@ -983,6 +1012,70 @@ extends <a href="../../../org/kurento/client/SessionEndpoint.html" title="interf
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The last agreed User Agent session description. *</dd>
+</dl>
+</li>
+</ul>
+<a name="generateOffer--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>generateOffer</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;generateOffer()</pre>
+<div class="block">Generates an SDP offer with media capabilities of the Endpoint.
+ Throws:
+ <ul>
+   <li>
+     SDP_END_POINT_ALREADY_NEGOTIATED If the endpoint is already negotiated.
+   </li>
+   <li>
+     SDP_END_POINT_GENERATE_OFFER_ERROR if the generated offer is empty. This is
+     most likely due to an internal error.
+   </li>
+ </ul></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The SDP offer. *</dd>
+</dl>
+</li>
+</ul>
+<a name="generateOffer-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>generateOffer</h4>
+<pre>void&nbsp;generateOffer(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
+<div class="block">Asynchronous version of generateOffer:
+ <a href="../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done. If an error occurs, <a href="../../../org/kurento/client/Continuation.html#onError-java.lang.Throwable-"><code>Continuation.onError(java.lang.Throwable)</code></a> is called.</div>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../org/kurento/client/SdpEndpoint.html#generateOffer-org.kurento.client.OfferOptions-"><code>generateOffer(org.kurento.client.OfferOptions)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="generateOffer-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>generateOffer</h4>
+<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;generateOffer(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Generates an SDP offer with media capabilities of the Endpoint.
+ Throws:
+ <ul>
+   <li>
+     SDP_END_POINT_ALREADY_NEGOTIATED If the endpoint is already negotiated.
+   </li>
+   <li>
+     SDP_END_POINT_GENERATE_OFFER_ERROR if the generated offer is empty. This is
+     most likely due to an internal error.
+   </li>
+ </ul></div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The SDP offer. *</dd>
 </dl>
 </li>
 </ul>

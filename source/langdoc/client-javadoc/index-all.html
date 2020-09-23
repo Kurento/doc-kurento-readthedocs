@@ -1022,6 +1022,20 @@
 <dd>
 <div class="block">Start the gathering of ICE candidates.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#generateOffer-org.kurento.client.OfferOptions-">generateOffer(OfferOptions)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
+<dd>
+<div class="block">Generates an SDP offer with media capabilities of the Endpoint.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#generateOffer-org.kurento.client.OfferOptions-org.kurento.client.Continuation-">generateOffer(OfferOptions, Continuation&lt;String&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
+<dd>
+<div class="block">Asynchronous version of generateOffer:
+ <a href="org/kurento/client/Continuation.html#onSuccess-F-"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#generateOffer-org.kurento.client.Transaction-org.kurento.client.OfferOptions-">generateOffer(Transaction, OfferOptions)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
+<dd>
+<div class="block">Generates an SDP offer with media capabilities of the Endpoint.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#generateOffer--">generateOffer()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
 <div class="block">Generates an SDP offer with media capabilities of the Endpoint.</div>
@@ -1964,6 +1978,14 @@
 <dt><span class="memberNameLink"><a href="org/kurento/client/ObjectDestroyedEvent.html#getObjectId--">getObjectId()</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/ObjectDestroyedEvent.html" title="class in org.kurento.client">ObjectDestroyedEvent</a></dt>
 <dd>
 <div class="block">Getter for the objectId property</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/OfferOptions.html#getOfferToReceiveAudio--">getOfferToReceiveAudio()</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a></dt>
+<dd>
+<div class="block">get Whether or not to offer to the remote peer the opportunity to send audio.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/OfferOptions.html#getOfferToReceiveVideo--">getOfferToReceiveVideo()</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a></dt>
+<dd>
+<div class="block">get Whether or not to offer to the remote peer the opportunity to send video.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/ConnectionStateChangedEvent.html#getOldState--">getOldState()</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/ConnectionStateChangedEvent.html" title="class in org.kurento.client">ConnectionStateChangedEvent</a></dt>
 <dd>
@@ -3061,6 +3083,14 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/Properties.html#of-java.lang.Object...-">of(Object...)</a></span> - Static method in class org.kurento.client.<a href="org/kurento/client/Properties.html" title="class in org.kurento.client">Properties</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/kurento/client/OfferOptions.html" title="class in org.kurento.client"><span class="typeNameLink">OfferOptions</span></a> - Class in <a href="org/kurento/client/package-summary.html">org.kurento.client</a></dt>
+<dd>
+<div class="block">Used to customize the offer created by <code>SdpEndpoint.generateOffer</code>.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/OfferOptions.html#OfferOptions--">OfferOptions()</a></span> - Constructor for class org.kurento.client.<a href="org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a></dt>
+<dd>
+<div class="block">Create a OfferOptions</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/KurentoClientBuilder.html#onConnected-org.kurento.client.Handler-">onConnected(Handler)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/KurentoClientBuilder.html" title="class in org.kurento.client">KurentoClientBuilder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/KurentoClientBuilder.html#onConnectionFailed-org.kurento.client.Handler-">onConnectionFailed(Handler)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/KurentoClientBuilder.html" title="class in org.kurento.client">KurentoClientBuilder</a></dt>
@@ -3792,8 +3822,7 @@
 </dd>
 <dt><a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client"><span class="typeNameLink">SdpEndpoint</span></a> - Interface in <a href="org/kurento/client/package-summary.html">org.kurento.client</a></dt>
 <dd>
-<div class="block">Interface implemented by Endpoints that require an SDP negotiation for the setup
- of a networked media session with remote peers.</div>
+<div class="block">Interface implemented by Endpoints that require an SDP Offer/Answer negotiation in order to configure a media session.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/KurentoClient.html#sendJsonRpcRequest-org.kurento.jsonrpc.message.Request-">sendJsonRpcRequest(Request&lt;JsonObject&gt;)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/KurentoClient.html" title="class in org.kurento.client">KurentoClient</a></dt>
 <dd>&nbsp;</dd>
@@ -4483,6 +4512,14 @@
 <dt><span class="memberNameLink"><a href="org/kurento/client/ObjectDestroyedEvent.html#setObjectId-java.lang.String-">setObjectId(String)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/ObjectDestroyedEvent.html" title="class in org.kurento.client">ObjectDestroyedEvent</a></dt>
 <dd>
 <div class="block">Setter for the objectId property</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/OfferOptions.html#setOfferToReceiveAudio-java.lang.Boolean-">setOfferToReceiveAudio(Boolean)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a></dt>
+<dd>
+<div class="block">set Whether or not to offer to the remote peer the opportunity to send audio.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/OfferOptions.html#setOfferToReceiveVideo-java.lang.Boolean-">setOfferToReceiveVideo(Boolean)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/OfferOptions.html" title="class in org.kurento.client">OfferOptions</a></dt>
+<dd>
+<div class="block">set Whether or not to offer to the remote peer the opportunity to send video.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/ConnectionStateChangedEvent.html#setOldState-org.kurento.client.ConnectionState-">setOldState(ConnectionState)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/ConnectionStateChangedEvent.html" title="class in org.kurento.client">ConnectionStateChangedEvent</a></dt>
 <dd>
