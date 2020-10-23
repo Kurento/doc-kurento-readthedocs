@@ -731,7 +731,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1230">line 1230</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1470">line 1470</a>
     </li></ul></dd>
     
 
@@ -789,7 +789,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1250">line 1250</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1490">line 1490</a>
     </li></ul></dd>
     
 
@@ -961,7 +961,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1000">line 1000</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1240">line 1240</a>
     </li></ul></dd>
     
 
@@ -1159,7 +1159,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1034">line 1034</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1274">line 1274</a>
     </li></ul></dd>
     
 
@@ -1526,7 +1526,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1115">line 1115</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1355">line 1355</a>
     </li></ul></dd>
     
 
@@ -1700,7 +1700,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1188">line 1188</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1428">line 1428</a>
     </li></ul></dd>
     
 
@@ -2458,28 +2458,30 @@
 <div class="description">
     External IP address of the media server.
 <p>
-  This setting is normally NOT needed. Only use it if you know what you're
-  doing, and understand 100% WHY you want it. For the majority of cases, you
-  should prefer configuring STUN or TURN servers over using this setting.
-</p>
-<p>
-  This setting implements a hack that will mangle all local ICE candidates so
-  that their candidate address is replaced with the provided external 
-  address,
-  even for candidates of type 'host'. In doing so, this KMS will not need a
-  STUN or TURN server, but remote peers will still be able to contact it.
+  Forces all local IPv4 and IPv6 ICE candidates to have the given address. 
+  This
+  is really nothing more than a hack, but it's very effective to force a 
+  public
+  IP address when one is known in advance for the media server. In doing so, 
+  KMS
+  will not need a STUN or TURN server, but remote peers will still be able to
+  contact it.
 </p>
 <p>
   You can try using this setting if KMS is deployed on a publicly accessible
   server, without NAT, and with a static public IP address. But if it doesn't
-  work for you, just go back to using the STUN or TURN settings above.
+  work for you, just go back to configuring a STUN or TURN server for ICE.
 </p>
 <p>
-  <code>externalAddress</code> is an IPv4 or IPv6 address.
+  Only set this parameter if you know what you're doing, and you understand 
+  100%
+  WHY you need it. For the majority of cases, you should just prefer to
+  configure a STUN or TURN server.
 </p>
+<p><code>externalAddress</code> is a single IPv4 or IPv6 address.</p>
 <p>Examples:</p>
 <ul>
-  <li><code>externalAddress=10.70.35.2</code></li>
+  <li><code>externalAddress=198.51.100.1</code></li>
   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
 </ul>
 </div>
@@ -2574,6 +2576,9 @@
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use <code>externalIPv4</code> and/or <code>externalIPv6</code> 
+instead.</li></ul></dd>
+    
 
     
 
@@ -2586,7 +2591,393 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line430">line 430</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line434">line 434</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getExternalIPv4"><span class="type-signature"></span>getExternalIPv4<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    External IPv4 address of the media server.
+<p>
+  Forces all local IPv4 ICE candidates to have the given address. This is 
+  really
+  nothing more than a hack, but it's very effective to force a public IP 
+  address
+  when one is known in advance for the media server. In doing so, KMS will 
+  not
+  need a STUN or TURN server, but remote peers will still be able to contact 
+  it.
+</p>
+<p>
+  You can try using this setting if KMS is deployed on a publicly accessible
+  server, without NAT, and with a static public IP address. But if it doesn't
+  work for you, just go back to configuring a STUN or TURN server for ICE.
+</p>
+<p>
+  Only set this parameter if you know what you're doing, and you understand 
+  100%
+  WHY you need it. For the majority of cases, you should just prefer to
+  configure a STUN or TURN server.
+</p>
+<p><code>externalIPv4</code> is a single IPv4 address.</p>
+<p>Example:</p>
+<ul>
+  <li><code>externalIPv4=198.51.100.1</code></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-elements.WebRtcEndpoint.html#~getExternalIPv4Callback">module:elements.WebRtcEndpoint~getExternalIPv4Callback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line553">line 553</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getExternalIPv6"><span class="type-signature"></span>getExternalIPv6<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    External IPv6 address of the media server.
+<p>
+  Forces all local IPv6 ICE candidates to have the given address. This is 
+  really
+  nothing more than a hack, but it's very effective to force a public IP 
+  address
+  when one is known in advance for the media server. In doing so, KMS will 
+  not
+  need a STUN or TURN server, but remote peers will still be able to contact 
+  it.
+</p>
+<p>
+  You can try using this setting if KMS is deployed on a publicly accessible
+  server, without NAT, and with a static public IP address. But if it doesn't
+  work for you, just go back to configuring a STUN or TURN server for ICE.
+</p>
+<p>
+  Only set this parameter if you know what you're doing, and you understand 
+  100%
+  WHY you need it. For the majority of cases, you should just prefer to
+  configure a STUN or TURN server.
+</p>
+<p><code>externalIPv6</code> is a single IPv6 address.</p>
+<p>Example:</p>
+<ul>
+  <li><code>externalIPv6=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-elements.WebRtcEndpoint.html#~getExternalIPv6Callback">module:elements.WebRtcEndpoint~getExternalIPv6Callback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line669">line 669</a>
     </li></ul></dd>
     
 
@@ -2754,7 +3145,7 @@ for each stream.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line520">line 520</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line760">line 760</a>
     </li></ul></dd>
     
 
@@ -2921,7 +3312,7 @@ for each stream.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line552">line 552</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line792">line 792</a>
     </li></ul></dd>
     
 
@@ -5541,7 +5932,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line616">line 616</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line856">line 856</a>
     </li></ul></dd>
     
 
@@ -6242,7 +6633,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line725">line 725</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line965">line 965</a>
     </li></ul></dd>
     
 
@@ -6409,7 +6800,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line802">line 802</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1042">line 1042</a>
     </li></ul></dd>
     
 
@@ -6607,7 +6998,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line897">line 897</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1137">line 1137</a>
     </li></ul></dd>
     
 
@@ -6671,28 +7062,30 @@ function.</li></ul></dd>
 <div class="description">
     External IP address of the media server.
 <p>
-  This setting is normally NOT needed. Only use it if you know what you're
-  doing, and understand 100% WHY you want it. For the majority of cases, you
-  should prefer configuring STUN or TURN servers over using this setting.
-</p>
-<p>
-  This setting implements a hack that will mangle all local ICE candidates so
-  that their candidate address is replaced with the provided external 
-  address,
-  even for candidates of type 'host'. In doing so, this KMS will not need a
-  STUN or TURN server, but remote peers will still be able to contact it.
+  Forces all local IPv4 and IPv6 ICE candidates to have the given address. 
+  This
+  is really nothing more than a hack, but it's very effective to force a 
+  public
+  IP address when one is known in advance for the media server. In doing so, 
+  KMS
+  will not need a STUN or TURN server, but remote peers will still be able to
+  contact it.
 </p>
 <p>
   You can try using this setting if KMS is deployed on a publicly accessible
   server, without NAT, and with a static public IP address. But if it doesn't
-  work for you, just go back to using the STUN or TURN settings above.
+  work for you, just go back to configuring a STUN or TURN server for ICE.
 </p>
 <p>
-  <code>externalAddress</code> is an IPv4 or IPv6 address.
+  Only set this parameter if you know what you're doing, and you understand 
+  100%
+  WHY you need it. For the majority of cases, you should just prefer to
+  configure a STUN or TURN server.
 </p>
+<p><code>externalAddress</code> is a single IPv4 or IPv6 address.</p>
 <p>Examples:</p>
 <ul>
-  <li><code>externalAddress=10.70.35.2</code></li>
+  <li><code>externalAddress=198.51.100.1</code></li>
   <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
 </ul>
 </div>
@@ -6818,6 +7211,9 @@ function.</li></ul></dd>
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use <code>externalIPv4</code> and/or <code>externalIPv6</code> 
+instead.</li></ul></dd>
+    
 
     
 
@@ -6830,7 +7226,455 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line488">line 488</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line496">line 496</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setExternalIPv4"><span class="type-signature"></span>setExternalIPv4<span class="signature">(externalIPv4, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    External IPv4 address of the media server.
+<p>
+  Forces all local IPv4 ICE candidates to have the given address. This is 
+  really
+  nothing more than a hack, but it's very effective to force a public IP 
+  address
+  when one is known in advance for the media server. In doing so, KMS will 
+  not
+  need a STUN or TURN server, but remote peers will still be able to contact 
+  it.
+</p>
+<p>
+  You can try using this setting if KMS is deployed on a publicly accessible
+  server, without NAT, and with a static public IP address. But if it doesn't
+  work for you, just go back to configuring a STUN or TURN server for ICE.
+</p>
+<p>
+  Only set this parameter if you know what you're doing, and you understand 
+  100%
+  WHY you need it. For the majority of cases, you should just prefer to
+  configure a STUN or TURN server.
+</p>
+<p><code>externalIPv4</code> is a single IPv4 address.</p>
+<p>Example:</p>
+<ul>
+  <li><code>externalIPv4=198.51.100.1</code></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>externalIPv4</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-String.html">external:String</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-elements.WebRtcEndpoint.html#~setExternalIPv4Callback">module:elements.WebRtcEndpoint~setExternalIPv4Callback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line612">line 612</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setExternalIPv6"><span class="type-signature"></span>setExternalIPv6<span class="signature">(externalIPv6, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    External IPv6 address of the media server.
+<p>
+  Forces all local IPv6 ICE candidates to have the given address. This is 
+  really
+  nothing more than a hack, but it's very effective to force a public IP 
+  address
+  when one is known in advance for the media server. In doing so, KMS will 
+  not
+  need a STUN or TURN server, but remote peers will still be able to contact 
+  it.
+</p>
+<p>
+  You can try using this setting if KMS is deployed on a publicly accessible
+  server, without NAT, and with a static public IP address. But if it doesn't
+  work for you, just go back to configuring a STUN or TURN server for ICE.
+</p>
+<p>
+  Only set this parameter if you know what you're doing, and you understand 
+  100%
+  WHY you need it. For the majority of cases, you should just prefer to
+  configure a STUN or TURN server.
+</p>
+<p><code>externalIPv6</code> is a single IPv6 address.</p>
+<p>Example:</p>
+<ul>
+  <li><code>externalIPv6=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>externalIPv6</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-String.html">external:String</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-elements.WebRtcEndpoint.html#~setExternalIPv6Callback">module:elements.WebRtcEndpoint~setExternalIPv6Callback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line728">line 728</a>
     </li></ul></dd>
     
 
@@ -9471,7 +10315,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line681">line 681</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line921">line 921</a>
     </li></ul></dd>
     
 
@@ -10088,7 +10932,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line771">line 771</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1011">line 1011</a>
     </li></ul></dd>
     
 
@@ -10286,7 +11130,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line835">line 835</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1075">line 1075</a>
     </li></ul></dd>
     
 
@@ -10515,7 +11359,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line961">line 961</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1201">line 1201</a>
     </li></ul></dd>
     
 
@@ -10672,7 +11516,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1017">line 1017</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1257">line 1257</a>
     </li></ul></dd>
     
 
@@ -10805,7 +11649,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1051">line 1051</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1291">line 1291</a>
     </li></ul></dd>
     
 
@@ -10938,7 +11782,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1167">line 1167</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1407">line 1407</a>
     </li></ul></dd>
     
 
@@ -11071,7 +11915,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1205">line 1205</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1445">line 1445</a>
     </li></ul></dd>
     
 
@@ -11227,7 +12071,319 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line447">line 447</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line451">line 451</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+
+    
+
+    
+    <h4 class="name" id="~getExternalIPv4Callback"><span class="type-signature"></span>getExternalIPv4Callback<span class="signature">(error, result)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-String.html">external:String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line570">line 570</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+
+    
+
+    
+    <h4 class="name" id="~getExternalIPv6Callback"><span class="type-signature"></span>getExternalIPv6Callback<span class="signature">(error, result)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-String.html">external:String</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line686">line 686</a>
     </li></ul></dd>
     
 
@@ -11383,7 +12539,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line537">line 537</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line777">line 777</a>
     </li></ul></dd>
     
 
@@ -11539,7 +12695,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line569">line 569</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line809">line 809</a>
     </li></ul></dd>
     
 
@@ -11695,7 +12851,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line633">line 633</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line873">line 873</a>
     </li></ul></dd>
     
 
@@ -11851,7 +13007,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line742">line 742</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line982">line 982</a>
     </li></ul></dd>
     
 
@@ -12007,7 +13163,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line819">line 819</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1059">line 1059</a>
     </li></ul></dd>
     
 
@@ -12163,7 +13319,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line914">line 914</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1154">line 1154</a>
     </li></ul></dd>
     
 
@@ -12296,7 +13452,273 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line505">line 505</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line513">line 513</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+
+    
+
+    
+    <h4 class="name" id="~setExternalIPv4Callback"><span class="type-signature"></span>setExternalIPv4Callback<span class="signature">(error)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line629">line 629</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+
+    
+
+    
+    <h4 class="name" id="~setExternalIPv6Callback"><span class="type-signature"></span>setExternalIPv6Callback<span class="signature">(error)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line745">line 745</a>
     </li></ul></dd>
     
 
@@ -12429,7 +13851,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line698">line 698</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line938">line 938</a>
     </li></ul></dd>
     
 
@@ -12562,7 +13984,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line788">line 788</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1028">line 1028</a>
     </li></ul></dd>
     
 
@@ -12695,7 +14117,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line852">line 852</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1092">line 1092</a>
     </li></ul></dd>
     
 
@@ -12828,7 +14250,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line978">line 978</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1218">line 1218</a>
     </li></ul></dd>
     
 

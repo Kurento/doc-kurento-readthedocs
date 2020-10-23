@@ -364,7 +364,21 @@
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddress-org.kurento.client.Transaction-">getExternalAddress</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get External IP address of the media server.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
+</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getExternalIPv4-org.kurento.client.Transaction-">getExternalIPv4</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Get External IPv4 address of the media server.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code><a href="../../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getExternalIPv6-org.kurento.client.Transaction-">getExternalIPv6</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Get External IPv6 address of the media server.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -813,7 +827,7 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#setAudioFormat-org.kurento.client.Transaction-org.kurento.client.AudioCaps-">setAudioFormat</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
               <a href="../../../../org/kurento/client/AudioCaps.html" title="class in org.kurento.client">AudioCaps</a>&nbsp;caps)</code>
-<div class="block">Sets the type of data for the audio stream.</div>
+<div class="block">Set the type of data for the audio stream.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -828,7 +842,23 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-org.kurento.client.Transaction-">setExternalAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
                   <a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set External IP address of the media server.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
+</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#setExternalIPv4-java.lang.String-org.kurento.client.Transaction-">setExternalIPv4</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv4,
+               <a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Set External IPv4 address of the media server.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#setExternalIPv6-java.lang.String-org.kurento.client.Transaction-">setExternalIPv6</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv6,
+               <a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Set External IPv6 address of the media server.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -1019,7 +1049,7 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#setVideoFormat-org.kurento.client.Transaction-org.kurento.client.VideoCaps-">setVideoFormat</a></span>(<a href="../../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
               <a href="../../../../org/kurento/client/VideoCaps.html" title="class in org.kurento.client">VideoCaps</a>&nbsp;caps)</code>
-<div class="block">Sets the type of data for the video stream.</div>
+<div class="block">Set the type of data for the video stream.</div>
 </td>
 </tr>
 <tr class="altColor">

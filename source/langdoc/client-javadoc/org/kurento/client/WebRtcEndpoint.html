@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6,"i27":6,"i28":6,"i29":6,"i30":6,"i31":6,"i32":6,"i33":6,"i34":6,"i35":6,"i36":6,"i37":6,"i38":6,"i39":6,"i40":6,"i41":6,"i42":6,"i43":6,"i44":6,"i45":6,"i46":6,"i47":6,"i48":6,"i49":6,"i50":6,"i51":6,"i52":6,"i53":6,"i54":6,"i55":6,"i56":6,"i57":6,"i58":6,"i59":6,"i60":6,"i61":6,"i62":6,"i63":6,"i64":6,"i65":6,"i66":6,"i67":6,"i68":6,"i69":6,"i70":6,"i71":6,"i72":6,"i73":6,"i74":6,"i75":6,"i76":6,"i77":6,"i78":6,"i79":6,"i80":6,"i81":6,"i82":6,"i83":6,"i84":6,"i85":6,"i86":6,"i87":6,"i88":6,"i89":6,"i90":6,"i91":6,"i92":6,"i93":6,"i94":6,"i95":6,"i96":6,"i97":6,"i98":6,"i99":6,"i100":6,"i101":6,"i102":6,"i103":6,"i104":6,"i105":6,"i106":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6,"i27":6,"i28":6,"i29":6,"i30":6,"i31":6,"i32":6,"i33":6,"i34":6,"i35":6,"i36":6,"i37":6,"i38":6,"i39":6,"i40":6,"i41":6,"i42":6,"i43":6,"i44":6,"i45":6,"i46":6,"i47":6,"i48":6,"i49":38,"i50":38,"i51":38,"i52":6,"i53":6,"i54":6,"i55":6,"i56":6,"i57":6,"i58":6,"i59":6,"i60":6,"i61":6,"i62":6,"i63":6,"i64":6,"i65":6,"i66":6,"i67":6,"i68":6,"i69":6,"i70":6,"i71":6,"i72":6,"i73":6,"i74":6,"i75":6,"i76":6,"i77":6,"i78":6,"i79":6,"i80":6,"i81":6,"i82":6,"i83":6,"i84":6,"i85":6,"i86":6,"i87":6,"i88":6,"i89":6,"i90":6,"i91":6,"i92":6,"i93":6,"i94":6,"i95":6,"i96":6,"i97":6,"i98":38,"i99":38,"i100":38,"i101":6,"i102":6,"i103":6,"i104":6,"i105":6,"i106":6,"i107":6,"i108":6,"i109":6,"i110":6,"i111":6,"i112":6,"i113":6,"i114":6,"i115":6,"i116":6,"i117":6,"i118":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -405,7 +405,7 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -780,366 +780,454 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <tr id="i49" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddress--">getExternalAddress</a></span>()</code>
-<div class="block">Get External IP address of the media server.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
+</div>
 </td>
 </tr>
 <tr id="i50" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddress-org.kurento.client.Continuation-">getExternalAddress</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
-<div class="block">Get External IP address of the media server.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
+</div>
 </td>
 </tr>
 <tr id="i51" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalAddress-org.kurento.client.Transaction-">getExternalAddress</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get External IP address of the media server.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
+</div>
 </td>
 </tr>
 <tr id="i52" class="altColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalIPv4--">getExternalIPv4</a></span>()</code>
+<div class="block">Get External IPv4 address of the media server.</div>
+</td>
+</tr>
+<tr id="i53" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalIPv4-org.kurento.client.Continuation-">getExternalIPv4</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
+<div class="block">Get External IPv4 address of the media server.</div>
+</td>
+</tr>
+<tr id="i54" class="altColor">
+<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalIPv4-org.kurento.client.Transaction-">getExternalIPv4</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Get External IPv4 address of the media server.</div>
+</td>
+</tr>
+<tr id="i55" class="rowColor">
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalIPv6--">getExternalIPv6</a></span>()</code>
+<div class="block">Get External IPv6 address of the media server.</div>
+</td>
+</tr>
+<tr id="i56" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalIPv6-org.kurento.client.Continuation-">getExternalIPv6</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
+<div class="block">Get External IPv6 address of the media server.</div>
+</td>
+</tr>
+<tr id="i57" class="rowColor">
+<td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getExternalIPv6-org.kurento.client.Transaction-">getExternalIPv6</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Get External IPv6 address of the media server.</div>
+</td>
+</tr>
+<tr id="i58" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceCandidatePair.html" title="class in org.kurento.client">IceCandidatePair</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getICECandidatePairs--">getICECandidatePairs</a></span>()</code>
 <div class="block">Get the ICE candidate pair (local and remote candidates) used by the ice library for each stream.</div>
 </td>
 </tr>
-<tr id="i53" class="rowColor">
+<tr id="i59" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getICECandidatePairs-org.kurento.client.Continuation-">getICECandidatePairs</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceCandidatePair.html" title="class in org.kurento.client">IceCandidatePair</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Get the ICE candidate pair (local and remote candidates) used by the ice library for each stream.</div>
 </td>
 </tr>
-<tr id="i54" class="altColor">
+<tr id="i60" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceCandidatePair.html" title="class in org.kurento.client">IceCandidatePair</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getICECandidatePairs-org.kurento.client.Transaction-">getICECandidatePairs</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get the ICE candidate pair (local and remote candidates) used by the ice library for each stream.</div>
 </td>
 </tr>
-<tr id="i55" class="rowColor">
+<tr id="i61" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceConnection.html" title="class in org.kurento.client">IceConnection</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getIceConnectionState--">getIceConnectionState</a></span>()</code>
 <div class="block">Get the ICE connection state for all the connections.</div>
 </td>
 </tr>
-<tr id="i56" class="altColor">
+<tr id="i62" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getIceConnectionState-org.kurento.client.Continuation-">getIceConnectionState</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceConnection.html" title="class in org.kurento.client">IceConnection</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Get the ICE connection state for all the connections.</div>
 </td>
 </tr>
-<tr id="i57" class="rowColor">
+<tr id="i63" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../org/kurento/client/IceConnection.html" title="class in org.kurento.client">IceConnection</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getIceConnectionState-org.kurento.client.Transaction-">getIceConnectionState</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get the ICE connection state for all the connections.</div>
 </td>
 </tr>
-<tr id="i58" class="altColor">
+<tr id="i64" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getNetworkInterfaces--">getNetworkInterfaces</a></span>()</code>
 <div class="block">Get Local network interfaces used for ICE gathering.</div>
 </td>
 </tr>
-<tr id="i59" class="rowColor">
+<tr id="i65" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getNetworkInterfaces-org.kurento.client.Continuation-">getNetworkInterfaces</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Local network interfaces used for ICE gathering.</div>
 </td>
 </tr>
-<tr id="i60" class="altColor">
+<tr id="i66" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getNetworkInterfaces-org.kurento.client.Transaction-">getNetworkInterfaces</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get Local network interfaces used for ICE gathering.</div>
 </td>
 </tr>
-<tr id="i61" class="rowColor">
+<tr id="i67" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerAddress--">getStunServerAddress</a></span>()</code>
 <div class="block">Get STUN server IP address.</div>
 </td>
 </tr>
-<tr id="i62" class="altColor">
+<tr id="i68" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerAddress-org.kurento.client.Continuation-">getStunServerAddress</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get STUN server IP address.</div>
 </td>
 </tr>
-<tr id="i63" class="rowColor">
+<tr id="i69" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerAddress-org.kurento.client.Transaction-">getStunServerAddress</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get STUN server IP address.</div>
 </td>
 </tr>
-<tr id="i64" class="altColor">
+<tr id="i70" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort--">getStunServerPort</a></span>()</code>
 <div class="block">Get Port of the STUN server</div>
 </td>
 </tr>
-<tr id="i65" class="rowColor">
+<tr id="i71" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort-org.kurento.client.Continuation-">getStunServerPort</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Port of the STUN server</div>
 </td>
 </tr>
-<tr id="i66" class="altColor">
+<tr id="i72" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort-org.kurento.client.Transaction-">getStunServerPort</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get Port of the STUN server</div>
 </td>
 </tr>
-<tr id="i67" class="rowColor">
+<tr id="i73" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl--">getTurnUrl</a></span>()</code>
 <div class="block">Get TURN server URL.</div>
 </td>
 </tr>
-<tr id="i68" class="altColor">
+<tr id="i74" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl-org.kurento.client.Continuation-">getTurnUrl</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get TURN server URL.</div>
 </td>
 </tr>
-<tr id="i69" class="rowColor">
+<tr id="i75" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl-org.kurento.client.Transaction-">getTurnUrl</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Get TURN server URL.</div>
 </td>
 </tr>
-<tr id="i70" class="altColor">
+<tr id="i76" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeDataChannelCloseListener-org.kurento.client.ListenerSubscription-">removeDataChannelCloseListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/DataChannelCloseEvent.html" title="class in org.kurento.client"><code>DataChannelCloseEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i71" class="rowColor">
+<tr id="i77" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeDataChannelCloseListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeDataChannelCloseListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/DataChannelCloseEvent.html" title="class in org.kurento.client"><code>DataChannelCloseEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i72" class="altColor">
+<tr id="i78" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeDataChannelOpenListener-org.kurento.client.ListenerSubscription-">removeDataChannelOpenListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/DataChannelOpenEvent.html" title="class in org.kurento.client"><code>DataChannelOpenEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i73" class="rowColor">
+<tr id="i79" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeDataChannelOpenListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeDataChannelOpenListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                              <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/DataChannelOpenEvent.html" title="class in org.kurento.client"><code>DataChannelOpenEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i74" class="altColor">
+<tr id="i80" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceCandidateFoundListener-org.kurento.client.ListenerSubscription-">removeIceCandidateFoundListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceCandidateFoundEvent.html" title="class in org.kurento.client"><code>IceCandidateFoundEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i75" class="rowColor">
+<tr id="i81" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceCandidateFoundListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeIceCandidateFoundListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceCandidateFoundEvent.html" title="class in org.kurento.client"><code>IceCandidateFoundEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i76" class="altColor">
+<tr id="i82" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceComponentStateChangeListener-org.kurento.client.ListenerSubscription-">removeIceComponentStateChangeListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceComponentStateChangeEvent.html" title="class in org.kurento.client"><code>IceComponentStateChangeEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i77" class="rowColor">
+<tr id="i83" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceComponentStateChangeListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeIceComponentStateChangeListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                      <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceComponentStateChangeEvent.html" title="class in org.kurento.client"><code>IceComponentStateChangeEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i78" class="altColor">
+<tr id="i84" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceGatheringDoneListener-org.kurento.client.ListenerSubscription-">removeIceGatheringDoneListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceGatheringDoneEvent.html" title="class in org.kurento.client"><code>IceGatheringDoneEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i79" class="rowColor">
+<tr id="i85" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeIceGatheringDoneListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeIceGatheringDoneListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/IceGatheringDoneEvent.html" title="class in org.kurento.client"><code>IceGatheringDoneEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i80" class="altColor">
+<tr id="i86" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeNewCandidatePairSelectedListener-org.kurento.client.ListenerSubscription-">removeNewCandidatePairSelectedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/NewCandidatePairSelectedEvent.html" title="class in org.kurento.client"><code>NewCandidatePairSelectedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i81" class="rowColor">
+<tr id="i87" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeNewCandidatePairSelectedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeNewCandidatePairSelectedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                       <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/NewCandidatePairSelectedEvent.html" title="class in org.kurento.client"><code>NewCandidatePairSelectedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i82" class="altColor">
+<tr id="i88" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnDataChannelClosedListener-org.kurento.client.ListenerSubscription-">removeOnDataChannelClosedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnDataChannelClosedEvent.html" title="class in org.kurento.client"><code>OnDataChannelClosedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i83" class="rowColor">
+<tr id="i89" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnDataChannelClosedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnDataChannelClosedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                  <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnDataChannelClosedEvent.html" title="class in org.kurento.client"><code>OnDataChannelClosedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i84" class="altColor">
+<tr id="i90" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnDataChannelOpenedListener-org.kurento.client.ListenerSubscription-">removeOnDataChannelOpenedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnDataChannelOpenedEvent.html" title="class in org.kurento.client"><code>OnDataChannelOpenedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i85" class="rowColor">
+<tr id="i91" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnDataChannelOpenedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnDataChannelOpenedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                  <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnDataChannelOpenedEvent.html" title="class in org.kurento.client"><code>OnDataChannelOpenedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i86" class="altColor">
+<tr id="i92" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceCandidateListener-org.kurento.client.ListenerSubscription-">removeOnIceCandidateListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceCandidateEvent.html" title="class in org.kurento.client"><code>OnIceCandidateEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i87" class="rowColor">
+<tr id="i93" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceCandidateListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnIceCandidateListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                             <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceCandidateEvent.html" title="class in org.kurento.client"><code>OnIceCandidateEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i88" class="altColor">
+<tr id="i94" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceComponentStateChangedListener-org.kurento.client.ListenerSubscription-">removeOnIceComponentStateChangedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html" title="class in org.kurento.client"><code>OnIceComponentStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i89" class="rowColor">
+<tr id="i95" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceComponentStateChangedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnIceComponentStateChangedListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceComponentStateChangedEvent.html" title="class in org.kurento.client"><code>OnIceComponentStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i90" class="altColor">
+<tr id="i96" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceGatheringDoneListener-org.kurento.client.ListenerSubscription-">removeOnIceGatheringDoneListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceGatheringDoneEvent.html" title="class in org.kurento.client"><code>OnIceGatheringDoneEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i91" class="rowColor">
+<tr id="i97" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceGatheringDoneListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnIceGatheringDoneListener</a></span>(<a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                 <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../org/kurento/client/OnIceGatheringDoneEvent.html" title="class in org.kurento.client"><code>OnIceGatheringDoneEvent</code></a>.</div>
 </td>
 </tr>
-<tr id="i92" class="altColor">
+<tr id="i98" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-">setExternalAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress)</code>
-<div class="block">Set External IP address of the media server.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
+</div>
 </td>
 </tr>
-<tr id="i93" class="rowColor">
+<tr id="i99" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-org.kurento.client.Continuation-">setExternalAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
                   <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set External IP address of the media server.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
+</div>
 </td>
 </tr>
-<tr id="i94" class="altColor">
+<tr id="i100" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-org.kurento.client.Transaction-">setExternalAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
                   <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set External IP address of the media server.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
+</div>
 </td>
 </tr>
-<tr id="i95" class="rowColor">
+<tr id="i101" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalIPv4-java.lang.String-">setExternalIPv4</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv4)</code>
+<div class="block">Set External IPv4 address of the media server.</div>
+</td>
+</tr>
+<tr id="i102" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalIPv4-java.lang.String-org.kurento.client.Continuation-">setExternalIPv4</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv4,
+               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
+<div class="block">Set External IPv4 address of the media server.</div>
+</td>
+</tr>
+<tr id="i103" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalIPv4-java.lang.String-org.kurento.client.Transaction-">setExternalIPv4</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv4,
+               <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Set External IPv4 address of the media server.</div>
+</td>
+</tr>
+<tr id="i104" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalIPv6-java.lang.String-">setExternalIPv6</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv6)</code>
+<div class="block">Set External IPv6 address of the media server.</div>
+</td>
+</tr>
+<tr id="i105" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalIPv6-java.lang.String-org.kurento.client.Continuation-">setExternalIPv6</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv6,
+               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
+<div class="block">Set External IPv6 address of the media server.</div>
+</td>
+</tr>
+<tr id="i106" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setExternalIPv6-java.lang.String-org.kurento.client.Transaction-">setExternalIPv6</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv6,
+               <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
+<div class="block">Set External IPv6 address of the media server.</div>
+</td>
+</tr>
+<tr id="i107" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setNetworkInterfaces-java.lang.String-">setNetworkInterfaces</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;networkInterfaces)</code>
 <div class="block">Set Local network interfaces used for ICE gathering.</div>
 </td>
 </tr>
-<tr id="i96" class="altColor">
+<tr id="i108" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setNetworkInterfaces-java.lang.String-org.kurento.client.Continuation-">setNetworkInterfaces</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;networkInterfaces,
                     <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Set Local network interfaces used for ICE gathering.</div>
 </td>
 </tr>
-<tr id="i97" class="rowColor">
+<tr id="i109" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setNetworkInterfaces-java.lang.String-org.kurento.client.Transaction-">setNetworkInterfaces</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;networkInterfaces,
                     <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Set Local network interfaces used for ICE gathering.</div>
 </td>
 </tr>
-<tr id="i98" class="altColor">
+<tr id="i110" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerAddress-java.lang.String-">setStunServerAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress)</code>
 <div class="block">Set STUN server IP address.</div>
 </td>
 </tr>
-<tr id="i99" class="rowColor">
+<tr id="i111" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerAddress-java.lang.String-org.kurento.client.Continuation-">setStunServerAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress,
                     <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Set STUN server IP address.</div>
 </td>
 </tr>
-<tr id="i100" class="altColor">
+<tr id="i112" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerAddress-java.lang.String-org.kurento.client.Transaction-">setStunServerAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;stunServerAddress,
                     <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Set STUN server IP address.</div>
 </td>
 </tr>
-<tr id="i101" class="rowColor">
+<tr id="i113" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerPort-int-">setStunServerPort</a></span>(int&nbsp;stunServerPort)</code>
 <div class="block">Set Port of the STUN server</div>
 </td>
 </tr>
-<tr id="i102" class="altColor">
+<tr id="i114" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerPort-int-org.kurento.client.Continuation-">setStunServerPort</a></span>(int&nbsp;stunServerPort,
                  <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Set Port of the STUN server</div>
 </td>
 </tr>
-<tr id="i103" class="rowColor">
+<tr id="i115" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setStunServerPort-int-org.kurento.client.Transaction-">setStunServerPort</a></span>(int&nbsp;stunServerPort,
                  <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
 <div class="block">Set Port of the STUN server</div>
 </td>
 </tr>
-<tr id="i104" class="altColor">
+<tr id="i116" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setTurnUrl-java.lang.String-">setTurnUrl</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl)</code>
 <div class="block">Set TURN server URL.</div>
 </td>
 </tr>
-<tr id="i105" class="rowColor">
+<tr id="i117" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setTurnUrl-java.lang.String-org.kurento.client.Continuation-">setTurnUrl</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl,
           <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Set TURN server URL.</div>
 </td>
 </tr>
-<tr id="i106" class="altColor">
+<tr id="i118" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/WebRtcEndpoint.html#setTurnUrl-java.lang.String-org.kurento.client.Transaction-">setTurnUrl</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;turnUrl,
           <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
@@ -1829,6 +1917,382 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
  </p></div>
 </li>
 </ul>
+<a name="getExternalIPv4--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalIPv4</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getExternalIPv4()</pre>
+<div class="block">Get External IPv4 address of the media server.
+ <p>
+   Forces all local IPv4 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv4</code> is a single IPv4 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv4=198.51.100.1</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="getExternalIPv4-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalIPv4</h4>
+<pre>void&nbsp;getExternalIPv4(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
+<div class="block">Get External IPv4 address of the media server.
+ <p>
+   Forces all local IPv4 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv4</code> is a single IPv4 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv4=198.51.100.1</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="getExternalIPv4-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalIPv4</h4>
+<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getExternalIPv4(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Get External IPv4 address of the media server.
+ <p>
+   Forces all local IPv4 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv4</code> is a single IPv4 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv4=198.51.100.1</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalIPv4-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalIPv4</h4>
+<pre>void&nbsp;setExternalIPv4(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv4)</pre>
+<div class="block">Set External IPv4 address of the media server.
+ <p>
+   Forces all local IPv4 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv4</code> is a single IPv4 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv4=198.51.100.1</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalIPv4-java.lang.String-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalIPv4</h4>
+<pre>void&nbsp;setExternalIPv4(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv4,
+                     <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
+<div class="block">Set External IPv4 address of the media server.
+ <p>
+   Forces all local IPv4 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv4</code> is a single IPv4 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv4=198.51.100.1</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalIPv4-java.lang.String-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalIPv4</h4>
+<pre>void&nbsp;setExternalIPv4(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv4,
+                     <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Set External IPv4 address of the media server.
+ <p>
+   Forces all local IPv4 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv4</code> is a single IPv4 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv4=198.51.100.1</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="getExternalIPv6--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalIPv6</h4>
+<pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getExternalIPv6()</pre>
+<div class="block">Get External IPv6 address of the media server.
+ <p>
+   Forces all local IPv6 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv6</code> is a single IPv6 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv6=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="getExternalIPv6-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalIPv6</h4>
+<pre>void&nbsp;getExternalIPv6(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
+<div class="block">Get External IPv6 address of the media server.
+ <p>
+   Forces all local IPv6 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv6</code> is a single IPv6 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv6=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="getExternalIPv6-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getExternalIPv6</h4>
+<pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getExternalIPv6(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Get External IPv6 address of the media server.
+ <p>
+   Forces all local IPv6 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv6</code> is a single IPv6 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv6=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalIPv6-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalIPv6</h4>
+<pre>void&nbsp;setExternalIPv6(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv6)</pre>
+<div class="block">Set External IPv6 address of the media server.
+ <p>
+   Forces all local IPv6 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv6</code> is a single IPv6 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv6=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalIPv6-java.lang.String-org.kurento.client.Continuation-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalIPv6</h4>
+<pre>void&nbsp;setExternalIPv6(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv6,
+                     <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
+<div class="block">Set External IPv6 address of the media server.
+ <p>
+   Forces all local IPv6 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv6</code> is a single IPv6 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv6=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
+<a name="setExternalIPv6-java.lang.String-org.kurento.client.Transaction-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setExternalIPv6</h4>
+<pre>void&nbsp;setExternalIPv6(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv6,
+                     <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block">Set External IPv6 address of the media server.
+ <p>
+   Forces all local IPv6 ICE candidates to have the given address. This is really
+   nothing more than a hack, but it's very effective to force a public IP address
+   when one is known in advance for the media server. In doing so, KMS will not
+   need a STUN or TURN server, but remote peers will still be able to contact it.
+ </p>
+ <p>
+   You can try using this setting if KMS is deployed on a publicly accessible
+   server, without NAT, and with a static public IP address. But if it doesn't
+   work for you, just go back to configuring a STUN or TURN server for ICE.
+ </p>
+ <p>
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
+ </p>
+ <p><code>externalIPv6</code> is a single IPv6 address.</p>
+ <p>Example:</p>
+ <ul>
+   <li><code>externalIPv6=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
+ </ul></div>
+</li>
+</ul>
 <a name="getExternalAddress--">
 <!--   -->
 </a>
@@ -1836,29 +2300,29 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getExternalAddress</h4>
 <pre><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getExternalAddress()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
 <div class="block">Get External IP address of the media server.
  <p>
-   This setting is normally NOT needed. Only use it if you know what you're
-   doing, and understand 100% WHY you want it. For the majority of cases, you
-   should prefer configuring STUN or TURN servers over using this setting.
- </p>
- <p>
-   This setting implements a hack that will mangle all local ICE candidates so
-   that their candidate address is replaced with the provided external address,
-   even for candidates of type 'host'. In doing so, this KMS will not need a
-   STUN or TURN server, but remote peers will still be able to contact it.
+   Forces all local IPv4 and IPv6 ICE candidates to have the given address. This
+   is really nothing more than a hack, but it's very effective to force a public
+   IP address when one is known in advance for the media server. In doing so, KMS
+   will not need a STUN or TURN server, but remote peers will still be able to
+   contact it.
  </p>
  <p>
    You can try using this setting if KMS is deployed on a publicly accessible
    server, without NAT, and with a static public IP address. But if it doesn't
-   work for you, just go back to using the STUN or TURN settings above.
+   work for you, just go back to configuring a STUN or TURN server for ICE.
  </p>
  <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
  </p>
+ <p><code>externalAddress</code> is a single IPv4 or IPv6 address.</p>
  <p>Examples:</p>
  <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=198.51.100.1</code></li>
    <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
  </ul></div>
 </li>
@@ -1870,29 +2334,29 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getExternalAddress</h4>
 <pre>void&nbsp;getExternalAddress(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
 <div class="block">Get External IP address of the media server.
  <p>
-   This setting is normally NOT needed. Only use it if you know what you're
-   doing, and understand 100% WHY you want it. For the majority of cases, you
-   should prefer configuring STUN or TURN servers over using this setting.
- </p>
- <p>
-   This setting implements a hack that will mangle all local ICE candidates so
-   that their candidate address is replaced with the provided external address,
-   even for candidates of type 'host'. In doing so, this KMS will not need a
-   STUN or TURN server, but remote peers will still be able to contact it.
+   Forces all local IPv4 and IPv6 ICE candidates to have the given address. This
+   is really nothing more than a hack, but it's very effective to force a public
+   IP address when one is known in advance for the media server. In doing so, KMS
+   will not need a STUN or TURN server, but remote peers will still be able to
+   contact it.
  </p>
  <p>
    You can try using this setting if KMS is deployed on a publicly accessible
    server, without NAT, and with a static public IP address. But if it doesn't
-   work for you, just go back to using the STUN or TURN settings above.
+   work for you, just go back to configuring a STUN or TURN server for ICE.
  </p>
  <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
  </p>
+ <p><code>externalAddress</code> is a single IPv4 or IPv6 address.</p>
  <p>Examples:</p>
  <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=198.51.100.1</code></li>
    <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
  </ul></div>
 </li>
@@ -1904,29 +2368,29 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>getExternalAddress</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;getExternalAddress(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
 <div class="block">Get External IP address of the media server.
  <p>
-   This setting is normally NOT needed. Only use it if you know what you're
-   doing, and understand 100% WHY you want it. For the majority of cases, you
-   should prefer configuring STUN or TURN servers over using this setting.
- </p>
- <p>
-   This setting implements a hack that will mangle all local ICE candidates so
-   that their candidate address is replaced with the provided external address,
-   even for candidates of type 'host'. In doing so, this KMS will not need a
-   STUN or TURN server, but remote peers will still be able to contact it.
+   Forces all local IPv4 and IPv6 ICE candidates to have the given address. This
+   is really nothing more than a hack, but it's very effective to force a public
+   IP address when one is known in advance for the media server. In doing so, KMS
+   will not need a STUN or TURN server, but remote peers will still be able to
+   contact it.
  </p>
  <p>
    You can try using this setting if KMS is deployed on a publicly accessible
    server, without NAT, and with a static public IP address. But if it doesn't
-   work for you, just go back to using the STUN or TURN settings above.
+   work for you, just go back to configuring a STUN or TURN server for ICE.
  </p>
  <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
  </p>
+ <p><code>externalAddress</code> is a single IPv4 or IPv6 address.</p>
  <p>Examples:</p>
  <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=198.51.100.1</code></li>
    <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
  </ul></div>
 </li>
@@ -1938,29 +2402,29 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <li class="blockList">
 <h4>setExternalAddress</h4>
 <pre>void&nbsp;setExternalAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
 <div class="block">Set External IP address of the media server.
  <p>
-   This setting is normally NOT needed. Only use it if you know what you're
-   doing, and understand 100% WHY you want it. For the majority of cases, you
-   should prefer configuring STUN or TURN servers over using this setting.
- </p>
- <p>
-   This setting implements a hack that will mangle all local ICE candidates so
-   that their candidate address is replaced with the provided external address,
-   even for candidates of type 'host'. In doing so, this KMS will not need a
-   STUN or TURN server, but remote peers will still be able to contact it.
+   Forces all local IPv4 and IPv6 ICE candidates to have the given address. This
+   is really nothing more than a hack, but it's very effective to force a public
+   IP address when one is known in advance for the media server. In doing so, KMS
+   will not need a STUN or TURN server, but remote peers will still be able to
+   contact it.
  </p>
  <p>
    You can try using this setting if KMS is deployed on a publicly accessible
    server, without NAT, and with a static public IP address. But if it doesn't
-   work for you, just go back to using the STUN or TURN settings above.
+   work for you, just go back to configuring a STUN or TURN server for ICE.
  </p>
  <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
  </p>
+ <p><code>externalAddress</code> is a single IPv4 or IPv6 address.</p>
  <p>Examples:</p>
  <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=198.51.100.1</code></li>
    <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
  </ul></div>
 </li>
@@ -1973,29 +2437,29 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <h4>setExternalAddress</h4>
 <pre>void&nbsp;setExternalAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
 <div class="block">Set External IP address of the media server.
  <p>
-   This setting is normally NOT needed. Only use it if you know what you're
-   doing, and understand 100% WHY you want it. For the majority of cases, you
-   should prefer configuring STUN or TURN servers over using this setting.
- </p>
- <p>
-   This setting implements a hack that will mangle all local ICE candidates so
-   that their candidate address is replaced with the provided external address,
-   even for candidates of type 'host'. In doing so, this KMS will not need a
-   STUN or TURN server, but remote peers will still be able to contact it.
+   Forces all local IPv4 and IPv6 ICE candidates to have the given address. This
+   is really nothing more than a hack, but it's very effective to force a public
+   IP address when one is known in advance for the media server. In doing so, KMS
+   will not need a STUN or TURN server, but remote peers will still be able to
+   contact it.
  </p>
  <p>
    You can try using this setting if KMS is deployed on a publicly accessible
    server, without NAT, and with a static public IP address. But if it doesn't
-   work for you, just go back to using the STUN or TURN settings above.
+   work for you, just go back to configuring a STUN or TURN server for ICE.
  </p>
  <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
  </p>
+ <p><code>externalAddress</code> is a single IPv4 or IPv6 address.</p>
  <p>Examples:</p>
  <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=198.51.100.1</code></li>
    <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
  </ul></div>
 </li>
@@ -2008,29 +2472,29 @@ extends <a href="../../../org/kurento/client/BaseRtpEndpoint.html" title="interf
 <h4>setExternalAddress</h4>
 <pre>void&nbsp;setExternalAddress(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>externalIPv4</code> and/or <code>externalIPv6</code> instead.</span></div>
 <div class="block">Set External IP address of the media server.
  <p>
-   This setting is normally NOT needed. Only use it if you know what you're
-   doing, and understand 100% WHY you want it. For the majority of cases, you
-   should prefer configuring STUN or TURN servers over using this setting.
- </p>
- <p>
-   This setting implements a hack that will mangle all local ICE candidates so
-   that their candidate address is replaced with the provided external address,
-   even for candidates of type 'host'. In doing so, this KMS will not need a
-   STUN or TURN server, but remote peers will still be able to contact it.
+   Forces all local IPv4 and IPv6 ICE candidates to have the given address. This
+   is really nothing more than a hack, but it's very effective to force a public
+   IP address when one is known in advance for the media server. In doing so, KMS
+   will not need a STUN or TURN server, but remote peers will still be able to
+   contact it.
  </p>
  <p>
    You can try using this setting if KMS is deployed on a publicly accessible
    server, without NAT, and with a static public IP address. But if it doesn't
-   work for you, just go back to using the STUN or TURN settings above.
+   work for you, just go back to configuring a STUN or TURN server for ICE.
  </p>
  <p>
-   <code>externalAddress</code> is an IPv4 or IPv6 address.
+   Only set this parameter if you know what you're doing, and you understand 100%
+   WHY you need it. For the majority of cases, you should just prefer to
+   configure a STUN or TURN server.
  </p>
+ <p><code>externalAddress</code> is a single IPv4 or IPv6 address.</p>
  <p>Examples:</p>
  <ul>
-   <li><code>externalAddress=10.70.35.2</code></li>
+   <li><code>externalAddress=198.51.100.1</code></li>
    <li><code>externalAddress=2001:0db8:85a3:0000:0000:8a2e:0370:7334</code></li>
  </ul></div>
 </li>

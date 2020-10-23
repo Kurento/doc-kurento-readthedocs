@@ -947,7 +947,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <tr id="i104" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#setAudioFormat-org.kurento.client.AudioCaps-">setAudioFormat</a></span>(<a href="../../../org/kurento/client/AudioCaps.html" title="class in org.kurento.client">AudioCaps</a>&nbsp;caps)</code>
-<div class="block">Sets the type of data for the audio stream.</div>
+<div class="block">Set the type of data for the audio stream.</div>
 </td>
 </tr>
 <tr id="i105" class="rowColor">
@@ -963,7 +963,7 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#setAudioFormat-org.kurento.client.Transaction-org.kurento.client.AudioCaps-">setAudioFormat</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
               <a href="../../../org/kurento/client/AudioCaps.html" title="class in org.kurento.client">AudioCaps</a>&nbsp;caps)</code>
-<div class="block">Sets the type of data for the audio stream.</div>
+<div class="block">Set the type of data for the audio stream.</div>
 </td>
 </tr>
 <tr id="i107" class="rowColor">
@@ -1088,13 +1088,13 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#setVideoFormat-org.kurento.client.Transaction-org.kurento.client.VideoCaps-">setVideoFormat</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
               <a href="../../../org/kurento/client/VideoCaps.html" title="class in org.kurento.client">VideoCaps</a>&nbsp;caps)</code>
-<div class="block">Sets the type of data for the video stream.</div>
+<div class="block">Set the type of data for the video stream.</div>
 </td>
 </tr>
 <tr id="i123" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaElement.html#setVideoFormat-org.kurento.client.VideoCaps-">setVideoFormat</a></span>(<a href="../../../org/kurento/client/VideoCaps.html" title="class in org.kurento.client">VideoCaps</a>&nbsp;caps)</code>
-<div class="block">Sets the type of data for the video stream.</div>
+<div class="block">Set the type of data for the video stream.</div>
 </td>
 </tr>
 <tr id="i124" class="altColor">
@@ -1780,10 +1780,14 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>setAudioFormat</h4>
 <pre>void&nbsp;setAudioFormat(<a href="../../../org/kurento/client/AudioCaps.html" title="class in org.kurento.client">AudioCaps</a>&nbsp;caps)</pre>
-<div class="block">Sets the type of data for the audio stream.
+<div class="block">Set the type of data for the audio stream.
  <p>
    MediaElements that do not support configuration of audio capabilities will
    throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception.
+ </p>
+ <p>
+   NOTE: This method is not implemented yet by the Media Server to do anything
+   useful.
  </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1818,10 +1822,14 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setAudioFormat</h4>
 <pre>void&nbsp;setAudioFormat(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                     <a href="../../../org/kurento/client/AudioCaps.html" title="class in org.kurento.client">AudioCaps</a>&nbsp;caps)</pre>
-<div class="block">Sets the type of data for the audio stream.
+<div class="block">Set the type of data for the audio stream.
  <p>
    MediaElements that do not support configuration of audio capabilities will
    throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception.
+ </p>
+ <p>
+   NOTE: This method is not implemented yet by the Media Server to do anything
+   useful.
  </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1836,10 +1844,14 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <li class="blockList">
 <h4>setVideoFormat</h4>
 <pre>void&nbsp;setVideoFormat(<a href="../../../org/kurento/client/VideoCaps.html" title="class in org.kurento.client">VideoCaps</a>&nbsp;caps)</pre>
-<div class="block">Sets the type of data for the video stream.
+<div class="block">Set the type of data for the video stream.
  <p>
    MediaElements that do not support configuration of video capabilities will
    throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception
+ </p>
+ <p>
+   NOTE: This method is not implemented yet by the Media Server to do anything
+   useful.
  </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -1874,10 +1886,14 @@ extends <a href="../../../org/kurento/client/MediaObject.html" title="interface 
 <h4>setVideoFormat</h4>
 <pre>void&nbsp;setVideoFormat(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
                     <a href="../../../org/kurento/client/VideoCaps.html" title="class in org.kurento.client">VideoCaps</a>&nbsp;caps)</pre>
-<div class="block">Sets the type of data for the video stream.
+<div class="block">Set the type of data for the video stream.
  <p>
    MediaElements that do not support configuration of video capabilities will
    throw a MEDIA_OBJECT_ILLEGAL_PARAM_ERROR exception
+ </p>
+ <p>
+   NOTE: This method is not implemented yet by the Media Server to do anything
+   useful.
  </p></div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
