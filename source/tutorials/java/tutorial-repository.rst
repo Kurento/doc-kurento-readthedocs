@@ -31,7 +31,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-hello-world-repository/
-    git checkout master
+    git checkout 6.15.0
     mvn -U clean spring-boot:run
 
 Access the application connecting to the URL https://localhost:8443/ in a WebRTC

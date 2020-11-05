@@ -66,7 +66,7 @@ author = u'Kurento'
 # built documents.
 #
 # The short X.Y version.
-version = '6.14.0'
+version = '6.15.0'
 
 # The full version, including alpha/beta/rc tags.
 release = version

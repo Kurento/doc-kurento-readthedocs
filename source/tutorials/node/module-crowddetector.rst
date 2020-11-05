@@ -40,7 +40,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-crowddetector
-    git checkout master
+    git checkout 6.15.0
     npm install
 
 If you have problems installing any of the dependencies, please remove them and
@@ -321,7 +321,7 @@ file for managing this dependency is:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client" : "6.14.0"
+      "kurento-client" : "6.15.0"
    }
 
 At the client side, dependencies are managed using Bower. Take a look to the
@@ -331,8 +331,8 @@ file and pay attention to the following section:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "6.14.0",
-      "kurento-module-pointerdetector": "6.14.0"
+      "kurento-utils" : "6.15.0",
+      "kurento-module-pointerdetector": "6.15.0"
    }
 
 .. note::

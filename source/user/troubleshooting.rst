@@ -4,7 +4,7 @@ Troubleshooting Issues
 
 If you are facing an issue with Kurento Media Server, follow this basic check list:
 
-* **Step 1**: Test with the **latest version** of Kurento Media Server: **6.14.0**. Follow the installation instructions here: :doc:`/user/installation`.
+* **Step 1**: Test with the **latest version** of Kurento Media Server: **6.15.0**. Follow the installation instructions here: :doc:`/user/installation`.
 
 * **Step 2**: Test with the latest (unreleased) changes by installing a nightly version: :doc:`/user/installation_dev`.
 
@@ -31,7 +31,7 @@ Media Server Crashes
 
 We want Kurento to be as stable as possible! When you notice a server crash, it's a good time to report a bug so we can know about the issue. But before that, you need to check a couple things:
 
-1. Make sure that you are running the **latest version** of Kurento Media Server: **6.14.0**.
+1. Make sure that you are running the **latest version** of Kurento Media Server: **6.15.0**.
 2. Have :ref:`debug symbols installed <dev-dbg>`. Otherwise, *your bug report won't be useful*.
 
 Then, please provide us with information about the crash:
@@ -706,11 +706,11 @@ Zero-size video files
 
 If you are trying to generate a video recording, keep in mind that **the endpoint will wait until all tracks (audio, video) start arriving**.
 
-.. ifconfig:: "false" == "true"
+.. ifconfig:: "true" == "true"
 
-   Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.14.0/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
+   Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.15.0/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
-.. ifconfig:: "false" != "true"
+.. ifconfig:: "true" != "true"
 
    Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/latest/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
