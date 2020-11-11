@@ -30,7 +30,7 @@ author = 'Kurento'
 # built documents.
 
 # The short X.Y version.
-version = '6.15.0'
+version = '6.15.1-dev'
 
 # The full version, including alpha/beta/rc tags.
 release = version
@@ -120,6 +120,11 @@ html_favicon = 'images/favicon.ico'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static', 'langdoc']
+
+# Add any extra paths that contain custom files (such as robots.txt or
+# .htaccess) here, relative to this directory. These files are copied
+# directly to the root of the documentation.
+html_extra_path = ['_extra']
 
 
 # -- Options for HTMLHelp output ------------------------------------------

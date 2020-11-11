@@ -708,7 +708,7 @@ If you are trying to generate a video recording, keep in mind that **the endpoin
 
 .. ifconfig:: "false" == "true"
 
-   Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.15.0/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
+   Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.15.1-dev/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
 .. ifconfig:: "false" != "true"
 

@@ -28,7 +28,7 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 	@echo "  langdoc     to make JavaDocs and JsDocs of the Kurento Clients"
 	@echo "  dist        to make <langdoc html epub latexpdf> and then pack"
-	@echo "              all resulting files as kurento-doc-6.15.0.tgz"
+	@echo "              all resulting files as kurento-doc-6.15.1-dev.tgz"
 	@echo "  readthedocs to make <langdoc> and then copy the results to the"
 	@echo "              Sphinx theme's static folder"
 	@echo ""
@@ -96,7 +96,7 @@ langdoc-utils-js: langdoc-init
 langdoc: langdoc-client-java langdoc-client-js langdoc-utils-js
 
 dist: langdoc html epub latexpdf
-	$(eval DISTDIR := $(BUILDDIR)/dist/kurento-doc-6.15.0)
+	$(eval DISTDIR := $(BUILDDIR)/dist/kurento-doc-6.15.1-dev)
 	mkdir -p $(DISTDIR)
 	rsync -a $(BUILDDIR)/html $(BUILDDIR)/epub/Kurento.epub \
 		$(BUILDDIR)/latex/Kurento.pdf $(DISTDIR)
