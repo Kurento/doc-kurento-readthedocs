@@ -188,11 +188,11 @@ This is a glossary of terms that often appear in discussion about multimedia tra
    Node.js
        `Node.js <https://nodejs.org/>`__ is a cross-platform runtime environment for server-side and networking applications. Node.js applications are written in JavaScript, and can be run within the Node.js runtime on OS X, Microsoft Windows and Linux with no changes.
 
-   npm
-       `npm <https://www.npmjs.org/>`__ is the official package manager for :term:`Node.js`.
+   NPM
+       `NPM <https://www.npmjs.org/>`__ is the official package manager for :term:`Node.js`.
 
    OpenCV
-       OpenCV (Open Source Computer Vision Library) is a BSD-licensed open source computer vision and machine learning software library. OpenCV aims to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception.
+       OpenCV (Open Source Computer Vision Library) is a BSD-licensed Open Source computer vision and machine learning software library. OpenCV aims to provide a common infrastructure for computer vision applications and to accelerate the use of machine perception.
 
    Pad, Media
        A :index:`Media Pad <single: Media; Pad>` is is an element's interface with the outside world. Data streams from the MediaSource pad to another element's MediaSink pad.
@@ -333,7 +333,7 @@ This is a glossary of terms that often appear in discussion about multimedia tra
        Data streams from a MediaSource pad to another element's MediaSink pad.
 
    SIP
-       Session Initiation Protocol (SIP) is a :term:`signaling plane` protocol widely used for controlling multimedia communication sessions such as voice and video calls over Internet Protocol (IP) networks. SIP works in conjunction with several other application layer protocols:
+       Session Initiation Protocol (SIP) is a :term:`Signaling Plane` protocol widely used for controlling multimedia communication sessions such as voice and video calls over Internet Protocol (IP) networks. SIP works in conjunction with several other application layer protocols:
 
        * :term:`SDP` for media identification and negotiation.
        * :term:`RTP`, :term:`SRTP` or :term:`WebRTC` for the transmission of media streams.
@@ -351,7 +351,7 @@ This is a glossary of terms that often appear in discussion about multimedia tra
       A single-page application is a web application that fits on a single web page with the goal of providing a more fluid user experience akin to a desktop application.
 
    Sphinx
-       `Sphinx <http://www.sphinx-doc.org/en/stable/>`__ is a documentation generation system. Text is first written using `reStructuredText <http://docutils.sourceforge.net/rst.html>`__ markup language, which then is transformed by Sphinx into different formats such as PDF or HTML.
+       `Sphinx <https://www.sphinx-doc.org/>`__ is a documentation generation system. Text is first written using `reStructuredText <https://docutils.sourceforge.io/rst.html>`__ markup language, which then is transformed by Sphinx into different formats such as PDF or HTML.
        This is the documentation tool of choice for the Kurento project.
 
        .. seealso::
@@ -359,7 +359,7 @@ This is a glossary of terms that often appear in discussion about multimedia tra
           `Easy and beautiful documentation with Sphinx <https://www.ibm.com/developerworks/linux/library/os-sphinx-documentation/index.html>`__ (`archive <https://web.archive.org/web/20160825195643/https://www.ibm.com/developerworks/linux/library/os-sphinx-documentation/index.html>`__)
 
    Spring Boot
-       `Spring Boot <http://spring.io/projects/spring-boot>`__ is Spring's convention-over-configuration solution for creating stand-alone, production-grade Spring based applications that can you can "just run".
+       `Spring Boot <https://spring.io/projects/spring-boot>`__ is Spring's convention-over-configuration solution for creating stand-alone, production-grade Spring based applications that can you can "just run".
        It embeds Tomcat or Jetty directly and so there is no need to deploy WAR files in order to run web applications.
 
    SRTCP

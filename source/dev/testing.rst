@@ -72,7 +72,7 @@ Stability tests have been also created using Java, and they are contained in the
 Tutorials
 ---------
 
-The documentation of Kurento includes a number of tutorials `tutorials <https://doc-kurento.readthedocs.io/en/stable/user/tutorials.html>`_ which allows to understand Kurento capabilities using ready to be used simple applications. Kurento tutorials have been developed for three technologies: Java, JavaScript, and Node.js. Moreover, for some of the Java tutorials, different E2E tests have been created. These tests are available in the project `kurento-tutorial-test <https://github.com/Kurento/kurento-tutorial-test/>`_. In order to run these tests, Maven should be used:
+The documentation of Kurento includes a number of tutorials `tutorials <https://doc-kurento.readthedocs.io/en/latest/user/tutorials.html>`_ which allows to understand Kurento capabilities using ready to be used simple applications. Kurento tutorials have been developed for three technologies: Java, JavaScript, and Node.js. Moreover, for some of the Java tutorials, different E2E tests have been created. These tests are available in the project `kurento-tutorial-test <https://github.com/Kurento/kurento-tutorial-test/>`_. In order to run these tests, Maven should be used:
 
 .. code-block:: console
 
@@ -83,7 +83,7 @@ The documentation of Kurento includes a number of tutorials `tutorials <https://
 API
 ---
 
-The `Kurento API <https://doc-kurento.readthedocs.io/en/stable/features/kurento_api.html>`_ is available in two languages: Java and JavaScript. For both of them, a test suite has been created to verify the correctness of the Kurento API against a running instance of KMS. In you want to run API tests for Java, as usual for Kurento tests, Maven is required, as follows:
+The `Kurento API <https://doc-kurento.readthedocs.io/en/latest/features/kurento_api.html>`_ is available in two languages: Java and JavaScript. For both of them, a test suite has been created to verify the correctness of the Kurento API against a running instance of KMS. In you want to run API tests for Java, as usual for Kurento tests, Maven is required, as follows:
 
 .. code-block:: console
 
@@ -214,7 +214,7 @@ Kurento Media Server (KMS) is the heart of Kurento and therefore it must be prop
 +------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------+
 
 ..
-   This table has been generated using http://www.tablesgenerator.com/text_tables
+   This table has been generated using https://www.tablesgenerator.com/text_tables
 
 For example, in order to run the complete WebRTC functional test suite against a local instance KMS, the Maven command would be as follows:
 
@@ -374,7 +374,7 @@ Kurento tests can be configured in many different ways. The following table summ
 Kurento Testing Framework explained
 ===================================
 
-In order to assess properly Kurento from a final user perspective, a rich suite of E2E tests has been designed and implemented. To that aim, the **Kurento Testing Framework** (KTF) has been created. KTF is a part of the Kurento project aimed to carry out end-to-end (E2E) tests for Kurento. KTF has been implemented on the top of two well-known open-source testing frameworks: `JUnit <https://junit.org/>`_ and `Selenium <https://www.seleniumhq.org/>`_.
+In order to assess properly Kurento from a final user perspective, a rich suite of E2E tests has been designed and implemented. To that aim, the **Kurento Testing Framework** (KTF) has been created. KTF is a part of the Kurento project aimed to carry out end-to-end (E2E) tests for Kurento. KTF has been implemented on the top of two well-known Open Source testing frameworks: `JUnit <https://junit.org/>`_ and `Selenium <https://www.seleniumhq.org/>`_.
 
 KTF provides high level capabilities to perform advanced automated testing for Kurento-based applications. KTF has been implemented in Java, and as usual it is hosted on GitHub, in the project `kurento-test <https://github.com/Kurento/kurento-java/tree/master/kurento-integration-tests/kurento-test>`_. KTF has been designed on the top of **JUnit 4**, providing a rich hierarchy of classes which are going to act as parent for JUnit 4 tests cases. This hierarchy is the following:
 

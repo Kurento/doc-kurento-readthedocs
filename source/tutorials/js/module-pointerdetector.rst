@@ -35,7 +35,7 @@ You also need the source code of this tutorial. Clone it from GitHub, then start
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-pointerdetector/
-    git checkout 6.15.0
+    git checkout master
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 
@@ -107,7 +107,7 @@ video, as follows:
 .. note::
 
    Modules can have options. For configuring these options, you'll need to get the constructor for them.
-   In Javascript and Node, you have to use *kurentoClient.getComplexType('qualifiedName')* . There is
+   In JavaScript and Node.js, you have to use *kurentoClient.getComplexType('qualifiedName')* . There is
    an example in the code.
 
 In that precise moment, a calibration operation should be carried out. This is

@@ -4,7 +4,7 @@ Java - Repository
 
 This web application extends :doc:`Hello World <./tutorial-helloworld>` adding
 recording capabilities by means of the
-`Kurento Repository <http://doc-kurento-repository.readthedocs.org/>`_.
+`Kurento Repository <https://doc-kurento-repository.readthedocs.io/>`_.
 
 .. note::
 
@@ -31,7 +31,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-hello-world-repository/
-    git checkout 6.15.0
+    git checkout master
     mvn -U clean spring-boot:run
 
 Access the application connecting to the URL https://localhost:8443/ in a WebRTC

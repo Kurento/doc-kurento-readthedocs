@@ -34,7 +34,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-one2one-call
-    git checkout 6.15.0
+    git checkout master
     npm install
     npm start
 
@@ -613,7 +613,7 @@ call.
 Dependencies
 ============
 
-Server-side dependencies of this demo are managed using :term:`npm`. Our main
+Server-side dependencies of this demo are managed using :term:`NPM`. Our main
 dependency is the Kurento Client JavaScript (*kurento-client*). The relevant
 part of the
 `package.json <https://github.com/Kurento/kurento-tutorial-node/blob/master/kurento-one2one-call/package.json>`_

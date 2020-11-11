@@ -15,7 +15,8 @@ $(error This Make doesn't support '.ONESHELL', use Make >= 3.82)
 endif
 
 # You can set these variables from the command line.
-SPHINXOPTS  :=
+# Adding more '-v' increases the log verbosity level.
+SPHINXOPTS  := -v
 SPHINXBUILD := sphinx-build
 SPHINXPROJ  := Kurento
 SOURCEDIR   := source
@@ -41,8 +42,8 @@ help:
 	@echo "- texlive-latex-extra"
 	@echo ""
 	@echo "python pip dependencies:"
-	@echo "- sphinx >= 1.5.0 (Tested: 1.6.6)"
-	@echo "- sphinx_rtd_theme"
+	@echo "- sphinx >= 1.5.0 (Tested: 3.3.0)"
+	@echo "- sphinx_rtd_theme  (Tested: 0.5.0)"
 
 init-workdir:
 	mkdir -p $(WORKDIR)
@@ -62,7 +63,7 @@ langdoc-client-java: langdoc-init
 	cd $(WORKPATH)
 	git clone https://github.com/Kurento/kurento-java.git
 	cd kurento-java
-	[ "true" = "true" ] && git checkout "6.15.0"
+	[ "false" = "true" ] && git checkout "6.15.0"
 	cd kurento-client || { echo "ERROR: 'cd' failed, ls:"; ls -lA; exit 1; }
 	mvn --batch-mode --quiet clean package \
 		-DskipTests || { echo "ERROR: 'mvn clean' failed"; exit 1; }
@@ -76,7 +77,7 @@ langdoc-client-js: langdoc-init
 	cd $(WORKPATH)
 	git clone https://github.com/Kurento/kurento-client-js.git
 	cd kurento-client-js
-	[ "true" = "true" ] && git checkout "6.15.0"
+	[ "false" = "true" ] && git checkout "6.15.0"
 	npm install --no-color
 	node_modules/.bin/grunt --no-color --force jsdoc \
 		|| { echo "ERROR: 'grunt jsdoc' failed"; exit 1; }
@@ -86,7 +87,7 @@ langdoc-utils-js: langdoc-init
 	cd $(WORKPATH)
 	git clone https://github.com/Kurento/kurento-utils-js.git
 	cd kurento-utils-js
-	[ "true" = "true" ] && git checkout "6.15.0"
+	[ "false" = "true" ] && git checkout "6.15.0"
 	npm install --no-color
 	node_modules/.bin/grunt --no-color --force jsdoc \
 		|| { echo "ERROR: 'grunt jsdoc' failed"; exit 1; }

@@ -39,7 +39,7 @@ You also need the source code of this tutorial. Clone it from GitHub, then start
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-hello-world/
-    git checkout 6.15.0
+    git checkout master
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 

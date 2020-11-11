@@ -275,12 +275,12 @@ Low video quality
 
 You have several ways to override the default settings for variable bitrate:
 
-- Methods in `org.kurento.client.BaseRtpEndpoint <https://doc-kurento.readthedocs.io/en/stable/_static/client-javadoc/org/kurento/client/BaseRtpEndpoint.html>`__:
+- Methods in `org.kurento.client.BaseRtpEndpoint <https://doc-kurento.readthedocs.io/en/latest/_static/client-javadoc/org/kurento/client/BaseRtpEndpoint.html>`__:
 
   - *setMinVideoRecvBandwidth()* / *setMaxVideoRecvBandwidth()*
   - *setMinVideoSendBandwidth()* / *setMaxVideoSendBandwidth()*
 
-- Methods in `org.kurento.client.MediaElement <https://doc-kurento.readthedocs.io/en/stable/_static/client-javadoc/org/kurento/client/MediaElement.html>`__:
+- Methods in `org.kurento.client.MediaElement <https://doc-kurento.readthedocs.io/en/latest/_static/client-javadoc/org/kurento/client/MediaElement.html>`__:
 
   - *setMinOutputBitrate()* / *setMaxOutputBitrate()*
 
@@ -297,7 +297,7 @@ The *H.264* and `VP8 <https://tools.ietf.org/html/rfc6386#section-9.2>`__ video 
 
 When this problem happens, Kurento sends retransmission requests to the source of the RTP stream. However, in cases of heavy packet loss, there isn't much else that can be done and enough losses will build up until the video decoding gets negatively affected. In situations like this, the most effective change you can do is to reduce the video resolution and/or quality at the sender.
 
-Cisco has too a nice paragraph covering this in their Knowledge Base: `Pink and green patches in a video stream <https://www.cisco.com/c/en/us/td/docs/telepresence/infrastructure/articles/cisco_telepresence_pink_green_patches_video_stream_kb_136.html>`__ (`archive <https://web.archive.org/web/20170506091043/http://www.cisco.com/c/en/us/td/docs/telepresence/infrastructure/articles/cisco_telepresence_pink_green_patches_video_stream_kb_136.html>`__)
+Cisco has too a nice paragraph covering this in their Knowledge Base: `Pink and green patches in a video stream <https://www.cisco.com/c/en/us/td/docs/telepresence/infrastructure/articles/cisco_telepresence_pink_green_patches_video_stream_kb_136.html>`__ (`archive <https://web.archive.org/web/20170506091043/http://www.cisco.com/c/en/us/td/docs/telepresence/infrastructure/articles/cisco_telepresence_pink_green_patches_video_stream_kb_136.html>`__):
 
     **Why do I see pink or green patches in my video stream [...]?**
 
@@ -415,10 +415,10 @@ This is how this process would look like. In this example, KMS was restarted so 
 
 
 
-Node / NPM failures
--------------------
+Node.js / NPM failures
+----------------------
 
-Kurento Client does not currently support Node v10 (LTS), you will have to use Node v8 or below.
+Kurento Client does not currently support Node.js v10 (LTS), you will have to use Node.js v8 or below.
 
 
 
@@ -456,7 +456,7 @@ The solution is to ensure that both peers are able to find a match in their supp
 
 This issue is commonly caused by setting an invalid ID to any of the client method calls. The usual solution is to provide a null identifier, forcing the server to generate a new one for the object.
 
-For example, a Node application wanting to use the *ImageOverlayFilter* (`Java API <https://doc-kurento.readthedocs.io/en/latest/_static/client-javadoc/org/kurento/client/ImageOverlayFilter.html>`__, `JavaScript API <https://doc-kurento.readthedocs.io/en/latest/_static/client-jsdoc/module-filters.ImageOverlayFilter.html>`__) might mistakenly try to provide an invalid ID in the `addImage() <https://doc-kurento.readthedocs.io/en/latest/_static/client-jsdoc/module-filters.ImageOverlayFilter.html#.addImage>`__ call:
+For example, a Node.js application wanting to use the *ImageOverlayFilter* (`Java API <https://doc-kurento.readthedocs.io/en/latest/_static/client-javadoc/org/kurento/client/ImageOverlayFilter.html>`__, `JavaScript API <https://doc-kurento.readthedocs.io/en/latest/_static/client-jsdoc/module-filters.ImageOverlayFilter.html>`__) might mistakenly try to provide an invalid ID in the `addImage() <https://doc-kurento.readthedocs.io/en/latest/_static/client-jsdoc/module-filters.ImageOverlayFilter.html#.addImage>`__ call:
 
 .. code-block:: js
 
@@ -706,11 +706,11 @@ Zero-size video files
 
 If you are trying to generate a video recording, keep in mind that **the endpoint will wait until all tracks (audio, video) start arriving**.
 
-.. ifconfig:: "true" == "true"
+.. ifconfig:: "false" == "true"
 
    Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/6.15.0/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
-.. ifconfig:: "true" != "true"
+.. ifconfig:: "false" != "true"
 
    Quoting from the `Client documentation <https://doc-kurento.readthedocs.io/en/latest/_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 

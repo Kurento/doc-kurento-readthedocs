@@ -16,17 +16,17 @@ Copyright 2018 [Kurento]. Licensed under [Apache 2.0 License].
 doc-kurento
 ===========
 
-Kurento Documentation. Made with [Sphinx] and [Read The Docs].
+Kurento Documentation. Made with [Sphinx] and [Read the Docs].
 
-[Sphinx]: http://www.sphinx-doc.org
-[Read The Docs]: https://docs.readthedocs.io
+[Sphinx]: https://www.sphinx-doc.org/
+[Read the Docs]: https://docs.readthedocs.io
 
 
 
 About Kurento
 =============
 
-Kurento is an open source software project providing a platform suitable for creating modular applications with advanced real-time communication capabilities. For knowing more about Kurento, please visit the Kurento project website: https://www.kurento.org/.
+Kurento is an Open Source software project providing a platform suitable for creating modular applications with advanced real-time communication capabilities. For knowing more about Kurento, please visit the Kurento project website: https://www.kurento.org/.
 
 Kurento is part of [FIWARE]. For further information on the relationship of FIWARE and Kurento check the [Kurento FIWARE Catalog Entry]. Kurento is also part of the [NUBOMEDIA] research initiative.
 
@@ -52,14 +52,14 @@ Useful Links
 
 Usage:
 
-* [Installation Guide](https://doc-kurento.readthedocs.io/en/stable/user/installation.html)
-* [Compilation Guide](https://doc-kurento.readthedocs.io/en/stable/dev/dev_guide.html#developing-kms)
-* [Contribution Guide](https://doc-kurento.readthedocs.io/en/stable/project/contributing.html)
+* [Installation Guide](https://doc-kurento.readthedocs.io/en/latest/user/installation.html)
+* [Compilation Guide](https://doc-kurento.readthedocs.io/en/latest/dev/dev_guide.html#developing-kms)
+* [Contribution Guide](https://doc-kurento.readthedocs.io/en/latest/project/contributing.html)
 
 Issues:
 
 * [Bug Tracker](https://github.com/Kurento/bugtracker/issues)
-* [Support](https://doc-kurento.readthedocs.io/en/stable/user/support.html)
+* [Support](https://doc-kurento.readthedocs.io/en/latest/user/support.html)
 
 News:
 
