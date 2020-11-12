@@ -24,7 +24,7 @@ Kurento Media Server
 Docker image
 ------------
 
-Kurento's Docker Hub contains images built from each KMS nightly version. Just head to the `kurento-media-server-dev Docker Hub page <https://hub.docker.com/r/kurento/kurento-media-server-dev>`__, and follow the instructions you'll find there. The nightly images work exactly the same as `Kurento Docker release images <https://hub.docker.com/r/kurento/kurento-media-server>`__, but just using nightly builds instead of release ones.
+While official release Docker images are published as `kurento/kurento-media-server <https://hub.docker.com/r/kurento/kurento-media-server>`__, nightly builds with the latest development progress are available as `kurento/kurento-media-server-dev <https://hub.docker.com/r/kurento/kurento-media-server-dev>`__ (notice the ``-dev``). Other than that, these images behave exactly like the release ones. For usage instructions check out this section: :ref:`installation-docker`.
 
 
 
@@ -37,7 +37,7 @@ Open a terminal and run these commands:
 
 1. Make sure that GnuPG is installed.
 
-   .. code-block:: console
+   .. code-block:: shell
 
       sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
           gnupg
@@ -46,7 +46,7 @@ Open a terminal and run these commands:
 
    Run these commands:
 
-   .. code-block:: console
+   .. code-block:: shell
 
       # Import the Kurento repository signing key
       sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5AFA7A83
@@ -66,7 +66,7 @@ Open a terminal and run these commands:
 
       This step applies **only for a first time installation**. If you already have installed Kurento and want to upgrade it, follow instead the steps described here: :ref:`installation-local-upgrade`.
 
-   .. code-block:: console
+   .. code-block:: shell
 
       sudo apt-get update && sudo apt-get install --no-install-recommends --yes \
           kurento-media-server
