@@ -2,7 +2,7 @@
 Kurento Java Tutorial - Hello World
 ===================================
 
-This web application has been designed to introduce the principles of programming with Kurento for Java developers. It consists of a :term:`WebRTC` video communication in mirror (*loopback*). This tutorial assumes you have basic knowledge of Java, JavaScript, HTML and WebRTC. We also recommend reading the section :doc:`/user/about` before starting this tutorial.
+This web application has been designed to introduce the principles of programming with Kurento for Java developers. It consists of a :term:`WebRTC` video communication in mirror (*loopback*). This tutorial assumes you have basic knowledge of Java, JavaScript, HTML and WebRTC. We also recommend reading :doc:`/user/intro` before starting this tutorial.
 
 .. note::
 
@@ -104,7 +104,7 @@ In the following, figure you can see a class diagram of the server side code:
    size="12,8"; fontname = "Bitstream Vera Sans" fontsize = 8
 
    node [
-        fontname = "Bitstream Vera Sans" fontsize = 8 shape = "record"
+        fontname = "Bitstream Vera Sans" fontsize = 8 shape = "rect"
          style=filled
         fillcolor = "#E7F2FA"
    ]
