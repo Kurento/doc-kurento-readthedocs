@@ -160,7 +160,7 @@ If you see that transcoding is active at some point, you may get a bit more info
 
 .. code-block:: shell
 
-   export GST_DEBUG="${GST_DEBUG:-3},Kurento*:5,agnosticbin*:5"
+   export GST_DEBUG="${GST_DEBUG:-2},Kurento*:5,agnosticbin*:5"
 
 in your daemon settings file, ``/etc/default/kurento-media-server``.
 
@@ -437,6 +437,25 @@ Kurento Client does not currently support Node.js v10 (LTS), you will have to us
 
 
 
+.. _troubleshooting-app-proxy:
+
+Connection ends exactly after 60 seconds
+----------------------------------------
+
+This is typically caused by an intermediate proxy, which is prematurely ending the WebSocket session from the Application Server, and thus making the media server believe that all resources should be released.
+
+For example, if **Nginx Reverse Proxy** is used, the default value of `proxy_read_timeout <http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_read_timeout>`__ is **60 seconds**, but the default Kurento :ref:`Ping/Pong keep-alive <protocol-ping>` mechanism works in intervals of 240 seconds.
+
+This issue can also manifest itself with this (misleading) error message in the browser's JavaScript console:
+
+.. code-block:: text
+
+   WebRTC: ICE failed, add a TURN server and see about:webrtc for more details
+
+The solution is to increase the timeout value in your proxy settings.
+
+
+
 "Expects at least 4 fields"
 ---------------------------
 
@@ -471,7 +490,7 @@ The solution is to ensure that both peers are able to find a match in their supp
 
 This issue is commonly caused by setting an invalid ID to any of the client method calls. The usual solution is to provide a null identifier, forcing the server to generate a new one for the object.
 
-For example, a Node.js application wanting to use the *ImageOverlayFilter* (`Java API <../_static/client-jsdoc/module-filters.ImageOverlayFilter.html#.addImage>`__ call:
+For example, a Node.js application wanting to use the *ImageOverlayFilter* API (`Java <../_static/client-javadoc/org/kurento/client/ImageOverlayFilter.html>`__, `JavaScript <../_static/client-jsdoc/module-filters.ImageOverlayFilter.html>`__) might mistakenly try to provide an invalid ID in the `addImage() <../_static/client-jsdoc/module-filters.ImageOverlayFilter.html#.addImage>`__ call:
 
 .. code-block:: js
 
@@ -530,7 +549,7 @@ There is a multitude of possible reasons for a failed WebRTC connection, so you 
 
       > The problem was that our Socket.IO client did not correctly *URL-Encode* its JSON payload when *xhr-polling*, which resulted in all "plus" signs ('+') being changed into spaces (' ') on the server. This meant that the *ufrag* in the client's SDP was invalid if it contained a plus sign! Only some of the connections failed because not all *ufrag* contain plus signs.
 
-* If WebRTC seems to disconnect exactly after some amount of time, every single time, **watch out for proxy timeouts**. Sometimes you have to extend the timeout for the site that is being hit with the problem.
+* If WebRTC seems to disconnect exactly after some amount of time, every single time, **watch out for proxy timeouts**. Sometimes you have to extend the timeout for the site that is being hit with the problem. See also: :ref:`troubleshooting-app-proxy`.
 
 * Have a look at these articles about troubleshooting WebRTC:
 
@@ -681,7 +700,7 @@ PlayerEndpoint
 RTSP broken audio
 ~~~~~~~~~~~~~~~~~
 
-If you have your own RTSP tool generating OPUS encoded audio to be consumed in Kurento with a *PlayerEndpoint* (`Java <../_static/client-jsdoc/module-elements.PlayerEndpoint.html>`__), and the resulting audio is very choppy and robotic, you should start by verifying that your encoding process is configured correctly for the OPUS frame size used in WebRTC.
+If you have your own RTSP tool generating OPUS encoded audio to be consumed in Kurento with a *PlayerEndpoint* (`Java <../_static/client-javadoc/org/kurento/client/PlayerEndpoint.html>`__, `JavaScript <../_static/client-jsdoc/module-elements.PlayerEndpoint.html>`__), and the resulting audio is very choppy and robotic, you should start by verifying that your encoding process is configured correctly for the OPUS frame size used in WebRTC.
 
 This was the case for a user who later shared with us the reasons for the bad quality audio they were perceiving:
 
@@ -723,7 +742,7 @@ You can check if this problem is affecting you by running with DEBUG :ref:`loggi
 
 .. code-block:: shell
 
-   export GST_DEBUG="${GST_DEBUG:-3},rtpjitterbuffer:5"
+   export GST_DEBUG="${GST_DEBUG:-2},rtpjitterbuffer:5"
    /usr/bin/kurento-media-server 2>&1 | grep -P 'rtpjitterbuffer.*(Received packet|Queue full)'
 
 With this command, a new line will get printed for each single *Received packet*, plus an extra line will appear informing about *Queue full* whenever a packet is dropped.
@@ -742,25 +761,24 @@ Zero-size video files
 
 If you are trying to generate a video recording, keep in mind that **the endpoint will wait until all tracks (audio, video) start arriving**.
 
-.. ifconfig:: "false" == "true"
-
-   Quoting from the `Client documentation <../_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
-
-.. ifconfig:: "false" != "true"
-
-   Quoting from the `Client documentation <../_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
+Quoting from the `Client documentation <../_static/client-javadoc/org/kurento/client/RecorderEndpoint.html>`__:
 
     It is recommended to start recording only after media arrives, either to the endpoint that is the source of the media connected to the recorder, to the recorder itself, or both. Users may use the MediaFlowIn and MediaFlowOut events, and synchronize the recording with the moment media comes in. In any case, nothing will be stored in the file until the first media packets arrive.
 
-Follow this checklist to see if any of these problems is preventing the RecorderEndpoint from working correctly:
+Follow this issue checklist to see if any of them is preventing the RecorderEndpoint from working correctly:
 
-- The RecorderEndpoint is configured for both audio and video, but only video (or only audio) is being provided by the application.
-- Availability of audio/video devices at recorder client initialization, and just before starting the recording.
-- User is disconnecting existing hardware, or maybe connecting new hardware (usb webcams, mic, etc).
-- User is clicking "*Deny*" when asked to allow access to microphone/camera by the browser.
-- User is sleeping/hibernating the computer, and then possibly waking it up, while recording.
-- Check the browser information about the required media tracks, e.g. *track.readyState*.
-- Track user agents, ICE candidates, etc.
+* The RecorderEndpoint was connected with the default ``connect(MediaElement)`` method (`Java <../_static/client-javadoc/org/kurento/client/MediaElement.html#connect-org.kurento.client.MediaElement->`__, `JavaScript <../_static/client-jsdoc/module-core_abstracts.MediaElement.html#.connect>`__), which assumes both audio and video, but only video (or only audio) is arriving:
+
+  - Monitor the :ref:`MediaFlowInStateChange <events-mediaflowin>` and :ref:`MediaFlowOutStateChange <events-mediaflowout>` events from all MediaElements.
+  - Make sure that the element providing media (the *source*) is firing a *MediaFlowOut* event, and that the RecorderEndpoint is firing a corresponding *MediaFlowIn* event.
+  - If your recording should be only-audio or only-video, use the ``connect(MediaElement, MediaType)`` method (`Java <../_static/client-javadoc/org/kurento/client/MediaElement.html#connect-org.kurento.client.MediaElement-org.kurento.client.MediaType->`__, `JavaScript <../_static/client-jsdoc/module-core_abstracts.MediaElement.html#.connect>`__).
+
+* Check the availability of audio/video devices at recorder client initialization, and just before starting the recording.
+* User is disconnecting existing hardware, or maybe connecting new hardware (usb webcams, mic, etc).
+* User is clicking "*Deny*" when asked to allow access to microphone/camera by the browser.
+* User is sleeping/hibernating the computer, and then possibly waking it up, while recording.
+* Check the browser information about the required media tracks, e.g. ``track.readyState``.
+* Track user agents, ICE candidates, etc.
 
 
 
