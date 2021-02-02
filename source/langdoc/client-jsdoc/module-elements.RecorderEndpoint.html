@@ -33,14 +33,15 @@
         
             <div class="class-description">Provides functionality to store media contents.
  <p>
-   The RecorderEndpoint can store media in local files or in a network 
-   resource.
-   It receives a media stream from another <a href="module-core_abstracts.MediaElement.html">MediaElement</a> (i.e. the
-   source), and stores it in the designated location.
+   RecorderEndpoint can store media into local files or send it to a remote
+   network storage. When another <a href="module-core_abstracts.MediaElement.html">    MediaElement</a> is connected to a
+   RecorderEndpoint, the media coming from the former will be encapsulated 
+   into
+   the selected recording format and stored in the designated location.
  </p>
  <p>
-   The following information has to be provided in order to create a
-   RecorderEndpoint, and cannot be changed afterwards:
+   These parameters must be provided to create a RecorderEndpoint, and they
+   cannot be changed afterwards:
  </p>
  <ul>
    <li>
@@ -49,7 +50,8 @@
      are supported:
      <ul>
        <li>
-         File: A file path that exists in the local file system.
+         File: A file path that will be written into the local file system.
+         Example:
          <ul>
            <li><code>file:///path/to/file</code></li>
          </ul>
@@ -58,77 +60,100 @@
          HTTP: A POST request will be used against a remote server. The 
          server
          must support using the <i>chunked</i> encoding mode (HTTP header
-         <code>Transfer-Encoding: chunked</code>).
+         <code>Transfer-Encoding: chunked</code>). Examples:
          <ul>
            <li><code>http(s)://{server-ip}/path/to/file</code></li>
            <li>
              <code>
-               http(s)://{username}:{password}@{server-ip}/path/to/file
+               http(s)://{username}:{password}@{server-ip}:{server-port}/path/to/file
              </code>
            </li>
          </ul>
        </li>
+       <li>
+         Relative URIs (with no schema) are supported. They are completed by
+         prepending a default URI defined by property <i>defaultPath</i>. 
+         This
+         property is defined in the configuration file
+         <i>/etc/kurento/modules/kurento/UriEndpoint.conf.ini</i>, and the
+         default value is <code>file:///var/lib/kurento/</code>
+       </li>
+       <li>
+         <strong>
+           NOTE (for current versions of Kurento 6.x): special characters are
+           supported in <code>{username}</code> or <code>{password}</code>.
+         </strong>
+         This means that <code>{username}</code> cannot contain colons
+         (<code>:</code>), and <code>{password}</code> cannot contain 'at' 
+         signs
+         (<code>@</code>). This is a limitation of GStreamer 1.8 (the 
+         underlying
+         media framework behind Kurento), and is already fixed in newer 
+         versions
+         (which the upcoming Kurento 7.x will use).
+       </li>
+       <li>
+         <strong>
+           NOTE (for upcoming Kurento 7.x): special characters in
+           <code>{username}</code> or <code>{password}</code> must be
+           url-encoded.
+         </strong>
+         This means that colons (<code>:</code>) should be replaced with
+         <code>%3A</code>, and 'at' signs (<code>@</code>) should be replaced
+         with <code>%40</code>.
+       </li>
      </ul>
    </li>
    <li>
-     Relative URIs (with no schema) are supported. They are completed by
-     prepending a default URI defined by property <i>defaultPath</i>. This
-     property is defined in the configuration file
-     <i>/etc/kurento/modules/kurento/UriEndpoint.conf.ini</i>, and the 
-     default
-     value is <code>file:///var/lib/kurento/</code>
-   </li>
-   <li>
-     The <stron>Media Profile</stron> (module:elements.RecorderEndpoint#MediaProfileSpecType) used for
+     <strong>Media Profile</strong> (module:elements.RecorderEndpoint#MediaProfileSpecType), used for
      storage. This will determine the video and audio encoding. See below for
      more details about Media Profile.
    </li>
    <li>
-     Optionally, the user can select if the endpoint will stop processing 
-     once
-     the <strong>EndOfStream</strong> event is detected.
+     <strong>EndOfStream</strong> (optional), a parameter that dictates if 
+     the
+     recording should be automatically stopped once the EOS event is 
+     detected.
    </li>
  </ul>
  <p>
+   Note that
    <strong>
-     RecorderEndpoint requires access to the resource where stream is going 
-     to be
-     recorded
+     RecorderEndpoint requires write permissions to the destination
    </strong>
-   . Otherwise, the media server won't be able to store any information, and 
+   ; otherwise, the media server won't be able to store any information, and 
    an
-   ErrorEvent will be fired. Please note that if you haven't 
-   subscribed to
-   that type of event, you can be left wondering why your media is not being
-   saved, while the error message was ignored.
+   ErrorEvent will be fired. Make sure your application subscribes to
+   event, otherwise troubleshooting issues will be difficult.
  </p>
  <ul>
    <li>
-     To write local files (if you use <code>file://</code>), the user running
-     media server (by default, user <code>kurento</code>) needs to have write
-     permissions for the requested path.
+     To write local files (if you use <code>file://</code>), the system user 
+     that
+     is owner of the media server process needs to have write permissions for
+     requested path. By default, this user is named '<code>kurento</code>'.
    </li>
    <li>
-     To save into an HTTP server, the server must be accessible through the
-     network, and also have the correct access rights to the destination 
+     To record through HTTP, the remote server must be accessible through the
+     network, and also have the correct write permissions for the destination
      path.
    </li>
  </ul>
  <p>
-   The media profile is quite an important parameter, as it will determine
-   whether the server needs to perform on-the-fly transcoding of the media. 
-   If
-   the input stream codec if not compatible with the selected media profile, 
+   The <strong>Media Profile</strong> is quite an important parameter, as it 
+   will
+   determine whether the server needs to perform on-the-fly transcoding of 
    the
-   media will be transcoded into a suitable format. This will result in a 
-   higher
-   CPU load and will impact overall performance of the media server.
+   media. If the input stream codec if not compatible with the selected media
+   profile, the media will be transcoded into a suitable format. This will 
+   result
+   in a higher CPU load and will impact overall performance of the media 
+   server.
  </p>
  <p>
-   For example: Say that your pipeline will receive <b>VP8</b>-encoded video 
-   from
-   WebRTC, and sends it to a RecorderEndpoint; depending on the format
-   selected...
+   For example: If your pipeline receives <b>VP8</b>-encoded video from 
+   WebRTC,
+   and sends it to a RecorderEndpoint; depending on the format selected...
  </p>
  <ul>
    <li>
@@ -163,25 +188,31 @@
    as it gets it.
  </p>
  <p>
-   Stopping the recording process is done through the
-   <code>stopAndWait</code> method, which will return only after all the
-   information was stored correctly. If the file is empty, this means that no
-   media arrived at the recorder.
+   <strong>Recording must be stopped</strong> when no more data should be 
+   stored.
+   This can be with the <code>stopAndWait</code> method, which blocks and 
+   returns
+   only after all the information was stored correctly.
  </p>
  <p>
+   <strong>
+     If your output file is empty, this means that the recorder is waiting 
+     for
+     input media.
+   </strong>
    When another endpoint is connected to the recorder, by default both AUDIO 
    and
    VIDEO media types are expected, unless specified otherwise when invoking 
    the
-   connect method. Failing to provide both types, will result in teh 
-   recording
-   buffering the received media: it won't be written to the file until the
-   recording is stopped. This is due to the recorder waiting for the other 
-   type
-   of media to arrive, so they are synchronized.
+   <code>connect</code> method. Failing to provide both types, will result in
+   RecorderEndpoint buffering the received media: it won't be written to the 
+   file
+   until the recording is stopped. The recorder waits until all types of 
+   media
+   start arriving, in order to synchronize them appropriately.
  </p>
  <p>
-   The source endpoint can be hot-swapped, while the recording is taking 
+   The source endpoint can be hot-swapped while the recording is taking 
    place.
    The recorded file will then contain different feeds. When switching video
    sources, if the new video has different size, the recorder will retain the
@@ -191,9 +222,9 @@
  </p>
  <p>
    <strong>
-     It is recommended to start recording only after media arrives
+     It is recommended to start recording only after media arrives.
    </strong>
-   . For this, you may use the <code>MediaFlowInStateChange</code> and
+   For this, you may use the <code>MediaFlowInStateChange</code> and
    <code>MediaFlowOutStateChange</code>
    events of your endpoints, and synchronize the recording with the moment 
    media
@@ -239,6 +270,10 @@
     
 
 
+
+<div class="description">
+    Builder for the <a href="module-elements.RecorderEndpoint.html">RecorderEndpoint</a>
+</div>
 
 
 
@@ -445,9 +480,9 @@
             
 
             <td class="description last">Sets the media profile used for recording. If the profile is different than 
- the one being recieved at the sink pad, media will be trnascoded, resulting 
+ the one being received at the sink pad, media will be transcoded, resulting 
  in a higher CPU load. For instance, when recording a VP8 encoded video from 
- a WebRTC endpoint in MP4, the load is higher that when recording in WEBM.</td>
+ a WebRTC endpoint in MP4, the load is higher that when recording to WEBM.</td>
         </tr>
 
     
@@ -508,12 +543,11 @@
 
             
 
-            <td class="description last">URI where the recording will be stored. It has to be accessible to the KMS 
- process.
+            <td class="description last">URI where the recording will be stored. It must be accessible from the media
                <ul>
                  <li>Local server resources: The user running the Kurento 
                  Media Server must have write permission over the file.</li>
-                 <li>Network resources: Must be accessible from the server 
+                 <li>Network resources: Must be accessible from the network 
                  where the media server is running.</li>
                </ul></td>
         </tr>
@@ -554,7 +588,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line343">line 343</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line374">line 374</a>
     </li></ul></dd>
     
 
@@ -612,7 +646,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line363">line 363</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line394">line 394</a>
     </li></ul></dd>
     
 
@@ -753,7 +787,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line262">line 262</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line294">line 294</a>
     </li></ul></dd>
     
 
@@ -920,7 +954,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line293">line 293</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line325">line 325</a>
     </li></ul></dd>
     
 
@@ -4580,7 +4614,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line279">line 279</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line311">line 311</a>
     </li></ul></dd>
     
 
@@ -4713,7 +4747,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line310">line 310</a>
+        <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html">node_modules/kurento-client-elements/lib/RecorderEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_RecorderEndpoint.js.html#line342">line 342</a>
     </li></ul></dd>
     
 
