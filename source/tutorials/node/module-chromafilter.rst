@@ -25,14 +25,13 @@ installed:
 
     sudo apt-get install kms-chroma
 
-Be sure to have installed `Node.js`:term: and `Bower`:term: in your system. In
-an Ubuntu machine, you can install both as follows:
+Be sure to have installed `Node.js`:term: in your system. In
+an Ubuntu machine, you can install it as follows:
 
 .. sourcecode:: bash
 
    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
    sudo apt-get install -y nodejs
-   sudo npm install -g bower
 
 To launch the application, you need to clone the GitHub project where this demo
 is hosted, install it and run it:
@@ -41,8 +40,9 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-chroma
-    git checkout master
+    git checkout 6.16.0
     npm install
+    npm start
 
 If you have problems installing any of the dependencies, please remove them and
 clean the npm cache, and try to install them again:
@@ -258,7 +258,7 @@ file for managing this dependency is:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client" : "6.15.0"
+      "kurento-client" : "6.16.0"
    }
 
 At the client side, dependencies are managed using Bower. Take a look to the
@@ -268,11 +268,11 @@ file and pay attention to the following section:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "6.15.0",
-      "kurento-module-pointerdetector": "6.15.0"
+      "kurento-utils" : "6.16.0",
+      "kurento-module-pointerdetector": "6.16.0"
    }
 
 .. note::
 
-   We are in active development. You can find the latest versions at
+   You can find the latest versions at
    `npm <https://npmsearch.com/>`_ and `Bower <https://bower.io/search/>`_.

@@ -39,7 +39,7 @@
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.15.1-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.16.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -1008,6 +1008,10 @@
 </a>
 <h2 class="title">G</h2>
 <dl>
+<dt><a href="org/kurento/client/GapsFixMethod.html" title="enum in org.kurento.client"><span class="typeNameLink">GapsFixMethod</span></a> - Enum in <a href="org/kurento/client/package-summary.html">org.kurento.client</a></dt>
+<dd>
+<div class="block">How to fix gaps when they are found in the recorded stream.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#gatherCandidates--">gatherCandidates()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
 <dd>
 <div class="block">Start the gathering of ICE candidates.</div>
@@ -1589,6 +1593,18 @@
 <dd>
 <div class="block">Get the ICE connection state for all the connections.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#getIceTcp--">getIceTcp()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Get Enable ICE-TCP candidate gathering.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#getIceTcp-org.kurento.client.Continuation-">getIceTcp(Continuation&lt;Boolean&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Get Enable ICE-TCP candidate gathering.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#getIceTcp-org.kurento.client.Transaction-">getIceTcp(Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Get Enable ICE-TCP candidate gathering.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/KurentoObject.html#getId--">getId()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/KurentoObject.html" title="interface in org.kurento.client">KurentoObject</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/MediaObject.html#getId--">getId()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a></dt>
@@ -1739,15 +1755,15 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#getMaxAudioRecvBandwidth--">getMaxAudioRecvBandwidth()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum bitrate expected for the received audio stream.</div>
+<div class="block">Get Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#getMaxAudioRecvBandwidth-org.kurento.client.Continuation-">getMaxAudioRecvBandwidth(Continuation&lt;Integer&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum bitrate expected for the received audio stream.</div>
+<div class="block">Get Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#getMaxAudioRecvBandwidth-org.kurento.client.Transaction-">getMaxAudioRecvBandwidth(Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum bitrate expected for the received audio stream.</div>
+<div class="block">Get Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/MediaElement.html#getMaxOuputBitrate--">getMaxOuputBitrate()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></dt>
 <dd>
@@ -1781,27 +1797,27 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#getMaxVideoRecvBandwidth--">getMaxVideoRecvBandwidth()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum bitrate expected for the received video stream.</div>
+<div class="block">Get Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#getMaxVideoRecvBandwidth-org.kurento.client.Continuation-">getMaxVideoRecvBandwidth(Continuation&lt;Integer&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum bitrate expected for the received video stream.</div>
+<div class="block">Get Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#getMaxVideoRecvBandwidth-org.kurento.client.Transaction-">getMaxVideoRecvBandwidth(Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum bitrate expected for the received video stream.</div>
+<div class="block">Get Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth--">getMaxVideoSendBandwidth()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Continuation-">getMaxVideoSendBandwidth(Continuation&lt;Integer&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Transaction-">getMaxVideoSendBandwidth(Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Maximum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/MediaObject.html#getMediaPipeline--">getMediaPipeline()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a></dt>
 <dd>
@@ -1907,27 +1923,27 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth--">getMinVideoRecvBandwidth()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum bitrate requested on the received video stream.</div>
+<div class="block">Get Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth-org.kurento.client.Continuation-">getMinVideoRecvBandwidth(Continuation&lt;Integer&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum bitrate requested on the received video stream.</div>
+<div class="block">Get Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth-org.kurento.client.Transaction-">getMinVideoRecvBandwidth(Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum bitrate requested on the received video stream.</div>
+<div class="block">Get Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth--">getMinVideoSendBandwidth()</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Continuation-">getMinVideoSendBandwidth(Continuation&lt;Integer&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Transaction-">getMinVideoSendBandwidth(Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Get Minimum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/ServerInfo.html#getModules--">getModules()</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/ServerInfo.html" title="class in org.kurento.client">ServerInfo</a></dt>
 <dd>
@@ -4232,6 +4248,18 @@
 <dd>
 <div class="block">set Time that this module was generated</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#setIceTcp-boolean-">setIceTcp(boolean)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Set Enable ICE-TCP candidate gathering.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#setIceTcp-boolean-org.kurento.client.Continuation-">setIceTcp(boolean, Continuation&lt;Void&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Set Enable ICE-TCP candidate gathering.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/WebRtcEndpoint.html#setIceTcp-boolean-org.kurento.client.Transaction-">setIceTcp(boolean, Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/WebRtcEndpoint.html" title="interface in org.kurento.client">WebRtcEndpoint</a></dt>
+<dd>
+<div class="block">Set Enable ICE-TCP candidate gathering.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/Stats.html#setId-java.lang.String-">setId(String)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/Stats.html" title="class in org.kurento.client">Stats</a></dt>
 <dd>
 <div class="block">set A unique id that is associated with the object that was inspected to produce this Stats object.</div>
@@ -4338,15 +4366,15 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#setMaxAudioRecvBandwidth-int-">setMaxAudioRecvBandwidth(int)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum bitrate expected for the received audio stream.</div>
+<div class="block">Set Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#setMaxAudioRecvBandwidth-int-org.kurento.client.Continuation-">setMaxAudioRecvBandwidth(int, Continuation&lt;Void&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum bitrate expected for the received audio stream.</div>
+<div class="block">Set Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#setMaxAudioRecvBandwidth-int-org.kurento.client.Transaction-">setMaxAudioRecvBandwidth(int, Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum bitrate expected for the received audio stream.</div>
+<div class="block">Set Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/MediaElement.html#setMaxOuputBitrate-int-">setMaxOuputBitrate(int)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></dt>
 <dd>
@@ -4380,27 +4408,27 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#setMaxVideoRecvBandwidth-int-">setMaxVideoRecvBandwidth(int)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum bitrate expected for the received video stream.</div>
+<div class="block">Set Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#setMaxVideoRecvBandwidth-int-org.kurento.client.Continuation-">setMaxVideoRecvBandwidth(int, Continuation&lt;Void&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum bitrate expected for the received video stream.</div>
+<div class="block">Set Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/SdpEndpoint.html#setMaxVideoRecvBandwidth-int-org.kurento.client.Transaction-">setMaxVideoRecvBandwidth(int, Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/SdpEndpoint.html" title="interface in org.kurento.client">SdpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum bitrate expected for the received video stream.</div>
+<div class="block">Set Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-">setMaxVideoSendBandwidth(int)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Continuation-">setMaxVideoSendBandwidth(int, Continuation&lt;Void&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Transaction-">setMaxVideoSendBandwidth(int, Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Maximum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/RTCRTPStreamStats.html#setMediaTrackId-java.lang.String-">setMediaTrackId(String)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/RTCRTPStreamStats.html" title="class in org.kurento.client">RTCRTPStreamStats</a></dt>
 <dd>
@@ -4470,27 +4498,27 @@
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-">setMinVideoRecvBandwidth(int)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum bitrate requested on the received video stream.</div>
+<div class="block">Set Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Continuation-">setMinVideoRecvBandwidth(int, Continuation&lt;Void&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum bitrate requested on the received video stream.</div>
+<div class="block">Set Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Transaction-">setMinVideoRecvBandwidth(int, Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum bitrate requested on the received video stream.</div>
+<div class="block">Set Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-">setMinVideoSendBandwidth(int)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Continuation-">setMinVideoSendBandwidth(int, Continuation&lt;Void&gt;)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Transaction-">setMinVideoSendBandwidth(int, Transaction)</a></span> - Method in interface org.kurento.client.<a href="org/kurento/client/BaseRtpEndpoint.html" title="interface in org.kurento.client">BaseRtpEndpoint</a></dt>
 <dd>
-<div class="block">Set Minimum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/ServerInfo.html#setModules-java.util.List-">setModules(List&lt;ModuleInfo&gt;)</a></span> - Method in class org.kurento.client.<a href="org/kurento/client/ServerInfo.html" title="class in org.kurento.client">ServerInfo</a></dt>
 <dd>
@@ -5261,6 +5289,10 @@
 <dd>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/GapsFixMethod.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum org.kurento.client.<a href="org/kurento/client/GapsFixMethod.html" title="enum in org.kurento.client">GapsFixMethod</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this type with the specified name.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/GstreamerDotDetails.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum org.kurento.client.<a href="org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
@@ -5338,6 +5370,11 @@ the order they are declared.</div>
 the order they are declared.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="org/kurento/client/FilterType.html#values--">values()</a></span> - Static method in enum org.kurento.client.<a href="org/kurento/client/FilterType.html" title="enum in org.kurento.client">FilterType</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum type, in
+the order they are declared.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="org/kurento/client/GapsFixMethod.html#values--">values()</a></span> - Static method in enum org.kurento.client.<a href="org/kurento/client/GapsFixMethod.html" title="enum in org.kurento.client">GapsFixMethod</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum type, in
 the order they are declared.</div>
@@ -5585,7 +5622,7 @@ the order they are declared.</div>
 <li class="navBarCell1Rev">Index</li>
 <li><a href="help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.15.1-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.16.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">

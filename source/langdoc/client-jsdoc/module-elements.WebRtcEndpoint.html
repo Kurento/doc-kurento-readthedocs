@@ -223,10 +223,12 @@
    original stream.
  </p>
  <p>
-   The default bandwidth range of the endpoint is
-   <strong>[100 kbps, 500 kbps]</strong>, but it can be changed separately 
-   for
-   input/output directions and for audio/video streams.
+   Note that the default <strong>VideoSendBandwidth</strong> range of the
+   endpoint is a VERY conservative one, and leads to a low maximum video 
+   quality.
+   Most applications will probably want to increase this to higher values 
+   such as
+   2000 kbps (2 mbps).
  </p>
  <p>
    <strong>
@@ -237,41 +239,44 @@
  </p>
  <ul>
    <li>
-     Input bandwidth: Configuration value used to inform remote peers about 
-     the
-     bitrate that can be pushed into this endpoint.
+     Input bandwidth: Values used to inform remote peers about the bitrate 
+     that
+     can be sent to this endpoint.
      <ul>
        <li>
-         <strong>{get,set}MinVideoRecvBandwidth</strong>: Minimum bitrate
-         requested on the received video stream.
+         <strong>MinVideoRecvBandwidth</strong>: Minimum input bitrate, 
+         requested
+         from WebRTC senders with REMB (Default: 30 Kbps).
        </li>
        <li>
-         <strong>{get,set}Max{Audio,Video}RecvBandwidth</strong>: Maximum 
-         bitrate
-         expected for the received stream.
+         <strong>MaxAudioRecvBandwidth</strong> and
+         <strong>MaxVideoRecvBandwidth</strong>: Maximum input bitrate, 
+         signaled
+         in SDP Offers to WebRTC and RTP senders (Default: unlimited).
        </li>
      </ul>
    </li>
    <li>
-     Output bandwidth: Configuration values used to control bitrate of the 
-     output
-     video stream sent to remote peers. It is important to keep in mind that
-     pushed bitrate depends on network and remote peer capabilities. Remote 
-     peers
-     can also announce bandwidth limitation in their SDPs (through the
-     <code>b={modifier}:{value}</code> tag). Kurento will always enforce 
-     bitrate
-     limitations specified by the remote peer over internal configurations.
+     Output bandwidth: Values used to control bitrate of the video streams 
+     sent
+     to remote peers. It is important to keep in mind that pushed bitrate 
+     depends
+     on network and remote peer capabilities. Remote peers can also announce
+     bandwidth limitation in their SDPs (through the
+     <code>b={modifier}:{value}</code> attribute). Kurento will always 
+     enforce
+     bitrate limitations specified by the remote peer over internal
+     configurations.
      <ul>
        <li>
-         <strong>{get,set}MinVideoSendBandwidth</strong>: Minimum video 
+         <strong>MinVideoSendBandwidth</strong>: REMB override of minimum 
          bitrate
-         sent to remote peer.
+         sent to WebRTC receivers (Default: 100 Kbps).
        </li>
        <li>
-         <strong>{get,set}MaxVideoSendBandwidth</strong>: Maximum video 
+         <strong>MaxVideoSendBandwidth</strong>: REMB override of maximum 
          bitrate
-         sent to remote peer.
+         sent to WebRTC receivers (Default: 500 Kbps).
        </li>
        <li>
          <strong>RembParams.rembOnConnect</strong>: Initial local REMB 
@@ -298,12 +303,8 @@
    WebRtcElement. DataChannels can be configured to provide the following:
  </p>
  <ul>
-   <li>
-     Reliable or partially reliable delivery of sent messages
-   </li>
-   <li>
-     In-order or out-of-order delivery of sent messages
-   </li>
+   <li>Reliable or partially reliable delivery of sent messages</li>
+   <li>In-order or out-of-order delivery of sent messages</li>
  </ul>
  <p>
    Unreliable, out-of-order delivery is equivalent to raw UDP semantics. The
@@ -731,7 +732,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1470">line 1470</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1557">line 1557</a>
     </li></ul></dd>
     
 
@@ -789,7 +790,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1490">line 1490</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1577">line 1577</a>
     </li></ul></dd>
     
 
@@ -961,7 +962,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1240">line 1240</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1327">line 1327</a>
     </li></ul></dd>
     
 
@@ -1159,7 +1160,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1274">line 1274</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1361">line 1361</a>
     </li></ul></dd>
     
 
@@ -1526,7 +1527,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1355">line 1355</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1442">line 1442</a>
     </li></ul></dd>
     
 
@@ -1700,7 +1701,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1428">line 1428</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1515">line 1515</a>
     </li></ul></dd>
     
 
@@ -1872,7 +1873,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line219">line 219</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line220">line 220</a>
     </li></ul></dd>
     
 
@@ -2046,7 +2047,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line274">line 274</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line275">line 275</a>
     </li></ul></dd>
     
 
@@ -2222,7 +2223,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line233">line 233</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line236">line 236</a>
     </li></ul></dd>
     
 
@@ -2394,7 +2395,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line328">line 328</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line329">line 329</a>
     </li></ul></dd>
     
 
@@ -2591,7 +2592,7 @@ instead.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line434">line 434</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line435">line 435</a>
     </li></ul></dd>
     
 
@@ -2784,7 +2785,7 @@ instead.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line553">line 553</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line554">line 554</a>
     </li></ul></dd>
     
 
@@ -2977,7 +2978,7 @@ instead.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line669">line 669</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line670">line 670</a>
     </li></ul></dd>
     
 
@@ -3145,7 +3146,7 @@ for each stream.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line760">line 760</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line761">line 761</a>
     </li></ul></dd>
     
 
@@ -3312,7 +3313,185 @@ for each stream.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line792">line 792</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line793">line 793</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getIceTcp"><span class="type-signature"></span>getIceTcp<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Enable ICE-TCP candidate gathering.
+<p>
+  This setting enables or disables using TCP for ICE candidate gathering in 
+  the
+  underlying libnice library:
+  https://libnice.freedesktop.org/libnice/NiceAgent.html#NiceAgent--ice-tcp
+</p>
+<p>
+  You might want to disable ICE-TCP to potentially speed up ICE gathering by
+  avoiding TCP candidates in scenarios where they are not needed.
+</p>
+<p><code>iceTcp</code> is either 1 (ON) or 0 (OFF). Default: 1 (ON).</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-elements.WebRtcEndpoint.html#~getIceTcpCallback">module:elements.WebRtcEndpoint~getIceTcpCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line836">line 836</a>
     </li></ul></dd>
     
 
@@ -3374,7 +3553,7 @@ for each stream.
 
 
 <div class="description">
-    Maximum bitrate expected for the received audio stream.
+    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
 <p>
   This is used to put a limit on the bitrate that the remote peer will send 
   to
@@ -3387,7 +3566,7 @@ for each stream.
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 0.</li>
-  <li>0 = unconstrained.</li>
+  <li>0 = unlimited.</li>
 </ul>
 </div>
 
@@ -3912,7 +4091,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bitrate expected for the received video stream.
+    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
 <p>
   This is used to put a limit on the bitrate that the remote peer will send 
   to
@@ -3925,7 +4104,7 @@ function.</li></ul></dd>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 0.</li>
-  <li>0 = unconstrained.</li>
+  <li>0 = unlimited.</li>
 </ul>
 </div>
 
@@ -4098,7 +4277,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video bitrate sent to remote peer.
+    REMB override of maximum bitrate sent to WebRTC receivers.
 <p>
   With this parameter you can control the maximum video quality that will be
   sent when reacting to good network conditions. Setting this parameter to a
@@ -4108,15 +4287,16 @@ function.</li></ul></dd>
 </p>
 <p>
   This parameter provides a way to limit the bitrate requested by remote REMB
-  bandwidth estimations: the bitrate sent will be always equal or less than
-  this parameter, even if the remote peer requests higher bitrates.
+  bandwidth estimations: the bitrate sent will be always equal or less than 
+  this
+  parameter, even if the remote peer requests higher bitrates.
 </p>
 <p>
   Note that the default value of <strong>500 kbps</strong> is a VERY
   conservative one, and leads to a low maximum video quality. Most 
   applications
-  will probably want to increase this parameter to higher values such as 2000
-  mbps) or even 10000 (10 mbps).
+  will probably want to increase this to higher values such as 2000 kbps (2
+  mbps).
 </p>
 <p>
   The REMB congestion control algorithm works by gradually increasing the 
@@ -4132,8 +4312,9 @@ function.</li></ul></dd>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 500.</li>
   <li>
-    0 = unconstrained: the video bitrate will grow until all the available
-    network bandwidth is used by the stream.<br />
+    0 = unlimited: the video bitrate will grow until all the available 
+    network
+    bandwidth is used by the stream.<br />
     Note that this might have a bad effect if more than one stream is running
     (as all of them would try to raise the video bitrate indefinitely, until 
     the
@@ -4249,7 +4430,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line306">line 306</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line311">line 311</a>
     </li></ul></dd>
     
 
@@ -4423,7 +4604,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line362">line 362</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line363">line 363</a>
     </li></ul></dd>
     
 
@@ -4600,7 +4781,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line416">line 416</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line423">line 423</a>
     </li></ul></dd>
     
 
@@ -5013,7 +5194,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum bitrate requested on the received video stream.
+    Minimum input bitrate, requested from WebRTC senders with REMB.
 <p>
   This is used to set a minimum value of local REMB during bandwidth 
   estimation,
@@ -5143,7 +5324,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line468">line 468</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line475">line 475</a>
     </li></ul></dd>
     
 
@@ -5205,7 +5386,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video bitrate sent to remote peer.
+    REMB override of minimum bitrate sent to WebRTC receivers.
 <p>
   With this parameter you can control the minimum video quality that will be
   sent when reacting to bad network conditions. Setting this parameter to a 
@@ -5231,8 +5412,8 @@ function.</li></ul></dd>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 100.</li>
   <li>
-    0 = unconstrained: the video bitrate will drop as needed, even to the
-    lowest possible quality, which might make the video completely blurry and
+    0 = unlimited: the video bitrate will drop as needed, even to the lowest
+    possible quality, which might make the video completely blurry and
     pixelated.
   </li>
 </ul>
@@ -5345,7 +5526,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line582">line 582</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line589">line 589</a>
     </li></ul></dd>
     
 
@@ -5556,7 +5737,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line715">line 715</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line722">line 722</a>
     </li></ul></dd>
     
 
@@ -5733,7 +5914,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line421">line 421</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line422">line 422</a>
     </li></ul></dd>
     
 
@@ -5932,7 +6113,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line856">line 856</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line943">line 943</a>
     </li></ul></dd>
     
 
@@ -6109,7 +6290,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line497">line 497</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line498">line 498</a>
     </li></ul></dd>
     
 
@@ -6281,7 +6462,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line818">line 818</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line825">line 825</a>
     </li></ul></dd>
     
 
@@ -6453,7 +6634,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line551">line 551</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line552">line 552</a>
     </li></ul></dd>
     
 
@@ -6633,7 +6814,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line965">line 965</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1052">line 1052</a>
     </li></ul></dd>
     
 
@@ -6800,7 +6981,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1042">line 1042</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1129">line 1129</a>
     </li></ul></dd>
     
 
@@ -6998,7 +7179,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1137">line 1137</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1224">line 1224</a>
     </li></ul></dd>
     
 
@@ -7226,7 +7407,7 @@ instead.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line496">line 496</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line497">line 497</a>
     </li></ul></dd>
     
 
@@ -7450,7 +7631,7 @@ instead.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line612">line 612</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line613">line 613</a>
     </li></ul></dd>
     
 
@@ -7674,7 +7855,216 @@ instead.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line728">line 728</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line729">line 729</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="setIceTcp"><span class="type-signature"></span>setIceTcp<span class="signature">(iceTcp, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Enable ICE-TCP candidate gathering.
+<p>
+  This setting enables or disables using TCP for ICE candidate gathering in 
+  the
+  underlying libnice library:
+  https://libnice.freedesktop.org/libnice/NiceAgent.html#NiceAgent--ice-tcp
+</p>
+<p>
+  You might want to disable ICE-TCP to potentially speed up ICE gathering by
+  avoiding TCP candidates in scenarios where they are not needed.
+</p>
+<p><code>iceTcp</code> is either 1 (ON) or 0 (OFF). Default: 1 (ON).</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>iceTcp</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Boolean.html">external:Boolean</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-elements.WebRtcEndpoint.html#~setIceTcpCallback">module:elements.WebRtcEndpoint~setIceTcpCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line880">line 880</a>
     </li></ul></dd>
     
 
@@ -7736,7 +8126,7 @@ instead.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bitrate expected for the received audio stream.
+    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
 <p>
   This is used to put a limit on the bitrate that the remote peer will send 
   to
@@ -7749,7 +8139,7 @@ instead.</li></ul></dd>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 0.</li>
-  <li>0 = unconstrained.</li>
+  <li>0 = unlimited.</li>
 </ul>
 </div>
 
@@ -8367,7 +8757,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bitrate expected for the received video stream.
+    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
 <p>
   This is used to put a limit on the bitrate that the remote peer will send 
   to
@@ -8380,7 +8770,7 @@ function.</li></ul></dd>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 0.</li>
-  <li>0 = unconstrained.</li>
+  <li>0 = unlimited.</li>
 </ul>
 </div>
 
@@ -8584,7 +8974,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video bitrate sent to remote peer.
+    REMB override of maximum bitrate sent to WebRTC receivers.
 <p>
   With this parameter you can control the maximum video quality that will be
   sent when reacting to good network conditions. Setting this parameter to a
@@ -8594,15 +8984,16 @@ function.</li></ul></dd>
 </p>
 <p>
   This parameter provides a way to limit the bitrate requested by remote REMB
-  bandwidth estimations: the bitrate sent will be always equal or less than
-  this parameter, even if the remote peer requests higher bitrates.
+  bandwidth estimations: the bitrate sent will be always equal or less than 
+  this
+  parameter, even if the remote peer requests higher bitrates.
 </p>
 <p>
   Note that the default value of <strong>500 kbps</strong> is a VERY
   conservative one, and leads to a low maximum video quality. Most 
   applications
-  will probably want to increase this parameter to higher values such as 2000
-  mbps) or even 10000 (10 mbps).
+  will probably want to increase this to higher values such as 2000 kbps (2
+  mbps).
 </p>
 <p>
   The REMB congestion control algorithm works by gradually increasing the 
@@ -8618,8 +9009,9 @@ function.</li></ul></dd>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 500.</li>
   <li>
-    0 = unconstrained: the video bitrate will grow until all the available
-    network bandwidth is used by the stream.<br />
+    0 = unlimited: the video bitrate will grow until all the available 
+    network
+    bandwidth is used by the stream.<br />
     Note that this might have a bad effect if more than one stream is running
     (as all of them would try to raise the video bitrate indefinitely, until 
     the
@@ -8766,7 +9158,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line380">line 380</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line387">line 387</a>
     </li></ul></dd>
     
 
@@ -9241,7 +9633,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum bitrate requested on the received video stream.
+    Minimum input bitrate, requested from WebRTC senders with REMB.
 <p>
   This is used to set a minimum value of local REMB during bandwidth 
   estimation,
@@ -9402,7 +9794,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line521">line 521</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line528">line 528</a>
     </li></ul></dd>
     
 
@@ -9464,7 +9856,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video bitrate sent to remote peer.
+    REMB override of minimum bitrate sent to WebRTC receivers.
 <p>
   With this parameter you can control the minimum video quality that will be
   sent when reacting to bad network conditions. Setting this parameter to a 
@@ -9490,8 +9882,8 @@ function.</li></ul></dd>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 100.</li>
   <li>
-    0 = unconstrained: the video bitrate will drop as needed, even to the
-    lowest possible quality, which might make the video completely blurry and
+    0 = unlimited: the video bitrate will drop as needed, even to the lowest
+    possible quality, which might make the video completely blurry and
     pixelated.
   </li>
 </ul>
@@ -9635,7 +10027,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line645">line 645</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line652">line 652</a>
     </li></ul></dd>
     
 
@@ -9877,7 +10269,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line787">line 787</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line794">line 794</a>
     </li></ul></dd>
     
 
@@ -10085,7 +10477,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line459">line 459</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line460">line 460</a>
     </li></ul></dd>
     
 
@@ -10315,7 +10707,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line921">line 921</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1008">line 1008</a>
     </li></ul></dd>
     
 
@@ -10518,7 +10910,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line851">line 851</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line858">line 858</a>
     </li></ul></dd>
     
 
@@ -10721,7 +11113,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line584">line 584</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line585">line 585</a>
     </li></ul></dd>
     
 
@@ -10932,7 +11324,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1011">line 1011</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1098">line 1098</a>
     </li></ul></dd>
     
 
@@ -11130,7 +11522,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1075">line 1075</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1162">line 1162</a>
     </li></ul></dd>
     
 
@@ -11359,7 +11751,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1201">line 1201</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1288">line 1288</a>
     </li></ul></dd>
     
 
@@ -11516,7 +11908,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1257">line 1257</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1344">line 1344</a>
     </li></ul></dd>
     
 
@@ -11649,7 +12041,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1291">line 1291</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1378">line 1378</a>
     </li></ul></dd>
     
 
@@ -11782,7 +12174,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1407">line 1407</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1494">line 1494</a>
     </li></ul></dd>
     
 
@@ -11915,7 +12307,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1445">line 1445</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1532">line 1532</a>
     </li></ul></dd>
     
 
@@ -12071,7 +12463,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line451">line 451</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line452">line 452</a>
     </li></ul></dd>
     
 
@@ -12227,7 +12619,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line570">line 570</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line571">line 571</a>
     </li></ul></dd>
     
 
@@ -12383,7 +12775,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line686">line 686</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line687">line 687</a>
     </li></ul></dd>
     
 
@@ -12539,7 +12931,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line777">line 777</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line778">line 778</a>
     </li></ul></dd>
     
 
@@ -12695,7 +13087,163 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line809">line 809</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line810">line 810</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+
+    
+
+    
+    <h4 class="name" id="~getIceTcpCallback"><span class="type-signature"></span>getIceTcpCallback<span class="signature">(error, result)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Boolean.html">external:Boolean</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line853">line 853</a>
     </li></ul></dd>
     
 
@@ -12851,7 +13399,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line873">line 873</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line960">line 960</a>
     </li></ul></dd>
     
 
@@ -13007,7 +13555,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line982">line 982</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1069">line 1069</a>
     </li></ul></dd>
     
 
@@ -13163,7 +13711,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1059">line 1059</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1146">line 1146</a>
     </li></ul></dd>
     
 
@@ -13319,7 +13867,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1154">line 1154</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1241">line 1241</a>
     </li></ul></dd>
     
 
@@ -13452,7 +14000,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line513">line 513</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line514">line 514</a>
     </li></ul></dd>
     
 
@@ -13585,7 +14133,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line629">line 629</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line630">line 630</a>
     </li></ul></dd>
     
 
@@ -13718,7 +14266,140 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line745">line 745</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line746">line 746</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+
+    
+
+    
+    <h4 class="name" id="~setIceTcpCallback"><span class="type-signature"></span>setIceTcpCallback<span class="signature">(error)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line897">line 897</a>
     </li></ul></dd>
     
 
@@ -13851,7 +14532,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line938">line 938</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1025">line 1025</a>
     </li></ul></dd>
     
 
@@ -13984,7 +14665,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1028">line 1028</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1115">line 1115</a>
     </li></ul></dd>
     
 
@@ -14117,7 +14798,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1092">line 1092</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1179">line 1179</a>
     </li></ul></dd>
     
 
@@ -14250,7 +14931,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1218">line 1218</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1305">line 1305</a>
     </li></ul></dd>
     
 

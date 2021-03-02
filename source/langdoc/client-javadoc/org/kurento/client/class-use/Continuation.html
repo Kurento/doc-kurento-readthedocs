@@ -39,7 +39,7 @@
 <li><a href="../../../../index-all.html">Index</a></li>
 <li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.15.1-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.16.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -651,7 +651,7 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.Continuation-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
+<td class="colLast"><span class="typeNameLabel">MediaPipeline.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaPipeline.html#getGstreamerDot-org.kurento.client.Continuation-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getGstreamerDot:
  <a href="../../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>onSuccess(F)</code></a> is called when the action is
  done.</div>
@@ -659,7 +659,7 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">MediaPipeline.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaPipeline.html#getGstreamerDot-org.kurento.client.Continuation-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
+<td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.Continuation-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getGstreamerDot:
  <a href="../../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>onSuccess(F)</code></a> is called when the action is
  done.</div>
@@ -676,7 +676,7 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.GstreamerDotDetails-org.kurento.client.Continuation-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details,
+<td class="colLast"><span class="typeNameLabel">MediaPipeline.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaPipeline.html#getGstreamerDot-org.kurento.client.GstreamerDotDetails-org.kurento.client.Continuation-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details,
                <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getGstreamerDot:
  <a href="../../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>onSuccess(F)</code></a> is called when the action is
@@ -685,7 +685,7 @@
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">MediaPipeline.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaPipeline.html#getGstreamerDot-org.kurento.client.GstreamerDotDetails-org.kurento.client.Continuation-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details,
+<td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getGstreamerDot-org.kurento.client.GstreamerDotDetails-org.kurento.client.Continuation-">getGstreamerDot</a></span>(<a href="../../../../org/kurento/client/GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details,
                <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getGstreamerDot:
  <a href="../../../../org/kurento/client/Continuation.html#onSuccess-F-"><code>onSuccess(F)</code></a> is called when the action is
@@ -706,17 +706,23 @@
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getIceTcp-org.kurento.client.Continuation-">getIceTcp</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;&nbsp;cont)</code>
+<div class="block">Get Enable ICE-TCP candidate gathering.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getId-org.kurento.client.Continuation-">getId</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Unique identifier of this <code>MediaObject</code>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getInfo-org.kurento.client.Continuation-">getInfo</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../../org/kurento/client/ServerInfo.html" title="class in org.kurento.client">ServerInfo</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Server information, version, modules, factories, etc</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getKmd-java.lang.String-org.kurento.client.Continuation-">getKmd</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;moduleName,
       <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
@@ -725,13 +731,13 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaPipeline.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaPipeline.html#getLatencyStats-org.kurento.client.Continuation-">getLatencyStats</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;&nbsp;cont)</code>
 <div class="block">Get If statistics about pipeline latency are enabled for all mediaElements</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#getLocalSessionDescriptor-org.kurento.client.Continuation-">getLocalSessionDescriptor</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getLocalSessionDescriptor:
@@ -739,13 +745,13 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#getMaxAudioRecvBandwidth-org.kurento.client.Continuation-">getMaxAudioRecvBandwidth</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Maximum bitrate expected for the received audio stream.</div>
+<div class="block">Get Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getMaxOuputBitrate-org.kurento.client.Continuation-">getMaxOuputBitrate</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
@@ -753,43 +759,43 @@
 </div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getMaxOutputBitrate-org.kurento.client.Continuation-">getMaxOutputBitrate</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Maximum video bitrate for transcoding.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#getMaxVideoRecvBandwidth-org.kurento.client.Continuation-">getMaxVideoRecvBandwidth</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Maximum bitrate expected for the received video stream.</div>
+<div class="block">Get Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Continuation-">getMaxVideoSendBandwidth</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
+<div class="block">Get REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Continuation-">getMaxVideoSendBandwidth</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Maximum video bitrate sent to remote peer.</div>
-</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getMediaPipeline-org.kurento.client.Continuation-">getMediaPipeline</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a>&gt;&nbsp;cont)</code>
 <div class="block">Get <code>MediaPipeline</code> to which this <code>MediaObject</code> belongs.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getMediaState-org.kurento.client.Continuation-">getMediaState</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../../org/kurento/client/MediaState.html" title="enum in org.kurento.client">MediaState</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Media flow state.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getMetadata-org.kurento.client.Continuation-">getMetadata</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Metadata stored in the server</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getMinOuputBitrate-org.kurento.client.Continuation-">getMinOuputBitrate</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
@@ -797,67 +803,67 @@
 </div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getMinOutputBitrate-org.kurento.client.Continuation-">getMinOutputBitrate</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Minimum video bitrate for transcoding.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth-org.kurento.client.Continuation-">getMinVideoRecvBandwidth</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Minimum bitrate requested on the received video stream.</div>
+<div class="block">Get Minimum input bitrate, requested from WebRTC senders with REMB.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Continuation-">getMinVideoSendBandwidth</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
+<div class="block">Get REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Continuation-">getMinVideoSendBandwidth</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Minimum video bitrate sent to remote peer.</div>
-</td>
-</tr>
-<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getMtu-org.kurento.client.Continuation-">getMtu</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Maximum Transmission Unit (MTU) used for RTP.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getName-org.kurento.client.Continuation-">getName</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get This <code>MediaObject</code>'s name.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getNetworkInterfaces-org.kurento.client.Continuation-">getNetworkInterfaces</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Local network interfaces used for ICE gathering.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getParent-org.kurento.client.Continuation-">getParent</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Parent of this <code>MediaObject</code>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getPipelines-org.kurento.client.Continuation-">getPipelines</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Get All the pipelines available in the server</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">PlayerEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/PlayerEndpoint.html#getPosition-org.kurento.client.Continuation-">getPosition</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Get or set the actual position of the video in ms.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#getRembParams-org.kurento.client.Continuation-">getRembParams</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../../org/kurento/client/RembParams.html" title="class in org.kurento.client">RembParams</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Advanced parameters to configure the congestion control algorithm.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#getRemoteSessionDescriptor-org.kurento.client.Continuation-">getRemoteSessionDescriptor</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getRemoteSessionDescriptor:
@@ -865,19 +871,19 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getSendTagsInEvents-org.kurento.client.Continuation-">getSendTagsInEvents</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Flag activating or deactivating sending the element's tags in fired events.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getSessions-org.kurento.client.Continuation-">getSessions</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Get All active sessions in the server</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getSinkConnections-org.kurento.client.Continuation-">getSinkConnections</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getSinkConnections:
@@ -885,7 +891,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getSinkConnections-org.kurento.client.MediaType-org.kurento.client.Continuation-">getSinkConnections</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                   <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&gt;&nbsp;cont)</code>
@@ -894,7 +900,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getSinkConnections-org.kurento.client.MediaType-java.lang.String-org.kurento.client.Continuation-">getSinkConnections</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;description,
@@ -904,7 +910,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getSourceConnections-org.kurento.client.Continuation-">getSourceConnections</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getSourceConnections:
@@ -912,7 +918,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getSourceConnections-org.kurento.client.MediaType-org.kurento.client.Continuation-">getSourceConnections</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                     <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/ElementConnectionData.html" title="class in org.kurento.client">ElementConnectionData</a>&gt;&gt;&nbsp;cont)</code>
@@ -921,7 +927,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getSourceConnections-org.kurento.client.MediaType-java.lang.String-org.kurento.client.Continuation-">getSourceConnections</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                     <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;description,
@@ -931,13 +937,13 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">UriEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/UriEndpoint.html#getState-org.kurento.client.Continuation-">getState</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../../org/kurento/client/UriEndpointState.html" title="enum in org.kurento.client">UriEndpointState</a>&gt;&nbsp;cont)</code>
 <div class="block">Get State of the endpoint</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getStats-org.kurento.client.Continuation-">getStats</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/kurento/client/Stats.html" title="class in org.kurento.client">Stats</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getStats:
@@ -945,7 +951,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#getStats-org.kurento.client.MediaType-org.kurento.client.Continuation-">getStats</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
         <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/Map.html?is-external=true" title="class or interface in java.util">Map</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>,<a href="../../../../org/kurento/client/Stats.html" title="class in org.kurento.client">Stats</a>&gt;&gt;&nbsp;cont)</code>
@@ -954,19 +960,19 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getStunServerAddress-org.kurento.client.Continuation-">getStunServerAddress</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get STUN server IP address.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getStunServerPort-org.kurento.client.Continuation-">getStunServerPort</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Port of the STUN server</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getTag-java.lang.String-org.kurento.client.Continuation-">getTag</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
       <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
@@ -975,7 +981,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#getTags-org.kurento.client.Continuation-">getTags</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/Tag.html" title="class in org.kurento.client">Tag</a>&gt;&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getTags:
@@ -983,19 +989,19 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#getTurnUrl-org.kurento.client.Continuation-">getTurnUrl</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get TURN server URL.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">UriEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/UriEndpoint.html#getUri-org.kurento.client.Continuation-">getUri</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Get The uri for this endpoint.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">HttpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/HttpEndpoint.html#getUrl-org.kurento.client.Continuation-">getUrl</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getUrl:
@@ -1003,7 +1009,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getUsedCpu-int-org.kurento.client.Continuation-">getUsedCpu</a></span>(int&nbsp;interval,
           <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Float.html?is-external=true" title="class or interface in java.lang">Float</a>&gt;&nbsp;cont)</code>
@@ -1012,7 +1018,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#getUsedMemory-org.kurento.client.Continuation-">getUsedMemory</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Long.html?is-external=true" title="class or interface in java.lang">Long</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of getUsedMemory:
@@ -1020,13 +1026,13 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">PlayerEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/PlayerEndpoint.html#getVideoInfo-org.kurento.client.Continuation-">getVideoInfo</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../../org/kurento/client/VideoInfo.html" title="class in org.kurento.client">VideoInfo</a>&gt;&nbsp;cont)</code>
 <div class="block">Get Returns info about the source being played</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaFlowingIn-org.kurento.client.MediaType-org.kurento.client.Continuation-">isMediaFlowingIn</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                 <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;&nbsp;cont)</code>
@@ -1035,7 +1041,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaFlowingIn-org.kurento.client.MediaType-java.lang.String-org.kurento.client.Continuation-">isMediaFlowingIn</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sinkMediaDescription,
@@ -1045,7 +1051,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaFlowingOut-org.kurento.client.MediaType-org.kurento.client.Continuation-">isMediaFlowingOut</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                  <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;&nbsp;cont)</code>
@@ -1054,7 +1060,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaFlowingOut-org.kurento.client.MediaType-java.lang.String-org.kurento.client.Continuation-">isMediaFlowingOut</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                  <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;sourceMediaDescription,
@@ -1064,7 +1070,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaTranscoding-org.kurento.client.MediaType-org.kurento.client.Continuation-">isMediaTranscoding</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                   <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Boolean.html?is-external=true" title="class or interface in java.lang">Boolean</a>&gt;&nbsp;cont)</code>
@@ -1073,7 +1079,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#isMediaTranscoding-org.kurento.client.MediaType-java.lang.String-org.kurento.client.Continuation-">isMediaTranscoding</a></span>(<a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType,
                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;binName,
@@ -1083,7 +1089,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">UriEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/UriEndpoint.html#pause-org.kurento.client.Continuation-">pause</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of pause:
@@ -1091,7 +1097,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">PlayerEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/PlayerEndpoint.html#play-org.kurento.client.Continuation-">play</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of play:
@@ -1099,7 +1105,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#processAnswer-java.lang.String-org.kurento.client.Continuation-">processAnswer</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;answer,
              <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
@@ -1108,7 +1114,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#processOffer-java.lang.String-org.kurento.client.Continuation-">processOffer</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;offer,
             <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&gt;&nbsp;cont)</code>
@@ -1117,7 +1123,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">RecorderEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/RecorderEndpoint.html#record-org.kurento.client.Continuation-">record</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of record:
@@ -1125,97 +1131,97 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">KurentoObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/KurentoObject.html#release-org.kurento.client.Continuation-">release</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;continuation)</code>
 <div class="block">Explicitly release a media object form memory.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ZBarFilter.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ZBarFilter.html#removeCodeFoundListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeCodeFoundListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                        <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/CodeFoundEvent.html" title="class in org.kurento.client"><code>CodeFoundEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#removeConnectionStateChangedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeConnectionStateChangedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                     <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/ConnectionStateChangedEvent.html" title="class in org.kurento.client"><code>ConnectionStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeDataChannelCloseListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeDataChannelCloseListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                               <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/DataChannelCloseEvent.html" title="class in org.kurento.client"><code>DataChannelCloseEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeDataChannelOpenListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeDataChannelOpenListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                              <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/DataChannelOpenEvent.html" title="class in org.kurento.client"><code>DataChannelOpenEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#removeElementConnectedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeElementConnectedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                               <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/ElementConnectedEvent.html" title="class in org.kurento.client"><code>ElementConnectedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#removeElementDisconnectedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeElementDisconnectedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                  <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/ElementDisconnectedEvent.html" title="class in org.kurento.client"><code>ElementDisconnectedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">PlayerEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/PlayerEndpoint.html#removeEndOfStreamListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeEndOfStreamListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                          <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/EndOfStreamEvent.html" title="class in org.kurento.client"><code>EndOfStreamEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">HttpPostEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/HttpPostEndpoint.html#removeEndOfStreamListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeEndOfStreamListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                          <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/EndOfStreamEvent.html" title="class in org.kurento.client"><code>EndOfStreamEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#removeErrorListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeErrorListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                    <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/ErrorEvent.html" title="class in org.kurento.client"><code>ErrorEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeIceCandidateFoundListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeIceCandidateFoundListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/IceCandidateFoundEvent.html" title="class in org.kurento.client"><code>IceCandidateFoundEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeIceComponentStateChangeListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeIceComponentStateChangeListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                      <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/IceComponentStateChangeEvent.html" title="class in org.kurento.client"><code>IceComponentStateChangeEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeIceGatheringDoneListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeIceGatheringDoneListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                               <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/IceGatheringDoneEvent.html" title="class in org.kurento.client"><code>IceGatheringDoneEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ImageOverlayFilter.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ImageOverlayFilter.html#removeImage-java.lang.String-org.kurento.client.Continuation-">removeImage</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;id,
            <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
@@ -1224,126 +1230,126 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#removeMediaFlowInStateChangeListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeMediaFlowInStateChangeListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                     <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/MediaFlowInStateChangeEvent.html" title="class in org.kurento.client"><code>MediaFlowInStateChangeEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#removeMediaFlowOutStateChangeListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeMediaFlowOutStateChangeListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                      <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/MediaFlowOutStateChangeEvent.html" title="class in org.kurento.client"><code>MediaFlowOutStateChangeEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">SessionEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SessionEndpoint.html#removeMediaSessionStartedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeMediaSessionStartedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                  <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/MediaSessionStartedEvent.html" title="class in org.kurento.client"><code>MediaSessionStartedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">SessionEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SessionEndpoint.html#removeMediaSessionTerminatedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeMediaSessionTerminatedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                     <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/MediaSessionTerminatedEvent.html" title="class in org.kurento.client"><code>MediaSessionTerminatedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#removeMediaStateChangedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeMediaStateChangedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/MediaStateChangedEvent.html" title="class in org.kurento.client"><code>MediaStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#removeMediaTranscodingStateChangeListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeMediaTranscodingStateChangeListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                          <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/MediaTranscodingStateChangeEvent.html" title="class in org.kurento.client"><code>MediaTranscodingStateChangeEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeNewCandidatePairSelectedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeNewCandidatePairSelectedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                       <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/NewCandidatePairSelectedEvent.html" title="class in org.kurento.client"><code>NewCandidatePairSelectedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#removeObjectCreatedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeObjectCreatedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                            <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/ObjectCreatedEvent.html" title="class in org.kurento.client"><code>ObjectCreatedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">ServerManager.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/ServerManager.html#removeObjectDestroyedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeObjectDestroyedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                              <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/ObjectDestroyedEvent.html" title="class in org.kurento.client"><code>ObjectDestroyedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeOnDataChannelClosedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnDataChannelClosedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                  <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/OnDataChannelClosedEvent.html" title="class in org.kurento.client"><code>OnDataChannelClosedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeOnDataChannelOpenedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnDataChannelOpenedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                  <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/OnDataChannelOpenedEvent.html" title="class in org.kurento.client"><code>OnDataChannelOpenedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceCandidateListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnIceCandidateListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                             <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/OnIceCandidateEvent.html" title="class in org.kurento.client"><code>OnIceCandidateEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceComponentStateChangedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnIceComponentStateChangedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                         <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/OnIceComponentStateChangedEvent.html" title="class in org.kurento.client"><code>OnIceComponentStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#removeOnIceGatheringDoneListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnIceGatheringDoneListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                 <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/OnIceGatheringDoneEvent.html" title="class in org.kurento.client"><code>OnIceGatheringDoneEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">RtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/RtpEndpoint.html#removeOnKeySoftLimitListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeOnKeySoftLimitListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                             <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/OnKeySoftLimitEvent.html" title="class in org.kurento.client"><code>OnKeySoftLimitEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">RecorderEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/RecorderEndpoint.html#removePausedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removePausedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                     <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/PausedEvent.html" title="class in org.kurento.client"><code>PausedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">RecorderEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/RecorderEndpoint.html#removeRecordingListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeRecordingListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                        <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/RecordingEvent.html" title="class in org.kurento.client"><code>RecordingEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">DispatcherOneToMany.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/DispatcherOneToMany.html#removeSource-org.kurento.client.Continuation-">removeSource</a></span>(<a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Asynchronous version of removeSource:
@@ -1351,14 +1357,14 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">RecorderEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/RecorderEndpoint.html#removeStoppedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeStoppedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                      <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/StoppedEvent.html" title="class in org.kurento.client"><code>StoppedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaObject.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaObject.html#removeTag-java.lang.String-org.kurento.client.Continuation-">removeTag</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;key,
          <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
@@ -1367,14 +1373,14 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">UriEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/UriEndpoint.html#removeUriEndpointStateChangedListener-org.kurento.client.ListenerSubscription-org.kurento.client.Continuation-">removeUriEndpointStateChangedListener</a></span>(<a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client">ListenerSubscription</a>&nbsp;listenerSubscription,
                                      <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Remove a <a href="../../../../org/kurento/client/ListenerSubscription.html" title="interface in org.kurento.client"><code>ListenerSubscription</code></a> for event <a href="../../../../org/kurento/client/UriEndpointStateChangedEvent.html" title="class in org.kurento.client"><code>UriEndpointStateChangedEvent</code></a>.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaElement.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaElement.html#setAudioFormat-org.kurento.client.AudioCaps-org.kurento.client.Continuation-">setAudioFormat</a></span>(<a href="../../../../org/kurento/client/AudioCaps.html" title="class in org.kurento.client">AudioCaps</a>&nbsp;caps,
               <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
@@ -1383,7 +1389,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">GStreamerFilter.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/GStreamerFilter.html#setElementProperty-java.lang.String-java.lang.String-org.kurento.client.Continuation-">setElementProperty</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyName,
                   <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;propertyValue,
@@ -1393,7 +1399,7 @@
  done.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#setExternalAddress-java.lang.String-org.kurento.client.Continuation-">setExternalAddress</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalAddress,
                   <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
@@ -1402,18 +1408,25 @@
 </div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#setExternalIPv4-java.lang.String-org.kurento.client.Continuation-">setExternalIPv4</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv4,
                <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Set External IPv4 address of the media server.</div>
 </td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#setExternalIPv6-java.lang.String-org.kurento.client.Continuation-">setExternalIPv6</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;externalIPv6,
                <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
 <div class="block">Set External IPv6 address of the media server.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">WebRtcEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/WebRtcEndpoint.html#setIceTcp-boolean-org.kurento.client.Continuation-">setIceTcp</a></span>(boolean&nbsp;iceTcp,
+         <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
+<div class="block">Set Enable ICE-TCP candidate gathering.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -1437,7 +1450,7 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#setMaxAudioRecvBandwidth-int-org.kurento.client.Continuation-">setMaxAudioRecvBandwidth</a></span>(int&nbsp;maxAudioRecvBandwidth,
                         <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Maximum bitrate expected for the received audio stream.</div>
+<div class="block">Set Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -1460,14 +1473,14 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">SdpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/SdpEndpoint.html#setMaxVideoRecvBandwidth-int-org.kurento.client.Continuation-">setMaxVideoRecvBandwidth</a></span>(int&nbsp;maxVideoRecvBandwidth,
                         <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Maximum bitrate expected for the received video stream.</div>
+<div class="block">Set Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Continuation-">setMaxVideoSendBandwidth</a></span>(int&nbsp;maxVideoSendBandwidth,
                         <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Maximum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -1490,14 +1503,14 @@
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Continuation-">setMinVideoRecvBandwidth</a></span>(int&nbsp;minVideoRecvBandwidth,
                         <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Minimum bitrate requested on the received video stream.</div>
+<div class="block">Set Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">BaseRtpEndpoint.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Continuation-">setMinVideoSendBandwidth</a></span>(int&nbsp;minVideoSendBandwidth,
                         <a href="../../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Minimum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -1674,7 +1687,7 @@
 <li><a href="../../../../index-all.html">Index</a></li>
 <li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.15.1-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.16.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">

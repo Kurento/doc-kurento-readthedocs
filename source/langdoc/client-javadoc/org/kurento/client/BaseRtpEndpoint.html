@@ -45,7 +45,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.15.1-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.16.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -196,34 +196,36 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  </p>
  <ul>
    <li>
-     Input bandwidth: Configuration value used to inform remote peers about the
-     bitrate that can be pushed into this endpoint.
+     Input bandwidth: Values used to inform remote peers about the bitrate that
+     can be sent to this endpoint.
      <ul>
        <li>
-         <strong>{get,set}MinVideoRecvBandwidth</strong>: Minimum bitrate
-         requested on the received video stream.
+         <strong>MinVideoRecvBandwidth</strong>: Minimum input bitrate, requested
+         from WebRTC senders with REMB (Default: 30 Kbps).
        </li>
        <li>
-         <strong>{get,set}Max{Audio,Video}RecvBandwidth</strong>: Maximum bitrate
-         expected for the received stream.
+         <strong>MaxAudioRecvBandwidth</strong> and
+         <strong>MaxVideoRecvBandwidth</strong>: Maximum input bitrate, signaled
+         in SDP Offers to WebRTC and RTP senders (Default: unlimited).
        </li>
      </ul>
    </li>
    <li>
-     Output bandwidth: Configuration values used to control bitrate of the output
-     video stream sent to remote peers. It is important to keep in mind that
-     pushed bitrate depends on network and remote peer capabilities. Remote peers
-     can also announce bandwidth limitation in their SDPs (through the
-     <code>b={modifier}:{value}</code> tag). Kurento will always enforce bitrate
-     limitations specified by the remote peer over internal configurations.
+     Output bandwidth: Values used to control bitrate of the video streams sent
+     to remote peers. It is important to keep in mind that pushed bitrate depends
+     on network and remote peer capabilities. Remote peers can also announce
+     bandwidth limitation in their SDPs (through the
+     <code>b={modifier}:{value}</code> attribute). Kurento will always enforce
+     bitrate limitations specified by the remote peer over internal
+     configurations.
      <ul>
        <li>
-         <strong>{get,set}MinVideoSendBandwidth</strong>: Minimum video bitrate
-         sent to remote peer.
+         <strong>MinVideoSendBandwidth</strong>: REMB override of minimum bitrate
+         sent to WebRTC receivers (Default: 100 Kbps).
        </li>
        <li>
-         <strong>{get,set}MaxVideoSendBandwidth</strong>: Maximum video bitrate
-         sent to remote peer.
+         <strong>MaxVideoSendBandwidth</strong>: REMB override of maximum bitrate
+         sent to WebRTC receivers (Default: 500 Kbps).
        </li>
        <li>
          <strong>RembParams.rembOnConnect</strong>: Initial local REMB bandwidth
@@ -303,19 +305,19 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth--">getMaxVideoSendBandwidth</a></span>()</code>
-<div class="block">Get Maximum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Continuation-">getMaxVideoSendBandwidth</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Maximum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMaxVideoSendBandwidth-org.kurento.client.Transaction-">getMaxVideoSendBandwidth</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get Maximum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
@@ -339,37 +341,37 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth--">getMinVideoRecvBandwidth</a></span>()</code>
-<div class="block">Get Minimum bitrate requested on the received video stream.</div>
+<div class="block">Get Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth-org.kurento.client.Continuation-">getMinVideoRecvBandwidth</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Minimum bitrate requested on the received video stream.</div>
+<div class="block">Get Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoRecvBandwidth-org.kurento.client.Transaction-">getMinVideoRecvBandwidth</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get Minimum bitrate requested on the received video stream.</div>
+<div class="block">Get Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth--">getMinVideoSendBandwidth</a></span>()</code>
-<div class="block">Get Minimum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Continuation-">getMinVideoSendBandwidth</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</code>
-<div class="block">Get Minimum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#getMinVideoSendBandwidth-org.kurento.client.Transaction-">getMinVideoSendBandwidth</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get Minimum video bitrate sent to remote peer.</div>
+<div class="block">Get REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i19" class="rowColor">
@@ -437,61 +439,61 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <tr id="i29" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-">setMaxVideoSendBandwidth</a></span>(int&nbsp;maxVideoSendBandwidth)</code>
-<div class="block">Set Maximum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i30" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Continuation-">setMaxVideoSendBandwidth</a></span>(int&nbsp;maxVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Maximum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i31" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMaxVideoSendBandwidth-int-org.kurento.client.Transaction-">setMaxVideoSendBandwidth</a></span>(int&nbsp;maxVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set Maximum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of maximum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i32" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-">setMinVideoRecvBandwidth</a></span>(int&nbsp;minVideoRecvBandwidth)</code>
-<div class="block">Set Minimum bitrate requested on the received video stream.</div>
+<div class="block">Set Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </td>
 </tr>
 <tr id="i33" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Continuation-">setMinVideoRecvBandwidth</a></span>(int&nbsp;minVideoRecvBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Minimum bitrate requested on the received video stream.</div>
+<div class="block">Set Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </td>
 </tr>
 <tr id="i34" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoRecvBandwidth-int-org.kurento.client.Transaction-">setMinVideoRecvBandwidth</a></span>(int&nbsp;minVideoRecvBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set Minimum bitrate requested on the received video stream.</div>
+<div class="block">Set Minimum input bitrate, requested from WebRTC senders with REMB.</div>
 </td>
 </tr>
 <tr id="i35" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-">setMinVideoSendBandwidth</a></span>(int&nbsp;minVideoSendBandwidth)</code>
-<div class="block">Set Minimum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i36" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Continuation-">setMinVideoSendBandwidth</a></span>(int&nbsp;minVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</code>
-<div class="block">Set Minimum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i37" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/BaseRtpEndpoint.html#setMinVideoSendBandwidth-int-org.kurento.client.Transaction-">setMinVideoSendBandwidth</a></span>(int&nbsp;minVideoSendBandwidth,
                         <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Set Minimum video bitrate sent to remote peer.</div>
+<div class="block">Set REMB override of minimum bitrate sent to WebRTC receivers.</div>
 </td>
 </tr>
 <tr id="i38" class="altColor">
@@ -591,7 +593,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoRecvBandwidth</h4>
 <pre>int&nbsp;getMinVideoRecvBandwidth()</pre>
-<div class="block">Get Minimum bitrate requested on the received video stream.
+<div class="block">Get Minimum input bitrate, requested from WebRTC senders with REMB.
  <p>
    This is used to set a minimum value of local REMB during bandwidth estimation,
    if supported by the implementing class. The REMB estimation will then be sent
@@ -616,7 +618,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoRecvBandwidth</h4>
 <pre>void&nbsp;getMinVideoRecvBandwidth(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get Minimum bitrate requested on the received video stream.
+<div class="block">Get Minimum input bitrate, requested from WebRTC senders with REMB.
  <p>
    This is used to set a minimum value of local REMB during bandwidth estimation,
    if supported by the implementing class. The REMB estimation will then be sent
@@ -641,7 +643,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoRecvBandwidth</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMinVideoRecvBandwidth(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get Minimum bitrate requested on the received video stream.
+<div class="block">Get Minimum input bitrate, requested from WebRTC senders with REMB.
  <p>
    This is used to set a minimum value of local REMB during bandwidth estimation,
    if supported by the implementing class. The REMB estimation will then be sent
@@ -666,7 +668,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>setMinVideoRecvBandwidth</h4>
 <pre>void&nbsp;setMinVideoRecvBandwidth(int&nbsp;minVideoRecvBandwidth)</pre>
-<div class="block">Set Minimum bitrate requested on the received video stream.
+<div class="block">Set Minimum input bitrate, requested from WebRTC senders with REMB.
  <p>
    This is used to set a minimum value of local REMB during bandwidth estimation,
    if supported by the implementing class. The REMB estimation will then be sent
@@ -692,7 +694,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMinVideoRecvBandwidth</h4>
 <pre>void&nbsp;setMinVideoRecvBandwidth(int&nbsp;minVideoRecvBandwidth,
                               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set Minimum bitrate requested on the received video stream.
+<div class="block">Set Minimum input bitrate, requested from WebRTC senders with REMB.
  <p>
    This is used to set a minimum value of local REMB during bandwidth estimation,
    if supported by the implementing class. The REMB estimation will then be sent
@@ -718,7 +720,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMinVideoRecvBandwidth</h4>
 <pre>void&nbsp;setMinVideoRecvBandwidth(int&nbsp;minVideoRecvBandwidth,
                               <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set Minimum bitrate requested on the received video stream.
+<div class="block">Set Minimum input bitrate, requested from WebRTC senders with REMB.
  <p>
    This is used to set a minimum value of local REMB during bandwidth estimation,
    if supported by the implementing class. The REMB estimation will then be sent
@@ -743,7 +745,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoSendBandwidth</h4>
 <pre>int&nbsp;getMinVideoSendBandwidth()</pre>
-<div class="block">Get Minimum video bitrate sent to remote peer.
+<div class="block">Get REMB override of minimum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the minimum video quality that will be
    sent when reacting to bad network conditions. Setting this parameter to a low
@@ -764,8 +766,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 100.</li>
    <li>
-     0 = unconstrained: the video bitrate will drop as needed, even to the
-     lowest possible quality, which might make the video completely blurry and
+     0 = unlimited: the video bitrate will drop as needed, even to the lowest
+     possible quality, which might make the video completely blurry and
      pixelated.
    </li>
  </ul></div>
@@ -778,7 +780,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoSendBandwidth</h4>
 <pre>void&nbsp;getMinVideoSendBandwidth(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get Minimum video bitrate sent to remote peer.
+<div class="block">Get REMB override of minimum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the minimum video quality that will be
    sent when reacting to bad network conditions. Setting this parameter to a low
@@ -799,8 +801,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 100.</li>
    <li>
-     0 = unconstrained: the video bitrate will drop as needed, even to the
-     lowest possible quality, which might make the video completely blurry and
+     0 = unlimited: the video bitrate will drop as needed, even to the lowest
+     possible quality, which might make the video completely blurry and
      pixelated.
    </li>
  </ul></div>
@@ -813,7 +815,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMinVideoSendBandwidth</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMinVideoSendBandwidth(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get Minimum video bitrate sent to remote peer.
+<div class="block">Get REMB override of minimum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the minimum video quality that will be
    sent when reacting to bad network conditions. Setting this parameter to a low
@@ -834,8 +836,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 100.</li>
    <li>
-     0 = unconstrained: the video bitrate will drop as needed, even to the
-     lowest possible quality, which might make the video completely blurry and
+     0 = unlimited: the video bitrate will drop as needed, even to the lowest
+     possible quality, which might make the video completely blurry and
      pixelated.
    </li>
  </ul></div>
@@ -848,7 +850,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>setMinVideoSendBandwidth</h4>
 <pre>void&nbsp;setMinVideoSendBandwidth(int&nbsp;minVideoSendBandwidth)</pre>
-<div class="block">Set Minimum video bitrate sent to remote peer.
+<div class="block">Set REMB override of minimum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the minimum video quality that will be
    sent when reacting to bad network conditions. Setting this parameter to a low
@@ -869,8 +871,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 100.</li>
    <li>
-     0 = unconstrained: the video bitrate will drop as needed, even to the
-     lowest possible quality, which might make the video completely blurry and
+     0 = unlimited: the video bitrate will drop as needed, even to the lowest
+     possible quality, which might make the video completely blurry and
      pixelated.
    </li>
  </ul></div>
@@ -884,7 +886,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMinVideoSendBandwidth</h4>
 <pre>void&nbsp;setMinVideoSendBandwidth(int&nbsp;minVideoSendBandwidth,
                               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set Minimum video bitrate sent to remote peer.
+<div class="block">Set REMB override of minimum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the minimum video quality that will be
    sent when reacting to bad network conditions. Setting this parameter to a low
@@ -905,8 +907,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 100.</li>
    <li>
-     0 = unconstrained: the video bitrate will drop as needed, even to the
-     lowest possible quality, which might make the video completely blurry and
+     0 = unlimited: the video bitrate will drop as needed, even to the lowest
+     possible quality, which might make the video completely blurry and
      pixelated.
    </li>
  </ul></div>
@@ -920,7 +922,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMinVideoSendBandwidth</h4>
 <pre>void&nbsp;setMinVideoSendBandwidth(int&nbsp;minVideoSendBandwidth,
                               <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set Minimum video bitrate sent to remote peer.
+<div class="block">Set REMB override of minimum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the minimum video quality that will be
    sent when reacting to bad network conditions. Setting this parameter to a low
@@ -941,8 +943,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 100.</li>
    <li>
-     0 = unconstrained: the video bitrate will drop as needed, even to the
-     lowest possible quality, which might make the video completely blurry and
+     0 = unlimited: the video bitrate will drop as needed, even to the lowest
+     possible quality, which might make the video completely blurry and
      pixelated.
    </li>
  </ul></div>
@@ -955,7 +957,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMaxVideoSendBandwidth</h4>
 <pre>int&nbsp;getMaxVideoSendBandwidth()</pre>
-<div class="block">Get Maximum video bitrate sent to remote peer.
+<div class="block">Get REMB override of maximum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the maximum video quality that will be
    sent when reacting to good network conditions. Setting this parameter to a
@@ -964,14 +966,14 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  </p>
  <p>
    This parameter provides a way to limit the bitrate requested by remote REMB
-   bandwidth estimations: the bitrate sent will be always equal or less than
-   this parameter, even if the remote peer requests higher bitrates.
+   bandwidth estimations: the bitrate sent will be always equal or less than this
+   parameter, even if the remote peer requests higher bitrates.
  </p>
  <p>
    Note that the default value of <strong>500 kbps</strong> is a VERY
    conservative one, and leads to a low maximum video quality. Most applications
-   will probably want to increase this parameter to higher values such as 2000 (2
-   mbps) or even 10000 (10 mbps).
+   will probably want to increase this to higher values such as 2000 kbps (2
+   mbps).
  </p>
  <p>
    The REMB congestion control algorithm works by gradually increasing the output
@@ -984,8 +986,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 500.</li>
    <li>
-     0 = unconstrained: the video bitrate will grow until all the available
-     network bandwidth is used by the stream.<br />
+     0 = unlimited: the video bitrate will grow until all the available network
+     bandwidth is used by the stream.<br />
      Note that this might have a bad effect if more than one stream is running
      (as all of them would try to raise the video bitrate indefinitely, until the
      network gets saturated).
@@ -1000,7 +1002,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMaxVideoSendBandwidth</h4>
 <pre>void&nbsp;getMaxVideoSendBandwidth(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get Maximum video bitrate sent to remote peer.
+<div class="block">Get REMB override of maximum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the maximum video quality that will be
    sent when reacting to good network conditions. Setting this parameter to a
@@ -1009,14 +1011,14 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  </p>
  <p>
    This parameter provides a way to limit the bitrate requested by remote REMB
-   bandwidth estimations: the bitrate sent will be always equal or less than
-   this parameter, even if the remote peer requests higher bitrates.
+   bandwidth estimations: the bitrate sent will be always equal or less than this
+   parameter, even if the remote peer requests higher bitrates.
  </p>
  <p>
    Note that the default value of <strong>500 kbps</strong> is a VERY
    conservative one, and leads to a low maximum video quality. Most applications
-   will probably want to increase this parameter to higher values such as 2000 (2
-   mbps) or even 10000 (10 mbps).
+   will probably want to increase this to higher values such as 2000 kbps (2
+   mbps).
  </p>
  <p>
    The REMB congestion control algorithm works by gradually increasing the output
@@ -1029,8 +1031,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 500.</li>
    <li>
-     0 = unconstrained: the video bitrate will grow until all the available
-     network bandwidth is used by the stream.<br />
+     0 = unlimited: the video bitrate will grow until all the available network
+     bandwidth is used by the stream.<br />
      Note that this might have a bad effect if more than one stream is running
      (as all of them would try to raise the video bitrate indefinitely, until the
      network gets saturated).
@@ -1045,7 +1047,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>getMaxVideoSendBandwidth</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Integer.html?is-external=true" title="class or interface in java.lang">Integer</a>&gt;&nbsp;getMaxVideoSendBandwidth(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get Maximum video bitrate sent to remote peer.
+<div class="block">Get REMB override of maximum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the maximum video quality that will be
    sent when reacting to good network conditions. Setting this parameter to a
@@ -1054,14 +1056,14 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  </p>
  <p>
    This parameter provides a way to limit the bitrate requested by remote REMB
-   bandwidth estimations: the bitrate sent will be always equal or less than
-   this parameter, even if the remote peer requests higher bitrates.
+   bandwidth estimations: the bitrate sent will be always equal or less than this
+   parameter, even if the remote peer requests higher bitrates.
  </p>
  <p>
    Note that the default value of <strong>500 kbps</strong> is a VERY
    conservative one, and leads to a low maximum video quality. Most applications
-   will probably want to increase this parameter to higher values such as 2000 (2
-   mbps) or even 10000 (10 mbps).
+   will probably want to increase this to higher values such as 2000 kbps (2
+   mbps).
  </p>
  <p>
    The REMB congestion control algorithm works by gradually increasing the output
@@ -1074,8 +1076,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 500.</li>
    <li>
-     0 = unconstrained: the video bitrate will grow until all the available
-     network bandwidth is used by the stream.<br />
+     0 = unlimited: the video bitrate will grow until all the available network
+     bandwidth is used by the stream.<br />
      Note that this might have a bad effect if more than one stream is running
      (as all of them would try to raise the video bitrate indefinitely, until the
      network gets saturated).
@@ -1090,7 +1092,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li class="blockList">
 <h4>setMaxVideoSendBandwidth</h4>
 <pre>void&nbsp;setMaxVideoSendBandwidth(int&nbsp;maxVideoSendBandwidth)</pre>
-<div class="block">Set Maximum video bitrate sent to remote peer.
+<div class="block">Set REMB override of maximum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the maximum video quality that will be
    sent when reacting to good network conditions. Setting this parameter to a
@@ -1099,14 +1101,14 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  </p>
  <p>
    This parameter provides a way to limit the bitrate requested by remote REMB
-   bandwidth estimations: the bitrate sent will be always equal or less than
-   this parameter, even if the remote peer requests higher bitrates.
+   bandwidth estimations: the bitrate sent will be always equal or less than this
+   parameter, even if the remote peer requests higher bitrates.
  </p>
  <p>
    Note that the default value of <strong>500 kbps</strong> is a VERY
    conservative one, and leads to a low maximum video quality. Most applications
-   will probably want to increase this parameter to higher values such as 2000 (2
-   mbps) or even 10000 (10 mbps).
+   will probably want to increase this to higher values such as 2000 kbps (2
+   mbps).
  </p>
  <p>
    The REMB congestion control algorithm works by gradually increasing the output
@@ -1119,8 +1121,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 500.</li>
    <li>
-     0 = unconstrained: the video bitrate will grow until all the available
-     network bandwidth is used by the stream.<br />
+     0 = unlimited: the video bitrate will grow until all the available network
+     bandwidth is used by the stream.<br />
      Note that this might have a bad effect if more than one stream is running
      (as all of them would try to raise the video bitrate indefinitely, until the
      network gets saturated).
@@ -1136,7 +1138,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMaxVideoSendBandwidth</h4>
 <pre>void&nbsp;setMaxVideoSendBandwidth(int&nbsp;maxVideoSendBandwidth,
                               <a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Void.html?is-external=true" title="class or interface in java.lang">Void</a>&gt;&nbsp;cont)</pre>
-<div class="block">Set Maximum video bitrate sent to remote peer.
+<div class="block">Set REMB override of maximum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the maximum video quality that will be
    sent when reacting to good network conditions. Setting this parameter to a
@@ -1145,14 +1147,14 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  </p>
  <p>
    This parameter provides a way to limit the bitrate requested by remote REMB
-   bandwidth estimations: the bitrate sent will be always equal or less than
-   this parameter, even if the remote peer requests higher bitrates.
+   bandwidth estimations: the bitrate sent will be always equal or less than this
+   parameter, even if the remote peer requests higher bitrates.
  </p>
  <p>
    Note that the default value of <strong>500 kbps</strong> is a VERY
    conservative one, and leads to a low maximum video quality. Most applications
-   will probably want to increase this parameter to higher values such as 2000 (2
-   mbps) or even 10000 (10 mbps).
+   will probably want to increase this to higher values such as 2000 kbps (2
+   mbps).
  </p>
  <p>
    The REMB congestion control algorithm works by gradually increasing the output
@@ -1165,8 +1167,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 500.</li>
    <li>
-     0 = unconstrained: the video bitrate will grow until all the available
-     network bandwidth is used by the stream.<br />
+     0 = unlimited: the video bitrate will grow until all the available network
+     bandwidth is used by the stream.<br />
      Note that this might have a bad effect if more than one stream is running
      (as all of them would try to raise the video bitrate indefinitely, until the
      network gets saturated).
@@ -1182,7 +1184,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <h4>setMaxVideoSendBandwidth</h4>
 <pre>void&nbsp;setMaxVideoSendBandwidth(int&nbsp;maxVideoSendBandwidth,
                               <a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Set Maximum video bitrate sent to remote peer.
+<div class="block">Set REMB override of maximum bitrate sent to WebRTC receivers.
  <p>
    With this parameter you can control the maximum video quality that will be
    sent when reacting to good network conditions. Setting this parameter to a
@@ -1191,14 +1193,14 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
  </p>
  <p>
    This parameter provides a way to limit the bitrate requested by remote REMB
-   bandwidth estimations: the bitrate sent will be always equal or less than
-   this parameter, even if the remote peer requests higher bitrates.
+   bandwidth estimations: the bitrate sent will be always equal or less than this
+   parameter, even if the remote peer requests higher bitrates.
  </p>
  <p>
    Note that the default value of <strong>500 kbps</strong> is a VERY
    conservative one, and leads to a low maximum video quality. Most applications
-   will probably want to increase this parameter to higher values such as 2000 (2
-   mbps) or even 10000 (10 mbps).
+   will probably want to increase this to higher values such as 2000 kbps (2
+   mbps).
  </p>
  <p>
    The REMB congestion control algorithm works by gradually increasing the output
@@ -1211,8 +1213,8 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
    <li>Unit: kbps (kilobits per second).</li>
    <li>Default: 500.</li>
    <li>
-     0 = unconstrained: the video bitrate will grow until all the available
-     network bandwidth is used by the stream.<br />
+     0 = unlimited: the video bitrate will grow until all the available network
+     bandwidth is used by the stream.<br />
      Note that this might have a bad effect if more than one stream is running
      (as all of them would try to raise the video bitrate indefinitely, until the
      network gets saturated).
@@ -1790,7 +1792,7 @@ extends <a href="../../../org/kurento/client/SdpEndpoint.html" title="interface 
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.15.1-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.16.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">

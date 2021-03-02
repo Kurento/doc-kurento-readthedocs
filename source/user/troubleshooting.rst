@@ -4,7 +4,7 @@ Troubleshooting Issues
 
 If you are facing an issue with Kurento Media Server, follow this basic check list:
 
-* **Step 1**: Test with the **latest version** of Kurento Media Server: **6.15.0**. Follow the installation instructions here: :doc:`/user/installation`.
+* **Step 1**: Test with the **latest version** of Kurento Media Server: **6.16.0**. Follow the installation instructions here: :doc:`/user/installation`.
 
 * **Step 2**: Test with the latest (unreleased) changes by installing a nightly version: :doc:`/user/installation_dev`.
 
@@ -31,7 +31,7 @@ Media Server Crashes
 
 We want Kurento to be as stable as possible! When you notice a server crash, it's a good time to report a bug so we can know about the issue. But before that, you need to check a couple things:
 
-1. Make sure that you are running the **latest version** of Kurento Media Server: **6.15.0**.
+1. Make sure that you are running the **latest version** of Kurento Media Server: **6.16.0**.
 2. Have :ref:`debug symbols installed <dev-dbg>`. Otherwise, *your bug report won't be useful*.
 
 Then, please provide us with information about the crash:

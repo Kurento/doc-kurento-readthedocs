@@ -39,11 +39,8 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-hello-world
-    git checkout master
+    git checkout 6.16.0
     npm install
-    cd static
-    bower install --allow-root
-    cd ..
     npm start
 
 If you have problems installing any of the dependencies, please remove them and
@@ -512,7 +509,7 @@ file for managing this dependency is:
 
    "dependencies": {
       [...]
-      "kurento-client" : "6.15.0"
+      "kurento-client" : "6.16.0"
    }
 
 At the client side, dependencies are managed using :term:`Bower`. Take a look to
@@ -524,11 +521,11 @@ file and pay attention to the following section:
 
    "dependencies": {
       [...]
-      "kurento-utils" : "6.15.0"
+      "kurento-utils" : "6.16.0"
    }
 
 .. note::
 
-   We are in active development. You can find the latest version of
+   You can find the latest version of
    Kurento JavaScript Client at `npm <https://npmsearch.com/?q=kurento-client>`_
    and `Bower <https://bower.io/search/?q=kurento-client>`_.

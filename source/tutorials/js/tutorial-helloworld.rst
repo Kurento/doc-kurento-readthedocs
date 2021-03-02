@@ -38,7 +38,7 @@ You also need the source code of this tutorial. Clone it from GitHub, then start
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-hello-world/
-    git checkout master
+    git checkout 6.16.0
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 
@@ -275,8 +275,8 @@ file, as follows:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.15.0",
-      "kurento-utils": "6.15.0"
+      "kurento-client": "6.16.0",
+      "kurento-utils": "6.16.0"
    }
 
 To get these dependencies, just run the following shell command:
@@ -287,5 +287,5 @@ To get these dependencies, just run the following shell command:
 
 .. note::
 
-   We are in active development. You can find the latest version of
+   You can find the latest version of
    Kurento JavaScript Client at `Bower <https://bower.io/search/?q=kurento-client>`_.

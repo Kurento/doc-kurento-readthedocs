@@ -25,7 +25,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-hello-world-recording
-    git checkout master
+    git checkout 6.16.0
     mvn -U clean spring-boot:run
 
 Access the application connecting to the URL https://localhost:8443/ in a WebRTC
@@ -637,7 +637,7 @@ client-side. Other client libraries are managed with
 
 .. note::
 
-   We are in active development. You can find the latest version of
+   You can find the latest version of
    Kurento Java Client at `Maven Central <https://search.maven.org/#search%7Cga%7C1%7Ckurento-client>`_.
 
 Kurento Java Client has a minimum requirement of **Java 7**. Hence, you need to

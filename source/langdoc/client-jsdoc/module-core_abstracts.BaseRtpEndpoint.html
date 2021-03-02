@@ -137,41 +137,44 @@
  </p>
  <ul>
    <li>
-     Input bandwidth: Configuration value used to inform remote peers about 
-     the
-     bitrate that can be pushed into this endpoint.
+     Input bandwidth: Values used to inform remote peers about the bitrate 
+     that
+     can be sent to this endpoint.
      <ul>
        <li>
-         <strong>{get,set}MinVideoRecvBandwidth</strong>: Minimum bitrate
-         requested on the received video stream.
+         <strong>MinVideoRecvBandwidth</strong>: Minimum input bitrate, 
+         requested
+         from WebRTC senders with REMB (Default: 30 Kbps).
        </li>
        <li>
-         <strong>{get,set}Max{Audio,Video}RecvBandwidth</strong>: Maximum 
-         bitrate
-         expected for the received stream.
+         <strong>MaxAudioRecvBandwidth</strong> and
+         <strong>MaxVideoRecvBandwidth</strong>: Maximum input bitrate, 
+         signaled
+         in SDP Offers to WebRTC and RTP senders (Default: unlimited).
        </li>
      </ul>
    </li>
    <li>
-     Output bandwidth: Configuration values used to control bitrate of the 
-     output
-     video stream sent to remote peers. It is important to keep in mind that
-     pushed bitrate depends on network and remote peer capabilities. Remote 
-     peers
-     can also announce bandwidth limitation in their SDPs (through the
-     <code>b={modifier}:{value}</code> tag). Kurento will always enforce 
-     bitrate
-     limitations specified by the remote peer over internal configurations.
+     Output bandwidth: Values used to control bitrate of the video streams 
+     sent
+     to remote peers. It is important to keep in mind that pushed bitrate 
+     depends
+     on network and remote peer capabilities. Remote peers can also announce
+     bandwidth limitation in their SDPs (through the
+     <code>b={modifier}:{value}</code> attribute). Kurento will always 
+     enforce
+     bitrate limitations specified by the remote peer over internal
+     configurations.
      <ul>
        <li>
-         <strong>{get,set}MinVideoSendBandwidth</strong>: Minimum video 
+         <strong>MinVideoSendBandwidth</strong>: REMB override of minimum 
          bitrate
-         sent to remote peer.
+         sent to WebRTC receivers (Default: 100 Kbps).
        </li>
        <li>
-         <strong>{get,set}MaxVideoSendBandwidth</strong>: Maximum video 
+         <strong>MaxVideoSendBandwidth</strong>: REMB override of maximum 
          bitrate
-         sent to remote peer.
+         sent to WebRTC receivers (Default: 500 Kbps).
        </li>
        <li>
          <strong>RembParams.rembOnConnect</strong>: Initial local REMB 
@@ -358,7 +361,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line877">line 877</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line884">line 884</a>
     </li></ul></dd>
     
 
@@ -416,7 +419,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line885">line 885</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line892">line 892</a>
     </li></ul></dd>
     
 
@@ -562,7 +565,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line219">line 219</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line220">line 220</a>
     </li></ul></dd>
     
 
@@ -736,7 +739,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line274">line 274</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line275">line 275</a>
     </li></ul></dd>
     
 
@@ -907,7 +910,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line233">line 233</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line236">line 236</a>
     </li></ul></dd>
     
 
@@ -1079,7 +1082,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line328">line 328</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line329">line 329</a>
     </li></ul></dd>
     
 
@@ -1141,7 +1144,7 @@
 
 
 <div class="description">
-    Maximum bitrate expected for the received audio stream.
+    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
 <p>
   This is used to put a limit on the bitrate that the remote peer will send 
   to
@@ -1154,7 +1157,7 @@
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 0.</li>
-  <li>0 = unconstrained.</li>
+  <li>0 = unlimited.</li>
 </ul>
 </div>
 
@@ -1679,7 +1682,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bitrate expected for the received video stream.
+    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
 <p>
   This is used to put a limit on the bitrate that the remote peer will send 
   to
@@ -1692,7 +1695,7 @@ function.</li></ul></dd>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 0.</li>
-  <li>0 = unconstrained.</li>
+  <li>0 = unlimited.</li>
 </ul>
 </div>
 
@@ -1865,7 +1868,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video bitrate sent to remote peer.
+    REMB override of maximum bitrate sent to WebRTC receivers.
 <p>
   With this parameter you can control the maximum video quality that will be
   sent when reacting to good network conditions. Setting this parameter to a
@@ -1875,15 +1878,16 @@ function.</li></ul></dd>
 </p>
 <p>
   This parameter provides a way to limit the bitrate requested by remote REMB
-  bandwidth estimations: the bitrate sent will be always equal or less than
-  this parameter, even if the remote peer requests higher bitrates.
+  bandwidth estimations: the bitrate sent will be always equal or less than 
+  this
+  parameter, even if the remote peer requests higher bitrates.
 </p>
 <p>
   Note that the default value of <strong>500 kbps</strong> is a VERY
   conservative one, and leads to a low maximum video quality. Most 
   applications
-  will probably want to increase this parameter to higher values such as 2000
-  mbps) or even 10000 (10 mbps).
+  will probably want to increase this to higher values such as 2000 kbps (2
+  mbps).
 </p>
 <p>
   The REMB congestion control algorithm works by gradually increasing the 
@@ -1899,8 +1903,9 @@ function.</li></ul></dd>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 500.</li>
   <li>
-    0 = unconstrained: the video bitrate will grow until all the available
-    network bandwidth is used by the stream.<br />
+    0 = unlimited: the video bitrate will grow until all the available 
+    network
+    bandwidth is used by the stream.<br />
     Note that this might have a bad effect if more than one stream is running
     (as all of them would try to raise the video bitrate indefinitely, until 
     the
@@ -2011,7 +2016,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line306">line 306</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line311">line 311</a>
     </li></ul></dd>
     
 
@@ -2185,7 +2190,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line362">line 362</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line363">line 363</a>
     </li></ul></dd>
     
 
@@ -2357,7 +2362,7 @@ pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line416">line 416</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line423">line 423</a>
     </li></ul></dd>
     
 
@@ -2770,7 +2775,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum bitrate requested on the received video stream.
+    Minimum input bitrate, requested from WebRTC senders with REMB.
 <p>
   This is used to set a minimum value of local REMB during bandwidth 
   estimation,
@@ -2895,7 +2900,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line468">line 468</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line475">line 475</a>
     </li></ul></dd>
     
 
@@ -2957,7 +2962,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video bitrate sent to remote peer.
+    REMB override of minimum bitrate sent to WebRTC receivers.
 <p>
   With this parameter you can control the minimum video quality that will be
   sent when reacting to bad network conditions. Setting this parameter to a 
@@ -2983,8 +2988,8 @@ function.</li></ul></dd>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 100.</li>
   <li>
-    0 = unconstrained: the video bitrate will drop as needed, even to the
-    lowest possible quality, which might make the video completely blurry and
+    0 = unlimited: the video bitrate will drop as needed, even to the lowest
+    possible quality, which might make the video completely blurry and
     pixelated.
   </li>
 </ul>
@@ -3092,7 +3097,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line582">line 582</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line589">line 589</a>
     </li></ul></dd>
     
 
@@ -3298,7 +3303,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line715">line 715</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line722">line 722</a>
     </li></ul></dd>
     
 
@@ -3475,7 +3480,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line421">line 421</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line422">line 422</a>
     </li></ul></dd>
     
 
@@ -3652,7 +3657,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line497">line 497</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line498">line 498</a>
     </li></ul></dd>
     
 
@@ -3819,7 +3824,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line818">line 818</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line825">line 825</a>
     </li></ul></dd>
     
 
@@ -3991,7 +3996,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line551">line 551</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line552">line 552</a>
     </li></ul></dd>
     
 
@@ -4053,7 +4058,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bitrate expected for the received audio stream.
+    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
 <p>
   This is used to put a limit on the bitrate that the remote peer will send 
   to
@@ -4066,7 +4071,7 @@ function.</li></ul></dd>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 0.</li>
-  <li>0 = unconstrained.</li>
+  <li>0 = unlimited.</li>
 </ul>
 </div>
 
@@ -4684,7 +4689,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum bitrate expected for the received video stream.
+    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
 <p>
   This is used to put a limit on the bitrate that the remote peer will send 
   to
@@ -4697,7 +4702,7 @@ function.</li></ul></dd>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 0.</li>
-  <li>0 = unconstrained.</li>
+  <li>0 = unlimited.</li>
 </ul>
 </div>
 
@@ -4901,7 +4906,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video bitrate sent to remote peer.
+    REMB override of maximum bitrate sent to WebRTC receivers.
 <p>
   With this parameter you can control the maximum video quality that will be
   sent when reacting to good network conditions. Setting this parameter to a
@@ -4911,15 +4916,16 @@ function.</li></ul></dd>
 </p>
 <p>
   This parameter provides a way to limit the bitrate requested by remote REMB
-  bandwidth estimations: the bitrate sent will be always equal or less than
-  this parameter, even if the remote peer requests higher bitrates.
+  bandwidth estimations: the bitrate sent will be always equal or less than 
+  this
+  parameter, even if the remote peer requests higher bitrates.
 </p>
 <p>
   Note that the default value of <strong>500 kbps</strong> is a VERY
   conservative one, and leads to a low maximum video quality. Most 
   applications
-  will probably want to increase this parameter to higher values such as 2000
-  mbps) or even 10000 (10 mbps).
+  will probably want to increase this to higher values such as 2000 kbps (2
+  mbps).
 </p>
 <p>
   The REMB congestion control algorithm works by gradually increasing the 
@@ -4935,8 +4941,9 @@ function.</li></ul></dd>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 500.</li>
   <li>
-    0 = unconstrained: the video bitrate will grow until all the available
-    network bandwidth is used by the stream.<br />
+    0 = unlimited: the video bitrate will grow until all the available 
+    network
+    bandwidth is used by the stream.<br />
     Note that this might have a bad effect if more than one stream is running
     (as all of them would try to raise the video bitrate indefinitely, until 
     the
@@ -5078,7 +5085,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line380">line 380</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line387">line 387</a>
     </li></ul></dd>
     
 
@@ -5553,7 +5560,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum bitrate requested on the received video stream.
+    Minimum input bitrate, requested from WebRTC senders with REMB.
 <p>
   This is used to set a minimum value of local REMB during bandwidth 
   estimation,
@@ -5709,7 +5716,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line521">line 521</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line528">line 528</a>
     </li></ul></dd>
     
 
@@ -5771,7 +5778,7 @@ function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video bitrate sent to remote peer.
+    REMB override of minimum bitrate sent to WebRTC receivers.
 <p>
   With this parameter you can control the minimum video quality that will be
   sent when reacting to bad network conditions. Setting this parameter to a 
@@ -5797,8 +5804,8 @@ function.</li></ul></dd>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 100.</li>
   <li>
-    0 = unconstrained: the video bitrate will drop as needed, even to the
-    lowest possible quality, which might make the video completely blurry and
+    0 = unlimited: the video bitrate will drop as needed, even to the lowest
+    possible quality, which might make the video completely blurry and
     pixelated.
   </li>
 </ul>
@@ -5937,7 +5944,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line645">line 645</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line652">line 652</a>
     </li></ul></dd>
     
 
@@ -6174,7 +6181,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line787">line 787</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line794">line 794</a>
     </li></ul></dd>
     
 
@@ -6382,7 +6389,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line459">line 459</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line460">line 460</a>
     </li></ul></dd>
     
 
@@ -6580,7 +6587,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line851">line 851</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line858">line 858</a>
     </li></ul></dd>
     
 
@@ -6783,7 +6790,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line584">line 584</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line585">line 585</a>
     </li></ul></dd>
     
 
@@ -6963,7 +6970,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line250">line 250</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line253">line 253</a>
     </li></ul></dd>
     
 
@@ -7119,7 +7126,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line323">line 323</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line328">line 328</a>
     </li></ul></dd>
     
 
@@ -7275,7 +7282,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line433">line 433</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line440">line 440</a>
     </li></ul></dd>
     
 
@@ -7431,7 +7438,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line485">line 485</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line492">line 492</a>
     </li></ul></dd>
     
 
@@ -7587,7 +7594,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line599">line 599</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line606">line 606</a>
     </li></ul></dd>
     
 
@@ -7743,7 +7750,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line732">line 732</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line739">line 739</a>
     </li></ul></dd>
     
 
@@ -7899,7 +7906,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line835">line 835</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line842">line 842</a>
     </li></ul></dd>
     
 
@@ -8032,7 +8039,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line397">line 397</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line404">line 404</a>
     </li></ul></dd>
     
 
@@ -8165,7 +8172,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line538">line 538</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line545">line 545</a>
     </li></ul></dd>
     
 
@@ -8298,7 +8305,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line662">line 662</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line669">line 669</a>
     </li></ul></dd>
     
 
@@ -8431,7 +8438,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line804">line 804</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line811">line 811</a>
     </li></ul></dd>
     
 
@@ -8564,7 +8571,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line868">line 868</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line875">line 875</a>
     </li></ul></dd>
     
 

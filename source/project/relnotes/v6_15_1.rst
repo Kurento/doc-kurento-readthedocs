@@ -45,6 +45,21 @@ Thanks to `@Username <https://github.com/Username>`__ (Full Name, if available) 
 
 
 
+Ability to disable ICE-TCP
+--------------------------
+
+`ICE-TCP <https://tools.ietf.org/html/rfc6544>`__ is what allows WebRTC endpoints to exchange ICE candidates that use the TCP protocol; in other words, the feature of using TCP instead of UDP for WebRTC communications.
+
+Kurento had this setting enabled and it was hardcoded, so users were not able to easily change whether TCP should be used or not for ICE candidate exchange (the part of WebRTC that finds connectivity between peers). Thanks to this addition, it is now possible to use the **IceTcp** setting and disable ICE-TCP when desired.
+
+So when should you use this setting? Well, for the most majority of cases the previous default was the best choice, but if you have a well known scenario and you are 100% sure that UDP will work, then disabling TCP will provide for slightly faster times when establishing WebRTC sessions. I.e., with ICE-TCP disabled, the time between joining a call and actually seeing the video will be smaller.
+
+Of course, if you cannot guarantee that UDP will work in your network, then **you should leave this setting enabled**; otherwise, UDP might fail and there would be no TCP fallback for WebRTC to work.
+
+Thanks to `@prlanzarin <https://github.com/prlanzarin>`__ (Paulo Lanzarin) for `Kurento/kms-elements#26 <https://github.com/Kurento/kms-elements/pull/26>`__ (*Add niceAgentIceTcp configuration option and API methods for it*).
+
+
+
 Changed
 =======
 
@@ -71,10 +86,10 @@ Other changes
 
 This list includes other changes and fixes contributed by users and/or fellow developers, who merit our sincere appreciation and thanks for sharing their work with the Kurento project:
 
-**RepoName 1**
+**kms-core**
 
-* "Username for PR" ...
+* `@heirecka <https://github.com/heirecka>`__ (Heiko Becker) for `Kurento/kms-core#25 <https://github.com/Kurento/kms-core/pull/25>`__ (*Include <string> for std::string*).
 
-**RepoName 2**
+**kurento-client-js**
 
-* "Username for PR" ...
+* `@stasee <https://github.com/stasee>`__ for `Kurento/kurento-client-js#3 <https://github.com/Kurento/kurento-client-js/pull/3>`__ (* Fix for invalid subscriptions*).

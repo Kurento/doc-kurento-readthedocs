@@ -35,7 +35,7 @@ You also need the source code of this tutorial. Clone it from GitHub, then start
 
     git clone https://github.com/Kurento/kurento-tutorial-js.git
     cd kurento-tutorial-js/kurento-recorder/
-    git checkout master
+    git checkout 6.16.0
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 
@@ -296,11 +296,11 @@ Demo dependencies are located in file `bower.json <https://github.com/Kurento/ku
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.15.0",
-      "kurento-utils": "6.15.0"
+      "kurento-client": "6.16.0",
+      "kurento-utils": "6.16.0"
    }
 
 .. note::
 
-   We are in active development. You can find the latest version of
+   You can find the latest version of
    Kurento JavaScript Client at `Bower <https://bower.io/search/?q=kurento-client>`_.
