@@ -1,8 +1,6 @@
 ===================
-6.15.1 (UNRELEASED)
+6.16.0 (March 2021)
 ===================
-
-<Short description>
 
 To install Kurento Media Server: :doc:`/user/installation`.
 
@@ -10,40 +8,6 @@ To install Kurento Media Server: :doc:`/user/installation`.
 
 Added
 =====
-
-* **Small addition**. Description.
-
-
-
-Big addition name
------------------
-
-Full description, with images, code samples, external links, etc. Some useful syntax examples:
-
-* Documentation section: :doc:`/user/tutorials`.
-
-* Glossary term: :term:`SDP`.
-
-* Inline link: `How to avoid Data Channel breaking <https://blog.mozilla.org/webrtc/how-to-avoid-data-channel-breaking/>`__.
-
-* Blocks:
-
-  .. code-block:: java
-
-     System.out.println("Some example Java code");
-
-  .. code-block:: text
-
-     Some literal command output
-
-  .. note::
-
-     Something to keep in mind.
-
-Thanks to `@Username <https://github.com/Username>`__ (Full Name, if available) for `Kurento/bugtracker#IssueNum <https://github.com/Kurento/bugtracker/issues/IssueNum>`__ (*Issue title*).
-Thanks to `@Username <https://github.com/Username>`__ (Full Name, if available) for `Kurento/kms-core#PrNum <https://github.com/Kurento/kms-core/pull/PrNum>`__ (*Pull Request title*).
-
-
 
 Ability to disable ICE-TCP
 --------------------------
@@ -57,27 +21,6 @@ So when should you use this setting? Well, for the most majority of cases the pr
 Of course, if you cannot guarantee that UDP will work in your network, then **you should leave this setting enabled**; otherwise, UDP might fail and there would be no TCP fallback for WebRTC to work.
 
 Thanks to `@prlanzarin <https://github.com/prlanzarin>`__ (Paulo Lanzarin) for `Kurento/kms-elements#26 <https://github.com/Kurento/kms-elements/pull/26>`__ (*Add niceAgentIceTcp configuration option and API methods for it*).
-
-
-
-Changed
-=======
-
-* Description.
-
-
-
-Deprecated
-==========
-
-* Description.
-
-
-
-Fixed
-=====
-
-* Description.
 
 
 
