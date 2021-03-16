@@ -28,7 +28,7 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 	@echo "  langdoc     to make JavaDocs and JsDocs of the Kurento Clients"
 	@echo "  dist        to make <langdoc html epub latexpdf> and then pack"
-	@echo "              all resulting files as kurento-doc-6.16.0.tgz"
+	@echo "              all resulting files as kurento-doc-6.16.1-dev.tgz"
 	@echo "  readthedocs to make <langdoc> and then copy the results to the"
 	@echo "              Sphinx theme's static folder"
 	@echo ""
@@ -63,7 +63,7 @@ langdoc-client-java: langdoc-init
 	cd $(WORKPATH)
 	git clone https://github.com/Kurento/kurento-java.git
 	cd kurento-java
-	[ "true" = "true" ] && git checkout "6.16.0"
+	[ "false" = "true" ] && git checkout "6.16.0"
 	cd kurento-client || { echo "ERROR: 'cd' failed, ls:"; ls -lA; exit 1; }
 	mvn --batch-mode --quiet clean package \
 		-DskipTests || { echo "ERROR: 'mvn clean' failed"; exit 1; }
@@ -77,7 +77,7 @@ langdoc-client-js: langdoc-init
 	cd $(WORKPATH)
 	git clone https://github.com/Kurento/kurento-client-js.git
 	cd kurento-client-js
-	[ "true" = "true" ] && git checkout "6.16.0"
+	[ "false" = "true" ] && git checkout "6.16.0"
 	npm install --no-color
 	node_modules/.bin/grunt --no-color --force jsdoc \
 		|| { echo "ERROR: 'grunt jsdoc' failed"; exit 1; }
@@ -87,7 +87,7 @@ langdoc-utils-js: langdoc-init
 	cd $(WORKPATH)
 	git clone https://github.com/Kurento/kurento-utils-js.git
 	cd kurento-utils-js
-	[ "true" = "true" ] && git checkout "6.16.0"
+	[ "false" = "true" ] && git checkout "6.16.0"
 	npm install --no-color
 	node_modules/.bin/grunt --no-color --force jsdoc \
 		|| { echo "ERROR: 'grunt jsdoc' failed"; exit 1; }
@@ -96,7 +96,7 @@ langdoc-utils-js: langdoc-init
 langdoc: langdoc-client-java langdoc-client-js langdoc-utils-js
 
 dist: langdoc html epub latexpdf
-	$(eval DISTDIR := $(BUILDDIR)/dist/kurento-doc-6.16.0)
+	$(eval DISTDIR := $(BUILDDIR)/dist/kurento-doc-6.16.1-dev)
 	mkdir -p $(DISTDIR)
 	rsync -a $(BUILDDIR)/html $(BUILDDIR)/epub/Kurento.epub \
 		$(BUILDDIR)/latex/Kurento.pdf $(DISTDIR)

@@ -31,7 +31,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento-tutorial-java.git
     cd kurento-tutorial-java/kurento-crowddetector
-    git checkout 6.16.0
+    git checkout master
     mvn -U clean spring-boot:run
 
 The web application starts on port 8443 in the localhost by default. Therefore,

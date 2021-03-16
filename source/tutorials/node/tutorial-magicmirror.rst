@@ -33,7 +33,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento-tutorial-node.git
     cd kurento-tutorial-node/kurento-magic-mirror
-    git checkout 6.16.0
+    git checkout master
     npm install
     npm start
 
