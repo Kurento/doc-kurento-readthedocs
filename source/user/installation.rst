@@ -324,7 +324,11 @@ If you need to automate this, you could write a script similar to `healthchecker
 Checking RTP port connectivity
 ------------------------------
 
-This section explains how you can perform a quick and dirty connectivity check between a remote client machine and Kurento Media Server. It will let you know if an end user, like a web browser, would be able to send audio and video to the media server. In other words, this is a way to check if the media server itself is reachable from the network that WebRTC or RTP connections will use. If this test fails, it could indicate a cause for missing media streams in your application.
+This section explains how you can perform a quick and dirty connectivity check between a remote client machine and Kurento Media Server, in scenarios where **the media server is not behind a NAT**.
+
+This will let you know if an end user, like a web browser, would be able to send audio and video to the media server. In other words, this is a way to check if the media server itself is reachable from the network that WebRTC or RTP connections will use. If this test fails, it could indicate a cause for missing media streams in your application.
+
+The check proposed here will not work if the media server sits behind a NAT, because we are not punching holes in it (e.g. with STUN, see :ref:`faq-stun-needed`); doing so is outside of the scope for this section, but you could also do it by hand if needed (like shown in :ref:`nat-diy-holepunch`).
 
 **First part (run commands on the Kurento Media Server machine)**
 
@@ -383,7 +387,7 @@ This part describes a connectivity check that should be performed from any end u
    # Check if Kurento's UDP port is reachable from here.
    nc -vuz -w 3 "$KURENTO_IP" "$KURENTO_PORT" || echo "NOT REACHABLE"
 
-If the media server's UDP port is reachable from this machine (as it should), you should see this output from the ``nc`` command:
+If the media server's UDP port is reachable from this machine (as it should), you will see this output from the ``nc`` command:
 
 .. code-block:: text
 
