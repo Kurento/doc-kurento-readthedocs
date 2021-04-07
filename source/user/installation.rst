@@ -336,7 +336,7 @@ Install required tools:
 
 .. code-block:: shell
 
-   sudo apt update && sudo apt install --yes jq netcat-openbsd
+   sudo apt update && sudo apt install --yes jq nmap
 
    wget -O /tmp/websocat "https://github.com/vi/websocat/releases/download/v1.7.0/websocat_amd64-linux-static"
    chmod +x /tmp/websocat
@@ -381,17 +381,25 @@ This part describes a connectivity check that should be performed from any end u
 
 .. code-block:: shell
 
-   KURENTO_IP="203.0.113.2" # The media server's public IP address.
-   KURENTO_PORT="12345"     # The KURENTO_PORT that was obtained in the previous section.
+   KURENTO_IP=203.0.113.2  # The media server's public IP address.
+   KURENTO_PORT=12345      # The KURENTO_PORT that was obtained in the previous section.
 
    # Check if Kurento's UDP port is reachable from here.
-   nc -vuz -w 3 "$KURENTO_IP" "$KURENTO_PORT" || echo "NOT REACHABLE"
+   sudo nmap -oG - -sU -p "$KURENTO_PORT" "$KURENTO_IP" | grep open || echo "NOT REACHABLE"
 
-If the media server's UDP port is reachable from this machine (as it should), you will see this output from the ``nc`` command:
+If the media server's UDP port is reachable from this machine (as it should), you will see this output:
 
 .. code-block:: text
 
-   Connection to 203.0.113.2 12345 port [udp/*] succeeded!
+   Host: 203.0.113.2 ()  Ports: 12345/open|filtered/udp/////
+
+Otherwise, if the port is blocked, the output will be like this:
+
+.. code-block:: text
+
+   Host: 203.0.113.2 ()  Ports: 12345/closed/udp/////
+
+Note however, that due to the nature of UDP this quick test can only be considered an approximation; intermediate firewalls or other network devices might still present a blocked port as open or filtered to the public, which would fool our connectivity test into thinking the port is actually reachable.
 
 
 
