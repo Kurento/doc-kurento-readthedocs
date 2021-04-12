@@ -336,7 +336,7 @@ Install required tools:
 
 .. code-block:: shell
 
-   sudo apt update && sudo apt install --yes jq nmap
+   sudo apt update && sudo apt install --yes jq
 
    wget -O /tmp/websocat "https://github.com/vi/websocat/releases/download/v1.7.0/websocat_amd64-linux-static"
    chmod +x /tmp/websocat
@@ -369,7 +369,7 @@ Using the Kurento WebSocket JSON-RPC Protocol, create a MediaPipeline and RtpEnd
    EOF
    )"
 
-   # Parse the SDP to get the first UDP port found (from either audio or video).
+   # Parse the SDP to get the first port found (from either audio or video).
    KURENTO_PORT="$(echo "$SDP" | grep -Po -m1 'm=\w+ \K(\d+)')"
    echo "$KURENTO_PORT"
 
@@ -377,17 +377,26 @@ Take note of the ``KURENTO_PORT``, and use it in the next section:
 
 **Second part (run commands on a client machine)**
 
-This part describes a connectivity check that should be performed from any end user machine that should be able to send its media out to Kurento Media Server. In principle, if your server network is configured correctly, this test should be successful. Otherwise, in case of failure this is an indication that there are some issues in the network, which gives you a head start to troubleshoot missing media in your application.
+This part describes a connectivity check that should be performed from any end user machine that wants to send media out to Kurento Media Server. In principle, if your server network is configured correctly, this test should be successful. Otherwise, in case of failure this is an indication that there are some issues in the network, which gives you a head start to troubleshoot missing media in your application.
+
+First, install required tools:
+
+.. code-block:: shell
+
+   sudo apt update && sudo apt install --yes nmap
+
+Then try to check if the RTP port that was opened in the previous step is now reachable from the client machine:
 
 .. code-block:: shell
 
    KURENTO_IP=203.0.113.2  # The media server's public IP address.
    KURENTO_PORT=12345      # The KURENTO_PORT that was obtained in the previous section.
 
-   # Check if Kurento's UDP port is reachable from here.
-   sudo nmap -oG - -sU -p "$KURENTO_PORT" "$KURENTO_IP" | grep open || echo "NOT REACHABLE"
+   # Check if Kurento's port is reachable from here.
+   # Note: '-sU' is to only scan for UDP.
+   sudo nmap -oG - -sU -p "$KURENTO_PORT" "$KURENTO_IP"
 
-If the media server's UDP port is reachable from this machine (as it should), you will see this output:
+If the media server's port is reachable from this client machine, you will see this output:
 
 .. code-block:: text
 
