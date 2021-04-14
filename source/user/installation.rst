@@ -326,7 +326,7 @@ Checking RTP port connectivity
 
 This section explains how you can verify that Kurento Media Server can be reached from a remote client machine, in scenarios where **the media server is not behind a NAT**.
 
-You will take the role of an end user application, such as a web browser, wanting to send audio and video to the media server. For that, we'll use the `Ncat <https://nmap.org/ncat/>`__ tool, a modern reimplementation of the classic *Netcat*. You can swap one with the other, as their command-lines are mostly compatible.
+You will take the role of an end user application, such as a web browser, wanting to send audio and video to the media server. For that, we'll use either of *Netcat* in the server, and either the same or `Ncat <https://nmap.org/ncat/>`__ in the client (because Ncat has more installation choices).
 
 The check proposed here will not work if the media server sits behind a NAT, because we are not punching holes in it (e.g. with STUN, see :ref:`faq-stun-needed`); doing so is outside of the scope for this section, but you could also do it by hand if needed (like shown in :ref:`nat-diy-holepunch`).
 
@@ -334,33 +334,30 @@ The check proposed here will not work if the media server sits behind a NAT, bec
 
 Follow these steps on the machine where Kurento Media Server is running.
 
-* First, install Ncat, which comes included in most Linux distributions. For example:
+* First, install Netcat, which is available for most Linux distributions. For example:
 
   .. code-block:: shell
 
-     # For Ubuntu 16.04, 18.04:
-     sudo apt-get update && sudo apt-get install --yes nmap
+     # For Debian/Ubuntu:
+     sudo apt-get update && sudo apt-get install --yes netcat-openbsd
 
-     # For Ubuntu 20.04:
-     sudo apt-get update && sudo apt-get install --yes ncat
-
-* Then, start an Ncat server, listening on any port of your choice:
+* Then, start a Netcat server, listening on any port of your choice:
 
   .. code-block:: shell
 
      # To test a TCP port:
-     ncat -vnl SERVER_PORT
+     nc -vnl SERVER_PORT
 
      # To test an UDP port:
-     ncat -vnul SERVER_PORT
+     nc -vnul SERVER_PORT
 
 **Second part: Client**
 
-Now move to a client machine, and follow next steps.
+Now move to a client machine, and follow the next steps.
 
-* First, just like before, you need to install Ncat. If the client is also a Linux machine, the easiest method is using its own package manager. Otherwise, the project's `downloads page <https://nmap.org/download.html>`__ offers prebuilt binaries for Windows and MacOS, which include the Ncat tool.
+* Install either of Netcat or Ncat. On Linux, Netcat is probably available as a package. On MacOS and Windows, it might be easier to download a prebuilt installer from the `Ncat downloads page <https://nmap.org/download.html>`__.
 
-* Now, run Ncat to connect with the server and send some test data:
+* Now, run Netcat or Ncat to connect with the server and send some test data. These examples use ``ncat``, but the options are the same if you use ``nc``:
 
   .. code-block:: shell
 
@@ -378,30 +375,32 @@ Now move to a client machine, and follow next steps.
 
 * When the connection has been established, try typing some words and press Return or Enter. If you see the text appearing on the server side of the connection, **the test has been successful**.
 
-* If the test data is not reaching the server, or the Ncat client fails with ``Ncat: Connection refused``, it means the connection has failed. You should review the network configuration to make sure that a firewall or some other filtering device is not blocking the connection. This is an indication that there are some issues in the network, which gives you a head start to troubleshoot missing media in your application.
+* If the test is successful, you will see the client's source port in the server output. If this number is *different* than the CLIENT_PORT you used, this means that the client is behind a :ref:`Symmetric NAT <nat-symmetric>`, and **a TURN relay will be required for WebRTC**.
 
-For example: Assume you want to connect from the port *11000* of a client whose public IP is *198.51.100.2*, to a server at *203.0.113.2* with Ncat listening on port *55000*. This is what both client and server terminals should look like:
+* If the test data is not reaching the server, or the client command fails with a message such as ``Ncat: Connection refused``, it means the connection has failed. You should review the network configuration to make sure that a firewall or some other filtering device is not blocking the connection. This is an indication that there are some issues in the network, which gives you a head start to troubleshoot missing media in your application.
+
+For example: Assume you want to connect from the port *3000* of a client whose public IP is *198.51.100.2*, to the port *55000* of your server at *203.0.113.2*. This is what both client and server terminals could look like:
 
 .. code-block:: shell-session
    :emphasize-lines: 4
 
    # CLIENT
 
-   $ ncat -vn -p 11000 203.0.113.2 55000
-   Ncat: Connected to 203.0.113.2:55000.
+   $ ncat -vn -p 3000 203.0.113.2 55000
+   Ncat: Connected to 203.0.113.2:55000
    (input) THIS IS SOME TEST DATA
 
 .. code-block:: shell-session
-   :emphasize-lines: 7
+   :emphasize-lines: 5
 
    # SERVER
 
-   $ ncat -vnl 55000
-   Ncat: Listening on :::55000
-   Ncat: Listening on 0.0.0.0:55000
-   Ncat: Connection from 198.51.100.2.
-   Ncat: Connection from 198.51.100.2:11000.
+   $ nc -vnl 55000
+   Listening on 0.0.0.0 55000
+   Connection received on 198.51.100.2 3000
    (output) THIS IS SOME TEST DATA
+
+Notice how the server claims to have received a connection from the client's IP (*198.51.100.2*) and port (*3000*). This means that the client's NAT, if any, does not alter the source port of its outbound packets. If we saw here a different port, it would mean that the client's NAT is Symmetric, which usually requires using a TURN relay for WebRTC.
 
 
 
