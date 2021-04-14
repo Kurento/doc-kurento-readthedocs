@@ -324,91 +324,84 @@ If you need to automate this, you could write a script similar to `healthchecker
 Checking RTP port connectivity
 ------------------------------
 
-This section explains how you can perform a quick and dirty connectivity check between a remote client machine and Kurento Media Server, in scenarios where **the media server is not behind a NAT**.
+This section explains how you can verify that Kurento Media Server can be reached from a remote client machine, in scenarios where **the media server is not behind a NAT**.
 
-This will let you know if an end user, like a web browser, would be able to send audio and video to the media server. In other words, this is a way to check if the media server itself is reachable from the network that WebRTC or RTP connections will use. If this test fails, it could indicate a cause for missing media streams in your application.
+You will take the role of an end user application, such as a web browser, wanting to send audio and video to the media server. For that, we'll use the `Ncat <https://nmap.org/ncat/>`__ tool, a modern reimplementation of the classic *Netcat*. You can swap one with the other, as their command-lines are mostly compatible.
 
 The check proposed here will not work if the media server sits behind a NAT, because we are not punching holes in it (e.g. with STUN, see :ref:`faq-stun-needed`); doing so is outside of the scope for this section, but you could also do it by hand if needed (like shown in :ref:`nat-diy-holepunch`).
 
-**First part (run commands on the Kurento Media Server machine)**
+**First part: Server**
 
-Install required tools:
+Follow these steps on the machine where Kurento Media Server is running.
 
-.. code-block:: shell
+* First, install Ncat, which comes included in most Linux distributions. For example:
 
-   sudo apt update && sudo apt install --yes jq
+  .. code-block:: shell
 
-   wget -O /tmp/websocat "https://github.com/vi/websocat/releases/download/v1.7.0/websocat_amd64-linux-static"
-   chmod +x /tmp/websocat
+     # For Ubuntu 16.04, 18.04:
+     sudo apt-get update && sudo apt-get install --yes nmap
 
-Using the Kurento WebSocket JSON-RPC Protocol, create a MediaPipeline and RtpEndpoint, which is then used to generate an SDP Offer and get from it an UDP listen port:
+     # For Ubuntu 20.04:
+     sudo apt-get update && sudo apt-get install --yes ncat
 
-.. code-block:: shell
+* Then, start an Ncat server, listening on any port of your choice:
 
-   KURENTO_URL="ws://127.0.0.1:8888/kurento"
+  .. code-block:: shell
 
-   # Create a MediaPipeline.
-   PIPELINE="$(
-   /tmp/websocat -1 --jsonrpc "$KURENTO_URL" <<EOF | jq --raw-output .result.value
-   create { "type": "MediaPipeline" }
-   EOF
-   )"
+     # To test a TCP port:
+     ncat -vnl SERVER_PORT
 
-   # Create an RtpEndpoint.
-   ENDPOINT="$(
-   /tmp/websocat -1 --jsonrpc "$KURENTO_URL" <<EOF | jq --raw-output .result.value
-   create { "type": "RtpEndpoint", "constructorParams": { "mediaPipeline": "$PIPELINE" } }
-   EOF
-   )"
+     # To test an UDP port:
+     ncat -vnul SERVER_PORT
 
-   # Generate a new SDP Offer.
-   # This makes Kurento start listening on the RTP ports reported in the SDP.
-   SDP="$(
-   /tmp/websocat -1 --jsonrpc "$KURENTO_URL" <<EOF | jq --raw-output .result.value
-   invoke { "object": "$ENDPOINT", "operation": "generateOffer" }
-   EOF
-   )"
+**Second part: Client**
 
-   # Parse the SDP to get the first port found (from either audio or video).
-   KURENTO_PORT="$(echo "$SDP" | grep -Po -m1 'm=\w+ \K(\d+)')"
-   echo "$KURENTO_PORT"
+Now move to a client machine, and follow next steps.
 
-Take note of the ``KURENTO_PORT``, and use it in the next section:
+* First, just like before, you need to install Ncat. If the client is also a Linux machine, the easiest method is using its own package manager. Otherwise, the project's `downloads page <https://nmap.org/download.html>`__ offers prebuilt binaries for Windows and MacOS, which include the Ncat tool.
 
-**Second part (run commands on a client machine)**
+* Now, run Ncat to connect with the server and send some test data:
 
-This part describes a connectivity check that should be performed from any end user machine that wants to send media out to Kurento Media Server. In principle, if your server network is configured correctly, this test should be successful. Otherwise, in case of failure this is an indication that there are some issues in the network, which gives you a head start to troubleshoot missing media in your application.
+  .. code-block:: shell
 
-First, install required tools:
+     # Linux, MacOS:
+     ncat -vn  -p CLIENT_PORT SERVER_IP SERVER_PORT  # TCP
+     ncat -vnu -p CLIENT_PORT SERVER_IP SERVER_PORT  # UDP
 
-.. code-block:: shell
+     # Windows:
+     ncat.exe -vn  -p CLIENT_PORT SERVER_IP SERVER_PORT  # TCP
+     ncat.exe -vnu -p CLIENT_PORT SERVER_IP SERVER_PORT  # UDP
 
-   sudo apt update && sudo apt install --yes nmap
+  .. note::
 
-Then try to check if the RTP port that was opened in the previous step is now reachable from the client machine:
+     The ``-p CLIENT_PORT`` is optional. We're using it here so the source port is well known, allowing us to expect it on the server's Ncat output, or in the IP packet headers if packet analysis is being done (e.g. with *Wireshark* or *tcpdump*). Otherwise, the O.S. would assign a random source port for our client.
 
-.. code-block:: shell
+* When the connection has been established, try typing some words and press Return or Enter. If you see the text appearing on the server side of the connection, **the test has been successful**.
 
-   KURENTO_IP=203.0.113.2  # The media server's public IP address.
-   KURENTO_PORT=12345      # The KURENTO_PORT that was obtained in the previous section.
+* If the test data is not reaching the server, or the Ncat client fails with ``Ncat: Connection refused``, it means the connection has failed. You should review the network configuration to make sure that a firewall or some other filtering device is not blocking the connection. This is an indication that there are some issues in the network, which gives you a head start to troubleshoot missing media in your application.
 
-   # Check if Kurento's port is reachable from here.
-   # Note: '-sU' is to only scan for UDP.
-   sudo nmap -oG - -sU -p "$KURENTO_PORT" "$KURENTO_IP"
+For example: Assume you want to connect from the port *11000* of a client whose public IP is *198.51.100.2*, to a server at *203.0.113.2* with Ncat listening on port *55000*. This is what both client and server terminals should look like:
 
-If the media server's port is reachable from this client machine, you will see this output:
+.. code-block:: shell-session
+   :emphasize-lines: 4
 
-.. code-block:: text
+   # CLIENT
 
-   Host: 203.0.113.2 ()  Ports: 12345/open|filtered/udp/////
+   $ ncat -vn -p 11000 203.0.113.2 55000
+   Ncat: Connected to 203.0.113.2:55000.
+   (input) THIS IS SOME TEST DATA
 
-Otherwise, if the port is blocked, the output will be like this:
+.. code-block:: shell-session
+   :emphasize-lines: 7
 
-.. code-block:: text
+   # SERVER
 
-   Host: 203.0.113.2 ()  Ports: 12345/closed/udp/////
-
-Note however, that due to the nature of UDP this quick test can only be considered an approximation; intermediate firewalls or other network devices might still present a blocked port as open or filtered to the public, which would fool our connectivity test into thinking the port is actually reachable.
+   $ ncat -vnl 55000
+   Ncat: Listening on :::55000
+   Ncat: Listening on 0.0.0.0:55000
+   Ncat: Connection from 198.51.100.2.
+   Ncat: Connection from 198.51.100.2:11000.
+   (output) THIS IS SOME TEST DATA
 
 
 
