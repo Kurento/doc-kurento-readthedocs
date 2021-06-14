@@ -41,7 +41,7 @@ When are STUN and TURN needed?
 
 The STUN server uses a single port for client connections (3478 by default), so this port should be opened up for the public in the server's network configuration or *Security Group*. If using TURN relay, then the whole range of TURN ports (49152 to 65535 by default) should be opened up too, besides the client port. Depending on the features of the STUN/TURN server, these might be only UDP or both UDP and TCP ports. For example, *Coturn* uses both UDP and TCP in its default configuration.
 
-If you are installing Kurento in a NAT environment (e.g. if your media server is behind a NAT firewall), you also need to configure an external STUN server, in ``/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini`` (check :ref:`faq-stun-configure` for more details). Similarly, all browser clients that are behind a NAT need to use the STUN server through the *iceServers* field of the `RTCPeerConnection constructor <https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection>`__.
+If you are installing Kurento in a NAT environment (e.g. if your media server is behind a NAT firewall), you also need to configure an external STUN server, in ``/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini``. Similarly, all browser clients that are behind a NAT need to use the STUN server through the *iceServers* field of the `RTCPeerConnection constructor <https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection/RTCPeerConnection>`__.
 
 **Example:**
 
@@ -113,18 +113,18 @@ To configure it for WebRTC, follow these steps:
 
       # The external IP address of this server, if Coturn is behind a NAT.
       # It must be an IP address, not a domain name.
-      external-ip=<CoturnIp>
+      #external-ip=<CoturnIp>
 
       # STUN listener port for UDP and TCP.
       # Default: 3478.
-      #listening-port=<CoturnPort>
+      #listening-port=3478
 
       # TURN lower and upper bounds of the UDP relay ports.
       # Default: 49152, 65535.
       #min-port=49152
       #max-port=65535
 
-      # Uncomment to run server in 'normal' 'moderate' verbose mode.
+      # Uncomment to enable moderately verbose logs.
       # Default: verbose mode OFF.
       #verbose
 
@@ -134,24 +134,30 @@ To configure it for WebRTC, follow these steps:
       # TURN long-term credential mechanism.
       lt-cred-mech
 
-      # TURN realm used for the long-term credential mechanism.
-      realm=kurento.org
-
       # TURN static user account for long-term credential mechanism.
       user=<TurnUser>:<TurnPassword>
 
+      # TURN realm used for the long-term credential mechanism.
+      realm=kurento.org
+
       # Set the log file name.
       # The log file can be reset sending a SIGHUP signal to the turnserver process.
-      log-file=/var/log/turnserver/turnserver.log
+      log-file=/var/log/turn.log
 
       # Disable log file rollover and use log file name as-is.
       simple-log
 
    .. note::
 
-      * The *external-ip* is necessary in cloud providers that use internal NATs, such as **Amazon EC2** (AWS). Write your server's **public** IP address in the field *<CoturnIp>*. **It must be an IP address, not a domain name**.
+      * The *external-ip* is necessary in cloud providers that use internal NATs, such as AWS (Amazon EC2). Uncomment this line and write the machine's public IP address in the field *<CoturnIp>*. **It must be an IP address, not a domain name**.
 
       * Comment out (or delete) all the TURN parameters if you only want Coturn acting as a STUN server.
+
+      * Create the destination log file, otherwise Coturn will not have permissions to create the file by itself:
+
+        .. code-block:: text
+
+           sudo install -o turnserver -g turnserver -m 644 /dev/null /var/log/turn.log
 
       * Other settings can be tuned as needed. For more information, check the Coturn help pages:
 
@@ -165,15 +171,19 @@ To configure it for WebRTC, follow these steps:
 
       While that is good enough for showcasing the Coturn setup here, for real-world scenarios you might want to use dynamically-generated passwords. This is more secure, because each individual participant can be provided with an exclusive one-time username and password.
 
-      Coturn can be integrated with external sources, such as PostgreSQL (`psql-userdb <https://github.com/coturn/coturn/blob/4.5.2/examples/etc/turnserver.conf#L299>`__), MySQL (`mysql-userdb <https://github.com/coturn/coturn/blob/4.5.2/examples/etc/turnserver.conf#L313>`__), MongoDB (`mongo-userdb <https://github.com/coturn/coturn/blob/4.5.2/examples/etc/turnserver.conf#L331>`__), or Redis (`redis-userdb <https://github.com/coturn/coturn/blob/4.5.2/examples/etc/turnserver.conf#L339>`__), and it even provides a `REST API <https://tools.ietf.org/html/draft-uberti-behave-turn-rest-00>`__ for time-limited credentials (`use-auth-secret <https://github.com/coturn/coturn/blob/4.5.2/examples/etc/turnserver.conf#L236>`__). You can handle any of these methods from your :doc:`Application Server </user/writing_applications>`, then use the Kurento API to dynamically provide each individual WebRtcEndpoint with the correct parameters.
+      Coturn can be integrated with external sources, such as PostgreSQL (`psql-userdb <https://github.com/coturn/coturn/blob/4.5.2/examples/etc/turnserver.conf#L299>`__), MySQL (`mysql-userdb <https://github.com/coturn/coturn/blob/4.5.2/examples/etc/turnserver.conf#L313>`__), MongoDB (`mongo-userdb <https://github.com/coturn/coturn/blob/4.5.2/examples/etc/turnserver.conf#L331>`__), or Redis (`redis-userdb <https://github.com/coturn/coturn/blob/4.5.2/examples/etc/turnserver.conf#L339>`__), and it even provides a `REST API <https://tools.ietf.org/html/draft-uberti-behave-turn-rest-00>`__ for time-limited credentials (`use-auth-secret <https://github.com/coturn/coturn/blob/4.5.2/examples/etc/turnserver.conf#L236>`__). You can handle any of these methods from your :doc:`Application Server </user/writing_applications>`, then use the :ref:`Kurento API <configuration-stun-turn>` to dynamically provide each individual WebRtcEndpoint with the correct parameters.
 
-#. Edit the file ``/etc/default/coturn`` and set
+#. Edit the file ``/etc/default/coturn`` and uncomment or add this line:
 
    .. code-block:: shell
 
       TURNSERVER_ENABLED=1
 
-   so the server starts automatically as a system service daemon.
+#. Start the Coturn system service:
+
+   .. code-block:: shell
+
+      sudo service coturn restart
 
 #. The following ports should be open in your firewall / NAT / cloud provider's *Security Group*:
 
