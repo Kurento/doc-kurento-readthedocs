@@ -177,7 +177,7 @@
      unusable.
    </li>
    <li>
-     <code>IceGatheringDone</code>: Raised when the ICE harvesting process is
+     <code>IceGatheringDone</code>: Raised when the ICE gathering process is
      completed. This means that all candidates have already been discovered.
    </li>
    <li>
@@ -732,7 +732,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1557">line 1557</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1579">line 1579</a>
     </li></ul></dd>
     
 
@@ -790,7 +790,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1577">line 1577</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1599">line 1599</a>
     </li></ul></dd>
     
 
@@ -1589,13 +1589,35 @@
 
 
 <div class="description">
-    Start the gathering of ICE candidates.
+    Start the ICE candidate gathering.
 <p>
-  It must be called after <code>SdpEndpoint::generateOffer</code> or
-  <code>SdpEndpoint::processOffer</code> for <strong>Trickle ICE</strong>. If
-  invoked before generating or processing an SDP offer, the candidates 
-  gathered
-  will be added to the SDP processed.
+  This method triggers the asynchronous discovery of ICE candidates (as per 
+  the
+  Trickle ICE mechanism), and returns immediately. Every newly trickled
+  candidate is reported to the application by means of an
+  <code>IceCandidateFound</code> event. Finally, when all candidates have 
+  been
+  gathered, the <code>IceGatheringDone</code> event is emitted.
+</p>
+<p>
+  Normally, you would call this method as soon as possible after calling
+  <code>SdpEndpoint::generateOffer</code> or
+  <code>SdpEndpoint::processOffer</code>, to quickly start discovering
+  candidates and sending them to the remote peer.
+</p>
+<p>
+  You can also call this method <em>before</em> calling
+  <code>generateOffer</code> or <code>processOffer</code>. Doing so will 
+  include
+  any already gathered candidates into the resulting SDP. You can leverage 
+  this
+  behavior to implement fully traditional ICE (without Trickle): first call
+  <code>gatherCandidates</code>, then only handle the SDP messages after the
+  <code>IceGatheringDone</code> event has been received. This way, you're 
+  making
+  sure that all candidates have indeed been gathered, so the resulting SDP 
+  will
+  include all of them.
 </p>
 </div>
 
@@ -1701,7 +1723,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1515">line 1515</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1537">line 1537</a>
     </li></ul></dd>
     
 
@@ -3040,7 +3062,7 @@ instead.</li></ul></dd>
 
 
 <div class="description">
-    the ICE candidate pair (local and remote candidates) used by the ice library 
+    the ICE candidate pair (local and remote candidates) used by the ICE library 
 for each stream.
 </div>
 
@@ -12307,7 +12329,7 @@ function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1532">line 1532</a>
+        <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html">node_modules/kurento-client-elements/lib/WebRtcEndpoint.js</a>, <a href="node_modules_kurento-client-elements_lib_WebRtcEndpoint.js.html#line1554">line 1554</a>
     </li></ul></dd>
     
 
