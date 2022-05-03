@@ -45,7 +45,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.16.4</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.18.0-SNAPSHOT</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -176,7 +176,7 @@ extends <a href="../../../org/kurento/client/AbstractBuilder.html" title="class 
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/PlayerEndpoint.Builder.html" title="class in org.kurento.client">PlayerEndpoint.Builder</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/PlayerEndpoint.Builder.html#useEncodedMedia--">useEncodedMedia</a></span>()</code>
-<div class="block">Feed the input media as-is to the Media Pipeline, instead of first decoding it.</div>
+<div class="block">Feed an encoded media as-is to the Media Pipeline, instead of first decoding it.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -276,19 +276,51 @@ extends <a href="../../../org/kurento/client/AbstractBuilder.html" title="class 
 <li class="blockList">
 <h4>useEncodedMedia</h4>
 <pre>public&nbsp;<a href="../../../org/kurento/client/PlayerEndpoint.Builder.html" title="class in org.kurento.client">PlayerEndpoint.Builder</a>&nbsp;useEncodedMedia()</pre>
-<div class="block">Feed the input media as-is to the Media Pipeline, instead of first decoding it.
+<div class="block">Feed an encoded media as-is to the Media Pipeline, instead of first decoding it.
                <p>
-               When this property is not enabled, the input media gets always decoded into a raw format before being processed by the rest of the Media Pipeline; this is done to ensure that Kurento is able to keep track of lost keyframes among other quality-control measurements. Of course, having to decode the media has a cost in terms of CPU usage, but ensures that the output streaming will be robust and reliable.
+                 This property is disabled by default. The input media gets always decoded into
+                 a raw format upon receiving it, before being processed by the rest of the
+                 Media Pipeline. This is done to ensure that Kurento is able to keep track of
+                 lost keyframes among other quality-control measurements. Of course, having to
+                 decode the media has a cost in terms of CPU usage, but ensures that the output
+                 streaming will be more robust and reliable.
                </p>
                <p>
-               When this property is enabled, the explained behavior gets disabled. Instead, The endpoint will provide any input media directly to the Media Pipeline, without prior decoding. Enabling this mode of operation could have a severe effect on stability, because lost video keyframes will not be regenerated; however, avoiding a full cycle of decoding and encoding can be very useful for certain applications, because it improves performance by greatly reducing the CPU processing load.
+                 When this property is enabled, Kurento simply passes the encoded media as-is
+                 to the rest of the Media Pipeline, without decoding. Enabling this mode of
+                 operation could have a severe effect on stability, because lost video
+                 keyframes will not be regenerated; however, not having to encode the video
+                 greatly reduces the CPU load.
                </p>
                <p>
-               Keep in mind that if this property is enabled, the original source media MUST already have an encoding format which is compatible with the destination target. For example: given a pipeline which uses this endpoint to read a file and then streams it to a WebRTC browser such as Chrome, then the file must already be encoded with a VP8 or H.264 codec profile which Chrome is able to decode. Note that for this example, most browsers don't support ANY combination of H.264 encoding options; instead, they tend to support only a very specific subset of the codec features (also known as 'profiles').
+                 Keep in mind that if this property is enabled, the original source media MUST
+                 already be in a format that is compatible with the destination target. For
+                 example: Given a Pipeline that reads a file and then streams it to a WebRTC
+                 browser such as Chrome, the file must already be encoded with a VP8 or H.264
+                 codec profile, which Chrome is able to decode.
                </p>
                <p>
-               We strongly recommend to avoid using this option, because correct behavior cannot be guaranteed.
-               </p></div>
+                 Of special note is that you cannot feed any random combination of H.264
+                 encoding options to a web browser; instead, they tend to support only a very
+                 specific subset of the codec features (also known as 'profiles'). The most
+                 compatible config for H.264 is
+                 <strong>Constrained Baseline profile, level 3.1.</strong>
+               </p>
+               <p>Code examples:</p>
+               <pre><code>
+                 # Java
+                 PlayerEndpoint player = new PlayerEndpoint
+                   .Builder(pipeline, 'rtsp://localhost:5000/video')
+                   .useEncodedMedia()
+                   .build();
+               </code></pre>
+               <pre><code>
+                 # JavaScript
+                 let player = await pipeline.create('PlayerEndpoint', {
+                   uri: 'rtsp://localhost:5000/video',
+                   useEncodedMedia: true,
+                 });
+               </code></pre></div>
 </li>
 </ul>
 <a name="withNetworkCache-int-">
@@ -345,7 +377,7 @@ extends <a href="../../../org/kurento/client/AbstractBuilder.html" title="class 
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.16.4</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.18.0-SNAPSHOT</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">

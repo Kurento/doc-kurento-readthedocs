@@ -45,7 +45,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.16.4</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.18.0-SNAPSHOT</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -107,10 +107,20 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public interface <span class="typeNameLabel">GStreamerFilter</span>
 extends <a href="../../../org/kurento/client/Filter.html" title="interface in org.kurento.client">Filter</a></pre>
-<div class="block">A generic filter interface that allows injecting any GStreamer element.
-       <p>
-       Note however that the current implementation of GStreamerFilter only allows single elements to be injected; one cannot indicate more than one at the same time; use several GStreamerFilters if you need to inject more than one element at the same time.
-       </p></div>
+<div class="block">A generic filter that allows injecting a single GStreamer element.
+ <p>
+   The current implementation of GStreamerFilter only allows single elements to
+   be injected; one cannot indicate more than one at the same time; use several
+   GStreamerFilters if you need to inject more than one element into the
+   pipeline.
+ </p>
+ <p>
+   Note that usage of some popular GStreamer elements requires installation of
+   additional packages. For example, overlay elements such as
+   <em>timeoverlay</em> or <em>textoverlay</em> require installation of the
+   <strong>gstreamer1.5-x</strong> package, which will also install the
+   <em>Pango</em> rendering library.
+ </p></div>
 </li>
 </ul>
 </div>
@@ -335,7 +345,7 @@ extends <a href="../../../org/kurento/client/Filter.html" title="interface in or
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.16.4</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.18.0-SNAPSHOT</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">

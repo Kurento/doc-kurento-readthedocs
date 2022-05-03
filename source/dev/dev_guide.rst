@@ -94,9 +94,10 @@ Application Servers can be developed in Java, JavaScript with Node.js, or JavaSc
 
 There are several repositories that contain sample code for developers that use Kurento or want to develop a custom Kurento module. Currently these are:
 
-- `kms-datachannelexample <https://github.com/Kurento/kms-datachannelexample>`__
+- `kms-gstreamer-plugin-sample <https://github.com/Kurento/kms-gstreamer-plugin-sample>`__
 - `kms-opencv-plugin-sample <https://github.com/Kurento/kms-opencv-plugin-sample>`__
-- `kms-plugin-sample <https://github.com/Kurento/kms-plugin-sample>`__
+- `kms-datachannelexample <https://github.com/Kurento/kms-datachannelexample>`__
+
 - `kurento-tutorial-java <https://github.com/Kurento/kurento-tutorial-java>`__
 - `kurento-tutorial-js <https://github.com/Kurento/kurento-tutorial-js>`__
 - `kurento-tutorial-node <https://github.com/Kurento/kurento-tutorial-node>`__
@@ -174,12 +175,13 @@ This command will install the basic set of tools that are needed for the next st
 
 .. code-block:: shell
 
-   sudo apt-get update && sudo apt-get install --no-install-recommends \
+   sudo apt-get update ; sudo apt-get install --no-install-recommends \
        build-essential \
        ca-certificates \
        cmake \
        git \
-       gnupg
+       gnupg \
+       pkg-config
 
 
 
@@ -202,8 +204,6 @@ Run these commands to add the Kurento repository to your system configuration:
    deb [arch=amd64] http://ubuntu.openvidu.io/dev $DISTRIB_CODENAME kms6
    EOF
 
-   sudo apt-get update
-
 
 
 Install build dependencies
@@ -213,7 +213,7 @@ Run:
 
 .. code-block:: shell
 
-   sudo apt-get update && sudo apt-get install --no-install-recommends \
+   sudo apt-get update ; sudo apt-get install --no-install-recommends \
        kurento-media-server-dev
 
 
@@ -226,7 +226,9 @@ Run:
 .. code-block:: shell
 
    git clone https://github.com/Kurento/kms-omni-build.git
-   cd kms-omni-build
+
+   cd kms-omni-build/
+
    git submodule update --init --recursive
    git submodule update --remote
 
@@ -234,15 +236,41 @@ Run:
 
    ``--recursive`` and ``--remote`` are not used together, because each individual submodule may have their own submodules that might be expected to check out some specific commit, and we don't want to update those.
 
-*OPTIONAL*: Change to the *master* branch of each submodule, if you will be working with the latest version of the code:
+(Optional) If you want to work and make commits on the submodules, switch them to the tip of their branch, to avoid being in a *detached HEAD*:
 
 .. code-block:: shell
 
-   REF=master
-   git checkout "$REF" || true
+   git submodule foreach "git checkout master"
+
+
+
+Switching branches on kms-omni-build
+------------------------------------
+
+(Optional)
+
+*kms-omni-build* is a git repo that contains submodules. As such, you must remember that **git submodule state is not carried over when switching branches**. So simply running ``git checkout`` or ``git switch`` on *kms-omni-build* won't have the intended effect.
+
+To switch to an already existing feature branch just on a single submodule, ``cd`` into it and use *git checkout* or *git switch*.
+
+To switch to a branch on *kms-omni-build* itself and all submodules, run this:
+
+.. code-block:: shell
+
+   REF=<BranchName>
+
+   # Before checkout: Deinit submodules.
+   # Needed because submodule state is not carried over when switching branches.
+   git submodule deinit --all
+
+   git checkout $REF || true
+
+   # After checkout: Re-init submodules.
+   git submodule update --init --recursive
+   git submodule update --remote
    git submodule foreach "git checkout $REF || true"
 
-You can also set *REF* to any other branch or tag, such as ``REF=6.12.0``. This will bring the code to the state it had in that version release.
+You can set *REF* to any git branch or tag. For example, ``REF=6.12.0`` will bring the code to the state it had in that version release.
 
 
 
@@ -332,7 +360,7 @@ Now, install all debug symbols that are relevant to KMS:
 
 .. code-block:: shell
 
-   sudo apt-get update && sudo apt-get install --no-install-recommends \
+   sudo apt-get update ; sudo apt-get install --no-install-recommends \
        kurento-dbg
 
 
@@ -349,7 +377,7 @@ Let's see a couple examples that show the difference between the same stack trac
    $ cat /var/log/kurento-media-server/errors.log
    Segmentation fault (thread 139667051341568, pid 14132)
    Stack trace:
-   [kurento::MediaElementImpl::mediaFlowInStateChange(int, char*, KmsElementPadType)]
+   [kurento::MediaElementImpl::mediaFlowInStateChanged(int, char*, KmsElementPadType)]
    /usr/lib/x86_64-linux-gnu/libkmscoreimpl.so.6:0x1025E0
    [g_signal_emit]
    /usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0:0x2B08F
@@ -365,7 +393,7 @@ Let's see a couple examples that show the difference between the same stack trac
    $ cat /var/log/kurento-media-server/errors.log
    Segmentation fault (thread 140672899761920, pid 15217)
    Stack trace:
-   [kurento::MediaElementImpl::mediaFlowInStateChange(int, char*, KmsElementPadType)]
+   [kurento::MediaElementImpl::mediaFlowInStateChanged(int, char*, KmsElementPadType)]
    /home/kurento/kms-omni-build/kms-core/src/server/implementation/objects/MediaElementImpl.cpp:479
    [g_signal_emit]
    /build/glib2.0-prJhLS/glib2.0-2.48.2/./gobject/gsignal.c:3443
@@ -646,7 +674,7 @@ What to do when you are developing a new feature that spans across KMS and the p
 
       cd <module>  # E.g. kms-filters
       rm -rf build
-      mkdir build && cd build
+      mkdir build ; cd build
       cmake .. -DGENERATE_JAVA_CLIENT_PROJECT=TRUE -DDISABLE_LIBRARIES_GENERATION=TRUE
       cd java
       mvn clean install

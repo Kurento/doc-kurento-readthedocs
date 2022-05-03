@@ -18,8 +18,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":10,"i1":42,"i2":10,"i3":10,"i4":10,"i5":42,"i6":10,"i7":42,"i8":10,"i9":10,"i10":10,"i11":42};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -45,7 +45,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.16.4</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.18.0-SNAPSHOT</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -111,7 +111,7 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">IceCandidatePair</span>
 extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html?is-external=true" title="class or interface in java.lang">Object</a></pre>
-<div class="block">The ICE candidate pair used by the ice library, for a certain stream.</div>
+<div class="block">The ICE candidate pair used by the ICE library, for a certain stream.</div>
 </li>
 </ul>
 </div>
@@ -138,8 +138,10 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#IceCandidatePair-java.lang.String-int-java.lang.String-java.lang.String-">IceCandidatePair</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamID,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#IceCandidatePair-java.lang.String-java.lang.String-int-int-java.lang.String-java.lang.String-">IceCandidatePair</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamID,
+                <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamId,
                 int&nbsp;componentID,
+                int&nbsp;componentId,
                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;localCandidate,
                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;remoteCandidate)</code>
 <div class="block">Create a IceCandidatePair</div>
@@ -155,57 +157,89 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#getComponentID--">getComponentID</a></span>()</code>
-<div class="block">get Component ID of the ice connection</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#getComponentId--">getComponentId</a></span>()</code>
+<div class="block">get Component ID of the ICE connection</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#getLocalCandidate--">getLocalCandidate</a></span>()</code>
-<div class="block">get The local candidate used by the ice library.</div>
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#getComponentID--">getComponentID</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>componentId</code> instead.</span></div>
+</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#getRemoteCandidate--">getRemoteCandidate</a></span>()</code>
-<div class="block">get The remote candidate used by the ice library.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#getLocalCandidate--">getLocalCandidate</a></span>()</code>
+<div class="block">get The local candidate used by the ICE library.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#getStreamID--">getStreamID</a></span>()</code>
-<div class="block">get Stream ID of the ice connection</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#getRemoteCandidate--">getRemoteCandidate</a></span>()</code>
+<div class="block">get The remote candidate used by the ICE library.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#setComponentID-int-">setComponentID</a></span>(int&nbsp;componentID)</code>
-<div class="block">set Component ID of the ice connection</div>
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#getStreamId--">getStreamId</a></span>()</code>
+<div class="block">get Stream ID of the ICE connection</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#setLocalCandidate-java.lang.String-">setLocalCandidate</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;localCandidate)</code>
-<div class="block">set The local candidate used by the ice library.</div>
+<td class="colFirst"><code><a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#getStreamID--">getStreamID</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>streamId</code> instead.</span></div>
+</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#setRemoteCandidate-java.lang.String-">setRemoteCandidate</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;remoteCandidate)</code>
-<div class="block">set The remote candidate used by the ice library.</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#setComponentId-int-">setComponentId</a></span>(int&nbsp;componentId)</code>
+<div class="block">set Component ID of the ICE connection</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#setComponentID-int-">setComponentID</a></span>(int&nbsp;componentID)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>componentId</code> instead.</span></div>
+</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#setLocalCandidate-java.lang.String-">setLocalCandidate</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;localCandidate)</code>
+<div class="block">set The local candidate used by the ICE library.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#setRemoteCandidate-java.lang.String-">setRemoteCandidate</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;remoteCandidate)</code>
+<div class="block">set The remote candidate used by the ICE library.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#setStreamId-java.lang.String-">setStreamId</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamId)</code>
+<div class="block">set Stream ID of the ICE connection</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/IceCandidatePair.html#setStreamID-java.lang.String-">setStreamID</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamID)</code>
-<div class="block">set Stream ID of the ice connection</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>streamId</code> instead.</span></div>
+</div>
 </td>
 </tr>
 </table>
@@ -240,14 +274,16 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <div class="block">Default private constructor of IceCandidatePair for serialization with Jackson</div>
 </li>
 </ul>
-<a name="IceCandidatePair-java.lang.String-int-java.lang.String-java.lang.String-">
+<a name="IceCandidatePair-java.lang.String-java.lang.String-int-int-java.lang.String-java.lang.String-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>IceCandidatePair</h4>
 <pre>public&nbsp;IceCandidatePair(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamID,
+                        <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamId,
                         int&nbsp;componentID,
+                        int&nbsp;componentId,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;localCandidate,
                         <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;remoteCandidate)</pre>
 <div class="block">Create a IceCandidatePair</div>
@@ -268,7 +304,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>getStreamID</h4>
 <pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getStreamID()</pre>
-<div class="block">get Stream ID of the ice connection</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>streamId</code> instead.</span></div>
+<div class="block">get Stream ID of the ICE connection.</div>
 </li>
 </ul>
 <a name="setStreamID-java.lang.String-">
@@ -278,7 +315,28 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>setStreamID</h4>
 <pre>public&nbsp;void&nbsp;setStreamID(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamID)</pre>
-<div class="block">set Stream ID of the ice connection</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>streamId</code> instead.</span></div>
+<div class="block">set Stream ID of the ICE connection.</div>
+</li>
+</ul>
+<a name="getStreamId--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getStreamId</h4>
+<pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getStreamId()</pre>
+<div class="block">get Stream ID of the ICE connection</div>
+</li>
+</ul>
+<a name="setStreamId-java.lang.String-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setStreamId</h4>
+<pre>public&nbsp;void&nbsp;setStreamId(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;streamId)</pre>
+<div class="block">set Stream ID of the ICE connection</div>
 </li>
 </ul>
 <a name="getComponentID--">
@@ -288,7 +346,8 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>getComponentID</h4>
 <pre>public&nbsp;int&nbsp;getComponentID()</pre>
-<div class="block">get Component ID of the ice connection</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>componentId</code> instead.</span></div>
+<div class="block">get Component ID of the ICE connection</div>
 </li>
 </ul>
 <a name="setComponentID-int-">
@@ -298,7 +357,28 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>setComponentID</h4>
 <pre>public&nbsp;void&nbsp;setComponentID(int&nbsp;componentID)</pre>
-<div class="block">set Component ID of the ice connection</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Use <code>componentId</code> instead.</span></div>
+<div class="block">set Component ID of the ICE connection</div>
+</li>
+</ul>
+<a name="getComponentId--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getComponentId</h4>
+<pre>public&nbsp;int&nbsp;getComponentId()</pre>
+<div class="block">get Component ID of the ICE connection</div>
+</li>
+</ul>
+<a name="setComponentId-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setComponentId</h4>
+<pre>public&nbsp;void&nbsp;setComponentId(int&nbsp;componentId)</pre>
+<div class="block">set Component ID of the ICE connection</div>
 </li>
 </ul>
 <a name="getLocalCandidate--">
@@ -308,7 +388,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>getLocalCandidate</h4>
 <pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getLocalCandidate()</pre>
-<div class="block">get The local candidate used by the ice library.</div>
+<div class="block">get The local candidate used by the ICE library.</div>
 </li>
 </ul>
 <a name="setLocalCandidate-java.lang.String-">
@@ -318,7 +398,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>setLocalCandidate</h4>
 <pre>public&nbsp;void&nbsp;setLocalCandidate(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;localCandidate)</pre>
-<div class="block">set The local candidate used by the ice library.</div>
+<div class="block">set The local candidate used by the ICE library.</div>
 </li>
 </ul>
 <a name="getRemoteCandidate--">
@@ -328,7 +408,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>getRemoteCandidate</h4>
 <pre>public&nbsp;<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;getRemoteCandidate()</pre>
-<div class="block">get The remote candidate used by the ice library.</div>
+<div class="block">get The remote candidate used by the ICE library.</div>
 </li>
 </ul>
 <a name="setRemoteCandidate-java.lang.String-">
@@ -338,7 +418,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li class="blockList">
 <h4>setRemoteCandidate</h4>
 <pre>public&nbsp;void&nbsp;setRemoteCandidate(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;remoteCandidate)</pre>
-<div class="block">set The remote candidate used by the ice library.</div>
+<div class="block">set The remote candidate used by the ICE library.</div>
 </li>
 </ul>
 </li>
@@ -365,7 +445,7 @@ extends <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.16.4</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.18.0-SNAPSHOT</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">

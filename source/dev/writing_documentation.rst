@@ -51,7 +51,7 @@ You'll need these tools:
 
 .. code-block:: shell
 
-   sudo apt-get update && sudo apt-get install --no-install-recommends \
+   sudo apt-get update ; sudo apt-get install --no-install-recommends \
        python3 python3-pip python3-venv \
        graphviz
 
@@ -76,7 +76,7 @@ And finally, install Sphinx:
    source python_modules/bin/activate
 
    # Install Sphinx and the Read the Docs theme
-   python -m pip install --upgrade -r requirements.txt
+   python3 -m pip install --upgrade -r requirements.txt
 
 
 

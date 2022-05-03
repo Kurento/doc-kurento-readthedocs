@@ -41,7 +41,7 @@ Open a terminal and run these commands:
 
    .. code-block:: shell
 
-      sudo apt-get update && sudo apt-get install --no-install-recommends \
+      sudo apt-get update ; sudo apt-get install --no-install-recommends \
           gnupg
 
 2. Add the Kurento repository to your system configuration.
@@ -70,7 +70,7 @@ Open a terminal and run these commands:
 
    .. code-block:: shell
 
-      sudo apt-get update && sudo apt-get install --no-install-recommends \
+      sudo apt-get update ; sudo apt-get install --no-install-recommends \
           kurento-media-server
 
    This will install the nightly version of Kurento Media Server.
@@ -110,6 +110,19 @@ This adds access to development builds only for a single project. Open the proje
          </snapshots>
        </repository>
      </repositories>
+     <pluginRepositories>
+       <pluginRepository>
+         <id>kurento-github-public</id>
+         <name>Kurento GitHub Maven packages (public access)</name>
+         <url>https://public:&#103;hp_tFHDdd4Nh9GqKSaoPjnFIXrb0PFsUh258gzV@maven.pkg.github.com/kurento/*</url>
+         <releases>
+           <enabled>false</enabled>
+         </releases>
+         <snapshots>
+           <enabled>true</enabled>
+         </snapshots>
+       </pluginRepository>
+     </pluginRepositories>
      ...
    </project>
 
@@ -141,7 +154,7 @@ Edit one of the mentioned settings files, and include this:
      ...
      <profiles>
        <profile>
-         <id>snapshots</id>
+         <id>snapshot</id>
          <repositories>
            <repository>
              <id>kurento-github-public</id>
@@ -155,6 +168,19 @@ Edit one of the mentioned settings files, and include this:
              </snapshots>
            </repository>
          </repositories>
+         <pluginRepositories>
+           <pluginRepository>
+             <id>kurento-github-public</id>
+             <name>Kurento GitHub Maven packages (public access)</name>
+             <url>https://public:&#103;hp_tFHDdd4Nh9GqKSaoPjnFIXrb0PFsUh258gzV@maven.pkg.github.com/kurento/*</url>
+             <releases>
+               <enabled>false</enabled>
+             </releases>
+             <snapshots>
+               <enabled>true</enabled>
+             </snapshots>
+           </pluginRepository>
+         </pluginRepositories>
        </profile>
      </profiles>
      ...
@@ -168,15 +194,15 @@ Edit one of the mentioned settings files, and include this:
    anonymous downloads from their Maven package registry.
    More details here: https://github.community/t/download-from-github-package-registry-without-authentication/14407/111
 
-Then use the ``-Psnapshots`` argument in your next Maven run, to enable the new profile. For example:
+Then use the ``-Psnapshot`` argument in your next Maven run, to enable the new profile. For example:
 
 .. code-block:: shell
 
-   mvn -Psnapshots clean package
+   mvn -Psnapshot clean package
 
 .. code-block:: shell
 
-   mvn dependency:get -Psnapshots -Dartifact='org.kurento:kurento-client:6.16.4-SNAPSHOT'
+   mvn dependency:get -Psnapshot -Dartifact='org.kurento:kurento-client:6.12.0-SNAPSHOT'
 
 
 
