@@ -89,17 +89,24 @@
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code><a href="../../../../org/kurento/client/MediaTranscodingState.html" title="enum in org.kurento.client">MediaTranscodingState</a></code></td>
-<td class="colLast"><span class="typeNameLabel">MediaTranscodingStateChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaTranscodingStateChangeEvent.html#getState--">getState</a></span>()</code>
+<td class="colLast"><span class="typeNameLabel">MediaTranscodingStateChangedEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaTranscodingStateChangedEvent.html#getState--">getState</a></span>()</code>
 <div class="block">Getter for the state property</div>
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code><a href="../../../../org/kurento/client/MediaTranscodingState.html" title="enum in org.kurento.client">MediaTranscodingState</a></code></td>
+<td class="colLast"><span class="typeNameLabel">MediaTranscodingStateChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaTranscodingStateChangeEvent.html#getState--">getState</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block">Getter for the state property</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../org/kurento/client/MediaTranscodingState.html" title="enum in org.kurento.client">MediaTranscodingState</a></code></td>
 <td class="colLast"><span class="typeNameLabel">MediaTranscodingState.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaTranscodingState.html#valueOf-java.lang.String-">valueOf</a></span>(<a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;name)</code>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
 </td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../org/kurento/client/MediaTranscodingState.html" title="enum in org.kurento.client">MediaTranscodingState</a>[]</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaTranscodingState.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaTranscodingState.html#values--">values</a></span>()</code>
 <div class="block">Returns an array containing the constants of this enum type, in
@@ -117,7 +124,14 @@ the order they are declared.</div>
 <tbody>
 <tr class="altColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><span class="typeNameLabel">MediaTranscodingStateChangedEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaTranscodingStateChangedEvent.html#setState-org.kurento.client.MediaTranscodingState-">setState</a></span>(<a href="../../../../org/kurento/client/MediaTranscodingState.html" title="enum in org.kurento.client">MediaTranscodingState</a>&nbsp;state)</code>
+<div class="block">Setter for the state property</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><span class="typeNameLabel">MediaTranscodingStateChangeEvent.</span><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaTranscodingStateChangeEvent.html#setState-org.kurento.client.MediaTranscodingState-">setState</a></span>(<a href="../../../../org/kurento/client/MediaTranscodingState.html" title="enum in org.kurento.client">MediaTranscodingState</a>&nbsp;state)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Setter for the state property</div>
 </td>
 </tr>
@@ -130,6 +144,18 @@ the order they are declared.</div>
 </tr>
 <tbody>
 <tr class="altColor">
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaTranscodingStateChangedEvent.html#MediaTranscodingStateChangedEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-org.kurento.client.MediaTranscodingState-java.lang.String-org.kurento.client.MediaType-">MediaTranscodingStateChangedEvent</a></span>(<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&nbsp;source,
+                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;timestamp,
+                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;timestampMillis,
+                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/util/List.html?is-external=true" title="class or interface in java.util">List</a>&lt;<a href="../../../../org/kurento/client/Tag.html" title="class in org.kurento.client">Tag</a>&gt;&nbsp;tags,
+                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;type,
+                                 <a href="../../../../org/kurento/client/MediaTranscodingState.html" title="enum in org.kurento.client">MediaTranscodingState</a>&nbsp;state,
+                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;binName,
+                                 <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</code>
+<div class="block">Event fired when an incoming media begins and codec transcoding is either required or not.</div>
+</td>
+</tr>
+<tr class="rowColor">
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../org/kurento/client/MediaTranscodingStateChangeEvent.html#MediaTranscodingStateChangeEvent-org.kurento.client.MediaObject-java.lang.String-java.lang.String-java.util.List-java.lang.String-org.kurento.client.MediaTranscodingState-java.lang.String-org.kurento.client.MediaType-">MediaTranscodingStateChangeEvent</a></span>(<a href="../../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&nbsp;source,
                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;timestamp,
                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;timestampMillis,
@@ -138,7 +164,9 @@ the order they are declared.</div>
                                 <a href="../../../../org/kurento/client/MediaTranscodingState.html" title="enum in org.kurento.client">MediaTranscodingState</a>&nbsp;state,
                                 <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/String.html?is-external=true" title="class or interface in java.lang">String</a>&nbsp;binName,
                                 <a href="../../../../org/kurento/client/MediaType.html" title="enum in org.kurento.client">MediaType</a>&nbsp;mediaType)</code>
-<div class="block">Event fired when an incoming media begins and codec transcoding is either required or not.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Use <code>MediaTranscodingStateChanged</code> instead.</span></div>
+</div>
 </td>
 </tr>
 </tbody>

@@ -30,6 +30,8 @@ While official release Docker images are published as `kurento/kurento-media-ser
 
 
 
+.. _installation-dev-local:
+
 Local Installation
 ------------------
 
@@ -133,7 +135,7 @@ Afterwards, in the same ``pom.xml``, look for the desired dependency and change 
    <dependency>
      <groupId>org.kurento</groupId>
      <artifactId>kurento-client</artifactId>
-     <version>6.16.0-SNAPSHOT</version>
+     <version>6.12.0-SNAPSHOT</version>
    </dependency>
 
 
