@@ -116,9 +116,9 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
  <ul>
    <li>
      <b>id</b>: unique identifier assigned to this <code>MediaObject</code> at
-     instantiation time. <code>MediaPipeline</code> IDs are generated with a GUID
+     instantiation time. <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a> IDs are generated with a GUID
      followed by suffix <code>_kurento.MediaPipeline</code>.
-     <code>MediaElement</code> IDs are also a GUID with suffix
+     <a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client"><code>MediaElement</code></a> IDs are also a GUID with suffix
      <code>_kurento.{ElementType}</code> and prefixed by parent's ID.
      <blockquote>
        <dl>
@@ -150,7 +150,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
  <h4>Events</h4>
  <ul>
    <li>
-     <b>ErrorEvent</b>: reports asynchronous error events. It is recommended to
+     <strong><a href="../../../org/kurento/client/ErrorEvent.html" title="class in org.kurento.client"><code>ErrorEvent</code></a><strong>: reports asynchronous error events. It is recommended to
      always subscribe a listener to this event, as regular error from the
      pipeline will be notified through it, instead of through an exception when
      invoking a method.
@@ -293,19 +293,19 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getMediaPipeline--">getMediaPipeline</a></span>()</code>
-<div class="block">Get <code>MediaPipeline</code> to which this <code>MediaObject</code> belongs.</div>
+<div class="block">Get <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a> to which this <code>MediaObject</code> belongs.</div>
 </td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getMediaPipeline-org.kurento.client.Continuation-">getMediaPipeline</a></span>(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a>&gt;&nbsp;cont)</code>
-<div class="block">Get <code>MediaPipeline</code> to which this <code>MediaObject</code> belongs.</div>
+<div class="block">Get <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a> to which this <code>MediaObject</code> belongs.</div>
 </td>
 </tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../org/kurento/client/MediaObject.html#getMediaPipeline-org.kurento.client.Transaction-">getMediaPipeline</a></span>(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code>
-<div class="block">Get <code>MediaPipeline</code> to which this <code>MediaObject</code> belongs.</div>
+<div class="block">Get <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a> to which this <code>MediaObject</code> belongs.</div>
 </td>
 </tr>
 <tr id="i20" class="altColor">
@@ -508,7 +508,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getMediaPipeline</h4>
 <pre><a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a>&nbsp;getMediaPipeline()</pre>
-<div class="block">Get <code>MediaPipeline</code> to which this <code>MediaObject</code> belongs. It returns itself when invoked for a pipeline object.</div>
+<div class="block">Get <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a> to which this <code>MediaObject</code> belongs. It returns itself when invoked for a pipeline object.</div>
 </li>
 </ul>
 <a name="getMediaPipeline-org.kurento.client.Continuation-">
@@ -518,7 +518,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getMediaPipeline</h4>
 <pre>void&nbsp;getMediaPipeline(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a>&gt;&nbsp;cont)</pre>
-<div class="block">Get <code>MediaPipeline</code> to which this <code>MediaObject</code> belongs. It returns itself when invoked for a pipeline object.</div>
+<div class="block">Get <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a> to which this <code>MediaObject</code> belongs. It returns itself when invoked for a pipeline object.</div>
 </li>
 </ul>
 <a name="getMediaPipeline-org.kurento.client.Transaction-">
@@ -528,7 +528,7 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <li class="blockList">
 <h4>getMediaPipeline</h4>
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a>&gt;&nbsp;getMediaPipeline(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
-<div class="block">Get <code>MediaPipeline</code> to which this <code>MediaObject</code> belongs. It returns itself when invoked for a pipeline object.</div>
+<div class="block">Get <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a> to which this <code>MediaObject</code> belongs. It returns itself when invoked for a pipeline object.</div>
 </li>
 </ul>
 <a name="getParent--">
@@ -540,8 +540,8 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <pre><a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&nbsp;getParent()</pre>
 <div class="block">Get Parent of this <code>MediaObject</code>.
  <p>
-   The parent of a <code>Hub</code> or a <code>MediaElement</code> is its
-   <code>MediaPipeline</code>. A <code>MediaPipeline</code> has no parent, so this
+   The parent of a <a href="../../../org/kurento/client/Hub.html" title="interface in org.kurento.client"><code>Hub</code></a> or a <a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client"><code>MediaElement</code></a> is its
+   <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a>. A <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a> has no parent, so this
    property will be null.
  </p></div>
 </li>
@@ -555,8 +555,8 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <pre>void&nbsp;getParent(<a href="../../../org/kurento/client/Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&nbsp;cont)</pre>
 <div class="block">Get Parent of this <code>MediaObject</code>.
  <p>
-   The parent of a <code>Hub</code> or a <code>MediaElement</code> is its
-   <code>MediaPipeline</code>. A <code>MediaPipeline</code> has no parent, so this
+   The parent of a <a href="../../../org/kurento/client/Hub.html" title="interface in org.kurento.client"><code>Hub</code></a> or a <a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client"><code>MediaElement</code></a> is its
+   <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a>. A <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a> has no parent, so this
    property will be null.
  </p></div>
 </li>
@@ -570,8 +570,8 @@ extends <a href="../../../org/kurento/client/KurentoObject.html" title="interfac
 <pre><a href="../../../org/kurento/client/TFuture.html" title="interface in org.kurento.client">TFuture</a>&lt;<a href="../../../org/kurento/client/MediaObject.html" title="interface in org.kurento.client">MediaObject</a>&gt;&nbsp;getParent(<a href="../../../org/kurento/client/Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</pre>
 <div class="block">Get Parent of this <code>MediaObject</code>.
  <p>
-   The parent of a <code>Hub</code> or a <code>MediaElement</code> is its
-   <code>MediaPipeline</code>. A <code>MediaPipeline</code> has no parent, so this
+   The parent of a <a href="../../../org/kurento/client/Hub.html" title="interface in org.kurento.client"><code>Hub</code></a> or a <a href="../../../org/kurento/client/MediaElement.html" title="interface in org.kurento.client"><code>MediaElement</code></a> is its
+   <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a>. A <a href="../../../org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client"><code>MediaPipeline</code></a> has no parent, so this
    property will be null.
  </p></div>
 </li>
