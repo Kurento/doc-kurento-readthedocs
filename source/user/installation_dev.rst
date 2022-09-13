@@ -53,7 +53,9 @@ Open a terminal and run these commands:
    .. code-block:: shell
 
       # Import the Kurento repository signing key
-      sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 5AFA7A83
+      sudo apt-key adv \
+          --keyserver keyserver.ubuntu.com \
+          --recv-keys 234821A61B67740F89BFD669FC8A16625AFA7A83
 
       # Get Ubuntu version definitions
       source /etc/lsb-release
@@ -108,7 +110,7 @@ Edit the settings file to include this:
                    <repository>
                        <id>kurento-github-public</id>
                        <name>Kurento GitHub Maven packages (public access)</name>
-                       <url>https://public:&#103;hp_tFHDdd4Nh9GqKSaoPjnFIXrb0PFsUh258gzV@maven.pkg.github.com/kurento/*</url>
+                       <url>https://public:&#103;hp_fW4yqnUBB4LZvk8DE6VEbsu6XdnSBZ466WEJ@maven.pkg.github.com/kurento/*</url>
                        <releases>
                            <enabled>false</enabled>
                        </releases>
@@ -121,7 +123,7 @@ Edit the settings file to include this:
                    <pluginRepository>
                        <id>kurento-github-public</id>
                        <name>Kurento GitHub Maven packages (public access)</name>
-                       <url>https://public:&#103;hp_tFHDdd4Nh9GqKSaoPjnFIXrb0PFsUh258gzV@maven.pkg.github.com/kurento/*</url>
+                       <url>https://public:&#103;hp_fW4yqnUBB4LZvk8DE6VEbsu6XdnSBZ466WEJ@maven.pkg.github.com/kurento/*</url>
                        <releases>
                            <enabled>false</enabled>
                        </releases>
@@ -186,7 +188,7 @@ This method consists on explicitly adding access to the snapshots repository, fo
            <repository>
                <id>kurento-github-public</id>
                <name>Kurento GitHub Maven packages (public access)</name>
-               <url>https://public:&#103;hp_tFHDdd4Nh9GqKSaoPjnFIXrb0PFsUh258gzV@maven.pkg.github.com/kurento/*</url>
+               <url>https://public:&#103;hp_fW4yqnUBB4LZvk8DE6VEbsu6XdnSBZ466WEJ@maven.pkg.github.com/kurento/*</url>
                <releases>
                    <enabled>false</enabled>
                </releases>
@@ -199,7 +201,7 @@ This method consists on explicitly adding access to the snapshots repository, fo
            <pluginRepository>
                <id>kurento-github-public</id>
                <name>Kurento GitHub Maven packages (public access)</name>
-               <url>https://public:&#103;hp_tFHDdd4Nh9GqKSaoPjnFIXrb0PFsUh258gzV@maven.pkg.github.com/kurento/*</url>
+               <url>https://public:&#103;hp_fW4yqnUBB4LZvk8DE6VEbsu6XdnSBZ466WEJ@maven.pkg.github.com/kurento/*</url>
                <releases>
                    <enabled>false</enabled>
                </releases>
