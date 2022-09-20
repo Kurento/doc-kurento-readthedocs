@@ -201,7 +201,7 @@ Our Sphinx-based project is hosted in the `doc-kurento <https://github.com/Kuren
 
 * **init-workdir**. This target constitutes the first step to be run before most other targets. Our documentation source files contain substitution keywords in some parts, in the form ``| KEYWORD |``, which is expected to be substituted by some actual value during the generation process. Currently, the only keyword in use is ``VERSION``, which must be expanded to the actual version of the documentation being built.
 
-  For example, here is the *VERSION_KMS* keyword when substituted with its final value: ``6.16.0``.
+  For example, here is the *VERSION_KMS* keyword when substituted with its final value: ``6.18.0``.
 
   .. note::
 

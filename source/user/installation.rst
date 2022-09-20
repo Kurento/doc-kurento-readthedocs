@@ -35,7 +35,7 @@ Follow these steps to use it:
 
    .. code-block:: text
 
-      https://s3-eu-west-1.amazonaws.com/aws.kurento.org/KMS-Coturn-cfn-6.16.0.yaml
+      https://s3-eu-west-1.amazonaws.com/aws.kurento.org/KMS-Coturn-cfn-6.18.0.yaml
 
 4. Follow through the steps of the configuration wizard:
 
@@ -142,10 +142,10 @@ One of the nicest things about the Docker deployment method is that changing ver
 .. code-block:: shell
 
    # Download the new image version:
-   docker pull kurento/kurento-media-server:6.16.0
+   docker pull kurento/kurento-media-server:6.18.0
 
    # Create a new container based on the new version of KMS:
-   docker run [...] kurento/kurento-media-server:6.16.0
+   docker run [...] kurento/kurento-media-server:6.18.0
 
 
 
@@ -182,7 +182,7 @@ Open a terminal and run these commands:
       # Add the repository to Apt
       sudo tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
       # Kurento Media Server - Release packages
-      deb [arch=amd64] http://ubuntu.openvidu.io/6.16.0 $DISTRIB_CODENAME kms6
+      deb [arch=amd64] http://ubuntu.openvidu.io/6.18.0 $DISTRIB_CODENAME kms6
       EOF
 
 3. Install KMS:

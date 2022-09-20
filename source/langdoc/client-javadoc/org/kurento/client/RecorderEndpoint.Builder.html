@@ -45,7 +45,7 @@ var activeTableTab = "activeTableTab";
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.18.0-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.18.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">
@@ -279,7 +279,33 @@ extends <a href="../../../org/kurento/client/AbstractBuilder.html" title="class 
 <div class="block">Sets a value for mediaProfile in Builder for RecorderEndpoint.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>mediaProfile</code> - Sets the media profile used for recording. If the profile is different than the one being received at the sink pad, media will be transcoded, resulting in a higher CPU load. For instance, when recording a VP8 encoded video from a WebRTC endpoint in MP4, the load is higher that when recording to WEBM.</dd>
+<dd><code>mediaProfile</code> - Selects the media format used for recording.
+       <p>
+         The media profile allows you to specify which codecs and media container will
+         be used for the recordings. This is currently the only way available to tell
+         Kurento about which codecs should be used.
+       </p>
+       <p>
+         Watch out for these important remarks:
+       </p>
+       <ul>
+         <li>
+           If the format of incoming media differs from the recording profile, media
+           will need to be transcoded. Transcoding always incurs in noticeable CPU
+           load, so it is always good trying to avoid it. For instance, if a
+           VP8-encoded video (from WebRTC) is recorded with an MP4 recording profile
+           (which means H.264 encoding), the video needs to be transcoded from VP8 to
+           H.264. On the other hand, recording with the WEBM profile would allow to
+           store the video as-is with its VP8 encoding.
+         </li>
+         <li>
+           If you intend to record audio-only or video-only media, select the
+           appropriate <code>_AUDIO_ONLY</code> or <code>_VIDEO_ONLY</code> profile.
+           For example, to record a WebRTC screen capture (as obtained from a web
+           browser's call to <code>MediaDevices.getDisplayMedia()</code>), choose
+           <code>WEBM_VIDEO_ONLY</code> instead of just <code>WEBM</code>.
+         </li>
+       </ul></dd>
 </dl>
 </li>
 </ul>
@@ -317,7 +343,7 @@ extends <a href="../../../org/kurento/client/AbstractBuilder.html" title="class 
 <li><a href="../../../index-all.html">Index</a></li>
 <li><a href="../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 6.18.0-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 6.18.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList">
