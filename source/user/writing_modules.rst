@@ -227,8 +227,8 @@ For more information about the process of creating Debian packages, check these 
 
 .. code-block:: shell
 
-   KURENTO_MODULES_PATH="$KURENTO_MODULES_PATH /path/to/module"
-   GST_PLUGIN_PATH="$GST_PLUGIN_PATH /path/to/module"
+   KURENTO_MODULES_PATH="$KURENTO_MODULES_PATH:/path/to/module"
+   GST_PLUGIN_PATH="$GST_PLUGIN_PATH:/path/to/module"
 
 Kurento will then add these paths to the path lookup it performs at startup, when looking for all available plugins.
 
@@ -264,7 +264,7 @@ A ``Dockerfile`` such as this one would be a good enough starting point:
 
 .. code-block:: docker
 
-   FROM kurento/kurento-media-server:latest
+   FROM kurento/kurento-media-server:6.18.0
    COPY my-gst-module_0.0.1~rc1_amd64.deb /
    RUN dpkg -i /my-gst-module_0.0.1~rc1_amd64.deb
 
@@ -272,19 +272,19 @@ Now build the new image:
 
 .. code-block:: shell-session
 
-   $ docker build --tag kms-with-my-gst-module:latest .
-   Step 1/3 : FROM kurento/kurento-media-server:latest
+   $ docker build --tag kurento-with-my-gst-module:6.18.0 .
+   Step 1/3 : FROM kurento/kurento-media-server:6.18.0
    Step 2/3 : COPY my-gst-module_0.0.1~rc1_amd64.deb /
    Step 3/3 : RUN dpkg -i /my-gst-module_0.0.1~rc1_amd64.deb
    Successfully built d10d3b4a8202
-   Successfully tagged kms-with-my-gst-module:latest
+   Successfully tagged kurento-with-my-gst-module:6.18.0
 
 And verify your module is correctly loaded by Kurento:
 
 .. code-block:: shell-session
    :emphasize-lines: 7,12,13
 
-   $ docker run --rm kms-with-my-gst-module:latest --version
+   $ docker run --rm kurento-with-my-gst-module:6.18.0 --version
    Kurento Media Server version: 6.12.0
    Found modules:
        'core' version 6.12.0
@@ -292,7 +292,7 @@ And verify your module is correctly loaded by Kurento:
        'filters' version 6.12.0
        'mygstmodule' version 0.0.1~0.gd61e201
 
-   $ docker run --rm kms-with-my-gst-module:latest --list
+   $ docker run --rm kurento-with-my-gst-module:6.18.0 --list
    Available factories:
        [...]
        MyGstModule
