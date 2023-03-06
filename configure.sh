@@ -19,28 +19,25 @@ set -o errexit -o errtrace -o pipefail -o nounset
 shopt -s inherit_errexit 2>/dev/null || true
 
 # Trace all commands (to stderr).
-#set -o xtrace
+set -o xtrace
+
+# Absolute Canonical Path to the directory that contains this script.
+SELF_DIR="$(cd -P -- "$(dirname -- "${BASH_SOURCE[0]}")" >/dev/null && pwd -P)"
 
 # Help message.
 # Extracts and prints text from special comments in the script header.
 function usage { grep '^#/' "${BASH_SOURCE[-1]}" | cut -c 4-; exit 0; }
 if [[ "${1:-}" =~ ^(-h|--help)$ ]]; then usage; fi
 
-# Log function.
-BASENAME="$(basename "$0")"  # Complete file name
-log() { echo "[$BASENAME] $*"; }
-
 
 
 # Load VERSIONS file
 # ==================
 
-BASEPATH="$(cd -P -- "$(dirname -- "$0")" && pwd -P)"  # Absolute canonical path
-
-CONF_FILE="$BASEPATH/VERSIONS.env"
+CONF_FILE="$SELF_DIR/VERSIONS.env"
 
 [[ -f "$CONF_FILE" ]] || {
-    log "ERROR: Shell config file not found: $CONF_FILE"
+    echo "ERROR: Shell config file not found: $CONF_FILE"
     exit 1
 }
 
@@ -61,19 +58,25 @@ for NAME in "${!PROJECT_VERSIONS[@]}"; do
     # Use long option names for readability. Equivalent to this:
     # grep -lIrZ -- '<OldPattern>' | xargs -0 -L1 -r sed -i -e 's/<OldPattern>/<NewPattern>/g'
 
-    grep \
-        --files-with-matches \
-        --binary-files=without-match \
-        --recursive \
-        --null \
-        "|$NAME|" "$BASEPATH" \
-        | xargs \
+    # grep's exit code 1 means no lines selected, and >1 means an error.
+    # Thus, exit code 1 must be handled to prevent `-o pipefail` from failing.
+
+
+    {
+        grep \
+            --files-with-matches \
+            --binary-files=without-match \
+            --recursive \
             --null \
-            --max-lines=1 \
-            --no-run-if-empty \
-            sed \
-                --in-place --expression="s/|$NAME|/$VALUE/g"
+            "|$NAME|" "$SELF_DIR" \
+        || [[ $? == 1 ]]
+    } | xargs \
+        --null \
+        --max-lines=1 \
+        --no-run-if-empty \
+        sed \
+            --in-place --expression="s/|$NAME|/$VALUE/g"
 done
 
-log "Done!"
+echo "Done!"
 exit 0

@@ -22,7 +22,7 @@ Install :term:`Node.js`, :term:`Bower`, and a web server in your system:
 
 .. code-block:: shell
 
-   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+   curl -sSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
    sudo apt-get install -y nodejs
    sudo npm install -g bower
    sudo npm install -g http-server
@@ -33,9 +33,9 @@ You also need the source code of this tutorial. Clone it from GitHub, then start
 
 .. code-block:: shell
 
-    git clone https://github.com/Kurento/kurento-tutorial-js.git
-    cd kurento-tutorial-js/kurento-recorder/
-    git checkout 6.18.0
+    git clone https://github.com/Kurento/kurento.git
+    cd kurento/tutorials/javascript-browser/recorder/
+    git checkout main
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 
@@ -82,8 +82,8 @@ recorded file.
 
 There are two implementations for this demo to be found in github:
 
-* Using `callbacks <https://github.com/Kurento/kurento-tutorial-js/tree/master/kurento-recorder>`_.
-* Using `yield <https://github.com/Kurento/kurento-tutorial-js/tree/master/kurento-hello-world-recorder-generator>`_.
+* Using `callbacks <https://github.com/Kurento/kurento/tree/main/tutorials/javascript-browser/recorder>`_.
+* Using `yield <https://github.com/Kurento/kurento/tree/main/tutorials/javascript-browser/hello-world-recorder-generator>`_.
 
 .. note::
 
@@ -95,7 +95,7 @@ JavaScript Logic
 
 This demo follows a *Single Page Application* architecture (`SPA`:term:). The
 interface is the following HTML page:
-`index.html <https://github.com/Kurento/kurento-tutorial-js/blob/master/kurento-recorder/index.html>`_.
+`index.html <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-browser/recorder/index.html>`_.
 This web page links two Kurento JavaScript libraries:
 
 * **kurento-client.js** : Implementation of the Kurento JavaScript Client.
@@ -119,7 +119,7 @@ In addition, these two JavaScript libraries are also required:
 * **demo-console** : Custom JavaScript console.
 
 The specific logic of this demo is coded in the following JavaScript page:
-`index.js <https://github.com/Kurento/kurento-tutorial-js/blob/master/kurento-recorder/js/index.js>`_.
+`index.js <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-browser/recorder/js/index.js>`_.
 In this file, there is a function which is called when the green button, labeled
 as *Start* in the GUI, is clicked.
 
@@ -290,14 +290,14 @@ Then, these media elements are interconnected:
 Dependencies
 ============
 
-Demo dependencies are located in file `bower.json <https://github.com/Kurento/kurento-tutorial-js/blob/master/kurento-recorder/bower.json>`_.
+Demo dependencies are located in file `bower.json <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-browser/recorder/bower.json>`_.
 `Bower`:term: is used to collect them.
 
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.18.0",
-      "kurento-utils": "6.18.0"
+      "kurento-client": "7.0.0",
+      "kurento-utils": "7.0.0"
    }
 
 .. note::

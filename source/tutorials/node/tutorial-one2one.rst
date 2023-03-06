@@ -23,7 +23,7 @@ an Ubuntu machine, you can install it as follows:
 
 .. sourcecode:: bash
 
-   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+   curl -sSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
    sudo apt-get install -y nodejs
 
 To launch the application, you need to clone the GitHub project where this demo
@@ -31,9 +31,9 @@ is hosted, install it and run it:
 
 .. sourcecode:: bash
 
-    git clone https://github.com/Kurento/kurento-tutorial-node.git
-    cd kurento-tutorial-node/kurento-one2one-call
-    git checkout 6.18.0
+    git clone https://github.com/Kurento/kurento.git
+    cd kurento/tutorials/javascript-node/one2one-call/
+    git checkout main
     npm install
     npm start
 
@@ -123,14 +123,14 @@ exchanged between client and server to establish the `WebRTC`:term: connection
 between the Kurento client and server. Specifically, the SDP negotiation
 connects the WebRtcPeer in the browser with the WebRtcEndpoint in the server.
 The complete source code of this demo can be found in
-`GitHub <https://github.com/Kurento/kurento-tutorial-node/tree/master/kurento-one2one-call>`_.
+`GitHub <https://github.com/Kurento/kurento/tree/main/tutorials/javascript-node/one2one-call>`_.
 
 Application Server Logic
 ========================
 
 This demo has been developed using the **express** framework for Node.js, but
 express is not a requirement for Kurento. The main script of this demo is
-`server.js <https://github.com/Kurento/kurento-tutorial-node/blob/master/kurento-one2one-call/server.js>`_.
+`server.js <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-node/one2one-call/server.js>`_.
 
 In order to communicate the JavaScript client and the Node application server a
 WebSocket is used. The incoming messages to this WebSocket (variable ``ws`` in
@@ -412,7 +412,7 @@ in the callee peer, after the caller executes the function ``call``:
 As of Kurento Media Server 6.0, the WebRTC negotiation is done by exchanging
 :term:`ICE` candidates between the WebRTC peers. To implement this protocol,
 the ``webRtcEndpoint`` receives candidates from the client in
-``OnIceCandidate`` function. These candidates are stored in a queue when the
+``IceCandidateFound`` function. These candidates are stored in a queue when the
 ``webRtcEndpoint`` is not available yet. Then these candidates are added to the
 media element by calling to the ``addIceCandidate`` method.
 
@@ -455,9 +455,9 @@ library depends on **adapter.js**, which is a JavaScript WebRTC utility
 maintained by Google that abstracts away browser differences. Finally
 **jquery.js** is also needed in this application. These libraries are linked in
 the
-`index.html <https://github.com/Kurento/kurento-tutorial-node/blob/master/kurento-one2one-call/static/index.html>`_
+`index.html <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-node/one2one-call/static/index.html>`_
 web page, and are used in the
-`index.js <https://github.com/Kurento/kurento-tutorial-node/blob/master/kurento-one2one-call/static/js/index.js>`_.
+`index.js <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-node/one2one-call/static/js/index.js>`_.
 In the following snippet we can see the creation of the WebSocket (variable
 ``ws``) in the path ``/one2one``. Then, the ``onmessage`` listener of the
 WebSocket is used to implement the JSON signaling protocol in the client-side.
@@ -615,26 +615,26 @@ Dependencies
 Server-side dependencies of this demo are managed using :term:`NPM`. Our main
 dependency is the Kurento Client JavaScript (*kurento-client*). The relevant
 part of the
-`package.json <https://github.com/Kurento/kurento-tutorial-node/blob/master/kurento-one2one-call/package.json>`_
+`package.json <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-node/one2one-call/package.json>`_
 file for managing this dependency is:
 
 .. sourcecode:: js
 
    "dependencies": {
       [...]
-      "kurento-client" : "6.18.0"
+      "kurento-client" : "7.0.0"
    }
 
 At the client side, dependencies are managed using :term:`Bower`. Take a look to
 the
-`bower.json <https://github.com/Kurento/kurento-tutorial-node/blob/master/kurento-one2one-call/static/bower.json>`_
+`bower.json <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-node/one2one-call/static/bower.json>`_
 file and pay attention to the following section:
 
 .. sourcecode:: js
 
    "dependencies": {
       [...]
-      "kurento-utils" : "6.18.0"
+      "kurento-utils" : "7.0.0"
    }
 
 .. note::

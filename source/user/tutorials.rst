@@ -138,7 +138,7 @@ This tutorial detects and draws faces present in the webcam video. It connects f
 .. toctree::
    :maxdepth: 1
 
-   Java </tutorials/java/tutorial-metadata>
+   Java </tutorials/java/tutorial-facedetector>
 
 
 
@@ -162,7 +162,7 @@ This tutorial injects video into a QR filter and then sends the stream to WebRTC
 .. toctree::
    :maxdepth: 1
 
-   Java </tutorials/java/tutorial-send-datachannel>
+   Java </tutorials/java/tutorial-datachannel-send-qr>
 
 
 
@@ -174,7 +174,7 @@ This tutorial shows how text messages sent from browser can be delivered by Data
 .. toctree::
    :maxdepth: 1
 
-   Java </tutorials/java/tutorial-show-datachannel>
+   Java </tutorials/java/tutorial-datachannel-show-text>
    Browser JavaScript </tutorials/js/tutorial-helloworld-datachannels>
 
 
@@ -194,18 +194,6 @@ Users can choose which type of media to send and record: audio, video or both.
 
    Java </tutorials/java/tutorial-recorder>
    Browser JavaScript </tutorials/js/tutorial-recorder>
-
-
-
-WebRTC repository
-=================
-
-This is similar to the recording tutorial, but using the repository to store metadata.
-
-.. toctree::
-   :maxdepth: 1
-
-   Java </tutorials/java/tutorial-repository>
 
 
 

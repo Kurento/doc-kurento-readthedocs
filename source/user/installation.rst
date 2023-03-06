@@ -35,7 +35,7 @@ Follow these steps to use it:
 
    .. code-block:: text
 
-      https://s3-eu-west-1.amazonaws.com/aws.kurento.org/KMS-Coturn-cfn-6.18.0.yaml
+      https://s3-eu-west-1.amazonaws.com/aws.kurento.org/KMS-Coturn-cfn-7.0.0.yaml
 
 4. Follow through the steps of the configuration wizard:
 
@@ -81,7 +81,7 @@ If you need to insert or extract files from a Docker container, there is a varie
 These are the exact contents of the image:
 
 * A local ``apt-get`` installation of KMS, as described in :ref:`installation-local`, plus all its extra plugins (chroma, platedetector, etc).
-* Debug symbols installed, as described in :ref:`dev-dbg`. This allows getting useful stack traces in case the KMS process crashes. If this happens, please `report a bug <https://github.com/Kurento/bugtracker/issues>`__.
+* Debug symbols installed, as described in :ref:`dev-dbg`. This allows getting useful stack traces in case the KMS process crashes. If this happens, please `report a bug <https://github.com/Kurento/kurento/issues>`__.
 * All **default settings** from the local installation, as found in ``/etc/kurento/``. For details, see :doc:`/user/configuration`.
 
 
@@ -95,14 +95,14 @@ This is a good starting point, which runs the latest Kurento Media Server image 
 
 .. code-block:: shell
 
-   docker pull kurento/kurento-media-server:6.18.0
+   docker pull kurento/kurento-media-server:7.0.0
 
    docker run -d --name kurento --network host \
-       kurento/kurento-media-server:6.18.0
+       kurento/kurento-media-server:7.0.0
 
 By default, KMS listens on the port **8888**. Clients wanting to control the media server using the :doc:`/features/kurento_protocol` should open a WebSocket connection to that port, either directly or by means of one of the provided :doc:`/features/kurento_client` SDKs.
 
-The `health checker script <https://github.com/Kurento/kurento-docker/blob/master/kurento-media-server/healthchecker.sh>`__ inside this Docker image does something very similar in order to check if the container is healthy.
+The `health checker script <https://github.com/Kurento/kurento/blob/main/docker/kurento-media-server/healthchecker.sh>`__ inside this Docker image does something very similar in order to check if the container is healthy.
 
 Once the container is running, you can get its log output with the `docker logs <https://docs.docker.com/engine/reference/commandline/logs/>`__ command:
 
@@ -130,7 +130,7 @@ For example, if you use Docker for Mac and want to have KMS listening on the UDP
        -p 5000-5050:5000-5050/udp \
        -e KMS_MIN_PORT=5000 \
        -e KMS_MAX_PORT=5050 \
-       kurento/kurento-media-server:6.18.0
+       kurento/kurento-media-server:7.0.0
 
 
 
@@ -142,10 +142,10 @@ One of the nicest things about the Docker deployment method is that changing ver
 .. code-block:: shell
 
    # Download the new image version:
-   docker pull kurento/kurento-media-server:6.18.0
+   docker pull kurento/kurento-media-server:7.0.0
 
    # Create a new container based on the new version of KMS:
-   docker run [...] kurento/kurento-media-server:6.18.0
+   docker run [...] kurento/kurento-media-server:7.0.0
 
 
 
@@ -154,7 +154,9 @@ One of the nicest things about the Docker deployment method is that changing ver
 Local Installation
 ==================
 
-With this method, you will install Kurento Media Server from the native Ubuntu packages build by us. Kurento officially supports two Long-Term Support (*LTS*) versions of Ubuntu: **Ubuntu 16.04 (Xenial)** and **Ubuntu 18.04 (Bionic)** (64-bits x86 only).
+With this method, you will install Kurento Media Server from the native Ubuntu packages built by us.
+
+Officially supported platforms: **Ubuntu 20.04 (Focal)** (64-bits).
 
 Open a terminal and run these commands:
 
@@ -171,18 +173,18 @@ Open a terminal and run these commands:
 
    .. code-block:: shell
 
-      # Import the Kurento repository signing key
+      # Get DISTRIB_* env vars.
+      source /etc/upstream-release/lsb-release 2>/dev/null || source /etc/lsb-release
+
+      # Add Kurento repository key for apt-get.
       sudo apt-key adv \
           --keyserver keyserver.ubuntu.com \
           --recv-keys 234821A61B67740F89BFD669FC8A16625AFA7A83
 
-      # Get Ubuntu version definitions
-      source /etc/lsb-release
-
-      # Add the repository to Apt
+      # Add Kurento repository line for apt-get.
       sudo tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
       # Kurento Media Server - Release packages
-      deb [arch=amd64] http://ubuntu.openvidu.io/6.18.0 $DISTRIB_CODENAME kms6
+      deb [arch=amd64] http://ubuntu.openvidu.io/7.0.0 $DISTRIB_CODENAME main
       EOF
 
 3. Install KMS:
@@ -248,13 +250,11 @@ B. **Uninstall the old Kurento version**, before installing the new one.
 
    - *kurento-media-server*
    - *kurento-module-creator*
-   - *kms-core*
-   - *kms-elements*
-   - *kms-filters*
+   - *kurento-module-core*
+   - *kurento-module-elements*
+   - *kurento-module-filters*
    - *libnice10*
-   - *libusrsctp*
    - *openh264*
-   - *openwebrtc-gst-plugins*
    - And more
 
    To use a newer version **you have to upgrade all Kurento packages**, not only the first one.
@@ -411,5 +411,5 @@ Notice how the server claims to have received a connection from the client's IP 
 .. _Amazon Web Services: https://aws.amazon.com
 .. _Coturn: https://github.com/coturn/coturn
 .. _Docker best practices: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#apt-get
-.. _healthchecker.sh: https://github.com/Kurento/kurento-docker/blob/master/kurento-media-server/healthchecker.sh
+.. _healthchecker.sh: https://github.com/Kurento/kurento/blob/main/docker/kurento-media-server/healthchecker.sh
 .. _Kurento Docker images: https://hub.docker.com/r/kurento/kurento-media-server

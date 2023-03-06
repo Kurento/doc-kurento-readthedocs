@@ -52,18 +52,18 @@ Open a terminal and run these commands:
 
    .. code-block:: shell
 
-      # Import the Kurento repository signing key
+      # Get DISTRIB_* env vars.
+      source /etc/upstream-release/lsb-release 2>/dev/null || source /etc/lsb-release
+
+      # Add Kurento repository key for apt-get.
       sudo apt-key adv \
           --keyserver keyserver.ubuntu.com \
           --recv-keys 234821A61B67740F89BFD669FC8A16625AFA7A83
 
-      # Get Ubuntu version definitions
-      source /etc/lsb-release
-
-      # Add the repository to Apt
+      # Add Kurento repository line for apt-get.
       sudo tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
       # Kurento Media Server - Nightly packages
-      deb [arch=amd64] http://ubuntu.openvidu.io/dev $DISTRIB_CODENAME kms6
+      deb [arch=amd64] http://ubuntu.openvidu.io/dev $DISTRIB_CODENAME main
       EOF
 
 3. Install KMS:
@@ -108,7 +108,7 @@ Edit the settings file to include this:
                <id>snapshot</id>
                <repositories>
                    <repository>
-                       <id>kurento-github-public</id>
+                       <id>kurento-github-download</id>
                        <name>Kurento GitHub Maven packages (public access)</name>
                        <url>https://public:&#103;hp_fW4yqnUBB4LZvk8DE6VEbsu6XdnSBZ466WEJ@maven.pkg.github.com/kurento/*</url>
                        <releases>
@@ -121,7 +121,7 @@ Edit the settings file to include this:
                </repositories>
                <pluginRepositories>
                    <pluginRepository>
-                       <id>kurento-github-public</id>
+                       <id>kurento-github-download</id>
                        <name>Kurento GitHub Maven packages (public access)</name>
                        <url>https://public:&#103;hp_fW4yqnUBB4LZvk8DE6VEbsu6XdnSBZ466WEJ@maven.pkg.github.com/kurento/*</url>
                        <releases>
@@ -153,7 +153,7 @@ Then use the ``-Psnapshot`` argument in your Maven commands, to enable the new p
 
 .. code-block:: shell
 
-   mvn dependency:get -Psnapshot -Dartifact='org.kurento:kurento-client:6.12.0-SNAPSHOT'
+   mvn dependency:get -Psnapshot -Dartifact='org.kurento:kurento-client:7.0.0-SNAPSHOT'
 
 If you don't want to change all your Maven commands, it is possible to mark the profile as active by default. This way, a ``-Psnapshot`` argument will always be implicitly added, so all calls to Maven will already use the profile:
 
@@ -186,7 +186,7 @@ This method consists on explicitly adding access to the snapshots repository, fo
        ...
        <repositories>
            <repository>
-               <id>kurento-github-public</id>
+               <id>kurento-github-download</id>
                <name>Kurento GitHub Maven packages (public access)</name>
                <url>https://public:&#103;hp_fW4yqnUBB4LZvk8DE6VEbsu6XdnSBZ466WEJ@maven.pkg.github.com/kurento/*</url>
                <releases>
@@ -199,7 +199,7 @@ This method consists on explicitly adding access to the snapshots repository, fo
        </repositories>
        <pluginRepositories>
            <pluginRepository>
-               <id>kurento-github-public</id>
+               <id>kurento-github-download</id>
                <name>Kurento GitHub Maven packages (public access)</name>
                <url>https://public:&#103;hp_fW4yqnUBB4LZvk8DE6VEbsu6XdnSBZ466WEJ@maven.pkg.github.com/kurento/*</url>
                <releases>
@@ -220,7 +220,7 @@ Afterwards, in the same ``pom.xml``, look for the desired dependency and change 
    <dependency>
        <groupId>org.kurento</groupId>
        <artifactId>kurento-client</artifactId>
-       <version>6.12.0-SNAPSHOT</version>
+       <version>7.0.0-SNAPSHOT</version>
    </dependency>
 
 

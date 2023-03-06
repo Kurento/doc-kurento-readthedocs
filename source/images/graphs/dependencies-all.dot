@@ -6,33 +6,38 @@ digraph dependencies_all {
 
   rankdir = "RL";
 
-  // Kurento external libraries
-  "jsoncpp";
-  "libsrtp";
-  "openh264";
-  "usrsctp";
-  "gstreamer";
-  "gst-plugins-base" -> "gstreamer";
-  "gst-plugins-good" -> "gst-plugins-base";
-  "gst-plugins-bad" -> {"gst-plugins-base" "libsrtp" "openh264"};
-  "gst-plugins-ugly" -> "gst-plugins-base";
-  "gst-libav" -> "gst-plugins-base";
-  "openwebrtc-gst-plugins" -> {"gstreamer" "gst-plugins-base" "usrsctp"};
-  "libnice" -> "gstreamer";
+  // Forks and external libraries.
+  {
+    rank = "same";
+    "libsrtp";
+    "openh264";
+    "gst-plugins-good";
+    "libnice";
+    "openh264-gst-plugin" -> "openh264";
+  }
 
-  // KMS main components
-  "kurento-module-creator";
-  "kms-cmake-utils";
-  "kms-jsonrpc" -> {"jsoncpp" "kms-cmake-utils"};
-  "kms-core" -> {"gstreamer" "gst-plugins-base" "gst-plugins-good" "gst-plugins-bad" "gst-plugins-ugly" "gst-libav" "kurento-module-creator" "kms-cmake-utils" "kms-jsonrpc"};
-  "kms-elements" -> {"openwebrtc-gst-plugins" "libnice" "kms-core"};
-  "kms-filters" -> "kms-elements";
-  "kurento-media-server" -> {"kms-core" "kms-elements" "kms-filters"};
+  // Main components.
+  "module-creator";
+  "cmake-utils";
+  "jsonrpc" -> "cmake-utils";
 
-  // KMS extra modules
-  "kms-chroma" -> {"kms-core" "kms-elements" "kms-filters"};
-  "kms-crowddetector" -> {"kms-core" "kms-elements" "kms-filters"};
-  "kms-datachannelexample" -> {"kms-core" "kms-elements" "kms-filters"};
-  "kms-platedetector" -> {"kms-core" "kms-elements" "kms-filters"};
-  "kms-pointerdetector" -> {"kms-core" "kms-elements" "kms-filters"};
+  "module-core" [group = "1"];
+  "module-elements" [group = "1"];
+  "module-filters" [group = "1"];
+  "media-server" [group = "1"];
+
+  "module-core" -> {"module-creator" "cmake-utils" "jsonrpc"};
+  "module-elements" -> {"libsrtp" "gst-plugins-good" "libnice" "openh264-gst-plugin" "module-core"};
+  "module-filters" -> "module-elements";
+  "media-server" -> {"module-core" "module-elements" "module-filters"};
+
+  // Example plugins.
+  "module-chroma" -> "module-filters";
+
+  // Build disabled on Ubuntu >= 20.04 (due to breaking changes in OpenCV 4.0).
+  "module-crowddetector (unavailable)" -> "module-filters";
+  "module-datachannelexample (unavailable)" -> "module-filters";
+  "module-markerdetector (unavailable)" -> "module-filters";
+  "module-platedetector (unavailable)" -> "module-filters";
+  "module-pointerdetector (unavailable)" -> "module-filters";
 }

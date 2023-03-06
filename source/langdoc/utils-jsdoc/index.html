@@ -26,7 +26,7 @@
     
 
 
-    <h3>kurento-utils 6.18.0</h3>
+    <h3>kurento-utils 7.0.0-dev</h3>
 
 
 
@@ -43,13 +43,7 @@
 
 
     <section>
-        <article><p><a href="http://www.apache.org/licenses/LICENSE-2.0"><img src="https://img.shields.io/badge/license-Apache2-orange.svg" alt="License badge"></a>
-<a href="https://doc-kurento.readthedocs.io"><img src="https://readthedocs.org/projects/fiware-orion/badge/?version=latest" alt="Documentation badge"></a>
-<a href="https://hub.docker.com/r/fiware/stream-oriented-kurento/"><img src="https://img.shields.io/docker/pulls/fiware/orion.svg" alt="Docker badge"></a>
-<a href="https://stackoverflow.com/questions/tagged/kurento"><img src="https://img.shields.io/badge/support-sof-yellowgreen.svg" alt="Support badge"></a></p>
-<p><a href="https://kurento.org"><img src="https://secure.gravatar.com/avatar/21a2a12c56b2a91c8918d5779f1778bf?s=120" alt=""></a></p>
-<p>Copyright 2018 <a href="https://kurento.org">Kurento</a>. Licensed under <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>.</p>
-<h1>Kurento Utils for Node.js and Browsers</h1>
+        <article><h1>Kurento Utils for Node.js and Browsers</h1>
 <blockquote>
 <p>:warning: <strong>Warning</strong></p>
 <p>This library is not actively maintained. It was written to simplify the <a href="https://doc-kurento.readthedocs.io/en/latest/user/tutorials.html">Kurento Tutorials</a> and has several shortcomings for more advanced uses.</p>
@@ -58,7 +52,7 @@
 <p><em>kurento-utils-js</em> is a browser library that can be used to simplify creation and handling of <a href="https://developer.mozilla.org/en-US/docs/Web/API/RTCPeerConnection">RTCPeerConnection</a> objects, to control the browser’s <a href="https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API">WebRTC API</a>.</p>
 <h2>Installation instructions</h2>
 <p>Be sure to have installed <a href="https://nodejs.org/en/">Node.js</a> and <a href="https://bower.io/">Bower</a> in your system:</p>
-<pre class="prettyprint source lang-bash"><code>curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+<pre class="prettyprint source lang-bash"><code>curl -sSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 sudo apt-get install -y nodejs
 sudo npm install -g bower
 </code></pre>
@@ -66,8 +60,8 @@ sudo npm install -g bower
 <pre class="prettyprint source lang-bash"><code>npm install kurento-utils
 </code></pre>
 <p>Alternatively, you can download the code using git and install manually its dependencies:</p>
-<pre class="prettyprint source lang-bash"><code>git clone https://github.com/Kurento/kurento-utils
-cd kurento-utils
+<pre class="prettyprint source lang-bash"><code>git clone https://github.com/Kurento/kurento.git
+cd kurento/browser/kurento-utils-js/
 npm install
 </code></pre>
 <p>Screen and window sharing depends on the privative module <code>kurento-browser-extensions</code>. To enable its support, you'll need to install
@@ -80,43 +74,7 @@ the package dependency manually or use a <code>getScreenConstraints</code> funct
 <ul>
 <li><a href="https://github.com/krampstudio">Bertrand CHEVRIER</a> for
 <a href="https://github.com/krampstudio/grunt-jsdoc">grunt-jsdoc</a></li>
-</ul>
-<h1>About Kurento</h1>
-<p>Kurento is an open source software project providing a platform suitable for creating modular applications with advanced real-time communication capabilities. For knowing more about Kurento, please visit the Kurento project website: https://www.kurento.org.</p>
-<p>Kurento is part of <a href="http://www.fiware.org">FIWARE</a>. For further information on the relationship of FIWARE and Kurento check the <a href="http://catalogue.fiware.org/enablers/stream-oriented-kurento">Kurento FIWARE Catalog Entry</a>. Kurento is also part of the <a href="http://www.nubomedia.eu">NUBOMEDIA</a> research initiative.</p>
-<h2>Documentation</h2>
-<p>The Kurento project provides detailed <a href="https://www.kurento.org/documentation">documentation</a> including tutorials, installation and development guides. The <a href="http://kurento.github.io/doc-kurento/">Open API specification</a>, also known as <em>Kurento Protocol</em>, is available on <a href="http://docs.streamoriented.apiary.io/">apiary.io</a>.</p>
-<h2>Useful Links</h2>
-<p>Usage:</p>
-<ul>
-<li><a href="https://doc-kurento.readthedocs.io/en/latest/user/installation.html">Installation Guide</a></li>
-<li><a href="https://doc-kurento.readthedocs.io/en/latest/dev/dev_guide.html#developing-kms">Compilation Guide</a></li>
-<li><a href="https://doc-kurento.readthedocs.io/en/latest/project/contribute.html">Contribution Guide</a></li>
-</ul>
-<p>Issues:</p>
-<ul>
-<li><a href="https://github.com/Kurento/bugtracker/issues">Bug Tracker</a></li>
-<li><a href="https://doc-kurento.readthedocs.io/en/latest/user/support.html">Support</a></li>
-</ul>
-<p>News:</p>
-<ul>
-<li><a href="https://www.kurento.org/blog">Kurento Blog</a></li>
-<li><a href="https://groups.google.com/forum/#!forum/kurento">Google Groups</a></li>
-</ul>
-<h2>Source</h2>
-<p>All source code belonging to the Kurento project can be found in the <a href="https://github.com/Kurento">Kurento GitHub organization page</a>.</p>
-<h2>Licensing and distribution</h2>
-<p>Copyright 2018 Kurento</p>
-<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at</p>
-<pre><code>http://www.apache.org/licenses/LICENSE-2.0
-</code></pre>
-<p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p></article>
+</ul></article>
     </section>
 
 

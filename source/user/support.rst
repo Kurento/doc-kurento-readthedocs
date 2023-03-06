@@ -4,7 +4,7 @@ Support
 
 If you are facing an issue with Kurento Media Server, follow this basic check list:
 
-* Step 1. Test with the **latest version** of Kurento Media Server: **6.18.0**. Follow the installation instructions here: :doc:`/user/installation`.
+* Step 1. Test with the **latest version** of Kurento Media Server: **7.0.0**. Follow the installation instructions here: :doc:`/user/installation`.
 
 * Step 2: If the problem still happens in the latest version, and the Kurento developers are already tracking progress for a solution in a bug report or a support contract, you may test the latest (unreleased) changes by installing a nightly version of KMS: :doc:`/user/installation_dev`.
 
@@ -44,7 +44,7 @@ You can file bug reports on our `Issue Tracker`_, and they will be addressed as 
 
 **Support is a volunteered effort**, and there is no guaranteed response time. If you need answers quickly, you can get in contact with us to request :ref:`Commercial Support <support-commercial>`.
 
-.. _Issue Tracker: https://github.com/Kurento/bugtracker/issues
+.. _Issue Tracker: https://github.com/Kurento/kurento/issues
 
 
 

@@ -30,7 +30,7 @@ author = 'Kurento'
 # built documents.
 
 # The short X.Y version.
-version = '6.18.0'
+version = '7.0.0'
 
 # The full version, including alpha/beta/rc tags.
 release = version
@@ -171,8 +171,6 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     (master_doc, 'kurento', u'Kurento Documentation', [author], 1),
-    ('components/servers/kmf-media-connector', u'kmf-media-connector',
-     u'Kurento Media Proxy', [author], 1),
 ]
 
 

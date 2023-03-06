@@ -22,7 +22,7 @@ Install :term:`Node.js`, :term:`Bower`, and a web server in your system:
 
 .. code-block:: shell
 
-   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+   curl -sSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
    sudo apt-get install -y nodejs
    sudo npm install -g bower
    sudo npm install -g http-server
@@ -33,9 +33,9 @@ You also need the source code of this tutorial. Clone it from GitHub, then start
 
 .. code-block:: shell
 
-    git clone https://github.com/Kurento/kurento-tutorial-js.git
-    cd kurento-tutorial-js/kurento-pointerdetector/
-    git checkout 6.18.0
+    git clone https://github.com/Kurento/kurento.git
+    cd kurento/tutorials/javascript-browser/pointerdetector/
+    git checkout main
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 
@@ -87,7 +87,7 @@ composed by the following `Media Element`:term: s:
    *WebRTC with PointerDetector filter in loopback Media Pipeline*
 
 The complete source code of this demo can be found in
-`GitHub <https://github.com/Kurento/kurento-tutorial-js/tree/master/kurento-pointerdetector>`_.
+`GitHub <https://github.com/Kurento/kurento/tree/main/tutorials/javascript-browser/pointerdetector>`_.
 
 This example is a modified version of the
 :doc:`Magic Mirror <./tutorial-magicmirror>` tutorial. In this case, this
@@ -244,15 +244,15 @@ Dependencies
 
 The dependencies of this demo has to be obtained using `Bower`:term:. The
 definition of these dependencies are defined in the
-`bower.json <https://github.com/Kurento/kurento-tutorial-js/blob/master/kurento-pointerdetector/bower.json>`_
+`bower.json <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-browser/pointerdetector/bower.json>`_
 file, as follows:
 
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.18.0",
-      "kurento-utils": "6.18.0"
-      "kurento-module-pointerdetector": "6.18.0"
+      "kurento-client": "7.0.0",
+      "kurento-utils": "7.0.0"
+      "kurento-module-pointerdetector": "7.0.0"
    }
 
 To get these dependencies, just run the following shell command:

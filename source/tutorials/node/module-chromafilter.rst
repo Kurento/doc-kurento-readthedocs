@@ -18,19 +18,19 @@ For the impatient: running this example
 
 First of all, you should install Kurento Media Server to run this demo. Please
 visit the :doc:`installation guide </user/installation>` for further
-information. In addition, the built-in module ``kms-chroma`` should be also
+information. In addition, the built-in module ``kurento-module-chroma`` should be also
 installed:
 
 .. sourcecode:: bash
 
-    sudo apt-get install kms-chroma
+    sudo apt-get install kurento-module-chroma
 
 Be sure to have installed `Node.js`:term: in your system. In
 an Ubuntu machine, you can install it as follows:
 
 .. sourcecode:: bash
 
-   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+   curl -sSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
    sudo apt-get install -y nodejs
 
 To launch the application, you need to clone the GitHub project where this demo
@@ -38,9 +38,9 @@ is hosted, install it and run it:
 
 .. sourcecode:: bash
 
-    git clone https://github.com/Kurento/kurento-tutorial-node.git
-    cd kurento-tutorial-node/kurento-chroma
-    git checkout 6.18.0
+    git clone https://github.com/Kurento/kurento.git
+    cd kurento/tutorials/javascript-node/chroma/
+    git checkout main
     npm install
     npm start
 
@@ -91,7 +91,7 @@ composed by the following `Media Element`:term: s:
    *WebRTC with Chroma filter Media Pipeline*
 
 The complete source code of this demo can be found in
-`GitHub <https://github.com/Kurento/kurento-tutorial-java/tree/master/kurento-chroma>`_.
+`GitHub <https://github.com/Kurento/kurento/tree/main/tutorials/java/chroma>`_.
 
 This example is a modified version of the
 :doc:`Magic Mirror <./tutorial-magicmirror>` tutorial. In this case, this
@@ -169,7 +169,7 @@ follows:
                            return callback(error);
                        }
 
-                       webRtcEndpoint.on('OnIceCandidate', function(event) {
+                       webRtcEndpoint.on('IceCandidateFound', function(event) {
                            var candidate = kurento.getComplexType('IceCandidate')(event.candidate);
                            ws.send(JSON.stringify({
                                id : 'iceCandidate',
@@ -252,24 +252,24 @@ Dependencies
 
 Dependencies of this demo are managed using NPM. Our main dependency is the
 Kurento Client JavaScript (*kurento-client*). The relevant part of the
-`package.json <https://github.com/Kurento/kurento-tutorial-node/blob/master/kurento-chroma/package.json>`_
+`package.json <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-node/chroma/package.json>`_
 file for managing this dependency is:
 
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client" : "6.18.0"
+      "kurento-client" : "7.0.0"
    }
 
 At the client side, dependencies are managed using Bower. Take a look to the
-`bower.json <https://github.com/Kurento/kurento-tutorial-node/blob/master/kurento-chroma/static/bower.json>`_
+`bower.json <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-node/chroma/static/bower.json>`_
 file and pay attention to the following section:
 
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "6.18.0",
-      "kurento-module-pointerdetector": "6.18.0"
+      "kurento-utils" : "7.0.0",
+      "kurento-module-pointerdetector": "7.0.0"
    }
 
 .. note::

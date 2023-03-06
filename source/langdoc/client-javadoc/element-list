@@ -1,0 +1,6 @@
+org.kurento.client
+org.kurento.client.internal.client
+org.kurento.client.internal.client.operation
+org.kurento.client.internal.server
+org.kurento.client.internal.transport.jsonrpc
+org.kurento.client.internal.transport.serialization

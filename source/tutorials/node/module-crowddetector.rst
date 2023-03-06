@@ -17,19 +17,19 @@ For the impatient: running this example
 
 First of all, you should install Kurento Media Server to run this demo. Please
 visit the :doc:`installation guide </user/installation>` for further
-information. In addition, the built-in module ``kms-crowddetector`` should
+information. In addition, the built-in module ``kurento-module-crowddetector`` should
 be also installed:
 
 .. sourcecode:: bash
 
-    sudo apt-get install kms-crowddetector
+    sudo apt-get install kurento-module-crowddetector
 
 Be sure to have installed `Node.js`:term: in your system. In
 an Ubuntu machine, you can install it as follows:
 
 .. sourcecode:: bash
 
-   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+   curl -sSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
    sudo apt-get install -y nodejs
 
 To launch the application, you need to clone the GitHub project where this demo
@@ -37,9 +37,9 @@ is hosted, install it and run it:
 
 .. sourcecode:: bash
 
-    git clone https://github.com/Kurento/kurento-tutorial-node.git
-    cd kurento-tutorial-node/kurento-crowddetector
-    git checkout 6.18.0
+    git clone https://github.com/Kurento/kurento.git
+    cd kurento/tutorials/javascript-node/crowddetector/
+    git checkout main
     npm install
     npm start
 
@@ -90,7 +90,7 @@ composed by the following `Media Element`:term: s:
    *WebRTC with crowdDetector filter Media Pipeline*
 
 The complete source code of this demo can be found in
-`GitHub <https://github.com/Kurento/kurento-tutorial-java/tree/master/kurento-crowddetector>`_.
+`GitHub <https://github.com/Kurento/kurento/tree/main/tutorials/java/crowddetector>`_.
 
 This example is a modified version of the
 :doc:`Magic Mirror <./tutorial-magicmirror>` tutorial. In this case, this
@@ -235,7 +235,7 @@ All in all, the media pipeline of this demo is is implemented as follows:
                            return callback(null, 'crowdDetectorOccupancy', _data);
                        });
 
-                       webRtcEndpoint.on('OnIceCandidate', function(event) {
+                       webRtcEndpoint.on('IceCandidateFound', function(event) {
                            var candidate = kurento.getComplexType('IceCandidate')(event.candidate);
                            ws.send(JSON.stringify({
                                id : 'iceCandidate',
@@ -315,24 +315,24 @@ Dependencies
 
 Dependencies of this demo are managed using NPM. Our main dependency is the
 Kurento Client JavaScript (*kurento-client*). The relevant part of the
-`package.json <https://github.com/Kurento/kurento-tutorial-node/blob/master/kurento-crowddetector/package.json>`_
+`package.json <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-node/crowddetector/package.json>`_
 file for managing this dependency is:
 
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client" : "6.18.0"
+      "kurento-client" : "7.0.0"
    }
 
 At the client side, dependencies are managed using Bower. Take a look to the
-`bower.json <https://github.com/Kurento/kurento-tutorial-node/blob/master/kurento-crowddetector/static/bower.json>`_
+`bower.json <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-node/crowddetector/static/bower.json>`_
 file and pay attention to the following section:
 
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "6.18.0",
-      "kurento-module-pointerdetector": "6.18.0"
+      "kurento-utils" : "7.0.0",
+      "kurento-module-pointerdetector": "7.0.0"
    }
 
 .. note::

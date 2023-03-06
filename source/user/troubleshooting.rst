@@ -4,11 +4,11 @@ Troubleshooting Issues
 
 If you are facing an issue with Kurento Media Server, follow this basic check list:
 
-* **Step 1**: Test with the **latest version** of Kurento Media Server: **6.18.0**. Follow the installation instructions here: :doc:`/user/installation`.
+* **Step 1**: Test with the **latest version** of Kurento Media Server: **7.0.0**. Follow the installation instructions here: :doc:`/user/installation`.
 
 * **Step 2**: Test with the latest (unreleased) changes by installing a nightly version: :doc:`/user/installation_dev`.
 
-* **Step 3**: Search for your issue in our `GitHub bugtracker <https://github.com/Kurento/bugtracker/issues>`__ and the `Kurento Public Mailing List <https://groups.google.com/forum/#!forum/kurento>`__.
+* **Step 3**: Search for your issue in our `GitHub bugtracker <https://github.com/Kurento/kurento/issues>`__ and the `Kurento Public Mailing List <https://groups.google.com/forum/#!forum/kurento>`__.
 
 * **Step 4**: If you want full attention from the Kurento team, get in contact with us to request :ref:`Commercial Support <support-commercial>`.
 
@@ -31,7 +31,7 @@ Media Server Crashes
 
 We want Kurento to be as stable as possible! When you notice a server crash, it's a good time to report a bug so we can know about the issue. But before that, you need to check a couple things:
 
-1. Make sure that you are running the **latest version** of Kurento Media Server: **6.18.0**.
+1. Make sure that you are running the **latest version** of Kurento Media Server: **7.0.0**.
 2. Have :ref:`debug symbols installed <dev-dbg>`. Otherwise, *your bug report won't be useful*.
 
 Then, please provide us with information about the crash:
@@ -319,7 +319,7 @@ To run Kurento Media Server with Valgrind and find memory leaks, the process is 
 
 .. code-block:: shell
 
-   ./bin/kms-build-run.sh --valgrind-memcheck
+   bin/build-run.sh --valgrind-memcheck
 
 Also, please have a look at the information shown in :ref:`troubleshooting-crashes` about our special Docker image based on **AddressSanitizer**. Running KMS with this image might help finding memory-related issues.
 
@@ -359,12 +359,12 @@ Installing and running KMS on a clean Ubuntu installation shows this message:
 .. code-block:: text
 
    (gst-plugin-scanner:15): GStreamer-WARNING **: Failed to load plugin
-   '/usr/lib/x86_64-linux-gnu/gstreamer-1.5/libgstopenh264.so': libopenh264.so.0:
+   '/usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstopenh264.so': libopenh264.so.0:
    cannot open shared object file: No such file or directory
 
 Also these conditions apply:
 
-- Packages *openh264-gst-plugins-bad-1.5* and *openh264* are already installed.
+- Packages *openh264-gst-plugins-bad-1.0* and *openh264* are already installed.
 - The file ``/usr/lib/x86_64-linux-gnu/libopenh264.so`` is a broken link to the non-existing file ``/usr/lib/x86_64-linux-gnu/libopenh264.so.0``.
 
 **Reason**
@@ -545,7 +545,7 @@ The reason for this is that Kurento hasn't enabled support for the video codec H
 
 The solution is to ensure that both peers are able to find a match in their supported codecs. To enable H.264 support in Kurento, check these points:
 
-- The package *openh264-gst-plugins-bad-1.5* must be installed in the system.
+- The package *openh264-gst-plugins-bad-1.0* must be installed in the system.
 - The package *openh264* must be **correctly** installed. Specifically, the post-install script of this package requires Internet connectivity, because it downloads a codec binary blob from the Cisco servers. See :ref:`troubleshooting-h264`.
 - The H.264 codec must be enabled in the corresponding Kurento settings file: ``/etc/kurento/modules/kurento/SdpEndpoint.conf.json``.
   Ensure that the entry corresponding to this codec does exist and is not commented out. For example:
@@ -752,7 +752,7 @@ If using Docker Compose, use ``network_mode: host`` such as this:
    version: "3.7"
    services:
      kms:
-       image: kurento/kurento-media-server:6.12.0
+       image: kurento/kurento-media-server:7.0.0
        container_name: kms
        restart: always
        network_mode: host

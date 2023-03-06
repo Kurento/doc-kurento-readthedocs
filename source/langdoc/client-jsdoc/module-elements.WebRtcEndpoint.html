@@ -2529,6 +2529,205 @@
     
 
     
+    <h4 class="name" id="getEncoderBitrate"><span class="type-signature"></span>getEncoderBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Target video bitrate for media transcoding.
+<p>
+  The bitrate of a video has a direct impact on its perceived image quality.
+  Higher bitrate means higher quality, but also a larger amount of bytes to
+  transmit or store. Use this parameter to set the desired average bitrate in
+  videos that are transcoded by the media server.
+</p>
+<p>
+  This parameter is most useful for :rom:cls:`RecorderEndpoint` and
+  :rom:cls:`RtpEndpoint`: when media is being transcoded (either for 
+  streaming
+  or storing on disk), the resulting quality is directly controlled with this
+  value.
+</p>
+<p>
+  For :rom:cls:`WebRtcEndpoint`, this value should be left as default, as 
+  remote
+  WebRTC receivers will already send feedback to inform the media server 
+  about
+  what is the optimal bitrate to send.
+</p>
+<p>
+  Setting a value will only work if done before the media starts to flow.
+</p>
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 300000 (300 kbps).</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~getEncoderBitrateCallback">module:core/abstracts.MediaElement~getEncoderBitrateCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaElement.html#getEncoderBitrate">module:core/abstracts.MediaElement#getEncoderBitrate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line150">line 150</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getExternalAddress"><span class="type-signature"></span>getExternalAddress<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
@@ -3811,6 +4010,205 @@ for each stream.
     
 
     
+    <h4 class="name" id="getMaxEncoderBitrate"><span class="type-signature"></span>getMaxEncoderBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Maximum video bitrate for media transcoding.
+<p>
+  This parameter can be used to fine tune the automatic bitrate selection 
+  that
+  normally takes place within elements that are able to dynamically change 
+  the
+  encoding bitrate according to the conditions of the streaming, such as
+  :rom:cls:`WebRtcEndpoint`.
+</p>
+<p>
+  This should be left as default in most cases, given that remote WebRTC
+  receivers already send feedback to inform the media server about what is 
+  the
+  optimal bitrate to send. Otherwise, this parameter could be used for 
+  example
+  to limit the total bitrate that is handled by the server, by setting a low
+  maximum output for all endpoints.
+</p>
+<p>
+  Setting a value will only work if done before the media starts to flow.
+</p>
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 0.</li>
+  <li>
+    0 = unlimited. Encoding performed with bitrate as requested by receivers.
+  </li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~getMaxEncoderBitrateCallback">module:core/abstracts.MediaElement~getMaxEncoderBitrateCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaElement.html#getMaxEncoderBitrate">module:core/abstracts.MediaElement#getMaxEncoderBitrate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line268">line 268</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getMaxOuputBitrate"><span class="type-signature"></span>getMaxOuputBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
@@ -3819,7 +4217,7 @@ for each stream.
 
 
 <div class="description">
-    Maximum video bandwidth for transcoding.
+    Maximum video bitrate for media transcoding.
 </div>
 
 
@@ -3917,8 +4315,7 @@ for each stream.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use :rom:meth:`maxOutputBitrate` 
-instead of this function.</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#maxEncoderBitrate instead</li></ul></dd>
     
 
     
@@ -3932,7 +4329,7 @@ instead of this function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line125">line 125</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line360">line 360</a>
     </li></ul></dd>
     
 
@@ -3994,12 +4391,7 @@ instead of this function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video bitrate for transcoding.
-<ul>
-  <li>Unit: bps (bits per second).</li>
-  <li>Default: MAXINT.</li>
-  <li>0 = unlimited.</li>
-</ul>
+    Maximum video bitrate for media transcoding.
 </div>
 
 
@@ -4097,6 +4489,8 @@ instead of this function.</li></ul></dd>
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#maxEncoderBitrate instead</li></ul></dd>
+    
 
     
 
@@ -4109,7 +4503,7 @@ instead of this function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line196">line 196</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line426">line 426</a>
     </li></ul></dd>
     
 
@@ -4914,6 +5308,201 @@ returns itself when invoked for a pipeline object.
     
 
     
+    <h4 class="name" id="getMinEncoderBitrate"><span class="type-signature"></span>getMinEncoderBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Minimum video bitrate for media transcoding.
+<p>
+  This parameter can be used to fine tune the automatic bitrate selection 
+  that
+  normally takes place within elements that are able to dynamically change 
+  the
+  encoding bitrate according to the conditions of the streaming, such as
+  :rom:cls:`WebRtcEndpoint`.
+</p>
+<p>
+  This should be left as default in most cases, given that remote WebRTC
+  receivers already send feedback to inform the media server about what is 
+  the
+  optimal bitrate to send. Otherwise, this parameter could be used for 
+  example
+  to force a higher bitrate than what is being requested by receivers.
+</p>
+<p>
+  Setting a value will only work if done before the media starts to flow.
+</p>
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 0.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~getMinEncoderBitrateCallback">module:core/abstracts.MediaElement~getMinEncoderBitrateCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaElement.html#getMinEncoderBitrate">module:core/abstracts.MediaElement#getMinEncoderBitrate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line514">line 514</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getMinOuputBitrate"><span class="type-signature"></span>getMinOuputBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
@@ -4922,7 +5511,7 @@ returns itself when invoked for a pipeline object.
 
 
 <div class="description">
-    Minimum video bandwidth for transcoding.
+    Minimum video bitrate for media transcoding.
 </div>
 
 
@@ -5020,8 +5609,7 @@ returns itself when invoked for a pipeline object.
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use :rom:meth:`minOutputBitrate` 
-instead of this function.</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#minEncoderBitrate instead</li></ul></dd>
     
 
     
@@ -5035,7 +5623,7 @@ instead of this function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line267">line 267</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line602">line 602</a>
     </li></ul></dd>
     
 
@@ -5097,11 +5685,7 @@ instead of this function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video bitrate for transcoding.
-<ul>
-  <li>Unit: bps (bits per second).</li>
-  <li>Default: 0.</li>
-</ul>
+    Minimum video bitrate for media transcoding.
 </div>
 
 
@@ -5199,6 +5783,8 @@ instead of this function.</li></ul></dd>
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#minEncoderBitrate instead</li></ul></dd>
+    
 
     
 
@@ -5211,7 +5797,7 @@ instead of this function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line337">line 337</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line668">line 668</a>
     </li></ul></dd>
     
 
@@ -7312,6 +7898,236 @@ instead of this function.</li></ul></dd>
     
 
     
+    <h4 class="name" id="setEncoderBitrate"><span class="type-signature"></span>setEncoderBitrate<span class="signature">(encoderBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Target video bitrate for media transcoding.
+<p>
+  The bitrate of a video has a direct impact on its perceived image quality.
+  Higher bitrate means higher quality, but also a larger amount of bytes to
+  transmit or store. Use this parameter to set the desired average bitrate in
+  videos that are transcoded by the media server.
+</p>
+<p>
+  This parameter is most useful for :rom:cls:`RecorderEndpoint` and
+  :rom:cls:`RtpEndpoint`: when media is being transcoded (either for 
+  streaming
+  or storing on disk), the resulting quality is directly controlled with this
+  value.
+</p>
+<p>
+  For :rom:cls:`WebRtcEndpoint`, this value should be left as default, as 
+  remote
+  WebRTC receivers will already send feedback to inform the media server 
+  about
+  what is the optimal bitrate to send.
+</p>
+<p>
+  Setting a value will only work if done before the media starts to flow.
+</p>
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 300000 (300 kbps).</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>encoderBitrate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~setEncoderBitrateCallback">module:core/abstracts.MediaElement~setEncoderBitrateCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaElement.html#setEncoderBitrate">module:core/abstracts.MediaElement#setEncoderBitrate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line210">line 210</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="setExternalAddress"><span class="type-signature"></span>setExternalAddress<span class="signature">(externalAddress, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
@@ -8414,6 +9230,236 @@ instead.</li></ul></dd>
     
 
     
+    <h4 class="name" id="setMaxEncoderBitrate"><span class="type-signature"></span>setMaxEncoderBitrate<span class="signature">(maxEncoderBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Maximum video bitrate for media transcoding.
+<p>
+  This parameter can be used to fine tune the automatic bitrate selection 
+  that
+  normally takes place within elements that are able to dynamically change 
+  the
+  encoding bitrate according to the conditions of the streaming, such as
+  :rom:cls:`WebRtcEndpoint`.
+</p>
+<p>
+  This should be left as default in most cases, given that remote WebRTC
+  receivers already send feedback to inform the media server about what is 
+  the
+  optimal bitrate to send. Otherwise, this parameter could be used for 
+  example
+  to limit the total bitrate that is handled by the server, by setting a low
+  maximum output for all endpoints.
+</p>
+<p>
+  Setting a value will only work if done before the media starts to flow.
+</p>
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 0.</li>
+  <li>
+    0 = unlimited. Encoding performed with bitrate as requested by receivers.
+  </li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>maxEncoderBitrate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~setMaxEncoderBitrateCallback">module:core/abstracts.MediaElement~setMaxEncoderBitrateCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaElement.html#setMaxEncoderBitrate">module:core/abstracts.MediaElement#setMaxEncoderBitrate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line328">line 328</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="setMaxOuputBitrate"><span class="type-signature"></span>setMaxOuputBitrate<span class="signature">(maxOuputBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
@@ -8422,7 +9468,7 @@ instead.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video bandwidth for transcoding.
+    Maximum video bitrate for media transcoding.
 </div>
 
 
@@ -8551,8 +9597,7 @@ instead.</li></ul></dd>
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use :rom:meth:`maxOutputBitrate` 
-instead of this function.</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#maxEncoderBitrate instead</li></ul></dd>
     
 
     
@@ -8566,7 +9611,7 @@ instead of this function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line160">line 160</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line394">line 394</a>
     </li></ul></dd>
     
 
@@ -8628,12 +9673,7 @@ instead of this function.</li></ul></dd>
 
 
 <div class="description">
-    Maximum video bitrate for transcoding.
-<ul>
-  <li>Unit: bps (bits per second).</li>
-  <li>Default: MAXINT.</li>
-  <li>0 = unlimited.</li>
-</ul>
+    Maximum video bitrate for media transcoding.
 </div>
 
 
@@ -8762,6 +9802,8 @@ instead of this function.</li></ul></dd>
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#maxEncoderBitrate instead</li></ul></dd>
+    
 
     
 
@@ -8774,7 +9816,7 @@ instead of this function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line234">line 234</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line460">line 460</a>
     </li></ul></dd>
     
 
@@ -9291,6 +10333,232 @@ instead of this function.</li></ul></dd>
     
 
     
+    <h4 class="name" id="setMinEncoderBitrate"><span class="type-signature"></span>setMinEncoderBitrate<span class="signature">(minEncoderBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Minimum video bitrate for media transcoding.
+<p>
+  This parameter can be used to fine tune the automatic bitrate selection 
+  that
+  normally takes place within elements that are able to dynamically change 
+  the
+  encoding bitrate according to the conditions of the streaming, such as
+  :rom:cls:`WebRtcEndpoint`.
+</p>
+<p>
+  This should be left as default in most cases, given that remote WebRTC
+  receivers already send feedback to inform the media server about what is 
+  the
+  optimal bitrate to send. Otherwise, this parameter could be used for 
+  example
+  to force a higher bitrate than what is being requested by receivers.
+</p>
+<p>
+  Setting a value will only work if done before the media starts to flow.
+</p>
+<ul>
+  <li>Unit: bps (bits per second).</li>
+  <li>Default: 0.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>minEncoderBitrate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~setMinEncoderBitrateCallback">module:core/abstracts.MediaElement~setMinEncoderBitrateCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+    <dt class="inherited-from">Inherited From:</dt>
+    <dd class="inherited-from"><ul class="dummy"><li>
+        <a href="module-core_abstracts.MediaElement.html#setMinEncoderBitrate">module:core/abstracts.MediaElement#setMinEncoderBitrate</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line570">line 570</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="setMinOuputBitrate"><span class="type-signature"></span>setMinOuputBitrate<span class="signature">(minOuputBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
     
 
@@ -9299,7 +10567,7 @@ instead of this function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video bandwidth for transcoding.
+    Minimum video bitrate for media transcoding.
 </div>
 
 
@@ -9428,8 +10696,7 @@ instead of this function.</li></ul></dd>
     
 
     
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Deprecated due to a typo. Use :rom:meth:`minOutputBitrate` 
-instead of this function.</li></ul></dd>
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#minEncoderBitrate instead</li></ul></dd>
     
 
     
@@ -9443,7 +10710,7 @@ instead of this function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line302">line 302</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line636">line 636</a>
     </li></ul></dd>
     
 
@@ -9505,11 +10772,7 @@ instead of this function.</li></ul></dd>
 
 
 <div class="description">
-    Minimum video bitrate for transcoding.
-<ul>
-  <li>Unit: bps (bits per second).</li>
-  <li>Default: 0.</li>
-</ul>
+    Minimum video bitrate for media transcoding.
 </div>
 
 
@@ -9638,6 +10901,8 @@ instead of this function.</li></ul></dd>
     
 
     
+        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#minEncoderBitrate instead</li></ul></dd>
+    
 
     
 
@@ -9650,7 +10915,7 @@ instead of this function.</li></ul></dd>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line374">line 374</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line702">line 702</a>
     </li></ul></dd>
     
 

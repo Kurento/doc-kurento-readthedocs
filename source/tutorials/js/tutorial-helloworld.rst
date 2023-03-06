@@ -25,7 +25,7 @@ Install :term:`Node.js`, :term:`Bower`, and a web server in your system:
 
 .. code-block:: shell
 
-   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+   curl -sSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
    sudo apt-get install -y nodejs
    sudo npm install -g bower
    sudo npm install -g http-server
@@ -36,9 +36,9 @@ You also need the source code of this tutorial. Clone it from GitHub, then start
 
 .. code-block:: shell
 
-    git clone https://github.com/Kurento/kurento-tutorial-js.git
-    cd kurento-tutorial-js/kurento-hello-world/
-    git checkout 6.18.0
+    git clone https://github.com/Kurento/kurento.git
+    cd kurento/tutorials/javascript-browser/hello-world/
+    git checkout main
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 
@@ -121,14 +121,14 @@ connection:
 The following sections analyze in deep the client-side (JavaScript) code of this
 application, the dependencies, and how to run the demo. The complete source
 code can be found in
-`GitHub <https://github.com/Kurento/kurento-tutorial-js/tree/master/kurento-hello-world>`_.
+`GitHub <https://github.com/Kurento/kurento/tree/main/tutorials/javascript-browser/hello-world>`_.
 
 JavaScript Logic
 ================
 
 The Kurento *hello-world* demo follows a *Single Page Application* architecture
 (`SPA`:term:). The interface is the following HTML page:
-`index.html <https://github.com/Kurento/kurento-tutorial-js/blob/master/kurento-hello-world/index.html>`_.
+`index.html <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-browser/hello-world/index.html>`_.
 This web page links two Kurento JavaScript libraries:
 
 * **kurento-client.js** : Implementation of the Kurento JavaScript Client.
@@ -154,7 +154,7 @@ In addition, these two JavaScript libraries are also required:
 
 The specific logic of the *Hello World* JavaScript demo is coded in the
 following JavaScript file:
-`index.js <https://github.com/Kurento/kurento-tutorial-js/blob/master/kurento-hello-world/js/index.js>`_.
+`index.js <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-browser/hello-world/js/index.js>`_.
 In this file, there is a function which is called when the green button labeled
 as *Start* in the GUI is clicked.
 
@@ -269,14 +269,14 @@ Dependencies
 
 All dependencies of this demo can to be obtained using `Bower`:term:. The list
 of these dependencies are defined in the
-`bower.json <https://github.com/Kurento/kurento-tutorial-js/blob/master/kurento-hello-world/bower.json>`_
+`bower.json <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-browser/hello-world/bower.json>`_
 file, as follows:
 
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "6.18.0",
-      "kurento-utils": "6.18.0"
+      "kurento-client": "7.0.0",
+      "kurento-utils": "7.0.0"
    }
 
 To get these dependencies, just run the following shell command:

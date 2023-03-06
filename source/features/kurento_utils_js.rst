@@ -16,14 +16,14 @@ Kurento Utils is a wrapper object of an
 to simplify the development of WebRTC-based applications.
 
 The source code of this project can be cloned from the
-`GitHub repository <https://github.com/Kurento/kurento-utils-js>`__.
+`GitHub repository <https://github.com/Kurento/kurento
 
 
 How to use it
 =============
 
 * **Minified file** - Download the file from
-  `here <http://builds.openvidu.io/release/6.18.0/js/kurento-utils.min.js>`__.
+  `here <http://builds.openvidu.io/release/7.0.0/js/kurento-utils.min.js>`__.
 
 
 * **NPM** - Install and use library in your Node.js files.
@@ -57,11 +57,11 @@ There are several tutorials that show kurento-utils used in complete WebRTC
 applications developed on Java, Node.js and JavaScript. These tutorials are in
 GitHub, and you can download and run them at any time.
 
-* **Java** - https://github.com/Kurento/kurento-tutorial-java
+* **Java** - https://github.com/Kurento/kurento/tutorials/java
 
-* **Node.js** - https://github.com/Kurento/kurento-tutorial-node
+* **Node.js** - https://github.com/Kurento/kurento/tutorials/javascript-node
 
-* **JavaScript** - https://github.com/Kurento/kurento-tutorial-js
+* **Browser JavaScript** - https://github.com/Kurento/kurento/tutorials/javascript-browser
 
 
 In the following lines we will show how to use the library to create an
@@ -410,13 +410,13 @@ screen or a window content it will throw an exception.
 Souce code
 ==========
 
-The code is at `github <https://github.com/kurento/kurento-utils-js>`__.
+The code is at `github <https://github.com/Kurento/tree/main/browser/kurento-utils-js>`__.
 
 Be sure to have :term:`Node.js` and :term:`Bower` installed in your system:
 
 .. sourcecode:: bash
 
-   curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+   curl -sSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
    sudo apt-get install -y nodejs
    sudo npm install -g bower
 
@@ -432,8 +432,8 @@ dependencies:
 
 .. sourcecode:: bash
 
-   git clone https://github.com/Kurento/kurento-utils-js.git
-   cd kurento-utils-js/
+   git clone https://github.com/Kurento/kurento.git
+   cd kurento/browser/kurento-utils-js/
    npm install
 
 
@@ -447,7 +447,7 @@ have it globally installed, you can run a local copy by executing:
 
 .. sourcecode:: bash
 
-   git clone https://github.com/Kurento/kurento-utils-js.git
-   cd kurento-utils-js/
+   git clone https://github.com/Kurento/kurento.git
+   cd kurento/browser/kurento-utils-js/
    npm install
    node_modules/.bin/grunt

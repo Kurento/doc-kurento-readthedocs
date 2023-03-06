@@ -89,7 +89,7 @@ statistic, with a given value at the reading time. Take into account that these
 values make reference to real-time properties, and so these values vary in time
 depending on multiple factors (for instance network performance, KMS load, and
 so on). The complete description of the statistics are defined in the
-`KMD interface <https://github.com/Kurento/kms-core/blob/master/src/server/interface/core.kmd.json>`__
+`KMD interface <https://github.com/Kurento/kurento/blob/main/server/module-core/src/server/interface/core.kmd.json>`__
 description. The most relevant statistics are listed below:
 
 - *ssrc*: The synchronized source (SSRC).
@@ -129,9 +129,7 @@ description. The most relevant statistics are listed below:
 - *roundTripTime*: Estimated round trip time (seconds) for this SSRC based
   on the RTCP timestamp.
 
-- *audioE2ELatency*: End-to-end audio latency measured in nano seconds.
-
-- *videoE2ELatency*: End-to-end video latency measured in nano seconds.
+- *E2ELatency*: Array of average latencies (``MediaLatencyStat[]``) for each media (audio, video), in nanoseconds.
 
 All in all, the process for gathering WebRTC statistics in the KMS can be
 summarized in two steps: 1) Enable WebRTC statistics; 2) Read WebRTC. This
@@ -152,7 +150,7 @@ Example
 There is a running tutorial which uses the WebRTC gathering as described before.
 This demo has been implemented using the JavaScript client and it is available
 on GitHub:
-`kurento-loopback-stats <https://github.com/Kurento/kurento-tutorial-js/tree/master/kurento-loopback-stats>`__.
+`kurento-loopback-stats <https://github.com/Kurento/kurento/tree/main/tutorials/javascript-browser/loopback-stats>`__.
 
 From a the Media Pipeline point of view, this demo application consists in a
 *WebRtcEndpoint* in loopback. Once the demo is up and running, WebRTC are
@@ -162,7 +160,7 @@ In addition to the KMS WebRTC statistics, client-side (i.e. browser WebRTC peer)
 stats are also gathered by the application. This is done using the standard
 method provided by the *RTCPeerConnection* object, i.e using its method
 *getStats*. Please check out the JavaScript logic located in the
-`index.js <https://github.com/Kurento/kurento-tutorial-js/blob/master/kurento-loopback-stats/js/index.js>`__
+`index.js <https://github.com/Kurento/kurento/blob/main/tutorials/javascript-browser/loopback-stats/js/index.js>`__
 file for implementation details.
 
 Both kinds of WebRTC statistics values (i.e. browser and KMS side) are updated

@@ -255,7 +255,7 @@ To edit the configuration files used in your containers, first you'll need the a
 
 .. code-block:: shell
 
-   docker create --name temp kurento/kurento-media-server:6.18.0
+   docker create --name temp kurento/kurento-media-server:7.0.0
    docker cp temp:/etc/kurento/ ./kurento-files/
    docker rm temp
 
@@ -272,7 +272,7 @@ A `bind-mount <https://docs.docker.com/storage/bind-mounts/>`__ will "inject" yo
 
    docker run -d --name kurento --network host \
        --mount type=bind,src="$PWD/kurento-files/",dst=/etc/kurento/ \
-       kurento/kurento-media-server:6.18.0
+       kurento/kurento-media-server:7.0.0
 
 The equivalent Docker Compose file would look like this:
 
@@ -281,7 +281,7 @@ The equivalent Docker Compose file would look like this:
    version: "3.8"
    services:
      kms:
-       image: kurento/kurento-media-server:6.18.0
+       image: kurento/kurento-media-server:7.0.0
        network_mode: host
        volumes:
          - type: bind
@@ -311,7 +311,7 @@ Then run your container as usual, mounting the volume in the appropriate path:
 
    docker run -d --name kurento --network host \
        --mount type=volume,src=kurento-volume,dst=/etc/kurento/ \
-       kurento/kurento-media-server:6.18.0
+       kurento/kurento-media-server:7.0.0
 
 The equivalent Docker Compose file would look like this:
 
@@ -320,7 +320,7 @@ The equivalent Docker Compose file would look like this:
    version: "3.8"
    services:
      kms:
-       image: kurento/kurento-media-server:6.18.0
+       image: kurento/kurento-media-server:7.0.0
        network_mode: host
        volumes:
          - type: volume
@@ -338,7 +338,7 @@ A ``Dockerfile`` such as this one would be a good enough starting point:
 
 .. code-block:: docker
 
-   FROM kurento/kurento-media-server:6.18.0
+   FROM kurento/kurento-media-server:7.0.0
    COPY ./kurento-files /etc/kurento
 
 Now, build the new image:
@@ -346,7 +346,7 @@ Now, build the new image:
 .. code-block:: shell-session
 
    $ docker build --tag kurento-media-server-custom .
-   Step 1/2 : FROM kurento/kurento-media-server:6.18.0
+   Step 1/2 : FROM kurento/kurento-media-server:7.0.0
    Step 2/2 : COPY ./kurento-files /etc/kurento
    Successfully built 3d2bedb31a9d
    Successfully tagged kurento-media-server-custom

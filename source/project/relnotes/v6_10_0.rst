@@ -25,7 +25,7 @@ To install KMS on this version of Ubuntu, just follow the usual :doc:`installati
 
    sudo tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
    # Kurento Media Server - Release packages
-   deb [arch=amd64] http://ubuntu.openvidu.io/6.18.0 $DISTRO kms6
+   deb [arch=amd64] http://ubuntu.openvidu.io/7.0.0 $DISTRO kms6
    EOF
 
    sudo apt-get update ; sudo apt-get install kurento-media-server
