@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.kurento.client"},{"l":"org.kurento.client.internal.client"},{"l":"org.kurento.client.internal.client.operation"},{"l":"org.kurento.client.internal.server"},{"l":"org.kurento.client.internal.transport.jsonrpc"},{"l":"org.kurento.client.internal.transport.serialization"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.kurento.client"}]

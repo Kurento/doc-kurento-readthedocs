@@ -31,17 +31,15 @@
         <h2><span class="attribs"><span class="type-signature">(abstract) </span></span>
             <span class="ancestors"><a href="module-core_abstracts.html">core/abstracts</a>.</span>BaseRtpEndpoint<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">Handles RTP communications.
+            <div class="class-description">Base class for the implementation of RTP-based communication endpoints.
  <p>
    All endpoints that rely on the RTP protocol, like the
-   <strong>RtpEndpoint</strong> or the <strong>WebRtcEndpoint</strong>, 
-   inherit
-   from this class. The endpoint provides information about the Connection 
+   :rom:cls:`RtpEndpoint` or the :rom:cls:`WebRtcEndpoint`, inherit
+   from this class. This endpoint provides information about the Connection 
    state
    and the Media state, which can be consulted at any time through the
-   core/abstracts.BaseRtpEndpoint#getMediaState and the core/abstracts.BaseRtpEndpoint#getConnectionState methods.
-   It is also possible subscribe to events fired when these properties 
-   change:
+   core/abstracts.BaseRtpEndpoint#getMediaState and the core/abstracts.BaseRtpEndpoint#getConnectionState methods. It
+   is also possible subscribe to events fired when these properties change:
  </p>
  <ul>
    <li>
@@ -119,75 +117,135 @@
        MediaFlowOutStateChangedEvent, which are triggered almost
        immediately after the RTP data packets stop flowing between RTP 
        session
-       participants. This makes the <em>MediaFlow</em> events a good way to
-       know if participants are suffering from short-term intermittent
-       connectivity issues, but they are not enough to know if the 
+       participants. This makes the <em>MediaFlow</em> events a good way to 
+       know
+       if participants are suffering from short-term intermittent 
        connectivity
-       issues are just spurious network hiccups or are part of a more 
-       long-term
+       issues, but they are not enough to know if the connectivity issues are
+       just spurious network hiccups or are part of a more long-term
        disconnection problem.
      </p>
    </li>
  </ul>
+ <h2>Bitrate management</h2>
  <p>
-   Part of the bandwidth control for the video component of the media session
-   done here:
+   <b>Bandwidth control</b> for the video component of the media session is 
+   done
+   here.
+   <strong>
+     Note that the default <em>MaxVideoSendBandwidth</em> is a VERY 
+     conservative
+     value, and leads to a low maximum video quality. Most applications will
+     probably want to increase this to higher values such as 2000 kbps (2 
+     Mbps).
+   </strong>
  </p>
  <ul>
    <li>
-     Input bandwidth: Values used to inform remote peers about the bitrate 
-     that
-     can be sent to this endpoint.
+     <b>Recv bandwidth</b>: Used to request a remote sender that its media
+     bitrate is within the requested range.
      <ul>
        <li>
-         <strong>MinVideoRecvBandwidth</strong>: Minimum input bitrate, 
-         requested
-         from WebRTC senders with REMB (Default: 30 Kbps).
+         <strong>MinVideoRecvBandwidth</strong>: Minimum inbound bitrate
+         requested by this endpoint. Signaled to compatible WebRTC and RTP
+         senders, as part of the REMB bandwidth estimation protocol.
+         <ul>
+           <li>Unit: kbps (kilobits per second).</li>
+           <li>Default: 0.</li>
+           <li>
+             Note: The actual minimum value is 30 kbps, even if a lower value
+             set.
+           </li>
+         </ul>
        </li>
        <li>
          <strong>MaxAudioRecvBandwidth</strong> and
-         <strong>MaxVideoRecvBandwidth</strong>: Maximum input bitrate, 
-         signaled
-         in SDP Offers to WebRTC and RTP senders (Default: unlimited).
+         <strong>MaxVideoRecvBandwidth</strong>: Maximum inbound bitrate
+         requested by this endpoint. Signaled to compatible WebRTC and RTP
+         senders as part of Kurento's REMB bandwidth estimations, and also as
+         SDP bitrate attribute (<code>b=AS:{value}</code>, see
+         <a href='https://datatracker.ietf.org/doc/html/rfc8866#section-5.8'
+           >RFC 8866 Section 5.8. Bandwidth Information</a
+         >) in <i>sendrecv</i> and <i>recvonly</i> SDP Offers.
+         <ul>
+           <li>Unit: kbps (kilobits per second).</li>
+           <li>Default: 0 (unlimited).</li>
+         </ul>
        </li>
      </ul>
    </li>
    <li>
-     Output bandwidth: Values used to control bitrate of the video streams 
-     sent
-     to remote peers. It is important to keep in mind that pushed bitrate 
-     depends
-     on network and remote peer capabilities. Remote peers can also announce
-     bandwidth limitation in their SDPs (through the
-     <code>b={modifier}:{value}</code> attribute). Kurento will always 
-     enforce
-     bitrate limitations specified by the remote peer over internal
-     configurations.
+     <b>Send bandwidth</b>: Used to control bitrate of the outbound media 
+     stream
+     sent to remote peers. It is important to keep in mind that outbound 
+     bitrate
+     ultimately depends on network and remote peer capabilities.
      <ul>
        <li>
-         <strong>MinVideoSendBandwidth</strong>: REMB override of minimum 
-         bitrate
-         sent to WebRTC receivers (Default: 100 Kbps).
+         <strong>MinVideoSendBandwidth</strong>: Minimum outbound bitrate 
+         sent by
+         this endpoint.
+         <ul>
+           <li>Unit: kbps (kilobits per second).</li>
+           <li>Default: 100.</li>
+           <li>
+             0 = unlimited: the video bitrate will drop as needed, even to 
+             the
+             lowest possible quality, which could make the video completely
+             blurry and pixelated, but would adapt better to losses caused by
+             network congestion.
+           </li>
+         </ul>
        </li>
        <li>
-         <strong>MaxVideoSendBandwidth</strong>: REMB override of maximum 
-         bitrate
-         sent to WebRTC receivers (Default: 500 Kbps).
+         <strong>MaxVideoSendBandwidth</strong>: Maximum outbound bitrate 
+         sent by
+         this endpoint. Remote peers themselves might also announce a maximum
+         bitrate as part of their REMB bandwidth estimations, and also as an 
+         SDP
+         bitrate attribute (<code>b=AS:{value}</code>, see
+         <a href='https://datatracker.ietf.org/doc/html/rfc8866#section-5.8'
+           >RFC 8866 Section 5.8. Bandwidth Information</a
+         >) in <i>sendrecv</i> and <i>recvonly</i> SDP Offers or Answers. 
+         Kurento
+         will always give priority to bitrate limitations specified by remote
+         peers, over internal configurations.
+         <ul>
+           <li>Unit: kbps (kilobits per second).</li>
+           <li>Default: 500.</li>
+           <li>
+             0 = unlimited: the video bitrate will grow until all the 
+             available
+             network bandwidth is used by the stream.<br />
+             Note that this might have a bad effect if more than one stream 
+             is
+             running (as all of them would try to raise the video bitrate
+             indefinitely, until the network gets saturated).
+           </li>
+         </ul>
        </li>
        <li>
          <strong>RembParams.rembOnConnect</strong>: Initial local REMB 
          bandwidth
-         estimation that gets propagated when a new endpoint is connected.
+         estimation that gets used when a new endpoint is connected. Only 
+         useful
+         for connections that are compatible with the REMB bandwidth 
+         estimation
+         protocol (such as most WebRTC peers).
        </li>
      </ul>
    </li>
  </ul>
  <p>
    <strong>
-     All bandwidth control parameters must be changed before the SDP 
-     negotiation
-     takes place, and can't be changed afterwards.
+     All bandwidth control parameters must be set before the SDP negotiation
+     takes place, and can't be modified afterwards.
    </strong>
+ </p>
+ <p>
+   Take into consideration that setting a too high upper limit for the output
+   bandwidth can be a reason for the network connection to be congested 
+   quickly.
  </p></div>
         
     
@@ -359,7 +417,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line919">line 919</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line965">line 965</a>
     </li></ul></dd>
     
 
@@ -417,7 +475,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line927">line 927</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line973">line 973</a>
     </li></ul></dd>
     
 
@@ -559,7 +617,7 @@ Pipeline, towards the associated producer. Only valid for video consumers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line893">line 893</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line939">line 939</a>
     </li></ul></dd>
     
 
@@ -731,181 +789,7 @@ Pipeline, towards the associated producer. Only valid for video consumers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line218">line 218</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getChilds"><span class="type-signature"></span>getChilds<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Children of this <code>MediaObject</code>.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="module-core_abstracts.MediaObject.html#~getChildsCallback">module:core/abstracts.MediaObject~getChildsCallback</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="module-core_abstracts.MediaObject.html#getChilds">module:core/abstracts.MediaObject#getChilds</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use children instead.</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line273">line 273</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line219">line 219</a>
     </li></ul></dd>
     
 
@@ -1076,7 +960,7 @@ Pipeline, towards the associated producer. Only valid for video consumers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line234">line 234</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line292">line 292</a>
     </li></ul></dd>
     
 
@@ -1248,7 +1132,7 @@ Pipeline, towards the associated producer. Only valid for video consumers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line327">line 327</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line273">line 273</a>
     </li></ul></dd>
     
 
@@ -1509,20 +1393,16 @@ Pipeline, towards the associated producer. Only valid for video consumers.
 
 
 <div class="description">
-    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
-<p>
-  This is used to put a limit on the bitrate that the remote peer will send 
-  to
-  this endpoint. The net effect of setting this parameter is that
-  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
-  maximum bandwidth attribute will be added to the SDP media section:
-  <code>b=AS:{value}</code>.
-</p>
-<p>Note: This parameter has to be set before the SDP is generated.</p>
+    Maximum inbound bitrate requested by this endpoint. Signaled to compatible
+WebRTC and RTP senders as part of Kurento's REMB bandwidth estimations, and 
+also
+as an SDP bitrate attribute (<code>b=AS:{value}</code>, see
+<a href='https://datatracker.ietf.org/doc/html/rfc8866#section-5.8'
+  >RFC 8866 Section 5.8. Bandwidth Information</a
+>) in <i>sendrecv</i> and <i>recvonly</i> SDP Offers.
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 0.</li>
-  <li>0 = unlimited.</li>
+  <li>Default: 0 (unlimited).</li>
 </ul>
 </div>
 
@@ -1633,7 +1513,7 @@ Pipeline, towards the associated producer. Only valid for video consumers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line90">line 90</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -1703,6 +1583,15 @@ Pipeline, towards the associated producer. Only valid for video consumers.
   the
   encoding bitrate according to the conditions of the streaming, such as
   :rom:cls:`WebRtcEndpoint`.
+</p>
+<p>
+  This should be left as default in most cases, given that remote WebRTC
+  receivers already send feedback to inform the media server about what is 
+  the
+  optimal bitrate to send. Otherwise, this parameter could be used for 
+  example
+  to limit the total bitrate that is handled by the server, by setting a low
+  maximum output for all endpoints.
 </p>
 <p>
   This should be left as default in most cases, given that remote WebRTC
@@ -1832,355 +1721,7 @@ Pipeline, towards the associated producer. Only valid for video consumers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line268">line 268</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getMaxOuputBitrate"><span class="type-signature"></span>getMaxOuputBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Maximum video bitrate for media transcoding.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~getMaxOuputBitrateCallback">module:core/abstracts.MediaElement~getMaxOuputBitrateCallback</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="module-core_abstracts.MediaElement.html#getMaxOuputBitrate">module:core/abstracts.MediaElement#getMaxOuputBitrate</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#maxEncoderBitrate instead</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line360">line 360</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getMaxOutputBitrate"><span class="type-signature"></span>getMaxOutputBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Maximum video bitrate for media transcoding.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~getMaxOutputBitrateCallback">module:core/abstracts.MediaElement~getMaxOutputBitrateCallback</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="module-core_abstracts.MediaElement.html#getMaxOutputBitrate">module:core/abstracts.MediaElement#getMaxOutputBitrate</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#maxEncoderBitrate instead</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line426">line 426</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line277">line 277</a>
     </li></ul></dd>
     
 
@@ -2242,20 +1783,16 @@ Pipeline, towards the associated producer. Only valid for video consumers.
 
 
 <div class="description">
-    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
-<p>
-  This is used to put a limit on the bitrate that the remote peer will send 
-  to
-  this endpoint. The net effect of setting this parameter is that
-  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
-  maximum bandwidth attribute will be added to the SDP media section:
-  <code>b=AS:{value}</code>.
-</p>
-<p>Note: This parameter has to be set before the SDP is generated.</p>
+    Maximum inbound bitrate requested by this endpoint. Signaled to compatible
+WebRTC and RTP senders as part of Kurento's REMB bandwidth estimations, and 
+also
+as an SDP bitrate attribute (<code>b=AS:{value}</code>, see
+<a href='https://datatracker.ietf.org/doc/html/rfc8866#section-5.8'
+  >RFC 8866 Section 5.8. Bandwidth Information</a
+>) in <i>sendrecv</i> and <i>recvonly</i> SDP Offers.
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 0.</li>
-  <li>0 = unlimited.</li>
+  <li>Default: 0 (unlimited).</li>
 </ul>
 </div>
 
@@ -2366,7 +1903,7 @@ Pipeline, towards the associated producer. Only valid for video consumers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line182">line 182</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line170">line 170</a>
     </li></ul></dd>
     
 
@@ -2428,7 +1965,15 @@ Pipeline, towards the associated producer. Only valid for video consumers.
 
 
 <div class="description">
-    REMB override of maximum bitrate sent to WebRTC receivers.
+    Maximum outbound bitrate sent by this endpoint. Remote peers themselves might
+also announce a maximum bitrate as part of their REMB bandwidth estimations, 
+and
+also as an SDP bitrate attribute (<code>b=AS:{value}</code>, see
+<a href='https://datatracker.ietf.org/doc/html/rfc8866#section-5.8'
+  >RFC 8866 Section 5.8. Bandwidth Information</a
+>) in <i>sendrecv</i> and <i>recvonly</i> SDP Offers or Answers. Kurento will
+always give priority to bitrate limitations specified by remote peers, over
+internal configurations.
 <p>
   With this parameter you can control the maximum video quality that will be
   sent when reacting to good network conditions. Setting this parameter to a
@@ -2437,17 +1982,13 @@ Pipeline, towards the associated producer. Only valid for video consumers.
   better.
 </p>
 <p>
-  This parameter provides a way to limit the bitrate requested by remote REMB
-  bandwidth estimations: the bitrate sent will be always equal or less than 
-  this
-  parameter, even if the remote peer requests higher bitrates.
-</p>
-<p>
-  Note that the default value of <strong>500 kbps</strong> is a VERY
-  conservative one, and leads to a low maximum video quality. Most 
-  applications
-  will probably want to increase this to higher values such as 2000 kbps (2
-  mbps).
+  <strong>
+    Note that the default <em>MaxVideoSendBandwidth</em> is a VERY 
+    conservative
+    value, and leads to a low maximum video quality. Most applications will
+    probably want to increase this to higher values such as 2000 kbps (2 
+    Mbps).
+  </strong>
 </p>
 <p>
   The REMB congestion control algorithm works by gradually increasing the 
@@ -2576,7 +2117,7 @@ Pipeline, towards the associated producer. Only valid for video consumers.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line309">line 309</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line371">line 371</a>
     </li></ul></dd>
     
 
@@ -2749,7 +2290,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line360">line 360</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line306">line 306</a>
     </li></ul></dd>
     
 
@@ -2921,7 +2462,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line421">line 421</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line487">line 487</a>
     </li></ul></dd>
     
 
@@ -3116,355 +2657,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line514">line 514</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getMinOuputBitrate"><span class="type-signature"></span>getMinOuputBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Minimum video bitrate for media transcoding.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~getMinOuputBitrateCallback">module:core/abstracts.MediaElement~getMinOuputBitrateCallback</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="module-core_abstracts.MediaElement.html#getMinOuputBitrate">module:core/abstracts.MediaElement#getMinOuputBitrate</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#minEncoderBitrate instead</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line602">line 602</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="getMinOutputBitrate"><span class="type-signature"></span>getMinOutputBitrate<span class="signature">(callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Minimum video bitrate for media transcoding.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~getMinOutputBitrateCallback">module:core/abstracts.MediaElement~getMinOutputBitrateCallback</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="module-core_abstracts.MediaElement.html#getMinOutputBitrate">module:core/abstracts.MediaElement#getMinOutputBitrate</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#minEncoderBitrate instead</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line668">line 668</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line400">line 400</a>
     </li></ul></dd>
     
 
@@ -3526,25 +2719,22 @@ returns itself when invoked for a pipeline object.
 
 
 <div class="description">
-    Minimum input bitrate, requested from WebRTC senders with REMB.
+    Minimum inbound bitrate requested by this endpoint. Signaled to compatible
+WebRTC and RTP senders, as part of the REMB bandwidth estimation protocol.
 <p>
   This is used to set a minimum value of local REMB during bandwidth 
-  estimation,
-  if supported by the implementing class. The REMB estimation will then be 
-  sent
-  to remote peers, requesting them to send at least the indicated video 
-  bitrate.
-  It follows that min values will only have effect in remote peers that 
-  support
-  this congestion control mechanism, such as Chrome.
+  estimation.
+  The REMB estimation will then be sent to remote peers, causing them to send
+  at least the indicated video bitrate. It follows that this parameter will 
+  only
+  have effect for remote peers that support the REMB bandwidth estimation
+  protocol (such as e.g. most web browsers compatible with WebRTC).
 </p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 0.</li>
   <li>
-    Note: The absolute minimum REMB value is 30 kbps, even if a lower value 
-    is
-    set here.
+    Note: The actual minimum value is 30 kbps, even if a lower value is set.
   </li>
 </ul>
 </div>
@@ -3651,7 +2841,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line473">line 473</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line536">line 536</a>
     </li></ul></dd>
     
 
@@ -3713,20 +2903,13 @@ returns itself when invoked for a pipeline object.
 
 
 <div class="description">
-    REMB override of minimum bitrate sent to WebRTC receivers.
+    Minimum outbound bitrate sent by this endpoint.
 <p>
   With this parameter you can control the minimum video quality that will be
   sent when reacting to bad network conditions. Setting this parameter to a 
   low
   value permits the video quality to drop when the network conditions get 
   worse.
-</p>
-<p>
-  This parameter provides a way to override the bitrate requested by remote 
-  REMB
-  bandwidth estimations: the bitrate sent will be always equal or greater 
-  than
-  this parameter, even if the remote peer requests even lower bitrates.
 </p>
 <p>
   Note that if you set this parameter too high (trying to avoid bad video
@@ -3740,8 +2923,8 @@ returns itself when invoked for a pipeline object.
   <li>Default: 100.</li>
   <li>
     0 = unlimited: the video bitrate will drop as needed, even to the lowest
-    possible quality, which might make the video completely blurry and
-    pixelated.
+    possible quality, which could make the video completely blurry and
+    pixelated, but would adapt better to losses caused by network congestion.
   </li>
 </ul>
 </div>
@@ -3848,7 +3031,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line587">line 587</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line640">line 640</a>
     </li></ul></dd>
     
 
@@ -4054,7 +3237,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line720">line 720</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line766">line 766</a>
     </li></ul></dd>
     
 
@@ -4231,7 +3414,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line419">line 419</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line365">line 365</a>
     </li></ul></dd>
     
 
@@ -4408,7 +3591,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line493">line 493</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line439">line 439</a>
     </li></ul></dd>
     
 
@@ -4575,7 +3758,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line823">line 823</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line869">line 869</a>
     </li></ul></dd>
     
 
@@ -4747,7 +3930,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line547">line 547</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line493">line 493</a>
     </li></ul></dd>
     
 
@@ -5039,20 +4222,16 @@ returns itself when invoked for a pipeline object.
 
 
 <div class="description">
-    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
-<p>
-  This is used to put a limit on the bitrate that the remote peer will send 
-  to
-  this endpoint. The net effect of setting this parameter is that
-  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
-  maximum bandwidth attribute will be added to the SDP media section:
-  <code>b=AS:{value}</code>.
-</p>
-<p>Note: This parameter has to be set before the SDP is generated.</p>
+    Maximum inbound bitrate requested by this endpoint. Signaled to compatible
+WebRTC and RTP senders as part of Kurento's REMB bandwidth estimations, and 
+also
+as an SDP bitrate attribute (<code>b=AS:{value}</code>, see
+<a href='https://datatracker.ietf.org/doc/html/rfc8866#section-5.8'
+  >RFC 8866 Section 5.8. Bandwidth Information</a
+>) in <i>sendrecv</i> and <i>recvonly</i> SDP Offers.
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 0.</li>
-  <li>0 = unlimited.</li>
+  <li>Default: 0 (unlimited).</li>
 </ul>
 </div>
 
@@ -5194,7 +4373,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line137">line 137</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line129">line 129</a>
     </li></ul></dd>
     
 
@@ -5264,6 +4443,15 @@ returns itself when invoked for a pipeline object.
   the
   encoding bitrate according to the conditions of the streaming, such as
   :rom:cls:`WebRtcEndpoint`.
+</p>
+<p>
+  This should be left as default in most cases, given that remote WebRTC
+  receivers already send feedback to inform the media server about what is 
+  the
+  optimal bitrate to send. Otherwise, this parameter could be used for 
+  example
+  to limit the total bitrate that is handled by the server, by setting a low
+  maximum output for all endpoints.
 </p>
 <p>
   This should be left as default in most cases, given that remote WebRTC
@@ -5424,417 +4612,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line328">line 328</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="setMaxOuputBitrate"><span class="type-signature"></span>setMaxOuputBitrate<span class="signature">(maxOuputBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Maximum video bitrate for media transcoding.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>maxOuputBitrate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~setMaxOuputBitrateCallback">module:core/abstracts.MediaElement~setMaxOuputBitrateCallback</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="module-core_abstracts.MediaElement.html#setMaxOuputBitrate">module:core/abstracts.MediaElement#setMaxOuputBitrate</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#maxEncoderBitrate instead</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line394">line 394</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="setMaxOutputBitrate"><span class="type-signature"></span>setMaxOutputBitrate<span class="signature">(maxOutputBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Maximum video bitrate for media transcoding.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>maxOutputBitrate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~setMaxOutputBitrateCallback">module:core/abstracts.MediaElement~setMaxOutputBitrateCallback</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="module-core_abstracts.MediaElement.html#setMaxOutputBitrate">module:core/abstracts.MediaElement#setMaxOutputBitrate</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#maxEncoderBitrate instead</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line460">line 460</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line346">line 346</a>
     </li></ul></dd>
     
 
@@ -5896,20 +4674,16 @@ returns itself when invoked for a pipeline object.
 
 
 <div class="description">
-    Maximum input bitrate, signaled in SDP Offers to WebRTC and RTP senders.
-<p>
-  This is used to put a limit on the bitrate that the remote peer will send 
-  to
-  this endpoint. The net effect of setting this parameter is that
-  <i>when Kurento generates an SDP Offer</i>, an 'Application Specific' (AS)
-  maximum bandwidth attribute will be added to the SDP media section:
-  <code>b=AS:{value}</code>.
-</p>
-<p>Note: This parameter has to be set before the SDP is generated.</p>
+    Maximum inbound bitrate requested by this endpoint. Signaled to compatible
+WebRTC and RTP senders as part of Kurento's REMB bandwidth estimations, and 
+also
+as an SDP bitrate attribute (<code>b=AS:{value}</code>, see
+<a href='https://datatracker.ietf.org/doc/html/rfc8866#section-5.8'
+  >RFC 8866 Section 5.8. Bandwidth Information</a
+>) in <i>sendrecv</i> and <i>recvonly</i> SDP Offers.
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
-  <li>Default: 0.</li>
-  <li>0 = unlimited.</li>
+  <li>Default: 0 (unlimited).</li>
 </ul>
 </div>
 
@@ -6051,7 +4825,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line229">line 229</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/SdpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_SdpEndpoint.js.html#line213">line 213</a>
     </li></ul></dd>
     
 
@@ -6113,7 +4887,15 @@ returns itself when invoked for a pipeline object.
 
 
 <div class="description">
-    REMB override of maximum bitrate sent to WebRTC receivers.
+    Maximum outbound bitrate sent by this endpoint. Remote peers themselves might
+also announce a maximum bitrate as part of their REMB bandwidth estimations, 
+and
+also as an SDP bitrate attribute (<code>b=AS:{value}</code>, see
+<a href='https://datatracker.ietf.org/doc/html/rfc8866#section-5.8'
+  >RFC 8866 Section 5.8. Bandwidth Information</a
+>) in <i>sendrecv</i> and <i>recvonly</i> SDP Offers or Answers. Kurento will
+always give priority to bitrate limitations specified by remote peers, over
+internal configurations.
 <p>
   With this parameter you can control the maximum video quality that will be
   sent when reacting to good network conditions. Setting this parameter to a
@@ -6122,17 +4904,13 @@ returns itself when invoked for a pipeline object.
   better.
 </p>
 <p>
-  This parameter provides a way to limit the bitrate requested by remote REMB
-  bandwidth estimations: the bitrate sent will be always equal or less than 
-  this
-  parameter, even if the remote peer requests higher bitrates.
-</p>
-<p>
-  Note that the default value of <strong>500 kbps</strong> is a VERY
-  conservative one, and leads to a low maximum video quality. Most 
-  applications
-  will probably want to increase this to higher values such as 2000 kbps (2
-  mbps).
+  <strong>
+    Note that the default <em>MaxVideoSendBandwidth</em> is a VERY 
+    conservative
+    value, and leads to a low maximum video quality. Most applications will
+    probably want to increase this to higher values such as 2000 kbps (2 
+    Mbps).
+  </strong>
 </p>
 <p>
   The REMB congestion control algorithm works by gradually increasing the 
@@ -6292,7 +5070,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line385">line 385</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line451">line 451</a>
     </li></ul></dd>
     
 
@@ -6518,417 +5296,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line570">line 570</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="setMinOuputBitrate"><span class="type-signature"></span>setMinOuputBitrate<span class="signature">(minOuputBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Minimum video bitrate for media transcoding.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>minOuputBitrate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~setMinOuputBitrateCallback">module:core/abstracts.MediaElement~setMinOuputBitrateCallback</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="module-core_abstracts.MediaElement.html#setMinOuputBitrate">module:core/abstracts.MediaElement#setMinOuputBitrate</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#minEncoderBitrate instead</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line636">line 636</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="setMinOutputBitrate"><span class="type-signature"></span>setMinOutputBitrate<span class="signature">(minOutputBitrate, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Minimum video bitrate for media transcoding.
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-        <th>Attributes</th>
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>minOutputBitrate</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="external-Integer.html">external:Integer</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>callback</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="module-core_abstracts.MediaElement.html#~setMinOutputBitrateCallback">module:core/abstracts.MediaElement~setMinOutputBitrateCallback</a></span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-    <dt class="inherited-from">Inherited From:</dt>
-    <dd class="inherited-from"><ul class="dummy"><li>
-        <a href="module-core_abstracts.MediaElement.html#setMinOutputBitrate">module:core/abstracts.MediaElement#setMinOutputBitrate</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-        <dt class="important tag-deprecated">Deprecated:</dt><dd><ul class="dummy"><li>Use core/abstracts.MediaElement#minEncoderBitrate instead</li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line702">line 702</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html">node_modules/kurento-client-core/lib/abstracts/MediaElement.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaElement.js.html#line456">line 456</a>
     </li></ul></dd>
     
 
@@ -6990,25 +5358,22 @@ returns itself when invoked for a pipeline object.
 
 
 <div class="description">
-    Minimum input bitrate, requested from WebRTC senders with REMB.
+    Minimum inbound bitrate requested by this endpoint. Signaled to compatible
+WebRTC and RTP senders, as part of the REMB bandwidth estimation protocol.
 <p>
   This is used to set a minimum value of local REMB during bandwidth 
-  estimation,
-  if supported by the implementing class. The REMB estimation will then be 
-  sent
-  to remote peers, requesting them to send at least the indicated video 
-  bitrate.
-  It follows that min values will only have effect in remote peers that 
-  support
-  this congestion control mechanism, such as Chrome.
+  estimation.
+  The REMB estimation will then be sent to remote peers, causing them to send
+  at least the indicated video bitrate. It follows that this parameter will 
+  only
+  have effect for remote peers that support the REMB bandwidth estimation
+  protocol (such as e.g. most web browsers compatible with WebRTC).
 </p>
 <ul>
   <li>Unit: kbps (kilobits per second).</li>
   <li>Default: 0.</li>
   <li>
-    Note: The absolute minimum REMB value is 30 kbps, even if a lower value 
-    is
-    set here.
+    Note: The actual minimum value is 30 kbps, even if a lower value is set.
   </li>
 </ul>
 </div>
@@ -7146,7 +5511,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line526">line 526</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line586">line 586</a>
     </li></ul></dd>
     
 
@@ -7208,20 +5573,13 @@ returns itself when invoked for a pipeline object.
 
 
 <div class="description">
-    REMB override of minimum bitrate sent to WebRTC receivers.
+    Minimum outbound bitrate sent by this endpoint.
 <p>
   With this parameter you can control the minimum video quality that will be
   sent when reacting to bad network conditions. Setting this parameter to a 
   low
   value permits the video quality to drop when the network conditions get 
   worse.
-</p>
-<p>
-  This parameter provides a way to override the bitrate requested by remote 
-  REMB
-  bandwidth estimations: the bitrate sent will be always equal or greater 
-  than
-  this parameter, even if the remote peer requests even lower bitrates.
 </p>
 <p>
   Note that if you set this parameter too high (trying to avoid bad video
@@ -7235,8 +5593,8 @@ returns itself when invoked for a pipeline object.
   <li>Default: 100.</li>
   <li>
     0 = unlimited: the video bitrate will drop as needed, even to the lowest
-    possible quality, which might make the video completely blurry and
-    pixelated.
+    possible quality, which could make the video completely blurry and
+    pixelated, but would adapt better to losses caused by network congestion.
   </li>
 </ul>
 </div>
@@ -7374,7 +5732,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line650">line 650</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line696">line 696</a>
     </li></ul></dd>
     
 
@@ -7611,7 +5969,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line792">line 792</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line838">line 838</a>
     </li></ul></dd>
     
 
@@ -7819,7 +6177,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line457">line 457</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line403">line 403</a>
     </li></ul></dd>
     
 
@@ -8017,7 +6375,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line856">line 856</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line902">line 902</a>
     </li></ul></dd>
     
 
@@ -8220,7 +6578,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line580">line 580</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html">node_modules/kurento-client-core/lib/abstracts/MediaObject.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_MediaObject.js.html#line526">line 526</a>
     </li></ul></dd>
     
 
@@ -8400,7 +6758,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line251">line 251</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line309">line 309</a>
     </li></ul></dd>
     
 
@@ -8556,7 +6914,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line326">line 326</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line388">line 388</a>
     </li></ul></dd>
     
 
@@ -8712,7 +7070,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line438">line 438</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line504">line 504</a>
     </li></ul></dd>
     
 
@@ -8868,7 +7226,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line490">line 490</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line553">line 553</a>
     </li></ul></dd>
     
 
@@ -9024,7 +7382,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line604">line 604</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line657">line 657</a>
     </li></ul></dd>
     
 
@@ -9180,7 +7538,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line737">line 737</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line783">line 783</a>
     </li></ul></dd>
     
 
@@ -9336,7 +7694,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line840">line 840</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line886">line 886</a>
     </li></ul></dd>
     
 
@@ -9469,7 +7827,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line910">line 910</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line956">line 956</a>
     </li></ul></dd>
     
 
@@ -9602,7 +7960,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line402">line 402</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line468">line 468</a>
     </li></ul></dd>
     
 
@@ -9735,7 +8093,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line543">line 543</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line603">line 603</a>
     </li></ul></dd>
     
 
@@ -9868,7 +8226,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line667">line 667</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line713">line 713</a>
     </li></ul></dd>
     
 
@@ -10001,7 +8359,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line809">line 809</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line855">line 855</a>
     </li></ul></dd>
     
 
@@ -10134,7 +8492,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line873">line 873</a>
+        <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html">node_modules/kurento-client-core/lib/abstracts/BaseRtpEndpoint.js</a>, <a href="node_modules_kurento-client-core_lib_abstracts_BaseRtpEndpoint.js.html#line919">line 919</a>
     </li></ul></dd>
     
 
@@ -10178,7 +8536,7 @@ returns itself when invoked for a pipeline object.
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-core.html">core</a></li><li><a href="module-core_abstracts.html">core/abstracts</a></li><li><a href="module-core_complexTypes.html">core/complexTypes</a></li><li><a href="module-elements.html">elements</a></li><li><a href="module-elements_abstracts.html">elements/abstracts</a></li><li><a href="module-elements_complexTypes.html">elements/complexTypes</a></li><li><a href="module-filters.html">filters</a></li><li><a href="module-filters_abstracts.html">filters/abstracts</a></li><li><a href="module-kurentoClient.html">kurentoClient</a></li></ul><h3>Externals</h3><ul><li><a href="external-Boolean.html">Boolean</a></li><li><a href="external-Error.html">Error</a></li><li><a href="external-EventEmitter.html">EventEmitter</a></li><li><a href="external-Integer.html">Integer</a></li><li><a href="external-Number.html">Number</a></li><li><a href="external-Object.html">Object</a></li><li><a href="external-Promise.html">Promise</a></li><li><a href="external-String.html">String</a></li></ul><h3>Classes</h3><ul><li><a href="module-core.HubPort.html">HubPort</a></li><li><a href="module-core.MediaPipeline.html">MediaPipeline</a></li><li><a href="module-core.PassThrough.html">PassThrough</a></li><li><a href="module-core_abstracts.BaseRtpEndpoint.html">BaseRtpEndpoint</a></li><li><a href="module-core_abstracts.Endpoint.html">Endpoint</a></li><li><a href="module-core_abstracts.Filter.html">Filter</a></li><li><a href="module-core_abstracts.Hub.html">Hub</a></li><li><a href="module-core_abstracts.MediaElement.html">MediaElement</a></li><li><a href="module-core_abstracts.MediaObject.html">MediaObject</a></li><li><a href="module-core_abstracts.SdpEndpoint.html">SdpEndpoint</a></li><li><a href="module-core_abstracts.ServerManager.html">ServerManager</a></li><li><a href="module-core_abstracts.SessionEndpoint.html">SessionEndpoint</a></li><li><a href="module-core_abstracts.UriEndpoint.html">UriEndpoint</a></li><li><a href="module-core_complexTypes.AudioCaps.html">AudioCaps</a></li><li><a href="module-core_complexTypes.CodecConfiguration.html">CodecConfiguration</a></li><li><a href="module-core_complexTypes.ComplexType.html">ComplexType</a></li><li><a href="module-core_complexTypes.ElementConnectionData.html">ElementConnectionData</a></li><li><a href="module-core_complexTypes.ElementStats.html">ElementStats</a></li><li><a href="module-core_complexTypes.EndpointStats.html">EndpointStats</a></li><li><a href="module-core_complexTypes.Fraction.html">Fraction</a></li><li><a href="module-core_complexTypes.MediaLatencyStat.html">MediaLatencyStat</a></li><li><a href="module-core_complexTypes.ModuleInfo.html">ModuleInfo</a></li><li><a href="module-core_complexTypes.OfferOptions.html">OfferOptions</a></li><li><a href="module-core_complexTypes.RembParams.html">RembParams</a></li><li><a href="module-core_complexTypes.RTCCertificateStats.html">RTCCertificateStats</a></li><li><a href="module-core_complexTypes.RTCCodec.html">RTCCodec</a></li><li><a href="module-core_complexTypes.RTCDataChannelStats.html">RTCDataChannelStats</a></li><li><a href="module-core_complexTypes.RTCIceCandidateAttributes.html">RTCIceCandidateAttributes</a></li><li><a href="module-core_complexTypes.RTCIceCandidatePairStats.html">RTCIceCandidatePairStats</a></li><li><a href="module-core_complexTypes.RTCInboundRTPStreamStats.html">RTCInboundRTPStreamStats</a></li><li><a href="module-core_complexTypes.RTCMediaStreamStats.html">RTCMediaStreamStats</a></li><li><a href="module-core_complexTypes.RTCMediaStreamTrackStats.html">RTCMediaStreamTrackStats</a></li><li><a href="module-core_complexTypes.RTCOutboundRTPStreamStats.html">RTCOutboundRTPStreamStats</a></li><li><a href="module-core_complexTypes.RTCPeerConnectionStats.html">RTCPeerConnectionStats</a></li><li><a href="module-core_complexTypes.RTCRTPStreamStats.html">RTCRTPStreamStats</a></li><li><a href="module-core_complexTypes.RTCStats.html">RTCStats</a></li><li><a href="module-core_complexTypes.RTCTransportStats.html">RTCTransportStats</a></li><li><a href="module-core_complexTypes.ServerInfo.html">ServerInfo</a></li><li><a href="module-core_complexTypes.Stats.html">Stats</a></li><li><a href="module-core_complexTypes.Tag.html">Tag</a></li><li><a href="module-core_complexTypes.VideoCaps.html">VideoCaps</a></li><li><a href="module-elements.AlphaBlending.html">AlphaBlending</a></li><li><a href="module-elements.Composite.html">Composite</a></li><li><a href="module-elements.Dispatcher.html">Dispatcher</a></li><li><a href="module-elements.DispatcherOneToMany.html">DispatcherOneToMany</a></li><li><a href="module-elements.HttpPostEndpoint.html">HttpPostEndpoint</a></li><li><a href="module-elements.Mixer.html">Mixer</a></li><li><a href="module-elements.PlayerEndpoint.html">PlayerEndpoint</a></li><li><a href="module-elements.RecorderEndpoint.html">RecorderEndpoint</a></li><li><a href="module-elements.RtpEndpoint.html">RtpEndpoint</a></li><li><a href="module-elements.WebRtcEndpoint.html">WebRtcEndpoint</a></li><li><a href="module-elements_abstracts.HttpEndpoint.html">HttpEndpoint</a></li><li><a href="module-elements_complexTypes.IceCandidate.html">IceCandidate</a></li><li><a href="module-elements_complexTypes.IceCandidatePair.html">IceCandidatePair</a></li><li><a href="module-elements_complexTypes.IceConnection.html">IceConnection</a></li><li><a href="module-elements_complexTypes.SDES.html">SDES</a></li><li><a href="module-elements_complexTypes.VideoInfo.html">VideoInfo</a></li><li><a href="module-filters.FaceOverlayFilter.html">FaceOverlayFilter</a></li><li><a href="module-filters.GStreamerFilter.html">GStreamerFilter</a></li><li><a href="module-filters.ImageOverlayFilter.html">ImageOverlayFilter</a></li><li><a href="module-filters.ZBarFilter.html">ZBarFilter</a></li><li><a href="module-filters_abstracts.OpenCVFilter.html">OpenCVFilter</a></li><li><a href="module-kurentoClient.KurentoClient.html">KurentoClient</a></li><li><a href="module-kurentoClient-MediaObjectCreator.html">MediaObjectCreator</a></li></ul><h3>Events</h3><ul><li><a href="module-core.html#event:ConnectionStateChanged">ConnectionStateChanged</a></li><li><a href="module-core.html#event:ElementConnected">ElementConnected</a></li><li><a href="module-core.html#event:ElementDisconnected">ElementDisconnected</a></li><li><a href="module-core.html#event:Error">Error</a></li><li><a href="module-core.html#event:Media">Media</a></li><li><a href="module-core.html#event:MediaFlowInStateChange">MediaFlowInStateChange</a></li><li><a href="module-core.html#event:MediaFlowInStateChanged">MediaFlowInStateChanged</a></li><li><a href="module-core.html#event:MediaFlowOutStateChange">MediaFlowOutStateChange</a></li><li><a href="module-core.html#event:MediaFlowOutStateChanged">MediaFlowOutStateChanged</a></li><li><a href="module-core.html#event:MediaSessionStarted">MediaSessionStarted</a></li><li><a href="module-core.html#event:MediaSessionTerminated">MediaSessionTerminated</a></li><li><a href="module-core.html#event:MediaStateChanged">MediaStateChanged</a></li><li><a href="module-core.html#event:MediaTranscodingStateChange">MediaTranscodingStateChange</a></li><li><a href="module-core.html#event:MediaTranscodingStateChanged">MediaTranscodingStateChanged</a></li><li><a href="module-core.html#event:ObjectCreated">ObjectCreated</a></li><li><a href="module-core.html#event:ObjectDestroyed">ObjectDestroyed</a></li><li><a href="module-core.html#event:RaiseBase">RaiseBase</a></li><li><a href="module-core.html#event:UriEndpointStateChanged">UriEndpointStateChanged</a></li><li><a href="module-elements.html#event:DataChannelClose">DataChannelClose</a></li><li><a href="module-elements.html#event:DataChannelClosed">DataChannelClosed</a></li><li><a href="module-elements.html#event:DataChannelOpen">DataChannelOpen</a></li><li><a href="module-elements.html#event:DataChannelOpened">DataChannelOpened</a></li><li><a href="module-elements.html#event:EndOfStream">EndOfStream</a></li><li><a href="module-elements.html#event:IceCandidateFound">IceCandidateFound</a></li><li><a href="module-elements.html#event:IceComponentStateChange">IceComponentStateChange</a></li><li><a href="module-elements.html#event:IceComponentStateChanged">IceComponentStateChanged</a></li><li><a href="module-elements.html#event:IceGatheringDone">IceGatheringDone</a></li><li><a href="module-elements.html#event:NewCandidatePairSelected">NewCandidatePairSelected</a></li><li><a href="module-elements.html#event:OnDataChannelClosed">OnDataChannelClosed</a></li><li><a href="module-elements.html#event:OnDataChannelOpened">OnDataChannelOpened</a></li><li><a href="module-elements.html#event:OnIceCandidate">OnIceCandidate</a></li><li><a href="module-elements.html#event:OnIceComponentStateChanged">OnIceComponentStateChanged</a></li><li><a href="module-elements.html#event:OnIceGatheringDone">OnIceGatheringDone</a></li><li><a href="module-elements.html#event:OnKeySoftLimit">OnKeySoftLimit</a></li><li><a href="module-elements.html#event:Paused">Paused</a></li><li><a href="module-elements.html#event:Recording">Recording</a></li><li><a href="module-elements.html#event:Stopped">Stopped</a></li><li><a href="module-filters.html#event:CodeFound">CodeFound</a></li></ul><h3>Global</h3><ul><li><a href="global.html#create">create</a></li><li><a href="global.html#disguise">disguise</a></li><li><a href="global.html#disguiseThenable">disguiseThenable</a></li><li><a href="global.html#doGet">doGet</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#onerror">onerror</a></li><li><a href="global.html#promiseCatch">promiseCatch</a></li><li><a href="global.html#Timeout">Timeout</a></li><li><a href="global.html#unthenable">unthenable</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-core.html">core</a></li><li><a href="module-core_abstracts.html">core/abstracts</a></li><li><a href="module-core_complexTypes.html">core/complexTypes</a></li><li><a href="module-elements.html">elements</a></li><li><a href="module-elements_abstracts.html">elements/abstracts</a></li><li><a href="module-elements_complexTypes.html">elements/complexTypes</a></li><li><a href="module-filters.html">filters</a></li><li><a href="module-filters_abstracts.html">filters/abstracts</a></li><li><a href="module-kurentoClient.html">kurentoClient</a></li></ul><h3>Externals</h3><ul><li><a href="external-Boolean.html">Boolean</a></li><li><a href="external-Error.html">Error</a></li><li><a href="external-EventEmitter.html">EventEmitter</a></li><li><a href="external-Integer.html">Integer</a></li><li><a href="external-Number.html">Number</a></li><li><a href="external-Object.html">Object</a></li><li><a href="external-Promise.html">Promise</a></li><li><a href="external-String.html">String</a></li></ul><h3>Classes</h3><ul><li><a href="module-core.HubPort.html">HubPort</a></li><li><a href="module-core.MediaPipeline.html">MediaPipeline</a></li><li><a href="module-core.PassThrough.html">PassThrough</a></li><li><a href="module-core_abstracts.BaseRtpEndpoint.html">BaseRtpEndpoint</a></li><li><a href="module-core_abstracts.Endpoint.html">Endpoint</a></li><li><a href="module-core_abstracts.Filter.html">Filter</a></li><li><a href="module-core_abstracts.Hub.html">Hub</a></li><li><a href="module-core_abstracts.MediaElement.html">MediaElement</a></li><li><a href="module-core_abstracts.MediaObject.html">MediaObject</a></li><li><a href="module-core_abstracts.SdpEndpoint.html">SdpEndpoint</a></li><li><a href="module-core_abstracts.ServerManager.html">ServerManager</a></li><li><a href="module-core_abstracts.SessionEndpoint.html">SessionEndpoint</a></li><li><a href="module-core_abstracts.UriEndpoint.html">UriEndpoint</a></li><li><a href="module-core_complexTypes.AudioCaps.html">AudioCaps</a></li><li><a href="module-core_complexTypes.CodecConfiguration.html">CodecConfiguration</a></li><li><a href="module-core_complexTypes.ComplexType.html">ComplexType</a></li><li><a href="module-core_complexTypes.ElementConnectionData.html">ElementConnectionData</a></li><li><a href="module-core_complexTypes.ElementStats.html">ElementStats</a></li><li><a href="module-core_complexTypes.EndpointStats.html">EndpointStats</a></li><li><a href="module-core_complexTypes.Fraction.html">Fraction</a></li><li><a href="module-core_complexTypes.MediaLatencyStat.html">MediaLatencyStat</a></li><li><a href="module-core_complexTypes.ModuleInfo.html">ModuleInfo</a></li><li><a href="module-core_complexTypes.OfferOptions.html">OfferOptions</a></li><li><a href="module-core_complexTypes.RembParams.html">RembParams</a></li><li><a href="module-core_complexTypes.RTCCertificateStats.html">RTCCertificateStats</a></li><li><a href="module-core_complexTypes.RTCCodec.html">RTCCodec</a></li><li><a href="module-core_complexTypes.RTCDataChannelStats.html">RTCDataChannelStats</a></li><li><a href="module-core_complexTypes.RTCIceCandidateAttributes.html">RTCIceCandidateAttributes</a></li><li><a href="module-core_complexTypes.RTCIceCandidatePairStats.html">RTCIceCandidatePairStats</a></li><li><a href="module-core_complexTypes.RTCInboundRTPStreamStats.html">RTCInboundRTPStreamStats</a></li><li><a href="module-core_complexTypes.RTCMediaStreamStats.html">RTCMediaStreamStats</a></li><li><a href="module-core_complexTypes.RTCMediaStreamTrackStats.html">RTCMediaStreamTrackStats</a></li><li><a href="module-core_complexTypes.RTCOutboundRTPStreamStats.html">RTCOutboundRTPStreamStats</a></li><li><a href="module-core_complexTypes.RTCPeerConnectionStats.html">RTCPeerConnectionStats</a></li><li><a href="module-core_complexTypes.RTCRTPStreamStats.html">RTCRTPStreamStats</a></li><li><a href="module-core_complexTypes.RTCStats.html">RTCStats</a></li><li><a href="module-core_complexTypes.RTCTransportStats.html">RTCTransportStats</a></li><li><a href="module-core_complexTypes.ServerInfo.html">ServerInfo</a></li><li><a href="module-core_complexTypes.Stats.html">Stats</a></li><li><a href="module-core_complexTypes.Tag.html">Tag</a></li><li><a href="module-core_complexTypes.VideoCaps.html">VideoCaps</a></li><li><a href="module-elements.AlphaBlending.html">AlphaBlending</a></li><li><a href="module-elements.Composite.html">Composite</a></li><li><a href="module-elements.Dispatcher.html">Dispatcher</a></li><li><a href="module-elements.DispatcherOneToMany.html">DispatcherOneToMany</a></li><li><a href="module-elements.HttpPostEndpoint.html">HttpPostEndpoint</a></li><li><a href="module-elements.Mixer.html">Mixer</a></li><li><a href="module-elements.PlayerEndpoint.html">PlayerEndpoint</a></li><li><a href="module-elements.RecorderEndpoint.html">RecorderEndpoint</a></li><li><a href="module-elements.RtpEndpoint.html">RtpEndpoint</a></li><li><a href="module-elements.WebRtcEndpoint.html">WebRtcEndpoint</a></li><li><a href="module-elements_abstracts.HttpEndpoint.html">HttpEndpoint</a></li><li><a href="module-elements_complexTypes.IceCandidate.html">IceCandidate</a></li><li><a href="module-elements_complexTypes.IceCandidatePair.html">IceCandidatePair</a></li><li><a href="module-elements_complexTypes.IceConnection.html">IceConnection</a></li><li><a href="module-elements_complexTypes.SDES.html">SDES</a></li><li><a href="module-elements_complexTypes.VideoInfo.html">VideoInfo</a></li><li><a href="module-filters.FaceOverlayFilter.html">FaceOverlayFilter</a></li><li><a href="module-filters.GStreamerFilter.html">GStreamerFilter</a></li><li><a href="module-filters.ImageOverlayFilter.html">ImageOverlayFilter</a></li><li><a href="module-filters.ZBarFilter.html">ZBarFilter</a></li><li><a href="module-filters_abstracts.OpenCVFilter.html">OpenCVFilter</a></li><li><a href="module-kurentoClient.KurentoClient.html">KurentoClient</a></li><li><a href="module-kurentoClient-MediaObjectCreator.html">MediaObjectCreator</a></li></ul><h3>Events</h3><ul><li><a href="module-core.html#event:ConnectionStateChanged">ConnectionStateChanged</a></li><li><a href="module-core.html#event:ElementConnected">ElementConnected</a></li><li><a href="module-core.html#event:ElementDisconnected">ElementDisconnected</a></li><li><a href="module-core.html#event:Error">Error</a></li><li><a href="module-core.html#event:Media">Media</a></li><li><a href="module-core.html#event:MediaFlowInStateChange">MediaFlowInStateChange</a></li><li><a href="module-core.html#event:MediaFlowInStateChanged">MediaFlowInStateChanged</a></li><li><a href="module-core.html#event:MediaFlowOutStateChange">MediaFlowOutStateChange</a></li><li><a href="module-core.html#event:MediaFlowOutStateChanged">MediaFlowOutStateChanged</a></li><li><a href="module-core.html#event:MediaSessionStarted">MediaSessionStarted</a></li><li><a href="module-core.html#event:MediaSessionTerminated">MediaSessionTerminated</a></li><li><a href="module-core.html#event:MediaStateChanged">MediaStateChanged</a></li><li><a href="module-core.html#event:MediaTranscodingStateChange">MediaTranscodingStateChange</a></li><li><a href="module-core.html#event:MediaTranscodingStateChanged">MediaTranscodingStateChanged</a></li><li><a href="module-core.html#event:ObjectCreated">ObjectCreated</a></li><li><a href="module-core.html#event:ObjectDestroyed">ObjectDestroyed</a></li><li><a href="module-core.html#event:RaiseBase">RaiseBase</a></li><li><a href="module-core.html#event:UriEndpointStateChanged">UriEndpointStateChanged</a></li><li><a href="module-elements.html#event:DataChannelClosed">DataChannelClosed</a></li><li><a href="module-elements.html#event:DataChannelOpened">DataChannelOpened</a></li><li><a href="module-elements.html#event:EndOfStream">EndOfStream</a></li><li><a href="module-elements.html#event:IceCandidateFound">IceCandidateFound</a></li><li><a href="module-elements.html#event:IceComponentStateChanged">IceComponentStateChanged</a></li><li><a href="module-elements.html#event:IceGatheringDone">IceGatheringDone</a></li><li><a href="module-elements.html#event:NewCandidatePairSelected">NewCandidatePairSelected</a></li><li><a href="module-elements.html#event:OnKeySoftLimit">OnKeySoftLimit</a></li><li><a href="module-elements.html#event:Paused">Paused</a></li><li><a href="module-elements.html#event:Recording">Recording</a></li><li><a href="module-elements.html#event:Stopped">Stopped</a></li><li><a href="module-filters.html#event:CodeFound">CodeFound</a></li></ul><h3>Global</h3><ul><li><a href="global.html#create">create</a></li><li><a href="global.html#disguise">disguise</a></li><li><a href="global.html#disguiseThenable">disguiseThenable</a></li><li><a href="global.html#doGet">doGet</a></li><li><a href="global.html#id">id</a></li><li><a href="global.html#onerror">onerror</a></li><li><a href="global.html#promiseCatch">promiseCatch</a></li><li><a href="global.html#Timeout">Timeout</a></li><li><a href="global.html#unthenable">unthenable</a></li></ul>
 </nav>
 
 <br class="clear">

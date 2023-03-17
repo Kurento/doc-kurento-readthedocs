@@ -45,7 +45,6 @@ loadScripts(document, 'script');</script>
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="../../../../index.html">Overview</a></li>
 <li><a href="../package-summary.html">Package</a></li>
 <li><a href="../Continuation.html" title="interface in org.kurento.client">Class</a></li>
 <li class="navBarCell1Rev">Use</li>
@@ -54,7 +53,7 @@ loadScripts(document, 'script');</script>
 <li><a href="../../../../index-all.html">Index</a></li>
 <li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 7.0.0-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 7.0.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList" id="allclasses_navbar_top">
@@ -99,29 +98,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </div>
 <div class="classUseContainer">
 <ul class="blockList">
-<li class="blockList">
-<table class="useSummary">
-<caption><span>Packages that use <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Package</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<th class="colFirst" scope="row"><a href="#org.kurento.client">org.kurento.client</a></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<th class="colFirst" scope="row"><a href="#org.kurento.client.internal.client">org.kurento.client.internal.client</a></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<th class="colFirst" scope="row"><a href="#org.kurento.client.internal.transport.jsonrpc">org.kurento.client.internal.transport.jsonrpc</a></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</tbody>
-</table>
-</li>
 <li class="blockList">
 <ul class="blockList">
 <li class="blockList">
@@ -1839,259 +1815,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </table>
 </section>
 </li>
-<li class="blockList">
-<section><a id="org.kurento.client.internal.client">
-<!--   -->
-</a>
-<h3>Uses of <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a> in <a href="../internal/client/package-summary.html">org.kurento.client.internal.client</a></h3>
-<table class="useSummary">
-<caption><span>Classes in <a href="../internal/client/package-summary.html">org.kurento.client.internal.client</a> that implement <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Class</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../internal/client/DefaultContinuation.html" title="class in org.kurento.client.internal.client">DefaultContinuation</a>&lt;F&gt;</span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../internal/client/ErrorLogContinuation.html" title="class in org.kurento.client.internal.client">ErrorLogContinuation</a>&lt;E&gt;</span></code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</tbody>
-</table>
-<table class="useSummary">
-<caption><span>Methods in <a href="../internal/client/package-summary.html">org.kurento.client.internal.client</a> with parameters of type <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Method</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RemoteObject.</span><code><span class="memberNameLink"><a href="../internal/client/RemoteObject.html#addEventListener(java.lang.String,org.kurento.client.internal.client.RemoteObjectEventListener,org.kurento.client.Continuation)">addEventListener</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;eventType,
-                <a href="../internal/client/RemoteObjectEventListener.html" title="interface in org.kurento.client.internal.client">RemoteObjectEventListener</a>&nbsp;listener,
-                <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../internal/client/ListenerSubscriptionImpl.html" title="class in org.kurento.client.internal.client">ListenerSubscriptionImpl</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RemoteObjectFactory.</span><code><span class="memberNameLink"><a href="../internal/client/RemoteObjectFactory.html#create(java.lang.String,org.kurento.client.Continuation)">create</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;remoteClassName,
-      <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../internal/client/RemoteObject.html" title="class in org.kurento.client.internal.client">RemoteObject</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RemoteObjectFactory.</span><code><span class="memberNameLink"><a href="../internal/client/RemoteObjectFactory.html#create(java.lang.String,org.kurento.jsonrpc.Props,org.kurento.jsonrpc.Props,org.kurento.client.Continuation)">create</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;remoteClassName,
-      org.kurento.jsonrpc.Props&nbsp;constructorParams,
-      org.kurento.jsonrpc.Props&nbsp;genericProps,
-      <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../internal/client/RemoteObject.html" title="class in org.kurento.client.internal.client">RemoteObject</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a></code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClient.</span><code><span class="memberNameLink"><a href="../internal/client/RomClient.html#create(java.lang.String,org.kurento.jsonrpc.Props,org.kurento.jsonrpc.Props,org.kurento.client.Continuation)">create</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;remoteClassName,
-      org.kurento.jsonrpc.Props&nbsp;constructorParams,
-      org.kurento.jsonrpc.Props&nbsp;genericProps,
-      <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomManager.</span><code><span class="memberNameLink"><a href="../internal/client/RomManager.html#create(java.lang.String,org.kurento.client.Continuation)">create</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;remoteClassName,
-      <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../internal/client/RemoteObject.html" title="class in org.kurento.client.internal.client">RemoteObject</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomManager.</span><code><span class="memberNameLink"><a href="../internal/client/RomManager.html#create(java.lang.String,org.kurento.jsonrpc.Props,org.kurento.jsonrpc.Props,org.kurento.client.Continuation)">create</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;remoteClassName,
-      org.kurento.jsonrpc.Props&nbsp;constructorParams,
-      org.kurento.jsonrpc.Props&nbsp;genericProps,
-      <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="../internal/client/RemoteObject.html" title="class in org.kurento.client.internal.client">RemoteObject</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RemoteObject.</span><code><span class="memberNameLink"><a href="../internal/client/RemoteObject.html#invoke(java.lang.String,org.kurento.jsonrpc.Props,java.lang.reflect.Type,org.kurento.client.Continuation)">invoke</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;method,
-      org.kurento.jsonrpc.Props&nbsp;params,
-      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/Type.html?is-external=true" title="class or interface in java.lang.reflect" class="externalLink">Type</a>&nbsp;type,
-      <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a></code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClient.</span><code><span class="memberNameLink"><a href="../internal/client/RomClient.html#invoke(java.lang.String,java.lang.String,org.kurento.jsonrpc.Props,java.lang.reflect.Type,org.kurento.client.Continuation)">invoke</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;operationName,
-      org.kurento.jsonrpc.Props&nbsp;operationParams,
-      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/Type.html?is-external=true" title="class or interface in java.lang.reflect" class="externalLink">Type</a>&nbsp;type,
-      <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;?&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a></code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomManager.</span><code><span class="memberNameLink"><a href="../internal/client/RomManager.html#invoke(java.lang.String,java.lang.String,org.kurento.jsonrpc.Props,java.lang.reflect.Type,org.kurento.client.Continuation)">invoke</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;operationName,
-      org.kurento.jsonrpc.Props&nbsp;operationParams,
-      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/Type.html?is-external=true" title="class or interface in java.lang.reflect" class="externalLink">Type</a>&nbsp;type,
-      <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;?&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RemoteObject.</span><code><span class="memberNameLink"><a href="../internal/client/RemoteObject.html#release(org.kurento.client.Continuation)">release</a></span>&#8203;(<a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClient.</span><code><span class="memberNameLink"><a href="../internal/client/RomClient.html#release(java.lang.String,org.kurento.client.Continuation)">release</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-       <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomManager.</span><code><span class="memberNameLink"><a href="../internal/client/RomManager.html#release(java.lang.String,org.kurento.client.Continuation)">release</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-       <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RemoteObject.</span><code><span class="memberNameLink"><a href="../internal/client/RemoteObject.html#removeEventListener(org.kurento.client.internal.client.ListenerSubscriptionImpl,org.kurento.client.Continuation)">removeEventListener</a></span>&#8203;(<a href="../internal/client/ListenerSubscriptionImpl.html" title="class in org.kurento.client.internal.client">ListenerSubscriptionImpl</a>&nbsp;listenerSubscription,
-                   <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a></code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClient.</span><code><span class="memberNameLink"><a href="../internal/client/RomClient.html#subscribe(java.lang.String,java.lang.String,org.kurento.client.Continuation)">subscribe</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-         <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;type,
-         <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a></code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomManager.</span><code><span class="memberNameLink"><a href="../internal/client/RomManager.html#subscribe(java.lang.String,java.lang.String,org.kurento.client.Continuation)">subscribe</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-         <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;type,
-         <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClient.</span><code><span class="memberNameLink"><a href="../internal/client/RomClient.html#transaction(java.util.List,org.kurento.client.Continuation)">transaction</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../internal/client/operation/Operation.html" title="class in org.kurento.client.internal.client.operation">Operation</a>&gt;&nbsp;operations,
-           <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;continuation)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomManager.</span><code><span class="memberNameLink"><a href="../internal/client/RomManager.html#transaction(java.util.List,org.kurento.client.Continuation)">transaction</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../internal/client/operation/Operation.html" title="class in org.kurento.client.internal.client.operation">Operation</a>&gt;&nbsp;operations,
-           <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;continuation)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClient.</span><code><span class="memberNameLink"><a href="../internal/client/RomClient.html#unsubscribe(java.lang.String,java.lang.String,org.kurento.client.Continuation)">unsubscribe</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-           <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;listenerSubscription,
-           <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomManager.</span><code><span class="memberNameLink"><a href="../internal/client/RomManager.html#unsubscribe(java.lang.String,java.lang.String,org.kurento.client.Continuation)">unsubscribe</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-           <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;listenerRegistration,
-           <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RemoteObject.</span><code><span class="memberNameLink"><a href="../internal/client/RemoteObject.html#whenCommited(org.kurento.client.Continuation)">whenCommited</a></span>&#8203;(<a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;?&gt;&nbsp;continuation)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RemoteObject.</span><code><span class="memberNameLink"><a href="../internal/client/RemoteObject.html#whenCommited(org.kurento.client.Continuation,java.util.concurrent.Executor)">whenCommited</a></span>&#8203;(<a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;?&gt;&nbsp;continuation,
-            <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/Executor.html?is-external=true" title="class or interface in java.util.concurrent" class="externalLink">Executor</a>&nbsp;executor)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</tbody>
-</table>
-<table class="useSummary">
-<caption><span>Constructors in <a href="../internal/client/package-summary.html">org.kurento.client.internal.client</a> with parameters of type <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Constructor</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="../internal/client/DefaultContinuation.html#%3Cinit%3E(org.kurento.client.Continuation)">DefaultContinuation</a></span>&#8203;(<a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;?&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</tbody>
-</table>
-</section>
-</li>
-<li class="blockList">
-<section><a id="org.kurento.client.internal.transport.jsonrpc">
-<!--   -->
-</a>
-<h3>Uses of <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a> in <a href="../internal/transport/jsonrpc/package-summary.html">org.kurento.client.internal.transport.jsonrpc</a></h3>
-<table class="useSummary">
-<caption><span>Methods in <a href="../internal/transport/jsonrpc/package-summary.html">org.kurento.client.internal.transport.jsonrpc</a> with parameters of type <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a></span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colSecond" scope="col">Method</th>
-<th class="colLast" scope="col">Description</th>
-</tr>
-<tbody>
-<tr class="altColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a></code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClientJsonRpcClient.</span><code><span class="memberNameLink"><a href="../internal/transport/jsonrpc/RomClientJsonRpcClient.html#create(java.lang.String,org.kurento.jsonrpc.Props,org.kurento.jsonrpc.Props,org.kurento.client.Continuation)">create</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;remoteClassName,
-      org.kurento.jsonrpc.Props&nbsp;constructorParams,
-      org.kurento.jsonrpc.Props&nbsp;genericProperties,
-      <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Object.html?is-external=true" title="class or interface in java.lang" class="externalLink">Object</a></code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClientJsonRpcClient.</span><code><span class="memberNameLink"><a href="../internal/transport/jsonrpc/RomClientJsonRpcClient.html#invoke(java.lang.String,java.lang.String,org.kurento.jsonrpc.Props,java.lang.reflect.Type,org.kurento.client.Continuation)">invoke</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;operationName,
-      org.kurento.jsonrpc.Props&nbsp;operationParams,
-      <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/reflect/Type.html?is-external=true" title="class or interface in java.lang.reflect" class="externalLink">Type</a>&nbsp;type,
-      <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;?&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClientJsonRpcClient.</span><code><span class="memberNameLink"><a href="../internal/transport/jsonrpc/RomClientJsonRpcClient.html#release(java.lang.String,org.kurento.client.Continuation)">release</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-       <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a></code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClientJsonRpcClient.</span><code><span class="memberNameLink"><a href="../internal/transport/jsonrpc/RomClientJsonRpcClient.html#subscribe(java.lang.String,java.lang.String,org.kurento.client.Continuation)">subscribe</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-         <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;eventType,
-         <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClientJsonRpcClient.</span><code><span class="memberNameLink"><a href="../internal/transport/jsonrpc/RomClientJsonRpcClient.html#transaction(java.util.List,org.kurento.client.Continuation)">transaction</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/List.html?is-external=true" title="class or interface in java.util" class="externalLink">List</a>&lt;<a href="../internal/client/operation/Operation.html" title="class in org.kurento.client.internal.client.operation">Operation</a>&gt;&nbsp;operations,
-           <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;continuation)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><span class="typeNameLabel">RomClientJsonRpcClient.</span><code><span class="memberNameLink"><a href="../internal/transport/jsonrpc/RomClientJsonRpcClient.html#unsubscribe(java.lang.String,java.lang.String,org.kurento.client.Continuation)">unsubscribe</a></span>&#8203;(<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;objectRef,
-           <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html?is-external=true" title="class or interface in java.lang" class="externalLink">String</a>&nbsp;listenerSubscription,
-           <a href="../Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html?is-external=true" title="class or interface in java.lang" class="externalLink">Void</a>&gt;&nbsp;cont)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-</tbody>
-</table>
-</section>
-</li>
 </ul>
 </li>
 </ul>
@@ -2108,7 +1831,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!--   -->
 </a>
 <ul class="navList" title="Navigation">
-<li><a href="../../../../index.html">Overview</a></li>
 <li><a href="../package-summary.html">Package</a></li>
 <li><a href="../Continuation.html" title="interface in org.kurento.client">Class</a></li>
 <li class="navBarCell1Rev">Use</li>
@@ -2117,7 +1839,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li><a href="../../../../index-all.html">Index</a></li>
 <li><a href="../../../../help-doc.html">Help</a></li>
 </ul>
-<div class="aboutLanguage"><b>Kurento Client 7.0.0-SNAPSHOT</b></div>
+<div class="aboutLanguage"><b>Kurento Client 7.0.0</b></div>
 </div>
 <div class="subNav">
 <ul class="navList" id="allclasses_navbar_bottom">
