@@ -112,14 +112,6 @@ General considerations
 
 
 
-.. warning::
-
-   As of this writing, there is a mix of methods in the CI scripts (``ci-scripts/``) when it comes to handle the release versions. The instructions in this document favor creating and pushing git tags manually in the developer's computer, however some projects also make use of the script *kurento_check_version.sh*, which tries to detect when a project's version is *not* a development snapshot, then creates and pushes a git tag automatically. However if the tag already exists (created manually by the developer), then the ``git tag`` command fails, and this script prints a warning message before continuing with its work.
-
-   We've been considering different methodologies between handling the tags automatically in CI or handling them manually by the developer before releasing new versions; both of these methods have pros and cons. For example, if tags are handled manually by the developer, solving mistakes in the release process becomes simpler because there are no surprises from CI creating tags inadvertently; on the other hand, leaving them to be created by CI seems to simplify a bit the release process, but not really by a big margin.
-
-
-
 Release order
 =============
 
@@ -217,6 +209,18 @@ Last, but not least, the project maintains a set of Docker images and documentat
 
 * :ref:`dev-release-docker`
 * :ref:`dev-release-doc`
+
+
+
+FIRST: Open a new Release Process
+=================================
+
+To start with a new release, first of all create a new git branch that will contain all changes related to the release itself:
+
+.. code-block:: shell
+
+   git switch --create release-1.0.0
+   git push --set-upstream origin HEAD
 
 
 
@@ -391,12 +395,12 @@ Release steps
    NEW_VERSION="<ReleaseVersion>" # Eg.: 1.0.0
    NEW_DEBIAN="<DebianRevision>"  # Eg.: 1kurento1
 
-   function do_release {
-       pushd server/ \
-       || { echo "ERROR: Command failed: pushd"; return 1; }
+   cd server/
 
+   function do_release {
        # Set the new version.
-       bin/set-versions.sh "$NEW_VERSION" --debian "$NEW_DEBIAN" --release --commit \
+       bin/set-versions.sh "$NEW_VERSION" --debian "$NEW_DEBIAN" \
+           --release --commit \
        || { echo "ERROR: Command failed: set-versions"; return 1; }
 
        # Check for development versions.
@@ -407,8 +411,6 @@ Release steps
            --exclude-dir 'test*/' \
            -- '\d+\.\d+\.\d+-dev' \
        && { echo "ERROR: Development versions not allowed!"; return 1; }
-
-       popd
 
        echo "Done!"
    }
@@ -700,16 +702,15 @@ Release steps
            || { echo "ERROR: Command failed: pushd"; return 1; }
 
            # Set the new version.
-           bin/set-versions.sh "$NEW_VERSION" --kms-api "$NEW_VERSION" --release --commit \
+           bin/set-versions.sh "$NEW_VERSION" --kms-api "$NEW_VERSION" \
+               --release --commit \
            || { echo "ERROR: Command failed: set-versions"; return 1; }
 
            # Check for development versions.
            grep -Fr --include pom.xml -- '-SNAPSHOT' \
            && { echo "ERROR: Development versions not allowed!"; return 1; }
 
-           # Test the build.
-           # Also install the project into local cache; this allows the next
-           # projects to update their parent version.
+           # Install the project.
            # * Build and run tests.
            # * Do not use `-U` because for each project we want Maven to find
            #   the locally cached artifacts from previous project.
@@ -790,7 +791,7 @@ For this reason, the documentation must be built only after all the other module
 
 #. Edit ``doc-kurento/VERSIONS.env`` to set all relevant version numbers: version of the documentation itself, and all referred modules and client libraries.
 
-   These numbers can be different because not all of the Kurento projects are necessarily released with the same frequency. Check each one of the Kurento repositories to verify what is the latest version of each one, and put it in the corresponding variable:
+   These numbers can be different because not all of the Kurento projects are necessarily released with the same frequency. Check each one of the Kurento modules to verify what is the latest version of each one, and put it in the corresponding variable:
 
    - ``[VERSION_DOC]``: The docs version shown to readers. Normally same as ``[VERSION_KMS]``.
    - ``[VERSION_KMS]``: Version of the Kurento Media Server
@@ -801,7 +802,7 @@ For this reason, the documentation must be built only after all the other module
    - ``[VERSION_TUTORIAL_NODE]``: Version of the Node.js tutorials package.
    - ``[VERSION_TUTORIAL_JS]``: Version of the Browser JavaScript tutorials package.
 
-#. In *VERSIONS.env*, set *VERSION_RELEASE* to **true**. Remember to set it again to *false* after the release, when starting a new development iteration.
+#. In ``doc-kurento/VERSIONS.env``, set *VERSION_RELEASE* to **true**. Remember to set it again to *false* after the release, when starting a new development iteration.
 
 #. Test the build locally, check everything works.
 
@@ -826,22 +827,7 @@ For this reason, the documentation must be built only after all the other module
 
       If you made a mistake and want to re-create the git tag with a different commit, remember that the re-tagging must be done manually in the *doc-kurento-readthedocs* repo. ReadTheDocs reads it to determine the documentation sources and release tags.
 
-#. Check for errors in `ReadTheDocs Builds`_. If the new version hasn't been detected and built, do it manually: use the *Build Version* button to force a build of the *latest* version. Doing this, ReadTheDocs will "realize" that there is a new tagged release version of the documentation in the *doc-kurento-readthedocs* repo.
-
-   .. code-block:: shell
-
-      # Change here.
-      NEW_VERSION="<ReleaseVersion>" # Eg.: 1.0.0
-
-      COMMIT_MSG="Prepare release $NEW_VERSION"
-
-      # `--all` to include possibly deleted files.
-      git add --all \
-          VERSIONS.env \
-          source/project/relnotes/ \
-      && git commit -m "$COMMIT_MSG" \
-      && git push \
-      || echo "ERROR: Command failed: git"
+#. Check for errors in `ReadTheDocs Builds`_. If the new version hasn't been detected and built, do it manually: use the *Build Version* button to force a build of the *latest* version. Doing this, ReadTheDocs will detect that there is a new tag in the *doc-kurento-readthedocs* repo.
 
 **All-In-One script**:
 
@@ -849,6 +835,8 @@ For this reason, the documentation must be built only after all the other module
 
    # Change here.
    NEW_VERSION="<ReleaseVersion>" # Eg.: 1.0.0
+
+   cd doc-kurento/
 
    function do_release {
        local COMMIT_MSG="Prepare documentation release $NEW_VERSION"
@@ -877,13 +865,46 @@ For this reason, the documentation must be built only after all the other module
 
 
 
-New Development Iteration
-=========================
+LAST: Close the Release Process
+===============================
+
+To finish the release, go to GitHub and create a new Pull Request from the release branch. Review all the changes, and accept the PR with a **merge commit**. Do not use the other options (squash or rebase), because we want all changes to get separately recorded with author and date information.
+
+After merging the PR, fetch the new commit:
+
+.. code-block:: shell
+
+   git switch main
+   git fetch --all --tags --prune --prune-tags
+   git pull --autostash
+
+Tag the commit with the new version number (change ``1.0.0`` to the correct one):
+
+.. code-block:: shell
+
+   git tag --force --annotate -m "1.0.0" "1.0.0"
+   git push --force origin "1.0.0"
+
+And now you can optionally do some cleanup in your local clone:
+
+.. code-block:: shell
+
+   git branch --force --delete release-1.0.0
+
+Then, proceed to start a new development iteration for all of the Kurento components.
+
+
 
 Kurento Media Server
 --------------------
 
-**After the whole release has been completed**, bump to a new development version. Do this by incrementing the *.PATCH* number and resetting the **Debian revision** to 1.
+#. Bump to a new development version. Do this by incrementing the *.PATCH* number and resetting the **Debian revision** to 1.
+
+#. Run the `Server Build All`_ job with parameters:
+
+   - *jobGitName*: (Default value).
+   - *jobRelease*: **DISABLED**.
+   - *jobOnlyKurento*: **DISABLED**.
 
 **All-In-One script**:
 
@@ -899,27 +920,19 @@ Kurento Media Server
    bin/set-versions.sh "$NEW_VERSION" --debian "$NEW_DEBIAN" \
        --new-development --commit
 
-   # Push committed changes.
-   git push
-
-Then start the `Server Build All`_ job with parameters:
-
-   - *jobGitName*: Empty (default value).
-   - *jobRelease*: **DISABLED**.
-   - *jobOnlyKurento*: **DISABLED**.
-
 
 
 Kurento JavaScript client
 -------------------------
 
-**After the whole release has been completed**, bump to a new development version. Do this by incrementing the *.PATCH* number.
+#. Bump to a new development version. Do this by incrementing the *.PATCH* number.
+
+#. Run the `Clients Build All JavaScript`_ job with parameters:
+
+   - *jobRelease*: **DISABLED**.
+   - *jobServerVersion*: (Default value).
 
 **All-In-One script**:
-
-.. note::
-
-   The *jq* command-line JSON processor must be installed.
 
 .. code-block:: shell
 
@@ -927,40 +940,20 @@ Kurento JavaScript client
    NEW_VERSION="<NextVersion>" # Eg.: 1.0.1
 
    function do_release {
-       local COMMIT_MSG="Prepare for next development iteration"
-
-       cd server/
-
        local PROJECTS=(
            browser/kurento-utils-js
-           clients/javascript/jsonrpc
-           clients/javascript/client
+           clients/javascript
            tutorials/javascript-node
            tutorials/javascript-browser
        )
 
        for PROJECT in "${PROJECTS[@]}"; do
-           pushd "$PROJECT" || { echo "ERROR: Command failed: pushd"; return 1; }
+           pushd "$PROJECT" \
+           || { echo "ERROR: Command failed: pushd"; return 1; }
 
            # Set the new version.
-           bin/set-versions.sh "$NEW_VERSION" --git-add \
+           bin/set-versions.sh "$NEW_VERSION" --new-development --commit \
            || { echo "ERROR: Command failed: set-versions"; return 1; }
-
-           popd
-       done
-
-       echo "Everything seems OK; proceed to commit and push"
-
-       for PROJECT in "${PROJECTS[@]}"; do
-           pushd "$PROJECT" || { echo "ERROR: Command failed: pushd"; return 1; }
-
-           # Commit all modified files.
-           git commit -m "$COMMIT_MSG" \
-           || { echo "ERROR: Command failed: git commit"; return 1; }
-
-           # Push new commit(s).
-           git push \
-           || { echo "ERROR: Command failed: git push"; return 1; }
 
            popd
        done
@@ -976,11 +969,11 @@ Kurento JavaScript client
 Kurento Java client
 -------------------
 
-.. warning::
+#. Bump to a new development version. Do this by incrementing the *.PATCH* number.
 
-   You should wait for a full nightly run of the Kurento Media Server pipeline, so the next development packages become available from KMS API modules: *kms-api-core*, *kms-api-elements*, and *kms-api-filters*. This way, the properties in ``kurento-parent-pom/pom.xml`` will get updated to the latest SNAPSHOT version.
+#. Run the `Clients Build All Java`_ job with parameters:
 
-**After the whole release has been completed**, bump to a new development version. Do this by incrementing the *.PATCH* number.
+   - *jobServerVersion*: (Default value).
 
 **All-In-One script**:
 
@@ -990,46 +983,22 @@ Kurento Java client
    NEW_VERSION="<NextVersion>" # Eg.: 1.0.1
 
    function do_release {
-       local COMMIT_MSG="Prepare for next development iteration"
-
        local PROJECTS=(
            clients/java/qa-pom
            clients/java
-
-           # Do nothing; tutorials are left depending on release versions.
-           #tutorials/java
-           #test/tutorial
+           tutorials/java
+           test/integration
+           test/tutorial
        )
 
        for PROJECT in "${PROJECTS[@]}"; do
-           pushd "$PROJECT" || { echo "ERROR: Command failed: pushd"; return 1; }
+           pushd "$PROJECT" \
+           || { echo "ERROR: Command failed: pushd"; return 1; }
 
            # Set the new version.
-           bin/set-versions.sh "$NEW_VERSION" --kms-api "$NEW_VERSION-SNAPSHOT" --git-add \
+           bin/set-versions.sh "$NEW_VERSION" --kms-api "${NEW_VERSION}-SNAPSHOT" \
+               --new-development --commit \
            || { echo "ERROR: Command failed: set-versions"; return 1; }
-
-           # Install the project.
-           # * Skip running the tests.
-           # * Do not use `-U` because for each project we want Maven to find
-           #   the locally installed artifacts from previous $PROJECT.
-           mvn -Psnapshot -DskipTests=true clean install \
-           || { echo "ERROR: Command failed: mvn clean install"; return 1; }
-
-           popd
-       done
-
-       echo "Everything seems OK; proceed to commit and push"
-
-       for PROJECT in "${PROJECTS[@]}"; do
-           pushd "$PROJECT" || { echo "ERROR: Command failed: pushd"; return 1; }
-
-           # Commit all modified files.
-           git commit -m "$COMMIT_MSG" \
-           || { echo "ERROR: Command failed: git commit"; return 1; }
-
-           # Push new commit(s).
-           git push \
-           || { echo "ERROR: Command failed: git push"; return 1; }
 
            popd
        done
@@ -1045,7 +1014,13 @@ Kurento Java client
 Kurento documentation
 ---------------------
 
-**AFTER THE WHOLE RELEASE HAS BEEN COMPLETED**: Set *VERSION_RELEASE* to **false**. Now, create a Release Notes document template where to write changes that will accumulate for the next release.
+#. Set *VERSION_RELEASE* to **false**.
+
+#. Create a Release Notes document template where to write changes that will accumulate for the next release.
+
+#. Run the `Documentation build`_ job with parameters:
+
+   - *jobRelease*: **DISABLED**.
 
 **All-In-One script**:
 
@@ -1054,9 +1029,9 @@ Kurento documentation
    # Change here.
    NEW_VERSION="<NextVersion>" # Eg.: 1.0.1
 
-   function do_release {
-       local COMMIT_MSG="Prepare for next development iteration"
+   cd doc-kurento/
 
+   function do_release {
        # Set [VERSION_RELEASE]="false"
        sed -r -i 's/\[VERSION_RELEASE\]=.*/[VERSION_RELEASE]="false"/' VERSIONS.env \
        || { echo "ERROR: Command failed: sed"; return 1; }
@@ -1076,11 +1051,14 @@ Kurento documentation
            source/project/relnotes/index.rst \
        || { echo "ERROR: Command failed: sed"; return 3; }
 
+       # Amend last commit with these changes.
+       # This assumes that previous modules have been committed already,
+       # otherwise just replace `--amend --no-edit`
+       # with `-m "Prepare for next development iteration"`.
        git add \
            VERSIONS.env \
            source/project/relnotes/ \
-       && git commit -m "$COMMIT_MSG" \
-       && git push \
+       && git commit --amend --no-edit \
        || { echo "ERROR: Command failed: git"; return 4; }
 
        echo "Done!"

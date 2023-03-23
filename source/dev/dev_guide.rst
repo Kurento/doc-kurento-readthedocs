@@ -268,7 +268,7 @@ To leave the system in a clean state, remove all Kurento packages and related de
 
 .. code-block:: shell
 
-   sudo aptitude remove ~Vkurento
+   sudo aptitude remove '?installed?version(kurento)'
 
 Use *purge* instead of *remove* to also delete any leftover configuration files in ``/etc/``.
 
@@ -293,7 +293,7 @@ After having :doc:`installed Kurento </user/installation>`, first thing to do is
    # Add Ubuntu debug repository key for apt-get.
    apt-get update ; apt-get install --yes ubuntu-dbgsym-keyring \
    || apt-key adv \
-      --keyserver keyserver.ubuntu.com \
+      --keyserver hkp://keyserver.ubuntu.com:80 \
       --recv-keys F2EDC64DC5AEE1F6B9C621F0C8CAB6595FDFF622
 
    # Add Ubuntu debug repository line for apt-get.
