@@ -710,6 +710,12 @@ Release steps
            grep -Fr --include pom.xml -- '-SNAPSHOT' \
            && { echo "ERROR: Development versions not allowed!"; return 1; }
 
+           # Skip "test/tutorial" because the testing framework has rotted
+           # and isn't able to spawn new browser windows for the tests.
+           if [[ "$PROJECT" == "test/tutorial" ]]; then
+               continue
+           fi
+
            # Install the project.
            # * Build and run tests.
            # * Do not use `-U` because for each project we want Maven to find
@@ -996,7 +1002,7 @@ Kurento Java client
            || { echo "ERROR: Command failed: pushd"; return 1; }
 
            # Set the new version.
-           bin/set-versions.sh "$NEW_VERSION" --kms-api "${NEW_VERSION}-SNAPSHOT" \
+           bin/set-versions.sh "$NEW_VERSION" --kms-api "$NEW_VERSION-SNAPSHOT" \
                --new-development --commit \
            || { echo "ERROR: Command failed: set-versions"; return 1; }
 
