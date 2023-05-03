@@ -379,7 +379,7 @@ Release steps
 
    Search for the ``-dev`` suffix.
 
-#. Commit changes (rebase and squash as needed).
+#. Commit (rebase and squash as needed) and push changes.
 
 #. Run the `Server Build All`_ job with parameters:
 
@@ -469,7 +469,7 @@ Release steps
 
    Search for the ``-dev`` suffix.
 
-#. Commit changes (rebase and squash as needed).
+#. Commit (rebase and squash as needed) and push changes.
 
 #. Run the `Clients Build All JavaScript`_ job with parameters:
 
@@ -675,7 +675,7 @@ Release steps
 
    Search for the ``-SNAPSHOT`` suffix. Note that most versions are defined as properties in ``clients/java/parent-pom/pom.xml``.
 
-#. Commit changes (rebase and squash as needed).
+#. Commit (rebase and squash as needed) and push changes.
 
 #. Run the `Clients Build All Java`_ job with parameters:
 
@@ -819,15 +819,18 @@ For this reason, the documentation must be built only after all the other module
       python3 -m pip install --upgrade -r requirements.txt
       make html
 
+   Repeat the *pip install* command if it fails. Python package management is so abysmally bad that this usually solves the issue.
+
    JavaDoc and JsDoc pages can be generated separately with ``make langdoc``.
 
-#. Commit changes (rebase and squash as needed).
+#. Commit (rebase and squash as needed) and push changes.
 
 #. Run the `Documentation build`_ job with parameters:
 
+   - Workflow branch: Release branch name (e.g. *release-1.0.0*).
    - *jobRelease*: **ENABLED**.
 
-#. CI automatically tags Release versions in ReadTheDocs generated repo `doc-kurento-readthedocs`_, so the release will show up in the ReadTheDocs dashboard.
+#. CI automatically tags Release versions in the ReadTheDocs-generated repo `doc-kurento-readthedocs`_, so the release will show up in the ReadTheDocs dashboard.
 
    .. note::
 
@@ -846,13 +849,14 @@ For this reason, the documentation must be built only after all the other module
 
    function do_release {
        local COMMIT_MSG="Prepare documentation release $NEW_VERSION"
+       local SHORT_VERSION="${NEW_VERSION%.*}" # Major.Minor (no .Patch)
 
        # Set [VERSION_RELEASE]="true".
        sed -r -i 's/\[VERSION_RELEASE\]=.*/[VERSION_RELEASE]="true"/' VERSIONS.env \
        || { echo "ERROR: Command failed: sed"; return 1; }
 
        # Set [VERSION_DOC].
-       local VERSION_DOC="$NEW_VERSION"
+       local VERSION_DOC="$SHORT_VERSION"
        sed -r -i "s/\[VERSION_DOC\]=.*/[VERSION_DOC]=\"$VERSION_DOC\"/" VERSIONS.env \
        || { echo "ERROR: Command failed: sed"; return 2; }
 
@@ -874,7 +878,13 @@ For this reason, the documentation must be built only after all the other module
 LAST: Close the Release Process
 ===============================
 
-To finish the release, go to GitHub and create a new Pull Request from the release branch. Review all the changes, and accept the PR with a **merge commit**. Do not use the other options (squash or rebase), because we want all changes to get separately recorded with author and date information.
+To finish the release, go to GitHub and create a new Pull Request from the release branch:
+
+.. code-block:: text
+
+   https://github.com/Kurento/kurento/pull/new/release-1.0.0
+
+Review all the changes, and accept the PR with a **merge commit**. Do not use the other options (squash or rebase), because we want all changes to get separately recorded with author and date information.
 
 After merging the PR, fetch the new commit:
 
@@ -1034,28 +1044,33 @@ Kurento documentation
 
    # Change here.
    NEW_VERSION="<NextVersion>" # Eg.: 1.0.1
+   IS_MAJOR="<IsMajor?>" # "true" for 1.1.0, "false" for 1.0.1
 
    cd doc-kurento/
 
    function do_release {
+       local SHORT_VERSION="${NEW_VERSION%.*}" # Major.Minor (no .Patch)
+
        # Set [VERSION_RELEASE]="false"
        sed -r -i 's/\[VERSION_RELEASE\]=.*/[VERSION_RELEASE]="false"/' VERSIONS.env \
        || { echo "ERROR: Command failed: sed"; return 1; }
 
        # Set [VERSION_DOC]
-       local VERSION_DOC="$NEW_VERSION-dev"
+       local VERSION_DOC="$SHORT_VERSION-dev"
        sed -r -i "s/\[VERSION_DOC\]=.*/[VERSION_DOC]=\"$VERSION_DOC\"/" VERSIONS.env \
        || { echo "ERROR: Command failed: sed"; return 2; }
 
        # Add a new Release Notes document
-       local RELNOTES_NAME="v${NEW_VERSION//./_}"
-       cp source/project/relnotes/v0_TEMPLATE.rst \
-           "source/project/relnotes/$RELNOTES_NAME.rst" \
-       && sed -i "s/1.2.3/$NEW_VERSION/" \
-           "source/project/relnotes/$RELNOTES_NAME.rst" \
-       && sed -i "8i\   $RELNOTES_NAME" \
-           source/project/relnotes/index.rst \
-       || { echo "ERROR: Command failed: sed"; return 3; }
+       if [[ "$IS_MAJOR" == "true" ]]; then
+           local RELNOTES_NAME="$SHORT_VERSION"
+           cp source/project/relnotes/0.0_TEMPLATE.rst \
+               "source/project/relnotes/$RELNOTES_NAME.rst" \
+           && sed -i "s/00.00/$RELNOTES_NAME/" \
+               "source/project/relnotes/$RELNOTES_NAME.rst" \
+           && sed -i "8i\   $RELNOTES_NAME" \
+               source/project/relnotes/index.rst \
+           || { echo "ERROR: Command failed: sed"; return 3; }
+       fi
 
        # Amend last commit with these changes.
        # This assumes that previous modules have been committed already,

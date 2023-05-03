@@ -40,7 +40,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento.git
     cd kurento/tutorials/javascript-node/chroma/
-    git checkout main
+    git checkout 7.0.0
     npm install
     npm start
 
