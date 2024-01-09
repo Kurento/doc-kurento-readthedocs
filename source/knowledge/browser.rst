@@ -199,11 +199,37 @@ Chrome
 Test instance
 -------------
 
-To run a new Chrome instance with a clean profile:
+To run a new Chrome instance with a clean profile and no pop-ups (such as the password manager or the "default browser" prompt):
 
 .. code-block:: shell
 
-   /usr/bin/google-chrome --user-data-dir="$(mktemp --directory)"
+   /usr/bin/chromium \
+       --guest \
+       --no-default-browser-check \
+       --user-data-dir="$(mktemp --directory)"
+
+Other flags:
+
+* ``--use-fake-device-for-media-stream``: Use synthetic audio and video media to simulate capture devices (camera, microphone, etc).
+
+  Alternatively, a local file can be provided to be used instead:
+
+  - ``--use-file-for-fake-audio-capture="/path/to/file.wav"``: Use a WAV file as the audio source.
+
+  - ``--use-file-for-fake-video-capture="/path/to/file.y4m"``: Use a YUV4MPEG2 (Y4M) or MJPEG file as the video source. `More <https://source.chromium.org/chromium/chromium/src/+/refs/tags/120.0.6099.129:media/capture/video/file_video_capture_device.h;l=25-35>`__ `details <https://source.chromium.org/chromium/chromium/src/+/refs/tags/120.0.6099.129:media/capture/video/file_video_capture_device.cc;l=70-75>`__:
+
+    - Y4M videos should have *.y4m* file extension and MJPEG videos should have *.mjpeg* file extension.
+    - Only interlaced I420 pixel format is supported.
+    - Example Y4M videos can be found here: https://media.xiph.org/video/derf/
+    - Example MJPEG videos can be found here: https://chromium.googlesource.com/chromium/src/+/refs/tags/120.0.6099.129/media/test/data
+
+* ``--auto-accept-camera-and-microphone-capture``: Automatically accept all requests to access the camera and microphone.
+
+  Preferred over the similar and older ``--auto-accept-camera-and-microphone-capture``, which affected screen/tab capture.
+
+* ``--unsafely-treat-insecure-origin-as-secure="URL,..."``: Allow insecure origins to use features that would require a `Secure Context <https://www.w3.org/TR/secure-contexts/>`__ (such as ``getUserMedia()``, WebRTC, etc.) when served from localhost or over HTTP.
+
+  A better approach is to serve the origins over HTTPS, but this flag can be useful for one-off testing.
 
 
 
@@ -222,9 +248,22 @@ Log categories:
 
 * WebRTC:
 
-  - ``connection=0,*/webrtc/*=2``: Everything related to the WebRTC stack, excluding continuous stats updates from the ``connection.cc`` module.
+  - ``*/webrtc/*=2``: Everything related to the WebRTC stack.
+
+    It's strongly suggested to disable some modules that would otherwise flood the logs:
+
+    - ``basic_ice_controller=0``
+    - ``connection=0``
+    - ``encoder_bitrate_adjuster=0``
+    - ``goog_cc_network_control=0``
+    - ``pacing_controller=0``
+    - ``video_stream_encoder=0``
+
   - ``*/media/*=2``: Logs from the user media and device capture.
+
   - ``tls*=1``: Establishment of SSL/TLS connections.
+
+  See below for a full example command that can be copy-pasted.
 
 How to find the module names for ``--vmodule``:
 
@@ -265,20 +304,16 @@ Linux:
 
 .. code-block:: shell
 
-   #TEST_BROWSER="/usr/bin/chromium"
-   TEST_BROWSER="/usr/bin/google-chrome"
-
-   TEST_PROFILE="/tmp/chrome-profile"
-
-   "$TEST_BROWSER" \
-       --user-data-dir="$TEST_PROFILE" \
+   /usr/bin/chromium \
+       --guest \
        --no-default-browser-check \
-       --use-fake-ui-for-media-stream \
+       --user-data-dir="$(mktemp --directory)" \
        --use-fake-device-for-media-stream \
+       --auto-accept-camera-and-microphone-capture \
        --enable-logging=stderr \
        --log-level=0 \
        --v=0 \
-       --vmodule="connection=0,*/webrtc/*=2,*/media/*=2,tls*=1" \
+       --vmodule="basic_ice_controller=0,connection=0,encoder_bitrate_adjuster=0,goog_cc_network_control=0,pacing_controller=0,video_stream_encoder=0,*/webrtc/*=2,*/media/*=2,tls*=1" \
        "https://localhost:8080/"
 
 
@@ -290,7 +325,7 @@ A command line for 3% sent packet loss and 5% received packet loss is:
 
 .. code-block:: shell
 
-   --force-fieldtrials=WebRTCFakeNetworkSendLossPercent/3/WebRTCFakeNetworkReceiveLossPercent/5/
+   --force-fieldtrials="WebRTCFakeNetworkSendLossPercent/3/WebRTCFakeNetworkReceiveLossPercent/5/"
 
 
 
@@ -307,42 +342,6 @@ Autoplay:
 
 * https://developer.chrome.com/blog/autoplay/#best_practices_for_web_developers
 * https://www.chromium.org/audio-video/autoplay/
-
-
-
-Command-line
-============
-
-Chrome
-------
-
-.. code-block:: shell
-
-   export WEB_APP_HOST_PORT="198.51.100.1:8443"
-
-   /usr/bin/google-chrome \
-       --user-data-dir="$(mktemp --directory)" \
-       --enable-logging=stderr \
-       --no-first-run \
-       --allow-insecure-localhost \
-       --allow-running-insecure-content \
-       --disable-web-security \
-       --unsafely-treat-insecure-origin-as-secure="https://${WEB_APP_HOST_PORT}" \
-       "https://${WEB_APP_HOST_PORT}"
-
-
-Firefox
--------
-
-.. code-block:: text
-
-   export SERVER_PUBLIC_IP="198.51.100.1"
-
-   /usr/bin/firefox \
-       -profile "$(mktemp --directory)" \
-       -no-remote \
-       "https://${SERVER_PUBLIC_IP}:4443/" \
-       "http://${SERVER_PUBLIC_IP}:4200/#/test-sessions"
 
 
 
