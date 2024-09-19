@@ -39,7 +39,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento.git
     cd kurento/tutorials/javascript-node/crowddetector/
-    git checkout main
+    git checkout 7.1.0
     npm install
     npm start
 
@@ -321,7 +321,7 @@ file for managing this dependency is:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client" : "7.0.0"
+      "kurento-client" : "7.1.0"
    }
 
 At the client side, dependencies are managed using Bower. Take a look to the
@@ -331,8 +331,8 @@ file and pay attention to the following section:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-utils" : "7.0.0",
-      "kurento-module-pointerdetector": "7.0.0"
+      "kurento-utils" : "7.1.0",
+      "kurento-module-pointerdetector": "7.1.0"
    }
 
 .. note::

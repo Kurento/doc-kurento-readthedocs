@@ -30,7 +30,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento.git
     cd kurento/tutorials/java/pointerdetector/
-    git checkout main
+    git checkout 7.1.0
     mvn -U clean spring-boot:run
 
 The web application starts on port 8443 in the localhost by default. Therefore,

@@ -30,7 +30,7 @@ author = 'Kurento'
 # built documents.
 
 # The short X.Y version.
-version = '7.0-dev'
+version = '7.1'
 
 # The full version, including alpha/beta/rc tags.
 release = version

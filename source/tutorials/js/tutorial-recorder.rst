@@ -41,7 +41,7 @@ You also need the source code of this tutorial. Clone it from GitHub, then start
 
     git clone https://github.com/Kurento/kurento.git
     cd kurento/tutorials/javascript-browser/recorder/
-    git checkout main
+    git checkout 7.1.0
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 
@@ -302,8 +302,8 @@ Demo dependencies are located in file `bower.json <https://github.com/Kurento/ku
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "7.0.0",
-      "kurento-utils": "7.0.0"
+      "kurento-client": "7.1.0",
+      "kurento-utils": "7.1.0"
    }
 
 .. note::
