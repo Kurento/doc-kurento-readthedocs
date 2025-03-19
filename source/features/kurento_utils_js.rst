@@ -30,7 +30,7 @@ How to use it
 =============
 
 * **Minified file** - Download the file from
-  `here <http://builds.openvidu.io/release/7.1.0/js/kurento-utils.min.js>`__.
+  `here <http://builds.openvidu.io/release/7.2.0/js/kurento-utils.min.js>`__.
 
 
 * **NPM** - Install and use library in your Node.js files.

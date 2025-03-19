@@ -35,7 +35,7 @@ Follow these steps to use it:
 
    .. code-block:: text
 
-      https://s3-eu-west-1.amazonaws.com/aws.kurento.org/KMS-Coturn-cfn-7.1.0.yaml
+      https://s3-eu-west-1.amazonaws.com/aws.kurento.org/KMS-Coturn-cfn-7.2.0.yaml
 
 4. Follow through the steps of the configuration wizard:
 
@@ -95,10 +95,10 @@ This is a good starting point, which runs the latest Kurento Media Server image 
 
 .. code-block:: shell
 
-   docker pull kurento/kurento-media-server:7.1.0
+   docker pull kurento/kurento-media-server:7.2.0
 
    docker run -d --name kurento --network host \
-       kurento/kurento-media-server:7.1.0
+       kurento/kurento-media-server:7.2.0
 
 By default, KMS listens on the port **8888**. Clients wanting to control the media server using the :doc:`/features/kurento_protocol` should open a WebSocket connection to that port, either directly or by means of one of the provided :doc:`/features/kurento_client` SDKs.
 
@@ -130,7 +130,7 @@ For example, if you use Docker for Mac and want to have KMS listening on the UDP
        -p 5000-5050:5000-5050/udp \
        -e KMS_MIN_PORT=5000 \
        -e KMS_MAX_PORT=5050 \
-       kurento/kurento-media-server:7.1.0
+       kurento/kurento-media-server:7.2.0
 
 
 
@@ -142,10 +142,10 @@ One of the nicest things about the Docker deployment method is that changing ver
 .. code-block:: shell
 
    # Download the new image version:
-   docker pull kurento/kurento-media-server:7.1.0
+   docker pull kurento/kurento-media-server:7.2.0
 
    # Create a new container based on the new version of KMS:
-   docker run [...] kurento/kurento-media-server:7.1.0
+   docker run [...] kurento/kurento-media-server:7.2.0
 
 
 
@@ -177,14 +177,16 @@ Open a terminal and run these commands:
       source /etc/upstream-release/lsb-release 2>/dev/null || source /etc/lsb-release
 
       # Add Kurento repository key for apt-get.
-      sudo apt-key adv \
-          --keyserver hkp://keyserver.ubuntu.com:80 \
-          --recv-keys 234821A61B67740F89BFD669FC8A16625AFA7A83
+      sudo gpg -k
+      sudo gpg --no-default-keyring \
+               --keyring /etc/apt/keyrings/kurento.gpg \
+               --keyserver hkp://keyserver.ubuntu.com:80 \
+               --recv-keys 234821A61B67740F89BFD669FC8A16625AFA7A83
 
       # Add Kurento repository line for apt-get.
       sudo tee "/etc/apt/sources.list.d/kurento.list" >/dev/null <<EOF
       # Kurento Media Server - Release packages
-      deb [arch=amd64] http://ubuntu.openvidu.io/7.1.0 $DISTRIB_CODENAME main
+      deb [signed-by=/etc/apt/keyrings/kurento.gpg] http://ubuntu.openvidu.io/7.2.0 $DISTRIB_CODENAME main
       EOF
 
 3. Install KMS:

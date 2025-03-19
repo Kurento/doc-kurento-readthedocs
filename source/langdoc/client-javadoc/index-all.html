@@ -25,7 +25,7 @@ loadScripts(document, 'script');</script>
 <!-- ========= START OF TOP NAVBAR ======= -->
 <div class="top-nav" id="navbar-top"><button id="navbar-toggle-button" aria-controls="navbar-top" aria-expanded="false" aria-label="Toggle navigation links"><span class="nav-bar-toggle-icon">&nbsp;</span><span class="nav-bar-toggle-icon">&nbsp;</span><span class="nav-bar-toggle-icon">&nbsp;</span></button>
 <div class="skip-nav"><a href="#skip-navbar-top" title="Skip navigation links">Skip navigation links</a></div>
-<div class="about-language"><b>Kurento Client 7.1.0</b></div>
+<div class="about-language"><b>Kurento Client 7.2.0</b></div>
 <ul id="navbar-top-firstrow" class="nav-list" title="Navigation">
 <li><a href="org/kurento/client/package-summary.html">Package</a></li>
 <li>Class</li>
@@ -973,6 +973,90 @@ loadScripts(document, 'script');</script>
 <dt><a href="org/kurento/client/DtlsConnectionStateChangeEvent.html#%3Cinit%3E(org.kurento.client.MediaObject,java.lang.String,java.util.List,java.lang.String,java.lang.String,java.lang.String,java.lang.String,org.kurento.client.DtlsConnectionState)" class="member-name-link">DtlsConnectionStateChangeEvent(MediaObject, String, List&lt;Tag&gt;, String, String, String, String, DtlsConnectionState)</a> - Constructor for class org.kurento.client.<a href="org/kurento/client/DtlsConnectionStateChangeEvent.html" title="class in org.kurento.client">DtlsConnectionStateChangeEvent</a></dt>
 <dd>
 <div class="block">Event fired when and ICE component DTLS connection state changes.</div>
+</dd>
+<dt><a href="org/kurento/client/Hub.html#dumpGstreamerDot()" class="member-name-link">dumpGstreamerDot()</a> - Method in interface org.kurento.client.<a href="org/kurento/client/Hub.html" title="interface in org.kurento.client">Hub</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaElement.html#dumpGstreamerDot()" class="member-name-link">dumpGstreamerDot()</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Media Element.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaPipeline.html#dumpGstreamerDot()" class="member-name-link">dumpGstreamerDot()</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the pipeline</div>
+</dd>
+<dt><a href="org/kurento/client/Hub.html#dumpGstreamerDot(org.kurento.client.Continuation)" class="member-name-link">dumpGstreamerDot(Continuation&lt;Void&gt;)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/Hub.html" title="interface in org.kurento.client">Hub</a></dt>
+<dd>
+<div class="block">Asynchronous version of dumpGstreamerDot:
+ <a href="org/kurento/client/Continuation.html#onSuccess(F)"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaElement.html#dumpGstreamerDot(org.kurento.client.Continuation)" class="member-name-link">dumpGstreamerDot(Continuation&lt;Void&gt;)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></dt>
+<dd>
+<div class="block">Asynchronous version of dumpGstreamerDot:
+ <a href="org/kurento/client/Continuation.html#onSuccess(F)"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaPipeline.html#dumpGstreamerDot(org.kurento.client.Continuation)" class="member-name-link">dumpGstreamerDot(Continuation&lt;Void&gt;)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a></dt>
+<dd>
+<div class="block">Asynchronous version of dumpGstreamerDot:
+ <a href="org/kurento/client/Continuation.html#onSuccess(F)"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</dd>
+<dt><a href="org/kurento/client/Hub.html#dumpGstreamerDot(org.kurento.client.GstreamerDotDetails)" class="member-name-link">dumpGstreamerDot(GstreamerDotDetails)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/Hub.html" title="interface in org.kurento.client">Hub</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaElement.html#dumpGstreamerDot(org.kurento.client.GstreamerDotDetails)" class="member-name-link">dumpGstreamerDot(GstreamerDotDetails)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Media Element.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaPipeline.html#dumpGstreamerDot(org.kurento.client.GstreamerDotDetails)" class="member-name-link">dumpGstreamerDot(GstreamerDotDetails)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the pipeline</div>
+</dd>
+<dt><a href="org/kurento/client/Hub.html#dumpGstreamerDot(org.kurento.client.GstreamerDotDetails,org.kurento.client.Continuation)" class="member-name-link">dumpGstreamerDot(GstreamerDotDetails, Continuation&lt;Void&gt;)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/Hub.html" title="interface in org.kurento.client">Hub</a></dt>
+<dd>
+<div class="block">Asynchronous version of dumpGstreamerDot:
+ <a href="org/kurento/client/Continuation.html#onSuccess(F)"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaElement.html#dumpGstreamerDot(org.kurento.client.GstreamerDotDetails,org.kurento.client.Continuation)" class="member-name-link">dumpGstreamerDot(GstreamerDotDetails, Continuation&lt;Void&gt;)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></dt>
+<dd>
+<div class="block">Asynchronous version of dumpGstreamerDot:
+ <a href="org/kurento/client/Continuation.html#onSuccess(F)"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaPipeline.html#dumpGstreamerDot(org.kurento.client.GstreamerDotDetails,org.kurento.client.Continuation)" class="member-name-link">dumpGstreamerDot(GstreamerDotDetails, Continuation&lt;Void&gt;)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a></dt>
+<dd>
+<div class="block">Asynchronous version of dumpGstreamerDot:
+ <a href="org/kurento/client/Continuation.html#onSuccess(F)"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</dd>
+<dt><a href="org/kurento/client/Hub.html#dumpGstreamerDot(org.kurento.client.Transaction)" class="member-name-link">dumpGstreamerDot(Transaction)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/Hub.html" title="interface in org.kurento.client">Hub</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaElement.html#dumpGstreamerDot(org.kurento.client.Transaction)" class="member-name-link">dumpGstreamerDot(Transaction)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Media Element.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaPipeline.html#dumpGstreamerDot(org.kurento.client.Transaction)" class="member-name-link">dumpGstreamerDot(Transaction)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the pipeline</div>
+</dd>
+<dt><a href="org/kurento/client/Hub.html#dumpGstreamerDot(org.kurento.client.Transaction,org.kurento.client.GstreamerDotDetails)" class="member-name-link">dumpGstreamerDot(Transaction, GstreamerDotDetails)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/Hub.html" title="interface in org.kurento.client">Hub</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaElement.html#dumpGstreamerDot(org.kurento.client.Transaction,org.kurento.client.GstreamerDotDetails)" class="member-name-link">dumpGstreamerDot(Transaction, GstreamerDotDetails)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaElement.html" title="interface in org.kurento.client">MediaElement</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Media Element.</div>
+</dd>
+<dt><a href="org/kurento/client/MediaPipeline.html#dumpGstreamerDot(org.kurento.client.Transaction,org.kurento.client.GstreamerDotDetails)" class="member-name-link">dumpGstreamerDot(Transaction, GstreamerDotDetails)</a> - Method in interface org.kurento.client.<a href="org/kurento/client/MediaPipeline.html" title="interface in org.kurento.client">MediaPipeline</a></dt>
+<dd>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the pipeline</div>
 </dd>
 </dl>
 <h2 class="title" id="I:E">E</h2>
@@ -2770,6 +2854,8 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="org/kurento/client/VideoCodec.html#H264" class="member-name-link">H264</a> - Enum constant in enum org.kurento.client.<a href="org/kurento/client/VideoCodec.html" title="enum in org.kurento.client">VideoCodec</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="org/kurento/client/VideoCodec.html#H265" class="member-name-link">H265</a> - Enum constant in enum org.kurento.client.<a href="org/kurento/client/VideoCodec.html" title="enum in org.kurento.client">VideoCodec</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/kurento/client/Handler.html" class="type-name-link" title="interface in org.kurento.client">Handler</a> - Interface in <a href="org/kurento/client/package-summary.html">org.kurento.client</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/kurento/client/RTCStatsIceCandidateType.html#host" class="member-name-link">host</a> - Enum constant in enum org.kurento.client.<a href="org/kurento/client/RTCStatsIceCandidateType.html" title="enum in org.kurento.client">RTCStatsIceCandidateType</a></dt>
@@ -3285,6 +3371,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Fired when the recorder goes to pause state</div>
 </dd>
+<dt><a href="org/kurento/client/AudioCodec.html#PCMA" class="member-name-link">PCMA</a> - Enum constant in enum org.kurento.client.<a href="org/kurento/client/AudioCodec.html" title="enum in org.kurento.client">AudioCodec</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="org/kurento/client/AudioCodec.html#PCMU" class="member-name-link">PCMU</a> - Enum constant in enum org.kurento.client.<a href="org/kurento/client/AudioCodec.html" title="enum in org.kurento.client">AudioCodec</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="org/kurento/client/RTCStatsIceCandidateType.html#peerreflexive" class="member-name-link">peerreflexive</a> - Enum constant in enum org.kurento.client.<a href="org/kurento/client/RTCStatsIceCandidateType.html" title="enum in org.kurento.client">RTCStatsIceCandidateType</a></dt>
@@ -5552,6 +5640,14 @@ the order they are declared.</div>
 <dd>
 <div class="block">Sets a value for filterType in Builder for GStreamerFilter.</div>
 </dd>
+<dt><a href="org/kurento/client/Composite.Builder.html#withFramerate(int)" class="member-name-link">withFramerate(int)</a> - Method in class org.kurento.client.<a href="org/kurento/client/Composite.Builder.html" title="class in org.kurento.client">Composite.Builder</a></dt>
+<dd>
+<div class="block">Sets a value for framerate in Builder for Composite.</div>
+</dd>
+<dt><a href="org/kurento/client/Composite.Builder.html#withHeight(int)" class="member-name-link">withHeight(int)</a> - Method in class org.kurento.client.<a href="org/kurento/client/Composite.Builder.html" title="class in org.kurento.client">Composite.Builder</a></dt>
+<dd>
+<div class="block">Sets a value for height in Builder for Composite.</div>
+</dd>
 <dt><a href="org/kurento/client/RecorderEndpoint.Builder.html#withMediaProfile(org.kurento.client.MediaProfileSpecType)" class="member-name-link">withMediaProfile(MediaProfileSpecType)</a> - Method in class org.kurento.client.<a href="org/kurento/client/RecorderEndpoint.Builder.html" title="class in org.kurento.client">RecorderEndpoint.Builder</a></dt>
 <dd>
 <div class="block">Sets a value for mediaProfile in Builder for RecorderEndpoint.</div>
@@ -5600,6 +5696,10 @@ the order they are declared.</div>
 <dd>
 <div class="block">Sets a value for qosDscp in Builder for WebRtcEndpoint.</div>
 </dd>
+<dt><a href="org/kurento/client/Composite.Builder.html#withWidth(int)" class="member-name-link">withWidth(int)</a> - Method in class org.kurento.client.<a href="org/kurento/client/Composite.Builder.html" title="class in org.kurento.client">Composite.Builder</a></dt>
+<dd>
+<div class="block">Sets a value for width in Builder for Composite.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:Z">Z</h2>
 <dl class="index">
@@ -5613,7 +5713,7 @@ the order they are declared.</div>
 <a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:J">J</a>&nbsp;<a href="#I:K">K</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:Z">Z</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a><span class="vertical-separator">|</span><a href="serialized-form.html">Serialized&nbsp;Form</a></main>
 <footer role="contentinfo">
 <hr>
-<p class="legal-copy"><small>Copyright &#169; 2024 <a href="https://kurento.openvidu.io/">Kurento</a>. All rights reserved.</small></p>
+<p class="legal-copy"><small>Copyright &#169; 2025 <a href="https://kurento.openvidu.io/">Kurento</a>. All rights reserved.</small></p>
 </footer>
 </div>
 </div>

@@ -25,7 +25,7 @@ loadScripts(document, 'script');</script>
 <!-- ========= START OF TOP NAVBAR ======= -->
 <div class="top-nav" id="navbar-top"><button id="navbar-toggle-button" aria-controls="navbar-top" aria-expanded="false" aria-label="Toggle navigation links"><span class="nav-bar-toggle-icon">&nbsp;</span><span class="nav-bar-toggle-icon">&nbsp;</span><span class="nav-bar-toggle-icon">&nbsp;</span></button>
 <div class="skip-nav"><a href="#skip-navbar-top" title="Skip navigation links">Skip navigation links</a></div>
-<div class="about-language"><b>Kurento Client 7.1.0</b></div>
+<div class="about-language"><b>Kurento Client 7.2.0</b></div>
 <ul id="navbar-top-firstrow" class="nav-list" title="Navigation">
 <li><a href="package-summary.html">Package</a></li>
 <li class="nav-bar-cell1-rev">Class</li>
@@ -113,6 +113,42 @@ extends <a href="MediaObject.html" title="interface in org.kurento.client">Media
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#dumpGstreamerDot()" class="member-name-link">dumpGstreamerDot</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#dumpGstreamerDot(org.kurento.client.Continuation)" class="member-name-link">dumpGstreamerDot</a><wbr>(<a href="Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;&nbsp;cont)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Asynchronous version of dumpGstreamerDot:
+ <a href="Continuation.html#onSuccess(F)"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#dumpGstreamerDot(org.kurento.client.GstreamerDotDetails)" class="member-name-link">dumpGstreamerDot</a><wbr>(<a href="GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#dumpGstreamerDot(org.kurento.client.GstreamerDotDetails,org.kurento.client.Continuation)" class="member-name-link">dumpGstreamerDot</a><wbr>(<a href="GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details,
+ <a href="Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;&nbsp;cont)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Asynchronous version of dumpGstreamerDot:
+ <a href="Continuation.html#onSuccess(F)"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#dumpGstreamerDot(org.kurento.client.Transaction)" class="member-name-link">dumpGstreamerDot</a><wbr>(<a href="Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#dumpGstreamerDot(org.kurento.client.Transaction,org.kurento.client.GstreamerDotDetails)" class="member-name-link">dumpGstreamerDot</a><wbr>(<a href="Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
+ <a href="GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#getGstreamerDot()" class="member-name-link">getGstreamerDot</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
@@ -217,6 +253,69 @@ extends <a href="MediaObject.html" title="interface in org.kurento.client">Media
 </section>
 </li>
 <li>
+<section class="detail" id="dumpGstreamerDot(org.kurento.client.GstreamerDotDetails)">
+<h3>dumpGstreamerDot</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dumpGstreamerDot</span><wbr><span class="parameters">(<a href="GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details)</span></div>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.
+           <p>The element can be queried for certain type of data:</p>
+ <ul>
+   <li>SHOW_ALL: default value</li>
+   <li>SHOW_CAPS_DETAILS</li>
+   <li>SHOW_FULL_PARAMS</li>
+   <li>SHOW_MEDIA_TYPE</li>
+   <li>SHOW_NON_DEFAULT_PARAMS</li>
+   <li>SHOW_STATES</li>
+   <li>SHOW_VERBOSE</li>
+ </ul></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>details</code> - Details of graph</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="dumpGstreamerDot(org.kurento.client.GstreamerDotDetails,org.kurento.client.Continuation)">
+<h3>dumpGstreamerDot</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dumpGstreamerDot</span><wbr><span class="parameters">(<a href="GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details,
+ <a href="Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;&nbsp;cont)</span></div>
+<div class="block">Asynchronous version of dumpGstreamerDot:
+ <a href="Continuation.html#onSuccess(F)"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done. If an error occurs, <a href="Continuation.html#onError(java.lang.Throwable)"><code>Continuation.onError(java.lang.Throwable)</code></a> is called.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>details</code> - Details of graph</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="tag-list-long">
+<li><a href="#dumpGstreamerDot(org.kurento.client.GstreamerDotDetails)"><code>dumpGstreamerDot(org.kurento.client.GstreamerDotDetails)</code></a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="dumpGstreamerDot(org.kurento.client.Transaction,org.kurento.client.GstreamerDotDetails)">
+<h3>dumpGstreamerDot</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dumpGstreamerDot</span><wbr><span class="parameters">(<a href="Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx,
+ <a href="GstreamerDotDetails.html" title="enum in org.kurento.client">GstreamerDotDetails</a>&nbsp;details)</span></div>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.
+           <p>The element can be queried for certain type of data:</p>
+ <ul>
+   <li>SHOW_ALL: default value</li>
+   <li>SHOW_CAPS_DETAILS</li>
+   <li>SHOW_FULL_PARAMS</li>
+   <li>SHOW_MEDIA_TYPE</li>
+   <li>SHOW_NON_DEFAULT_PARAMS</li>
+   <li>SHOW_STATES</li>
+   <li>SHOW_VERBOSE</li>
+ </ul></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>details</code> - Details of graph</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="getGstreamerDot()">
 <h3>getGstreamerDot</h3>
 <div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getGstreamerDot</span>()</div>
@@ -255,6 +354,57 @@ extends <a href="MediaObject.html" title="interface in org.kurento.client">Media
 </dl>
 </section>
 </li>
+<li>
+<section class="detail" id="dumpGstreamerDot()">
+<h3>dumpGstreamerDot</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dumpGstreamerDot</span>()</div>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.
+           <p>The element can be queried for certain type of data:</p>
+ <ul>
+   <li>SHOW_ALL: default value</li>
+   <li>SHOW_CAPS_DETAILS</li>
+   <li>SHOW_FULL_PARAMS</li>
+   <li>SHOW_MEDIA_TYPE</li>
+   <li>SHOW_NON_DEFAULT_PARAMS</li>
+   <li>SHOW_STATES</li>
+   <li>SHOW_VERBOSE</li>
+ </ul></div>
+</section>
+</li>
+<li>
+<section class="detail" id="dumpGstreamerDot(org.kurento.client.Continuation)">
+<h3>dumpGstreamerDot</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dumpGstreamerDot</span><wbr><span class="parameters">(<a href="Continuation.html" title="interface in org.kurento.client">Continuation</a>&lt;<a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/Void.html" title="class or interface in java.lang" class="external-link">Void</a>&gt;&nbsp;cont)</span></div>
+<div class="block">Asynchronous version of dumpGstreamerDot:
+ <a href="Continuation.html#onSuccess(F)"><code>Continuation.onSuccess(F)</code></a> is called when the action is
+ done. If an error occurs, <a href="Continuation.html#onError(java.lang.Throwable)"><code>Continuation.onError(java.lang.Throwable)</code></a> is called.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="tag-list-long">
+<li><a href="#dumpGstreamerDot(org.kurento.client.GstreamerDotDetails)"><code>dumpGstreamerDot(org.kurento.client.GstreamerDotDetails)</code></a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="dumpGstreamerDot(org.kurento.client.Transaction)">
+<h3>dumpGstreamerDot</h3>
+<div class="member-signature"><span class="return-type">void</span>&nbsp;<span class="element-name">dumpGstreamerDot</span><wbr><span class="parameters">(<a href="Transaction.html" title="interface in org.kurento.client">Transaction</a>&nbsp;tx)</span></div>
+<div class="block">If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that directoy a file with the GStreamer dot of the Hub.
+           <p>The element can be queried for certain type of data:</p>
+ <ul>
+   <li>SHOW_ALL: default value</li>
+   <li>SHOW_CAPS_DETAILS</li>
+   <li>SHOW_FULL_PARAMS</li>
+   <li>SHOW_MEDIA_TYPE</li>
+   <li>SHOW_NON_DEFAULT_PARAMS</li>
+   <li>SHOW_STATES</li>
+   <li>SHOW_VERBOSE</li>
+ </ul></div>
+</section>
+</li>
 </ul>
 </section>
 </li>
@@ -264,7 +414,7 @@ extends <a href="MediaObject.html" title="interface in org.kurento.client">Media
 </main>
 <footer role="contentinfo">
 <hr>
-<p class="legal-copy"><small>Copyright &#169; 2024 <a href="https://kurento.openvidu.io/">Kurento</a>. All rights reserved.</small></p>
+<p class="legal-copy"><small>Copyright &#169; 2025 <a href="https://kurento.openvidu.io/">Kurento</a>. All rights reserved.</small></p>
 </footer>
 </div>
 </div>

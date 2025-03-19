@@ -31,7 +31,7 @@
         <h2><span class="attribs"><span class="type-signature"></span></span>
             <span class="ancestors"><a href="module-core.html">core</a>.</span>MediaPipeline<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">A pipeline is a container for a collection of   MediaElements and :rom:cls:`MediaMixers<MediaMixer>`.
+            <div class="class-description">A pipeline is a container for a collection of   MediaElements.
  It offers the methods needed to control the creation and connection of 
  elements inside a certain pipeline.</div>
         
@@ -201,7 +201,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html">node_modules/kurento-client-core/lib/MediaPipeline.js</a>, <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html#line310">line 310</a>
+        <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html">node_modules/kurento-client-core/lib/MediaPipeline.js</a>, <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html#line364">line 364</a>
     </li></ul></dd>
     
 
@@ -259,7 +259,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html">node_modules/kurento-client-core/lib/MediaPipeline.js</a>, <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html#line318">line 318</a>
+        <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html">node_modules/kurento-client-core/lib/MediaPipeline.js</a>, <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html#line372">line 372</a>
     </li></ul></dd>
     
 
@@ -280,6 +280,207 @@
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".dumpGstreamerDot"><span class="type-signature">(static) </span>dumpGstreamerDot<span class="signature">(details<span class="signature-attributes">opt</span>, callback<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="external-Promise.html">external:Promise</a>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    If GST_DEBUG_DUMP_DOT_DIR  environment variable is defined dumps in that 
+directoy a file with the GStreamer dot of the pipeline
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>details</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">module:core/complexTypes.GstreamerDotDetails</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Details of graph</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="module-core.MediaPipeline.html#~dumpGstreamerDotCallback">module:core.MediaPipeline~dumpGstreamerDotCallback</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html">node_modules/kurento-client-core/lib/MediaPipeline.js</a>, <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html#line229">line 229</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="external-Promise.html">external:Promise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
 
         
             
@@ -434,7 +635,7 @@ elements inside the pipeline
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html">node_modules/kurento-client-core/lib/MediaPipeline.js</a>, <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html#line229">line 229</a>
+        <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html">node_modules/kurento-client-core/lib/MediaPipeline.js</a>, <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html#line283">line 283</a>
     </li></ul></dd>
     
 
@@ -2313,6 +2514,139 @@ returns itself when invoked for a pipeline object.
     
 
     
+    <h4 class="name" id="~dumpGstreamerDotCallback"><span class="type-signature"></span>dumpGstreamerDotCallback<span class="signature">(error)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>error</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="external-Error.html">external:Error</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html">node_modules/kurento-client-core/lib/MediaPipeline.js</a>, <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html#line265">line 265</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+                
+
+    
+
+    
     <h4 class="name" id="~getGstreamerDotCallback"><span class="type-signature"></span>getGstreamerDotCallback<span class="signature">(error, result)</span><span class="type-signature"></span></h4>
     
 
@@ -2433,7 +2767,7 @@ returns itself when invoked for a pipeline object.
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html">node_modules/kurento-client-core/lib/MediaPipeline.js</a>, <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html#line265">line 265</a>
+        <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html">node_modules/kurento-client-core/lib/MediaPipeline.js</a>, <a href="node_modules_kurento-client-core_lib_MediaPipeline.js.html#line319">line 319</a>
     </li></ul></dd>
     
 
