@@ -35,7 +35,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento.git
     cd kurento/tutorials/java/datachannel-show-text/
-    git checkout 7.2.0
+    git checkout main
     mvn -U clean spring-boot:run
 
 Access the application connecting to the URL https://localhost:8443/ in a WebRTC
