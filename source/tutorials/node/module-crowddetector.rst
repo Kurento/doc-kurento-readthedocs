@@ -39,7 +39,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento.git
     cd kurento/tutorials/javascript-node/crowddetector/
-    git checkout 7.2.0
+    git checkout main
     npm install
     npm start
 

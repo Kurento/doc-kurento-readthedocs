@@ -30,7 +30,7 @@ is hosted, and then run the main class:
 
     git clone https://github.com/Kurento/kurento.git
     cd kurento/tutorials/java/chroma/
-    git checkout 7.2.0
+    git checkout main
     mvn -U clean spring-boot:run
 
 The web application starts on port 8443 in the localhost by default. Therefore,
