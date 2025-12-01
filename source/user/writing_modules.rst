@@ -280,7 +280,7 @@ A ``Dockerfile`` such as this one would be a good enough starting point:
 
 .. code-block:: docker
 
-   FROM kurento/kurento-media-server:7.2.0
+   FROM kurento/kurento-media-server:7.3.0
    COPY video-module_0.0.1~rc1_amd64.deb /
    RUN dpkg -i /video-module_0.0.1~rc1_amd64.deb
 
@@ -288,19 +288,19 @@ Now build the new image:
 
 .. code-block:: shell-session
 
-   $ docker build --tag kurento-with-video-module:7.2.0 .
-   Step 1/3 : FROM kurento/kurento-media-server:7.2.0
+   $ docker build --tag kurento-with-video-module:7.3.0 .
+   Step 1/3 : FROM kurento/kurento-media-server:7.3.0
    Step 2/3 : COPY video-module_0.0.1~rc1_amd64.deb /
    Step 3/3 : RUN dpkg -i /video-module_0.0.1~rc1_amd64.deb
    Successfully built d10d3b4a8202
-   Successfully tagged kurento-with-video-module:7.2.0
+   Successfully tagged kurento-with-video-module:7.3.0
 
 And verify your module is correctly loaded by Kurento:
 
 .. code-block:: shell-session
    :emphasize-lines: 7,12,13
 
-   $ docker run --rm kurento-with-video-module:7.2.0 --version
+   $ docker run --rm kurento-with-video-module:7.3.0 --version
    Kurento Media Server version: 7.0.0
    Found modules:
        'core' version 7.0.0
@@ -308,7 +308,7 @@ And verify your module is correctly loaded by Kurento:
        'filters' version 7.0.0
        'appvideomodule' version 0.0.1~0.gd61e201
 
-   $ docker run --rm kurento-with-video-module:7.2.0 --list
+   $ docker run --rm kurento-with-video-module:7.3.0 --list
    Available factories:
        [...]
        AppVideoModule

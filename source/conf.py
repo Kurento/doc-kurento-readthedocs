@@ -22,7 +22,7 @@ import sphinx_rtd_theme
 # -- Project information --------------------------------------------------
 
 project = 'Kurento'
-copyright = '2020, Kurento'
+copyright = '2025, Kurento'
 author = 'Kurento'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -30,7 +30,7 @@ author = 'Kurento'
 # built documents.
 
 # The short X.Y version.
-version = '7.2-dev'
+version = '7.3'
 
 # The full version, including alpha/beta/rc tags.
 release = version

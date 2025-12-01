@@ -41,7 +41,7 @@ You also need the source code of this tutorial. Clone it from GitHub, then start
 
     git clone https://github.com/Kurento/kurento.git
     cd kurento/tutorials/javascript-browser/magic-mirror/
-    git checkout main
+    git checkout 7.3.0
     bower install
     http-server -p 8443 --ssl --cert keys/server.crt --key keys/server.key
 
@@ -272,8 +272,8 @@ file, as follows:
 .. sourcecode:: js
 
    "dependencies": {
-      "kurento-client": "7.2.0",
-      "kurento-utils": "7.2.0"
+      "kurento-client": "7.3.0",
+      "kurento-utils": "7.3.0"
    }
 
 .. note::

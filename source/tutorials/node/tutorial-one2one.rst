@@ -33,7 +33,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento.git
     cd kurento/tutorials/javascript-node/one2one-call/
-    git checkout main
+    git checkout 7.3.0
     npm install
     npm start
 
@@ -622,7 +622,7 @@ file for managing this dependency is:
 
    "dependencies": {
       [...]
-      "kurento-client" : "7.2.0"
+      "kurento-client" : "7.3.0"
    }
 
 At the client side, dependencies are managed using :term:`Bower`. Take a look to
@@ -634,7 +634,7 @@ file and pay attention to the following section:
 
    "dependencies": {
       [...]
-      "kurento-utils" : "7.2.0"
+      "kurento-utils" : "7.3.0"
    }
 
 .. note::
