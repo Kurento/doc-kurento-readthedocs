@@ -34,7 +34,7 @@ Follow these steps to run this demo application:
 
       git clone https://github.com/Kurento/kurento.git
       cd kurento/tutorials/java/rtp-receiver/
-      git checkout 7.3.0
+      git checkout main
       mvn -U clean spring-boot:run \
           -Dspring-boot.run.jvmArguments="-Dkms.url=ws://{KMS_HOST}:8888/kurento"
 

@@ -38,7 +38,7 @@ is hosted, install it and run it:
 
     git clone https://github.com/Kurento/kurento.git
     cd kurento/tutorials/javascript-node/pointerdetector/
-    git checkout 7.3.0
+    git checkout main
     npm install
     npm start
 
